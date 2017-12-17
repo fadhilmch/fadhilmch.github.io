@@ -90,14 +90,104 @@ ul {
 }
 
 #picture {
-	max-width: 25%;
-    align-content: center;
+	max-width: 40%;
+    margin-left: 30%;
+    margin-bottom: 20px;
 }
 
 .content {
 	max-width: 600px;
-	background-color: red;
-	margin: 200px auto auto auto;
+	margin: 150px auto auto auto;
 
+}
+
+#name {
+	text-align: center;
+	font-family: 'Montserrat';
+	font-size: 50px;
+	margin: 0 auto;
+	color: #0D9DA4;
+}
+
+#description {
+	text-align: center;
+	font-family: 'Barlow';
+	font-size: 17px;
+	margin: 0 auto;
+	color: #7F7F7F;
+}
+
+.contact{
+    margin: 30px auto 0 auto;
+    padding-bottom: 40px;
+    padding-left: 15%;
+    padding-top: 20px;
+    border-top: 2px solid #CCCCCC;
+    background-color: red;
+}
+
+.contact a{
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.github {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/github.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+
+.github:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/github hover.png");
+    background-size: 45px 45px;
+}
+
+.linkedin {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/linkedin.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+
+.linkedin:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/linkedin hover.png");
+    background-size: 45px 45px;
+}
+.facebook {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/facebook.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+.facebook:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/facebook hover.png");
+    background-size: contain;
+}
+
+.instagram {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/instagram.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+
+
+.instagram:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/instagram hover.png");
+    background-size: contain;
 }
 
