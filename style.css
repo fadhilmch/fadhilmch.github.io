@@ -1,0 +1,103 @@
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/zhcz-_WihjSQC0oHJ9TCYPk_vArhqVIZ0nv9q090hN8.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+  }
+
+@font-face {
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Heebo'), local('Heebo-Regular'), url(https://fonts.gstatic.com/s/heebo/v3/Q66imbW5v9YuQMRLd0RXOA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Barlow Regular'), local('Barlow-Regular'), url(https://fonts.gstatic.com/s/barlow/v1/85USsdxXrj0ktofu610mIuvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+}
+/* latin */
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Barlow Medium'), local('Barlow-Medium'), url(https://fonts.gstatic.com/s/barlow/v1/kIIp0WfvDOeW2tTGAi2QqZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+}
+/* latin */
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Barlow Bold'), local('Barlow-Bold'), url(https://fonts.gstatic.com/s/barlow/v1/8hNuYABG6RcCB7awZe-wJ5Bw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2212, U+2215;
+}
+
+
+
+body {
+	background-color: #DCDCDD;
+	margin: 0 auto;
+}
+
+
+header {
+		width: 100%;
+		min-width: 700px;
+		position:fixed;
+		top: 0px;
+		height: auto;
+
+}
+
+nav a {
+	font-family: Montserrat;
+	font-size: 15px;
+	text-decoration: none;
+	color: #0D9DA4;
+}
+
+
+
+#logo {
+	margin-top: 30px;
+	margin-left: 10%;
+	float:  left;
+	margin-bottom: 30px;
+
+}
+
+li{
+	display:inline-block;
+	padding:10px;
+	margin: 5px;
+}
+
+li :hover {
+	color: #0C7489;
+}
+
+ul {
+	margin-top: 30px;
+	float: right;
+	margin-right:10%;
+}
+
+#picture {
+	max-width: 25%;
+    align-content: center;
+}
+
+.content {
+	max-width: 600px;
+	background-color: red;
+	margin: 200px auto auto auto;
+
+}
+
