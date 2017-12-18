@@ -93,7 +93,7 @@ ul {
 }
 
 .about {
-  width: 50%;
+  width: 30%;
   min-width: 400px;
   background-color: white;
   margin: 150px auto 0px auto;
@@ -133,4 +133,85 @@ ul {
 .about .subtitile {
   font-size: 23px;
   font-family: Barlow;
+}
+
+
+.contact{
+    margin: 30px auto 0 auto;
+    padding-bottom: 5px;
+    padding-left: 25%;
+    padding-top: 20px;
+}
+
+.contact a{
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.github {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/github.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+
+.github:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/github hover.png");
+    background-size: 45px 45px;
+}
+
+.linkedin {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/linkedin.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+
+.linkedin:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/linkedin hover.png");
+    background-size: 45px 45px;
+}
+.facebook {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/facebook.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+.facebook:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/facebook hover.png");
+    background-size: contain;
+}
+
+.instagram {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/instagram.png");
+    background-size: 45px 45px;
+    margin-right: 10px;
+}
+
+
+.instagram:hover {
+    width: 45px;
+    height: 45px;
+    background: url("./Assets/instagram hover.png");
+    background-size: contain;
+
+}
+
+footer {
+  text-align: center;
+  font-size: 10px;
+  font-family: "Barlow";
+  color: #7F7F7F;
 }
