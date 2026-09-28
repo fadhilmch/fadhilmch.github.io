@@ -1,0 +1,71 @@
+---
+canvas:
+  node_width: 76
+  node_height: 72
+  col_gap: 202
+  row_gap: 118
+  pad_x: 30
+  center_y: 250
+nodes:
+- id: profile
+  level: 0
+  glyph: "@"
+  title: Fadhil
+  subtitle: Stockholm, Sweden
+  kind: profile
+  color: fg
+  desc: I'm a machine learning engineer in Stockholm. I work on ML platforms, experimentation
+    and, lately, AI agents. I studied electrical engineering in Bandung and machine
+    learning at KTH. Outside work I take photos, design things and make music.
+  source: profile
+- id: edu
+  level: 1
+  glyph: "∑"
+  title: Education
+  subtitle: EE → ML
+  kind: input
+  color: fg
+  desc: Electrical engineering and robotics in Bandung, then a master’s in machine
+    learning at KTH.
+  source: education
+- id: exp
+  level: 2
+  glyph: "≡"
+  title: Experience
+  subtitle: auto
+  kind: loop
+  color: fg
+  desc: From a robotics lab in Bandung to machine learning work in Stockholm.
+  source: experience
+- expand: skills
+  level: 3
+  kind: tool
+- id: work
+  level: 4
+  glyph: "▣"
+  title: Work
+  subtitle: auto
+  kind: output
+  color: fg
+  desc: Selected production systems and two early IEEE papers.
+  source: projects+publications
+- id: contact
+  level: 5
+  glyph: "→"
+  title: Say hello
+  subtitle: contact
+  kind: respond
+  color: l2
+  desc: Happy to talk about agents, evaluation or experimentation.
+  source: contact
+edges:
+- from: profile
+  to: edu
+- from: edu
+  to: exp
+- from: exp
+  to: "@skills"
+- from: "@skills"
+  to: work
+- from: work
+  to: contact

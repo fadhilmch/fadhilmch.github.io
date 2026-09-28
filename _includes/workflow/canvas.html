@@ -1,0 +1,106 @@
+{%- comment -%}
+  The About pipeline. Node positions are computed from `level` (plan 7.2):
+    x = pad_x + level * col_gap
+    y = cy - ((k - 1) * row_gap) / 2 - node_h / 2 + i * row_gap
+  where k = nodes at that level, i = index within it. `cy` is canvas.center_y,
+  raised when a tall level would otherwise run off the top.
+{%- endcomment -%}
+{%- assign wf = site.data.workflow -%}
+{%- assign cv = wf.canvas -%}
+{%- assign node_w = cv.node_width -%}
+{%- assign node_h = cv.node_height -%}
+{%- assign half_h = node_h | divided_by: 2 -%}
+
+{%- assign max_level = 0 -%}
+{%- for e in wf.nodes -%}{%- if e.level > max_level -%}{%- assign max_level = e.level -%}{%- endif -%}{%- endfor -%}
+
+{%- comment -%} k per level, and the tallest level {%- endcomment -%}
+{%- assign max_k = 1 -%}
+{%- capture level_sizes -%}
+  {%- for level in (0..max_level) -%}
+    {%- assign k = 0 -%}
+    {%- for e in wf.nodes -%}{%- if e.level == level -%}
+      {%- if e.expand == 'skills' -%}{%- assign k = k | plus: site.data.skills.size -%}{%- else -%}{%- assign k = k | plus: 1 -%}{%- endif -%}
+    {%- endif -%}{%- endfor -%}
+    {%- if k > max_k -%}{%- assign max_k = k -%}{%- endif -%}
+    {{- k -}}{%- unless forloop.last -%},{%- endunless -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign level_sizes = level_sizes | split: ',' -%}
+
+{%- assign span_half = max_k | minus: 1 | times: cv.row_gap | divided_by: 2 | plus: half_h -%}
+{%- assign cy = span_half | plus: 34 -%}
+{%- if cv.center_y > cy -%}{%- assign cy = cv.center_y -%}{%- endif -%}
+{%- assign canvas_h = cy | plus: span_half | plus: 70 -%}
+{%- if canvas_h < 470 -%}{%- assign canvas_h = 470 -%}{%- endif -%}
+{%- assign canvas_w = max_level | times: cv.col_gap | plus: node_w | plus: cv.pad_x | plus: cv.pad_x -%}
+
+{%- comment -%} Pass 1: nodes. Also records "id|x|y|color" per node for the edges. {%- endcomment -%}
+{%- assign skill_ids = '' -%}
+{%- capture positions -%}{%- endcapture -%}
+{%- capture node_html -%}
+  {%- for level in (0..max_level) -%}
+    {%- assign k = level_sizes[level] | plus: 0 -%}
+    {%- assign i = 0 -%}
+    {%- assign top = k | minus: 1 | times: cv.row_gap | divided_by: 2 -%}
+    {%- for e in wf.nodes -%}{%- if e.level == level -%}
+      {%- if e.expand == 'skills' -%}{%- assign group = site.data.skills -%}{%- else -%}{%- assign group = '_' | split: ',' -%}{%- endif -%}
+      {%- for skill in group -%}
+        {%- if e.expand == 'skills' -%}
+          {%- include workflow/resolve.html entry=e skill=skill -%}
+          {%- assign skill_ids = skill_ids | append: n_id | append: ',' -%}
+        {%- else -%}
+          {%- include workflow/resolve.html entry=e -%}
+        {%- endif -%}
+        {%- assign x = level | times: cv.col_gap | plus: cv.pad_x -%}
+        {%- assign y = i | times: cv.row_gap | plus: cy | minus: top | minus: half_h -%}
+        {%- capture positions -%}{{ positions }}{{ n_id }}|{{ x }}|{{ y }}|{{ n_color }};{%- endcapture -%}
+        {%- assign i = i | plus: 1 -%}
+        <button class="wf-node wf-node--{{ n_kind }}" id="wf-n-{{ n_id }}" type="button" style="left:{{ x }}px;top:{{ y }}px" data-node="{{ n_id }}" data-level="{{ level }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
+          <span class="wf-node__box">
+            <span class="wf-node__glyph" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
+            {%- unless n_kind == 'profile' %}<span class="wf-port wf-port--in" aria-hidden="true"></span>{% endunless -%}
+            {%- unless n_kind == 'respond' %}<span class="wf-port wf-port--out" aria-hidden="true"></span>{% endunless %}
+          </span>
+          <span class="wf-node__label"><span class="wf-node__title">{{ n_title | escape }}</span><span class="wf-node__sub">{{ n_sub | escape }}</span></span>
+        </button>
+      {%- endfor -%}
+    {%- endif -%}{%- endfor -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- assign positions = positions | split: ';' -%}
+{%- assign skill_ids = skill_ids | split: ',' -%}
+
+{%- comment -%} Pass 2: edges. "@skills" fans out to every skills node. {%- endcomment -%}
+{%- capture edge_html -%}
+  {%- for edge in wf.edges -%}
+    {%- if edge.from == '@skills' -%}{%- assign froms = skill_ids -%}{%- else -%}{%- assign froms = edge.from | split: ',' -%}{%- endif -%}
+    {%- if edge.to == '@skills' -%}{%- assign tos = skill_ids -%}{%- else -%}{%- assign tos = edge.to | split: ',' -%}{%- endif -%}
+    {%- for from_id in froms -%}{%- for to_id in tos -%}
+      {%- assign a = nil -%}{%- assign b = nil -%}
+      {%- for p in positions -%}
+        {%- assign parts = p | split: '|' -%}
+        {%- if parts[0] == from_id -%}{%- assign a = parts -%}{%- endif -%}
+        {%- if parts[0] == to_id -%}{%- assign b = parts -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if a and b -%}
+        {%- assign x1 = a[1] | plus: node_w -%}
+        {%- assign y1 = a[2] | plus: half_h -%}
+        {%- assign x2 = b[1] | minus: 4 -%}
+        {%- assign y2 = b[2] | plus: half_h -%}
+        {%- assign mx = x1 | plus: x2 | divided_by: 2 -%}
+        {%- assign stroke = b[3] -%}
+        {%- assign stroke_first = stroke | slice: 0 -%}
+        {%- unless stroke_first == 'l' -%}{%- assign stroke = 'ok' -%}{%- endunless -%}
+        <path class="wf-edge" d="M{{ x1 }} {{ y1 }} C{{ mx }} {{ y1 }} {{ mx }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }})"/>
+      {%- endif -%}
+    {%- endfor -%}{%- endfor -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+<div class="wf-scroll">
+  <div class="wf-canvas" style="width:{{ canvas_w }}px;height:{{ canvas_h }}px">
+    <svg class="wf-edges" width="{{ canvas_w }}" height="{{ canvas_h }}" viewBox="0 0 {{ canvas_w }} {{ canvas_h }}" aria-hidden="true" focusable="false">{{ edge_html }}</svg>
+    {{ node_html }}
+  </div>
+</div>

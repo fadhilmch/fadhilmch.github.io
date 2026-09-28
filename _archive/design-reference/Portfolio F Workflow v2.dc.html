@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./fm-data-real.js"></script>
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--l0)}
+:root,[data-theme="light"]{--bg:#f5f4f0;--panel:#fbfaf7;--fg:#161616;--muted:#62605a;--line:#dedbd3;--dot:#d3cfc6;--ghost:#dcd8ce;--k-key:oklch(0.5 0.14 255);--k-str:oklch(0.5 0.13 150);--k-num:oklch(0.55 0.16 30);--k-p:#8a877f;--l0:oklch(0.55 0.17 255);--l1:oklch(0.55 0.17 150);--l2:oklch(0.58 0.16 30);--l3:oklch(0.55 0.17 305);--ok:oklch(0.55 0.15 150);--g-fg:#44423d;--g-label:#6e6c66;--g-line:#cfcbc1;--g-acc:oklch(0.58 0.16 30);--g-c-agents:oklch(0.55 0.17 255);--g-c-exp:oklch(0.55 0.17 150);--g-c-data:oklch(0.55 0.17 150);--g-c-mlops:oklch(0.55 0.17 305);--g-c-photo:oklch(0.58 0.16 30);--g-c-music:oklch(0.58 0.16 30);--g-c-design:oklch(0.58 0.16 30);--g-c-meta:#161616;--g-font:'Geist Mono'}
+[data-theme="dark"]{--bg:#121212;--panel:#1b1b1a;--fg:#ecebe7;--muted:#9b9993;--line:#2e2d2a;--dot:#2a2927;--ghost:#2e2d2a;--k-key:oklch(0.78 0.11 255);--k-str:oklch(0.78 0.12 150);--k-num:oklch(0.78 0.13 30);--k-p:#77756f;--l0:oklch(0.75 0.13 255);--l1:oklch(0.75 0.13 150);--l2:oklch(0.75 0.14 30);--l3:oklch(0.75 0.13 305);--ok:oklch(0.75 0.14 150);--g-fg:#c9c7c1;--g-label:#8e8c86;--g-line:#3a3936;--g-acc:oklch(0.75 0.14 30);--g-c-agents:oklch(0.75 0.13 255);--g-c-exp:oklch(0.75 0.13 150);--g-c-data:oklch(0.75 0.13 150);--g-c-mlops:oklch(0.75 0.13 305);--g-c-photo:oklch(0.75 0.14 30);--g-c-music:oklch(0.75 0.14 30);--g-c-design:oklch(0.75 0.14 30);--g-c-meta:#ecebe7}
+@keyframes fmflow{to{stroke-dashoffset:-20}}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--bg);color:var(--fg);font-family:'Geist',system-ui,sans-serif;font-size:15px;line-height:1.55;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;gap:28px;padding:14px 36px;border-bottom:1px solid var(--line);flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:12px">
+      <svg width="40" height="40" viewBox="0 0 120 120" fill="none"><text x="60" y="108" text-anchor="middle" fill="var(--ghost)" style="font-family:'Geist',sans-serif;font-weight:700;font-size:128px">F</text><path d="{{ logoWave }}" stroke="var(--bg)" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"></path><path d="{{ logoWave }}" stroke="var(--l2)" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"></path></svg>
+      <div style="display:flex;flex-direction:column;line-height:1.15"><span style="font-weight:700;letter-spacing:-0.01em">Fadhil Mochammad</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">ML engineer · Stockholm</span></div>
+    </div>
+    <div style="flex:1"></div>
+    <nav style="display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.onClick }}" style="font:inherit;font-size:14px;cursor:pointer;border:0;border-radius:7px;padding:6px 14px;background:{{ t.bg }};color:{{ t.color }}">{{ t.label }}</button>
+      </sc-for>
+    </nav>
+    <button onClick="{{ toggleTheme }}" style="font-family:'Geist Mono',monospace;font-size:11px;cursor:pointer;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:7px 12px">{{ themeLabel }}</button>
+  </header>
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+    <main style="width:100%;max-width:1280px;margin:0 auto;padding:28px 36px 56px;box-sizing:border-box;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:6px;flex:1;min-width:320px">
+          </span>
+          <h1 style="margin:0;font-size:clamp(30px,3.6vw,44px);line-height:1.05;font-weight:600;letter-spacing:-0.03em;max-width:24ch;text-wrap:balance">{{ headline }}</h1>
+          <p style="margin:6px 0 0;max-width:62ch;color:var(--muted);text-wrap:pretty">{{ intro }}</p>
+        </div>
+        
+      </div>
+      
+      <div style="overflow-x:auto;border:1px solid var(--line);border-radius:14px;background-color:var(--panel);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:18px 18px">
+        <div style="position:relative;width:1180px;height:520px;margin:0 auto">
+          <svg viewBox="0 0 1180 520" style="position:absolute;inset:0;width:1180px;height:520px">{{ edgesSvg }}</svg>
+          
+          <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="9">
+            <button onClick="{{ n.onClick }}" style="position:absolute;left:{{ n.left }};top:{{ n.top }};width:72px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font:inherit;color:var(--fg)">
+              <span style="position:relative;width:72px;height:72px;box-sizing:border-box;border-radius:{{ n.radius }};background:var(--bg);border:2px solid {{ n.border }};display:flex;align-items:center;justify-content:center;box-shadow:{{ n.shadow }}">
+                <span style="font-family:'Geist Mono',monospace;font-size:26px;line-height:1;color:{{ n.color }}">{{ n.glyph }}</span>
+                <span style="position:absolute;top:-8px;right:-8px;width:18px;height:18px;border-radius:50%;background:{{ n.badgeBg }};color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">{{ n.badge }}</span>
+                <span style="position:absolute;left:-6px;top:30px;width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:{{ n.inPort }}"></span>
+                <span style="position:absolute;right:-6px;top:30px;width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:{{ n.outPort }}"></span>
+              </span>
+              <span style="display:flex;flex-direction:column;align-items:center;line-height:1.2;width:140px;flex-shrink:0"><span style="font-size:13px;font-weight:600;white-space:nowrap">{{ n.title }}</span><span style="font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted)">{{ n.sub }}</span></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <section style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)">
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--line)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:16px;color:{{ insp.color }}">{{ insp.glyph }}</span>
+            <div style="display:flex;flex-direction:column;line-height:1.2"><span style="font-weight:600;font-size:18px">{{ insp.title }}</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">click another node to read more</span></div>
+          </div>
+          <p style="margin:0;text-wrap:pretty">{{ insp.desc }}</p>
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ insp.rows }}" as="r" hint-placeholder-count="4">
+              <a href="{{ r.href }}" style="display:grid;grid-template-columns:170px minmax(0,1fr);gap:14px;padding:9px 0;border-top:1px solid var(--line)"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ r.k }}</span><span style="font-size:14px">{{ r.v }}</span></a>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:10px;min-width:0">
+          <div style="display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span>{{ insp.file }}</span><span style="color:var(--ok)">{{ insp.items }}</span></div>
+          <pre style="margin:0;font-family:'Geist Mono',monospace;font-size:12px;line-height:1.6;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;max-height:340px;white-space:pre-wrap;color:var(--fg)"><sc-for list="{{ insp.tokens }}" as="k" hint-placeholder-count="20"><span style="color:{{ k.c }}">{{ k.t }}</span></sc-for></pre>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isPosts }}" hint-placeholder-val="{{ false }}">
+    <main style="width:100%;max-width:900px;margin:0 auto;padding:36px 36px 64px;box-sizing:border-box;display:flex;flex-direction:column;gap:22px">
+      <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+        <span style="font-size:28px;font-weight:600;letter-spacing:-0.02em">Posts</span>
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ postCount }}</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+          <button onClick="{{ c.onClick }}" style="display:flex;align-items:center;gap:7px;font:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:{{ c.bg }};color:{{ c.fg }}"><span style="width:8px;height:8px;border-radius:50%;background:{{ c.dot }}"></span>{{ c.label }}</button>
+        </sc-for>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:30px">
+        <sc-for list="{{ years }}" as="y" hint-placeholder-count="2">
+          <section style="display:grid;grid-template-columns:80px minmax(0,1fr);gap:24px">
+            <span style="font-size:30px;font-weight:600;letter-spacing:-0.03em;line-height:1;position:sticky;top:16px;align-self:start">{{ y.year }}</span>
+            <div style="display:flex;flex-direction:column;border-left:2px solid var(--line)">
+              <sc-for list="{{ y.items }}" as="p" hint-placeholder-count="3">
+                <a href="#" style="position:relative;display:flex;flex-direction:column;gap:6px;padding:4px 0 26px 28px" style-hover="color:var(--l0)">
+                  <span style="position:absolute;left:-9px;top:8px;width:16px;height:16px;border-radius:50%;background:{{ p.ring }};box-shadow:0 0 0 4px var(--bg)"></span>
+                  <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ p.date }} · {{ p.min }}</span>
+                  <span style="font-size:20px;font-weight:600;letter-spacing:-0.015em;line-height:1.25">{{ p.title }}</span>
+                  <span style="color:var(--muted)">{{ p.excerpt }}</span>
+                  <span style="display:flex;gap:6px;flex-wrap:wrap;margin-top:2px">
+                    <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="2">
+                      <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:1px 9px"><span style="width:7px;height:7px;border-radius:50%;background:{{ t.color }}"></span>{{ t.label }}</span>
+                    </sc-for>
+                  </span>
+                </a>
+              </sc-for>
+            </div>
+          </section>
+        </sc-for>
+      </div>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isNotes }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:none;display:grid;grid-template-columns:260px minmax(0,1fr) 320px;grid-template-rows:minmax(0,1fr);height:calc(100vh - 116px);min-height:560px">
+      <aside style="border-right:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-height:0">
+        <div style="padding:14px 14px 10px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)">
+          <div style="display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span>EXPLORER</span><span>{{ noteCount }}</span></div>
+          <input value="{{ q }}" onChange="{{ onQ }}" placeholder="Search notes…" style="font:inherit;font-size:13px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;outline:none">
+        </div>
+        <div style="overflow:auto;padding:8px 8px 20px;flex:1">
+          <sc-for list="{{ folders }}" as="f" hint-placeholder-count="6">
+            <div style="display:flex;flex-direction:column;margin-bottom:4px">
+              <button onClick="{{ f.onToggle }}" style="display:flex;align-items:center;gap:8px;font:inherit;font-size:13px;font-weight:600;cursor:pointer;background:transparent;border:0;padding:5px 6px;color:var(--fg);text-align:left">
+                <span style="width:10px;font-size:10px;color:var(--muted)">{{ f.caret }}</span>
+                <span style="width:8px;height:8px;border-radius:2px;background:{{ f.color }}"></span>
+                <span style="flex:1">{{ f.label }}</span>
+                <span style="font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);font-weight:400">{{ f.count }}</span>
+              </button>
+              <sc-for list="{{ f.items }}" as="n" hint-placeholder-count="3">
+                <button onClick="{{ n.onClick }}" style="font:inherit;font-size:13px;font-weight:{{ n.weight }};text-align:left;cursor:pointer;border:0;border-radius:6px;padding:4px 8px 4px 34px;background:{{ n.bg }};color:var(--fg)" style-hover="background:var(--line)">{{ n.title }}</button>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+      </aside>
+      <article style="overflow:auto;min-height:0">
+        <div style="max-width:680px;margin:0 auto;padding:36px 40px 60px;display:flex;flex-direction:column;gap:18px">
+          <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">vault / {{ note.path }}</span>
+          <h1 style="margin:0;font-size:44px;font-weight:600;letter-spacing:-0.035em;line-height:1.05">{{ note.title }}</h1>
+          <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">
+            <span style="display:flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;color:var(--fg)"><span style="width:7px;height:7px;border-radius:50%;background:{{ note.color }}"></span>{{ note.tag }}</span>
+            <span>{{ note.words }}</span><span>{{ note.nOut }}</span><span>{{ note.nBack }}</span>
+          </div>
+          <p style="margin:0;font-size:19px;line-height:1.6;text-wrap:pretty">{{ note.body }}</p>
+          <sc-if value="{{ hasRelated }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+              <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">LINKS IN THIS NOTE</span>
+              <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px">
+                <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+                  <button onClick="{{ r.onClick }}" style="font:inherit;text-align:left;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--fg);display:flex;flex-direction:column;gap:4px" style-hover="border-color:var(--fg)">
+                    <span style="display:flex;align-items:center;gap:7px;font-weight:600;font-size:14px"><span style="width:7px;height:7px;border-radius:50%;background:{{ r.color }};flex-shrink:0"></span>[[{{ r.title }}]]</span>
+                    <span style="font-size:13px;color:var(--muted);line-height:1.4">{{ r.body }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </article>
+      <aside style="border-left:1px solid var(--line);background:var(--panel);overflow:auto;min-height:0;padding:14px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span>GRAPH</span><span>drag · scroll · click</span></div>
+          <div style="position:relative;height:280px;border:1px solid var(--line);border-radius:10px;background:var(--bg);overflow:hidden;--g-compact:1">
+            <x-import component-from-global-scope="fm-graph" from="./fm-graph.js" style="position:absolute;inset:0" hint-size="100%,100%"></x-import>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">BACKLINKS</span>
+          <sc-if value="{{ hasBack }}" hint-placeholder-val="{{ true }}">
+            <sc-for list="{{ backLinks }}" as="l" hint-placeholder-count="2">
+              <button onClick="{{ l.onClick }}" style="font:inherit;text-align:left;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;color:var(--fg);display:flex;flex-direction:column;gap:2px" style-hover="border-color:var(--fg)">
+                <span style="display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:{{ l.color }}"></span>{{ l.title }}</span>
+                <span style="font-size:12px;color:var(--muted);line-height:1.35">{{ l.body }}</span>
+              </button>
+            </sc-for>
+          </sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">OUTGOING</span>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            <sc-for list="{{ outLinks }}" as="l" hint-placeholder-count="3">
+              <button onClick="{{ l.onClick }}" style="display:flex;align-items:center;gap:6px;font:inherit;font-size:12px;cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--fg)" style-hover="border-color:var(--fg)"><span style="width:6px;height:6px;border-radius:50%;background:{{ l.color }}"></span>{{ l.title }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </sc-if>
+  <footer style="margin-top:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 36px;border-top:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">
+    <span>© 2026 Fadhil Mochammad · Stockholm</span>
+    <span style="display:flex;gap:14px;flex-wrap:wrap"><span><span style="color:var(--l0)">●</span> agents</span><span><span style="color:var(--l1)">●</span> experimentation</span><span><span style="color:var(--l3)">●</span> ml-platform</span><span><span style="color:var(--l2)">●</span> creative</span></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;defaultTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;about&quot;,&quot;posts&quot;,&quot;notes&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { theme: null, tab: null, sel: 'index', node: 'profile', run: null, filter: 'all', view: 'branches', closed: {}, q: '', D: window.FM_DATA || null };
+  componentDidMount() {
+    const w = () => (window.FM_DATA && window.FM_DATA.lanes) ? this.setState({ D: window.FM_DATA }) : (this._t = setTimeout(w, 50));
+    if (!this.state.D || !this.state.D.lanes) w();
+    this._s = e => this.setState({ sel: e.detail });
+    window.addEventListener('fm-note-select', this._s);
+  }
+  componentWillUnmount() { clearTimeout(this._t); clearInterval(this._iv); window.removeEventListener('fm-note-select', this._s); }
+  pick(id) { this.setState({ sel: id }); window.dispatchEvent(new CustomEvent('fm-note-focus', { detail: id })); }
+  execute() {
+    clearInterval(this._iv); this.setState({ run: 0 });
+    this._iv = setInterval(() => this.setState(s => { const r = s.run + 1; if (r > 5) { clearInterval(this._iv); return { run: null }; } return { run: r }; }), 420);
+  }
+  wave(x0, x1, y, amp) {
+    let d = '', ph = 0; const N = 200;
+    for (let i = 0; i <= N; i++) { const t = i / N; const f = 1.4 + 4.5 * Math.exp(-Math.pow((t - 0.55) / 0.17, 2)); ph += f * 2 * Math.PI / N; d += (i ? 'L' : 'M') + (x0 + t * (x1 - x0)).toFixed(1) + ' ' + (y - Math.sin(ph) * amp).toFixed(1); }
+    return d;
+  }
+  postVals(D, laneOf, LC, tags) {
+    const filter = this.state.filter;
+    const posts = D.posts.filter(p => filter === 'all' || p.tags.some(t => D.lanes[laneOf(t)].key === filter));
+    const years = [];
+    posts.forEach(p => {
+      const y = p.date.slice(0, 4); let g = years.find(x => x.year === y); if (!g) { g = { year: y, items: [] }; years.push(g); }
+      const ls = [...new Set(p.tags.map(laneOf))], cs = ls.map(i => LC[i]);
+      const ring = cs.length === 1 ? cs[0] : 'conic-gradient(' + cs.map((c, i) => c + ' ' + (i * 360 / cs.length) + 'deg ' + ((i + 1) * 360 / cs.length) + 'deg').join(', ') + ')';
+      g.items.push({ title: p.title, excerpt: p.excerpt, date: p.date.slice(5).replace('-', ' / '), min: p.min + ' min read', ring, tags: p.tags.map(t => ({ label: tags[t], color: LC[laneOf(t)] })) });
+    });
+    const chips = [{ key: 'all', label: 'All', color: 'var(--fg)' }].concat(D.lanes.map((l, i) => ({ key: l.key, label: ({ agents: 'Agents', exp: 'Experimentation', mlops: 'ML platform', creative: 'Creative' })[l.key] || l.label, color: LC[i] })))
+      .map(c => ({ label: c.label, dot: c.color, bg: filter === c.key ? 'var(--fg)' : 'transparent', fg: filter === c.key ? 'var(--bg)' : 'var(--fg)', onClick: () => this.setState({ filter: c.key }) }));
+    return { years, chips, postCount: posts.length + (posts.length === 1 ? ' post' : ' posts') };
+  }
+  noteVals(D, tcol, tags) {
+    const sel = this.state.sel, q = this.state.q.trim().toLowerCase(), closed = this.state.closed;
+    const byId = {}; D.notes.forEach(n => { byId[n.id] = n; });
+    const folders = Object.keys(tags).map(t => {
+      const all = D.notes.filter(n => n.tag === t), items = all.filter(n => !q || n.title.toLowerCase().includes(q) || n.body.toLowerCase().includes(q));
+      const open = q ? true : !closed[t];
+      return { label: tags[t], count: String(all.length), caret: open ? '▾' : '▸', color: tcol(t), open, onToggle: () => this.setState(s => ({ closed: Object.assign({}, s.closed, { [t]: !s.closed[t] }) })),
+        items: open ? items.map(n => ({ title: n.title, bg: n.id === sel ? 'var(--line)' : 'transparent', weight: n.id === sel ? '600' : '400', onClick: () => this.pick(n.id) })) : [], has: items.length > 0 };
+    }).filter(f => f.has);
+    const cur = byId[sel] || D.notes[0] || { id: '', title: '', body: '', tag: 'meta', links: [] };
+    const out = (cur.links || []).filter(id => byId[id]).map(id => byId[id]);
+    const back = D.notes.filter(n => (n.links || []).includes(cur.id));
+    const card = n => ({ title: n.title, body: n.body, tag: tags[n.tag], color: tcol(n.tag), onClick: () => this.pick(n.id) });
+    return {
+      folders, q: this.state.q, onQ: e => this.setState({ q: e.target.value }), noteCount: D.notes.length + ' notes',
+      note: { title: cur.title, body: cur.body, tag: tags[cur.tag] || '', color: tcol(cur.tag), path: (tags[cur.tag] || '').toLowerCase().replace(/[^a-z]+/g, '-') + ' / ' + cur.id + '.md', words: (cur.body.split(' ').length) + ' words', nOut: out.length + ' outgoing', nBack: back.length + ' backlinks' },
+      related: out.map(card), outLinks: out.map(card), backLinks: back.map(card), hasRelated: out.length > 0, hasBack: back.length > 0
+    };
+  }
+  tok(s) {
+    const out = [], re = /("(?:[^"\\]|\\.)*")(\s*:)?|(-?\d+(?:\.\d+)?)|(true|false|null)|([{}\[\],:])|(\s+)/g; let m;
+    while ((m = re.exec(s))) {
+      if (m[1]) { out.push({ t: m[1], c: m[2] ? 'var(--k-key)' : 'var(--k-str)' }); if (m[2]) out.push({ t: m[2], c: 'var(--k-p)' }); }
+      else if (m[3]) out.push({ t: m[3], c: 'var(--k-num)' }); else if (m[4]) out.push({ t: m[4], c: 'var(--k-num)' });
+      else if (m[5]) out.push({ t: m[5], c: 'var(--k-p)' }); else out.push({ t: m[6], c: 'inherit' });
+    }
+    return out;
+  }
+  renderVals() {
+    const E0 = { profile: {}, stats: [], education: [], experience: [], skills: [], projects: [], pubs: [], contact: [], posts: [], notes: [], tags: {}, lanes: [] };
+    const D = (this.state.D && this.state.D.lanes) ? this.state.D : E0;
+    const theme = this.state.theme || this.props.defaultTheme || 'light';
+    const tab = this.state.tab || this.props.defaultTab || 'about';
+    const tags = D.tags, sel = this.state.sel, filter = this.state.filter, run = this.state.run, P = D.profile;
+    const laneOf = t => { const i = D.lanes.findIndex(l => l.tags.includes(t)); return i < 0 ? 0 : i; };
+    const LC = ['var(--l0)', 'var(--l1)', 'var(--l3)', 'var(--l2)'];
+    const tcol = t => t === 'meta' ? 'var(--fg)' : LC[laneOf(t)];
+    const tabs = [['about', 'About'], ['posts', 'Posts'], ['notes', 'Notes']].map(([k, label]) => ({ label, bg: tab === k ? 'var(--fg)' : 'transparent', color: tab === k ? 'var(--bg)' : 'var(--fg)', onClick: () => this.setState({ tab: k }) }));
+    const sk = i => (D.skills[i] || { group: '', items: [] });
+    const N = [
+      { id: 'profile', lv: 0, x: 30, y: 214, g: '@', c: 'var(--fg)', t: 'Fadhil', s: P.location, kind: 'profile', desc: P.bio, rows: [{ k: 'role', v: P.role }, { k: 'based in', v: P.location }, { k: 'curious about', v: P.now }, { k: 'off-hours', v: P.offHours }], out: { name: P.name, role: P.role, location: P.location } },
+      { id: 'edu', lv: 1, x: 200, y: 214, g: '∑', c: 'var(--fg)', t: 'Education', s: 'EE → ML', kind: 'input', desc: 'Electrical engineering and robotics in Bandung, then a Master\u2019s in machine learning at KTH. The hardware years still shape how I debug.', rows: D.education.map(e => ({ k: e.years, v: e.role + ', ' + e.org + '. ' + e.note })), out: D.education.map(e => ({ degree: e.role, school: e.org, years: e.years })) },
+      { id: 'exp', lv: 2, x: 370, y: 214, g: '≡', c: 'var(--fg)', t: 'Experience', s: D.experience.length + ' roles', kind: 'loop', desc: 'From a robotics lab in Bandung to ML work in Stockholm.', rows: D.experience.map(e => ({ k: e.years, v: e.role + ' · ' + e.org + ' — ' + e.note })), out: D.experience.map(e => ({ role: e.role, org: e.org, years: e.years })) },
+      { id: 't0', lv: 3, x: 590, y: 40, g: '◎', c: 'var(--l0)', ski: 0 },
+      { id: 't1', lv: 3, x: 590, y: 158, g: '⚖', c: 'var(--l1)', ski: 1 },
+      { id: 't2', lv: 3, x: 590, y: 276, g: '∞', c: 'var(--l3)', ski: 2 },
+      { id: 't3', lv: 3, x: 590, y: 394, g: '◐', c: 'var(--l2)', ski: 3 },
+      { id: 'proj', lv: 4, x: 820, y: 214, g: '▣', c: 'var(--fg)', t: 'Work', s: (D.projects.length + D.pubs.length) + ' items', kind: 'output', desc: 'Selected projects, plus two early papers from my robotics years.', rows: D.projects.map(p => ({ k: p.name, v: p.desc })).concat(D.pubs.map(b => ({ k: 'paper · ' + b.venue + ' ' + b.year, v: b.title, href: b.href }))), out: { projects: D.projects.map(p => p.name), publications: D.pubs.length } },
+      { id: 'contact', lv: 5, x: 1040, y: 214, g: '→', c: 'var(--l2)', t: 'Say hello', s: 'contact', kind: 'respond', desc: 'Happy to talk about agents, evaluation or experimentation.', rows: D.contact.map(c => ({ k: c.label, v: c.value, href: c.href })), out: D.contact.reduce((o, c) => (o[c.label] = c.value, o), {}) }
+    ];
+    N.forEach(n => { if (n.ski !== undefined) { const s = sk(n.ski); n.t = s.group; n.kind = 'tool'; n.s = s.items.length + ' tools'; n.desc = 'What I reach for in ' + s.group.toLowerCase() + ', and where I used it.'; n.rows = s.items.map(([v, where]) => ({ k: where, v })); n.out = { toolkit: s.group, tools: s.items.map(i => i[0]) }; } });
+    const st = n => run === null ? 'done' : n.lv < run ? 'done' : n.lv === run ? 'run' : 'idle';
+    const byN = {}; N.forEach(n => { byN[n.id] = n; });
+    const E = [['profile', 'edu', '2 degrees'], ['edu', 'exp', D.experience.length + ' roles'], ['exp', 't0'], ['exp', 't1'], ['exp', 't2'], ['exp', 't3'], ['t0', 'proj'], ['t1', 'proj'], ['t2', 'proj'], ['t3', 'proj'], ['proj', 'contact', '1 item']];
+    const P0 = (n, side) => [n.x + (side ? 76 : -4), n.y + 36];
+    const edgeLabels = [];
+    const paths = E.map(([a, b, lab], i) => {
+      const A = byN[a], B = byN[b], [x1, y1] = P0(A, 1), [x2, y2] = P0(B, 0), m = (x1 + x2) / 2;
+      const on = st(A) === 'done' && st(B) !== 'idle';
+      if (lab) edgeLabels.push({ x: m + 'px', y: ((y1 + y2) / 2) + 'px', label: lab, op: on ? 1 : 0 });
+      return React.createElement('path', { key: i, d: 'M' + x1 + ' ' + y1 + ' C' + m + ' ' + y1 + ' ' + m + ' ' + y2 + ' ' + x2 + ' ' + y2, fill: 'none', stroke: on ? B.c.includes('--l') ? B.c : 'var(--ok)' : 'var(--muted)', strokeWidth: 2, opacity: on ? 0.85 : 0.4, style: run !== null && st(B) === 'run' ? { strokeDasharray: '6 4', animation: 'fmflow .6s linear infinite' } : {} });
+    });
+    const node = this.state.node;
+    const nodes = N.map(n => { const s = st(n); return { left: n.x + 'px', top: n.y + 'px', glyph: n.g, color: n.c, title: n.t, sub: n.s,
+      radius: n.kind === 'profile' ? '36px 14px 14px 36px' : n.kind === 'respond' ? '14px 36px 36px 14px' : '14px',
+      border: node === n.id ? 'var(--fg)' : s === 'run' ? 'var(--l2)' : 'var(--line)', shadow: node === n.id ? '0 0 0 4px var(--line)' : 'none',
+      badge: '', badgeBg: 'transparent', inPort: n.kind === 'profile' ? 0 : 1, outPort: n.kind === 'respond' ? 0 : 1,
+      onClick: () => this.setState({ node: n.id }) }; });
+    const cur = byN[node] || N[0];
+    const outArr = Array.isArray(cur.out) ? cur.out : [cur.out];
+    const V = this.postVals ? this.postVals(D, laneOf, LC, tags) : {};
+    const NV = this.noteVals ? this.noteVals(D, tcol, tags) : {};
+    return Object.assign({
+      theme, tabs, nodes, headline: 'Hi, I\u2019m Fadhil.', intro: P.bio,
+      edgesSvg: React.createElement('g', null, paths),
+      logoWave: this.wave(6, 114, 64, 26),
+      themeLabel: theme === 'light' ? '○ light' : '● dark',
+      isAbout: tab === 'about', isPosts: tab === 'posts', isNotes: tab === 'notes',
+      toggleTheme: () => this.setState({ theme: theme === 'dark' ? 'light' : 'dark' }),
+      execute: () => this.execute(),
+      execLabel: run === null ? 'last run: success · 9 nodes · 2.1s' : 'running… step ' + (run + 1) + ' of 6',
+      insp: { file: cur.id + '.json', tokens: this.tok(JSON.stringify(cur.out, null, 2)), title: cur.t, glyph: cur.g, color: cur.c, kind: cur.kind, desc: cur.desc, rows: cur.rows.map(r => Object.assign({ href: r.href || null }, r)), items: outArr.length + (outArr.length === 1 ? ' item' : ' items'), json: JSON.stringify(cur.out, null, 2) }
+    }, V, NV);
+  }
+}
+</script>
+</body>
+</html>

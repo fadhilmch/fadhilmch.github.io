@@ -1,0 +1,15 @@
+<header class="site-header">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    {% include logo.svg %}
+    <span class="brand__copy">
+      <span class="brand__name">{{ site.data.profile.name | default: site.title }}</span>
+      <span class="brand__meta">{{ site.data.profile.short_role | default: site.data.profile.role }} · {{ site.data.profile.city | default: site.data.profile.location }}</span>
+    </span>
+  </a>
+  <nav class="primary-nav" aria-label="Primary">
+    <a href="{{ '/' | relative_url }}"{% if page.nav == 'about' %} aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/posts/' | relative_url }}"{% if page.nav == 'posts' %} aria-current="page"{% endif %}>Posts</a>
+    <a href="{{ '/notes/' | relative_url }}"{% if page.nav == 'notes' %} aria-current="page"{% endif %}>Notes</a>
+  </nav>
+  {% include theme-toggle.html %}
+</header>

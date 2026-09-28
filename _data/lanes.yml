@@ -1,0 +1,40 @@
+---
+- key: agents
+  title: Agents
+  label: agents
+  long: Agents & LLMs
+  color: l0
+  tags:
+  - agents
+- key: exp
+  title: Experimentation
+  label: experimentation
+  long: Experimentation & data
+  color: l1
+  tags:
+  - exp
+  - data
+- key: mlops
+  title: ML platform
+  label: ml-platform
+  long: ML platform
+  color: l3
+  tags:
+  - mlops
+- key: creative
+  title: Creative
+  label: creative
+  long: Creative practice
+  color: l2
+  tags:
+  - design
+  - photo
+  - music
+- key: meta
+  title: Meta
+  label: meta
+  long: About this vault
+  color: fg
+  branch: false
+  tags:
+  - meta

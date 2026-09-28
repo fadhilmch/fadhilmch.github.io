@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /notes-graph.json
+---
+{"notes":[{% for note in site.notes %}{"id":{{ note.slug | jsonify }},"title":{{ note.title | jsonify }},"tag":{{ note.tag | jsonify }},"url":{{ note.url | relative_url | jsonify }},"links":{{ note.links | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]}

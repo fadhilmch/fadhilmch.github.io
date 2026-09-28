@@ -1,0 +1,75 @@
+/* About — hero, node canvas, inspector. Geometry comes from Liquid; this file only styles. */
+.about-page { max-width: 1280px; margin: 0 auto; padding: 28px 36px 56px; display: flex; flex-direction: column; gap: 18px; }
+
+.hero { display: flex; flex-direction: column; gap: 6px; }
+.hero h1 { margin: 0; max-width: 24ch; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
+.hero p { margin: 6px 0 0; max-width: 62ch; color: var(--muted); text-wrap: pretty; }
+
+/* Canvas */
+.wf-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background-color: var(--panel); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; }
+.wf-canvas { position: relative; margin: 0 auto; }
+.wf-edges { position: absolute; inset: 0; overflow: visible; }
+.wf-edge { fill: none; stroke: var(--edge); stroke-width: 2; opacity: .85; transition: stroke .2s, opacity .2s; }
+
+.wf-node { position: absolute; width: 72px; padding: 0; border: 0; background: transparent; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--fg); }
+.wf-node__box { position: relative; width: 72px; height: 72px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--line); border-radius: 14px; background: var(--bg); transition: border-color .2s, box-shadow .2s; }
+.wf-node--profile .wf-node__box { border-radius: 36px 14px 14px 36px; }
+.wf-node--respond .wf-node__box { border-radius: 14px 36px 36px 14px; }
+.wf-node__glyph { font: 26px/1 'Geist Mono', monospace; }
+.wf-port { position: absolute; top: 30px; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.wf-port--in { left: -6px; }
+.wf-port--out { right: -6px; }
+.wf-node__label { display: flex; flex-direction: column; align-items: center; width: 150px; flex-shrink: 0; line-height: 1.2; }
+.wf-node__title { font-size: 13px; font-weight: 600; white-space: nowrap; }
+.wf-node__sub { color: var(--muted); font: 10px 'Geist Mono', monospace; white-space: nowrap; }
+.wf-node:hover .wf-node__box { border-color: var(--muted); }
+.wf-node[aria-expanded="true"] .wf-node__box { border-color: var(--fg); box-shadow: 0 0 0 4px var(--line); }
+.wf-node:focus-visible { outline: none; }
+.wf-node:focus-visible .wf-node__box { outline: 3px solid var(--l2); outline-offset: 3px; }
+
+/* Inspector */
+.wf-inspector { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.wf-inspector__human { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 20px 24px; border-right: 1px solid var(--line); }
+.wf-inspector__json { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 20px 24px; }
+.wf-inspector__heading { display: flex; align-items: center; gap: 10px; }
+.wf-inspector__glyph { width: 32px; height: 32px; flex: none; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--line); border-radius: 8px; font: 16px 'Geist Mono', monospace; }
+.wf-inspector__heading h2 { margin: 0; font-size: 18px; font-weight: 600; line-height: 1.2; }
+.wf-inspector__hint { margin: 0; color: var(--muted); font: 11px 'Geist Mono', monospace; }
+.wf-inspector__desc { margin: 0; text-wrap: pretty; }
+.wf-rows { display: flex; flex-direction: column; margin: 0; }
+.wf-rows > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 14px; padding: 9px 0; border-top: 1px solid var(--line); }
+.wf-rows dt { color: var(--muted); font: 12px/1.55 'Geist Mono', monospace; }
+.wf-rows dd { margin: 0; font-size: 14px; overflow-wrap: anywhere; }
+.wf-json-head { display: flex; justify-content: space-between; color: var(--muted); font: 11px 'Geist Mono', monospace; }
+.wf-json-head code { font: inherit; }
+.wf-json-head span { color: var(--ok); }
+.wf-inspector__json pre { max-height: 340px; margin: 0; overflow: auto; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--fg); white-space: pre-wrap; font: 12px/1.6 'Geist Mono', monospace; }
+.wf-inspector__json pre code { font: inherit; }
+.j-key { color: var(--k-key); } .j-str { color: var(--k-str); } .j-num { color: var(--k-num); } .j-p { color: var(--k-p); }
+
+/* Mobile accordion — hidden on desktop */
+.wf-acc { display: none; }
+
+@media (max-width: 900px) {
+  .wf-inspector { grid-template-columns: 1fr; }
+  .wf-inspector__human { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 759px) {
+  .about-page { padding: 22px 16px 44px; }
+  .wf-scroll { display: none; }
+  .wf-acc { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); overflow: hidden; }
+  .wf-acc__item + .wf-acc__item { border-top: 1px solid var(--line); }
+  .wf-acc__btn { width: 100%; display: grid; grid-template-columns: 36px minmax(0, 1fr) auto 14px; align-items: center; gap: 12px; padding: 12px 14px; border: 0; background: transparent; cursor: pointer; text-align: left; }
+  .wf-acc__glyph { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--line); border-radius: 9px; background: var(--bg); font: 16px 'Geist Mono', monospace; }
+  .wf-acc__glyph.wf-node--profile { border-radius: 18px 9px 9px 18px; }
+  .wf-acc__glyph.wf-node--respond { border-radius: 9px 18px 18px 9px; }
+  .wf-acc__title { font-weight: 600; font-size: 14px; }
+  .wf-acc__sub { color: var(--muted); font: 10px 'Geist Mono', monospace; }
+  .wf-acc__caret { color: var(--muted); font-size: 11px; transition: transform .2s; }
+  .wf-acc__btn[aria-expanded="true"] .wf-acc__caret { transform: rotate(90deg); }
+  .wf-acc__item .wf-inspector__heading { display: none; }
+  .wf-acc__item .wf-inspector { border: 0; border-top: 1px solid var(--line); border-radius: 0; }
+  .wf-rows > div { grid-template-columns: 1fr; gap: 2px; }
+  .wf-inspector__human, .wf-inspector__json { padding: 16px; }
+}

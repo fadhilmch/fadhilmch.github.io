@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./fm-data.js"></script>
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--l0)}
+:root,[data-theme="light"]{--bg:#f5f4f0;--panel:#fbfaf7;--fg:#161616;--muted:#62605a;--line:#dedbd3;--dot:#d3cfc6;--l0:oklch(0.55 0.17 255);--l1:oklch(0.55 0.17 150);--l2:oklch(0.55 0.17 30);--ok:oklch(0.55 0.15 150);--g-fg:#44423d;--g-label:#6e6c66;--g-line:#cfcbc1;--g-acc:oklch(0.55 0.17 255);--g-c-dl:oklch(0.55 0.17 255);--g-c-nlp:oklch(0.55 0.17 255);--g-c-mlops:oklch(0.55 0.17 150);--g-c-data:oklch(0.55 0.17 150);--g-c-photo:oklch(0.55 0.17 30);--g-c-music:oklch(0.55 0.17 30);--g-c-design:oklch(0.55 0.17 30);--g-c-meta:#161616;--g-font:'Geist Mono'}
+[data-theme="dark"]{--bg:#121212;--panel:#1b1b1a;--fg:#ecebe7;--muted:#9b9993;--line:#2e2d2a;--dot:#2a2927;--l0:oklch(0.75 0.13 255);--l1:oklch(0.75 0.13 150);--l2:oklch(0.75 0.13 30);--ok:oklch(0.75 0.14 150);--g-fg:#c9c7c1;--g-label:#8e8c86;--g-line:#3a3936;--g-acc:oklch(0.75 0.13 255);--g-c-dl:oklch(0.75 0.13 255);--g-c-nlp:oklch(0.75 0.13 255);--g-c-mlops:oklch(0.75 0.13 150);--g-c-data:oklch(0.75 0.13 150);--g-c-photo:oklch(0.75 0.13 30);--g-c-music:oklch(0.75 0.13 30);--g-c-design:oklch(0.75 0.13 30);--g-c-meta:#ecebe7}
+@keyframes fmflow{to{stroke-dashoffset:-20}}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--bg);color:var(--fg);font-family:'Geist',system-ui,sans-serif;font-size:15px;line-height:1.55;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;gap:28px;padding:16px 36px;border-bottom:1px solid var(--line);flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:36px;height:36px;border-radius:9px;background:var(--fg);display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 120 120" fill="none"><path d="{{ logoWave }}" stroke="var(--bg)" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"></path></svg></div>
+      <div style="display:flex;flex-direction:column;line-height:1.15"><span style="font-weight:700;letter-spacing:-0.01em">Fadhil Mochammad</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">ML engineer / data scientist</span></div>
+    </div>
+    <div style="flex:1"></div>
+    <nav style="display:flex;gap:4px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:3px">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.onClick }}" style="font:inherit;font-size:14px;cursor:pointer;border:0;border-radius:7px;padding:6px 14px;background:{{ t.bg }};color:{{ t.color }}">{{ t.label }}</button>
+      </sc-for>
+    </nav>
+    <button onClick="{{ toggleTheme }}" style="font-family:'Geist Mono',monospace;font-size:11px;cursor:pointer;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:7px 12px">{{ themeLabel }}</button>
+  </header>
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+    <main style="width:100%;max-width:1280px;margin:0 auto;padding:28px 36px 56px;box-sizing:border-box;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:flex-end;gap:24px;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:300px">
+          <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">workflows / fadhil.about · <span style="color:var(--ok)">● active</span></span>
+          <h1 style="margin:0;font-size:clamp(30px,3.6vw,44px);line-height:1.05;font-weight:600;letter-spacing:-0.03em">Hi, I'm Fadhil. Here's how I'm wired.</h1>
+        </div>
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ execLabel }}</span>
+        <button onClick="{{ execute }}" style="font:inherit;font-weight:600;font-size:14px;cursor:pointer;border:0;border-radius:8px;padding:9px 16px;background:var(--l2);color:#fff;display:flex;align-items:center;gap:8px"><span style="font-size:11px">▶</span>Execute workflow</button>
+      </div>
+      <div style="overflow-x:auto;border:1px solid var(--line);border-radius:14px;background-color:var(--panel);background-image:radial-gradient(var(--dot) 1.2px,transparent 1.2px);background-size:18px 18px">
+        <div style="position:relative;width:1200px;height:520px;margin:0 auto">
+          <svg viewBox="0 0 1200 520" style="position:absolute;inset:0;width:1200px;height:520px">{{ edgesSvg }}</svg>
+          <sc-for list="{{ edgeLabels }}" as="e" hint-placeholder-count="6">
+            <span style="position:absolute;left:{{ e.x }};top:{{ e.y }};transform:translate(-50%,-150%);font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);white-space:nowrap;opacity:{{ e.op }}">{{ e.label }}</span>
+          </sc-for>
+          <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="12">
+            <button onClick="{{ n.onClick }}" style="position:absolute;left:{{ n.left }};top:{{ n.top }};width:72px;padding:0;border:0;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;font:inherit;color:var(--fg)">
+              <span style="position:relative;width:72px;height:72px;box-sizing:border-box;border-radius:{{ n.radius }};background:var(--bg);border:2px solid {{ n.border }};display:flex;align-items:center;justify-content:center;box-shadow:{{ n.shadow }}">
+                <span style="font-family:'Geist Mono',monospace;font-size:26px;line-height:1;color:{{ n.color }}">{{ n.glyph }}</span>
+                <span style="position:absolute;top:-8px;right:-8px;width:18px;height:18px;border-radius:50%;background:{{ n.badgeBg }};color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">{{ n.badge }}</span>
+                <span style="position:absolute;left:-6px;top:30px;width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:{{ n.inPort }}"></span>
+                <span style="position:absolute;right:-6px;top:30px;width:8px;height:8px;border-radius:50%;background:var(--muted);opacity:{{ n.outPort }}"></span>
+              </span>
+              <span style="display:flex;flex-direction:column;align-items:center;line-height:1.2;width:130px"><span style="font-size:13px;font-weight:600">{{ n.title }}</span><span style="font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted)">{{ n.sub }}</span></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <section style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)">
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--line)">
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Geist Mono',monospace;font-size:16px;color:{{ insp.color }}">{{ insp.glyph }}</span>
+            <div style="display:flex;flex-direction:column;line-height:1.2"><span style="font-weight:600;font-size:18px">{{ insp.title }}</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">{{ insp.kind }} · parameters</span></div>
+          </div>
+          <p style="margin:0;color:var(--fg);text-wrap:pretty">{{ insp.desc }}</p>
+          <div style="display:flex;flex-direction:column">
+            <sc-for list="{{ insp.rows }}" as="r" hint-placeholder-count="4">
+              <a href="{{ r.href }}" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;padding:8px 0;border-top:1px solid var(--line)"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ r.k }}</span><span style="font-size:14px">{{ r.v }}</span></a>
+            </sc-for>
+          </div>
+        </div>
+        <div style="padding:20px 24px;display:flex;flex-direction:column;gap:10px;min-width:0">
+          <div style="display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span>output · json</span><span style="color:var(--ok)">{{ insp.items }}</span></div>
+          <pre style="margin:0;font-family:'Geist Mono',monospace;font-size:12px;line-height:1.6;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;max-height:300px;white-space:pre-wrap">{{ insp.json }}</pre>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isPosts }}" hint-placeholder-val="{{ false }}">
+    <main style="width:100%;max-width:1100px;margin:0 auto;padding:32px 36px 64px;box-sizing:border-box;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-family:'Geist Mono',monospace;font-size:12px">
+        <span style="font-family:'Geist',sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-right:14px;color:var(--fg)">Executions</span>
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button onClick="{{ f.onClick }}" style="font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:8px;padding:3px 12px;background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <div style="background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:110px minmax(0,1fr) 110px 90px 72px;gap:16px;padding:10px 18px;border-bottom:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span>status</span><span>post</span><span>started</span><span>run time</span><span style="text-align:right">id</span></div>
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+          <a href="#" style="display:grid;grid-template-columns:110px minmax(0,1fr) 110px 90px 72px;gap:16px;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)" style-hover="background:var(--bg)">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ok)"><span style="width:16px;height:16px;border-radius:50%;background:var(--ok);color:#fff;font-size:10px;display:flex;align-items:center;justify-content:center">✓</span>Success</span>
+            <span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+              <span style="font-size:16px;font-weight:600;letter-spacing:-0.01em">{{ p.title }}</span>
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)"><span style="width:7px;height:7px;border-radius:2px;background:{{ p.dot }};flex-shrink:0"></span>{{ p.tagStr }} — {{ p.excerpt }}</span>
+            </span>
+            <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ p.date }}</span>
+            <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">{{ p.minStr }}</span>
+            <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted);text-align:right">{{ p.no }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isNotes }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1;display:grid;grid-template-columns:minmax(0,1fr) 360px;height:calc(100vh - 124px);min-height:520px">
+      <div style="position:relative;overflow:hidden;border-right:1px solid var(--line)">
+        <div style="position:absolute;top:16px;left:20px;z-index:1;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);pointer-events:none;display:flex;gap:14px"><span>notes graph · {{ noteCount }} nodes</span><span>drag · scroll · click</span></div>
+        <x-import component-from-global-scope="fm-graph" from="./fm-graph.js" style="position:absolute;inset:0" hint-size="100%,100%"></x-import>
+      </div>
+      <article style="overflow:auto;padding:26px 24px;display:flex;flex-direction:column;gap:14px;background:var(--panel)">
+        <span style="display:flex;align-items:center;gap:8px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span style="width:8px;height:8px;border-radius:50%;background:{{ note.color }}"></span>{{ note.tag }}</span>
+        <h2 style="margin:0;font-size:30px;font-weight:600;line-height:1.1;letter-spacing:-0.025em">{{ note.title }}</h2>
+        <p style="margin:0;text-wrap:pretty">{{ note.body }}</p>
+        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px">downstream</span>
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="3">
+          <button onClick="{{ l.onClick }}" style="display:flex;align-items:center;gap:10px;font:inherit;text-align:left;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:var(--fg)" style-hover="border-color:var(--fg)"><span style="width:8px;height:8px;border-radius:50%;background:{{ l.dot }}"></span>{{ l.title }}</button>
+        </sc-for>
+        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px">upstream</span>
+        <sc-for list="{{ backlinks }}" as="l" hint-placeholder-count="2">
+          <button onClick="{{ l.onClick }}" style="display:flex;align-items:center;gap:10px;font:inherit;text-align:left;cursor:pointer;background:transparent;border:1px dashed var(--line);border-radius:8px;padding:8px 12px;color:var(--muted)" style-hover="border-color:var(--fg)"><span style="width:8px;height:8px;border-radius:50%;background:{{ l.dot }}"></span>{{ l.title }}</button>
+        </sc-for>
+      </article>
+    </main>
+  </sc-if>
+  <footer style="margin-top:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 36px;border-top:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">
+    <span>© 2026 Fadhil Mochammad</span>
+    <span style="display:flex;gap:14px"><span><span style="color:var(--l0)">━</span> modeling</span><span><span style="color:var(--l1)">━</span> data &amp; ops</span><span><span style="color:var(--l2)">━</span> photo · design · music</span></span>
+  </footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;defaultTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;about&quot;,&quot;posts&quot;,&quot;notes&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { theme: null, tab: null, sel: 'index', node: 'profile', run: null, filter: 'all', D: window.FM_DATA || null };
+  componentDidMount() {
+    const w = () => window.FM_DATA ? this.setState({ D: window.FM_DATA }) : (this._t = setTimeout(w, 50));
+    if (!this.state.D) w();
+    this._s = e => this.setState({ sel: e.detail });
+    window.addEventListener('fm-note-select', this._s);
+  }
+  componentWillUnmount() { clearTimeout(this._t); clearInterval(this._iv); window.removeEventListener('fm-note-select', this._s); }
+  pick(id) { this.setState({ sel: id }); window.dispatchEvent(new CustomEvent('fm-note-focus', { detail: id })); }
+  execute() {
+    clearInterval(this._iv); this.setState({ run: 0 });
+    this._iv = setInterval(() => this.setState(s => { const r = s.run + 1; if (r > 4) { clearInterval(this._iv); return { run: null }; } return { run: r }; }), 420);
+  }
+  wave(x0, x1, y, amp) {
+    let d = '', ph = 0; const N = 200;
+    for (let i = 0; i <= N; i++) { const t = i / N; const f = 1.4 + 4.5 * Math.exp(-Math.pow((t - 0.55) / 0.17, 2)); ph += f * 2 * Math.PI / N; d += (i ? 'L' : 'M') + (x0 + t * (x1 - x0)).toFixed(1) + ' ' + (y - Math.sin(ph) * amp).toFixed(1); }
+    return d;
+  }
+  renderVals() {
+    const D = this.state.D || { profile: {}, experience: [], skills: [], projects: [], pubs: [], contact: [], posts: [], notes: [], tags: {} };
+    const theme = this.state.theme || this.props.defaultTheme || 'light';
+    const tab = this.state.tab || this.props.defaultTab || 'about';
+    const tags = D.tags, sel = this.state.sel, filter = this.state.filter, run = this.state.run;
+    const creative = ['photo', 'music', 'design'];
+    const lane = t => creative.includes(t) ? 'var(--l2)' : (t === 'mlops' || t === 'data') ? 'var(--l1)' : 'var(--l0)';
+    const tabs = [['about', 'About'], ['posts', 'Posts'], ['notes', 'Notes']].map(([k, label]) => ({ label, bg: tab === k ? 'var(--fg)' : 'transparent', color: tab === k ? 'var(--bg)' : 'var(--fg)', onClick: () => this.setState({ tab: k }) }));
+    const sk = i => (D.skills[i] || { group: '', items: [] });
+    const P = D.profile;
+    const N = [
+      { id: 'profile', lv: 0, x: 110, y: 214, g: '@', c: 'var(--fg)', t: 'Fadhil', s: 'start here', kind: 'profile', desc: P.bio, rows: [{ k: 'role', v: P.role }, { k: 'status', v: P.status }, { k: 'off-hours', v: 'photography · digital design · music' }], out: { name: P.name, role: P.role, status: P.status } },
+      { id: 'exp', lv: 1, x: 300, y: 214, g: '≡', c: 'var(--l0)', t: 'Experience', s: D.experience.length + ' roles', kind: 'loop', desc: 'Each role, carrying what I learned into the next one.', rows: D.experience.map(e => ({ k: e.years, v: e.role + ' · ' + e.org })), out: D.experience.map(e => ({ role: e.role, org: e.org, years: e.years })) },
+      { id: 'dl', lv: 2, x: 530, y: 40, g: '∇', c: 'var(--l0)', t: sk(0).group, s: 'tool', kind: 'tool', ski: 0 },
+      { id: 'nlp', lv: 2, x: 530, y: 158, g: '¶', c: 'var(--l0)', t: sk(1).group, s: 'tool', kind: 'tool', ski: 1 },
+      { id: 'ops', lv: 2, x: 530, y: 276, g: '∞', c: 'var(--l1)', t: sk(2).group, s: 'tool', kind: 'tool', ski: 2 },
+      { id: 'craft', lv: 2, x: 530, y: 394, g: '◐', c: 'var(--l2)', t: sk(4).group, s: 'tool', kind: 'tool', ski: 4 },
+      { id: 'proj', lv: 3, x: 770, y: 214, g: '▣', c: 'var(--fg)', t: 'Work', s: (D.projects.length + D.pubs.length) + ' items', kind: 'output', desc: 'What came out the other end: projects and publications.', rows: D.projects.map(p => ({ k: p.name, v: p.desc + ' (' + p.year + ')', href: '#' })).concat(D.pubs.map(b => ({ k: 'paper · ' + b.year, v: b.title, href: '#' }))), out: { projects: D.projects.map(p => p.name), publications: D.pubs.map(b => b.title) } },
+      { id: 'contact', lv: 4, x: 990, y: 214, g: '→', c: 'var(--l2)', t: 'Say hello', s: 'your turn', kind: 'respond', desc: 'The last step is you. Pick a channel.', rows: D.contact.map(c => ({ k: c.label, v: c.value, href: c.href })), out: D.contact.reduce((o, c) => (o[c.label] = c.value, o), {}) }
+    ];
+    N.forEach(n => { if (n.kind === 'tool') { const s = sk(n.ski); n.desc = 'Tools called when a problem routes through ' + s.group + '.'; n.rows = s.items.map((v, i) => ({ k: 'tool ' + (i + 1), v })); n.out = { toolkit: s.group, tools: s.items }; n.s = s.items.length + ' tools'; } });
+    const st = n => run === null ? 'done' : n.lv < run ? 'done' : n.lv === run ? 'run' : 'idle';
+    const byN = {}; N.forEach(n => { byN[n.id] = n; });
+    const E = [['profile', 'exp', '1 item'], ['exp', 'dl'], ['exp', 'nlp'], ['exp', 'ops'], ['exp', 'craft'], ['dl', 'proj'], ['nlp', 'proj'], ['ops', 'proj'], ['craft', 'proj'], ['proj', 'contact', '1 item']];
+    const P0 = (n, side) => [n.x + (side ? 76 : -4), n.y + 36];
+    const edgeLabels = [];
+    const paths = E.map(([a, b, lab], i) => {
+      const A = byN[a], B = byN[b], [x1, y1] = P0(A, 1), [x2, y2] = P0(B, 0), m = (x1 + x2) / 2;
+      const on = st(A) === 'done' && st(B) !== 'idle';
+      if (lab) edgeLabels.push({ x: m + 'px', y: ((y1 + y2) / 2) + 'px', label: lab, op: on ? 1 : 0 });
+      return React.createElement('path', { key: i, d: 'M' + x1 + ' ' + y1 + ' C' + m + ' ' + y1 + ' ' + m + ' ' + y2 + ' ' + x2 + ' ' + y2, fill: 'none', stroke: on ? 'var(--ok)' : 'var(--muted)', strokeWidth: 2, opacity: on ? 0.9 : 0.45, style: run !== null && st(B) === 'run' ? { strokeDasharray: '6 4', animation: 'fmflow .6s linear infinite' } : {} });
+    });
+    const node = this.state.node;
+    const nodes = N.map(n => {
+      const s = st(n);
+      return { left: n.x + 'px', top: n.y + 'px', glyph: n.g, color: n.c, title: n.t, sub: n.s,
+        radius: n.kind === 'profile' ? '36px 14px 14px 36px' : n.kind === 'respond' ? '14px 36px 36px 14px' : '14px',
+        border: node === n.id ? 'var(--fg)' : s === 'run' ? 'var(--l2)' : s === 'done' ? 'var(--line)' : 'var(--line)',
+        shadow: node === n.id ? '0 0 0 4px var(--line)' : 'none',
+        badge: s === 'done' ? '✓' : '', badgeBg: s === 'done' ? 'var(--ok)' : 'transparent',
+        inPort: n.kind === 'profile' ? 0 : 1, outPort: n.kind === 'respond' ? 0 : 1,
+        onClick: () => this.setState({ node: n.id }) };
+    });
+    const cur = byN[node] || N[1];
+    const outArr = Array.isArray(cur.out) ? cur.out : [cur.out];
+    const posts = D.posts.filter(p => filter === 'all' || (filter === 'creative' ? p.tags.some(t => creative.includes(t)) : p.tags.includes(filter)))
+      .map(p => Object.assign({}, p, { no: '#' + (1000 + D.posts.indexOf(p) * 37 + 11), tagStr: p.tags.map(t => tags[t]).join(' · '), dot: lane(p.tags[p.tags.length - 1]), minStr: p.min + ' min' }));
+    const filters = ['all', 'dl', 'nlp', 'mlops', 'creative'].map(f => ({ label: f, bg: filter === f ? 'var(--fg)' : 'transparent', color: filter === f ? 'var(--bg)' : 'var(--muted)', onClick: () => this.setState({ filter: f }) }));
+    const byId = {}; D.notes.forEach(n => { byId[n.id] = n; });
+    const nc = byId[sel] || { id: '', title: '', body: '', tag: '', links: [] };
+    return {
+      theme, tabs, nodes, edgeLabels, posts, filters,
+      edgesSvg: React.createElement('g', null, paths),
+      logoWave: this.wave(12, 108, 60, 30),
+      themeLabel: theme === 'light' ? '○ light' : '● dark',
+      isAbout: tab === 'about', isPosts: tab === 'posts', isNotes: tab === 'notes',
+      toggleTheme: () => this.setState({ theme: theme === 'dark' ? 'light' : 'dark' }),
+      execute: () => this.execute(),
+      execLabel: run === null ? 'last run: success · 8 nodes · 1.9s' : 'running… step ' + (run + 1) + ' of 5',
+      insp: { title: cur.t, glyph: cur.g, color: cur.c, kind: cur.kind, desc: cur.desc, rows: cur.rows.map(r => Object.assign({ href: r.href || null }, r)), items: outArr.length + (outArr.length === 1 ? ' item' : ' items'), json: JSON.stringify(cur.out, null, 2) },
+      noteCount: D.notes.length,
+      note: { title: nc.title, body: nc.body, tag: tags[nc.tag] || '', color: lane(nc.tag) },
+      links: (nc.links || []).filter(id => byId[id]).map(id => ({ title: byId[id].title, dot: lane(byId[id].tag), onClick: () => this.pick(id) })),
+      backlinks: D.notes.filter(n => (n.links || []).includes(nc.id)).map(n => ({ title: n.title, dot: lane(n.tag), onClick: () => this.pick(n.id) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

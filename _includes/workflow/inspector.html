@@ -1,0 +1,57 @@
+{%- comment -%}
+  One inspector panel. Call after workflow/resolve.html has set n_*.
+  In: include.entry (needed for `custom` rows/output), include.first (bool)
+{%- endcomment -%}
+<section class="wf-inspector" id="wf-i-{{ n_id }}" data-inspector="{{ n_id }}" aria-labelledby="wf-t-{{ n_id }}"{% unless include.first %} hidden{% endunless %}>
+  <div class="wf-inspector__human">
+    <div class="wf-inspector__heading">
+      <span class="wf-inspector__glyph" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
+      <div>
+        <h2 id="wf-t-{{ n_id }}">{{ n_title | escape }}</h2>
+        <p class="wf-inspector__hint">click another node to read more</p>
+      </div>
+    </div>
+    {% if n_desc %}<p class="wf-inspector__desc">{{ n_desc | escape }}</p>{% endif %}
+    <dl class="wf-rows">
+      {%- case n_source -%}
+        {%- when 'profile' -%}
+          {%- assign p = site.data.profile %}
+          <div><dt>role</dt><dd>{{ p.role | escape }}</dd></div>
+          <div><dt>based in</dt><dd>{{ p.location | escape }}</dd></div>
+          <div><dt>curious about</dt><dd>{{ p.now | escape }}</dd></div>
+          <div><dt>off-hours</dt><dd>{{ p.off_hours | escape }}</dd></div>
+        {%- when 'education' -%}
+          {%- for e in site.data.education %}
+          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }}, {{ e.org | escape }}. {{ e.note | escape }}</dd></div>
+          {%- endfor -%}
+        {%- when 'experience' -%}
+          {%- for e in site.data.experience %}
+          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }} · {{ e.org | escape }} — {{ e.note | escape }}</dd></div>
+          {%- endfor -%}
+        {%- when 'projects+publications' -%}
+          {%- for pr in site.data.projects %}
+          <div><dt>{{ pr.name | escape }}</dt><dd>{{ pr.desc | escape }}</dd></div>
+          {%- endfor -%}
+          {%- for pub in site.data.publications %}
+          <div><dt>paper · {{ pub.venue | escape }} {{ pub.year | escape }}</dt><dd><a href="{{ pub.href | escape }}" rel="external">{{ pub.title | escape }}</a></dd></div>
+          {%- endfor -%}
+        {%- when 'contact' -%}
+          {%- for c in site.data.contact %}
+          <div><dt>{{ c.label | escape }}</dt><dd><a href="{{ c.href | escape }}">{{ c.value | escape }}</a></dd></div>
+          {%- endfor -%}
+        {%- when 'custom' -%}
+          {%- for r in include.entry.rows %}
+          <div><dt>{{ r.k | escape }}</dt><dd>{% if r.href %}<a href="{{ r.href | escape }}">{{ r.v | escape }}</a>{% else %}{{ r.v | escape }}{% endif %}</dd></div>
+          {%- endfor -%}
+        {%- else -%}
+          {%- for t in n_skill.items %}
+          <div><dt>{{ t.where | escape }}</dt><dd>{{ t.name | escape }}</dd></div>
+          {%- endfor -%}
+      {%- endcase %}
+    </dl>
+  </div>
+  <div class="wf-inspector__json">
+    <div class="wf-json-head"><code>{{ n_id }}.json</code><span>{{ n_json_items }}</span></div>
+    <pre><code>{% include workflow/json.html entry=include.entry %}</code></pre>
+  </div>
+</section>

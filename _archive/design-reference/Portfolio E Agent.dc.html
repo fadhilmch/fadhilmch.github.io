@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./fm-data.js"></script>
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--l0)}
+:root,[data-theme="light"]{--bg:#f5f4f0;--panel:#fbfaf7;--fg:#161616;--muted:#62605a;--line:#dedbd3;--l0:oklch(0.55 0.17 255);--l1:oklch(0.55 0.17 150);--l2:oklch(0.55 0.17 30);--on:#ffffff;--g-fg:#44423d;--g-label:#6e6c66;--g-line:#cfcbc1;--g-acc:oklch(0.55 0.17 255);--g-c-dl:oklch(0.55 0.17 255);--g-c-nlp:oklch(0.55 0.17 255);--g-c-mlops:oklch(0.55 0.17 150);--g-c-data:oklch(0.55 0.17 150);--g-c-photo:oklch(0.55 0.17 30);--g-c-music:oklch(0.55 0.17 30);--g-c-design:oklch(0.55 0.17 30);--g-c-meta:#161616;--g-font:'Geist Mono'}
+@keyframes fmflow{to{stroke-dashoffset:-24}}
+[data-theme="dark"]{--bg:#121212;--panel:#1a1a19;--fg:#ecebe7;--muted:#9b9993;--line:#2c2b29;--l0:oklch(0.75 0.13 255);--l1:oklch(0.75 0.13 150);--l2:oklch(0.75 0.13 30);--on:#121212;--g-fg:#c9c7c1;--g-label:#8e8c86;--g-line:#3a3936;--g-acc:oklch(0.75 0.13 255);--g-c-dl:oklch(0.75 0.13 255);--g-c-nlp:oklch(0.75 0.13 255);--g-c-mlops:oklch(0.75 0.13 150);--g-c-data:oklch(0.75 0.13 150);--g-c-photo:oklch(0.75 0.13 30);--g-c-music:oklch(0.75 0.13 30);--g-c-design:oklch(0.75 0.13 30);--g-c-meta:#ecebe7}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--bg);color:var(--fg);font-family:'Geist',system-ui,sans-serif;font-size:15px;line-height:1.55;display:flex;flex-direction:column">
+  <header style="display:flex;align-items:center;gap:28px;padding:18px 36px;border-bottom:1px solid var(--line);flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="display:grid;grid-template-columns:repeat(3,7px);grid-template-rows:repeat(5,7px);gap:2px">
+        <span style="background:var(--fg)"></span><span style="background:var(--fg)"></span><span style="background:var(--fg)"></span>
+        <span style="background:var(--fg)"></span><span></span><span></span>
+        <span style="background:var(--fg)"></span><span style="background:var(--fg)"></span><span style="background:var(--l0)"></span>
+        <span style="background:var(--fg)"></span><span></span><span></span>
+        <span style="background:var(--fg)"></span><span></span><span></span>
+      </div>
+      <div style="display:flex;flex-direction:column;line-height:1.15"><span style="font-weight:700;letter-spacing:-0.01em">Fadhil Mochammad</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">ML engineer / data scientist</span></div>
+    </div>
+    <div style="flex:1"></div>
+    <nav style="display:flex;align-items:center">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center">
+          <span style="width:{{ t.wire }};height:1px;background:var(--muted)"></span>
+          <button onClick="{{ t.onClick }}" style="display:flex;align-items:center;gap:8px;font:inherit;font-size:14px;cursor:pointer;border:1px solid {{ t.border }};border-radius:999px;padding:6px 14px 6px 8px;background:{{ t.bg }};color:{{ t.color }}">
+            <span style="font-family:'Geist Mono',monospace;font-size:10px;padding:1px 6px;border-radius:999px;border:1px solid currentColor">{{ t.stage }}</span>{{ t.label }}
+          </button>
+        </div>
+      </sc-for>
+    </nav>
+    <button onClick="{{ toggleTheme }}" style="font-family:'Geist Mono',monospace;font-size:11px;cursor:pointer;background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 12px">{{ themeLabel }}</button>
+  </header>
+  <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+    <main style="width:100%;max-width:1160px;margin:0 auto;padding:48px 36px 72px;box-sizing:border-box;display:flex;flex-direction:column;gap:64px">
+      <section style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end">
+        <h1 style="margin:0;font-size:clamp(38px,5vw,64px);line-height:1;font-weight:600;letter-spacing:-0.035em;text-wrap:balance">I care about the process as much as the output.</h1>
+        <p style="margin:0;color:var(--muted);text-wrap:pretty">{{ bio }}</p>
+      </section>
+      <section style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">trace · run fadhil.career</span><span style="display:flex;gap:14px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span>{{ spanCount }} spans</span><span style="color:var(--l1)">● running</span><span>{{ status }}</span></span></div>
+        <div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden">
+          <div style="display:grid;grid-template-columns:400px minmax(0,1fr) 56px;border-bottom:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">
+            <span style="padding:10px 16px">span</span>
+            <div style="position:relative;height:36px">
+              <sc-for list="{{ axis }}" as="x" hint-placeholder-count="6">
+                <span style="position:absolute;top:10px;left:{{ x.left }};transform:translateX(-50%)">{{ x.label }}</span>
+              </sc-for>
+            </div>
+            <span style="padding:10px 16px 10px 0;text-align:right">dur</span>
+          </div>
+          <sc-for list="{{ trace }}" as="r" hint-placeholder-count="12">
+            <div style="display:grid;grid-template-columns:400px minmax(0,1fr) 56px;align-items:center;height:38px;border-bottom:1px solid var(--line)" style-hover="background:var(--bg)">
+              <div style="display:flex;align-items:center;gap:8px;padding:0 16px;padding-left:{{ r.indent }};min-width:0">
+                <span style="color:var(--line);font-family:'Geist Mono',monospace;font-size:12px">{{ r.elbow }}</span>
+                <span style="font-family:'Geist Mono',monospace;font-size:10px;padding:1px 6px;border-radius:4px;border:1px solid {{ r.color }};color:{{ r.color }};flex-shrink:0">{{ r.kind }}</span>
+                <span style="font-family:'Geist Mono',monospace;font-size:13px;color:var(--fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.name }}</span>
+                <span style="font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.meta }}</span>
+              </div>
+              <div style="position:relative;height:100%">
+                <span style="position:absolute;top:50%;height:{{ r.h }};margin-top:{{ r.mt }};left:{{ r.left }};width:{{ r.width }};background:{{ r.color }};border-radius:3px;opacity:{{ r.op }}"></span>
+              </div>
+              <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);text-align:right;padding-right:16px">{{ r.dur }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+      <section style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">workflow · how I solve problems</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">↺ eval loops back to plan until it's good</span></div>
+        <div style="overflow-x:auto;border-radius:12px"><div style="position:relative;height:490px;min-width:980px;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-sizing:border-box;background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:20px 20px">
+          <svg viewBox="0 0 1088 490" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">{{ wfEdges }}</svg>
+          <sc-for list="{{ wfNodes }}" as="n" hint-placeholder-count="9">
+            <div style="position:absolute;left:{{ n.left }};top:{{ n.top }};width:{{ n.width }};transform:translateY(-50%);background:var(--bg);border:1px solid {{ n.border }};border-radius:10px;padding:9px 12px;box-sizing:border-box;display:flex;flex-direction:column;gap:3px;box-shadow:0 1px 0 var(--line)">
+              <span style="display:flex;align-items:center;gap:6px;font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted)"><span style="width:7px;height:7px;border-radius:2px;background:{{ n.color }}"></span>{{ n.kind }}</span>
+              <span style="font-weight:600;font-size:14px;line-height:1.2">{{ n.title }}</span>
+              <span style="font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);line-height:1.35">{{ n.sub }}</span>
+            </div>
+          </sc-for>
+        </div></div>
+      </section>
+      <section style="display:flex;flex-direction:column;gap:16px">
+        <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">artifacts</span>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+            <a href="#" style="display:flex;flex-direction:column;gap:10px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden" style-hover="border-color:var(--fg)">
+              <div style="aspect-ratio:16/9;background:repeating-linear-gradient(135deg,transparent 0 7px,var(--line) 7px 8px);display:flex;align-items:flex-end;padding:10px;box-sizing:border-box;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">project still</div>
+              <div style="padding:0 14px 14px;display:flex;flex-direction:column;gap:4px">
+                <span style="display:flex;align-items:center;gap:8px;font-weight:600;font-size:17px;white-space:nowrap"><span style="width:8px;height:8px;border-radius:50%;background:{{ p.dot }};flex-shrink:0"></span>{{ p.name }}</span>
+                <span style="font-size:14px;color:var(--muted)">{{ p.desc }}</span>
+                <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">{{ p.tags }} · {{ p.year }}</span>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+      <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:40px">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">publications</span>
+          <sc-for list="{{ pubs }}" as="b" hint-placeholder-count="2">
+            <div style="border-top:1px solid var(--line);padding-top:10px"><div style="font-weight:600">{{ b.title }}</div><div style="font-size:13px;color:var(--muted)">{{ b.authors }} · {{ b.venue }}, {{ b.year }}</div></div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted)">contact</span>
+          <sc-for list="{{ contact }}" as="c" hint-placeholder-count="4">
+            <a href="{{ c.href }}" style="display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:10px"><span style="font-weight:500">{{ c.value }}</span><span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">{{ c.label }} ↗</span></a>
+          </sc-for>
+        </div>
+      </section>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isPosts }}" hint-placeholder-val="{{ false }}">
+    <main style="width:100%;max-width:960px;margin:0 auto;padding:40px 36px 72px;box-sizing:border-box;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-family:'Geist Mono',monospace;font-size:12px">
+        <span style="color:var(--muted);margin-right:8px">changelog</span>
+        <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+          <button onClick="{{ f.onClick }}" style="font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
+        </sc-for>
+      </div>
+      <div style="position:relative;display:flex;flex-direction:column">
+        <span style="position:absolute;left:111px;top:8px;bottom:8px;width:2px;background:var(--line)"></span>
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+          <a href="#" style="display:grid;grid-template-columns:96px 32px minmax(0,1fr);align-items:start;padding:14px 0" style-hover="color:var(--l0)">
+            <span style="font-family:'Geist Mono',monospace;font-size:12px;color:var(--muted);padding-top:4px">{{ p.date }}</span>
+            <span style="display:flex;justify-content:center;padding-top:7px"><span style="position:relative;width:12px;height:12px;border-radius:50%;background:{{ p.dot }};box-shadow:0 0 0 4px var(--bg)"></span></span>
+            <span style="display:flex;flex-direction:column;gap:4px;padding-left:10px">
+              <span style="font-size:21px;font-weight:600;letter-spacing:-0.015em;line-height:1.2">{{ p.title }}</span>
+              <span style="color:var(--muted)">{{ p.excerpt }}</span>
+              <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">{{ p.tagStr }} · {{ p.minStr }}</span>
+            </span>
+          </a>
+        </sc-for>
+      </div>
+    </main>
+  </sc-if>
+  <sc-if value="{{ isNotes }}" hint-placeholder-val="{{ false }}">
+    <main style="flex:1;display:grid;grid-template-columns:minmax(0,1fr) 360px;height:calc(100vh - 128px);min-height:520px">
+      <div style="position:relative;overflow:hidden;border-right:1px solid var(--line)">
+        <div style="position:absolute;top:16px;left:20px;z-index:1;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);pointer-events:none;display:flex;gap:14px"><span>notes graph · {{ noteCount }} nodes</span><span>drag · scroll · click</span></div>
+        <x-import component-from-global-scope="fm-graph" from="./fm-graph.js" style="position:absolute;inset:0" hint-size="100%,100%"></x-import>
+      </div>
+      <article style="overflow:auto;padding:26px 24px;display:flex;flex-direction:column;gap:14px;background:var(--panel)">
+        <span style="display:flex;align-items:center;gap:8px;font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)"><span style="width:8px;height:8px;border-radius:50%;background:{{ note.color }}"></span>{{ note.tag }}</span>
+        <h2 style="margin:0;font-size:30px;font-weight:600;line-height:1.1;letter-spacing:-0.025em">{{ note.title }}</h2>
+        <p style="margin:0;text-wrap:pretty">{{ note.body }}</p>
+        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px">downstream</span>
+        <sc-for list="{{ links }}" as="l" hint-placeholder-count="3">
+          <button onClick="{{ l.onClick }}" style="display:flex;align-items:center;gap:10px;font:inherit;text-align:left;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:var(--fg)" style-hover="border-color:var(--fg)"><span style="width:8px;height:8px;border-radius:50%;background:{{ l.dot }}"></span>{{ l.title }}</button>
+        </sc-for>
+        <span style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);margin-top:10px">upstream</span>
+        <sc-for list="{{ backlinks }}" as="l" hint-placeholder-count="2">
+          <button onClick="{{ l.onClick }}" style="display:flex;align-items:center;gap:10px;font:inherit;text-align:left;cursor:pointer;background:transparent;border:1px dashed var(--line);border-radius:8px;padding:8px 12px;color:var(--muted)" style-hover="border-color:var(--fg)"><span style="width:8px;height:8px;border-radius:50%;background:{{ l.dot }}"></span>{{ l.title }}</button>
+        </sc-for>
+      </article>
+    </main>
+  </sc-if>
+  <footer style="margin-top:auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:16px 36px;border-top:1px solid var(--line);font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)">
+    <span>© 2026 Fadhil Mochammad</span>
+    <span style="display:flex;gap:14px"><span><span style="color:var(--l0)">━</span> engineering</span><span><span style="color:var(--l1)">━</span> research</span><span><span style="color:var(--l2)">━</span> photo · design · music</span></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;defaultTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;about&quot;,&quot;posts&quot;,&quot;notes&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { theme: null, tab: null, sel: 'index', filter: 'all', D: window.FM_DATA || null };
+  componentDidMount() {
+    const w = () => window.FM_DATA ? this.setState({ D: window.FM_DATA }) : (this._t = setTimeout(w, 50));
+    if (!this.state.D) w();
+    this._s = e => this.setState({ sel: e.detail });
+    window.addEventListener('fm-note-select', this._s);
+  }
+  componentWillUnmount() { clearTimeout(this._t); window.removeEventListener('fm-note-select', this._s); }
+  pick(id) { this.setState({ sel: id }); window.dispatchEvent(new CustomEvent('fm-note-focus', { detail: id })); }
+  renderVals() {
+    const D = this.state.D || { profile: {}, experience: [], skills: [], projects: [], pubs: [], contact: [], posts: [], notes: [], tags: {} };
+    const theme = this.state.theme || this.props.defaultTheme || 'light';
+    const tab = this.state.tab || this.props.defaultTab || 'about';
+    const tags = D.tags, sel = this.state.sel, filter = this.state.filter;
+    const creative = ['photo', 'music', 'design'];
+    const lane = t => creative.includes(t) ? 'var(--l2)' : (t === 'mlops' || t === 'data') ? 'var(--l1)' : 'var(--l0)';
+    const tabs = [['about', '01', 'about'], ['posts', '02', 'posts'], ['notes', '03', 'notes']].map(([k, stage, label], i) => ({ stage, label, wire: i ? '28px' : '0px', bg: tab === k ? 'var(--fg)' : 'var(--panel)', color: tab === k ? 'var(--bg)' : 'var(--fg)', border: tab === k ? 'var(--fg)' : 'var(--line)', onClick: () => this.setState({ tab: k }) }));
+    const lc = ['var(--l0)', 'var(--l1)', 'var(--l2)', 'var(--fg)'];
+    const T0 = 2016, T1 = 2026.8, span = T1 - T0;
+    const rows = [
+      [0, 'chain', 'fadhil.run()', 'ML engineer / data scientist', 2016, T1, 3],
+      [1, 'tool', 'study("computer science")', 'B.Sc.', 2016, 2020.5, 0],
+      [1, 'agent', 'data_scientist', 'Rupa Analytics', 2020.6, 2022.3, 0],
+      [2, 'tool', 'forecast(demand)', '', 2020.7, 2021.6, 1],
+      [2, 'llm', 'classify(customer_text)', '', 2021.3, 2022.2, 0],
+      [1, 'agent', 'ml_engineer', 'Kanal Data', 2022.3, 2024.4, 0],
+      [2, 'tool', 'build(mlops_platform)', '', 2022.4, 2024.2, 1],
+      [2, 'tool', 'publish(preprint)', 'embedding failures', 2024.0, 2024.3, 1],
+      [1, 'agent', 'senior_ml_engineer', 'Lumen AI', 2024.4, T1, 0],
+      [2, 'tool', 'retrieve(rag)', '', 2024.6, 2026.2, 0],
+      [2, 'llm', 'finetune(lora, n=40)', 'lingua-lite', 2025.0, T1, 0],
+      [1, 'parallel', 'side_quests', 'photo · design · music', 2017.5, T1, 2],
+      [2, 'tool', 'shoot(film)', '', 2017.5, T1, 2],
+      [2, 'tool', 'design(figma)', '', 2019, T1, 2],
+      [2, 'tool', 'compose(ableton)', '', 2021, T1, 2]
+    ];
+    const trace = rows.map(([d, kind, name, meta, s, e, l]) => ({
+      kind, name, meta, indent: (16 + d * 20) + 'px', elbow: d ? '└' : '', color: lc[l],
+      left: ((s - T0) / span * 96 + 2) + '%', width: Math.max(0.6, (e - s) / span * 96) + '%',
+      h: d === 0 ? '4px' : '12px', mt: d === 0 ? '-2px' : '-6px', op: d === 0 ? 0.5 : (d === 1 ? 1 : 0.55),
+      dur: e >= T1 ? 'live' : ((e - s) < 1 ? Math.round((e - s) * 12) + 'mo' : (e - s).toFixed(1) + 'y')
+    }));
+    const axis = [2016, 2018, 2020, 2022, 2024, 2026].map(y => ({ label: String(y), left: ((y - T0) / span * 96 + 2) + '%' }));
+    const tool = (y, l, title, si) => ({ x: 450, y, w: 250, kind: 'tool', title, sub: (D.skills[si] || { items: [] }).items.join(' · '), color: lc[l] });
+    const nodes = [
+      { x: 24, y: 230, w: 150, kind: 'input', title: 'A messy problem', sub: 'data, a question, a deadline', color: 'var(--fg)' },
+      { x: 234, y: 230, w: 150, kind: 'router', title: 'Plan', sub: 'frame · scope · pick tools', color: 'var(--fg)' },
+      tool(56, 1, 'Data', 3), tool(143, 0, 'Modeling', 0), tool(230, 0, 'NLP / LLMs', 1), tool(317, 1, 'MLOps', 2), tool(404, 2, 'Creative', 4),
+      { x: 760, y: 230, w: 140, kind: 'eval', title: 'Evaluate', sub: 'metrics · evals · taste', color: 'var(--l1)' },
+      { x: 936, y: 230, w: 128, kind: 'output', title: 'Ship it', sub: 'model, post, or print', color: 'var(--l0)' }
+    ];
+    const wfNodes = nodes.map(n => ({ left: (n.x / 1088 * 100) + '%', top: n.y + 'px', width: (n.w / 1088 * 100) + '%', kind: n.kind, title: n.title, sub: n.sub, color: n.color, border: n.kind === 'output' ? 'var(--l0)' : 'var(--line)' }));
+    const cv = (x1, y1, x2, y2) => { const m = (x1 + x2) / 2; return 'M' + x1 + ' ' + y1 + ' C' + m + ' ' + y1 + ' ' + m + ' ' + y2 + ' ' + x2 + ' ' + y2; };
+    const ed = [[cv(174, 230, 234, 230), 'var(--muted)']];
+    nodes.slice(2, 7).forEach(t => { ed.push([cv(384, 230, 450, t.y), t.color]); ed.push([cv(700, t.y, 760, 230), t.color]); });
+    ed.push([cv(900, 230, 936, 230), 'var(--l0)']);
+    ed.push(['M830 262 L830 470 Q830 474 826 474 L313 474 Q309 474 309 470 L309 262', 'var(--l1)', true]);
+    const wfEdges = React.createElement('g', null, ed.map(([d, c, loop], i) => React.createElement('path', { key: i, d, fill: 'none', stroke: c, strokeWidth: 1.5, vectorEffect: 'non-scaling-stroke', opacity: loop ? 0.8 : 0.7, style: { strokeDasharray: loop ? '3 5' : '6 6', animation: 'fmflow ' + (loop ? 3 : 1.6) + 's linear infinite' } })));
+    const filters = ['all', 'dl', 'nlp', 'mlops', 'creative'].map(f => ({ label: f, bg: filter === f ? 'var(--fg)' : 'transparent', color: filter === f ? 'var(--bg)' : 'var(--muted)', onClick: () => this.setState({ filter: f }) }));
+    const posts = D.posts.filter(p => filter === 'all' || (filter === 'creative' ? p.tags.some(t => creative.includes(t)) : p.tags.includes(filter)))
+      .map(p => Object.assign({}, p, { tagStr: p.tags.map(t => tags[t]).join(' · '), dot: lane(p.tags[p.tags.length - 1]), minStr: p.min + ' min read' }));
+    const byId = {}; D.notes.forEach(n => { byId[n.id] = n; });
+    const cur = byId[sel] || { id: '', title: '', body: '', tag: '', links: [] };
+    return {
+      theme, tabs, trace, axis, wfNodes, wfEdges, filters, posts, spanCount: rows.length,
+      themeLabel: theme === 'light' ? '○ light' : '● dark',
+      isAbout: tab === 'about', isPosts: tab === 'posts', isNotes: tab === 'notes',
+      toggleTheme: () => this.setState({ theme: theme === 'dark' ? 'light' : 'dark' }),
+      bio: D.profile.bio, status: D.profile.status,
+      projects: D.projects.map(p => Object.assign({ dot: lane(p.tags.split(' · ')[1] === 'photo' || p.tags.includes('music') ? 'photo' : p.tags.split(' · ')[0]) }, p)),
+      pubs: D.pubs, contact: D.contact, noteCount: D.notes.length,
+      note: { title: cur.title, body: cur.body, tag: tags[cur.tag] || '', color: lane(cur.tag) },
+      links: (cur.links || []).filter(id => byId[id]).map(id => ({ title: byId[id].title, dot: lane(byId[id].tag), onClick: () => this.pick(id) })),
+      backlinks: D.notes.filter(n => (n.links || []).includes(cur.id)).map(n => ({ title: n.title, dot: lane(n.tag), onClick: () => this.pick(n.id) }))
+    };
+  }
+}
+</script>
+</body>
+</html>

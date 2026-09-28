@@ -1,0 +1,38 @@
+{%- comment -%}
+  Mobile accordion (< 760px) + every node's inspector, in pipeline order.
+  Inspectors exist once; workflow.js moves the open one into the accordion on
+  small screens (plan 7.6).
+{%- endcomment -%}
+{%- assign wf = site.data.workflow -%}
+{%- assign max_level = 0 -%}
+{%- for e in wf.nodes -%}{%- if e.level > max_level -%}{%- assign max_level = e.level -%}{%- endif -%}{%- endfor -%}
+{%- capture acc_html -%}{%- endcapture -%}
+{%- capture insp_html -%}
+  {%- assign first = true -%}
+  {%- for level in (0..max_level) -%}
+    {%- for e in wf.nodes -%}{%- if e.level == level -%}
+      {%- if e.expand == 'skills' -%}{%- assign group = site.data.skills -%}{%- else -%}{%- assign group = '_' | split: ',' -%}{%- endif -%}
+      {%- for skill in group -%}
+        {%- if e.expand == 'skills' -%}{%- include workflow/resolve.html entry=e skill=skill -%}{%- else -%}{%- include workflow/resolve.html entry=e -%}{%- endif -%}
+        {%- include workflow/inspector.html entry=e first=first -%}
+        {%- capture acc_html -%}{{ acc_html }}
+    <li class="wf-acc__item" data-acc="{{ n_id }}">
+      <button class="wf-acc__btn" type="button" data-node="{{ n_id }}" data-level="{{ level }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
+        <span class="wf-acc__glyph wf-node--{{ n_kind }}" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
+        <span class="wf-acc__title">{{ n_title | escape }}</span>
+        <span class="wf-acc__sub">{{ n_sub | escape }}</span>
+        <span class="wf-acc__caret" aria-hidden="true">▸</span>
+      </button>
+    </li>
+        {%- endcapture -%}
+        {%- assign first = false -%}
+      {%- endfor -%}
+    {%- endif -%}{%- endfor -%}
+  {%- endfor -%}
+{%- endcapture %}
+<ol class="wf-acc" aria-label="Workflow nodes">{{ acc_html }}
+</ol>
+<div class="wf-inspectors" data-inspectors>
+{{ insp_html }}
+</div>
+<noscript><style>.wf-inspector[hidden]{display:grid!important;margin-bottom:12px}</style></noscript>

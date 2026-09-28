@@ -1,0 +1,44 @@
+{%- comment -%}
+  Normalises one pipeline node into n_* variables (Jekyll includes share scope).
+  In:  include.entry  — an entry from _data/workflow.yml `nodes`
+       include.skill  — optional; set when the entry is `expand: skills`
+  Out: n_id n_level n_kind n_glyph n_title n_sub n_color n_desc n_source
+       n_count (number) n_count_label ("8 roles") n_json_items ("1 item")
+{%- endcomment -%}
+{%- assign n_level = include.entry.level -%}
+{%- if include.skill -%}
+  {%- assign n_id = include.skill.key | prepend: 'tool-' -%}
+  {%- assign n_kind = include.entry.kind | default: 'tool' -%}
+  {%- assign n_glyph = include.skill.glyph -%}
+  {%- assign n_title = include.skill.group -%}
+  {%- assign n_sub = 'auto' -%}
+  {%- assign n_color = include.skill.color | default: 'fg' -%}
+  {%- assign n_desc = include.skill.desc -%}
+  {%- assign n_source = include.skill.key | prepend: 'skills:' -%}
+{%- else -%}
+  {%- assign n_id = include.entry.id -%}
+  {%- assign n_kind = include.entry.kind -%}
+  {%- assign n_glyph = include.entry.glyph -%}
+  {%- assign n_title = include.entry.title -%}
+  {%- assign n_sub = include.entry.subtitle -%}
+  {%- assign n_color = include.entry.color | default: 'fg' -%}
+  {%- assign n_desc = include.entry.desc -%}
+  {%- assign n_source = include.entry.source -%}
+{%- endif -%}
+{%- assign n_json_items = 1 -%}
+{%- case n_source -%}
+  {%- when 'profile' -%}{%- assign n_count = 1 -%}{%- assign n_unit = 'profile' -%}
+  {%- when 'education' -%}{%- assign n_count = site.data.education.size -%}{%- assign n_unit = 'degrees' -%}{%- assign n_json_items = n_count -%}
+  {%- when 'experience' -%}{%- assign n_count = site.data.experience.size -%}{%- assign n_unit = 'roles' -%}{%- assign n_json_items = n_count -%}
+  {%- when 'projects+publications' -%}{%- assign n_count = site.data.projects.size | plus: site.data.publications.size -%}{%- assign n_unit = 'items' -%}
+  {%- when 'contact' -%}{%- assign n_count = site.data.contact.size -%}{%- assign n_unit = 'links' -%}
+  {%- when 'custom' -%}{%- assign n_count = include.entry.rows.size | default: 0 -%}{%- assign n_unit = 'items' -%}
+  {%- else -%}
+    {%- assign n_skill_key = n_source | remove_first: 'skills:' -%}
+    {%- assign n_skill = site.data.skills | where: 'key', n_skill_key | first -%}
+    {%- assign n_count = n_skill.items.size | default: 0 -%}{%- assign n_unit = 'tools' -%}
+{%- endcase -%}
+{%- if n_count == 1 -%}{%- assign n_unit = n_unit | remove_last: 's' -%}{%- endif -%}
+{%- assign n_count_label = n_count | append: ' ' | append: n_unit -%}
+{%- if n_sub == 'auto' -%}{%- assign n_sub = n_count_label -%}{%- endif -%}
+{%- if n_json_items == 1 -%}{%- assign n_json_items = '1 item' -%}{%- else -%}{%- assign n_json_items = n_json_items | append: ' items' -%}{%- endif -%}

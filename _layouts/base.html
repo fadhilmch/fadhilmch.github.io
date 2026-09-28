@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+    {% include head.html %}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    {% include header.html %}
+    <main id="main">{{ content }}</main>
+    {% include footer.html %}
+    <script src="{{ '/assets/js/theme.js' | relative_url }}" defer></script>
+    {% if page.nav == 'about' %}<script src="{{ '/assets/js/workflow.js' | relative_url }}" defer></script>{% endif %}
+    {% if page.nav == 'posts' %}<script src="{{ '/assets/js/posts.js' | relative_url }}" defer></script>{% endif %}
+    {% if page.nav == 'notes' %}
+      <script src="{{ '/assets/js/notes.js' | relative_url }}" defer></script>
+      <script src="{{ '/assets/js/fm-graph.js' | relative_url }}" defer></script>
+    {% endif %}
+  </body>
+</html>

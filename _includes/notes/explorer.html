@@ -1,0 +1,35 @@
+<aside class="notes-explorer" aria-label="Notes explorer" data-explorer>
+  <div class="notes-explorer__head">
+    <div class="notes-label">
+      <button class="notes-drawer-toggle" type="button" data-explorer-toggle aria-expanded="false" aria-controls="notes-tree">Explorer <span aria-hidden="true">▾</span></button>
+      <span class="notes-label__title">EXPLORER</span>
+      <span>{{ site.notes.size }} notes</span>
+    </div>
+    <label class="notes-search">
+      <span class="sr-only">Search notes</span>
+      <input type="search" placeholder="Search notes…" data-note-search autocomplete="off">
+    </label>
+  </div>
+  <div class="notes-tree" id="notes-tree" data-notes-tree>
+    {% for tag in site.data.tags %}
+      {% assign tag_count = 0 %}
+      {% for note in site.notes %}{% if note.tag == tag.key %}{% assign tag_count = tag_count | plus: 1 %}{% endif %}{% endfor %}
+      {% if tag_count > 0 %}
+        {% include notes/lane-color.html tag=tag.key %}
+        <details class="note-group" open data-note-group>
+          <summary><span class="note-group__caret" aria-hidden="true"></span><span class="lane-swatch" style="--lane:var(--{{ lane_color }})"></span><span class="note-group__label">{{ tag.label | escape }}</span><small>{{ tag_count }}</small></summary>
+          <ul>
+            {% for note in site.notes %}
+              {% if note.tag == tag.key %}
+                <li data-note-item data-title="{{ note.title | downcase | escape }}" data-tag="{{ note.tag | downcase | escape }} {{ tag.label | downcase | escape }}">
+                  <a href="{{ note.url | relative_url }}"{% if note.slug == current_id %} aria-current="page"{% endif %}>{{ note.title | escape }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </details>
+      {% endif %}
+    {% endfor %}
+    <p class="notes-empty" data-notes-empty hidden>No notes match that search.</p>
+  </div>
+</aside>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="./fm-data.js"></script>
+<style>
+body{margin:0}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--acc)}
+:root,[data-theme="dark"]{--bg:#0b0d10;--panel:#11151a;--fg:#e3e6ea;--muted:#8b939d;--line:#1f252d;--grid:#161b21;--acc:oklch(0.8 0.13 165);--acc2:oklch(0.8 0.13 65);--on-acc:#0b0d10;--g-fg:#aab2bc;--g-label:#7a838d;--g-line:#2b323b;--g-acc:oklch(0.8 0.13 165);--g-c-photo:oklch(0.8 0.13 65);--g-c-music:oklch(0.8 0.13 65);--g-c-design:oklch(0.8 0.13 65);--g-c-meta:#e3e6ea;--g-font:'IBM Plex Mono'}
+[data-theme="light"]{--bg:#f4f5f6;--panel:#ffffff;--fg:#14171b;--muted:#5b636d;--line:#dde0e4;--grid:#eceef1;--acc:oklch(0.52 0.12 165);--acc2:oklch(0.58 0.14 60);--on-acc:#ffffff;--g-fg:#4a525c;--g-label:#6b737d;--g-line:#cfd3d9;--g-acc:oklch(0.52 0.12 165);--g-c-photo:oklch(0.58 0.14 60);--g-c-music:oklch(0.58 0.14 60);--g-c-design:oklch(0.58 0.14 60);--g-c-meta:#14171b}
+@keyframes fmdraw{to{stroke-dashoffset:0}}
+@keyframes fmpulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</helmet>
+<div data-theme="{{ theme }}" style="min-height:100vh;background:var(--bg);color:var(--fg);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:14px;line-height:1.55;display:grid;grid-template-columns:232px minmax(0,1fr)">
+  <aside style="border-right:1px solid var(--line);padding:20px 16px;display:flex;flex-direction:column;gap:22px;position:sticky;top:0;height:100vh;box-sizing:border-box">
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,30 4,4 16,4"></polyline><polyline points="4,16 12,16"></polyline><polyline points="18,30 18,12 24,22 30,12 30,30" stroke="var(--acc)"></polyline></svg>
+      <div style="display:flex;flex-direction:column;line-height:1.2"><span style="font-weight:700">Fadhil Mochammad</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">ml eng · data sci</span></div>
+    </div>
+    <nav style="display:flex;flex-direction:column;gap:2px">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Runs</span>
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button onClick="{{ t.onClick }}" style="display:flex;align-items:center;gap:10px;width:100%;text-align:left;font:inherit;cursor:pointer;border:0;padding:8px 10px;border-radius:6px;background:{{ t.bg }};color:var(--fg)">
+          <span style="width:8px;height:8px;border-radius:50%;background:{{ t.dot }}"></span>
+          <span style="flex:1;font-weight:500">{{ t.label }}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">{{ t.meta }}</span>
+        </button>
+      </sc-for>
+    </nav>
+    <div style="display:flex;flex-direction:column;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">
+      <span style="font-size:10px;letter-spacing:0.1em;text-transform:uppercase">Side processes</span>
+      <span><span style="color:var(--acc2)">●</span> photography — idle</span>
+      <span><span style="color:var(--acc2)">●</span> digital design — idle</span>
+      <span><span style="color:var(--acc2)">●</span> music — recording</span>
+    </div>
+    <div style="flex:1"></div>
+    <button onClick="{{ toggleTheme }}" style="font-family:'IBM Plex Mono',monospace;font-size:11px;cursor:pointer;background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:7px 10px;text-align:left">theme = "{{ theme }}"</button>
+  </aside>
+  <div style="min-width:0;display:flex;flex-direction:column">
+    <div style="height:48px;flex-shrink:0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:14px;padding:0 28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">
+      <span>fadhil</span><span>/</span><span style="color:var(--fg)">{{ tab }}</span>
+      <span style="display:flex;align-items:center;gap:6px;margin-left:8px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;color:var(--acc)"><span style="width:6px;height:6px;border-radius:50%;background:var(--acc)"></span>running</span>
+      <div style="flex:1"></div>
+      <span>step {{ step }} · updated 2026-09-28</span>
+    </div>
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ true }}">
+      <main style="padding:32px 28px 64px;display:flex;flex-direction:column;gap:28px;max-width:1160px;width:100%;box-sizing:border-box">
+        <section style="display:flex;flex-direction:column;gap:10px">
+          <h1 style="margin:0;font-size:clamp(34px,4.4vw,52px);line-height:1.05;font-weight:700;letter-spacing:-0.025em;max-width:22ch;text-wrap:balance">Training models, and myself, one step at a time.</h1>
+          <p style="margin:0;max-width:70ch;color:var(--muted);font-size:15px;text-wrap:pretty">{{ bio }}</p>
+        </section>
+        <section style="background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px 34px;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;white-space:nowrap">
+            <span style="font-weight:600">career/loss</span>
+            <span style="display:flex;align-items:center;gap:6px;color:var(--muted)"><span style="width:14px;height:2px;background:var(--acc)"></span>train · engineering</span>
+            <span style="display:flex;align-items:center;gap:6px;color:var(--muted)"><span style="width:14px;height:2px;background:var(--acc2)"></span>val · creative practice</span>
+            <div style="flex:1"></div>
+            <span style="color:var(--muted)">x: years · y: things I didn't know</span>
+          </div>
+          <div style="position:relative;height:260px;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:100% 52px,10% 100%;border-left:1px solid var(--line);border-bottom:1px solid var(--line)">
+            <svg viewBox="0 0 1000 260" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible">{{ valTrace }}{{ trainTrace }}</svg>
+            <sc-for list="{{ checkpoints }}" as="c" hint-placeholder-count="4">
+              <div style="position:absolute;top:0;bottom:-26px;left:{{ c.left }};border-left:1px dashed var(--muted);display:flex;flex-direction:column;justify-content:space-between;padding-left:6px;font-family:'IBM Plex Mono',monospace;font-size:11px;pointer-events:none">
+                <span style="color:var(--fg);background:var(--panel);padding:0 4px;white-space:nowrap">{{ c.label }}</span>
+                <span style="color:var(--muted)">{{ c.yr }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+        <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px">
+          <div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+            <div style="padding:12px 16px;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600">checkpoints</div>
+            <sc-for list="{{ experience }}" as="e" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:70px 1fr;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--acc);padding-top:2px">{{ e.ck }}</span>
+                <div><div style="font-weight:600">{{ e.role }} <span style="color:var(--muted);font-weight:400">· {{ e.org }}</span></div><div style="font-size:13px;color:var(--muted)">{{ e.years }} — {{ e.note }}</div></div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+            <div style="padding:12px 16px;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600">hparams.yaml</div>
+            <div style="padding:14px 16px;display:flex;flex-direction:column;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:12px">
+              <sc-for list="{{ hparams }}" as="h" hint-placeholder-count="5">
+                <div><span style="color:var(--acc)">{{ h.key }}</span><span style="color:var(--muted)">: </span><span>{{ h.val }}</span></div>
+              </sc-for>
+              <div><span style="color:var(--acc)">status</span><span style="color:var(--muted)">: </span><span style="color:var(--acc2)">"{{ status }}"</span></div>
+            </div>
+          </div>
+        </section>
+        <section style="background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden">
+          <div style="padding:12px 16px;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600">experiments</div>
+          <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+            <a href="#" style="display:grid;grid-template-columns:90px 150px minmax(0,1fr) 100px 50px;gap:16px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)" style-hover="background:var(--grid)">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:{{ p.sColor }}">● {{ p.status }}</span>
+              <span style="font-weight:600">{{ p.name }}</span>
+              <span style="color:var(--muted)">{{ p.desc }}</span>
+              <svg viewBox="0 0 90 22" style="width:90px;height:22px"><path d="{{ p.spark }}" fill="none" stroke="var(--acc)" stroke-width="1.2"></path></svg>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-align:right">{{ p.year }}</span>
+            </a>
+          </sc-for>
+        </section>
+        <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600">artifacts / publications</span>
+            <sc-for list="{{ pubs }}" as="b" hint-placeholder-count="2">
+              <div style="border:1px solid var(--line);border-radius:8px;padding:12px 14px"><div style="font-weight:600">{{ b.title }}</div><div style="font-size:13px;color:var(--muted)">{{ b.authors }} · {{ b.venue }} · {{ b.year }}</div></div>
+            </sc-for>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600">endpoints</span>
+            <sc-for list="{{ contact }}" as="c" hint-placeholder-count="4">
+              <a href="{{ c.href }}" style="display:grid;grid-template-columns:70px 1fr auto;gap:12px;border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-family:'IBM Plex Mono',monospace;font-size:12px" style-hover="border-color:var(--acc)"><span style="color:var(--acc)">{{ c.label }}</span><span>{{ c.value }}</span><span style="color:var(--muted)">↗</span></a>
+            </sc-for>
+          </div>
+        </section>
+      </main>
+    </sc-if>
+    <sc-if value="{{ isPosts }}" hint-placeholder-val="{{ false }}">
+      <main style="padding:28px 28px 64px;display:flex;flex-direction:column;gap:18px;max-width:1160px;width:100%;box-sizing:border-box">
+        <div style="display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:12px">
+          <span style="color:var(--muted);margin-right:8px">filter tag</span>
+          <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+            <button onClick="{{ f.onClick }}" style="font:inherit;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:3px 12px;background:{{ f.bg }};color:{{ f.color }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+        <div style="background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-family:'IBM Plex Mono',monospace;font-size:12px">
+          <div style="display:grid;grid-template-columns:80px 96px minmax(0,1fr) 110px 96px 44px;gap:16px;padding:10px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:11px">
+            <span>step</span><span>time</span><span>message</span><span>tags</span><span>trace</span><span style="text-align:right">len</span>
+          </div>
+          <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+            <a href="#" style="display:grid;grid-template-columns:80px 96px minmax(0,1fr) 110px 96px 44px;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)" style-hover="background:var(--grid)">
+              <span style="color:var(--acc)">{{ p.stepNo }}</span>
+              <span style="color:var(--muted)">{{ p.date }}</span>
+              <span style="display:flex;flex-direction:column;gap:2px;font-family:'IBM Plex Sans',sans-serif"><span style="font-size:15px;font-weight:600;color:var(--fg)">{{ p.title }}</span><span style="font-size:13px;color:var(--muted)">{{ p.excerpt }}</span></span>
+              <span style="color:var(--muted)">{{ p.tagStr }}</span>
+              <svg viewBox="0 0 90 22" style="width:90px;height:22px"><path d="{{ p.spark }}" fill="none" stroke="var(--acc2)" stroke-width="1.2"></path></svg>
+              <span style="color:var(--muted);text-align:right">{{ p.minStr }}</span>
+            </a>
+          </sc-for>
+        </div>
+      </main>
+    </sc-if>
+    <sc-if value="{{ isNotes }}" hint-placeholder-val="{{ false }}">
+      <main style="display:grid;grid-template-columns:minmax(0,1fr) 340px;height:calc(100vh - 49px);min-height:520px">
+        <div style="position:relative;overflow:hidden;border-right:1px solid var(--line);background-image:radial-gradient(var(--line) 1px,transparent 1px);background-size:22px 22px">
+          <div style="position:absolute;top:14px;left:16px;right:16px;z-index:1;display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:12px;pointer-events:none">
+            <span style="color:var(--muted);margin-right:4px">trace</span>
+            <sc-for list="{{ trail }}" as="t" hint-placeholder-count="3">
+              <span style="display:flex;gap:6px;align-items:center"><button onClick="{{ t.onClick }}" style="pointer-events:auto;font:inherit;cursor:pointer;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:2px 8px;color:{{ t.color }}">{{ t.title }}</button><span style="color:var(--muted)">{{ t.sep }}</span></span>
+            </sc-for>
+          </div>
+          <x-import component-from-global-scope="fm-graph" from="./fm-graph.js" style="position:absolute;inset:0" hint-size="100%,100%"></x-import>
+          <div style="position:absolute;bottom:14px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);pointer-events:none">{{ noteCount }} nodes · drag · scroll to zoom · click to follow</div>
+        </div>
+        <article style="overflow:auto;padding:24px 22px;display:flex;flex-direction:column;gap:14px;background:var(--panel)">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--acc)">{{ note.tag }}</span>
+          <h2 style="margin:0;font-size:28px;line-height:1.15;letter-spacing:-0.02em">{{ note.title }}</h2>
+          <p style="margin:0;font-size:15px;text-wrap:pretty">{{ note.body }}</p>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px">outgoing</span>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <sc-for list="{{ links }}" as="l" hint-placeholder-count="3">
+              <button onClick="{{ l.onClick }}" style="font:inherit;text-align:left;cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--fg)" style-hover="border-color:var(--acc)">→ {{ l.title }}</button>
+            </sc-for>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px">incoming</span>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <sc-for list="{{ backlinks }}" as="l" hint-placeholder-count="2">
+              <button onClick="{{ l.onClick }}" style="font:inherit;text-align:left;cursor:pointer;background:transparent;border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--muted)" style-hover="border-color:var(--acc)">← {{ l.title }}</button>
+            </sc-for>
+          </div>
+        </article>
+      </main>
+    </sc-if>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dark&quot;,&quot;light&quot;],&quot;default&quot;:&quot;dark&quot;,&quot;tsType&quot;:&quot;'dark'|'light'&quot;},&quot;defaultTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;about&quot;,&quot;posts&quot;,&quot;notes&quot;],&quot;default&quot;:&quot;about&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { theme: null, tab: null, sel: 'index', filter: 'all', trail: ['index'], D: window.FM_DATA || null };
+  componentDidMount() {
+    const w = () => window.FM_DATA ? this.setState({ D: window.FM_DATA }) : (this._t = setTimeout(w, 50));
+    if (!this.state.D) w();
+    this._s = e => this.visit(e.detail, true);
+    window.addEventListener('fm-note-select', this._s);
+  }
+  componentWillUnmount() { clearTimeout(this._t); window.removeEventListener('fm-note-select', this._s); }
+  visit(id, fromGraph) {
+    this.setState(s => ({ sel: id, trail: s.trail[s.trail.length - 1] === id ? s.trail : s.trail.concat(id).slice(-7) }));
+    if (!fromGraph) window.dispatchEvent(new CustomEvent('fm-note-focus', { detail: id }));
+  }
+  rng(seed) { let s = seed * 9301 + 49297; return () => { s = (s * 9301 + 49297) % 233280; return s / 233280; }; }
+  curve(n, seed, noise, w, h, lo) {
+    const r = this.rng(seed); let d = '';
+    for (let i = 0; i <= n; i++) { const x = i / n; const y = lo + (1 - lo) * Math.exp(-x * 3.2) + (r() - 0.5) * noise * (1 - x * 0.6); d += (i ? 'L' : 'M') + (x * w).toFixed(1) + ' ' + (h - Math.max(0, Math.min(1, y)) * h).toFixed(1); }
+    return d;
+  }
+  renderVals() {
+    const D = this.state.D || { profile: {}, experience: [], skills: [], projects: [], pubs: [], contact: [], posts: [], notes: [], tags: {} };
+    const theme = this.state.theme || this.props.defaultTheme || 'dark';
+    const tab = this.state.tab || this.props.defaultTab || 'about';
+    const tags = D.tags, sel = this.state.sel, filter = this.state.filter;
+    const creative = ['photo', 'music', 'design'];
+    const tabs = [['about', 'about', 'v4'], ['posts', 'posts', D.posts.length], ['notes', 'notes', D.notes.length]].map(([k, label, meta]) => ({ label, meta, bg: tab === k ? 'var(--line)' : 'transparent', dot: tab === k ? 'var(--acc)' : 'var(--muted)', onClick: () => this.setState({ tab: k }) }));
+    const filters = ['all', 'dl', 'nlp', 'mlops', 'creative'].map(f => ({ label: f, bg: filter === f ? 'var(--fg)' : 'transparent', color: filter === f ? 'var(--bg)' : 'var(--muted)', onClick: () => this.setState({ filter: f }) }));
+    const posts = D.posts.filter(p => filter === 'all' || (filter === 'creative' ? p.tags.some(t => creative.includes(t)) : p.tags.includes(filter)))
+      .map((p, i) => Object.assign({}, p, { stepNo: String(D.posts.length - D.posts.indexOf(p)).padStart(4, '0'), tagStr: p.tags.join(' · '), spark: this.curve(24, D.posts.indexOf(p) + 3, 0.5, 90, 22, 0.25), minStr: p.min + 'm' }));
+    const byId = {}; D.notes.forEach(n => { byId[n.id] = n; });
+    const cur = byId[sel] || { id: '', title: '', body: '', tag: '', links: [] };
+    const trail = this.state.trail.filter(id => byId[id]).map((id, i, a) => ({ title: byId[id].title, sep: i < a.length - 1 ? '→' : '', color: i === a.length - 1 ? 'var(--acc)' : 'var(--muted)', onClick: () => this.visit(id) }));
+    const W = 1000, H = 260;
+    const ck = [[0.02, '2016', 'B.Sc. CS'], [0.36, '2020', 'Data Scientist'], [0.58, '2022', 'ML Engineer'], [0.8, '2024', 'Senior MLE']];
+    const draw = (d, color, dur, delay, width) => React.createElement('path', { d, fill: 'none', stroke: color, strokeWidth: width, vectorEffect: 'non-scaling-stroke', strokeLinejoin: 'round', style: { strokeDasharray: 4000, strokeDashoffset: 4000, animation: 'fmdraw ' + dur + 's ease-out ' + delay + 's forwards' } });
+    return {
+      theme, tab, tabs, filters, posts, trail,
+      isAbout: tab === 'about', isPosts: tab === 'posts', isNotes: tab === 'notes',
+      toggleTheme: () => this.setState({ theme: theme === 'dark' ? 'light' : 'dark' }),
+      step: '10,4' + String(D.posts.length).padStart(2, '0'),
+      bio: D.profile.bio, status: D.profile.status,
+      trainTrace: draw(this.curve(220, 7, 0.1, W, H, 0.12), 'var(--acc)', 2.6, 0, 1.5),
+      valTrace: draw(this.curve(60, 11, 0.04, W, H, 0.2), 'var(--acc2)', 2.6, 0.3, 1.5),
+      checkpoints: ck.map(([x, yr, label]) => ({ left: (x * 100) + '%', yr, label })),
+      experience: D.experience.slice().reverse().map((e, i) => Object.assign({ ck: 'ckpt-' + String(i + 1).padStart(2, '0') }, e)).reverse(),
+      hparams: D.skills.map(s => ({ key: s.group.toLowerCase().replace(/[^a-z]+/g, '_').replace(/_$/, ''), val: '[' + s.items.map(i => '"' + i + '"').join(', ') + ']' })),
+      projects: D.projects.map((p, i) => Object.assign({ status: i === 0 ? 'running' : 'finished', sColor: i === 0 ? 'var(--acc)' : 'var(--muted)', spark: this.curve(24, i + 20, 0.4, 90, 22, 0.2) }, p)),
+      pubs: D.pubs, contact: D.contact,
+      noteCount: D.notes.length,
+      note: { title: cur.title, body: cur.body, tag: tags[cur.tag] || '' },
+      links: (cur.links || []).filter(id => byId[id]).map(id => ({ title: byId[id].title, onClick: () => this.visit(id) })),
+      backlinks: D.notes.filter(n => (n.links || []).includes(cur.id)).map(n => ({ title: n.title, onClick: () => this.visit(n.id) }))
+    };
+  }
+}
+</script>
+</body>
+</html>
