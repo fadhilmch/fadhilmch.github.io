@@ -1,7 +1,7 @@
 ---
 - key: llms
   group: LLMs & agents
-  desc: What I reach for in LLM and agent work, and where I used it.
+  desc: Mostly from building the agentic knowledge assistant at Electrolux Group, plus an LLM experimentation pipeline at Traveloka.
   glyph: "◎"
   color: l0
   items:
@@ -17,7 +17,7 @@
     where: Traveloka
 - key: experimentation
   group: Experimentation
-  desc: What I reach for in experimentation, and where I used it.
+  desc: Most of this comes from leading Traveloka's experimentation platform; the bandit work started with an internship at Spotify.
   glyph: "⚖"
   color: l1
   items:
@@ -33,12 +33,14 @@
     where: KTH · Electrolux
 - key: ml-platform
   group: ML platform
-  desc: What I reach for in ML platform work, and where I used it.
+  desc: The plumbing behind serving, training and experimentation, on Google Cloud at Traveloka and on Azure at Electrolux Group.
   glyph: "∞"
   color: l3
   items:
-  - name: Python · Go
-    where: strongest languages
+  - name: Python
+    where: Traveloka · Electrolux Group
+  - name: Go
+    where: Traveloka
   - name: Kubernetes · Kubeflow Pipelines
     where: Traveloka · Electrolux Group
   - name: Terraform
@@ -47,30 +49,19 @@
     where: Electrolux Group
   - name: Prometheus · Grafana · Datadog
     where: Traveloka · Electrolux Group
-  - name: GCP · Azure
-    where: both clouds in production
-- key: creative
-  group: Creative
-  desc: What I reach for in creative work, and where I used it.
+  - name: Google Cloud
+    where: Traveloka
+  - name: Azure
+    where: Electrolux Group
+- key: design
+  group: Design
+  desc: Product and interaction design from side work, a virtual-sports platform I co-founded and interactive-wall installations in Bandung.
   glyph: "◐"
   color: l2
   items:
-  - name: Photography
-    where: off-hours
-    emoji: "📷"
-  - name: Digital design · Figma
-    where: off-hours
-    emoji: "🎨"
-  - name: Music
-    where: off-hours
-    emoji: "🎹"
-  - name: Coffee · brewing experiments
-    where: off-hours
-    emoji: "☕"
-  - name: Cooking
-    where: off-hours
-    emoji: "🍳"
-  - name: Design thinking
-    where: Labtek Indie
+  - name: UX/UI design · Figma
+    where: Icarus Virtual Sports
   - name: Interactive installations · Unity
+    where: Labtek Indie
+  - name: Design thinking
     where: Labtek Indie

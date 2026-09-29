@@ -47,7 +47,9 @@ Did the right documents make it into context at all?
 
 Edit `_data/profile.yml` for your name, role, location, headline, bio, current focus, and off-hours interests. `short_role` and `city` are the short versions shown under your name in the header and in the footer ("ML engineer · Stockholm").
 
-`off_hours` may start each interest with an emoji, and `flag` (quoted, e.g. `"🇸🇪"`) is shown after the location in the About inspector. Emojis are content, so they live in YAML, never in templates. The Fadhil node's `subtitle` and `desc` in `_data/workflow.yml` are literal copies of the location and `bio`; update them alongside `profile.yml`.
+`off_hours` may start each interest with an emoji, and `flag` (quoted, e.g. `"🇸🇪"`) is shown after the location in the About inspector. Emojis are content, so they live in YAML, never in templates. The Fadhil node's `subtitle` in `_data/workflow.yml` is a literal copy of the location; update it alongside `profile.yml`. That node has no `desc` on purpose: your `bio` is already shown at the top of the page, so the inspector shows only the rows.
+
+List hobbies once, in `off_hours`. Toolkits in `_data/skills.yml` flow into Work on the pipeline, so keep them to things you have used in work, with `where` naming a company or project.
 
 `_data/stats.yml` holds outcome tiles. The current design does not show them; they are kept for later:
 

@@ -30,7 +30,7 @@
           {%- endfor -%}
         {%- when 'projects+publications' -%}
           {%- for pr in site.data.projects %}
-          <div><dt>{{ pr.name | escape }}</dt><dd>{{ pr.desc | escape }}</dd></div>
+          <div><dt>{{ pr.name | escape }}{% if pr.year %}<span class="wf-rows__year">{{ pr.year | escape }}</span>{% endif %}</dt><dd>{{ pr.desc | escape }}</dd></div>
           {%- endfor -%}
           {%- for pub in site.data.publications %}
           <div><dt>paper · {{ pub.venue | escape }} {{ pub.year | escape }}</dt><dd><a href="{{ pub.href | escape }}" rel="external">{{ pub.title | escape }}</a></dd></div>

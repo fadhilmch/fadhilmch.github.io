@@ -39,6 +39,7 @@
 .wf-rows { display: flex; flex-direction: column; margin: 0; }
 .wf-rows > div { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 14px; padding: 9px 0; border-top: 1px solid var(--line); }
 .wf-rows dt { color: var(--muted); font: 12px/1.55 'Geist Mono', monospace; }
+.wf-rows__year { display: block; opacity: .75; }
 .wf-rows dd { margin: 0; font-size: 14px; overflow-wrap: anywhere; }
 .wf-json-head { display: flex; justify-content: space-between; color: var(--muted); font: 11px 'Geist Mono', monospace; }
 .wf-json-head code { font: inherit; }
