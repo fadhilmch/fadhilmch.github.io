@@ -177,3 +177,14 @@ The metrics I'd keep as reports are the ones that need reading: relevance, and t
 Making the evaluation a report changes how people use it. It becomes something you read before a review, alongside the diff, and not a gate that you try to get past. Reports that people actually want to read need to be legible: baseline next to current, differences by metric and slice, and the worst examples one click away. If nobody reads the report, you've built a gate with extra steps, so it's worth spending effort on the reading experience.
 
 The practical lesson is to make evaluation part of the development loop, keep the reports readable by the people making the next decision, and keep a human in the seat where the decision is a judgement call.
+
+## References
+
+1. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS, 2020. <https://arxiv.org/abs/2005.11401>
+2. Xia, B. et al. *Evaluation-Driven Development and Operations of LLM Agents: A Process Model and Reference Architecture*. arXiv, 2024. <https://arxiv.org/abs/2411.13768>
+3. Es, S. et al. *Ragas: Automated Evaluation of Retrieval Augmented Generation*. arXiv, 2023. <https://arxiv.org/abs/2309.15217> — relevance, context and faithfulness metrics.
+4. Saad-Falcon, J. et al. *ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems*. NAACL, 2024. <https://arxiv.org/abs/2311.09476>
+5. Barnett, S. et al. *Seven Failure Points When Engineering a Retrieval Augmented Generation System*. arXiv, 2024. <https://arxiv.org/abs/2401.05856>
+6. Zheng, L. et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS Datasets and Benchmarks, 2023. <https://arxiv.org/abs/2306.05685>
+7. Miller, E. *Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations*. arXiv, 2024. <https://arxiv.org/abs/2411.00640> — quantifying run-to-run noise.
+8. Jones, C., Wilkes, J. and Murphy, N. *Service Level Objectives*. In *Site Reliability Engineering*, Google, O'Reilly, 2016. <https://sre.google/sre-book/service-level-objectives/> — latency budgets as SLOs.

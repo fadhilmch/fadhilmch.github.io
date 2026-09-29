@@ -129,3 +129,12 @@ The same goes for keeping the set alive. The knowledge base changes, so a record
 Because each record names its source, the evaluation can ask two separate questions. Did the assistant give a good answer? And did it retrieve the document that answer should come from? When the first is bad and the second is good, the fault is in how the answer was written. When both are bad, look at retrieval. That split is much harder to make when the golden set is only questions and answers, and it's the main reason I insist on the URL.
 
 If you're building something similar, the parts I'd keep are these: anchor every record to a source, use personas to widen what gets asked, keep a person as the only route into the golden set, and review the set as a whole as well as record by record. The rest is tooling.
+
+## References
+
+1. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS, 2020. <https://arxiv.org/abs/2005.11401>
+2. Es, S. et al. *Ragas: Automated Evaluation of Retrieval Augmented Generation*. arXiv, 2023. <https://arxiv.org/abs/2309.15217>
+3. Saad-Falcon, J. et al. *ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems*. NAACL, 2024. <https://arxiv.org/abs/2311.09476> — synthetic evaluation data plus human annotations.
+4. Ge, T. et al. *Scaling Synthetic Data Creation with 1,000,000,000 Personas*. arXiv, 2024. <https://arxiv.org/abs/2406.20094>
+5. Zheng, L. et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS Datasets and Benchmarks, 2023. <https://arxiv.org/abs/2306.05685>
+6. Panickssery, A., Bowman, S. R. and Feng, S. *LLM Evaluators Recognize and Favor Their Own Generations*. arXiv, 2024. <https://arxiv.org/abs/2404.13076> — why a model shouldn't grade its own output.

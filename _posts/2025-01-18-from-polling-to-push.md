@@ -330,3 +330,12 @@ The version I'd defend now:
 - pick the staleness bound from the kill switch, not from cost;
 - keep assignment in one place you control;
 - and before adding infrastructure to push changes, check whether your data store can already push them.
+
+## References
+
+1. Google. *Cloud Firestore pricing*. Firebase documentation. <https://firebase.google.com/docs/firestore/pricing> — per-document read billing and listener reconnect charges
+2. Google. *Get realtime updates with Cloud Firestore*. Firebase documentation. <https://firebase.google.com/docs/firestore/query-data/listen>
+3. Fielding, R., Nottingham, M. and Reschke, J. *HTTP Semantics*. RFC 9110, IETF, 2022. <https://www.rfc-editor.org/rfc/rfc9110.html> — ETag, If-None-Match and 304 Not Modified
+4. Fielding, R., Nottingham, M. and Reschke, J. *HTTP Caching*. RFC 9111, IETF, 2022. <https://www.rfc-editor.org/rfc/rfc9111.html>
+5. WHATWG. *HTML Living Standard: Server-sent events*. <https://html.spec.whatwg.org/multipage/server-sent-events.html> — Last-Event-ID and reconnection
+6. gRPC authors. *Core concepts, architecture and lifecycle*. grpc.io. <https://grpc.io/docs/what-is-grpc/core-concepts/> — server-streaming RPCs

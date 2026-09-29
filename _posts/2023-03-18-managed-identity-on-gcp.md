@@ -313,3 +313,13 @@ The last step is the one that makes the change stick. Without it, the next perso
 - Azure has the same three pieces under different names: managed identities, AKS workload identity and federated identity credentials.
 
 What we're really getting rid of isn't key files. It's the step where someone hands out a secret, and everything that goes wrong after it.
+
+## References
+
+1. Google Cloud. *Best practices for managing service account keys*. Google Cloud IAM documentation. <https://cloud.google.com/iam/docs/best-practices-for-managing-service-account-keys>
+2. Google Cloud. *How Application Default Credentials works*. Google Cloud Authentication documentation. <https://cloud.google.com/docs/authentication/application-default-credentials>
+3. Google Cloud. *About VM metadata*. Compute Engine documentation. <https://cloud.google.com/compute/docs/metadata/overview>
+4. Google Cloud. *About Workload Identity Federation for GKE*. Google Kubernetes Engine documentation. <https://cloud.google.com/kubernetes-engine/docs/concepts/workload-identity>
+5. Google Cloud. *Workload Identity Federation*. Google Cloud IAM documentation. <https://cloud.google.com/iam/docs/workload-identity-federation>
+6. Microsoft. *Managed identities for Azure resources*. Microsoft Learn. <https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/overview>
+7. Microsoft. *Use a Microsoft Entra Workload ID on Azure Kubernetes Service (AKS)*. Microsoft Learn. <https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview>

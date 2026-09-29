@@ -251,3 +251,13 @@ For our config system, with around ten changes a day, not yet. Polling cheaply w
 If we needed changes to reach every client within a second, I'd build SSE with the fixes above: heartbeats, connections that close every few minutes, message ids for resuming, random waits on reconnect, buffering off, and polling as a fallback. I'd only use a mesh if the cluster already had one. None of the fixes depend on it.
 
 My worry was right about which problems exist. I overestimated how hard they are: each one has a known fix, and most of the fixes are a few lines of server and client code.
+
+## References
+
+1. WHATWG. *HTML Standard: Server-sent events*. <https://html.spec.whatwg.org/multipage/server-sent-events.html> — the SSE format, `Last-Event-ID` and comment heartbeats
+2. MDN Web Docs. *Using server-sent events*. Mozilla. <https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events>
+3. Istio. *Architecture*. <https://istio.io/latest/docs/ops/deployment/architecture/> — istiod, Envoy sidecars and the data plane
+4. Amazon Web Services. *Application Load Balancers*. Elastic Load Balancing documentation. <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html> — idle timeout, 60 seconds by default
+5. Envoy. *How do I configure timeouts?* Envoy proxy documentation. <https://www.envoyproxy.io/docs/envoy/latest/faq/configuration/timeouts> — route and stream idle timeouts
+6. NGINX. *Module ngx_http_proxy_module*. <https://nginx.org/en/docs/http/ngx_http_proxy_module.html> — `proxy_buffering` and `X-Accel-Buffering`
+7. Kubernetes. *Sidecar Containers*. <https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/> — sidecar start and stop ordering

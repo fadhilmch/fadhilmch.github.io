@@ -517,3 +517,13 @@ Nothing about this product needs a big cluster; the stream fit comfortably on a 
 The biggest differences from what we built aren't the extra machines. They're the things that make results repeatable: saved offsets, idempotent writes, event time and counted drops. Those would have been worth doing even on one laptop.
 
 The code and the report are on [GitHub](https://github.com/fadhilmch/streaming-twitter-spotify-trending-artists).
+
+## References
+
+1. Apache Kafka. *Apache Kafka documentation*. kafka.apache.org. <https://kafka.apache.org/documentation/> — topics, partitions, replication and consumer groups.
+2. Martin Kleppmann. *Designing Data-Intensive Applications*. O'Reilly Media, 2017. <https://dataintensive.net/> — logs, stream processing and delivery guarantees.
+3. Apache Spark. *Spark Streaming Programming Guide*. spark.apache.org. <https://spark.apache.org/docs/latest/streaming-programming-guide.html>
+4. Apache Cassandra. *Apache Cassandra documentation*. cassandra.apache.org. <https://cassandra.apache.org/doc/latest/>
+5. Tyler Akidau et al. *The Dataflow Model: A Practical Approach to Balancing Correctness, Latency, and Cost in Massive-Scale, Unbounded, Out-of-Order Data Processing*. Proceedings of the VLDB Endowment 8(12), 2015. <https://www.vldb.org/pvldb/vol8/p1792-Akidau.pdf> — event time, windows and watermarks.
+6. Apache Flink. *Timely Stream Processing*. nightlies.apache.org. <https://nightlies.apache.org/flink/flink-docs-stable/docs/concepts/time/>
+7. Apache Spark. *Structured Streaming Programming Guide*. spark.apache.org. <https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html> — checkpointing, event-time windows and watermarks.

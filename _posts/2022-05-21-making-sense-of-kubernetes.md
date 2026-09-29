@@ -343,3 +343,14 @@ The price is an extra proxy on every hop, more memory per pod, and one more syst
 - Load is balanced per connection, unless something above kube-proxy does better.
 
 Kubernetes is still big. But it's one idea applied many times, and seeing that made the rest learnable.
+
+## References
+
+1. Kubernetes documentation. *Controllers*. kubernetes.io. <https://kubernetes.io/docs/concepts/architecture/controller/>
+2. Kubernetes documentation. *Kubernetes Components*. kubernetes.io. <https://kubernetes.io/docs/concepts/overview/components/>
+3. Kubernetes documentation. *Service*. kubernetes.io. <https://kubernetes.io/docs/concepts/services-networking/service/>
+4. Kubernetes documentation. *Namespaces*. kubernetes.io. <https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/>
+5. Kubernetes documentation. *Network Policies*. kubernetes.io. <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
+6. Helm. *Charts*. helm.sh. <https://helm.sh/docs/topics/charts/>
+7. Kubernetes documentation. *Ingress*. kubernetes.io. <https://kubernetes.io/docs/concepts/services-networking/ingress/>
+8. Istio. *Architecture*. istio.io. <https://istio.io/latest/docs/ops/deployment/architecture/> — sidecar proxies and the mesh control plane.

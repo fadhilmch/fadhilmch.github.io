@@ -417,3 +417,12 @@ Validation loss went up from the very first epoch, so the network was memorising
 None of these change the main conclusion. They do show that the numbers we were proudest of were the least carefully checked.
 
 The notebooks, figures and report are on [GitHub](https://github.com/fadhilmch/big-data-project).
+
+## References
+
+1. Alec Go, Richa Bhayani and Lei Huang. *Twitter Sentiment Classification using Distant Supervision*. Stanford CS224N project report, 2009. <https://www-cs.stanford.edu/people/alecmgo/papers/TwitterDistantSupervision09.pdf> — the Sentiment140 emoticon-labelling method.
+2. Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze. *Introduction to Information Retrieval*. Cambridge University Press, 2008. <https://nlp.stanford.edu/IR-book/> — covers TF-IDF and Naive Bayes text classification.
+3. scikit-learn developers. *Feature extraction: text feature extraction*. scikit-learn documentation. <https://scikit-learn.org/stable/modules/feature_extraction.html#text-feature-extraction>
+4. Steven Loria. *TextBlob: Quickstart*. TextBlob documentation. <https://textblob.readthedocs.io/en/dev/quickstart.html>
+5. Corinna Cortes and Vladimir Vapnik. *Support-vector networks*. Machine Learning 20, 1995. <https://link.springer.com/article/10.1007/BF00994018>
+6. Yoon Kim. *Convolutional Neural Networks for Sentence Classification*. EMNLP, 2014. <https://arxiv.org/abs/1408.5882>

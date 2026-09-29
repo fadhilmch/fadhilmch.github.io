@@ -168,3 +168,11 @@ If I were starting again, I'd check for these early:
 ## What I took from it
 
 The schema and the engine mattered, but a shared definition only becomes a working practice through reuse, and reuse depends on people. Someone has to own each definition, changes have to be visible, and the shared version has to be easier to reach than a copy. Get those right and a dashboard comparison goes back to being a conversation about the product.
+
+## References
+
+1. Chang, R. *How Airbnb Achieved Metric Consistency at Scale*. The Airbnb Tech Blog. <https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70> — Minerva, a metric platform with one definition per metric
+2. dbt Labs. *dbt Semantic Layer*. dbt documentation. <https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl> — centralised metric definitions, reused across tools
+3. dbt Labs. *About MetricFlow*. dbt documentation. <https://docs.getdbt.com/docs/build/about-metricflow> — generating SQL from metric definitions
+4. Kohavi, R., Tang, D., and Xu, Y. *Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing*. Cambridge University Press, 2020. <https://experimentguide.com/>
+5. Google Cloud. *BigQuery overview*. Google Cloud documentation. <https://docs.cloud.google.com/bigquery/docs/introduction>

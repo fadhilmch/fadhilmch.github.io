@@ -222,3 +222,12 @@ A test like that is only meaningful if you state its shape: how long, what paylo
 - **Always have a watchdog.** A deadline on every call is the difference between one slow dependency and a whole service stuck waiting.
 
 Microcontrollers with kilobytes of memory and a Kubernetes deployment have almost nothing in common, except this: whatever you don't bound, the next traffic spike will bound for you.
+
+## References
+
+1. MAVLink. *MAVLink Developer Guide: Introduction*. mavlink.io. <https://mavlink.io/en/>
+2. Go documentation. *Effective Go: Concurrency*. go.dev. <https://go.dev/doc/effective_go#concurrency> — channels, goroutines and semaphores via buffered channels
+3. Go documentation. *The Go Programming Language Specification*. go.dev. <https://go.dev/ref/spec> — channel types and select statements
+4. Ajmani, S. *Go Concurrency Patterns: Pipelines and cancellation*. The Go Blog, 2014. <https://go.dev/blog/pipelines>
+5. Ajmani, S. *Go Concurrency Patterns: Context*. The Go Blog, 2014. <https://go.dev/blog/context> — deadlines and cancellation
+6. Dean, J. and Barroso, L. A. *The Tail at Scale*. Communications of the ACM 56(2), 2013. <https://research.google/pubs/the-tail-at-scale/> — why P95 and tail latency matter

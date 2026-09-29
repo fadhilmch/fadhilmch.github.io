@@ -372,3 +372,14 @@ This is the list I'd give my past self.
 - Watch the bill, especially data moving between zones and regions.
 
 The Kubernetes part I'd spent months learning turned out to be the last few metres of a long trip. Knowing the rest of the route is what makes the infra decisions make sense.
+
+## References
+
+1. P. Mockapetris. *Domain names - implementation and specification* (RFC 1035). IETF, 1987. <https://www.rfc-editor.org/rfc/rfc1035>
+2. W. Eddy (ed.). *Transmission Control Protocol (TCP)* (RFC 9293). IETF, 2022. <https://www.rfc-editor.org/rfc/rfc9293>
+3. E. Rescorla. *The Transport Layer Security (TLS) Protocol Version 1.3* (RFC 8446). IETF, 2018. <https://www.rfc-editor.org/rfc/rfc8446>
+4. M. Bishop (ed.). *HTTP/3* (RFC 9114). IETF, 2022. <https://www.rfc-editor.org/rfc/rfc9114>
+5. J. Abley and K. Lindqvist. *Operation of Anycast Services* (RFC 4786). IETF, 2006. <https://www.rfc-editor.org/rfc/rfc4786>
+6. Google Cloud documentation. *Geography and regions*. cloud.google.com. <https://cloud.google.com/docs/geography-and-regions>
+7. Google Cloud documentation. *Cloud Load Balancing overview*. cloud.google.com. <https://cloud.google.com/load-balancing/docs/load-balancing-overview>
+8. Chris Jones, Jennifer Petoff and Betsy Beyer. *Service Level Objectives*. In *Site Reliability Engineering*, O'Reilly Media, 2016. <https://sre.google/sre-book/service-level-objectives/>

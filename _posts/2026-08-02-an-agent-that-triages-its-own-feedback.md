@@ -132,3 +132,12 @@ This is a sketch, not the real table, but the principle is what I'm after. If a 
 The workflow has helped the team deal with recurring issues and content gaps. I haven't formally measured how often its root-cause call and its owner assignment are right, and I'd rather say so than quote a number. The comparison I'd make at this stage isn't accuracy but effort: how much of the manual investigation is already done when a case reaches a person. Because it produces a report with the replay and the evidence attached, a reviewer starts from a worked lead instead of a blank page. My own estimate is that it removes most of the digging per item, based on comparing the manual and the automated routes. It's an estimate, not a controlled measurement.
 
 If you're building something like this, the parts I'd carry over are these: check the evidence before concluding anything, make the cause list small and explicit, keep routing deterministic, and give the agent a clear way to say it doesn't know. The goal is to shorten the investigation, not to automate certainty.
+
+## References
+
+1. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS, 2020. <https://arxiv.org/abs/2005.11401>
+2. Barnett, S. et al. *Seven Failure Points When Engineering a Retrieval Augmented Generation System*. arXiv, 2024. <https://arxiv.org/abs/2401.05856> — a taxonomy of RAG failures.
+3. Anthropic. *Building Effective AI Agents*. Anthropic Engineering, 2024. <https://www.anthropic.com/engineering/building-effective-agents> — routing and workflows versus agents.
+4. Es, S. et al. *Ragas: Automated Evaluation of Retrieval Augmented Generation*. arXiv, 2023. <https://arxiv.org/abs/2309.15217>
+5. Zheng, L. et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS Datasets and Benchmarks, 2023. <https://arxiv.org/abs/2306.05685>
+6. Geifman, Y. and El-Yaniv, R. *Selective Classification for Deep Neural Networks*. arXiv, 2017. <https://arxiv.org/abs/1705.08500> — letting a model abstain when unsure.

@@ -168,3 +168,12 @@ I've pushed the comparison as far as I can. These are the places where it stops 
 I don't think the analogy predicts anything. It gives me a way to explain to a colleague, or to myself, why "just change the learning rate" is rarely a single-variable question. It also reminds me to start from what I care about, the way you would with a subject that moves or a scene that's dim.
 
 When I set up or review a training run, I try to ask three questions in that order. What's the failure I'm most worried about: divergence, slow progress, or noisy results? Which knob buys me the most protection against it? And which cost am I accepting in exchange? Then I look at the curve, the way I'd look at the back of the camera, and adjust.
+
+## References
+
+1. Bottou, L., Curtis, F. E., and Nocedal, J. *Optimization Methods for Large-Scale Machine Learning*. SIAM Review, 2018. <https://arxiv.org/abs/1606.04838> — stochastic gradient noise and step size
+2. Smith, S. L. and Le, Q. V. *A Bayesian Perspective on Generalization and Stochastic Gradient Descent*. ICLR, 2018. <https://arxiv.org/abs/1710.06451> — SGD noise scale set by learning rate and batch size
+3. Goyal, P. et al. *Accurate, Large Minibatch SGD: Training ImageNet in 1 Hour*. arXiv, 2017. <https://arxiv.org/abs/1706.02677> — the linear scaling rule and warmup
+4. Malladi, S., Lyu, K., Panigrahi, A., and Arora, S. *On the SDEs and Scaling Rules for Adaptive Gradient Algorithms*. NeurIPS, 2022. <https://arxiv.org/abs/2205.10287> — square-root scaling for Adam-style optimisers
+5. Liu, L. et al. *On the Variance of the Adaptive Learning Rate and Beyond*. ICLR, 2020. <https://arxiv.org/abs/1908.03265> — why warmup helps adaptive optimisers
+6. Kalra, D. S. and Barkeshli, M. *Why Warmup the Learning Rate? Underlying Mechanisms and Improvements*. NeurIPS, 2024. <https://arxiv.org/abs/2406.09405>
