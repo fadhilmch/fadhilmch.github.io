@@ -4,7 +4,7 @@ title: Rereading my 2019 sentiment model
 date: 2020-11-14
 tags:
 - data
-summary: Three models finished within four points of each other. The dataset moved the result by eleven.
+summary: Three models finished within four points of each other. The dataset moved the result by eleven to fifteen.
 ---
 
 In spring 2019 I did a course project at KTH with two classmates. It was my first project on text. The question was simple: which classifier is best at telling positive tweets from negative ones? We tried Naive Bayes, a linear SVM and a small convolutional network. I expected the CNN to win, because in 2019 the neural network was supposed to win.
