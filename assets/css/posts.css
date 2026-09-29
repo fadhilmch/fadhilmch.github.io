@@ -126,3 +126,8 @@
   .post-pagination .next { grid-column: auto; }
   .post-pagination > span { display: none; }
 }
+.mermaid-fig { margin: 32px 0; overflow-x: auto; }
+.mermaid-fig pre.mermaid { margin: 0; padding: 0; background: none; border: 0; font: 13px 'Geist Mono', monospace; text-align: center; }
+.mermaid-fig pre.mermaid:not([data-processed]) { visibility: hidden; }
+.mermaid-fig svg { max-width: 100%; height: auto; }
+.mermaid-fig .node rect, .mermaid-fig rect.actor, .mermaid-fig .note { rx: 6px; ry: 6px; }

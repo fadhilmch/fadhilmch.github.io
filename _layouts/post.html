@@ -19,3 +19,6 @@ layout: base
     {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><small>newer →</small>{{ page.next.title | escape }}</a>{% endif %}
   </nav>
 </article>
+{%- if content contains 'language-mermaid' %}
+<script type="module" src="{{ '/assets/js/mermaid.js' | relative_url }}"></script>
+{%- endif %}

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Rereading my 2019 sentiment model
+title: "The smiley was the label: rereading my first text classifier"
 date: 2020-11-14
 tags:
 - data
@@ -11,7 +11,7 @@ In spring 2019 I did a course project at KTH with two classmates. It was my firs
 
 It didn't. A year and a half later I reread the notebook, and I think the more useful lesson is somewhere other than where we put it at the time.
 
-## The data, and the models we picked
+## The data
 
 We used Sentiment140, 1.6 million English tweets from 2009, each labelled positive or negative. The first notebook was exploration: which words show up on each side.
 
@@ -25,14 +25,274 @@ We used Sentiment140, 1.6 million English tweets from 2009, each labelled positi
 
 The clouds already hint at the difficulty. The biggest words are the same on both sides. Sentiment sits in the smaller words and in how they combine.
 
-A model can't read a tweet directly; it needs numbers. The classic approach is a **bag of words**: one column per word or short phrase (an *n-gram*), counting how often it appears. **TF-IDF** reweights those counts so that words appearing in every tweet count for less. We then picked three models that use that representation in different ways, plus a baseline:
+## From a tweet to numbers
+
+A model can't read a tweet; it needs a row of numbers. Everything before the model is about producing that row. Here is the whole pipeline at a glance:
+
+```mermaid
+flowchart TB
+  T[Raw tweets] --> C[Clean]
+  C --> N[N-grams]
+  N --> B[Counts or TF-IDF]
+  B --> NB[Naive Bayes]
+  B --> SVM[Linear SVM]
+  C --> E[Word indices]
+  E --> CNN[CNN]
+  NB --> V[Accuracy on 1M held-out tweets]
+  SVM --> V
+  CNN --> V
+```
+
+**Cleaning.** Tweets are messy: mentions, links, HTML entities, inconsistent case, contractions. Our cleaning function handled them in a fixed order:
+
+<figure class="fig">
+<svg viewBox="0 0 680 244" role="img" aria-labelledby="c1t c1d">
+  <title id="c1t">Cleaning one tweet, step by step</title>
+  <desc id="c1d">A raw tweet with a mention, an HTML entity and a link is cleaned in four steps into the tokens: do, not, love, this, song, anymore, it, hurts.</desc>
+  <text class="m" x="10" y="16">raw tweet · labelled negative from a :( that Sentiment140 already stripped</text>
+  <text class="t" x="10" y="34" xml:space="preserve"><tspan class="tb">@jess_k</tspan> I don't love this song anymore <tspan class="tb">&amp;amp;</tspan> it hurts <tspan class="tb">http://bit.ly/x9</tspan></text>
+  <text class="m" x="10" y="62">1 · decode HTML, remove mentions and links</text>
+  <text class="t" x="10" y="80" xml:space="preserve">I don't love this song anymore <tspan class="tb">&amp;</tspan> it hurts</text>
+  <text class="m" x="10" y="108">2 · lowercase, expand contractions</text>
+  <text class="t" x="10" y="126" xml:space="preserve"><tspan class="tb">i</tspan> <tspan class="ta">do not</tspan> love this song anymore <tspan class="tb">&amp;</tspan> it hurts</text>
+  <text class="m" x="10" y="154">3 · keep letters only, drop one-letter words</text>
+  <text class="t" x="10" y="172" xml:space="preserve">do not love this song anymore it hurts</text>
+  <text class="m" x="10" y="200">4 · split into tokens</text>
+  <rect class="box" x="10" y="208" width="30" height="26" rx="13"/><text class="t" x="25.0" y="225" text-anchor="middle">do</text>
+  <rect class="box" x="48" y="208" width="38" height="26" rx="13"/><text class="t" x="67.0" y="225" text-anchor="middle">not</text>
+  <rect class="box" x="94" y="208" width="45" height="26" rx="13"/><text class="t" x="116.5" y="225" text-anchor="middle">love</text>
+  <rect class="box" x="147" y="208" width="45" height="26" rx="13"/><text class="t" x="169.5" y="225" text-anchor="middle">this</text>
+  <rect class="box" x="200" y="208" width="45" height="26" rx="13"/><text class="t" x="222.5" y="225" text-anchor="middle">song</text>
+  <rect class="box" x="253" y="208" width="66" height="26" rx="13"/><text class="t" x="286.0" y="225" text-anchor="middle">anymore</text>
+  <rect class="box" x="327" y="208" width="30" height="26" rx="13"/><text class="t" x="342.0" y="225" text-anchor="middle">it</text>
+  <rect class="box" x="365" y="208" width="52" height="26" rx="13"/><text class="t" x="391.0" y="225" text-anchor="middle">hurts</text>
+</svg>
+<figcaption>One made-up tweet through our cleaning function. Orange marks noise that a later step removes; blue marks what a step changed. Expanding "don't" to "do not" was deliberate: it keeps the negation as its own word.</figcaption>
+</figure>
+
+**N-grams.** Next, each cleaned tweet is split into *n-grams*: single words (unigrams), pairs (bigrams) and triples (trigrams). Longer n-grams keep a little word order, which matters most for negation.
+
+<figure class="fig">
+<svg viewBox="0 0 680 150" role="img" aria-labelledby="c2t c2d">
+  <title id="c2t">Unigrams, bigrams and trigrams of one tweet</title>
+  <desc id="c2d">The tweet this is not good split into unigrams (this, is, not, good), bigrams (this is, is not, not good) and trigrams (this is not, is not good).</desc>
+  <text class="t" x="10" y="18">tweet: <tspan class="ta">this is not good</tspan></text>
+  <text class="m" x="10" y="51">unigrams</text>
+  <rect class="box" x="110" y="34" width="45" height="26" rx="13"/><text class="t" x="132.5" y="51" text-anchor="middle">this</text>
+  <rect class="box" x="163" y="34" width="30" height="26" rx="13"/><text class="t" x="178.0" y="51" text-anchor="middle">is</text>
+  <rect class="box" x="201" y="34" width="38" height="26" rx="13"/><text class="t" x="220.0" y="51" text-anchor="middle">not</text>
+  <rect class="box" x="247" y="34" width="45" height="26" rx="13"/><text class="t" x="269.5" y="51" text-anchor="middle">good</text>
+  <text class="m" x="10" y="89">bigrams</text>
+  <rect class="box" x="110" y="72" width="66" height="26" rx="13"/><text class="t" x="143.0" y="89" text-anchor="middle">this is</text>
+  <rect class="box" x="184" y="72" width="59" height="26" rx="13"/><text class="t" x="213.5" y="89" text-anchor="middle">is not</text>
+  <rect class="box" x="251" y="72" width="74" height="26" rx="13" style="stroke:var(--fig-a)"/><text class="ta" x="288.0" y="89" text-anchor="middle">not good</text>
+  <text class="ta" x="339" y="89">negation kept as one feature</text>
+  <text class="m" x="10" y="127">trigrams</text>
+  <rect class="box" x="110" y="110" width="95" height="26" rx="13"/><text class="t" x="157.5" y="127" text-anchor="middle">this is not</text>
+  <rect class="box" x="213" y="110" width="95" height="26" rx="13" style="stroke:var(--fig-a)"/><text class="ta" x="260.5" y="127" text-anchor="middle">is not good</text>
+</svg>
+<figcaption>N-grams are runs of consecutive words. With single words only, "not" and "good" are separate clues that pull in opposite directions; the bigram "not good" is one clear clue.</figcaption>
+</figure>
+
+**Bag of words and TF-IDF.** Finally, every n-gram in the training set becomes a column, and each tweet becomes a row saying how often each one appears. That's a *bag of words*: word order beyond the n-gram is thrown away. Plain counts treat every term alike, so common words dominate. *TF-IDF* (term frequency × inverse document frequency) scales each count down by how many tweets contain the term:
+
+<figure class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-labelledby="c3t c3d">
+  <title id="c3t">Bag-of-words counts and TF-IDF weights for three tweets</title>
+  <desc id="c3d">Three tweets as rows and six terms as columns. Counts are all 0 or 1. With TF-IDF, good, which appears in every tweet, gets 0.23 to 0.28, while rarer terms such as not, today and morning get 0.40 to 0.48.</desc>
+  <text class="h" x="10" y="16">BAG OF WORDS: HOW MANY TIMES EACH TERM APPEARS</text>
+  <text class="m" x="226" y="36" text-anchor="middle">good</text>
+  <text class="m" x="302" y="36" text-anchor="middle">not</text>
+  <text class="m" x="378" y="36" text-anchor="middle">not good</text>
+  <text class="m" x="454" y="36" text-anchor="middle">this</text>
+  <text class="m" x="530" y="36" text-anchor="middle">today</text>
+  <text class="m" x="606" y="36" text-anchor="middle">morning</text>
+  <text class="t" x="10" y="61">this is not good</text>
+  <rect class="box" x="190" y="44" width="72" height="24" rx="4"/>
+  <rect class="fa" x="190" y="44" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="226" y="60" text-anchor="middle">1</text>
+  <rect class="box" x="266" y="44" width="72" height="24" rx="4"/>
+  <rect class="fa" x="266" y="44" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="302" y="60" text-anchor="middle">1</text>
+  <rect class="box" x="342" y="44" width="72" height="24" rx="4"/>
+  <rect class="fa" x="342" y="44" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="378" y="60" text-anchor="middle">1</text>
+  <rect class="box" x="418" y="44" width="72" height="24" rx="4"/>
+  <rect class="fa" x="418" y="44" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="454" y="60" text-anchor="middle">1</text>
+  <rect class="box" x="494" y="44" width="72" height="24" rx="4"/>
+  <text class="m" x="530" y="60" text-anchor="middle">0</text>
+  <rect class="box" x="570" y="44" width="72" height="24" rx="4"/>
+  <text class="m" x="606" y="60" text-anchor="middle">0</text>
+  <text class="t" x="10" y="89">so good today</text>
+  <rect class="box" x="190" y="72" width="72" height="24" rx="4"/>
+  <rect class="fa" x="190" y="72" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="226" y="88" text-anchor="middle">1</text>
+  <rect class="box" x="266" y="72" width="72" height="24" rx="4"/>
+  <text class="m" x="302" y="88" text-anchor="middle">0</text>
+  <rect class="box" x="342" y="72" width="72" height="24" rx="4"/>
+  <text class="m" x="378" y="88" text-anchor="middle">0</text>
+  <rect class="box" x="418" y="72" width="72" height="24" rx="4"/>
+  <text class="m" x="454" y="88" text-anchor="middle">0</text>
+  <rect class="box" x="494" y="72" width="72" height="24" rx="4"/>
+  <rect class="fa" x="494" y="72" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="530" y="88" text-anchor="middle">1</text>
+  <rect class="box" x="570" y="72" width="72" height="24" rx="4"/>
+  <text class="m" x="606" y="88" text-anchor="middle">0</text>
+  <text class="t" x="10" y="117">good morning all</text>
+  <rect class="box" x="190" y="100" width="72" height="24" rx="4"/>
+  <rect class="fa" x="190" y="100" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="226" y="116" text-anchor="middle">1</text>
+  <rect class="box" x="266" y="100" width="72" height="24" rx="4"/>
+  <text class="m" x="302" y="116" text-anchor="middle">0</text>
+  <rect class="box" x="342" y="100" width="72" height="24" rx="4"/>
+  <text class="m" x="378" y="116" text-anchor="middle">0</text>
+  <rect class="box" x="418" y="100" width="72" height="24" rx="4"/>
+  <text class="m" x="454" y="116" text-anchor="middle">0</text>
+  <rect class="box" x="494" y="100" width="72" height="24" rx="4"/>
+  <text class="m" x="530" y="116" text-anchor="middle">0</text>
+  <rect class="box" x="570" y="100" width="72" height="24" rx="4"/>
+  <rect class="fa" x="570" y="100" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="606" y="116" text-anchor="middle">1</text>
+  <text class="h" x="10" y="150">TF-IDF: THE SAME COUNTS, WEIGHTED BY RARITY</text>
+  <text class="m" x="226" y="170" text-anchor="middle">good</text>
+  <text class="m" x="302" y="170" text-anchor="middle">not</text>
+  <text class="m" x="378" y="170" text-anchor="middle">not good</text>
+  <text class="m" x="454" y="170" text-anchor="middle">this</text>
+  <text class="m" x="530" y="170" text-anchor="middle">today</text>
+  <text class="m" x="606" y="170" text-anchor="middle">morning</text>
+  <text class="t" x="10" y="195">this is not good</text>
+  <rect class="box" x="190" y="178" width="72" height="24" rx="4"/>
+  <rect class="fa" x="190" y="178" width="72" height="24" rx="4" opacity="0.26"/>
+  <text class="t" x="226" y="194" text-anchor="middle">0.23</text>
+  <rect class="box" x="266" y="178" width="72" height="24" rx="4"/>
+  <rect class="fa" x="266" y="178" width="72" height="24" rx="4" opacity="0.46"/>
+  <text class="t" x="302" y="194" text-anchor="middle">0.40</text>
+  <rect class="box" x="342" y="178" width="72" height="24" rx="4"/>
+  <rect class="fa" x="342" y="178" width="72" height="24" rx="4" opacity="0.46"/>
+  <text class="t" x="378" y="194" text-anchor="middle">0.40</text>
+  <rect class="box" x="418" y="178" width="72" height="24" rx="4"/>
+  <rect class="fa" x="418" y="178" width="72" height="24" rx="4" opacity="0.46"/>
+  <text class="t" x="454" y="194" text-anchor="middle">0.40</text>
+  <rect class="box" x="494" y="178" width="72" height="24" rx="4"/>
+  <text class="m" x="530" y="194" text-anchor="middle">0</text>
+  <rect class="box" x="570" y="178" width="72" height="24" rx="4"/>
+  <text class="m" x="606" y="194" text-anchor="middle">0</text>
+  <text class="t" x="10" y="223">so good today</text>
+  <rect class="box" x="190" y="206" width="72" height="24" rx="4"/>
+  <rect class="fa" x="190" y="206" width="72" height="24" rx="4" opacity="0.32"/>
+  <text class="t" x="226" y="222" text-anchor="middle">0.28</text>
+  <rect class="box" x="266" y="206" width="72" height="24" rx="4"/>
+  <text class="m" x="302" y="222" text-anchor="middle">0</text>
+  <rect class="box" x="342" y="206" width="72" height="24" rx="4"/>
+  <text class="m" x="378" y="222" text-anchor="middle">0</text>
+  <rect class="box" x="418" y="206" width="72" height="24" rx="4"/>
+  <text class="m" x="454" y="222" text-anchor="middle">0</text>
+  <rect class="box" x="494" y="206" width="72" height="24" rx="4"/>
+  <rect class="fa" x="494" y="206" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="530" y="222" text-anchor="middle">0.48</text>
+  <rect class="box" x="570" y="206" width="72" height="24" rx="4"/>
+  <text class="m" x="606" y="222" text-anchor="middle">0</text>
+  <text class="t" x="10" y="251">good morning all</text>
+  <rect class="box" x="190" y="234" width="72" height="24" rx="4"/>
+  <rect class="fa" x="190" y="234" width="72" height="24" rx="4" opacity="0.32"/>
+  <text class="t" x="226" y="250" text-anchor="middle">0.28</text>
+  <rect class="box" x="266" y="234" width="72" height="24" rx="4"/>
+  <text class="m" x="302" y="250" text-anchor="middle">0</text>
+  <rect class="box" x="342" y="234" width="72" height="24" rx="4"/>
+  <text class="m" x="378" y="250" text-anchor="middle">0</text>
+  <rect class="box" x="418" y="234" width="72" height="24" rx="4"/>
+  <text class="m" x="454" y="250" text-anchor="middle">0</text>
+  <rect class="box" x="494" y="234" width="72" height="24" rx="4"/>
+  <text class="m" x="530" y="250" text-anchor="middle">0</text>
+  <rect class="box" x="570" y="234" width="72" height="24" rx="4"/>
+  <rect class="fa" x="570" y="234" width="72" height="24" rx="4" opacity="0.55"/>
+  <text class="t" x="606" y="250" text-anchor="middle">0.48</text>
+</svg>
+<figcaption>Each tweet becomes a row of numbers, one column per term (only six of the columns are shown). "good" is in every tweet, so TF-IDF gives it the least weight. Values follow scikit-learn's default formula, with each row normalised over all its unigrams and bigrams.</figcaption>
+</figure>
+
+With about 100,000 training tweets and tens of thousands of columns or more, almost every cell is zero. Models built for this kind of sparse data are fast and hard to beat, which is part of why the linear ones did so well.
+
+## The models we picked
+
+We picked three models that use those numbers in different ways, plus a baseline that uses none:
 
 - **TextBlob** was the baseline. It doesn't learn anything: it looks words up in a fixed dictionary of positive and negative scores. It showed what we got for free.
-- **Multinomial Naive Bayes** learns how likely each word is in positive and in negative tweets, then multiplies those probabilities for a new tweet. It assumes words are independent, which isn't true, but it trains in seconds and is the standard first model for text.
-- **A linear SVM** learns one weight per word or phrase and draws the boundary between the classes with as wide a margin as possible. With hundreds of thousands of sparse features, of which only a few matter in any one tweet, that's exactly the setting it's good at.
-- **A convolutional network (CNN)** skips the counts. Each word becomes a small learned vector, and filters slide over windows of a few words at a time, learning to detect phrases like "not bad" wherever they appear. Ours was small: a 5,000-word vocabulary, 25-dimensional word vectors, and a short stack of convolution layers.
+- **Multinomial Naive Bayes** learns how likely each term is in positive and in negative tweets, then multiplies those likelihoods for a new tweet. It assumes terms are independent, which isn't true, but it trains in seconds and is the standard first model for text.
+- **A linear SVM** learns one weight per term and draws the boundary between the classes with as wide a margin as possible. With tens of thousands of sparse features, of which only a few matter in any one tweet, that's exactly the setting it's good at.
+- **A convolutional network (CNN)** skips the counts. Each word becomes a small learned vector, and filters slide over windows of a few words at a time, learning to detect phrases wherever they appear. Ours was small: a 5,000-word vocabulary, 25-dimensional word vectors, and a short stack of convolution layers.
 
-Naive Bayes and the SVM only see which words and phrases occur. The CNN sees word order within a window, which is why I expected it to win.
+<figure class="fig">
+<svg viewBox="0 0 680 296" role="img" aria-labelledby="c4t c4d">
+  <title id="c4t">How each model scores this is not good</title>
+  <desc id="c4d">Naive Bayes multiplies per-word likelihood ratios; not favours negative and good favours positive. The linear SVM sums learned weights, and the bigram not good has a large negative weight, so the sum is negative. The CNN turns words into vectors and a filter over a window of words fires on not good. All three output negative.</desc>
+  <defs><marker id="cm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <circle class="fb" cx="16" cy="12" r="5"/><text class="m" x="26" y="16">pushes toward negative</text>
+  <circle class="fa" cx="206" cy="12" r="5"/><text class="m" x="216" y="16">pushes toward positive</text>
+  <text class="m" x="670" y="16" text-anchor="end">numbers are illustrative</text>
+  <text class="t" x="10" y="57">Naive Bayes</text>
+  <text class="m" x="10" y="75">how typical each word</text>
+  <text class="m" x="10" y="90">is of each class</text>
+  <rect class="box" x="180" y="40" width="45" height="26" rx="13"/><text class="t" x="202.5" y="57" text-anchor="middle">this</text>
+  <rect class="box" x="233" y="40" width="30" height="26" rx="13"/><text class="t" x="248.0" y="57" text-anchor="middle">is</text>
+  <rect class="box" x="271" y="40" width="38" height="26" rx="13"/><text class="t" x="290.0" y="57" text-anchor="middle">not</text>
+  <rect class="box" x="317" y="40" width="45" height="26" rx="13"/><text class="t" x="339.5" y="57" text-anchor="middle">good</text>
+  <text class="m" x="202.5" y="86" text-anchor="middle">≈1</text>
+  <text class="m" x="248.0" y="86" text-anchor="middle">≈1</text>
+  <text class="tb" x="290.0" y="86" text-anchor="middle">2.1×</text>
+  <text class="ta" x="339.5" y="86" text-anchor="middle">1.8×</text>
+  <path class="ln" d="M478,53 L552,53" marker-end="url(#cm)"/>
+  <text class="m" x="515" y="46" text-anchor="middle">multiply</text>
+  <rect class="box" x="556" y="40" width="114" height="26" rx="13" style="stroke:var(--fig-b)"/>
+  <text class="tb" x="613" y="57" text-anchor="middle">negative</text>
+  <text class="t" x="10" y="143">Linear SVM</text>
+  <text class="m" x="10" y="161">one learned weight</text>
+  <text class="m" x="10" y="176">per word or phrase</text>
+  <rect class="box" x="180" y="126" width="45" height="26" rx="13"/><text class="t" x="202.5" y="143" text-anchor="middle">this</text>
+  <rect class="box" x="233" y="126" width="30" height="26" rx="13"/><text class="t" x="248.0" y="143" text-anchor="middle">is</text>
+  <rect class="box" x="271" y="126" width="38" height="26" rx="13"/><text class="t" x="290.0" y="143" text-anchor="middle">not</text>
+  <rect class="box" x="317" y="126" width="45" height="26" rx="13"/><text class="t" x="339.5" y="143" text-anchor="middle">good</text>
+  <rect class="box" x="370" y="126" width="74" height="26" rx="13"/><text class="t" x="407.0" y="143" text-anchor="middle">not good</text>
+  <text class="m" x="202.5" y="172" text-anchor="middle">0</text>
+  <text class="m" x="248.0" y="172" text-anchor="middle">0</text>
+  <text class="tb" x="290.0" y="172" text-anchor="middle">−0.4</text>
+  <text class="ta" x="339.5" y="172" text-anchor="middle">+0.6</text>
+  <text class="tb" x="407.0" y="172" text-anchor="middle">−1.1</text>
+  <path class="ln" d="M478,139 L552,139" marker-end="url(#cm)"/>
+  <text class="m" x="515" y="132" text-anchor="middle">sum −0.9</text>
+  <rect class="box" x="556" y="126" width="114" height="26" rx="13" style="stroke:var(--fig-b)"/>
+  <text class="tb" x="613" y="143" text-anchor="middle">negative</text>
+  <text class="t" x="10" y="229">CNN</text>
+  <text class="m" x="10" y="247">word vectors, then</text>
+  <text class="m" x="10" y="262">filters over windows</text>
+  <rect class="box" x="180" y="212" width="45" height="26" rx="13"/><text class="t" x="202.5" y="229" text-anchor="middle">this</text>
+  <rect class="box" x="233" y="212" width="30" height="26" rx="13"/><text class="t" x="248.0" y="229" text-anchor="middle">is</text>
+  <rect class="box" x="271" y="212" width="38" height="26" rx="13"/><text class="t" x="290.0" y="229" text-anchor="middle">not</text>
+  <rect class="box" x="317" y="212" width="45" height="26" rx="13"/><text class="t" x="339.5" y="229" text-anchor="middle">good</text>
+  <rect class="fa" x="186.5" y="246" width="9" height="9" rx="2" opacity="0.25"/>
+  <rect class="fa" x="197.5" y="246" width="9" height="9" rx="2" opacity="0.45"/>
+  <rect class="fa" x="208.5" y="246" width="9" height="9" rx="2" opacity="0.65"/>
+  <rect class="fa" x="232.0" y="246" width="9" height="9" rx="2" opacity="0.25"/>
+  <rect class="fa" x="243.0" y="246" width="9" height="9" rx="2" opacity="0.45"/>
+  <rect class="fa" x="254.0" y="246" width="9" height="9" rx="2" opacity="0.65"/>
+  <rect class="fa" x="274.0" y="246" width="9" height="9" rx="2" opacity="0.25"/>
+  <rect class="fa" x="285.0" y="246" width="9" height="9" rx="2" opacity="0.45"/>
+  <rect class="fa" x="296.0" y="246" width="9" height="9" rx="2" opacity="0.65"/>
+  <rect class="fa" x="323.5" y="246" width="9" height="9" rx="2" opacity="0.25"/>
+  <rect class="fa" x="334.5" y="246" width="9" height="9" rx="2" opacity="0.45"/>
+  <rect class="fa" x="345.5" y="246" width="9" height="9" rx="2" opacity="0.65"/>
+  <path class="sb" d="M233,262 L233,268 L362,268 L362,262"/>
+  <text class="tb" x="297.5" y="284" text-anchor="middle">filter fires on "not good"</text>
+  <path class="ln" d="M478,225 L552,225" marker-end="url(#cm)"/>
+  <text class="m" x="515" y="218" text-anchor="middle">max, dense</text>
+  <rect class="box" x="556" y="212" width="114" height="26" rx="13" style="stroke:var(--fig-b)"/>
+  <text class="tb" x="613" y="229" text-anchor="middle">negative</text>
+</svg>
+<figcaption>Three ways to reach the same answer. Naive Bayes and the SVM only see which words and phrases occur; the CNN sees word order inside each window. The numbers are made up to show the mechanics, not taken from our models.</figcaption>
+</figure>
+
+Naive Bayes and the SVM only see which terms occur. The CNN sees word order within a window, which is why I expected it to win.
 
 ## What we measured
 

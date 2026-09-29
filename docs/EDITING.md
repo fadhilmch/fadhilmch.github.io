@@ -26,6 +26,19 @@ The essay starts here.
 
 The site computes the URL, reading time, lane, date formatting, and previous/next links. The post appears on the Posts page under its year, with a dot in its lane colour, automatically.
 
+### Diagrams in a post
+
+Write a fenced `mermaid` block anywhere in a post and it renders as a diagram, coloured from the site theme and redrawn when the reader switches light/dark:
+
+````markdown
+```mermaid
+flowchart LR
+  A[Raw tweet] -->|clean| B[Tokens] --> C[TF-IDF]
+```
+````
+
+Any Mermaid diagram type works (flowchart, sequence, state, and so on). The Mermaid library only loads on posts that contain such a block. For figures that need exact layout, an inline `<figure class="fig"><svg …></svg></figure>` also works; see the existing posts for examples.
+
 ## Add a note
 
 The filename is the note id. Create `_notes/retrieval-recall.md` like this:
