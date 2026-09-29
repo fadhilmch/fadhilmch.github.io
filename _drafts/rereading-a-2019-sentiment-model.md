@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Rereading my 2019 sentiment model
+date: 2020-11-14
 tags:
 - data
 summary: Three models finished within four points of each other. The dataset moved the result by eleven.
@@ -12,14 +13,13 @@ Source: github.com/fadhilmch/big-data-project, project_complete.ipynb + assets/*
 - Every number below is from the notebook outputs or the report slides in assets/. Nothing was rerun.
 - 82.0% / AUC 0.90 for linear SVM come from assets/svm_result.png (the notebook only kept the figures).
   The README says "82% accuracy and AUC 86%", which pairs the linear accuracy with the RBF curve. Fix the README too.
-- Co-authors: M. Irfan Handarbeni and Mehrdad Darraji. Confirm they are happy to be named.
+- Co-authors are deliberately not named in the text.
 - Voice: written as if in late 2020, about 18 months after the project (after the Electrolux thesis
   internship, before Traveloka). No references to anything after 2020.
-- Publication date: decide between backdating (e.g. 2020-11) and today's date with a line such as
-  'written in late 2020'. Backdating implies it was published then.
+- Backdated to 2020-11-14. When publishing, move to _posts/2020-11-14-rereading-a-2019-sentiment-model.md.
 -->
 
-In spring 2019 I did a course project at KTH with two classmates, Irfan Handarbeni and Mehrdad Darraji. The question was simple: which classifier is best at telling positive tweets from negative ones? We tried Naive Bayes, a linear SVM and a small convolutional network. I expected the CNN to win, because in 2019 the neural network was supposed to win.
+In spring 2019 I did a course project at KTH with two classmates. The question was simple: which classifier is best at telling positive tweets from negative ones? We tried Naive Bayes, a linear SVM and a small convolutional network. I expected the CNN to win, because in 2019 the neural network was supposed to win.
 
 It didn't. A year and a half later I reread the notebook, and I think the more useful lesson is somewhere other than where we put it at the time.
 

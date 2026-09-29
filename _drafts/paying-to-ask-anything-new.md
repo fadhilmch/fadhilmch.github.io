@@ -14,13 +14,12 @@ Facts from resume-source.md + interview on 2026-09-29:
 - Traveloka experimentation platform, GCP. Cost -95% YoY (2023 vs 2024 actual billing, shared-service
   allocation estimated). Drivers: removing polling (architecture change) and right-sizing. The Go service
   cut latency, not cost. Latency -90% = Go concurrency + cache. Earlier separate phase: -50% resource use.
-- 20+ backend services (each with multiple pods on Kubernetes) plus every Traveloka user through the apps.
-  CONFIRM: user said AKS, but resume-source says Traveloka ran on GCP/GKE. Text says 'Kubernetes' either way.
+- 20+ backend services (each with multiple pods on GKE) plus every Traveloka user through the apps.
 - About 10 config changes a day across all experiments company-wide, including bandits that shift
   their split every few hours. Polling interval: 2 minutes (720 polls per pod per day).
 - Redis was added because of the multi-pod deployment.
 - No real stale-config incident; the risk is framed as a what-if.
-- Remaining TODO: how the stampede was handled.
+- Stampede: never handled and never a problem at our pod count; framed that way.
 - Figures are inline SVG styled by assets/css/posts.css (.fig). Figure 2 is illustrative, not measured.
 Planned follow-ups:
 - Article 2: design deep dive on alternatives (push/streaming, versioned snapshots, conditional fetch, etc.).
@@ -38,7 +37,7 @@ An experimentation platform has two very different kinds of traffic.
 
 **Config changes** happen when someone creates an experiment, changes a traffic split, pauses a test, or when a bandit shifts traffic toward the variant that's winning. Our bandits re-split traffic every few hours on their own. Across the whole company, all running experiments together changed config around ten times a day.
 
-**Config reads** happen every time anything needs to assign a user to a variant. For us that meant more than 20 backend services, each running many pods on Kubernetes, plus every Traveloka user through the apps.
+**Config reads** happen every time anything needs to assign a user to a variant. For us that meant more than 20 backend services, each running many pods on GKE, plus every Traveloka user through the apps.
 
 Our backend services kept their config fresh by polling Firestore every two minutes. That's 720 polls a day from every pod, to catch about ten changes spread across the whole company. Each poll asked the same question: has anything changed? Firestore bills per document read, so the cost was roughly:
 
@@ -161,7 +160,7 @@ Caching trades cost for correctness, so the question becomes how stale you're al
 <figcaption>How long a paused experiment keeps serving, on a log scale. The TTL is drawn as minutes for illustration.</figcaption>
 </figure>
 
-**The stampede.** When many pods cache the same entries with the same TTL, they expire together. Everything misses at once and reloads from the backing store at once, recreating in a burst the load the cache was supposed to remove. [TODO: what happened, and the fix: randomised TTLs, a single shared reload, refreshing ahead of expiry, or serving the old value while reloading?]
+**The stampede that didn't happen.** When many pods cache the same entries with the same TTL, they expire together. Everything misses at once and reloads at once, briefly recreating the load the cache was supposed to remove. We never did anything about it, because at our pod count the burst was small and Redis absorbed it. With a much larger fleet I would randomise TTLs slightly so expiries spread out, and let one caller reload a key while the rest wait for its result.
 
 ## Where the numbers came from
 

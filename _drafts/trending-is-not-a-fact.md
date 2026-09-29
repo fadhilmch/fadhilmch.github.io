@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Trending is not a fact
+date: 2021-04-17
 tags:
 - data
 - systems
@@ -11,17 +12,17 @@ summary: A live chart of trending artists, and every place the pipeline quietly 
 DRAFT NOTES (delete before publishing)
 Source: github.com/fadhilmch/streaming-twitter-spotify-trending-artists (KTH ID2221, Oct 2019)
 - All behaviour described is read from the code, not from running it.
-- Co-author: M. Irfan Handarbeni. Confirm he is happy to be named.
+- Co-author is deliberately not named in the text.
 - Voice: written as if in 2021, about 18 months after the project (early in the Traveloka ML role).
   No references to anything after 2021.
-- Publication date: backdate (e.g. 2021-04) or today's date with 'written in 2021'. Backdating implies it was published then.
+- Backdated to 2021-04-17. When publishing, move to _posts/2021-04-17-trending-is-not-a-fact.md.
 - Unverified: whether the dashboard window was off by the UTC/Stockholm offset. The tweet
   timestamps are UTC; the dashboard builds its window from naive local now(). How Cassandra
   reads a timestamp string without a zone decides it. Check before mentioning; not in the text yet.
 - Add: the architecture diagram, and the GIF from assets/ or the YouTube recording.
 -->
 
-In autumn 2019, Irfan Handarbeni and I built a live chart of the artists people were sharing on Twitter. Tweets containing a Spotify link went into Kafka. Spark Streaming asked the Spotify API who the artist was, Cassandra stored the counts, and a Dash page redrew the top twenty every five seconds.
+In autumn 2019, a classmate and I built a live chart of the artists people were sharing on Twitter. Tweets containing a Spotify link went into Kafka. Spark Streaming asked the Spotify API who the artist was, Cassandra stored the counts, and a Dash page redrew the top twenty every five seconds.
 
 It worked, and [the recording](https://youtu.be/eLnKT_aGahk) looks convincing: bars grow, artists move up and down. Reading the code again a year and a half later, I see a chart whose title says "trending artists" and whose pipeline answers a narrower question.
 
