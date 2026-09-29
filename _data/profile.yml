@@ -4,22 +4,22 @@ short_role: ML engineer
 city: Stockholm
 role: Machine Learning Engineer
 location: Stockholm, Sweden
-headline: Hi, I’m Fadhil.
+headline: Hi, I’m Fadhil 👋
 bio: >-
-  I'm an ML engineer in Stockholm 🇸🇪, by way of Bandung 🇮🇩. These days I build
-  AI agents and the platforms that keep models running in production. I studied
-  electrical engineering at ITB, then machine learning at KTH. Off the clock I'm
-  usually taking photos 📷, making music 🎹, designing something 🎨, or
-  experimenting with coffee ☕ and cooking 🍳.
+  I'm originally from Indonesia 🇮🇩. I studied electrical engineering in
+  Bandung, where I spent most of my time on robots and drones. A master's in machine
+  learning brought me to Stockholm. Then came almost five years at Traveloka
+  in Jakarta, building the platform its teams used to run experiments. Now I'm back in Stockholm, working on AI agents at Electrolux
+  Group, mostly on checking that they actually work and keeping them running.
+  Outside work I take photos, make music, and treat coffee and cooking as
+  small experiments ☕
 now: 'Multi-agent AI: how agents coordinate, how to evaluate them honestly, and how
   to run them reliably.'
-off_hours: 📷 photography · 🎨 digital design · 🎹 music · ☕ coffee · 🍳 cooking
-flag: "🇸🇪"
-roots: Indonesia 🇮🇩
+off_hours: photography · digital design · music · coffee · cooking
 cares_about:
-  - 🔬 Evaluation that shows whether an AI system actually works
-  - 🛠️ ML platforms that make the right path the easy path
-  - 🧪 Experimentation that helps teams learn instead of guess
-  - "🧱 Boringly reliable services: observable, fault-tolerant, simple to operate"
-  - 💡 Starting with the user and the problem, then choosing the technology
+  - Evaluation that shows whether an AI system actually works
+  - ML platforms that make the right path the easy path
+  - Experimentation that helps teams learn instead of guess
+  - "Boringly reliable services: observable, fault-tolerant, simple to operate"
+  - Starting with the user and the problem, then choosing the technology
 ---
