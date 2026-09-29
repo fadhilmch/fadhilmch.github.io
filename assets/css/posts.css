@@ -29,3 +29,27 @@
   .year-label { position: static; }
   .post-row { padding-left: 22px; }
 }
+
+/* Post figures: inline SVG diagrams and charts that follow the theme tokens */
+[data-theme="light"] { --fig-a: oklch(0.55 0.17 255); --fig-b: oklch(0.58 0.16 30); }
+[data-theme="dark"] { --fig-a: oklch(0.66 0.14 255); --fig-b: oklch(0.66 0.15 30); }
+.fig { margin: 28px 0; overflow-x: auto; }
+.fig svg { display: block; width: 100%; min-width: 560px; height: auto; font-family: 'Geist Mono', monospace; }
+.fig figcaption { margin-top: 8px; color: var(--muted); font-size: 13px; }
+.fig .t { fill: var(--fg); font-size: 12px; }
+.fig .m { fill: var(--muted); font-size: 11px; }
+.fig .h { fill: var(--muted); font-size: 11px; letter-spacing: .06em; }
+.fig .box { fill: var(--panel); stroke: var(--line); stroke-width: 1.5; }
+.fig .ln { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.fig .grid { stroke: var(--line); stroke-width: 1; }
+.fig .dash { stroke-dasharray: 4 4; }
+.fig .sa { fill: none; stroke: var(--fig-a); stroke-width: 2; }
+.fig .sb { fill: none; stroke: var(--fig-b); stroke-width: 2; }
+.fig .fa { fill: var(--fig-a); }
+.fig .fb { fill: var(--fig-b); }
+.fig .ta { fill: var(--fig-a); font-size: 11px; }
+.fig .tb { fill: var(--fig-b); font-size: 11px; }
+.fig .arrow { fill: var(--muted); }
+.fig .hit { fill: transparent; }
+.fig g[tabindex]:hover .sa, .fig g[tabindex]:hover .sb, .fig g[tabindex]:focus .sa, .fig g[tabindex]:focus .sb { stroke-width: 3; }
+.fig g[tabindex]:hover .fa, .fig g[tabindex]:hover .fb { opacity: .8; }
