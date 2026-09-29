@@ -98,8 +98,8 @@
   {%- endfor -%}
 {%- endcapture -%}
 
-<div class="wf-scroll">
-  <div class="wf-canvas" style="width:{{ canvas_w }}px;height:{{ canvas_h }}px">
+<div class="wf-scroll" style="--wf-w:{{ canvas_w }};--wf-h:{{ canvas_h }}">
+  <div class="wf-canvas" data-w="{{ canvas_w }}" style="width:{{ canvas_w }}px;height:{{ canvas_h }}px">
     <svg class="wf-edges" width="{{ canvas_w }}" height="{{ canvas_h }}" viewBox="0 0 {{ canvas_w }} {{ canvas_h }}" aria-hidden="true" focusable="false">{{ edge_html }}</svg>
     {{ node_html }}
   </div>

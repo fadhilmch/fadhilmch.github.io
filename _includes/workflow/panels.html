@@ -16,7 +16,7 @@
         {%- if e.expand == 'skills' -%}{%- include workflow/resolve.html entry=e skill=skill -%}{%- else -%}{%- include workflow/resolve.html entry=e -%}{%- endif -%}
         {%- include workflow/inspector.html entry=e first=first -%}
         {%- capture acc_html -%}{{ acc_html }}
-    <li class="wf-acc__item{% if e.expand == 'skills' %} wf-acc__item--branch{% if forloop.first %} wf-acc__item--branch-first{% endif %}{% if forloop.last %} wf-acc__item--branch-last{% endif %}{% endif %}" data-acc="{{ n_id }}">
+    <li class="wf-acc__item" data-acc="{{ n_id }}">
       <button class="wf-acc__btn" type="button" data-node="{{ n_id }}" data-level="{{ level }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
         <span class="wf-acc__glyph wf-node--{{ n_kind }}" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
         <span class="wf-acc__title">{{ n_title | escape }}</span>
