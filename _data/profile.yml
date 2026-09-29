@@ -8,13 +8,14 @@ headline: Hi, I’m Fadhil 👋
 bio: >-
   I'm originally from Indonesia 🇮🇩. I studied electrical engineering in
   Bandung, where I spent most of my time on robots and drones. A master's in machine
-  learning brought me to Stockholm. Then came almost five years at Traveloka
+  learning brought me to Stockholm 🇸🇪. Then came almost five years at Traveloka
   in Jakarta, building the platform its teams used to run experiments. Now I'm back in Stockholm, working on AI agents at Electrolux
   Group, mostly on checking that they actually work and keeping them running.
   Outside work I take photos, make music, and treat coffee and cooking as
   small experiments ☕
 now: 'Multi-agent AI: how agents coordinate, how to evaluate them honestly, and how
   to run them reliably.'
+flag: "🇸🇪"
 off_hours: photography · digital design · music · coffee · cooking
 cares_about:
   - Evaluation that shows whether an AI system actually works
