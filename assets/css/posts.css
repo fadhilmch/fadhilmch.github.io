@@ -53,3 +53,7 @@
 .fig .hit { fill: transparent; }
 .fig g[tabindex]:hover .sa, .fig g[tabindex]:hover .sb, .fig g[tabindex]:focus .sa, .fig g[tabindex]:focus .sb { stroke-width: 3; }
 .fig g[tabindex]:hover .fa, .fig g[tabindex]:hover .fb { opacity: .8; }
+.fig img { display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px; background: #fff; }
+.fig-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fig-pair p { margin: 4px 0 0; color: var(--muted); font: 11px 'Geist Mono', monospace; }
+@media (max-width: 640px) { .fig-pair { grid-template-columns: 1fr; } }

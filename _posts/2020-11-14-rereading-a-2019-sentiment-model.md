@@ -7,25 +7,36 @@ tags:
 summary: Three models finished within four points of each other. The dataset moved the result by eleven.
 ---
 
-<!--
-DRAFT NOTES (delete before publishing)
-Source: github.com/fadhilmch/big-data-project, project_complete.ipynb + assets/*.png
-- Every number below is from the notebook outputs or the report slides in assets/. Nothing was rerun.
-- 82.0% / AUC 0.90 for linear SVM come from assets/svm_result.png (the notebook only kept the figures).
-  The README says "82% accuracy and AUC 86%", which pairs the linear accuracy with the RBF curve. Fix the README too.
-- Co-authors are deliberately not named in the text.
-- Voice: written as if in late 2020, about 18 months after the project (after the Electrolux thesis
-  internship, before Traveloka). No references to anything after 2020.
-- Backdated to 2020-11-14. When publishing, move to _posts/2020-11-14-rereading-a-2019-sentiment-model.md.
--->
-
-In spring 2019 I did a course project at KTH with two classmates. The question was simple: which classifier is best at telling positive tweets from negative ones? We tried Naive Bayes, a linear SVM and a small convolutional network. I expected the CNN to win, because in 2019 the neural network was supposed to win.
+In spring 2019 I did a course project at KTH with two classmates. It was my first project on text. The question was simple: which classifier is best at telling positive tweets from negative ones? We tried Naive Bayes, a linear SVM and a small convolutional network. I expected the CNN to win, because in 2019 the neural network was supposed to win.
 
 It didn't. A year and a half later I reread the notebook, and I think the more useful lesson is somewhere other than where we put it at the time.
 
+## The data, and the models we picked
+
+We used Sentiment140, 1.6 million English tweets from 2009, each labelled positive or negative. The first notebook was exploration: which words show up on each side.
+
+<figure class="fig">
+<div class="fig-pair">
+<div><img src="{{ '/assets/posts/sentiment-2019/wordcloud-negative.png' | relative_url }}" alt="Word cloud of negative tweets: today, work, still, miss, sad, bad, lol, now."><p>negative tweets</p></div>
+<div><img src="{{ '/assets/posts/sentiment-2019/wordcloud-positive.png' | relative_url }}" alt="Word cloud of positive tweets: love, today, thank, good, well, lol, awesome, now."><p>positive tweets</p></div>
+</div>
+<figcaption>Most frequent words in each class, from our exploration notebook. "Today", "now" and "lol" are large on both sides.</figcaption>
+</figure>
+
+The clouds already hint at the difficulty. The biggest words are the same on both sides. Sentiment sits in the smaller words and in how they combine.
+
+A model can't read a tweet directly; it needs numbers. The classic approach is a **bag of words**: one column per word or short phrase (an *n-gram*), counting how often it appears. **TF-IDF** reweights those counts so that words appearing in every tweet count for less. We then picked three models that use that representation in different ways, plus a baseline:
+
+- **TextBlob** was the baseline. It doesn't learn anything: it looks words up in a fixed dictionary of positive and negative scores. It showed what we got for free.
+- **Multinomial Naive Bayes** learns how likely each word is in positive and in negative tweets, then multiplies those probabilities for a new tweet. It assumes words are independent, which isn't true, but it trains in seconds and is the standard first model for text.
+- **A linear SVM** learns one weight per word or phrase and draws the boundary between the classes with as wide a margin as possible. With hundreds of thousands of sparse features, of which only a few matter in any one tweet, that's exactly the setting it's good at.
+- **A convolutional network (CNN)** skips the counts. Each word becomes a small learned vector, and filters slide over windows of a few words at a time, learning to detect phrases like "not bad" wherever they appear. Ours was small: a 5,000-word vocabulary, 25-dimensional word vectors, and a short stack of convolution layers.
+
+Naive Bayes and the SVM only see which words and phrases occur. The CNN sees word order within a window, which is why I expected it to win.
+
 ## What we measured
 
-We used Sentiment140, 1.6 million English tweets from 2009 labelled positive or negative. After cleaning, we held out a balanced test set of one million tweets and trained on a sample of about 100,000. Before splitting, we removed any training tweet whose text also appeared in the test set. That was a good call, since Twitter is full of identical tweets.
+After cleaning, we held out a balanced test set of one million tweets and trained on a sample of about 100,000. Before splitting, we removed any training tweet whose text also appeared in the test set. That was a good call, since Twitter is full of identical tweets.
 
 On that test set:
 
@@ -88,6 +99,11 @@ The experiment I'm happiest with in hindsight is a small one. With Naive Bayes, 
 - remove our own list of the twenty most frequent words, excluding `not`: 0.77
 
 <figure class="fig">
+<img src="{{ '/assets/posts/sentiment-2019/stopwords-accuracy.png' | relative_url }}" alt="Notebook plot of validation accuracy against number of features for three stopword settings. Keeping stopwords sits near 0.78, the custom list near 0.77, the standard list near 0.75.">
+<figcaption>The original notebook plot: Naive Bayes validation accuracy as the vocabulary grows. The standard list (orange) stays lowest at every size.</figcaption>
+</figure>
+
+<figure class="fig">
 <svg viewBox="0 0 680 150" role="img" aria-labelledby="s2t s2d">
   <title id="s2t">What each stopword setting leaves of "this is not good"</title>
   <desc id="s2d">Keeping every word leaves "this is not good", accuracy 0.78. The standard English list removes this, is and not, leaving "good", accuracy 0.75. Our list removes is but keeps not, leaving "this not good", accuracy 0.77.</desc>
@@ -123,20 +139,21 @@ It's the least impressive-looking line in the project, and it is also the best e
 
 Rereading your own work from eighteen months ago is humbling. A few things I would change.
 
-**The CNN comparison was unfair.** It had a 5,000-word vocabulary, 25-dimensional embeddings, tweets cut at 50 tokens, and 100,000 training examples. The SVM had 1–3 grams over the full vocabulary. So "the SVM beat the CNN" really means "a well-fed linear model beat an underfed network". That can still be the right practical choice, but it's a different claim.
+**The CNN comparison was unfair.** It had a 5,000-word vocabulary, 25-dimensional embeddings, tweets cut at 50 tokens, and 100,000 training examples. The SVM had 1–3 grams over the full vocabulary. The training curve shows the same thing from another angle:
+
+<figure class="fig">
+<img src="{{ '/assets/posts/sentiment-2019/cnn-loss.png' | relative_url }}" alt="Notebook plot of CNN loss over 20 epochs. Training loss falls from 0.35 to 0.33 while validation loss rises from 0.52 to 0.55.">
+<figcaption>CNN loss over 20 epochs, from the notebook. Training loss (blue) falls; validation loss (orange) rises from the first epoch.</figcaption>
+</figure>
+
+Validation loss went up from the very first epoch, so the network was memorising the training set rather than learning anything that transferred. With that curve, the right move was to stop, get more data or regularise more, not report its accuracy next to the others. So "the SVM beat the CNN" really means "a well-fed linear model beat a network that was overfitting". That can still be the right practical choice, but it's a different claim.
 
 **One normalisation experiment never ran.** The lemmatisation and stemming cells build a normalised copy of the data and then split the *original* data for training. Their results match the unnormalised run exactly, and we concluded that normalisation made no difference. We never tested it.
 
-**The validation AUC was computed from hard labels.** During the feature search, the ROC curve was built from predicted classes instead of scores, so the "AUC" matched accuracy almost exactly and added nothing. The final test runs used probabilities correctly. Even so, our README pairs the linear SVM's accuracy (82%) with the RBF kernel's AUC (0.86). The linear model's AUC was 0.90.
+**The validation AUC was computed from hard labels.** During the feature search, the ROC curve was built from predicted classes instead of scores, so the "AUC" matched accuracy almost exactly and added nothing. The final test runs used probabilities correctly. Even so, our README pairs the linear SVM's accuracy (82%) with an AUC of 0.86, which belongs to the RBF kernel. The linear model's own AUC is 0.88 in the saved notebook and 0.90 in our slides; those come from different runs, and we never wrote down which one the reported accuracy came from.
 
 **The RBF SVM was scored on a 5% sample of the test set**, because the full set was too slow. It appears in our comparison table next to models scored on the full million.
 
 None of these change the main conclusion. They do show that the numbers we were proudest of were the least carefully checked.
-
-## What carried over
-
-Since then I've spent most of a year on sales forecasting, first in an internship and then in my thesis, and the same pattern kept coming back. The model is the easy part to compare, because a leaderboard is easy to build. The decisions that shape the result come earlier: where the labels came from, what cleaning throws away, and whether two numbers in a table were measured the same way.
-
-If I ran this project again, I would spend the first week on the labels and the test set, and only then compare models.
 
 The notebooks, figures and report are on [GitHub](https://github.com/fadhilmch/big-data-project).
