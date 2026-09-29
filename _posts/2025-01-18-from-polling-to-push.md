@@ -198,10 +198,6 @@ Caching trades cost for correctness, so the key question is how stale config is 
 
 With client-side assignment, "a while" meant until each user restarted the app. With events, it means seconds; if an event is lost, one TTL at most. So the TTL should come from the worst staleness you can accept for a kill switch, not from how many reads it saves.
 
-### The stampede that didn't happen
-
-When many pods cache the same entries with the same TTL, they expire together, miss together, and reload together, briefly recreating the load the cache was meant to remove. We never did anything about it, because at our pod count the burst was small and Redis absorbed it. With a much larger fleet I'd randomise TTLs slightly so expiries spread out, and let one caller reload a key while the others wait for its result.
-
 ### What it changed
 
 - **Cloud cost fell 95% year over year**, measured on actual billing with some shared services allocated by estimate. Two things drove it: removing the polling, and right-sizing the workloads once they no longer had to absorb that load.
@@ -245,42 +241,36 @@ Firestore can already push changes itself. A **snapshot listener** subscribes to
 
 This replaces the change event, the TTL, and arguably Redis: the source of truth notifies the pods directly, so there's no separate channel to fall out of sync. The costs are different rather than zero. Each listener pays for reading the full result set when it connects and for each changed document after that. A listener that stays disconnected too long is billed as a new query when it reconnects. And every pod holds an open connection to the database. At ten changes a day and tens of pods, that's cheap. I'd still keep a slow periodic resync, in case a listener silently stops.
 
-### 2. Publish versioned snapshots
+### 2. Poll cheaply with ETags
 
-Treat config like a build artefact. On every change, a publisher writes the complete config as an immutable file, `config-v42.json`, and updates a tiny pointer saying which version is current. Clients poll the pointer with a conditional request, and only download the new version when the pointer changes.
+Polling itself isn't the problem; paying for a full read on every poll is. HTTP already has the fix. Serve the whole config from one URL, from a storage bucket or a small service, with an **ETag**: a short fingerprint of the content, usually a hash of it. The client keeps the ETag it last received and sends it back on its next poll in an `If-None-Match` header. If the config hasn't changed, the server replies `304 Not Modified` with no body. If it has, it sends the new config with its new ETag.
 
 <figure class="fig">
-<svg viewBox="0 0 680 156" role="img" aria-labelledby="x2t x2d">
-  <title id="x2t">Versioned config snapshots with conditional fetch</title>
-  <desc id="x2d">A publisher writes an immutable config file for each version to a bucket and updates a small pointer. Pods and SDKs poll the pointer with a conditional request, which returns 304 when nothing changed, and download the new version only after a change.</desc>
+<svg viewBox="0 0 680 190" role="img" aria-labelledby="x2t x2d">
+  <title id="x2t">Polling with ETags</title>
+  <desc id="x2d">A publisher writes config.json on every change; the server labels it with an ETag, a hash of its contents. Pods and apps poll with If-None-Match and the last ETag they saw. Usually the answer is 304 Not Modified with no body; after a change it is 200 with the new config and a new ETag.</desc>
   <defs><marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-  <rect class="box" x="10" y="20" width="150" height="54" rx="6"/>
-  <text class="t" x="22" y="41">Publisher</text>
-  <text class="m" x="22" y="58">on every change</text>
-  <rect class="box" x="220" y="20" width="200" height="54" rx="6"/>
-  <text class="t" x="232" y="41">config-v42.json</text>
-  <text class="m" x="232" y="58">immutable, in a bucket</text>
-  <rect class="box" x="220" y="90" width="200" height="54" rx="6"/>
-  <text class="t" x="232" y="111">current → v42</text>
-  <text class="m" x="232" y="128">tiny pointer, CDN cached</text>
-  <rect class="box" x="480" y="20" width="190" height="54" rx="6"/>
-  <text class="t" x="492" y="41">Pods and SDKs</text>
-  <text class="m" x="492" y="58">poll the pointer</text>
-  <path class="ln" d="M160,47 L218,47" marker-end="url(#a2)"/>
-  <path class="ln" d="M160,60 L218,110" marker-end="url(#a2)"/>
-  <path class="ln" d="M478,62 L422,110" marker-end="url(#a2)" marker-start="url(#a2)"/>
-  <text class="m" x="470" y="118">If-None-Match → 304</text><text class="m" x="470" y="134">(nothing changed)</text>
-  <path class="sa" d="M478,40 L422,40" marker-end="url(#a2)"/>
-  <text class="ta" x="450" y="34" text-anchor="middle">fetch</text>
+  <rect class="box" x="10" y="20" width="150" height="54" rx="6"/><text class="t" x="22" y="41">Publisher</text><text class="m" x="22" y="58">on every change</text>
+  <rect class="box" x="210" y="20" width="180" height="54" rx="6"/><text class="t" x="222" y="41">config.json</text><text class="m" x="222" y="58">ETag = hash(contents)</text>
+  <rect class="box" x="490" y="20" width="180" height="54" rx="6"/><text class="t" x="502" y="41">Pods and apps</text><text class="m" x="502" y="58">remember the last ETag</text>
+  <path class="ln" d="M160,47 L208,47" marker-end="url(#a2)"/>
+  <line class="grid dash" x1="300" x2="300" y1="74" y2="176"/><line class="grid dash" x1="580" x2="580" y1="74" y2="176"/>
+  <path class="ln" d="M578,104 L302,104" marker-end="url(#a2)"/>
+  <text class="m" x="440" y="97" text-anchor="middle">GET config · If-None-Match: "9f2c"</text>
+  <g tabindex="0"><title>Usual case: nothing changed, empty reply</title><path class="ln dash" d="M302,134 L578,134" marker-end="url(#a2)"/></g>
+  <text class="m" x="440" y="127" text-anchor="middle">304 Not Modified · no body</text>
+  <g tabindex="0"><title>After a change: new body and new ETag</title><path class="sa" d="M302,164 L578,164" marker-end="url(#a2)"/></g>
+  <text class="ta" x="440" y="157" text-anchor="middle">after a change: 200 · new config · ETag "a71e"</text>
+  <text class="m" x="10" y="120">most polls:</text><text class="m" x="10" y="136">an empty 304</text>
 </svg>
-<figcaption>Still polling, but almost free: the frequent check is a cached request for a pointer, and the full config is only downloaded when the version changes. Rolling back means pointing at an older file.</figcaption>
+<figcaption>The server fingerprints the config; the client sends back the fingerprint it has. Unchanged config costs a tiny request and an empty reply, which a CDN can answer without touching the origin.</figcaption>
 </figure>
 
-This is polling again, but polling done cheaply. The check is a cached request that usually returns *304 Not Modified*. It works for anything that can make an HTTP request, including mobile apps through a CDN. It also gives you a history of every config version and makes rollback trivial. Freshness is bounded by the poll interval, so it suits config better than kill switches unless the interval is short.
+Most polls now cost almost nothing: a tiny request and an empty reply, which a CDN can answer without reaching the origin at all. Because the ETag comes from the content, there's no version number to keep in step with the data. If the config is identical, the fingerprint is identical. It works for anything that speaks HTTP, including mobile apps. Freshness is still bounded by the poll interval, so for a kill switch the interval has to be short, or paired with a push. If you also want history and one-click rollback, keep a copy of each published config next to the live one; the ETag only handles change detection.
 
-### 3. Run a config push service
+### 3. Push over long-lived connections
 
-The most advanced option is a dedicated service that holds a long-lived stream, over gRPC or server-sent events, to every pod and SDK, and pushes a diff the moment config changes.
+The most advanced option is a service that holds an open stream to every pod and SDK, over server-sent events (SSE) or gRPC streaming, and pushes a diff the moment config changes.
 
 <figure class="fig">
 <svg viewBox="0 0 680 170" role="img" aria-labelledby="x3t x3d">
@@ -306,39 +296,18 @@ The most advanced option is a dedicated service that holds a long-lived stream, 
   <path class="sa" d="M420,77 C450,77 450,129 478,129" marker-end="url(#a3)"/>
   <text class="ta" x="440" y="162">gRPC / server-sent events</text>
 </svg>
-<figcaption>The pattern feature-flag vendors and service meshes use. Freshest, but you now operate a service whose job is holding thousands of open connections.</figcaption>
+<figcaption>The pattern feature-flag vendors and service meshes use. Freshest, but every arrow is a connection that has to survive load balancers, deploys and scaling.</figcaption>
 </figure>
 
-This is how feature-flag vendors and service meshes distribute configuration, and it gives sub-second freshness everywhere. It's also a service whose whole job is holding thousands of open connections and handling reconnects. It's worth building when you have many clients and strict freshness needs, not before.
+I considered SSE at the time and held back, mostly out of worry about the network: how long-lived connections behave inside Kubernetes. I didn't have much reference for it then. Looking back, the worry was reasonable. These are the parts that take real work:
 
-### 4. Evaluate locally
+- **Idle timeouts.** Load balancers and ingress proxies close connections that go quiet, often after a minute or less. The server has to send heartbeats to keep streams open.
+- **Buffering.** Some proxies buffer responses, which holds SSE events back until buffering is turned off for that route.
+- **No rebalancing.** A long-lived connection stays on the pod it first reached. When the push service scales out, existing clients don't move, so load stays uneven until connections are recycled.
+- **Reconnect storms.** Every deploy or pod restart drops its connections at once, and all those clients reconnect together. They need backoff with jitter, and a way to catch up on what they missed: SSE's `Last-Event-ID`, or simply refetching the full config on reconnect.
+- **Cost per connection.** Each open stream holds memory and a file descriptor on the server.
 
-Any of the three can feed a different idea: move the decision into the caller. An **evaluation SDK** inside each backend service holds the config and assigns variants itself, by hashing the user id with the experiment's salt into a bucket.
-
-<figure class="fig">
-<svg viewBox="0 0 680 146" role="img" aria-labelledby="x4t x4d">
-  <title id="x4t">Local evaluation SDK</title>
-  <desc id="x4d">Config is delivered into each backend service process, where an evaluation SDK hashes the user with the experiment salt to pick a bucket and variant, so no network call is needed per assignment.</desc>
-  <defs><marker id="a4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker></defs>
-  <rect class="box dash" x="200" y="14" width="470" height="120" rx="8" style="fill:none"/>
-  <text class="m" x="212" y="32">inside each backend service process</text>
-  <rect class="box" x="10" y="50" width="150" height="54" rx="6"/>
-  <text class="t" x="22" y="71">Config</text>
-  <text class="m" x="22" y="88">via 1, 2 or 3</text>
-  <rect class="box" x="220" y="44" width="180" height="70" rx="6"/>
-  <text class="t" x="232" y="65">Evaluation SDK</text>
-  <text class="m" x="232" y="82">hash(user, salt)</text>
-  <text class="m" x="232" y="98">→ bucket → variant</text>
-  <rect class="box" x="470" y="52" width="180" height="54" rx="6"/>
-  <text class="t" x="482" y="73">Request handler</text>
-  <text class="m" x="482" y="90">gets a variant in µs</text>
-  <path class="ln" d="M160,77 L218,77" marker-end="url(#a4)"/>
-  <path class="sa" d="M400,79 L468,79" marker-end="url(#a4)"/>
-</svg>
-<figcaption>Move the decision into the caller. Assignment becomes a hash and a lookup in memory, with no network hop, but the SDK must behave identically in every language that uses it.</figcaption>
-</figure>
-
-Assignment becomes a hash and a lookup in memory, with no network hop. The catch is familiar from our app-side assignment: every language's SDK must produce exactly the same variant for the same user, so the hashing and bucketing need shared test vectors and strict versioning.
+None of these is a blocker. Feature-flag vendors and service meshes run exactly this pattern. But each is engineering you have to own, so it's worth it when you have many clients and a strict freshness requirement, not before.
 
 ### Side by side
 
@@ -346,11 +315,10 @@ Assignment becomes a hash and a lookup in memory, with no network hop. The catch
 | --- | --- | --- | --- | --- |
 | What we built | seconds; one TTL if an event is lost | Firestore on cache misses only | event channel, Redis, TTL | event and cache paths drifting apart |
 | Firestore listeners | seconds | initial load + each change, per listener | Firestore only | open connections; reconnect re-reads |
-| Versioned snapshots | the poll interval | near zero; checks served from cache | publisher, bucket, CDN | staleness up to one interval |
-| Push service | under a second | none per read | a service holding many streams | operating the fan-out |
-| Local evaluation | whatever feeds it | none per assignment | an SDK per language | SDKs drifting apart |
+| ETag polling | the poll interval | near zero; mostly empty 304s | a config endpoint, optional CDN | staleness up to one interval |
+| Push over SSE or gRPC | under a second | none per read | a service holding many streams | long-lived connections through Kubernetes networking |
 
-For the scale we had, around ten changes a day and a few dozen pods, I'd move the backend to **Firestore listeners** with a slow resync as a backstop. It deletes the most moving parts and keeps the freshness we needed. Apps would stay on server-side assignment, for the kill switch. If client count or read volume grew by an order of magnitude, I'd move to **versioned snapshots** behind a CDN, and add a push service only if sub-second freshness became a hard requirement.
+For the scale we had, around ten changes a day and a few dozen pods, I'd move the backend to **Firestore listeners** with a slow resync as a backstop. It deletes the most moving parts and keeps the freshness we needed. Apps would stay on server-side assignment, for the kill switch. If client count or read volume grew by an order of magnitude, I'd move to **ETag polling** behind a CDN, and add push over long-lived connections only if sub-second freshness became a hard requirement.
 
 ## What I took from it
 
