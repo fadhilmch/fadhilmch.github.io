@@ -25,12 +25,16 @@
     where: Traveloka
   - name: Multi-armed bandits · Thompson sampling
     where: Traveloka · Spotify
-  - name: Metric semantic layer · BigQuery
+  - name: Metric semantic layer
+    where: Traveloka
+  - name: SQL · BigQuery
     where: Traveloka
   - name: Ranking · CatBoost
     where: Traveloka
   - name: Forecasting · GAM · LASSO
     where: KTH · Electrolux
+  - name: MLflow experiment tracking
+    where: Electrolux
 - key: ml-platform
   group: ML platform
   desc: The plumbing behind serving, training and experimentation, on Google Cloud at Traveloka and on Azure at Electrolux Group.
@@ -39,10 +43,10 @@
   items:
   - name: Python
     where: Traveloka · Electrolux Group
-  - name: Go
+  - name: Go · Redis
     where: Traveloka
   - name: Kubernetes · Kubeflow Pipelines
-    where: Traveloka · Electrolux Group
+    where: Traveloka
   - name: Terraform
     where: Traveloka
   - name: Argo CD · GitHub Actions
@@ -51,11 +55,11 @@
     where: Traveloka · Electrolux Group
   - name: Google Cloud
     where: Traveloka
-  - name: Azure
+  - name: Azure · AKS
     where: Electrolux Group
 - key: design
   group: Design
-  desc: Product and interaction design from side work, a virtual-sports platform I co-founded and interactive-wall installations in Bandung.
+  desc: Product and interaction design from side work. One is a virtual-sports platform I co-founded; the other is interactive-wall installations in Bandung.
   glyph: "◐"
   color: l2
   items:

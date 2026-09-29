@@ -45,9 +45,11 @@ Did the right documents make it into context at all?
 
 ## Change your profile and stats
 
-Edit `_data/profile.yml` for your name, role, location, headline, bio, current focus, and off-hours interests. `short_role` and `city` are the short versions shown under your name in the header and in the footer ("ML engineer · Stockholm").
+Edit `_data/profile.yml` for your name, role, location, headline, bio, current focus, off-hours interests, roots, and the things you care about. `short_role` and `city` are the short versions shown under your name in the header and in the footer ("ML engineer · Stockholm").
 
-`off_hours` may start each interest with an emoji, and `flag` (quoted, e.g. `"🇸🇪"`) is shown after the location in the About inspector. Emojis are content, so they live in YAML, never in templates. The Fadhil node's `subtitle` in `_data/workflow.yml` is a literal copy of the location; update it alongside `profile.yml`. That node has no `desc` on purpose: your `bio` is already shown at the top of the page, so the inspector shows only the rows.
+`off_hours` may start each interest with an emoji, and `flag` (quoted, e.g. `"🇸🇪"`) is shown after the location in the About inspector. Emojis are content, so they live in YAML, never in templates. The Fadhil node's `subtitle` in `_data/workflow.yml` is a literal copy of the location; update it alongside `profile.yml`. The node's `desc` is a separate one-line tagline, distinct from the `bio` shown at the top of the page; edit it in `workflow.yml`.
+
+`roots` (optional, e.g. `Indonesia 🇮🇩`) adds an "originally from" row after "based in" in the Fadhil inspector. `cares_about` (optional) is a list of short lines, each may start with an emoji; they render one per line as a "cares about" row after "off-hours". Both are inspector-only and stay out of the JSON panel. `bio` uses a YAML block scalar (`>-`) so apostrophes and emoji are safe.
 
 List hobbies once, in `off_hours`. Toolkits in `_data/skills.yml` flow into Work on the pipeline, so keep them to things you have used in work, with `where` naming a company or project.
 
@@ -143,7 +145,7 @@ edges:
 
 `subtitle: auto` is replaced with a count, such as `8 roles`, `5 tools` or `8 items`. Any other value is shown as written.
 
-The profile location (with its flag) and the bio are intentionally written literally as the Fadhil node's `subtitle` and `desc` in `_data/workflow.yml` so the workflow file stays easy to read; update them there whenever `profile.yml` changes.
+The profile location (with its flag) is intentionally written literally as the Fadhil node's `subtitle` in `_data/workflow.yml` so the workflow file stays easy to read; update it there whenever `profile.yml` changes.
 
 ## Add or recolour a topic lane
 

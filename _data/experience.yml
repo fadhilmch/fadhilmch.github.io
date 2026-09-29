@@ -11,42 +11,46 @@
   org: Traveloka
   place: Jakarta
   flag: "🇮🇩"
-  note: Tech lead for the experimentation platform. ML serving engine and SDK, Kubeflow
-    training platform, ranking and bandits.
+  note: Technical lead for the experimentation platform. Built an ML serving engine and
+    SDK, a Kubeflow training platform, and ranking and bandit systems.
 - years: Jun 2020 — Oct 2020
   role: Machine Learning Engineer Intern
   org: Spotify
   place: Stockholm
   flag: "🇸🇪"
-  note: 'Multi-armed bandit for notification optimization: policy, reward definition,
-    offline analysis.'
+  note: 'Worked on a multi-armed bandit for notification optimization: policy, reward
+    definition and offline analysis.'
 - years: Dec 2019 — Jun 2020
   role: Data Scientist Intern
   org: Electrolux
   place: Stockholm
   flag: "🇸🇪"
-  note: Bayesian vs frequentist demand forecasting on Databricks with PySpark.
+  note: Compared Bayesian and frequentist models for sales-demand forecasting, on Databricks
+    with PySpark.
 - years: Apr 2019 — Aug 2019
   role: Data Scientist Intern
   org: Scania
   place: Stockholm
   flag: "🇸🇪"
-  note: Maintenance-action recommendation for truck diagnostic trouble codes.
+  note: Built a recommendation pipeline for maintenance actions on truck diagnostic trouble
+    codes.
 - years: Oct 2018 — Aug 2019
   role: Full-Stack Web Developer
   org: OnTel AB
   place: Stockholm
   flag: "🇸🇪"
-  note: Real-time interactive presentation app for an Ericsson collaboration.
+  note: Built a real-time interactive presentation app for an Ericsson collaboration.
 - years: Apr 2018 — Apr 2019
   role: AI Engineer
   org: Riset.ai
   place: Bandung
   flag: "🇮🇩"
-  note: Led engineers building a FaceNet-based face-recognition system to production.
+  note: Led engineers who built a FaceNet-based face-recognition system and took it to
+    production.
 - years: Aug 2016 — Dec 2017
   role: Research Assistant
   org: ITB Advanced Robotics Lab
   place: Bandung
   flag: "🇮🇩"
-  note: Data acquisition for coordinated UAV and ground-robot reconnaissance on ROS.
+  note: Designed data acquisition for coordinated UAV and ground-robot reconnaissance,
+    integrated with ROS.

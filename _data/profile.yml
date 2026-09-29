@@ -5,10 +5,21 @@ city: Stockholm
 role: Machine Learning Engineer
 location: Stockholm, Sweden
 headline: Hi, I’m Fadhil.
-bio: I'm a machine learning engineer in Stockholm. I work on ML platforms, experimentation
-  and, lately, AI agents. I studied electrical engineering in Bandung and machine
-  learning at KTH. Outside work I take photos, design things, make music, and experiment with coffee and cooking.
+bio: >-
+  I'm an ML engineer in Stockholm 🇸🇪, by way of Bandung 🇮🇩. These days I build
+  AI agents and the platforms that keep models running in production. I studied
+  electrical engineering at ITB, then machine learning at KTH. Off the clock I'm
+  usually taking photos 📷, making music 🎹, designing something 🎨, or
+  experimenting with coffee ☕ and cooking 🍳.
 now: 'Multi-agent AI: how agents coordinate, how to evaluate them honestly, and how
-  to run them reliably once the demo is over.'
+  to run them reliably.'
 off_hours: 📷 photography · 🎨 digital design · 🎹 music · ☕ coffee · 🍳 cooking
 flag: "🇸🇪"
+roots: Indonesia 🇮🇩
+cares_about:
+  - 🔬 Evaluation that shows whether an AI system actually works
+  - 🛠️ ML platforms that make the right path the easy path
+  - 🧪 Experimentation that helps teams learn instead of guess
+  - "🧱 Boringly reliable services: observable, fault-tolerant, simple to operate"
+  - 💡 Starting with the user and the problem, then choosing the technology
+---

@@ -1,32 +1,40 @@
 ---
 - name: Agentic knowledge assistant
   year: 2025 —
-  desc: Agent Framework + RAG on Azure for 6,000 monthly employees, about 200
-    conversations a day, in any language. I own the evaluation architecture.
+  desc: Microsoft Agent Framework and RAG on Azure. Used by 6,000 employees a month,
+    about 200 conversations a day, in any language. I own the evaluation architecture.
   tags: agents · evals
 - name: Feedback-triage agent
   year: '2026'
-  desc: Replays flagged questions, checks evidence, identifies likely root
-    cause, then routes cases to an owner. Estimated investigation time falls from
-    about 15 minutes to 1 minute per item.
+  desc: I built it. It replays flagged questions, checks the evidence, finds the
+    likely root cause and routes the case to an owner. By my estimate, investigation
+    drops from about 15 minutes to 1 per item.
   tags: agents · ops
+- name: Supply-chain optimization MLOps
+  year: 2025 —
+  desc: The MLOps layer for a production supply-chain optimizer that recommends
+    customer deliveries and truck assignments across EU warehouses and factories.
+    I own deployment, CI/CD, monitoring and operations.
+  tags: mlops · platform
 - name: Experimentation platform
   year: 2022 — 2025
-  desc: 800+ experiments a year across 30+ product teams. Modernized for −95%
-    cloud cost and −90% API latency; opened up to PMs and designers.
+  desc: 800+ experiments a year across 30+ product teams. I led the modernization,
+    with cloud cost down 95% year over year and API latency down 90%. PMs and
+    designers can now run experiments themselves.
   tags: experimentation
 - name: Experiment assignment service
   year: '2024'
-  desc: Go, Kubernetes and Redis. Sustained 50k+ RPS in a 30-minute load test,
-    P95 under 100 ms.
+  desc: Go, Kubernetes and Redis. It sustained 50,000+ requests per second in a
+    30-minute load test, with P95 under 100 ms.
   tags: go · platform
 - name: ML serving engine & SDK
   year: '2024'
-  desc: One standardized path to production for about 40 model deployments,
-    with auth, tracing and orchestration handled.
+  desc: One standard path to production for about 40 model deployments. Auth,
+    tracing and orchestration are built in.
   tags: platform
 - name: Metric semantic layer
   year: '2025'
-  desc: A catalog of 100+ reusable metrics, so teams stopped defining conversion
-    four different ways.
+  desc: I designed the metadata schema and BigQuery query engine behind a catalog
+    of 100+ reusable metrics, so teams stopped defining conversion four different
+    ways.
   tags: experimentation · data

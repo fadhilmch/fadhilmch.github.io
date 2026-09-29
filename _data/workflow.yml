@@ -14,6 +14,8 @@ nodes:
   subtitle: Stockholm, Sweden 🇸🇪
   kind: profile
   color: fg
+  desc: 'I like the part of machine learning that starts after the demo: making the
+    system useful, measurable, and reliable enough to keep running.'
   source: profile
 - id: edu
   level: 1
@@ -22,8 +24,8 @@ nodes:
   subtitle: EE → ML
   kind: input
   color: fg
-  desc: Electrical engineering and robotics in Bandung, then a master’s in machine
-    learning at KTH.
+  desc: Electrical engineering at ITB in Bandung, then a master’s in machine learning
+    at KTH in Stockholm.
   source: education
 - id: exp
   level: 2

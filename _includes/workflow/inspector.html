@@ -18,8 +18,14 @@
           {%- assign p = site.data.profile %}
           <div><dt>role</dt><dd>{{ p.role | escape }}</dd></div>
           <div><dt>based in</dt><dd>{{ p.location | escape }}{% if p.flag %} {{ p.flag | escape }}{% endif %}</dd></div>
+          {%- if p.roots %}
+          <div><dt>originally from</dt><dd>{{ p.roots | escape }}</dd></div>
+          {%- endif %}
           <div><dt>curious about</dt><dd>{{ p.now | escape }}</dd></div>
           <div><dt>off-hours</dt><dd>{{ p.off_hours | escape }}</dd></div>
+          {%- if p.cares_about and p.cares_about.size > 0 %}
+          <div><dt>cares about</dt><dd>{% for c in p.cares_about %}{% unless forloop.first %}<br>{% endunless %}{{ c | escape }}{% endfor %}</dd></div>
+          {%- endif %}
         {%- when 'education' -%}
           {%- for e in site.data.education %}
           <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }}, {{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}. {{ e.note | escape }}</dd></div>
