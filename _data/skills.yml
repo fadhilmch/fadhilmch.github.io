@@ -57,10 +57,19 @@
   items:
   - name: Photography
     where: off-hours
+    emoji: "📷"
   - name: Digital design · Figma
     where: off-hours
+    emoji: "🎨"
   - name: Music
     where: off-hours
+    emoji: "🎹"
+  - name: Coffee · brewing experiments
+    where: off-hours
+    emoji: "☕"
+  - name: Cooking
+    where: off-hours
+    emoji: "🍳"
   - name: Design thinking
     where: Labtek Indie
   - name: Interactive installations · Unity

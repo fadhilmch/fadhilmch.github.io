@@ -28,6 +28,7 @@
     {{ nl }}{{ i1 }}{{ ob }}
     {{- nl }}{{ i2 }}<span class="j-key">"role"</span>{{ colon }}{% include workflow/jv.html v=e.role %}{{ cm }}
     {{- nl }}{{ i2 }}<span class="j-key">"org"</span>{{ colon }}{% include workflow/jv.html v=e.org %}{{ cm }}
+    {%- if e.place -%}{{ nl }}{{ i2 }}<span class="j-key">"place"</span>{{ colon }}{% include workflow/jv.html v=e.place %}{{ cm }}{%- endif -%}
     {{- nl }}{{ i2 }}<span class="j-key">"years"</span>{{ colon }}{% include workflow/jv.html v=e.years %}
     {{- nl }}{{ i1 }}{{ cb }}{% unless forloop.last %}{{ cm }}{% endunless %}
   {%- endfor -%}{{ nl }}{{ ca }}

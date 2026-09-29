@@ -11,12 +11,12 @@ nodes:
   level: 0
   glyph: "@"
   title: Fadhil
-  subtitle: Stockholm, Sweden
+  subtitle: Stockholm, Sweden 🇸🇪
   kind: profile
   color: fg
   desc: I'm a machine learning engineer in Stockholm. I work on ML platforms, experimentation
     and, lately, AI agents. I studied electrical engineering in Bandung and machine
-    learning at KTH. Outside work I take photos, design things and make music.
+    learning at KTH. Outside work I take photos, design things, make music, and experiment with coffee and cooking.
   source: profile
 - id: edu
   level: 1

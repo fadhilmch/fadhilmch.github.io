@@ -17,16 +17,16 @@
         {%- when 'profile' -%}
           {%- assign p = site.data.profile %}
           <div><dt>role</dt><dd>{{ p.role | escape }}</dd></div>
-          <div><dt>based in</dt><dd>{{ p.location | escape }}</dd></div>
+          <div><dt>based in</dt><dd>{{ p.location | escape }}{% if p.flag %} {{ p.flag | escape }}{% endif %}</dd></div>
           <div><dt>curious about</dt><dd>{{ p.now | escape }}</dd></div>
           <div><dt>off-hours</dt><dd>{{ p.off_hours | escape }}</dd></div>
         {%- when 'education' -%}
           {%- for e in site.data.education %}
-          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }}, {{ e.org | escape }}. {{ e.note | escape }}</dd></div>
+          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }}, {{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}. {{ e.note | escape }}</dd></div>
           {%- endfor -%}
         {%- when 'experience' -%}
           {%- for e in site.data.experience %}
-          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }} · {{ e.org | escape }} — {{ e.note | escape }}</dd></div>
+          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }} · {{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %} — {{ e.note | escape }}</dd></div>
           {%- endfor -%}
         {%- when 'projects+publications' -%}
           {%- for pr in site.data.projects %}
@@ -45,7 +45,7 @@
           {%- endfor -%}
         {%- else -%}
           {%- for t in n_skill.items %}
-          <div><dt>{{ t.where | escape }}</dt><dd>{{ t.name | escape }}</dd></div>
+          <div><dt>{{ t.where | escape }}</dt><dd>{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}</dd></div>
           {%- endfor -%}
       {%- endcase %}
     </dl>

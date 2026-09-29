@@ -28,6 +28,8 @@
   --g-c-mlops: var(--l3);
   --g-c-photo: var(--l2);
   --g-c-music: var(--l2);
+  --g-c-coffee: var(--l2);
+  --g-c-cooking: var(--l2);
   --g-c-design: var(--l2);
   --g-c-meta: var(--fg);
   --g-font: 'Geist Mono';
@@ -63,6 +65,8 @@
   --g-c-mlops: var(--l3);
   --g-c-photo: var(--l2);
   --g-c-music: var(--l2);
+  --g-c-coffee: var(--l2);
+  --g-c-cooking: var(--l2);
   --g-c-design: var(--l2);
   --g-c-meta: var(--fg);
   --shadow: 0 18px 50px rgb(0 0 0 / 20%);

@@ -47,6 +47,8 @@ Did the right documents make it into context at all?
 
 Edit `_data/profile.yml` for your name, role, location, headline, bio, current focus, and off-hours interests. `short_role` and `city` are the short versions shown under your name in the header and in the footer ("ML engineer · Stockholm").
 
+`off_hours` may start each interest with an emoji, and `flag` (quoted, e.g. `"🇸🇪"`) is shown after the location in the About inspector. Emojis are content, so they live in YAML, never in templates. The Fadhil node's `subtitle` and `desc` in `_data/workflow.yml` are literal copies of the location and `bio`; update them alongside `profile.yml`.
+
 `_data/stats.yml` holds outcome tiles. The current design does not show them; they are kept for later:
 
 ```yaml
@@ -88,6 +90,8 @@ The other files use the same pattern:
   value: you@example.com
   href: mailto:you@example.com
 ```
+
+Education and experience entries take an optional quoted `flag` (e.g. `flag: "🇸🇪"`), shown after the organisation. Experience entries also take an optional `place` (e.g. `place: Stockholm`), which appears in the JSON panel as plain text. Skill items take an optional `emoji`, shown before the name in the inspector (the JSON panel stays emoji-free).
 
 New entries appear in the relevant workflow inspector automatically, and node subtitles such as `8 roles` and `8 items` update themselves.
 
@@ -137,7 +141,7 @@ edges:
 
 `subtitle: auto` is replaced with a count, such as `8 roles`, `5 tools` or `8 items`. Any other value is shown as written.
 
-The profile location is intentionally written literally in `_data/workflow.yml` so the workflow file stays easy to read; update it there if the location changes.
+The profile location (with its flag) and the bio are intentionally written literally as the Fadhil node's `subtitle` and `desc` in `_data/workflow.yml` so the workflow file stays easy to read; update them there whenever `profile.yml` changes.
 
 ## Add or recolour a topic lane
 

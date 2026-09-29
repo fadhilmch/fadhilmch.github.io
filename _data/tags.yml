@@ -15,5 +15,9 @@
   label: Photography
 - key: music
   label: Music
+- key: coffee
+  label: Coffee
+- key: cooking
+  label: Cooking
 - key: meta
   label: Meta
