@@ -7,8 +7,10 @@
   label: Experimentation
 - key: mlops
   label: ML platform
+- key: systems
+  label: System design
 - key: data
-  label: Data & forecasting
+  label: Data & exploration
 - key: design
   label: Design
 - key: photo

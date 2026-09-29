@@ -9,10 +9,16 @@
 - key: exp
   title: Experimentation
   label: experimentation
-  long: Experimentation & data
+  long: Experimentation
   color: l1
   tags:
   - exp
+- key: data
+  title: Data
+  label: data
+  long: Data & exploration
+  color: l5
+  tags:
   - data
 - key: mlops
   title: ML platform
@@ -21,6 +27,13 @@
   color: l3
   tags:
   - mlops
+- key: systems
+  title: Systems
+  label: systems
+  long: System design
+  color: l4
+  tags:
+  - systems
 - key: creative
   title: Creative
   label: creative

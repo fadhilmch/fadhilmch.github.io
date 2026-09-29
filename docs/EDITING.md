@@ -160,7 +160,7 @@ Edit `_data/lanes.yml`:
   tags: [research, experiments]
 ```
 
-Posts use their raw `tags`; notes use one raw `tag`. A matching lane decides where each item appears and which colour it uses. `color` is one of `l0`, `l1`, `l2`, `l3` or `fg`.
+Posts use their raw `tags`; notes use one raw `tag`. A matching lane decides where each item appears and which colour it uses. `color` is one of `l0` to `l5` or `fg`.
 
 Each raw tag also needs a display label in `_data/tags.yml`; that file's order is the order of groups in the Notes explorer:
 

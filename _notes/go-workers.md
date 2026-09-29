@@ -1,8 +1,9 @@
 ---
 layout: note
 title: Go worker pools
-tag: mlops
-links: []
+tag: systems
+links:
+- serving
 ---
 
 Goroutines with backpressure, for asynchronous, near-real-time updates.

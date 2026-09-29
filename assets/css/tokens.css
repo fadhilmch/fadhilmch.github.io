@@ -16,6 +16,8 @@
   --l1: oklch(0.55 0.17 150);
   --l2: oklch(0.58 0.16 30);
   --l3: oklch(0.55 0.17 305);
+  --l4: oklch(0.55 0.12 200);
+  --l5: oklch(0.6 0.14 80);
   --ok: oklch(0.55 0.15 150);
   --g-fg: #44423d;
   --g-label: #6e6c66;
@@ -24,8 +26,9 @@
   --g-acc: oklch(0.58 0.16 30);
   --g-c-agents: var(--l0);
   --g-c-exp: var(--l1);
-  --g-c-data: var(--l1);
+  --g-c-data: var(--l5);
   --g-c-mlops: var(--l3);
+  --g-c-systems: var(--l4);
   --g-c-photo: var(--l2);
   --g-c-music: var(--l2);
   --g-c-coffee: var(--l2);
@@ -53,6 +56,8 @@
   --l1: oklch(0.75 0.13 150);
   --l2: oklch(0.75 0.14 30);
   --l3: oklch(0.75 0.13 305);
+  --l4: oklch(0.76 0.11 200);
+  --l5: oklch(0.78 0.13 80);
   --ok: oklch(0.75 0.14 150);
   --g-fg: #c9c7c1;
   --g-label: #8e8c86;
@@ -61,8 +66,9 @@
   --g-acc: oklch(0.75 0.14 30);
   --g-c-agents: var(--l0);
   --g-c-exp: var(--l1);
-  --g-c-data: var(--l1);
+  --g-c-data: var(--l5);
   --g-c-mlops: var(--l3);
+  --g-c-systems: var(--l4);
   --g-c-photo: var(--l2);
   --g-c-music: var(--l2);
   --g-c-coffee: var(--l2);

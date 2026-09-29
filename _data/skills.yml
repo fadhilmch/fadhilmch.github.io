@@ -31,10 +31,24 @@
     where: Traveloka
   - name: Ranking · CatBoost
     where: Traveloka
-  - name: Forecasting · GAM · LASSO
-    where: KTH · Electrolux
   - name: MLflow experiment tracking
     where: Electrolux
+- key: data-science
+  group: Data science
+  desc: Forecasting, exploration and modelling, from a KTH thesis and internships at Electrolux and Scania.
+  glyph: "◇"
+  color: l5
+  items:
+  - name: Forecasting · GAM · LASSO
+    where: KTH · Electrolux
+  - name: Bayesian and frequentist models
+    where: Electrolux
+  - name: PySpark · Databricks
+    where: Electrolux
+  - name: Recommendation pipeline
+    where: Scania
+  - name: Sentiment analysis · NLP
+    where: KTH
 - key: ml-platform
   group: ML platform
   desc: The plumbing behind serving, training and experimentation, on Google Cloud at Traveloka and on Azure at Electrolux Group.
@@ -57,6 +71,22 @@
     where: Traveloka
   - name: Azure · AKS
     where: Electrolux Group
+- key: systems
+  group: System design
+  desc: Services and pipelines built to stay fast and correct under load, from student projects to production at Traveloka.
+  glyph: "⌗"
+  color: l4
+  items:
+  - name: Go worker pools · high-throughput services
+    where: Traveloka
+  - name: Kafka · Spark Streaming · Cassandra
+    where: KTH
+  - name: Real-time web app
+    where: OnTel AB
+  - name: Latency budgets · P95 monitoring
+    where: Traveloka
+  - name: Observability · tracing
+    where: Traveloka · Electrolux Group
 - key: design
   group: Design
   desc: Product and interaction design from side work. One is a virtual-sports platform I co-founded; the other is interactive-wall installations in Bandung.

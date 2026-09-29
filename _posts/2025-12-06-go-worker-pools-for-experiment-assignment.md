@@ -4,6 +4,7 @@ title: Go worker pools for experiment assignment
 date: 2025-12-06
 tags:
 - mlops
+- systems
 summary: Keeping P95 under 100 ms when traffic spikes tenfold.
 ---
 
