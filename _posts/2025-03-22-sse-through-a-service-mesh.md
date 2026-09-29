@@ -5,45 +5,91 @@ date: 2025-03-22
 tags:
 - systems
 - exp
-summary: An introduction to service meshes and Istio, and a second look at the push design I once held back from, with what I know now.
+summary: I wanted our experimentation service to push changes instead of being asked for them. What server-sent events are, what a service mesh like Istio does, and which problems it solves for long-lived connections.
 ---
 
-I want the experimentation service to be event-driven. Today, the services that assign users to variants still pull their config: they read it through a cache that events and a TTL keep fresh, and apps ask on every request. Most of those reads get the same answer as last time. What I'd like instead is for the service to tell its clients when something changes, and stay quiet when nothing does. A paused experiment should reach every client within a second, and an unchanged config should cost nothing.
+I want the experimentation service to be event-driven: when someone changes an experiment, the service should tell everyone who needs to know, straight away. When nothing changes, it should stay quiet.
 
-When I wrote about [getting experiment config to every service]({{ '/posts/from-polling-to-push/' | relative_url }}), that design was the most advanced option: a push service that holds an open stream to every pod and app, and sends a change the moment it happens. I held back from it because I was worried about how long-lived connections behave inside Kubernetes. I didn't know the network well enough to say whether the worry was justified, so I went and learned.
+That isn't how it works today. The services that assign users to variants pull their config: they read it through a cache that events and a TTL keep fresh, and apps ask on every request. Most of those reads get the same answer as last time.
 
-Service meshes come up in almost every discussion of long-lived connections on Kubernetes, so this post starts there: what a mesh is, and how Istio works. Then it goes back to server-sent events (SSE) and checks each worry against what a mesh does. Some it fixes, one it makes worse, and one it doesn't touch.
+<figure class="fig">
+<svg viewBox="0 0 680 170" role="img" aria-labelledby="s9t s9d">
+  <title id="s9t">Polling compared with push</title>
+  <desc id="s9d">Over ten minutes, a client polling every two minutes checks six times. Five checks return no change. The config changes at minute 6.5, and the poll at minute 8 finds it, so the client is stale for 1.5 minutes. With push, the server sends one message at minute 6.5, the moment the change happens.</desc>
+  <line class="grid dash" x1="489" x2="489" y1="26" y2="140"/><text class="m" x="489" y="18" text-anchor="middle">config changes</text>
+  <text class="t" x="10" y="56">polling every 2 min</text><text class="m" x="10" y="72">5 of 6 checks: no change</text>
+  <line class="grid" x1="190" x2="650" y1="60" y2="60"/>
+  <g tabindex="0"><title>Polls at 0, 2, 4 and 6 min: no change</title><circle cx="190" cy="60" r="5" fill="var(--muted)"/><circle cx="282" cy="60" r="5" fill="var(--muted)"/><circle cx="374" cy="60" r="5" fill="var(--muted)"/><circle cx="466" cy="60" r="5" fill="var(--muted)"/></g>
+  <g tabindex="0"><title>Stale from 6.5 to 8 min</title><line class="sb" x1="489" x2="558" y1="60" y2="60"/></g>
+  <text class="tb" x="524" y="44" text-anchor="middle">stale 1.5 min</text>
+  <g tabindex="0"><title>Poll at 8 min finds the change</title><circle class="fa" cx="558" cy="60" r="5"/></g>
+  <g tabindex="0"><title>Poll at 10 min: no change</title><circle cx="650" cy="60" r="5" fill="var(--muted)"/></g>
+  <text class="t" x="10" y="116">push (SSE)</text><text class="m" x="10" y="132">one message, when needed</text>
+  <line class="grid" x1="190" x2="650" y1="120" y2="120"/>
+  <g tabindex="0"><title>Push: sent at 6.5 min, the moment it changes</title><circle class="fa" cx="489" cy="120" r="6"/></g>
+  <text class="ta" x="477" y="140" text-anchor="end">sent the moment it changes</text>
+  <text class="m" x="190" y="162">0</text><text class="m" x="650" y="162" text-anchor="end">10 min</text>
+</svg>
+<figcaption>Polling is checking the mailbox every two minutes. Push is a doorbell: nothing happens until there's something to deliver.</figcaption>
+</figure>
 
-## Server-sent events in one screen
+When I wrote about [getting experiment config to every service]({{ '/posts/from-polling-to-push/' | relative_url }}), push was the most advanced option, and I held back from it. Push means keeping a connection open to every client for hours, and I didn't know how well that works inside Kubernetes. So I went and learned. This post is what I found, in the order I wish I'd learned it:
 
-SSE is plain HTTP. The client makes a GET request, and the server answers with `Content-Type: text/event-stream` and never finishes the response. Each event is a few lines of text followed by a blank line:
+1. What server-sent events (SSE) are.
+2. Why long-lived connections are tricky.
+3. What a service mesh is, and what Istio does.
+4. Each problem again, and whether a mesh fixes it.
+
+## 1. Server-sent events
+
+SSE is a normal HTTP request whose answer never finishes. The client asks once. The server replies, keeps the connection open, and writes a new message into it whenever something happens. Think of a phone call where only one side talks, and only when there's news.
+
+This is what the client receives over time:
 
 ```text
 id: 42
-event: config
 data: {"experiment":"checkout-cta","status":"paused"}
 
-: heartbeat
+: ping
 
 id: 43
-event: config
 data: {"experiment":"search-rank","traffic":0.5}
 ```
 
-A line starting with a colon is a comment. Clients ignore it, which makes it a free heartbeat. The `id` matters when the connection drops: a browser's `EventSource` reconnects by itself and sends the last id it saw in a `Last-Event-ID` header, so the server can replay what the client missed. SDKs in other languages do the same.
+Three things in there matter later:
 
-Unlike WebSockets, SSE only goes from server to client, which is all config delivery needs. And because it's ordinary HTTP, the proxies, authentication and logging you already have mostly work with it. The "mostly" is what the rest of this post is about.
+- **Each message ends with a blank line.** The client handles it as soon as it arrives.
+- **A line starting with a colon is a comment.** The client ignores it. The server can send one every few seconds just to show the line is still alive: a heartbeat.
+- **Each message can have an `id`.** If the connection drops, the client reconnects and says "the last one I got was 42". The server then sends whatever came after it. Browsers do this automatically, through a header called `Last-Event-ID`.
 
-## What a service mesh is
+SSE only goes one way, from server to client. That's all config delivery needs. If you need both directions, WebSockets are the usual choice.
 
-In a system with many services, each one needs the same networking features: timeouts, retries, encryption between services, metrics on every call, a way to send 5% of traffic to a new version. Without a mesh, each team builds these into its code, usually through a library per language, and the libraries drift apart.
+## 2. Why long connections are tricky
 
-A service mesh moves those features out of the application and into a proxy that runs next to every instance. The application sends plain requests. The proxy beside it applies the policy, encrypts the traffic and records what happened, and the proxy on the receiving side does the same in reverse.
+Most web infrastructure is built for short requests: a question comes in, an answer goes out, done in under a second. An SSE connection can stay open for hours. Between the client and the server there are several middlemen, such as load balancers and proxies, and each one was tuned with short requests in mind.
 
-Like the config system in the earlier post, a mesh has two halves:
+Four things can go wrong:
 
-- The **data plane** is the proxies, which handle every request.
-- The **control plane** tells every proxy its configuration: where each service's instances are, which routing rules apply, which certificates to use.
+1. **A middleman hangs up on a quiet line.** Most proxies close connections that have been silent for a while, often after a minute.
+2. **A middleman holds messages back.** Some proxies collect a response in a buffer before passing it on. For a normal request that's fine. For SSE, the messages sit in the buffer and arrive late or not at all.
+3. **New servers get no clients.** A client picks a server when it connects and stays there. If you add a server because the others are busy, existing clients don't move to it.
+4. **Everyone calls back at once.** When a server restarts during a deploy, all its clients lose their connection at the same moment and reconnect together.
+
+There's also a fifth, smaller one: every open connection takes some memory on every machine it passes through.
+
+## 3. What a service mesh is
+
+With many services, each one needs the same networking features: timeouts, retries, encrypted traffic, and metrics on every call. Without help, every team builds these into its own code, in its own way.
+
+A service mesh takes those features out of the application and puts them into a small proxy next to every copy of every service. An analogy that helped me: each service gets a personal assistant that handles its calls. The service just says "call the push service". The assistant finds a healthy copy, encrypts the call, retries if it fails, and writes down how long it took. A manager gives every assistant the same rulebook.
+
+**Istio** is the most common service mesh on Kubernetes. In Istio's terms:
+
+- The assistants are **Envoy** proxies. Istio adds one to every pod automatically, as an extra container called a **sidecar**, and routes all the pod's traffic through it.
+- The manager is **istiod**. It tells every Envoy where the other services are, what the rules are, and which certificates to use for encryption.
+- The front desk is the **ingress gateway**, a standalone Envoy where traffic from outside the cluster comes in.
+
+You write the rules as Kubernetes objects, for example "send 10% of requests to version 2" or "time out after 3 seconds".
 
 <figure class="fig">
 <svg viewBox="0 0 680 280" role="img" aria-labelledby="s0t s0d">
@@ -64,31 +110,14 @@ Like the config system in the earlier post, a mesh has two halves:
   <g tabindex="0"><title>Service-to-service calls go proxy to proxy, over mutual TLS</title><path class="sa" d="M248,190 L248,240 L508,240 L508,192" marker-end="url(#sa0)"/></g>
   <text class="ta" x="378" y="258" text-anchor="middle">mTLS between proxies</text>
 </svg>
-<figcaption>Dashed lines are the control plane, solid blue lines are traffic. Every hop between services passes through two Envoys, one on each side.</figcaption>
+<figcaption>Dashed lines: istiod handing out the rulebook. Blue lines: real traffic, which always goes from one Envoy to another, never straight between apps.</figcaption>
 </figure>
 
-## Istio, specifically
+There's a nice irony here. istiod sends its rules to every Envoy over long-lived connections that stay open all the time. The mesh itself runs on the pattern I was nervous about.
 
-Istio is the most widely used mesh on Kubernetes. Its parts:
+## 4. The four problems, with a mesh
 
-- **Envoy**, an open-source proxy, is the data plane. Istio adds it to each pod as a sidecar container. An admission webhook injects it automatically into pods in any namespace labelled `istio-injection=enabled`, and an init step writes iptables rules so that all the pod's inbound and outbound traffic passes through Envoy.
-- **istiod** is the control plane. It watches the Kubernetes API for Services and pods, turns them and Istio's own resources into Envoy configuration, and issues the certificates each proxy uses for mutual TLS.
-- **Gateways** are standalone Envoys at the edge of the mesh, for traffic entering or leaving the cluster.
-
-You configure it with Kubernetes objects of its own:
-
-- `VirtualService`: routing rules such as "send 10% of requests to v2", plus timeouts and retries.
-- `DestinationRule`: what happens once a destination is chosen, such as the load-balancing policy, connection limits and outlier detection, which takes misbehaving pods out of rotation.
-- `Gateway`: which hosts and ports an edge gateway accepts.
-- `PeerAuthentication`: whether mutual TLS is required between services.
-
-Istio also has a newer "ambient" mode without sidecars. A shared proxy on each node, called ztunnel, handles encryption and connection-level work, and optional Envoy "waypoints" handle HTTP features for a namespace. The trade-offs for long-lived streams are similar, so I'll stick to sidecars here.
-
-One detail I enjoyed: istiod sends configuration to every Envoy over long-lived gRPC streams, using Envoy's xDS protocol. The mesh itself is built on the pattern I was nervous about, at the scale of every pod in the cluster.
-
-## The path an SSE stream takes
-
-Without a mesh, a stream from an app to a push service passes through a cloud load balancer and an ingress controller. With Istio, it passes through the cloud load balancer, the ingress gateway and the push service's sidecar. Each hop is a proxy with its own timers, and any of them can end the stream.
+With Istio, an SSE connection from an app to our push service passes through three middlemen: the cloud load balancer, the ingress gateway, and the Envoy sidecar next to the push service. Each has its own timers.
 
 <figure class="fig">
 <svg viewBox="0 0 680 290" role="img" aria-labelledby="s1t s1d">
@@ -119,15 +148,29 @@ Without a mesh, a stream from an app to a push service passes through a cloud lo
 <figcaption>The shortest idle timer on the path decides how long a quiet stream lives. A heartbeat shorter than all of them keeps every one from firing. The defaults shown are examples; check your own.</figcaption>
 </figure>
 
-Going through the worries I had, with a mesh in place:
+### A middleman hangs up on a quiet line
 
-**Idle timeouts: still yours, but easy.** Every hop has an idle timer. AWS's Application Load Balancer closes idle connections after 60 seconds by default, and Envoy closes a stream that has been quiet for five minutes. Envoy also has a route timeout, 15 seconds by default for a complete response, which would kill every SSE stream. Istio turns it off for HTTP routes by default, but setting a `timeout` in a VirtualService turns it back on for that route. A comment line every 15 to 30 seconds resets every idle timer on the path.
+**Does the mesh fix it?** No, it adds more timers. But the fix is easy.
 
-**Buffering: better with a mesh.** Envoy passes response bodies through as they arrive. Buffering usually comes from elsewhere: NGINX-based ingress controllers buffer responses unless the server sends `X-Accel-Buffering: no` or buffering is turned off for that route. Compression can also hold small events back until a block fills, so leave `text/event-stream` out of compression rules.
+Every hop has an idle timer. For example, AWS's load balancer closes connections that have been quiet for 60 seconds, and Envoy closes a stream after five quiet minutes. Envoy also has a 15-second limit on how long a whole response may take, which would cut every SSE connection. Istio switches that limit off by default, but it comes back if you set a timeout on the route yourself.
 
-**Rebalancing: not fixed.** This surprised me. Envoy balances per request, which fixes the uneven load that long-lived gRPC connections cause with plain kube-proxy. But an SSE stream is a single request that never ends. Once it lands on a pod, it stays there, mesh or no mesh. When the push service scales from three pods to four, the new pod only receives the streams that happen to reconnect.
+**Fix:** send a heartbeat comment every 15 to 30 seconds. That's shorter than every idle timer on the path, so none of them fire.
 
-The fix belongs to the server: close each stream after a maximum lifetime, with jitter, so clients reconnect and spread across the pods that exist now. Envoy can enforce a maximum stream duration too, but doing it in the application lets the server send a final event before it closes.
+### A middleman holds messages back
+
+**Does the mesh fix it?** Yes, mostly. Envoy passes messages through as they arrive.
+
+Buffering usually comes from other places. NGINX-based ingress controllers buffer responses unless the server sends the header `X-Accel-Buffering: no`. Compression can also hold small messages back until it has enough to compress.
+
+**Fix:** turn buffering off for the stream, and don't compress `text/event-stream` responses.
+
+### New servers get no clients
+
+**Does the mesh fix it?** No. This one surprised me.
+
+Envoy is smarter than plain Kubernetes about spreading load: it balances every request, instead of every connection. But an SSE connection is one request that never ends. Once it lands on a server, it stays there, mesh or no mesh.
+
+**Fix:** have the server close each connection after a while, say every 10 minutes, with a little randomness so they don't all close together. The client reconnects, and that time it may land on the new server.
 
 <figure class="fig">
 <svg viewBox="0 0 680 260" role="img" aria-labelledby="s2t s2d">
@@ -148,54 +191,63 @@ The fix belongs to the server: close each stream after a maximum lifetime, with 
   <text class="m" x="330" y="248" text-anchor="middle">minutes after the fourth pod starts</text>
   <line class="ln dash" x1="60" x2="600" y1="68" y2="68"/>
   <text class="m" x="606" y="72">even: 25%</text>
-  <g tabindex="0"><title>No cap: 1% on the new pod after 10 min, 6% after 60 min</title><path class="sb" d="M60.0,210.0 L69.0,209.6 L78.0,209.3 L87.0,208.4 L96.0,208.3 L105.0,207.6 L114.0,206.7 L123.0,205.9 L132.0,205.0 L141.0,204.5 L150.0,203.9 L159.0,203.2 L168.0,201.9 L177.0,201.2 L186.0,199.5 L195.0,198.9 L204.0,198.2 L213.0,197.4 L222.0,197.1 L231.0,196.5 L240.0,196.3 L249.0,195.7 L258.0,195.1 L267.0,193.7 L276.0,193.4 L285.0,192.9 L294.0,192.6 L303.0,192.0 L312.0,191.6 L321.0,191.7 L330.0,191.2 L339.0,191.2 L348.0,190.7 L357.0,189.6 L366.0,188.6 L375.0,187.3 L384.0,186.8 L393.0,186.1 L402.0,185.5 L411.0,185.1 L420.0,184.4 L429.0,184.5 L438.0,183.9 L447.0,182.8 L456.0,182.1 L465.0,181.7 L474.0,181.0 L483.0,180.4 L492.0,179.3 L501.0,178.7 L510.0,178.7 L519.0,177.8 L528.0,177.6 L537.0,176.7 L546.0,176.0 L555.0,176.0 L564.0,175.6 L573.0,174.9 L582.0,174.0 L591.0,174.0 L600.0,174.0"/></g>
-  <g tabindex="0"><title>Capped at 10 ± 2 min: 21% after 10 min, 26% after 20 min</title><path class="sa" d="M60.0,210.0 L69.0,199.5 L78.0,186.5 L87.0,174.4 L96.0,162.5 L105.0,149.1 L114.0,137.3 L123.0,124.9 L132.0,115.4 L141.0,104.3 L150.0,90.4 L159.0,79.0 L168.0,66.2 L177.0,64.8 L186.0,64.5 L195.0,63.8 L204.0,64.9 L213.0,64.6 L222.0,64.9 L231.0,64.6 L240.0,62.7 L249.0,63.9 L258.0,64.9 L267.0,66.6 L276.0,66.2 L285.0,64.1 L294.0,64.1 L303.0,62.8 L312.0,62.9 L321.0,63.8 L330.0,63.4 L339.0,62.4 L348.0,65.5 L357.0,66.8 L366.0,68.0 L375.0,68.6 L384.0,71.4 L393.0,75.0 L402.0,76.1 L411.0,77.0 L420.0,77.7 L429.0,76.6 L438.0,74.8 L447.0,71.3 L456.0,70.3 L465.0,69.3 L474.0,65.8 L483.0,63.1 L492.0,63.5 L501.0,64.9 L510.0,65.9 L519.0,63.5 L528.0,64.1 L537.0,67.2 L546.0,70.0 L555.0,70.9 L564.0,69.3 L573.0,70.2 L582.0,68.9 L591.0,68.3 L600.0,65.2"/></g>
-  <text class="tb" x="606" y="178">no cap</text>
-  <text class="ta" x="140" y="140">capped at 10 ± 2 min</text>
+  <g tabindex="0"><title>Never closed: 1% on the new pod after 10 min, 6% after 60 min</title><path class="sb" d="M60.0,210.0 L69.0,209.6 L78.0,209.3 L87.0,208.4 L96.0,208.3 L105.0,207.6 L114.0,206.7 L123.0,205.9 L132.0,205.0 L141.0,204.5 L150.0,203.9 L159.0,203.2 L168.0,201.9 L177.0,201.2 L186.0,199.5 L195.0,198.9 L204.0,198.2 L213.0,197.4 L222.0,197.1 L231.0,196.5 L240.0,196.3 L249.0,195.7 L258.0,195.1 L267.0,193.7 L276.0,193.4 L285.0,192.9 L294.0,192.6 L303.0,192.0 L312.0,191.6 L321.0,191.7 L330.0,191.2 L339.0,191.2 L348.0,190.7 L357.0,189.6 L366.0,188.6 L375.0,187.3 L384.0,186.8 L393.0,186.1 L402.0,185.5 L411.0,185.1 L420.0,184.4 L429.0,184.5 L438.0,183.9 L447.0,182.8 L456.0,182.1 L465.0,181.7 L474.0,181.0 L483.0,180.4 L492.0,179.3 L501.0,178.7 L510.0,178.7 L519.0,177.8 L528.0,177.6 L537.0,176.7 L546.0,176.0 L555.0,176.0 L564.0,175.6 L573.0,174.9 L582.0,174.0 L591.0,174.0 L600.0,174.0"/></g>
+  <g tabindex="0"><title>Closed every 10 ± 2 min: 21% after 10 min, 26% after 20 min</title><path class="sa" d="M60.0,210.0 L69.0,199.5 L78.0,186.5 L87.0,174.4 L96.0,162.5 L105.0,149.1 L114.0,137.3 L123.0,124.9 L132.0,115.4 L141.0,104.3 L150.0,90.4 L159.0,79.0 L168.0,66.2 L177.0,64.8 L186.0,64.5 L195.0,63.8 L204.0,64.9 L213.0,64.6 L222.0,64.9 L231.0,64.6 L240.0,62.7 L249.0,63.9 L258.0,64.9 L267.0,66.6 L276.0,66.2 L285.0,64.1 L294.0,64.1 L303.0,62.8 L312.0,62.9 L321.0,63.8 L330.0,63.4 L339.0,62.4 L348.0,65.5 L357.0,66.8 L366.0,68.0 L375.0,68.6 L384.0,71.4 L393.0,75.0 L402.0,76.1 L411.0,77.0 L420.0,77.7 L429.0,76.6 L438.0,74.8 L447.0,71.3 L456.0,70.3 L465.0,69.3 L474.0,65.8 L483.0,63.1 L492.0,63.5 L501.0,64.9 L510.0,65.9 L519.0,63.5 L528.0,64.1 L537.0,67.2 L546.0,70.0 L555.0,70.9 L564.0,69.3 L573.0,70.2 L582.0,68.9 L591.0,68.3 L600.0,65.2"/></g>
+  <text class="tb" x="600" y="164" text-anchor="end">never closed</text>
+  <text class="ta" x="140" y="140">closed every ~10 min</text>
 </svg>
-<figcaption>Simulated, illustrative numbers. Without a lifetime cap, the new pod sits almost idle for hours while the old ones stay loaded. A cap with jitter lets clients spread out within one cap period.</figcaption>
+<figcaption>Simulated, illustrative numbers for a fourth server added to three busy ones. If connections never close, the new server stays almost empty for hours. If each connection closes after about 10 minutes, the load evens out within one cycle.</figcaption>
 </figure>
 
-**Reconnect storms: partly helped.** When a push pod is replaced, Istio drains its connections for a short window, five seconds by default, and then they close. A mesh won't retry a stream that has already started sending, so every client on that pod reconnects by itself. Clients still need backoff with jitter, and the server still needs to resume from `Last-Event-ID` or send the full config on reconnect. What the mesh adds is outlier detection and connection limits, which stop a wave of reconnects from piling onto a pod that is already struggling.
+### Everyone calls back at once
 
-A mesh can also cause its own trap here. In older setups the sidecar could shut down before the application finished, cutting streams before the server had a chance to send a final event. Kubernetes now supports native sidecar containers, which start before and stop after the main container, and Istio can use them.
+**Does the mesh fix it?** Partly.
+
+During a deploy, Istio gives the old server a short grace period, five seconds by default, and then closes its connections. The mesh won't reconnect for the client, so every client does it on its own. What the mesh does add is protection for the servers: it can limit connections and stop sending traffic to a server that is struggling.
+
+**Fix:** clients wait a random few seconds before reconnecting, and send the last `id` they saw so they don't miss anything.
 
 ```mermaid
 sequenceDiagram
-  participant C as App SDK
-  participant G as Gateway (Envoy)
-  participant P1 as Push pod (old)
-  participant P2 as Push pod (new)
-  C->>G: GET /config/stream
+  participant C as App
+  participant G as Gateway
+  participant P1 as Old push pod
+  participant P2 as New push pod
+  C->>G: open stream
   G->>P1: forward
-  P1-->>C: id: 41, data: {...}
-  Note over P1: deploy: pod starts draining
-  P1-->>C: final event, stream closes
+  P1-->>C: message 41
+  Note over P1: deploy starts
+  P1-->>C: goodbye, stream closes
   Note over C: wait a random 0–5 s
-  C->>G: GET /config/stream, Last-Event-ID: 41
+  C->>G: open stream, last id was 41
   G->>P2: forward
-  P2-->>C: events 42 and 43 it missed, then live
+  P2-->>C: messages 42 and 43, then live
 ```
 
-**Cost per connection: worse with a mesh.** Each open stream is now held by the push service, by the Envoy sidecar in front of it, and by the gateway. That's memory in every proxy on the path, plus TLS state for each connection. It's modest per stream, but measure it before you have hundreds of thousands of them.
+One trap is specific to meshes. In older setups, the sidecar could shut down before the application, cutting connections before the server could say goodbye. Newer Kubernetes versions let sidecars start first and stop last, and Istio can use that.
 
-**What the mesh adds.** Some things I didn't think about at the time come for free: mutual TLS between the push service and every backend pod without touching code; metrics on open streams and their durations from Envoy; and traffic splitting, so a new version of the push service can take a small share of new streams first.
+### And the memory cost
 
-## Side by side
+**Does the mesh fix it?** No, it makes it a bit worse. Each open connection is now also held by the gateway and the sidecar. It's small per connection, but worth measuring before you have hundreds of thousands.
 
-| Concern | Plain Kubernetes | With Istio | Still yours |
-| --- | --- | --- | --- |
-| Idle timeouts | load balancer and ingress timers | adds Envoy's timers | heartbeats every 15–30 s |
-| Buffering | ingress may buffer | Envoy streams through | buffering off, no compression |
-| Rebalancing on scale-out | pinned per connection | pinned per stream | cap stream lifetime, with jitter |
-| Reconnect storms | every client at once | drain window, outlier detection | backoff, jitter, resume from last id |
-| Cost per stream | the push service | the push service and each proxy | measure, size the pods |
-| Encryption and metrics | build it yourself | included | nothing |
+### What the mesh adds
+
+Some things come for free with a mesh: encrypted traffic between services without code changes, metrics on how many streams are open and how long they last, and the option to send a new version of the push service only a small share of new connections at first.
+
+## Summary
+
+| Problem | Does a mesh fix it? | What you do |
+| --- | --- | --- |
+| Middlemen hang up on quiet lines | No, adds more timers | heartbeat every 15–30 s |
+| Middlemen hold messages back | Mostly | buffering off, no compression |
+| New servers get no clients | No | close connections every ~10 min, with randomness |
+| Everyone calls back at once | Partly | random wait, resume from last id |
+| Memory per connection | No, a bit worse | measure it |
 
 ## Would I build it now
 
-For the config system as it is, with around ten changes a day, not yet. ETag polling every couple of minutes, or Firestore listeners, meets the need with much less to run, and a mesh would be a lot to adopt for one push service.
+For our config system, with around ten changes a day, not yet. Polling cheaply with ETags, or Firestore listeners, gives us enough freshness with far less to run. And adopting a whole service mesh for one push service would be a lot.
 
-If I needed sub-second freshness for many clients, I'd build SSE with the list above: heartbeats, a capped stream lifetime, resumable ids, jittered reconnects, buffering off, and polling as the fallback when a stream can't be opened. I'd use a mesh only if the cluster already ran one, or needed one for other reasons. None of what makes SSE reliable depends on it.
+If we needed changes to reach every client within a second, I'd build SSE with the fixes above: heartbeats, connections that close every few minutes, message ids for resuming, random waits on reconnect, buffering off, and polling as a fallback. I'd only use a mesh if the cluster already had one. None of the fixes depend on it.
 
-So I was right about which problems exist, and I overestimated how hard they are. Each has a known fix, and most of the fixes are a few dozen lines of server and client code, not network infrastructure.
+My worry was right about which problems exist. I overestimated how hard they are: each one has a known fix, and most of the fixes are a few lines of server and client code.
