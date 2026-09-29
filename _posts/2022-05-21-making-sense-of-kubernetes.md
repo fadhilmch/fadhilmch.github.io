@@ -4,10 +4,10 @@ title: Making sense of Kubernetes
 date: 2022-05-21
 tags:
 - systems
-summary: My first cluster felt like a pile of YAML and unfamiliar names. The one idea underneath it, the parts, what happens on a deploy, and how traffic finds a pod.
+summary: My first cluster felt like a pile of YAML, charts and unfamiliar names. The one idea underneath it, the parts, namespaces, Helm, and how traffic finds a pod.
 ---
 
-I learned Kubernetes because I had to. The services I worked on were deployed on it, and at some point every change I made ended in a `kubectl apply`. The first time, I copied a YAML file, changed the image name, ran the command, and it worked. I had no idea why. Over the following months, on a team building an ML training platform on Kubeflow Pipelines, I kept meeting new nouns: pods, ReplicaSets, Services, ingresses, kubelets, CNI. Each one made sense on its own page of the docs. None of them fitted together.
+I learned Kubernetes because I had to. The services I worked on were deployed on it, mostly through Helm charts, so every change I shipped ended in a `helm upgrade`. The first time, I copied a chart, changed the image tag, ran the command, and it worked. I had no idea why. Over the following months I kept meeting new nouns: pods, ReplicaSets, Services, namespaces, ingresses, kubelets, CNI, charts, releases. Each one made sense on its own page of the docs. None of them fitted together.
 
 This is the explanation I wish I'd had at the start. I've written it about a year in, so it's the view of someone who uses Kubernetes every day, not someone who runs clusters for a living.
 
@@ -179,6 +179,85 @@ Namespaces are also where most of the cluster's rules attach:
 
 Namespaces don't isolate the network on their own: by default a pod in one namespace can still reach a pod in any other. Blocking that takes a NetworkPolicy. And some objects belong to the whole cluster rather than to a namespace: nodes, persistent volumes, and namespaces themselves. `kubectl` needs `-n payments`, or a default namespace set in its context, to see anything outside `default`, and forgetting that flag was the most common reason I thought something had disappeared.
 
+## Helm: how the YAML actually gets there
+
+In practice I almost never wrote those objects by hand. A real service needs a Deployment, a Service, a ConfigMap, maybe an Ingress and an autoscaler, and each environment needs slightly different versions of all of them: more replicas in production, a different hostname in staging. Copying YAML files per environment goes wrong fast. Helm is the tool we used instead, and it's often called the package manager for Kubernetes.
+
+A **chart** is a folder of templates plus default values:
+
+```text
+web/
+  Chart.yaml          name and version of the chart
+  values.yaml         defaults: image tag, replicas, resources
+  templates/
+    deployment.yaml   Kubernetes YAML with placeholders
+    service.yaml
+    ingress.yaml
+```
+
+The templates are ordinary Kubernetes objects with placeholders in Go's template syntax:
+
+{% raw %}
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicas }}
+  template:
+    spec:
+      containers:
+        - name: web
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+```
+{% endraw %}
+
+Each environment then only needs a small file with the values that differ:
+
+```yaml
+# values-prod.yaml
+replicas: 6
+image:
+  tag: "2.1"
+```
+
+Running `helm upgrade --install web ./web -f values-prod.yaml -n payments` merges the defaults with that file, renders the templates into plain Kubernetes YAML, and sends it to the API server, the same way `kubectl apply` would. From there everything in the sections above happens as before. Helm only decides what the desired state is; the controllers still do the work.
+
+<figure class="fig">
+<svg viewBox="0 0 680 245" role="img" aria-labelledby="k5t k5d">
+  <title id="k5t">What Helm does</title>
+  <desc id="k5d">A chart's templates are combined with default values and an environment's values file. Helm renders them into plain Kubernetes YAML and sends it to the API server. Each install or upgrade is recorded as a numbered revision of a release, here revisions 1 to 3, so helm rollback can return to revision 2.</desc>
+  <defs><marker id="ka5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="10" y="10" width="160" height="44" rx="6"/><text class="t" x="22" y="30">templates/</text><text class="m" x="22" y="46">with placeholders</text>
+  <rect class="box" x="10" y="64" width="160" height="44" rx="6"/><text class="t" x="22" y="84">values.yaml</text><text class="m" x="22" y="100">defaults</text>
+  <rect class="box" x="10" y="118" width="160" height="44" rx="6"/><text class="t" x="22" y="138">values-prod.yaml</text><text class="m" x="22" y="154">what differs</text>
+  <rect class="box sa" x="230" y="54" width="130" height="64" rx="6"/><text class="t" x="242" y="80">helm upgrade</text><text class="m" x="242" y="99">merge, render</text>
+  <path class="ln" d="M170,32 L228,70" marker-end="url(#ka5)"/><path class="ln" d="M170,86 L228,86" marker-end="url(#ka5)"/><path class="ln" d="M170,140 L228,102" marker-end="url(#ka5)"/>
+  <rect class="box" x="420" y="54" width="120" height="64" rx="6"/><text class="t" x="432" y="80">plain YAML</text><text class="m" x="432" y="99">Deployment, ...</text>
+  <rect class="box" x="570" y="54" width="100" height="64" rx="6"/><text class="t" x="582" y="80">API server</text><text class="m" x="582" y="99">as before</text>
+  <g tabindex="0"><title>Helm renders the chart into plain Kubernetes objects</title><path class="sa" d="M360,86 L418,86" marker-end="url(#ka5)"/></g>
+  <path class="ln" d="M540,86 L568,86" marker-end="url(#ka5)"/>
+  <text class="h" x="230" y="162">RELEASE "web" IN NAMESPACE payments</text>
+  <rect class="box" x="230" y="174" width="120" height="40" rx="6"/><text class="t" x="242" y="190">revision 1</text><text class="m" x="242" y="205">image 1.9</text>
+  <rect class="box" x="370" y="174" width="120" height="40" rx="6"/><text class="t" x="382" y="190">revision 2</text><text class="m" x="382" y="205">image 2.0</text>
+  <rect class="box sb" x="510" y="174" width="120" height="40" rx="6"/><text class="t" x="522" y="190">revision 3</text><text class="tb" x="522" y="205">image 2.1, bad</text>
+  <path class="ln" d="M350,194 L368,194" marker-end="url(#ka5)"/><path class="ln" d="M490,194 L508,194" marker-end="url(#ka5)"/>
+  <g tabindex="0"><title>helm rollback web 2 re-applies revision 2</title><path class="sa" d="M570,214 L570,232 L430,232 L430,216" marker-end="url(#ka5)"/></g>
+  <text class="ta" x="422" y="236" text-anchor="end">helm rollback web 2</text>
+</svg>
+<figcaption>Helm is a templating and bookkeeping layer in front of the API server. It records every upgrade as a revision, which is what makes a one-line rollback possible.</figcaption>
+</figure>
+
+The installed copy of a chart is a **release**, with a name and a namespace. Helm stores each install and upgrade as a numbered revision, so `helm history web` lists them and `helm rollback web 2` puts back what revision 2 rendered. Because of that, releases, not individual objects, became the thing I thought in: "which revision of `web` is running in production" is a Helm question.
+
+A few things took me a while with Helm:
+
+- `helm template` renders a chart locally without installing it. When a chart misbehaved, reading the rendered YAML was almost always faster than reading the templates.
+- Helm doesn't replace understanding the objects. When a pod crashes, the answer is still in `kubectl describe` and the logs, not in Helm.
+- Values files are where environments differ, so they're where most mistakes are: a wrong indent, or a key the template never reads, fails silently.
+- Charts can depend on other charts, which is how a single command installs a database or a monitoring stack from a public chart repository.
+
 ## Networking, the part I understood last
 
 Kubernetes makes two promises about the network, and hands the job of keeping them to a plugin:
@@ -257,6 +336,7 @@ The price is an extra proxy on every hop, more memory per pod, and one more syst
 ## What made it click
 
 - Treat YAML as a description of the end state, not a list of steps.
+- Helm writes the YAML; Kubernetes still does the work. When in doubt, render the chart and read what it produced.
 - When something is wrong, read the object's status and events with `kubectl describe` before the logs. They tell you which controller gave up, and why.
 - Components coordinate through the API server, never directly.
 - A Service is a set of rules on every node, not a box in the middle.
