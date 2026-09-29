@@ -58,7 +58,8 @@
 
 @media (max-width: 759px) {
   .about-page { padding: 22px 16px 44px; }
-  .wf-scroll { display: none; }
+  .wf-scroll { overflow: hidden; pointer-events: none; aspect-ratio: var(--wf-w) / var(--wf-h); margin-bottom: 12px; }
+  .wf-canvas { margin: 0; transform: scale(var(--wf-s, .3)); transform-origin: 0 0; }
   .wf-acc { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); overflow: hidden; }
   .wf-acc__item + .wf-acc__item { border-top: 1px solid var(--line); }
   .wf-acc__btn { width: 100%; display: grid; grid-template-columns: 36px minmax(0, 1fr) auto 14px; align-items: center; gap: 12px; padding: 12px 14px; border: 0; background: transparent; cursor: pointer; text-align: left; }
