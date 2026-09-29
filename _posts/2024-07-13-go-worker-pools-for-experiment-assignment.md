@@ -1,7 +1,7 @@
 ---
 layout: post
 title: What firmware taught me about Go worker pools
-date: 2025-12-06
+date: 2024-07-13
 tags:
 - mlops
 - systems
