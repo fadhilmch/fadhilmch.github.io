@@ -99,7 +99,8 @@
 .prose .highlight .gd, .prose .highlight .err { color: var(--k-num); }
 .prose .highlight .gi { color: var(--k-str); }
 .prose table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse; font: 12.5px/1.5 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
-.prose th, .prose td { padding: 8px 14px 8px 0; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.prose th, .prose td { padding: 8px 14px 8px 0; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.prose th { white-space: nowrap; }
 .prose th { color: var(--muted); font-weight: 500; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; border-bottom-color: var(--fg); }
 .prose td:last-child, .prose th:last-child { padding-right: 0; }
 .prose blockquote { padding: 2px 0 2px 18px; border-left: 2px solid var(--line); color: var(--muted); }
