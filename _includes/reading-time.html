@@ -1,0 +1,16 @@
+{%- comment -%}
+  Minutes to read include.html: prose words only. <figure> blocks (inline SVG
+  diagrams, images) and HTML tags are left out, then 220 words a minute.
+{%- endcomment -%}
+{%- assign rt_words = 0 -%}
+{%- assign rt_parts = include.html | split: '<figure' -%}
+{%- for rt_part in rt_parts -%}
+  {%- assign rt_body = rt_part -%}
+  {%- unless forloop.first -%}
+    {%- assign rt_split = rt_part | split: '</figure>' -%}
+    {%- if rt_split.size > 1 -%}{%- assign rt_body = rt_split | last -%}{%- else -%}{%- assign rt_body = '' -%}{%- endif -%}
+  {%- endunless -%}
+  {%- assign rt_n = rt_body | strip_html | number_of_words -%}
+  {%- assign rt_words = rt_words | plus: rt_n -%}
+{%- endfor -%}
+{{- rt_words | divided_by: 220 | plus: 1 -}}

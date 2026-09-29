@@ -22,7 +22,7 @@
   {%- endfor -%}
   {%- assign ring = ring | append: ')' -%}
 {%- endif -%}
-{%- assign mins = post.content | number_of_words | divided_by: 220 | plus: 1 -%}
+{%- capture mins -%}{% include reading-time.html html=post.content %}{%- endcapture -%}
 <a class="post-row" href="{{ post.url | relative_url }}" data-lanes="{{ lane_list | join: ',' }}">
   <span class="post-row__dot" aria-hidden="true" style="background:{{ ring }}"></span>
   <span class="post-row__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%m / %d' }}</time> · {{ mins }} min read</span>

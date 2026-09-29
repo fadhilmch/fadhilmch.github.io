@@ -6,7 +6,7 @@ layout: base
 <article class="article-shell">
   <a class="back-link" href="{{ '/posts/' | relative_url }}">← All posts</a>
   <header class="article-header">
-    <p class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y-%m-%d' }}</time> <span aria-hidden="true">·</span> {% assign words = content | number_of_words %}{{ words | divided_by: 220 | plus: 1 }} min read</p>
+    <p class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y-%m-%d' }}</time> <span aria-hidden="true">·</span> {% include reading-time.html html=content %} min read</p>
     <h1>{{ page.title | escape }}</h1>
     <p class="standfirst">{{ page.summary | escape }}</p>
     <div class="tag-list">
