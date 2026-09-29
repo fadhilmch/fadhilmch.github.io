@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "From polling to push: getting experiment config to every service"
-date: 2026-09-29
+date: 2025-01-18
 tags:
 - exp
 - systems
