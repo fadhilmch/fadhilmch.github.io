@@ -132,3 +132,7 @@
 .mermaid-fig pre.mermaid:not([data-processed]) { visibility: hidden; }
 .mermaid-fig svg { max-width: 100%; height: auto; }
 .mermaid-fig .node rect, .mermaid-fig rect.actor, .mermaid-fig .note { rx: 6px; ry: 6px; }
+
+/* KaTeX math, loaded on posts with math: true */
+.prose .katex-display { margin: 1.4em 0; overflow-x: auto; overflow-y: hidden; padding: 4px 0; }
+.prose .katex { font-size: 1.05em; }
