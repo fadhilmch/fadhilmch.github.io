@@ -1,0 +1,38 @@
+<article class="notes-reader" data-note-reader>
+  {% if active_note %}
+    {% include notes/lane-color.html tag=active_note.tag %}
+    {% include notes/tag-label.html tag=active_note.tag %}
+    <div class="note-reader__inner">
+      <span class="note-crumb">vault / {{ active_note.tag }} / {{ active_note.slug }}.md</span>
+      <h1>{{ active_note.title | escape }}</h1>
+      <div class="note-meta">
+        <span class="note-tag"><span class="dot" style="background:var(--{{ lane_color }})"></span>{{ tag_label | escape }}</span>
+        <span>{{ active_note.content | strip_html | number_of_words }} words</span>
+        <span>{{ active_note.links.size | default: 0 }} outgoing</span>
+        <span>{{ backlinks.size }} backlinks</span>
+      </div>
+      <div class="note-body">{{ active_note.content }}</div>
+      {% if active_note.links.size > 0 %}
+        <div class="note-related">
+          <span class="notes-label__title">LINKS IN THIS NOTE</span>
+          <div class="note-related__grid">
+            {% for target in active_note.links %}
+              {% assign target_note = site.notes | where_exp: 'note', 'note.slug == target' | first %}
+              {% if target_note %}
+                {% include notes/lane-color.html tag=target_note.tag %}
+                <a class="note-card" href="{{ target_note.url | relative_url }}">
+                  <span class="note-card__title"><span class="dot" style="background:var(--{{ lane_color }})"></span>[[ {{ target_note.title | escape }} ]]</span>
+                  <span class="note-card__body">{{ target_note.content | replace: '<', ' <' | strip_html | normalize_whitespace | truncatewords: 40 }}</span>
+                </a>
+              {% else %}
+                <span class="note-card wikilink--missing"><span class="note-card__title">[[ {{ target | escape }} ]]</span></span>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  {% else %}
+    <div class="note-reader__inner"><p class="notes-muted">This note could not be found.</p></div>
+  {% endif %}
+</article>

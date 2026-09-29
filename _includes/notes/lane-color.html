@@ -1,0 +1,3 @@
+{% comment %}Sets `lane_color` (CSS colour token) for include.tag from _data/lanes.yml.{% endcomment %}
+{% assign lane_color = 'muted' %}
+{% for lane in site.data.lanes %}{% if lane.tags contains include.tag %}{% assign lane_color = lane.color %}{% endif %}{% endfor %}

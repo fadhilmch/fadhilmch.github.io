@@ -1,0 +1,4 @@
+{%- assign jv = include.v | jsonify -%}{%- assign jv_first = jv | slice: 0 -%}
+{%- if jv_first == '"' -%}<span class="j-str">{{ jv | escape }}</span>
+{%- elsif jv_first == '[' or jv_first == '{' -%}<span class="j-p">{{ jv | escape }}</span>
+{%- else -%}<span class="j-num">{{ jv | escape }}</span>{%- endif -%}

@@ -1,0 +1,30 @@
+<aside class="notes-side" aria-label="Notes graph and links">
+  <div class="notes-side__block">
+    <div class="notes-label"><span class="notes-label__title">GRAPH</span><span>drag · scroll · click</span></div>
+    <div class="notes-graphbox"><fm-graph data-src="{{ '/notes-graph.json' | relative_url }}"></fm-graph></div>
+  </div>
+  <div class="notes-side__block">
+    <span class="notes-label__title">BACKLINKS</span>
+    {% for note in backlinks %}
+      {% include notes/lane-color.html tag=note.tag %}
+      <a class="note-card note-card--sm" href="{{ note.url | relative_url }}">
+        <span class="note-card__title"><span class="dot" style="background:var(--{{ lane_color }})"></span>{{ note.title | escape }}</span>
+        <span class="note-card__body">{{ note.content | replace: '<', ' <' | strip_html | normalize_whitespace | truncatewords: 40 }}</span>
+      </a>
+    {% else %}
+      <span class="sr-only">No backlinks</span>
+    {% endfor %}
+  </div>
+  <div class="notes-side__block">
+    <span class="notes-label__title">OUTGOING</span>
+    <div class="note-pills">
+      {% for target in active_note.links %}
+        {% assign target_note = site.notes | where_exp: 'note', 'note.slug == target' | first %}
+        {% if target_note %}
+          {% include notes/lane-color.html tag=target_note.tag %}
+          <a class="note-pill" href="{{ target_note.url | relative_url }}"><span class="dot" style="background:var(--{{ lane_color }})"></span>{{ target_note.title | escape }}</a>
+        {% else %}<span class="note-pill wikilink--missing">{{ target | escape }}</span>{% endif %}
+      {% else %}<span class="notes-muted">0 outgoing</span>{% endfor %}
+    </div>
+  </div>
+</aside>

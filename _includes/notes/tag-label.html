@@ -1,0 +1,3 @@
+{% comment %}Sets `tag_label` (display label) for include.tag from _data/tags.yml.{% endcomment %}
+{% assign tag_label = include.tag %}
+{% for t in site.data.tags %}{% if t.key == include.tag %}{% assign tag_label = t.label %}{% endif %}{% endfor %}

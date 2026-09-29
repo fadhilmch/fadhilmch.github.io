@@ -1,0 +1,56 @@
+{%- comment -%}
+  Pretty-printed, pre-coloured JSON for one node (plan 7.4). One branch per source.
+  In: n_source (from resolve.html), include.entry for `custom`.
+{%- endcomment -%}
+{%- capture nl %}
+{% endcapture -%}
+{%- assign i1 = '  ' -%}{%- assign i2 = '    ' -%}
+{%- assign ob = '<span class="j-p">{</span>' -%}{%- assign cb = '<span class="j-p">}</span>' -%}
+{%- assign oa = '<span class="j-p">[</span>' -%}{%- assign ca = '<span class="j-p">]</span>' -%}
+{%- assign cm = '<span class="j-p">,</span>' -%}
+{%- capture colon %}<span class="j-p">:</span> {% endcapture -%}
+{%- case n_source -%}
+{%- when 'profile' -%}
+  {%- assign p = site.data.profile -%}
+  {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"name"</span>{{ colon }}{% include workflow/jv.html v=p.name %}{{ cm }}
+  {{- nl }}{{ i1 }}<span class="j-key">"role"</span>{{ colon }}{% include workflow/jv.html v=p.role %}{{ cm }}
+  {{- nl }}{{ i1 }}<span class="j-key">"location"</span>{{ colon }}{% include workflow/jv.html v=p.location %}{{ nl }}{{ cb }}
+{%- when 'education' -%}
+  {{ oa }}{%- for e in site.data.education -%}
+    {{ nl }}{{ i1 }}{{ ob }}
+    {{- nl }}{{ i2 }}<span class="j-key">"degree"</span>{{ colon }}{% include workflow/jv.html v=e.role %}{{ cm }}
+    {{- nl }}{{ i2 }}<span class="j-key">"school"</span>{{ colon }}{% include workflow/jv.html v=e.org %}{{ cm }}
+    {{- nl }}{{ i2 }}<span class="j-key">"years"</span>{{ colon }}{% include workflow/jv.html v=e.years %}
+    {{- nl }}{{ i1 }}{{ cb }}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}{{ nl }}{{ ca }}
+{%- when 'experience' -%}
+  {{ oa }}{%- for e in site.data.experience -%}
+    {{ nl }}{{ i1 }}{{ ob }}
+    {{- nl }}{{ i2 }}<span class="j-key">"role"</span>{{ colon }}{% include workflow/jv.html v=e.role %}{{ cm }}
+    {{- nl }}{{ i2 }}<span class="j-key">"org"</span>{{ colon }}{% include workflow/jv.html v=e.org %}{{ cm }}
+    {{- nl }}{{ i2 }}<span class="j-key">"years"</span>{{ colon }}{% include workflow/jv.html v=e.years %}
+    {{- nl }}{{ i1 }}{{ cb }}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}{{ nl }}{{ ca }}
+{%- when 'projects+publications' -%}
+  {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"projects"</span>{{ colon }}{{ oa }}
+  {%- for pr in site.data.projects -%}
+    {{ nl }}{{ i2 }}{% include workflow/jv.html v=pr.name %}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}
+  {{ nl }}{{ i1 }}{{ ca }}{{ cm }}
+  {{- nl }}{{ i1 }}<span class="j-key">"publications"</span>{{ colon }}{% include workflow/jv.html v=site.data.publications.size %}{{ nl }}{{ cb }}
+{%- when 'contact' -%}
+  {{ ob }}{%- for c in site.data.contact -%}
+    {{ nl }}{{ i1 }}<span class="j-key">{{ c.label | jsonify | escape }}</span>{{ colon }}{% include workflow/jv.html v=c.value %}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}{{ nl }}{{ cb }}
+{%- when 'custom' -%}
+  {{ ob }}{%- for pair in include.entry.output -%}
+    {{ nl }}{{ i1 }}<span class="j-key">{{ pair[0] | jsonify | escape }}</span>{{ colon }}{%- assign pv = pair[1] -%}{% include workflow/jv.html v=pv %}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}{{ nl }}{{ cb }}
+{%- else -%}
+  {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"toolkit"</span>{{ colon }}{% include workflow/jv.html v=n_skill.group %}{{ cm }}
+  {{- nl }}{{ i1 }}<span class="j-key">"tools"</span>{{ colon }}{{ oa }}
+  {%- for t in n_skill.items -%}
+    {{ nl }}{{ i2 }}{% include workflow/jv.html v=t.name %}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}
+  {{ nl }}{{ i1 }}{{ ca }}{{ nl }}{{ cb }}
+{%- endcase -%}

@@ -1,0 +1,67 @@
+---
+- key: llms
+  group: LLMs & agents
+  desc: What I reach for in LLM and agent work, and where I used it.
+  glyph: "◎"
+  color: l0
+  items:
+  - name: Microsoft Agent Framework
+    where: Electrolux Group
+  - name: RAG · Azure AI Search · Azure OpenAI
+    where: Electrolux Group
+  - name: Evaluation-driven development
+    where: Electrolux Group
+  - name: Arize · OpenTelemetry tracing
+    where: Electrolux Group
+  - name: LLM experimentation pipeline
+    where: Traveloka
+- key: experimentation
+  group: Experimentation
+  desc: What I reach for in experimentation, and where I used it.
+  glyph: "⚖"
+  color: l1
+  items:
+  - name: A/B testing platform
+    where: Traveloka
+  - name: Multi-armed bandits · Thompson sampling
+    where: Traveloka · Spotify
+  - name: Metric semantic layer · BigQuery
+    where: Traveloka
+  - name: Ranking · CatBoost
+    where: Traveloka
+  - name: Forecasting · GAM · LASSO
+    where: KTH · Electrolux
+- key: ml-platform
+  group: ML platform
+  desc: What I reach for in ML platform work, and where I used it.
+  glyph: "∞"
+  color: l3
+  items:
+  - name: Python · Go
+    where: strongest languages
+  - name: Kubernetes · Kubeflow Pipelines
+    where: Traveloka · Electrolux Group
+  - name: Terraform
+    where: Traveloka
+  - name: Argo CD · GitHub Actions
+    where: Electrolux Group
+  - name: Prometheus · Grafana · Datadog
+    where: Traveloka · Electrolux Group
+  - name: GCP · Azure
+    where: both clouds in production
+- key: creative
+  group: Creative
+  desc: What I reach for in creative work, and where I used it.
+  glyph: "◐"
+  color: l2
+  items:
+  - name: Photography
+    where: off-hours
+  - name: Digital design · Figma
+    where: off-hours
+  - name: Music
+    where: off-hours
+  - name: Design thinking
+    where: Labtek Indie
+  - name: Interactive installations · Unity
+    where: Labtek Indie

@@ -1,0 +1,9 @@
+---
+- value: '6,000'
+  label: monthly employees on the agentic assistant I help run
+- value: 800+
+  label: experiments a year on the platform I led at Traveloka
+- value: "−95%"
+  label: cloud cost, year over year, after the modernization
+- value: 50k+
+  label: requests per second, load-tested at P95 under 100 ms

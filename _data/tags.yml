@@ -1,0 +1,19 @@
+# Display label for each raw tag used by posts (tags) and notes (tag).
+# Order here is the order of groups in the Notes explorer.
+# The tag's colour comes from whichever lane in lanes.yml lists it.
+- key: agents
+  label: Agents & LLMs
+- key: exp
+  label: Experimentation
+- key: mlops
+  label: ML platform
+- key: data
+  label: Data & forecasting
+- key: design
+  label: Design
+- key: photo
+  label: Photography
+- key: music
+  label: Music
+- key: meta
+  label: Meta

@@ -1,0 +1,10 @@
+---
+- label: email
+  value: fadhil.mochammad1095@gmail.com
+  href: mailto:fadhil.mochammad1095@gmail.com
+- label: github
+  value: github.com/fadhilmch
+  href: https://github.com/fadhilmch
+- label: linkedin
+  value: in/fadhilmch
+  href: https://www.linkedin.com/in/fadhilmch/

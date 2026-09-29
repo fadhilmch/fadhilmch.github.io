@@ -1,0 +1,8 @@
+<footer class="site-footer">
+  <span>© {{ site.time | date: '%Y' }} {{ site.data.profile.name }} · {{ site.data.profile.city | default: site.data.profile.location }}</span>
+  <span class="lane-legend">
+    {%- for lane in site.data.lanes -%}{%- unless lane.branch == false %}
+    <span><span style="color:var(--{{ lane.color }})" aria-hidden="true">●</span> {{ lane.label }}</span>
+    {%- endunless -%}{%- endfor %}
+  </span>
+</footer>

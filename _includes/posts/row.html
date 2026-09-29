@@ -1,0 +1,39 @@
+{%- assign post = include.post -%}
+{%- assign lane_list = '' | split: '' -%}
+{%- assign stops = '' | split: '' -%}
+{%- for tag in post.tags -%}
+  {%- for lane in site.data.lanes -%}
+    {%- if lane.branch != false and lane.tags contains tag -%}{%- unless lane_list contains lane.key -%}
+      {%- assign lane_list = lane_list | push: lane.key -%}
+      {%- assign stops = stops | push: lane.color -%}
+    {%- endunless -%}{%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{%- assign n = stops.size -%}
+{%- if n == 0 -%}{%- assign ring = 'var(--muted)' -%}
+{%- elsif n == 1 -%}{%- assign ring = 'var(--' | append: stops[0] | append: ')' -%}
+{%- else -%}
+  {%- assign ring = 'conic-gradient(' -%}
+  {%- for c in stops -%}
+    {%- assign a = forloop.index0 | times: 100 | divided_by: n -%}
+    {%- assign b = forloop.index | times: 100 | divided_by: n -%}
+    {%- assign ring = ring | append: 'var(--' | append: c | append: ') ' | append: a | append: '% ' | append: b | append: '%' -%}
+    {%- unless forloop.last -%}{%- assign ring = ring | append: ',' -%}{%- endunless -%}
+  {%- endfor -%}
+  {%- assign ring = ring | append: ')' -%}
+{%- endif -%}
+{%- assign mins = post.content | number_of_words | divided_by: 220 | plus: 1 -%}
+<a class="post-row" href="{{ post.url | relative_url }}" data-lanes="{{ lane_list | join: ',' }}">
+  <span class="post-row__dot" aria-hidden="true" style="background:{{ ring }}"></span>
+  <span class="post-row__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%m / %d' }}</time> · {{ mins }} min read</span>
+  <span class="post-row__title">{{ post.title | escape }}</span>
+  <span class="post-row__summary">{{ post.summary | escape }}</span>
+  <span class="post-row__tags">
+    {%- for tag in post.tags -%}
+      {%- assign tl = site.data.tags | where: 'key', tag | first -%}
+      {%- assign tc = 'fg' -%}
+      {%- for lane in site.data.lanes -%}{%- if lane.tags contains tag -%}{%- assign tc = lane.color -%}{%- break -%}{%- endif -%}{%- endfor -%}
+      <span class="post-tag"><i style="background:var(--{{ tc }})"></i>{{ tl.label | default: tag }}</span>
+    {%- endfor -%}
+  </span>
+</a>

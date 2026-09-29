@@ -1,0 +1,36 @@
+---
+- years: Sep 2025 — Now
+  role: Machine Learning Engineer
+  org: Electrolux Group
+  note: 'Agentic internal knowledge assistant: evaluation architecture, retrieval
+    flow, feedback-triage agent. MLOps for a supply-chain optimization system.'
+- years: Dec 2020 — Sep 2025
+  role: Sr. Machine Learning and Experimentation Platform Engineer
+  org: Traveloka
+  note: Tech lead for the experimentation platform. ML serving engine and SDK, Kubeflow
+    training platform, ranking and bandits.
+- years: Jun 2020 — Oct 2020
+  role: Machine Learning Engineer Intern
+  org: Spotify
+  note: 'Multi-armed bandit for notification optimization: policy, reward definition,
+    offline analysis.'
+- years: Dec 2019 — Jun 2020
+  role: Data Scientist Intern
+  org: Electrolux
+  note: Bayesian vs frequentist demand forecasting on Databricks with PySpark.
+- years: Apr 2019 — Aug 2019
+  role: Data Scientist Intern
+  org: Scania
+  note: Maintenance-action recommendation for truck diagnostic trouble codes.
+- years: Oct 2018 — Aug 2019
+  role: Full-Stack Web Developer
+  org: OnTel AB
+  note: Real-time interactive presentation app for an Ericsson collaboration.
+- years: Apr 2018 — Apr 2019
+  role: AI Engineer
+  org: Riset.ai
+  note: Led engineers building a FaceNet-based face-recognition system to production.
+- years: Aug 2016 — Dec 2017
+  role: Research Assistant
+  org: ITB Advanced Robotics Lab
+  note: Data acquisition for coordinated UAV and ground-robot reconnaissance on ROS.

@@ -1,0 +1,56 @@
+title: Fadhil Mochammad
+tagline: ML platforms, evaluation, and the parts that aren't the model.
+description: >-
+  Machine learning platforms, experimentation, and agent systems in production.
+author: Fadhil Mochammad
+email: fadhil.mochammad1095@gmail.com
+url: https://fadhilmch.github.io
+baseurl: ""
+github_username: fadhilmch
+linkedin_username: fadhilmch
+google_site_verification: isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU
+timezone: Europe/Stockholm
+markdown: kramdown
+highlighter: rouge
+permalink: /posts/:title/
+
+collections:
+  notes:
+    output: true
+    permalink: /notes/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note
+      nav: notes
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: /feed.xml
+
+sass:
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - docs
+  - scripts
+  - _archive
+  - README.md
+  - README.MD
+  - uploads
+  - node_modules
