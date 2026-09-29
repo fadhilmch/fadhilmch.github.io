@@ -1,6 +1,6 @@
 ---
 layout: post
-title: My first text classifier, a year later
+title: My first text classifier for sentiment analysis
 date: 2020-11-14
 tags:
 - data
