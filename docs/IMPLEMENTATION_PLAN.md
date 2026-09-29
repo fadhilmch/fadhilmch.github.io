@@ -482,9 +482,11 @@ Then delete the 2016 images that the new design does not use (`FM Face*.png`, `a
 
 ```bash
 mkdir -p _archive/design-reference
-cp ~/Downloads/Portfolio\ Website\ Design\ Request/*.dc.html _archive/design-reference/
-cp ~/Downloads/Portfolio\ Website\ Design\ Request/fm-*.js   _archive/design-reference/
-cp -r ~/Downloads/Portfolio\ Website\ Design\ Request/shots  _archive/design-reference/
+SRC=~/Downloads/Portfolio\ Website\ Design\ Request
+mkdir -p _archive/design-reference/shots
+cp "$SRC/Portfolio F Workflow v2.dc.html" _archive/design-reference/
+cp "$SRC/fm-graph.js" _archive/design-reference/
+cp "$SRC"/shots/{01-v2,01-v2b,02-v2,02-v2b,03-v2,01-logos,02-logos}.jpg _archive/design-reference/shots/
 ```
 
 `_archive` is already in `exclude:` in `_config.yml` (4.3), so it never ships.
