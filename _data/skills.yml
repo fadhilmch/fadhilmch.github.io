@@ -1,18 +1,18 @@
 ---
 - key: llms
   group: LLMs & agents
-  desc: Mostly from building the agentic knowledge assistant at Electrolux Group, plus an LLM experimentation pipeline at Traveloka.
+  desc: Mostly from building the agentic knowledge assistant at Electrolux, plus an LLM experimentation pipeline at Traveloka.
   glyph: "◎"
   color: l0
   items:
   - name: Microsoft Agent Framework
-    where: Electrolux Group
+    where: Electrolux
   - name: RAG · Azure AI Search · Azure OpenAI
-    where: Electrolux Group
+    where: Electrolux
   - name: Evaluation-driven development
-    where: Electrolux Group
+    where: Electrolux
   - name: Arize · OpenTelemetry tracing
-    where: Electrolux Group
+    where: Electrolux
   - name: LLM experimentation pipeline
     where: Traveloka
 - key: experimentation
@@ -51,12 +51,12 @@
     where: KTH
 - key: ml-platform
   group: ML platform
-  desc: The plumbing behind serving, training and experimentation, on Google Cloud at Traveloka and on Azure at Electrolux Group.
+  desc: The plumbing behind serving, training and experimentation, on Google Cloud at Traveloka and on Azure at Electrolux.
   glyph: "∞"
   color: l3
   items:
   - name: Python
-    where: Traveloka · Electrolux Group
+    where: Traveloka · Electrolux
   - name: Go · Redis
     where: Traveloka
   - name: Kubernetes · Kubeflow Pipelines
@@ -64,13 +64,13 @@
   - name: Terraform
     where: Traveloka
   - name: Argo CD · GitHub Actions
-    where: Electrolux Group
+    where: Electrolux
   - name: Prometheus · Grafana · Datadog
-    where: Traveloka · Electrolux Group
+    where: Traveloka · Electrolux
   - name: Google Cloud
     where: Traveloka
   - name: Azure · AKS
-    where: Electrolux Group
+    where: Electrolux
 - key: systems
   group: System design
   desc: Services and pipelines built to stay fast and correct under load, from student projects to production at Traveloka.
@@ -86,7 +86,7 @@
   - name: Latency budgets · P95 monitoring
     where: Traveloka
   - name: Observability · tracing
-    where: Traveloka · Electrolux Group
+    where: Traveloka · Electrolux
 - key: design
   group: Design
   desc: Product and interaction design from side work. One is a virtual-sports platform I co-founded; the other is interactive-wall installations in Bandung.

@@ -50,8 +50,9 @@
           <div><dt>{{ r.k | escape }}</dt><dd>{% if r.href %}<a href="{{ r.href | escape }}">{{ r.v | escape }}</a>{% else %}{{ r.v | escape }}{% endif %}</dd></div>
           {%- endfor -%}
         {%- else -%}
-          {%- for t in n_skill.items %}
-          <div><dt>{{ t.where | escape }}</dt><dd>{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}</dd></div>
+          {%- assign by_where = n_skill.items | group_by: 'where' -%}
+          {%- for g in by_where %}
+          <div><dt>{{ g.name | escape }}</dt><dd>{% for t in g.items %}{% unless forloop.first %}<br>{% endunless %}{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}{% endfor %}</dd></div>
           {%- endfor -%}
       {%- endcase %}
     </dl>
