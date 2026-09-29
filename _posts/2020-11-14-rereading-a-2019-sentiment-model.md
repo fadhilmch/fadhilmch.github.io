@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "The smiley was the label: rereading my first text classifier"
+title: My first text classifier, a year later
 date: 2020-11-14
 tags:
 - data
-summary: Three models finished within four points of each other. The dataset moved the result by eleven to fifteen.
+summary: Naive Bayes, a linear SVM and a CNN on 1.6 million tweets, and why the data mattered more than the model.
 ---
 
 In spring 2019 I did a course project at KTH with two classmates. It was my first project on text. The question was simple: which classifier is best at telling positive tweets from negative ones? We tried Naive Bayes, a linear SVM and a small convolutional network. I expected the CNN to win, because in 2019 the neural network was supposed to win.
