@@ -13,8 +13,6 @@ You flip a coin and get heads. You flip again and get heads again. Is the third 
 
 No, if the coin is fair and the flips are independent. The coin doesn't keep a ledger. But that answer is easier to remember when you understand what probability is describing.
 
-No background needed. We'll count a few simple outcomes, turn the counts into a picture, and then give the picture a formula. The widgets are part of the explanation: try the small changes suggested beside them.
-
 <style>
 .fig.learn-fig { overflow:visible; }
 .fig.learn-fig svg { width:100%; min-width:0; max-width:480px; height:auto; }
