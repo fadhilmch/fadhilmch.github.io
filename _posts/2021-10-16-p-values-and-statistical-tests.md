@@ -19,7 +19,7 @@ A statistical test works like a criminal trial.
 
 - The defendant is **presumed innocent**. In statistics, this default is the **null hypothesis**, $$H_0$$: *the change did nothing, and any difference is luck.*
 - The prosecution brings **evidence**. In statistics, that's your data.
-- The jury asks one question: *if the defendant were innocent, how surprising would this evidence be?* If it would be very surprising, they convict. That question is the **p-value**.
+- The jury asks one question: *if the defendant were innocent, how surprising would this evidence be?* If it would be very surprising, they convict. The answer to that question is the **p-value**.
 - The bar for conviction, "beyond reasonable doubt", is fixed **before** the trial. In statistics it's the **significance level**, $$\alpha$$, usually 5%.
 
 Two details of the analogy matter later. First, the jury never proves innocence. "Not guilty" means "not enough evidence", not "definitely innocent". A non-significant result works the same way. Second, even a fair court sometimes convicts an innocent person. Setting $$\alpha = 0.05$$ means you accept that, when the change truly does nothing, you'll still declare it a winner 5% of the time.
@@ -87,6 +87,44 @@ $$
 If you'd be just as suspicious of a coin that landed tails 8 times, you also count 0, 1 and 2 heads. That's a **two-sided** test, and the p-value doubles to about 0.109.
 
 So a fair coin gives a result this lopsided about one time in nine. That's unusual, but hardly damning. With $$\alpha = 0.05$$, you don't have enough evidence to call the coin unfair. Notice what that does *not* mean: you haven't shown the coin is fair. Ten flips just can't tell a fair coin from a slightly biased one.
+
+<style>
+.pv-widget { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.pv-widget[hidden] { display:none; }
+.prose .pv-widget h3 { margin:0 0 8px; }
+.prose .pv-widget p { margin:12px 0; font-size:14px; }
+.pv-widget .pv-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:20px 0; }
+.pv-widget label { display:block; font-size:14px; }
+.pv-widget input, .pv-widget select { width:100%; min-width:0; box-sizing:border-box; min-height:44px; accent-color:var(--l0); }
+.pv-widget select, .pv-widget button { border:1px solid var(--line); border-radius:4px; color:var(--fg); background:var(--bg); font:inherit; padding:8px; min-height:44px; cursor:pointer; }
+.pv-widget :focus-visible { outline:2px solid var(--l0); outline-offset:3px; }
+.pv-widget .pv-note { color:var(--muted); }
+.pv-widget .pv-result { border-top:1px solid var(--line); padding-top:12px; font-family:'Geist Mono',monospace; overflow-wrap:anywhere; }
+.pv-widget .pv-bars { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:3px; height:180px; align-items:end; margin:20px 0 8px; }
+.pv-widget .pv-bar { padding:0; border:0; background:transparent; height:100%; display:flex; flex-direction:column; justify-content:end; align-items:stretch; }
+.pv-widget .pv-bar span { display:block; background:var(--line); border:1px solid var(--muted); min-height:2px; box-sizing:border-box; }
+.pv-widget .pv-bar[data-tail="true"] span { background:var(--l0); border-color:var(--l0); }
+.pv-widget .pv-bar[aria-pressed="true"] { outline:2px solid var(--fg); outline-offset:1px; }
+.pv-widget .pv-bar small { font-size:12px; padding:6px 0; }
+.pv-widget svg { display:block; width:100%; height:auto; }
+.pv-widget .pv-legend { display:flex; gap:16px; flex-wrap:wrap; font-size:13px; }
+.pv-widget .pv-null { color:var(--l0); }
+.pv-widget .pv-alt { color:var(--l3); }
+@media(max-width:480px) { .pv-widget { padding:14px; } .pv-widget .pv-controls { grid-template-columns:1fr; gap:10px; } .pv-widget svg text { font-size:22px; } }
+</style>
+<section class="pv-widget" id="pv-coin" aria-labelledby="pv-coin-title" hidden>
+<h3 id="pv-coin-title">Try it: what counts as extreme?</h3>
+<p>Choose a heads count, or click a bar. Blue bars are the outcomes counted in the p-value. Each bar's height is its exact probability under a fair coin.</p>
+<div class="pv-controls">
+<label for="pv-heads">Heads in 10 flips: <output id="pv-heads-value" for="pv-heads">8</output><input id="pv-heads" type="range" min="0" max="10" step="1" value="8"></label>
+<label for="pv-sided">Alternative hypothesis<select id="pv-sided"><option value="two">Two-sided: coin is not fair</option><option value="upper">One-sided: coin favours heads</option></select></label>
+</div>
+<div class="pv-bars" id="pv-bars" role="group" aria-label="Choose the observed number of heads"></div>
+<button id="pv-flip" type="button">Simulate 10 fair flips</button>
+<p class="pv-result" id="pv-coin-result" role="status" aria-live="polite" aria-atomic="true"></p>
+<p class="pv-note">The simulated coin is always fair. A small p-value can still happen. Choose one- or two-sided before collecting data, not whichever gives the smaller p-value afterwards. The one-sided test here always counts the upper tail, even when you observe fewer than 5 heads.</p>
+</section>
+<noscript><p>The static coin calculation above works without JavaScript. Enable JavaScript to explore other heads counts.</p></noscript>
 
 ## What a p-value is, precisely
 
@@ -205,7 +243,7 @@ where $$\Phi$$ is the cumulative distribution function of the standard normal.
 
 So the verdict is **not significant**: $$p = 0.064 > 0.05$$. A 0.8-point lift is exactly the kind of difference that, with 10,000 users per arm, luck produces about one time in sixteen.
 
-Two things are worth noticing. First, the magic number 1.96 is just the z-score that leaves 2.5% in each tail, so "$$|z| > 1.96$$" and "$$p < 0.05$$" are the same rule. Second, 0.064 versus 0.05 is a hair's breadth. The line at 0.05 is a convention from Ronald Fisher in the 1920s, not a law of nature. A p-value of 0.064 is *weak evidence*, not *no evidence*.
+Two things are worth noticing. First, the magic number 1.96 is just the z-score that leaves 2.5% in each tail, so "$$\lvert z\rvert > 1.96$$" and "$$p < 0.05$$" are the same rule. Second, 0.064 versus 0.05 is a hair's breadth. The line at 0.05 is a convention from Ronald Fisher in the 1920s, not a law of nature. A p-value of 0.064 is *weak evidence*, not *no evidence*.
 
 ### Same effect, more data
 
@@ -227,6 +265,22 @@ n \approx \frac{\left(z_{1-\alpha/2} + z_{1-\beta}\right)^2 \,\big[p_A(1-p_A) + 
 $$
 
 The original test was underpowered from the start. Its non-significant result mostly says "we didn't collect enough data to tell", which is why power analysis belongs *before* the experiment, not after.
+
+<section class="pv-widget" id="pv-power" aria-labelledby="pv-power-title" hidden>
+<h3 id="pv-power-title">Try it: same effect, more data</h3>
+<p>Set a true effect and a sample size before the experiment. The blue curve is the no-effect world; the pink curve is the world with your chosen effect. Shaded pink tails are power: the chance of crossing either dashed rejection boundary.</p>
+<div class="pv-controls">
+<label for="pv-baseline">Control rate: <output id="pv-baseline-value" for="pv-baseline">10.0%</output><input id="pv-baseline" type="range" min="5" max="50" step="1" value="10"></label>
+<label for="pv-lift">True lift: <output id="pv-lift-value" for="pv-lift">0.8 percentage points</output><input id="pv-lift" type="range" min="-3" max="3" step="0.1" value="0.8"></label>
+<label for="pv-n">Users per arm: <output id="pv-n-value" for="pv-n">10,000</output><input id="pv-n" type="range" min="1000" max="50000" step="1000" value="10000"></label>
+<label for="pv-alpha">Significance level<select id="pv-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></label>
+</div>
+<svg id="pv-power-chart" viewBox="0 0 680 260" role="img" aria-labelledby="pv-power-chart-title pv-power-chart-desc"><title id="pv-power-chart-title">Sampling distributions of the conversion-rate difference</title><desc id="pv-power-chart-desc"></desc></svg>
+<div class="pv-legend"><span class="pv-null">Blue: null (no effect)</span><span class="pv-alt">Pink: chosen true effect</span><span>Dashed: rejection cut-offs</span></div>
+<p class="pv-result" id="pv-power-result" role="status" aria-live="polite" aria-atomic="true"></p>
+<p class="pv-note">This is a two-sided, fixed-sample normal approximation for independent users and equal-sized arms. The curves describe repeated experiments, not a probability that the null is true. The example p-value assumes observed rates equal the chosen true rates; real samples fluctuate. Power is a planning quantity, not a reinterpretation of an observed p-value. Everything runs in your browser.</p>
+</section>
+<noscript><p>Without JavaScript, the worked example above still shows why doubling the sample size changes the p-value without changing the effect.</p></noscript>
 
 ## Confidence intervals say more than p-values
 
@@ -335,7 +389,7 @@ The shuffled differences *are* the null distribution: you built "the world where
 
 ### Run enough tests and something will be "significant"
 
-Here's a fact that surprises most people: **when the null is true, p-values are uniformly distributed**. Any value between 0 and 1 is equally likely. That's exactly why $$\alpha$$ is the false-positive rate: 5% of a uniform distribution lies below 0.05.
+Here's a fact that surprises most people: **under the null, an exactly calibrated test with a continuous test statistic has uniformly distributed p-values**. Equal-width intervals between 0 and 1 are equally likely. That's why $$\alpha$$ is its false-positive rate: 5% of a uniform distribution lies below 0.05. Discrete tests, like the coin test above, only attain certain p-values; a valid exact test can have a false-positive rate below $$\alpha$$. Approximate tests are only approximately calibrated.
 
 <figure class="fig">
 <svg viewBox="0 0 680 244" role="img" aria-labelledby="p4t p4d">
@@ -439,3 +493,122 @@ The button test failed to reach significance, but its confidence interval ran up
 8. Benjamini, Y. and Hochberg, Y. *Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing*. Journal of the Royal Statistical Society: Series B, 1995. <https://doi.org/10.1111/j.2517-6161.1995.tb02031.x> — the Benjamini–Hochberg procedure
 9. Johari, R. et al. *Peeking at A/B Tests*. Proceedings of KDD, 2017. <https://doi.org/10.1145/3097983.3097992> — why repeated looks inflate false positives
 10. Kohavi, R., Tang, D. and Xu, Y. *Trustworthy Online Controlled Experiments*. Cambridge University Press, 2020. <https://doi.org/10.1017/9781108653985> — practical guide to A/B testing
+
+<script>
+(() => {
+  'use strict';
+  // Exact binomial probabilities for 10 independent fair flips.
+  const counts = [1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1];
+  function coinP(heads, sided) {
+    return counts.reduce((sum, count, k) => sum + ((sided === 'upper' ? k >= heads : Math.abs(k - 5) >= Math.abs(heads - 5)) ? count : 0), 0) / 1024;
+  }
+  // Normal CDF approximation (absolute error < 8e-8); use symmetry for tails.
+  function normalCDF(x) {
+    const t = 1 / (1 + 0.2316419 * Math.abs(x));
+    const tail = Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI) * t *
+      (0.319381530 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
+    return x < 0 ? tail : 1 - tail;
+  }
+  function normalQuantile(p) {
+    let lo = -9, hi = 9;
+    for (let i = 0; i < 60; i++) {
+      const mid = (lo + hi) / 2;
+      if (normalCDF(mid) < p) lo = mid; else hi = mid;
+    }
+    return (lo + hi) / 2;
+  }
+  function powerModel(a, lift, n, alpha) {
+    const b = a + lift, pooled = (a + b) / 2;
+    const se0 = Math.sqrt(2 * pooled * (1 - pooled) / n);
+    const se1 = Math.sqrt((a * (1 - a) + b * (1 - b)) / n);
+    const critical = normalQuantile(1 - alpha / 2) * se0;
+    const power = normalCDF((-critical - lift) / se1) + normalCDF((lift - critical) / se1);
+    const z = lift / se0, p = Math.min(1, 2 * normalCDF(-Math.abs(z)));
+    return { se0, se1, critical, power, z, p };
+  }
+  const $ = id => document.getElementById(id);
+  const fmtP = p => p < 0.0001 ? '< 0.0001' : '= ' + p.toFixed(4);
+  const coin = $('pv-coin'), heads = $('pv-heads'), sided = $('pv-sided');
+  const bars = counts.map((count, k) => {
+    const button = document.createElement('button');
+    button.type = 'button'; button.className = 'pv-bar';
+    button.setAttribute('aria-label', k + ' heads: ' + (100 * count / 1024).toFixed(2) + '% probability. Select this outcome.');
+    const bar = document.createElement('span'); bar.style.height = (count / 252 * 140) + 'px';
+    bar.setAttribute('aria-hidden', 'true');
+    const label = document.createElement('small'); label.textContent = k;
+    button.append(bar, label);
+    button.addEventListener('click', () => { heads.value = k; updateCoin(); });
+    $('pv-bars').append(button);
+    return button;
+  });
+  function updateCoin() {
+    const h = Number(heads.value), mode = sided.value;
+    $('pv-heads-value').textContent = h;
+    const tails = counts.map((_, k) => mode === 'upper' ? k >= h : Math.abs(k - 5) >= Math.abs(h - 5));
+    bars.forEach((bar, k) => { bar.dataset.tail = tails[k]; bar.setAttribute('aria-pressed', k === h ? 'true' : 'false'); });
+    const total = counts.reduce((sum, count, k) => sum + (tails[k] ? count : 0), 0);
+    const p = coinP(h, mode);
+    $('pv-coin-result').textContent = 'Counted heads: ' + tails.flatMap((yes, k) => yes ? [k] : []).join(', ') + '. ' + total + '/1024 sequences; p ' + fmtP(p) + '. ' + (p < 0.05 ? 'Significant' : 'Not significant') + ' at alpha = 0.05.';
+  }
+  heads.addEventListener('input', updateCoin); sided.addEventListener('change', updateCoin);
+  $('pv-flip').addEventListener('click', () => {
+    heads.value = Array.from({ length: 10 }, () => Math.random() < 0.5 ? 1 : 0).reduce((a, b) => a + b, 0);
+    updateCoin();
+  });
+  updateCoin(); coin.hidden = false;
+
+  const chart = $('pv-power-chart');
+  function svg(tag, attrs, text) {
+    const element = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
+    if (text !== undefined) element.textContent = text;
+    return element;
+  }
+  function updatePower() {
+    const a = Number($('pv-baseline').value) / 100, lift = Number($('pv-lift').value) / 100;
+    const n = Number($('pv-n').value), alpha = Number($('pv-alpha').value);
+    const m = powerModel(a, lift, n, alpha);
+    $('pv-baseline-value').textContent = (100 * a).toFixed(1) + '%';
+    $('pv-lift-value').textContent = (100 * lift).toFixed(1) + ' percentage points';
+    $('pv-n-value').textContent = n.toLocaleString('en-US');
+    $('pv-power-result').textContent = 'Approximate power: ' + (100 * m.power).toFixed(1) + '%. Example observed rates: ' + (a * 100).toFixed(1) + '% vs ' + ((a + lift) * 100).toFixed(1) + '%; z = ' + m.z.toFixed(2) + ', p ' + fmtP(m.p) + '. ' + (m.p < alpha ? 'Significant' : 'Not significant') + ' at alpha = ' + alpha + '.';
+    chart.replaceChildren(svg('title', { id:'pv-power-chart-title' }, 'Sampling distributions of the conversion-rate difference'), svg('desc', { id:'pv-power-chart-desc' }, 'Null centred on zero; alternative centred on ' + (lift * 100).toFixed(1) + ' percentage points. Power is ' + (100 * m.power).toFixed(1) + '%. Rejection boundaries at plus and minus ' + (100 * m.critical).toFixed(2) + ' percentage points.'));
+    const lo = Math.min(-4 * m.se0, lift - 4 * m.se1, -m.critical * 1.2);
+    const hi = Math.max(4 * m.se0, lift + 4 * m.se1, m.critical * 1.2);
+    const x = value => 50 + (value - lo) / (hi - lo) * 580;
+    const density = (value, mean, se) => Math.exp(-0.5 * ((value - mean) / se) ** 2) / se;
+    const maxDensity = 1 / Math.min(m.se0, m.se1);
+    const y = (value, mean, se) => 210 - density(value, mean, se) / maxDensity * 165;
+    function curve(mean, se, colour) {
+      const d = Array.from({ length: 301 }, (_, i) => {
+        const value = lo + (hi - lo) * i / 300;
+        return (i ? 'L' : 'M') + x(value).toFixed(2) + ',' + y(value, mean, se).toFixed(2);
+      }).join(' ');
+      return svg('path', { d, fill:'none', stroke:colour, 'stroke-width':2.5 });
+    }
+    function shade(left, right) {
+      const start = Math.max(lo, left), end = Math.min(hi, right);
+      if (start >= end) return;
+      let d = 'M' + x(start) + ',210';
+      for (let i = 0; i <= 150; i++) {
+        const value = start + (end - start) * i / 150;
+        d += ' L' + x(value) + ',' + y(value, lift, m.se1);
+      }
+      d += ' L' + x(end) + ',210 Z';
+      chart.append(svg('path', { d, fill:'var(--l3)', opacity:0.3 }));
+    }
+    shade(lo, -m.critical); shade(m.critical, hi);
+    chart.append(svg('line', { x1:50, x2:630, y1:210, y2:210, stroke:'var(--muted)' }));
+    [-m.critical, m.critical].forEach(c => chart.append(svg('line', { x1:x(c), x2:x(c), y1:25, y2:210, stroke:'var(--muted)', 'stroke-dasharray':'5 4' })));
+    chart.append(curve(0, m.se0, 'var(--l0)'), curve(lift, m.se1, 'var(--l3)'));
+    for (let i = 0; i <= 4; i++) {
+      const value = lo + (hi - lo) * i / 4;
+      chart.append(svg('text', { x:x(value), y:233, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':14 }, (100 * value).toFixed(1)));
+    }
+    chart.append(svg('text', { x:340, y:255, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':14 }, 'Observed lift (percentage points)'));
+  }
+  ['pv-baseline','pv-lift','pv-n'].forEach(id => $(id).addEventListener('input', updatePower));
+  $('pv-alpha').addEventListener('change', updatePower);
+  updatePower(); $('pv-power').hidden = false;
+})();
+</script>
