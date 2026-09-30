@@ -6,35 +6,34 @@ math: true
 tags:
 - exp
 - data
-summary: What a p-value actually measures, why 0.05, how a statistical test works from start to finish, and the ways a "significant" result can still mislead you.
+summary: "A fair coin, a button test, and two widgets: learn the idea first, then read each formula one piece at a time."
 ---
 
-You change the colour of a button. Conversion goes from 10.0% to 10.8%. Is the new button better, or did you get a lucky week?
+You change the colour of a button. Out of 10,000 people, 1,000 convert with the old one and 1,080 with the new one. That looks better. But would a different group of people have given you a different answer?
 
-That question, *is this difference real or is it noise?*, is what statistical significance tries to answer. The tools for it (p-values, significance levels, t-tests) are some of the most used and most misread ideas in data work. Explanations tend to give either a formula with no intuition or intuition with no formula. This post gives both: an analogy, a coin you can check by hand, the equations, and a worked A/B test with real numbers.
+**A real improvement and a lucky sample can look alike.** A statistical test helps you judge the evidence. It cannot tell you with certainty which explanation is true.
 
-## The courtroom analogy
-
-A statistical test works like a criminal trial.
-
-- The defendant is **presumed innocent**. In statistics, this default is the **null hypothesis**, $$H_0$$: *the change did nothing, and any difference is luck.*
-- The prosecution brings **evidence**. In statistics, that's your data.
-- The jury asks one question: *if the defendant were innocent, how surprising would this evidence be?* If it would be very surprising, they convict. The answer to that question is the **p-value**.
-- The bar for conviction, "beyond reasonable doubt", is fixed **before** the trial. In statistics it's the **significance level**, $$\alpha$$, usually 5%.
-
-Two details of the analogy matter later. First, the jury never proves innocence. "Not guilty" means "not enough evidence", not "definitely innocent". A non-significant result works the same way. Second, even a fair court sometimes convicts an innocent person. Setting $$\alpha = 0.05$$ means you accept that, when the change truly does nothing, you'll still declare it a winner 5% of the time.
+We'll start with ten coin flips, where we can count every possibility. Then we'll use the same thinking for the button. Each time: understand the question, work through an example, then read the formula one piece at a time. The widgets let you change one thing and see why the answer changes.
 
 ## Start with a coin
 
-A friend hands you a coin and says it's fair. You flip it 10 times and get **8 heads**. Should you believe them?
+A friend says a coin is fair. You flip it **10 times and get 8 heads**. Is that enough reason to doubt the claim?
 
-No formulas yet. Let's answer that one step at a time, slowly enough that you can check every step with pen and paper.
+**Step 1: make the claim precise.** A fair coin has a 50% chance of heads on each flip. We also assume independent flips: one doesn't change the next. On average you'd expect 5 heads in 10 flips, but a fair coin doesn't promise exactly 5 every time.
 
-**Step 1: say exactly what you're testing.** Your friend's claim is "this coin is fair". That's the null hypothesis from the courtroom analogy: nothing unusual is going on, and any weirdness in your 10 flips is just luck. From here on, assume the claim is true and ask how well it explains what you saw.
+The claim we're checking is the **null hypothesis**, written $$H_0$$. Here it means "the coin is fair". For now, assume that claim is true and ask what it could produce.
 
-**Step 2: count everything a fair coin could do.** One flip has 2 outcomes. Two flips have 2 x 2 = 4: HH, HT, TH, TT. Each extra flip doubles the list, so 10 flips have ten 2s multiplied together = **1,024** possible sequences, things like HTTHTHHTTT. A fair coin makes every one of those 1,024 sequences equally likely. That single fact does all the work in this section: how likely something is = the number of sequences that produce it, divided by 1,024.
+**Step 2: count all possible sequences.** One flip has two outcomes: H or T. Two flips have four: HH, HT, TH, TT. Each extra flip doubles the list. Ten flips have ten 2s multiplied together:
 
-**Step 3: count the sequences that give each number of heads.** Only 1 sequence gives 0 heads (all tails). Exactly 10 sequences give 1 head, because the single heads can sit in any of the 10 positions. Keep counting the same way and you get the chart below: 252 sequences give 5 heads, which is why its bar is tallest, while 8 heads can happen in 45 ways, 9 heads in 10 ways, and 10 heads in just 1 way.
+$$
+2^{10}=1024
+$$
+
+The little 10 means "multiply ten copies of 2". For our fair, independent coin, all **1,024 sequences are equally likely**. Probability is therefore a count divided by 1,024.
+
+**Step 3: separate a sequence from a heads count.** HHHHHHHHTT and TTHHHHHHHH are different sequences, but both give 8 heads. There are 45 sequences with 8 heads, 10 with 9, and just 1 with 10. Five heads has 252 sequences, which is why the middle bar is tallest.
+
+Read the chart as a list of what a fair coin can do. The horizontal labels count heads; the heights show how often each count happens.
 
 <figure class="fig">
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="p1t p1d">
@@ -78,19 +77,43 @@ No formulas yet. Let's answer that one step at a time, slowly enough that you ca
 <figcaption>What a fair coin does over 10 flips. Five heads is most likely, but 8 or more still happens 5.5% of the time. Counting the equally extreme results on the other side (2 or fewer heads) doubles that to 10.9%.</figcaption>
 </figure>
 
-**Step 4: decide what counts as suspicious.** You got 8 heads. A fair coin's most typical result is 5, so a result looks suspicious when it's far from 5. "At least as far out as your 8" means 8, 9 or 10 heads. And if a coin that gave you only 0, 1 or 2 heads would strike you as equally fishy, count those too. Counting both directions is called a **two-sided** test.
+**Step 4: say what "at least as unusual" means.** Our 8 heads is 3 away from the expected 5. Every result at least 3 away counts: **0, 1, 2, 8, 9 or 10 heads**. We're looking for bias in either direction, so this is a **two-sided test**.
 
-**Step 5: count the suspicious sequences.** One side: 45 + 10 + 1 = 56 sequences, and 56 out of 1,024 is about **5.5%**. Both sides: 56 + 56 = 112, and 112 out of 1,024 is about **10.9%**. That percentage is the **p-value**: *if the coin were fair, how often you'd get a result at least this far from the middle.*
+If we'd decided *before flipping* to check only whether the coin favours heads, we'd count 8, 9 and 10 instead. That's a **one-sided test**. Don't choose the direction after seeing which gives the smaller number.
 
-**Step 6: compare against the bar you set in advance.** The courtroom's bar was "beyond reasonable doubt". Here it's the significance level $$\alpha$$, usually 5%. Your 10.9% is above it: a fair coin produces something this lopsided about one time in nine. Unusual, but not rare enough to call your friend a liar. Notice what that does *not* say: you haven't shown the coin is fair. Ten flips just can't tell a fair coin from a slightly biased one.
-
-For the record, here is the same counting written compactly. The number of ways to pick which $$k$$ of the 10 flips come up heads is written $$\binom{10}{k}$$, so
+**Step 5: add the counts, then divide.** Eight or more heads happens in 45 + 10 + 1 = 56 sequences. Two or fewer happens in another 56. Together:
 
 $$
-P(X = k) = \frac{\binom{10}{k}}{1024}, \qquad p = P(X \ge 8) + P(X \le 2) = \frac{56 + 56}{1024} \approx 0.109
+p=\frac{56+56}{1024}=\frac{112}{1024}\approx0.1094
 $$
 
-The widget below lets you redo steps 4 to 6 for any heads count you like.
+That's **10.9%**. This is the **p-value**: if the coin is fair, a result at least this far from 5 happens about 11 times in 100 sets of ten flips. We count your result *and more unusual ones*, not just exactly 8 heads.
+
+**Step 6: compare with a rule chosen beforehand.** Suppose we agreed to question fairness only when that percentage is below 5%. Our 10.9% is above it, so the test doesn't reject fairness. That does **not** prove the coin is fair. Ten flips can miss a real bias.
+
+That 5% rule is the **significance level**, written $$\alpha$$ ("alpha"). A result below it is called **statistically significant**. It's a chosen rule, not a natural boundary between truth and falsehood.
+
+### The coin formula is the same counting, written shorter
+
+The symbol $$\binom{10}{k}$$, read "10 choose k", counts ways to choose which $$k$$ flips are heads. For 8 heads, it is 45.
+
+$$
+P(X=k)=\frac{\binom{10}{k}}{2^{10}}
+$$
+
+Read it from left to right:
+
+1. $$X$$ is the number of heads; $$k$$ is the count you're asking about.
+2. $$P(X=k)$$ means "the probability of exactly k heads".
+3. The top counts sequences with that many heads; the bottom counts all sequences.
+
+So $$P(X=8)=45/1024$$. The p-value adds several bars:
+
+$$
+p=P(X\geq8)+P(X\leq2)
+$$
+
+The signs mean "8 or more" and "2 or fewer". That's the same 112/1024 calculation, with shorter labels. Try it below before moving on.
 
 <style>
 .pv-widget { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
@@ -117,101 +140,131 @@ The widget below lets you redo steps 4 to 6 for any heads count you like.
 @media(max-width:480px) { .pv-widget { padding:14px; } .pv-widget .pv-controls { grid-template-columns:1fr; gap:10px; } .pv-widget svg text { font-size:22px; } }
 </style>
 <section class="pv-widget" id="pv-coin" aria-labelledby="pv-coin-title" hidden>
-<h3 id="pv-coin-title">Try it: what counts as extreme?</h3>
-<p>Choose a heads count, or click a bar. Blue bars are the outcomes counted in the p-value. Each bar's height is its exact probability under a fair coin.</p>
+<h3 id="pv-coin-title">Try it: count the blue bars</h3>
+<p>Start at 8 heads and leave the test on two-sided. Blue bars show 0, 1, 2, 8, 9 and 10 heads: all the results at least 3 heads away from 5. Add their probabilities to get the p-value below. The outlined bar is your result.</p>
 <div class="pv-controls">
 <label for="pv-heads">Heads in 10 flips: <output id="pv-heads-value" for="pv-heads">8</output><input id="pv-heads" type="range" min="0" max="10" step="1" value="8"></label>
-<label for="pv-sided">Alternative hypothesis<select id="pv-sided"><option value="two">Two-sided: coin is not fair</option><option value="upper">One-sided: coin favours heads</option></select></label>
+<label for="pv-sided">What are you testing?<select id="pv-sided"><option value="two">Two-sided: coin is not fair</option><option value="upper">One-sided: coin favours heads</option></select></label>
 </div>
 <div class="pv-bars" id="pv-bars" role="group" aria-label="Choose the observed number of heads"></div>
 <button id="pv-flip" type="button">Simulate 10 fair flips</button>
 <p class="pv-result" id="pv-coin-result" role="status" aria-live="polite" aria-atomic="true"></p>
+<ol><li>Click 5: every bar turns blue, and p = 1. Every result is at least as far from 5 as this one.</li><li>Click 9: only 0, 1, 9 and 10 count. The total falls to 22/1024, about 2.1%.</li><li>Return to 8, then choose one-sided. Only 8, 9 and 10 count, so the total halves to about 5.5%.</li><li>Simulate fair flips. The coin never becomes biased, even when its result looks unusual.</li></ol>
 <p class="pv-note">The simulated coin is always fair. A small p-value can still happen. Choose one- or two-sided before collecting data, not whichever gives the smaller p-value afterwards. The one-sided test here always counts the upper tail, even when you observe fewer than 5 heads.</p>
 </section>
 <noscript><p>The static coin calculation above works without JavaScript. Enable JavaScript to explore other heads counts.</p></noscript>
 
-## What a p-value is, precisely
+## Read the general p-value formula
 
-In general:
+The coin teaches a question we can reuse: **if the null claim were true, how often would we see a result at least this unusual?**
 
-$$
-p = P\big(\text{a result at least as extreme as the one observed} \;\big|\; H_0 \text{ is true}\big)
-$$
+**Step 1: choose a score.** For the coin, it's distance from 5 heads. For the button, it'll be the difference between two rates, measured relative to its usual random wobble. This score is called a **test statistic**.
 
-The vertical bar reads "given". Everything is calculated **in a world where the null hypothesis is true**. That one detail rules out the most common misreadings:
-
-- **It is not the probability that the null hypothesis is true.** $$p = 0.03$$ does not mean "3% chance the button does nothing". The p-value assumes the null is true; it can't also tell you how likely that assumption is.
-- **It is not the probability the result is a fluke.** Same mistake, different words.
-- **$$1 - p$$ is not the probability your change works.** $$p = 0.03$$ doesn't mean 97% confidence the new button is better.
-- **It doesn't measure how big the effect is.** A tiny effect with a huge sample can have a tiny p-value. More on that below.
-
-A better one-line reading: *the p-value measures how surprised you should be by the data if nothing were going on.* Small p, big surprise.
-
-## Two ways to be wrong
-
-Every test ends in a decision, and the decision can go wrong in two directions. Here they are, with the courtroom alongside:
-
-| | Null is true (no real effect) | Null is false (real effect) |
-|---|---|---|
-| **You reject the null** ("significant") | **Type I error**, false positive: convicting an innocent person. Happens with probability α. | Correct: a real effect found. Probability = **power**. |
-| **You don't reject** ("not significant") | Correct: nothing there, nothing claimed. | **Type II error**, false negative: a guilty person walks free. Probability β. |
-
-A smoke alarm is a good way to hold this in your head. Make it very sensitive and it goes off every time you make toast (Type I errors). Make it very insensitive and it stays quiet during a real fire (Type II errors). You can't drive both to zero with the same data. $$\alpha$$ sets how often you tolerate false alarms, and the only way to catch more real fires without more false alarms is **more data**.
-
-**Power**, $$1 - \beta$$, is the probability of detecting an effect *if it really exists*. Industry practice is usually to design experiments for 80% power at the smallest effect you'd care about. We'll compute it for the button in a moment.
-
-## How any statistical test works
-
-Every classical test, whatever its name, follows the same five steps:
-
-1. **State the hypotheses.** $$H_0$$: no difference. $$H_1$$: some difference.
-2. **Pick $$\alpha$$** before looking at the data. Usually 0.05.
-3. **Compute a test statistic**: one number that summarises how far the data are from what $$H_0$$ predicts.
-4. **Find its distribution under $$H_0$$**: what values the statistic would take if nothing were going on.
-5. **Compute the p-value** (how far into the tail of that distribution your statistic falls) and compare it with $$\alpha$$.
-
-Most test statistics have the same shape, **signal divided by noise**:
+**Step 2: imagine repeated experiments under the null.** How often would that score be as far out as the one we observed? That fraction is the p-value:
 
 $$
-\text{test statistic} = \frac{\text{observed difference} - \text{difference expected under } H_0}{\text{standard error of the difference}}
+p=P\big(\text{at least as extreme a result}\mid H_0\big)
 $$
 
-The numerator is the size of what you saw. The denominator, the **standard error**, is how much that number would wobble from sample to sample by chance alone. A statistic of 3 means "the difference is three times bigger than chance typically produces". Imagine trying to hear someone in a noisy café: what matters isn't how loud they are, it's how loud they are compared with the room.
+$$P$$ means probability. The vertical bar means **"assuming"**. $$H_0$$ is the null claim. "Extreme" means far out according to the score and direction chosen for this test.
 
-## Worked example: the button
+**Step 3: keep the question's direction straight.** We start by assuming $$H_0$$. The answer therefore cannot be "the probability that $$H_0$$ is true". A p-value of 0.03 means results this far out occur 3% of the time under that assumption. It does not mean a 3% chance of no effect, a 3% chance this result is luck, or a 97% chance your change works.
 
-Back to the button. Each arm of the experiment got 10,000 users:
+Think of a smoke alarm. "How often does it ring when there's no fire?" differs from "now that it rang, how likely is a fire?" A p-value asks in the first direction.
 
-| Arm | Users | Conversions | Rate |
+## Two ways the decision can go wrong
+
+A rule can make mistakes even when the calculation is correct.
+
+**Step 1: imagine no real effect.** Random data sometimes look unusual enough to pass the rule. We declare a difference that isn't there: a **false positive**, or **Type I error**.
+
+**Step 2: imagine a real effect.** Random data sometimes hide it. We don't pass the rule even though a difference exists: a **false negative**, or **Type II error**.
+
+**Step 3: name the chances.** Alpha limits false positives for a valid test. Beta, $$\beta$$, is the false-negative probability for a particular true effect. **Power** is the chance of detecting that effect:
+
+$$
+\text{power}=1-\beta
+$$
+
+If beta is 0.20, power is 0.80: the test finds that effect in about 80 out of 100 repetitions. Power depends on the effect size, sample size and rule. There isn't one power number for "any real effect".
+
+A 5% alpha gives a 5% false-positive rate for an exactly calibrated continuous test. Valid discrete tests, like our coin count, may be more conservative. Approximate tests only meet the target approximately. Alpha is not the fraction of significant findings that are wrong.
+
+## From coin flips to the button
+
+The idea stays the same. The calculation changes because this experiment has many more possible outcomes.
+
+**Step 1: define the experiment.** Randomly assign independent users to the old button (A) or new button (B). Each user either converts or doesn't. Each group, also called an *arm*, has 10,000 users.
+
+| Group | Users | Conversions | Rate |
 |---|---:|---:|---:|
-| Control (old button) | 10,000 | 1,000 | 10.0% |
-| Variant (new button) | 10,000 | 1,080 | 10.8% |
+| A: old button | 10,000 | 1,000 | 10.0% |
+| B: new button | 10,000 | 1,080 | 10.8% |
 
-The right test for comparing two rates is the **two-proportion z-test**. Under $$H_0$$ both buttons share one true rate, so we estimate it by pooling both arms:
+The observed difference is **+0.8 percentage points**, or 0.008 as a decimal. That's an 8% *relative* increase over 10%, not a 0.8% relative increase.
 
-$$
-\hat p = \frac{1000 + 1080}{10000 + 10000} = 0.104
-$$
+**Step 2: write the claims.** $$H_0$$: the true conversion rates are equal. $$H_1$$, the *alternative hypothesis*: the true rates differ. We'll use a two-sided test and choose $$\alpha=0.05$$ before collecting data.
 
-The standard error of the difference between two rates, under $$H_0$$:
+**Step 3: estimate random wobble.** Even equally good buttons won't give identical sample rates. The **standard error** estimates the typical sample-to-sample wobble in their difference. More independent users usually make it smaller.
 
-$$
-SE = \sqrt{\hat p\,(1 - \hat p)\left(\frac{1}{n_A} + \frac{1}{n_B}\right)} = \sqrt{0.104 \times 0.896 \times \frac{2}{10000}} \approx 0.00432
-$$
-
-Signal over noise:
+**Step 4: compare our difference with that wobble.** Many tests have this shape:
 
 $$
-z = \frac{\hat p_B - \hat p_A}{SE} = \frac{0.108 - 0.100}{0.00432} \approx 1.85
+T=\frac{d-d_0}{SE}
 $$
 
-When samples are this large, the central limit theorem says $$z$$ follows a **standard normal distribution** if $$H_0$$ is true. The p-value is the area in both tails beyond 1.85:
+Here T is the score, d is the observed difference, and d with a small 0 is the difference predicted by the null. SE is standard error. The top is the gap we're explaining; the bottom is its estimated random wobble. A score of 2 means two standard errors from what the null predicts, not "twice as likely to work".
+
+**Step 5: find the p-value.** Use the scores expected under the null, just as we used the coin bars. For these large independent groups, a **two-proportion z-test** uses a bell curve as an approximation. Let's calculate it one piece at a time.
+
+### The button formulas, without skipping the meanings
+
+**1. Estimate the shared rate under the null.** Combine the groups: 2,080 conversions out of 20,000 users.
 
 $$
-p = 2\,\big(1 - \Phi(|z|)\big) = 2\,(1 - \Phi(1.85)) \approx 0.064
+\hat p=\frac{1000+1080}{10000+10000}=0.104
 $$
 
-where $$\Phi$$ is the cumulative distribution function of the standard normal.
+The hat means "estimated from data". Here $$\hat p$$ is a conversion rate of 10.4%, **not the p-value**. The same letter is doing two different jobs.
+
+**2. Calculate the standard error.** For this test:
+
+$$
+SE=\sqrt{\hat p(1-\hat p)\left(\frac{1}{n_A}+\frac{1}{n_B}\right)}
+$$
+
+$$n_A$$ and $$n_B$$ count users. The square root turns variance, a squared measure of wobble, back into rate-difference units. Larger samples make the fractions smaller.
+
+With our numbers:
+
+$$
+SE=\sqrt{0.104\times0.896\times\frac{2}{10000}}\approx0.00432
+$$
+
+One standard error is about **0.432 percentage points**.
+
+**3. Divide the gap by that error.** The null difference is zero:
+
+$$
+z=\frac{\hat p_B-\hat p_A}{SE}=\frac{0.108-0.100}{0.00432}\approx1.85
+$$
+
+$$z$$ is the test statistic. Our +0.8-point gap is about 1.85 standard errors above zero.
+
+**4. Count both far ends of the bell curve.** Under the null and this large-sample approximation, z-scores follow a *standard normal* curve: centred on 0, with standard deviation 1. Scores near the middle are common; large positive or negative scores aren't.
+
+$$
+p=2\big(1-\Phi(\lvert z\rvert)\big)\approx0.064
+$$
+
+Read it in pieces:
+
+- $$\lvert z\rvert$$ is the size of z without its sign: 1.85 here.
+- $$\Phi(1.85)$$ ("Phi") is the fraction of the curve left of 1.85, about 0.968.
+- $$1-\Phi(1.85)$$ is the right tail, about 0.032.
+- Multiply by 2 for the equally far left tail: about 0.064, or **6.4%**.
+
+Unlike the exact coin count, this is approximate. Using the unrounded z gives about 0.0639.
 
 <figure class="fig">
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="p2t p2d">
@@ -245,58 +298,97 @@ where $$\Phi$$ is the cumulative distribution function of the standard normal.
 <figcaption>The null distribution of z. If the button did nothing, z-scores beyond ±1.85 would still turn up 6.4% of the time (shaded). The dashed lines at ±1.96 mark the 5% cut-off; the observed z falls just inside them.</figcaption>
 </figure>
 
-So the verdict is **not significant**: $$p = 0.064 > 0.05$$. A 0.8-point lift is exactly the kind of difference that, with 10,000 users per arm, luck produces about one time in sixteen.
+**5. Read only what the answer says.** If the buttons perform equally, a difference at least this far from zero occurs about 6.4% of the time under the model. That's above our 5% rule: **not significant**. We haven't established improvement, but we haven't established equality either.
 
-Two things are worth noticing. First, the magic number 1.96 is just the z-score that leaves 2.5% in each tail, so "$$\lvert z\rvert > 1.96$$" and "$$p < 0.05$$" are the same rule. Second, 0.064 versus 0.05 is a hair's breadth. The line at 0.05 is a convention from Ronald Fisher in the 1920s, not a law of nature. A p-value of 0.064 is *weak evidence*, not *no evidence*.
+The dashed lines are at about -1.96 and +1.96. The area outside them totals 5%. That's where 1.96 comes from: the bell-curve cut-off for this two-sided 5% test. A p-value of 0.049 and one of 0.051 are almost the same evidence, even though the rule labels them differently.
 
-### Same effect, more data
+## More data, same effect
 
-Now run the same test with 20,000 users per arm, and suppose the rates come out identical: 10.0% and 10.8%. The standard error shrinks, because it scales with $$1/\sqrt{n}$$:
+**Step 1: keep the rates unchanged.** Imagine a separate, larger experiment with 20,000 users per group. It happens to produce the same 10.0% and 10.8% rates. The lift is still +0.8 points.
 
-$$
-SE = \sqrt{0.104 \times 0.896 \times \frac{2}{20000}} \approx 0.00305, \qquad z = \frac{0.008}{0.00305} \approx 2.62, \qquad p \approx 0.009
-$$
-
-Now it's clearly significant. **The effect didn't change; your ability to see it did.** The p-value mixes up two things, how big the effect is and how much data you have, which is why it should never be read as a measure of importance.
-
-### How much data you needed
-
-This is what power analysis is for. With 10,000 users per arm, the chance of detecting a true 10% → 10.8% lift was only about **46%**: a coin flip. The sample size needed per arm for 80% power at $$\alpha = 0.05$$ is approximately:
+**Step 2: shrink the wobble.** With equal-sized groups, standard error scales approximately as $$1/\sqrt n$$. Doubling n divides the error by $$\sqrt2$$, about 1.41, not by 2.
 
 $$
-n \approx \frac{\left(z_{1-\alpha/2} + z_{1-\beta}\right)^2 \,\big[p_A(1-p_A) + p_B(1-p_B)\big]}{(p_B - p_A)^2}
-= \frac{(1.96 + 0.84)^2 \times (0.090 + 0.096)}{0.008^2} \approx 22{,}900
+SE\approx0.00305,\qquad z\approx2.62,\qquad p\approx0.0088
 $$
 
-The original test was underpowered from the start. Its non-significant result mostly says "we didn't collect enough data to tell", which is why power analysis belongs *before* the experiment, not after.
+**Step 3: notice what changed.** The p-value is now below 0.05. The effect stayed the same; the estimate became more precise. A p-value measures neither the size nor the business value of an improvement.
+
+This compares sample sizes. It is not permission to extend a finished test until it passes. Choose the sample size or a valid sequential stopping rule in advance.
+
+## Power: plan how often you'll find a real lift
+
+**Step 1: pick an effect worth finding.** Suppose +0.8 points would be worth shipping. Ask: *if that really is the lift, how often would our experiment detect it?*
+
+**Step 2: imagine many repetitions.** With 10,000 users per group and alpha 5%, the normal approximation gives about **46% power** for that lift. More than half of these experiments would miss it. At 20,000 per group, power is about **75%**.
+
+**Step 3: use the playground before the formula.** Change only the number of users first. Narrower curves mean less wobble. More of the pink curve lies outside the cut-offs, so more experiments detect the effect.
 
 <section class="pv-widget" id="pv-power" aria-labelledby="pv-power-title" hidden>
 <h3 id="pv-power-title">Try it: same effect, more data</h3>
-<p>Set a true effect and a sample size before the experiment. The blue curve is the no-effect world; the pink curve is the world with your chosen effect. Shaded pink tails are power: the chance of crossing either dashed rejection boundary.</p>
+<p>Imagine repeating the experiment many times. The horizontal axis is measured lift, in percentage points. Blue shows the spread when the buttons truly perform equally. Pink shows the spread for your chosen true lift. Taller parts mean more common results; each curve has total area 1. Outside the dashed lines, a result is called significant. The pink area outside those lines is power.</p>
 <div class="pv-controls">
 <label for="pv-baseline">Control rate: <output id="pv-baseline-value" for="pv-baseline">10.0%</output><input id="pv-baseline" type="range" min="5" max="50" step="1" value="10"></label>
 <label for="pv-lift">True lift: <output id="pv-lift-value" for="pv-lift">0.8 percentage points</output><input id="pv-lift" type="range" min="-3" max="3" step="0.1" value="0.8"></label>
 <label for="pv-n">Users per arm: <output id="pv-n-value" for="pv-n">10,000</output><input id="pv-n" type="range" min="1000" max="50000" step="1000" value="10000"></label>
-<label for="pv-alpha">Significance level<select id="pv-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></label>
+<label for="pv-alpha">False-alarm limit (alpha)<select id="pv-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></label>
 </div>
 <svg id="pv-power-chart" viewBox="0 0 680 260" role="img" aria-labelledby="pv-power-chart-title pv-power-chart-desc"><title id="pv-power-chart-title">Sampling distributions of the conversion-rate difference</title><desc id="pv-power-chart-desc"></desc></svg>
 <div class="pv-legend"><span class="pv-null">Blue: null (no effect)</span><span class="pv-alt">Pink: chosen true effect</span><span>Dashed: rejection cut-offs</span></div>
 <p class="pv-result" id="pv-power-result" role="status" aria-live="polite" aria-atomic="true"></p>
+<ol><li>Leave the defaults: 10% control, +0.8-point true lift, 10,000 users per arm, alpha 5%. Power is about 46%.</li><li>Move users per arm to 20,000. The curves narrow; power rises to about 75%. The true lift has not changed.</li><li>Set true lift to 0. Pink and blue overlap. The shaded area is about 5%: false positives with no effect.</li><li>Restore the +0.8-point lift, then change alpha to 1%. The cut-offs move outward: fewer false alarms, but less power for the same effect.</li></ol>
 <p class="pv-note">This is a two-sided, fixed-sample normal approximation for independent users and equal-sized arms. The curves describe repeated experiments, not a probability that the null is true. The example p-value assumes observed rates equal the chosen true rates; real samples fluctuate. Power is a planning quantity, not a reinterpretation of an observed p-value. Everything runs in your browser.</p>
 </section>
 <noscript><p>Without JavaScript, the worked example above still shows why doubling the sample size changes the p-value without changing the effect.</p></noscript>
 
-## Confidence intervals say more than p-values
+### The sample-size formula answers that planning question
 
-A p-value collapses everything into one number. A **95% confidence interval** keeps the two things you actually care about apart: how big the effect looks, and how uncertain that estimate is.
+For 80% power to find a true change from 10.0% to 10.8%, a useful normal-approximation planning formula for equal-sized independent groups is:
 
 $$
-(\hat p_B - \hat p_A) \pm 1.96 \times SE_{\text{unpooled}}, \qquad SE_{\text{unpooled}} = \sqrt{\frac{\hat p_A(1-\hat p_A)}{n_A} + \frac{\hat p_B(1-\hat p_B)}{n_B}}
+n\approx\frac{(z_{1-\alpha/2}+z_{1-\beta})^2[p_A(1-p_A)+p_B(1-p_B)]}{(p_B-p_A)^2}
 $$
 
-(For intervals, the standard error isn't pooled: we're no longer assuming $$H_0$$.) For the 10,000-per-arm test, that gives **+0.80 points, from −0.05 to +1.65**. The interval contains zero, which is the same thing as $$p > 0.05$$ seen from another angle. It also shows you *why*: the data are consistent with anything from a tiny loss to a healthy 1.6-point gain.
+Don't read the whole line at once:
 
-The interval also exposes the opposite trap. Imagine a huge site with 2 million users per arm, where the variant converts at 10.1% instead of 10.0%:
+1. $$n$$ is users **per group**. $$p_A$$ and $$p_B$$ are the true rates we're planning around, not estimates from a completed test.
+2. $$\alpha=0.05$$ sets the false-alarm limit. Its two-sided normal cut-off, $$z_{1-\alpha/2}$$, is about **1.96**.
+3. For 80% power, $$\beta=0.20$$. The normal cut-off $$z_{1-\beta}$$ is about **0.84**. The two cut-offs account for avoiding false alarms and catching the chosen effect.
+4. The bracket measures outcome variability. The bottom is the effect squared: a smaller effect is harder to find and needs more users.
+
+With rounded values:
+
+$$
+n\approx\frac{(1.96+0.84)^2\times(0.090+0.096)}{0.008^2}\approx22{,}800
+$$
+
+That's roughly **23,000 users per group**, not total. It's an approximation, not a promise. Try 23,000 in the widget: power is close to 80%. Different planning methods can give slightly different requirements.
+
+Power is a *before-the-experiment* calculation for a chosen true effect. Don't turn the observed lift into "observed power" and use it as new evidence. After testing, read the estimate and its uncertainty.
+
+## Confidence intervals: how big could the effect be?
+
+**Step 1: keep the estimate.** Our original test estimated +0.80 points. A p-value alone hides that size.
+
+**Step 2: add uncertainty.** An approximate 95% confidence interval runs from **-0.05 to +1.65 percentage points**. It includes zero, but also useful improvements. "Not significant" doesn't mean "no effect".
+
+**Step 3: understand the 95%.** If we repeated the sampling and interval procedure many times, about 95% of the intervals would contain the true difference under the model's assumptions. It isn't a 95% probability assigned to this particular fixed interval.
+
+The formula is "estimate plus or minus a margin":
+
+$$
+\text{interval}=(\hat p_B-\hat p_A)\pm1.96\times SE_{\text{unpooled}}
+$$
+
+$$\pm$$ means compute both ends: subtract the margin, then add it. For the interval, we estimate each group's variability separately rather than imposing equal true rates:
+
+$$
+SE_{\text{unpooled}}=\sqrt{\frac{\hat p_A(1-\hat p_A)}{n_A}+\frac{\hat p_B(1-\hat p_B)}{n_B}}
+$$
+
+Here the error is about 0.00432. The margin is about 0.00846, or 0.846 points. Add and subtract from +0.80 to get the interval. Its inclusion of zero agrees with the test here; this unpooled interval and pooled test aren't exactly identical procedures in every case.
+
+**Step 4: ask whether the lift is useful.** With enough data, a tiny effect can be significant. This chart compares our test with a larger one whose lift is only +0.1 points:
 
 <figure class="fig">
 <svg viewBox="0 0 680 236" role="img" aria-labelledby="p3t p3d">
@@ -327,73 +419,103 @@ The interval also exposes the opposite trap. Imagine a huge site with 2 million 
 <figcaption>Point estimates and 95% confidence intervals. The first test can't rule out zero. The second can. The third is overwhelmingly "significant" (p = 0.0009), yet its entire interval sits below the +0.5 point lift that would justify the work.</figcaption>
 </figure>
 
-With enough data, *any* difference becomes statistically significant, including ones too small to matter. **Statistical significance is not practical significance.** Before the experiment, decide the smallest effect worth acting on, then check whether the interval clears it, not only whether it clears zero.
+Before testing, choose the smallest gain worth the cost of changing the product. Consider the estimate and interval against that threshold, not only against zero. **Statistically significant doesn't mean practically important.**
 
-## Choosing a test
+## Choose a test without memorising a menu
 
-The five steps stay the same; what changes is the test statistic and its null distribution, which depend on your data. A rough guide:
+**Step 1: identify one observation.** One independent user? The same person measured twice? A household or team? The sampling design affects the calculation.
 
-| Your data | Question | Usual test |
+**Step 2: identify the measurement.** A yes/no outcome, like conversion, gives a rate. Revenue or time gives a number with an average. Match the method to your question.
+
+| Situation | Starting point | What to check |
 |---|---|---|
-| Two rates (converted or not) | Do the rates differ? | Two-proportion z-test, or chi-square test |
-| A number per user (revenue, time), two groups | Do the means differ? | Welch's t-test |
-| Same units measured twice (before/after) | Did each unit change? | Paired t-test |
-| Skewed numbers or ranks, two groups | Does one group tend to be higher? | Mann–Whitney U test |
-| Three or more groups | Do any means differ? | ANOVA, then pairwise follow-ups |
-| Anything, if unsure | Any of the above | Permutation test |
+| Two independent conversion rates | Two-proportion z-test | Enough successes and failures; sparse counts may need an exact method |
+| Two independent averages | Welch's t-test | Independence, sample sizes and outliers |
+| Same people measured twice | Paired t-test | Analyse within-person differences |
+| Two independent sets of ranks | Mann-Whitney U test | Compares distributions/ranks, not automatically medians |
+| Three or more averages | ANOVA or an appropriate alternative | Assumptions and adjusted follow-up comparisons |
+| Randomised labels you can shuffle | Permutation test | Labels must be exchangeable under the null; preserve the design |
 
-For means, **Welch's t-test** is the workhorse. Its statistic has the same signal-over-noise shape:
+These are starting points, not automatic answers. Repeated users, clustered assignment or unusual data can need a different analysis.
+
+**Step 3: recognise the familiar shape.** For two independent means, Welch's statistic is:
 
 $$
-t = \frac{\bar x_B - \bar x_A}{\sqrt{\dfrac{s_A^2}{n_A} + \dfrac{s_B^2}{n_B}}}
+t=\frac{\bar x_B-\bar x_A}{\sqrt{s_A^2/n_A+s_B^2/n_B}}
 $$
 
-where $$\bar x$$ is each group's mean and $$s^2$$ its sample variance. Under $$H_0$$ it follows a t-distribution, which looks like the normal curve with fatter tails for small samples, and becomes the normal curve as samples grow. Unlike the classic Student's t-test, Welch's version doesn't assume the two groups have equal variance, so it's the safer default.
+$$\bar x_A$$ and $$\bar x_B$$ are sample averages. $$s_A^2$$ and $$s_B^2$$ are sample variances, measuring how spread out observations are. Again: difference on top, estimated wobble below.
 
-In practice you don't compute these by hand:
+Compare the score with a **t-distribution**, a bell-shaped curve with heavier tails than the normal curve at small degrees of freedom. Welch's method estimates those degrees of freedom and doesn't require equal variances. Its reference distribution is an approximation under suitable assumptions, not a universal cure for difficult data.
+
+**Step 4: let software do the arithmetic.** You still choose the question and check assumptions. This uses our button counts and, separately, arrays of revenue observations:
 
 ```python
 from scipy import stats
 from statsmodels.stats.proportion import proportions_ztest
 
-# Two rates: conversions and users per arm
 z, p = proportions_ztest(count=[1080, 1000], nobs=[10000, 10000])
-print(f"z = {z:.2f}, p = {p:.3f}")   # z = 1.85, p = 0.064
+print(f"z = {z:.2f}, p = {p:.3f}")  # z = 1.85, p = 0.064
 
-# Two means: revenue per user in each arm (arrays)
-t, p = stats.ttest_ind(revenue_b, revenue_a, equal_var=False)  # Welch
+# One revenue value per independent user in each array.
+t, p = stats.ttest_ind(revenue_b, revenue_a, equal_var=False)
 ```
 
-## The permutation test: significance you can see
+## A permutation test: build the no-effect world yourself
 
-If the formulas feel abstract, the **permutation test** shows what they approximate. The idea: if the button truly did nothing, then the labels "control" and "variant" are arbitrary. Any user could have been in either group, and the outcome would be the same. So shuffle the labels many times, recompute the difference each time, and see how often a shuffle beats the real difference.
+The coin let us count every outcome. For a randomised button experiment, we can instead shuffle group labels to build a reference distribution.
+
+**Step 1: keep the outcomes.** We have 2,080 conversions and 17,920 non-conversions. Write each conversion as 1 and each non-conversion as 0.
+
+**Step 2: shuffle group labels.** Under a null that makes outcomes exchangeable across the randomly assigned groups, allocate them into two groups of 10,000 again. Change only the group labels, not who converted.
+
+**Step 3: measure the fake difference.** Subtract the shuffled rates. Repeat many times to see what random assignment alone could produce under this null.
+
+**Step 4: count differences at least as far from zero as +0.008.** Include equally large negative differences for a two-sided test. The fraction is a simulated p-value, close to the z-test here.
 
 ```python
 import numpy as np
 
 rng = np.random.default_rng(0)
-control = np.r_[np.ones(1000), np.zeros(9000)]   # 1,000 of 10,000 converted
-variant = np.r_[np.ones(1080), np.zeros(8920)]   # 1,080 of 10,000 converted
-
-observed = variant.mean() - control.mean()       # 0.008
+control = np.r_[np.ones(1000), np.zeros(9000)]
+variant = np.r_[np.ones(1080), np.zeros(8920)]
+observed = variant.mean() - control.mean()  # 0.008
 pooled = np.concatenate([control, variant])
 
-diffs = []
-for _ in range(10_000):
-    rng.shuffle(pooled)                          # pretend labels don't matter
-    diffs.append(pooled[10_000:].mean() - pooled[:10_000].mean())
+extreme = 0
+repetitions = 10_000
+for _ in range(repetitions):
+    rng.shuffle(pooled)
+    difference = pooled[10_000:].mean() - pooled[:10_000].mean()
+    extreme += abs(difference) >= abs(observed) - 1e-12
 
-p = np.mean(np.abs(diffs) >= abs(observed))
-print(p)   # about 0.06, close to the z-test
+p = (extreme + 1) / (repetitions + 1)
+print(p)  # Around 0.06; simulations fluctuate.
 ```
 
-The shuffled differences *are* the null distribution: you built "the world where nothing happened" out of your own data. The p-value is simply the share of those fake worlds that look at least as extreme as the real one. No normal curve, no central limit theorem, just counting. Every other test in the table is a shortcut for this idea when the maths lets you skip the shuffling.
+The tiny tolerance handles floating-point rounding at the boundary. The +1 adjustment includes the observed arrangement and avoids reporting zero just because a finite simulation saw no extreme result.
+
+This is the coin's *count then divide* idea again. Other tests needn't be equivalent to this particular shuffle: the null and shuffling scheme must fit the experiment. Paired or clustered designs can't be shuffled as if everyone were unrelated.
 
 ## Where significance misleads
 
-### Run enough tests and something will be "significant"
+### 1. More questions mean more chances for false alarms
 
-Here's a fact that surprises most people: **under the null, an exactly calibrated test with a continuous test statistic has uniformly distributed p-values**. Equal-width intervals between 0 and 1 are equally likely. That's why $$\alpha$$ is its false-positive rate: 5% of a uniform distribution lies below 0.05. Discrete tests, like the coin test above, only attain certain p-values; a valid exact test can have a false-positive rate below $$\alpha$$. Approximate tests are only approximately calibrated.
+Imagine testing 20 metrics when the button affects none of them. If each test has a 5% false-positive chance and the tests are independent:
+
+**Step 1:** one test avoids a false positive with probability 0.95.
+
+**Step 2:** all 20 avoid one with probability $$0.95^{20}$$, about 0.36.
+
+**Step 3:** subtract from 1. The chance of at least one false positive is about 64%:
+
+$$
+P(\text{at least one false positive})=1-(1-\alpha)^m
+$$
+
+$$m$$ counts tests. Independence matters: correlated metrics needn't give this exact 64%, though searching many results still creates a multiple-testing problem.
+
+For an exactly calibrated continuous test under the null, p-values are uniformly distributed: equal-width ranges from 0 to 1 are equally likely. So p below 0.05 can happen even when nothing changed. Our discrete coin test only produces certain p-values; they aren't uniformly distributed.
 
 <figure class="fig">
 <svg viewBox="0 0 680 244" role="img" aria-labelledby="p4t p4d">
@@ -458,45 +580,47 @@ Here's a fact that surprises most people: **under the null, an exactly calibrate
 <figcaption>P-values from 2,000 simulated experiments. With no real effect, they're flat: about 5% land below 0.05 by chance. With a real effect, they pile up near zero, but at this sample size fewer than half make it below 0.05, which is the 46% power from earlier.</figcaption>
 </figure>
 
-Now check 20 metrics on an experiment where nothing changed. Each has a 5% chance of a false alarm, so the chance that *at least one* comes out significant is:
+Choose a primary metric in advance. For claims across many tests, adjust the rule. **Bonferroni** uses $$\alpha/m$$ per test: 0.05/20 = 0.0025 here. It controls the chance of any false positive for valid tests without requiring independence. **Benjamini-Hochberg** instead controls the expected false-discovery proportion under its conditions. These answer different error-control questions.
 
-$$
-P(\text{at least one false positive}) = 1 - (1 - \alpha)^m = 1 - 0.95^{20} \approx 0.64
-$$
+### 2. Checking until you win changes the rule
 
-Two times in three, you'll find a "winner" in pure noise. It's the statistical version of throwing enough darts until one hits the bullseye, then drawing the target around it. The simplest fix is the **Bonferroni correction**: with $$m$$ tests, require $$p < \alpha / m$$ (here 0.05 / 20 = 0.0025). It's conservative; the Benjamini–Hochberg procedure is a less strict alternative that controls the share of false discoveries instead. Better still, name one **primary metric** before the experiment starts, and treat the rest as exploratory.
+**Step 1:** plan a fixed sample size and a 5% rule. The calibration assumes the planned analysis.
 
-### Peeking
+**Step 2:** check daily and stop as soon as p drops below 0.05. You've given random noise extra chances to pass. The overall false-positive rate is no longer that of a single planned look.
 
-If you check the p-value every day and stop the first time it dips below 0.05, your false-positive rate is no longer 5%. Under the null, the p-value wanders randomly over time, and given enough looks it'll cross 0.05 at some point. That's the courtroom again: a prosecutor who can keep the trial running until the jury happens to lean their way. Either fix the sample size in advance and look once, or use a method designed for continuous monitoring, such as sequential tests.
+**Step 3:** keep the fixed analysis plan or use a sequential method designed for repeated monitoring. An ordinary fixed-sample p-value doesn't protect every stopping strategy.
 
-### "Not significant" is not "no effect"
+### 3. Not finding an effect doesn't prove there isn't one
 
-The button test failed to reach significance, but its confidence interval ran up to +1.65 points. Absence of evidence isn't evidence of absence, especially in an underpowered test. Report the interval, not just the verdict.
+Return to the button: estimated +0.80 points, interval -0.05 to +1.65, p about 0.064. The data leave room for no improvement and for useful improvement.
 
-## Cheat sheet
+Establishing that differences are smaller than a meaningful limit is a different question from testing equality. "Not significant" alone cannot establish that limit.
 
-- **Null hypothesis**: the boring explanation, "nothing is going on". The test assumes it's true and looks for evidence against it.
-- **P-value**: how surprising your data would be if the null were true. Not the probability the null is true.
-- **α (significance level)**: the false-positive rate you accept, chosen before you look. 0.05 is convention, not physics.
-- **Significant** means "unlikely to be pure chance". It doesn't mean big, important, or certain.
-- **Power**: your chance of detecting a real effect. Plan for it before the experiment; underpowered tests mostly produce shrugs.
-- **Test statistic**: signal divided by noise. More data shrinks the noise.
-- **Confidence intervals** show size and uncertainty together. Prefer them to a bare p-value.
-- **One primary metric, fixed sample size, look once.** Or adjust for multiple tests and peeking.
+## Put it together
+
+Read or run a test in this order:
+
+1. **What claim are we checking?** Write null and alternative; choose one- or two-sided before looking.
+2. **How big is the observed change?** Keep the units: +0.8 percentage points here.
+3. **How much could it wobble?** Check the design, assumptions and standard error.
+4. **How unusual is it under the null?** That's the p-value, not the probability the null is true.
+5. **What rule did we plan?** Compare with alpha without changing the metric or stopping plan to get a win.
+6. **What can we do with the result?** Read the confidence interval and business value. Plan the next test's power for an effect worth finding.
+
+The coin widget makes the p-value visible: add the blue bars. The power widget makes sample size visible: narrow the curves. The formulas are shorter ways of describing those ideas, not a different story to learn from scratch.
 
 ## References
 
-1. Wasserstein, R. L. and Lazar, N. A. *The ASA Statement on p-Values: Context, Process, and Purpose*. The American Statistician, 2016. <https://doi.org/10.1080/00031305.2016.1154108> — what p-values do and do not mean
-2. Greenland, S. et al. *Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations*. European Journal of Epidemiology, 2016. <https://doi.org/10.1007/s10654-016-0149-3> — common misreadings of p-values, intervals and power
-3. Neyman, J. and Pearson, E. S. *On the problem of the most efficient tests of statistical hypotheses*. Philosophical Transactions of the Royal Society A, 1933. <https://doi.org/10.1098/rsta.1933.0009> — Type I and Type II errors
-4. Fisher, R. A. *Statistical Methods for Research Workers*. Oliver and Boyd, 1925. <https://psychclassics.yorku.ca/Fisher/Methods/> — origin of the 0.05 convention
-5. Welch, B. L. *The generalization of "Student's" problem when several different population variances are involved*. Biometrika, 1947. <https://doi.org/10.1093/biomet/34.1-2.28> — the unequal-variance t-test
-6. statsmodels developers. *statsmodels.stats.proportion.proportions_ztest*. statsmodels documentation. <https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html> — two-proportion z-test used in the code
-7. SciPy developers. *scipy.stats.ttest_ind*. SciPy documentation. <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html> — Welch's t-test via `equal_var=False`
-8. Benjamini, Y. and Hochberg, Y. *Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing*. Journal of the Royal Statistical Society: Series B, 1995. <https://doi.org/10.1111/j.2517-6161.1995.tb02031.x> — the Benjamini–Hochberg procedure
-9. Johari, R. et al. *Peeking at A/B Tests*. Proceedings of KDD, 2017. <https://doi.org/10.1145/3097983.3097992> — why repeated looks inflate false positives
-10. Kohavi, R., Tang, D. and Xu, Y. *Trustworthy Online Controlled Experiments*. Cambridge University Press, 2020. <https://doi.org/10.1017/9781108653985> — practical guide to A/B testing
+1. Wasserstein, R. L. and Lazar, N. A. *The ASA Statement on p-Values: Context, Process, and Purpose*. The American Statistician, 2016. <https://doi.org/10.1080/00031305.2016.1154108> - what p-values do and do not mean
+2. Greenland, S. et al. *Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations*. European Journal of Epidemiology, 2016. <https://doi.org/10.1007/s10654-016-0149-3> - common misreadings of p-values, intervals and power
+3. Neyman, J. and Pearson, E. S. *On the problem of the most efficient tests of statistical hypotheses*. Philosophical Transactions of the Royal Society A, 1933. <https://doi.org/10.1098/rsta.1933.0009> - Type I and Type II errors
+4. Fisher, R. A. *Statistical Methods for Research Workers*. Oliver and Boyd, 1925. <https://psychclassics.yorku.ca/Fisher/Methods/> - origin of the 0.05 convention
+5. Welch, B. L. *The generalization of "Student's" problem when several different population variances are involved*. Biometrika, 1947. <https://doi.org/10.1093/biomet/34.1-2.28> - the unequal-variance t-test
+6. statsmodels developers. *statsmodels.stats.proportion.proportions_ztest*. statsmodels documentation. <https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html> - two-proportion z-test used in the code
+7. SciPy developers. *scipy.stats.ttest_ind*. SciPy documentation. <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html> - Welch's t-test via `equal_var=False`
+8. Benjamini, Y. and Hochberg, Y. *Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing*. Journal of the Royal Statistical Society: Series B, 1995. <https://doi.org/10.1111/j.2517-6161.1995.tb02031.x> - the Benjamini–Hochberg procedure
+9. Johari, R. et al. *Peeking at A/B Tests*. Proceedings of KDD, 2017. <https://doi.org/10.1145/3097983.3097992> - why repeated looks inflate false positives
+10. Kohavi, R., Tang, D. and Xu, Y. *Trustworthy Online Controlled Experiments*. Cambridge University Press, 2020. <https://doi.org/10.1017/9781108653985> - practical guide to A/B testing
 
 <script>
 (() => {
