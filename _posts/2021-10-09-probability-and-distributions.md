@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Before the p-value: probability and distributions, one step at a time"
+title: "Probability and distributions, one step at a time"
 date: 2021-10-09
 math: true
 tags:
@@ -13,7 +13,7 @@ You flip a coin and get heads. You flip again and get heads again. Is the third 
 
 No, if the coin is fair and the flips are independent. The coin doesn't keep a ledger. But that answer is easier to remember when you understand what probability is describing.
 
-This is a short starting point for [p-values and statistical tests]({% post_url 2021-10-16-p-values-and-statistical-tests %}). No background needed. We'll count a few simple outcomes, turn the counts into a picture, and then give the picture a formula. The widgets are part of the explanation: try the small changes suggested beside them.
+No background needed. We'll count a few simple outcomes, turn the counts into a picture, and then give the picture a formula. The widgets are part of the explanation: try the small changes suggested beside them.
 
 ## Probability starts with a question
 
@@ -135,7 +135,7 @@ $$
 P(X=1)=q,\qquad P(X=0)=1-q
 $$
 
-That's a **Bernoulli distribution**: two values and two probabilities. For a fair coin, q = 0.5. For a conversion model, q might be 0.10. The letter q here is an event probability, not a p-value.
+That's a **Bernoulli distribution**: two values and two probabilities. For a fair coin, q = 0.5. For a conversion model, q might be 0.10. The letter q here is just an event probability.
 
 ## Many independent yes/no trials: binomial
 
@@ -277,7 +277,7 @@ $$
 
 First find the area left of b, then subtract the area left of a. What remains is the interval between them, exactly the region shaded in the widget.
 
-## Why bell curves appear in tests
+## Why bell curves appear so often
 
 The measurements themselves don't have to look like a bell for an average to have an approximately bell-shaped **sampling distribution**.
 
@@ -295,7 +295,7 @@ $$
 
 $$\bar X$$ means the sample average. **Standard deviation** describes individual observations; **standard error** describes how an estimate wobbles across samples. More independent data reduce that wobble. In practice we usually estimate sigma from the sample.
 
-For coin flips encoded as 0 or 1, the average is the fraction of heads. For conversions it's the conversion rate. This is why the [p-values article]({% post_url 2021-10-16-p-values-and-statistical-tests %}) can move from exact coin bars to an approximate bell curve for a large experiment.
+For coin flips encoded as 0 or 1, the average is the fraction of heads. So a large number of flips can use the bell curve as a shortcut instead of adding up many exact bars. This shortcut is the normal approximation, and it only gets better as n grows.
 
 ## Keep these distinctions
 
@@ -306,7 +306,6 @@ For coin flips encoded as 0 or 1, the average is the fraction of heads. For conv
 5. **Distribution vs one probability:** the whole picture vs one part of it.
 6. **Standard deviation vs standard error:** spread of observations vs wobble of an estimate.
 
-Next, a p-value asks us to pick a distribution under a specific assumption and count the unusual results. The coin bars and shaded areas you've just used are the pieces of that story.
 
 ## Further reading
 
