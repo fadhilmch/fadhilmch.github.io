@@ -15,6 +15,18 @@ You change the colour of a button. Out of 10,000 people, 1,000 convert with the 
 
 We'll start with ten coin flips, where we can count every possibility. Then we'll use the same thinking for the button. Each time: understand the question, work through an example, then read the formula one piece at a time. The widgets let you change one thing and see why the answer changes.
 
+<style>
+.fig.learn-fig { overflow:visible; }
+.fig.learn-fig svg { width:100%; min-width:0; max-width:480px; height:auto; }
+.learn-fig text { fill:var(--fg); font:16px 'Geist Mono',monospace; }
+.learn-fig .sub { fill:var(--muted); font-size:14px; }
+.learn-fig .accent { fill:var(--l0); }
+.learn-fig .warm { fill:var(--l3); }
+.learn-fig .frame { fill:var(--panel); stroke:var(--line); }
+.learn-fig .axis { stroke:var(--muted); fill:none; }
+.learn-fig .curve { stroke:var(--l0); stroke-width:2.5; fill:none; }
+</style>
+
 ## Start with a coin
 
 A friend says a coin is fair. You flip it **10 times and get 8 heads**. Is that enough reason to doubt the claim?
@@ -30,6 +42,16 @@ $$
 $$
 
 The little 10 means "multiply ten copies of 2". For our fair, independent coin, all **1,024 sequences are equally likely**. Probability is therefore a count divided by 1,024.
+
+
+<figure class="fig learn-fig">
+<svg viewBox="0 0 420 385" role="img" aria-labelledby="pv-double-t pv-double-d">
+<title id="pv-double-t">Ten flips create 1024 sequences</title>
+<desc id="pv-double-d">One flip gives two sequences, two gives four, three gives eight and ten gives 1024. The displayed third-flip sequences are only the four beginning with H.</desc>
+<text x="14" y="26" class="" text-anchor="start">Each extra flip doubles the sequence list</text><rect x="12" y="49" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="73" class="" text-anchor="start">1 flip: 2 sequences</text><text x="26" y="97" class="sub" text-anchor="start">H · T</text><rect x="12" y="131" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="155" class="" text-anchor="start">2 flips: 4 sequences</text><text x="26" y="179" class="sub" text-anchor="start">HH · HT · TH · TT</text><rect x="12" y="213" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="237" class="" text-anchor="start">3 flips: 8 sequences</text><text x="26" y="261" class="sub" text-anchor="start">HHH · HHT · HTH · HTT</text><text x="210" y="289" class="sub" text-anchor="middle">… keep doubling …</text><rect x="12" y="295" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="319" class="" text-anchor="start">10 flips: 1,024 sequences</text><text x="26" y="343" class="sub" text-anchor="start">2¹⁰ = multiply ten copies of 2</text>
+</svg>
+<figcaption>Three flips also include THH, THT, TTH and TTT. All 1,024 ten-flip sequences are equally likely only because the coin is fair and the flips are independent.</figcaption>
+</figure>
 
 **Step 3: separate a sequence from a heads count.** HHHHHHHHTT and TTHHHHHHHH are different sequences, but both give 8 heads. There are 45 sequences with 8 heads, 10 with 9, and just 1 with 10. Five heads has 252 sequences, which is why the middle bar is tallest.
 
@@ -80,6 +102,16 @@ Read the chart as a list of what a fair coin can do. The horizontal labels count
 **Step 4: say what "at least as unusual" means.** Our 8 heads is 3 away from the expected 5. Every result at least 3 away counts: **0, 1, 2, 8, 9 or 10 heads**. We're looking for bias in either direction, so this is a **two-sided test**.
 
 If we'd decided *before flipping* to check only whether the coin favours heads, we'd count 8, 9 and 10 instead. That's a **one-sided test**. Don't choose the direction after seeing which gives the smaller number.
+
+
+<figure class="fig learn-fig">
+<svg viewBox="0 0 420 224" role="img" aria-labelledby="pv-extreme-t pv-extreme-d">
+<title id="pv-extreme-t">Extreme means at least the observed distance</title>
+<desc id="pv-extreme-d">Number line of heads counts from 0 through 10. Counts at least 3 away from 5 are highlighted: 0, 1, 2, 8, 9 and 10.</desc>
+<text x="14" y="25" class="" text-anchor="start">Observed: 8 heads, distance 3 from 5</text><path d="M22,92 H398" class="axis"/><circle cx="24.0" cy="92" r="5" fill="var(--l0)"/><text x="24.0" y="121" class="" text-anchor="middle">0</text><circle cx="61.2" cy="92" r="5" fill="var(--l0)"/><text x="61.2" y="121" class="" text-anchor="middle">1</text><circle cx="98.4" cy="92" r="5" fill="var(--l0)"/><text x="98.4" y="121" class="" text-anchor="middle">2</text><circle cx="135.60000000000002" cy="92" r="5" fill="var(--muted)"/><text x="135.60000000000002" y="121" class="" text-anchor="middle">3</text><circle cx="172.8" cy="92" r="5" fill="var(--muted)"/><text x="172.8" y="121" class="" text-anchor="middle">4</text><circle cx="210.0" cy="92" r="5" fill="var(--muted)"/><text x="210.0" y="121" class="" text-anchor="middle">5</text><circle cx="247.20000000000002" cy="92" r="5" fill="var(--muted)"/><text x="247.20000000000002" y="121" class="" text-anchor="middle">6</text><circle cx="284.40000000000003" cy="92" r="5" fill="var(--muted)"/><text x="284.40000000000003" y="121" class="" text-anchor="middle">7</text><circle cx="321.6" cy="92" r="8" fill="var(--l0)"/><text x="321.6" y="121" class="" text-anchor="middle">8</text><circle cx="358.8" cy="92" r="5" fill="var(--l0)"/><text x="358.8" y="121" class="" text-anchor="middle">9</text><circle cx="396.0" cy="92" r="5" fill="var(--l0)"/><text x="396.0" y="121" class="" text-anchor="middle">10</text><path d="M210,67 H321.6" stroke="var(--l3)" stroke-width="2"/><text x="266" y="55" class="sub" text-anchor="middle">3 away</text><rect x="12" y="148" width="396" height="60" rx="5" fill="var(--l0)" fill-opacity="0.14" stroke="var(--line)"/><text x="26" y="173" class="" text-anchor="start">Count: 0, 1, 2 and 8, 9, 10</text><text x="26" y="195" class="sub" text-anchor="start">Ignore: 3, 4, 5, 6, 7</text>
+</svg>
+<figcaption>Distance, not direction: 2 heads is just as far from 5 as 8 heads. This is the two-sided rule for this fair-coin example, not a universal definition of every test.</figcaption>
+</figure>
 
 **Step 5: add the counts, then divide.** Eight or more heads happens in 45 + 10 + 1 = 56 sequences. Two or fewer happens in another 56. Together:
 
@@ -154,6 +186,56 @@ The signs mean "8 or more" and "2 or fewer". That's the same 112/1024 calculatio
 </section>
 <noscript><p>The static coin calculation above works without JavaScript. Enable JavaScript to explore other heads counts.</p></noscript>
 
+<style>
+.pv-build .build-flips { display:flex; gap:6px; flex-wrap:wrap; margin:16px 0; }
+.pv-build .build-flips span { width:26px; height:30px; display:grid; place-items:center; border:1px solid var(--muted); border-radius:4px; color:var(--fg); }
+.pv-build .build-flips .heads { background:var(--l0); color:var(--bg); }
+.pv-build progress { width:100%; height:14px; accent-color:var(--l0); }
+.pv-build .build-chart { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:4px; margin:20px 0 8px; }
+.pv-build .build-cell { text-align:center; font-size:12px; }
+.pv-build .build-track { position:relative; height:160px; border-bottom:1px solid var(--muted); }
+.pv-build .build-bar { position:absolute; bottom:0; width:100%; background:var(--l0); transition:height .15s; }
+.pv-build .build-model { position:absolute; left:0; right:0; border-top:2px dashed var(--l3); z-index:1; }
+.pv-build .build-count { display:block; font-size:11px; padding:6px 0; }
+.pv-build button { margin:4px 4px 4px 0; }
+</style>
+<section class="pv-widget pv-build" id="pv-build" aria-labelledby="pv-build-title" hidden>
+<h3 id="pv-build-title">Watch the distribution grow, one flip at a time</h3>
+<p>One trial is <strong>10 fair flips</strong>. Watch H and T appear, then see one completed trial land in its heads-count bar. A single flip never goes straight into the histogram: the bar counts the result of a whole ten-flip trial.</p>
+<div class="build-flips" id="build-flips" aria-label="Flips in the current trial"></div>
+<label for="build-progress">Progress through this ten-flip trial <progress id="build-progress" max="10" value="0"></progress></label>
+<button id="build-step" type="button">Flip once</button><button id="build-play" type="button">Play 100 trials</button><button id="build-pause" type="button" disabled>Pause</button><button id="build-reset" type="button">Reset</button>
+<div id="build-chart" class="build-chart" role="img" aria-label="Empirical histogram of completed trials, with fair-coin model markers"></div>
+<p class="pv-note">Blue bars: observed fraction of completed trials. Purple dashed marks: exact fair-coin probabilities. Both use the same fixed 0-100% height scale, so a first trial can make one bar reach 100%. Numbers under the bars are trial counts. Heads counts run from 0 to 10.</p>
+<p class="pv-result" id="build-status" role="status" aria-live="polite" aria-atomic="true"></p>
+<ol><li>Click "Flip once" ten times. The trial progress fills, then exactly one histogram bar gets its first count.</li><li>Press "Play 100 trials". Each ten-flip trial takes one second; the bars update after each completed trial. Pause to inspect a partial trial, then continue.</li><li>Compare the blue bars with the dashed model marks. With more trials they tend to look more alike, but the bars still wobble. A fair coin does not force a perfect match.</li><li>Reset to start a fresh run. Completed trials, the current flips and the progress all clear.</li></ol>
+<p class="pv-note">Each flip is independent and uses 50% heads. This is a simulation, not measured coin data. More completed trials improve the histogram's picture of ten-flip results; they do not increase the number of flips inside each trial.</p>
+</section>
+<noscript><p>The static heads-count chart above is the exact distribution for ten fair flips. JavaScript adds a progressive simulation beside it.</p></noscript>
+<script>
+(function(){
+  const root=document.getElementById('pv-build'); if(!root)return;
+  const el=id=>document.getElementById(id), probabilities=[1,10,45,120,210,252,210,120,45,10,1].map(x=>x/1024);
+  let counts=Array(11).fill(0), current=[], total=0, timer=null, target=0;
+  const cells=probabilities.map((p,k)=>{const cell=document.createElement('div');cell.className='build-cell';const track=document.createElement('div');track.className='build-track';const bar=document.createElement('div');bar.className='build-bar';const mark=document.createElement('div');mark.className='build-model';mark.style.bottom=(p*100)+'%';track.append(bar,mark);const label=document.createElement('span');label.textContent=k;const count=document.createElement('span');count.className='build-count';cell.append(track,label,count);el('build-chart').append(cell);return {cell,bar,count};});
+  function draw(announce){
+    el('build-flips').replaceChildren(...Array.from({length:10},(_,i)=>{const s=document.createElement('span');s.textContent=current[i]||'·';if(current[i]==='H')s.className='heads';return s;}));
+    el('build-progress').value=current.length;
+    cells.forEach(({cell,bar,count},k)=>{let fraction=total?counts[k]/total:0;bar.style.height=(fraction*100)+'%';count.textContent=counts[k];cell.title=k+' heads: '+counts[k]+' trials, '+(fraction*100).toFixed(1)+'%; model '+(probabilities[k]*100).toFixed(1)+'%';});
+    const desc=cells.map((_,k)=>k+' heads: '+counts[k]+' trials').join('; ');el('build-chart').setAttribute('aria-label','Completed trials: '+total+'. '+desc+'. Dashed marks show the exact fair-coin distribution.');
+    if(announce)el('build-status').textContent='Completed trials: '+total+'. Total flips: '+(total*10+(current.length===10?0:current.length))+'. Current trial: '+current.length+'/10 flips, '+current.filter(x=>x==='H').length+' heads. '+(timer?'Playing toward '+target+' completed trials.':'Paused.');
+  }
+  function stop(){if(timer)clearInterval(timer);timer=null;el('build-play').disabled=false;el('build-step').disabled=false;el('build-pause').disabled=true;draw(true);}
+  function flip(){if(current.length===10)current=[];current.push(Math.random()<.5?'H':'T');if(current.length===10){counts[current.filter(x=>x==='H').length]++;total++;}draw(!timer||current.length===10);if(timer&&total>=target)stop();}
+  el('build-step').addEventListener('click',flip);
+  el('build-play').addEventListener('click',()=>{target=total+100;el('build-play').disabled=true;el('build-step').disabled=true;el('build-pause').disabled=false;timer=setInterval(flip,100);draw(true);});
+  el('build-pause').addEventListener('click',stop);
+  el('build-reset').addEventListener('click',()=>{stop();counts=Array(11).fill(0);current=[];total=0;target=0;draw(true);});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden&&timer)stop();});
+  draw(true);root.hidden=false;
+})();
+</script>
+
 ## Read the general p-value formula
 
 The coin teaches a question we can reuse: **if the null claim were true, how often would we see a result at least this unusual?**
@@ -189,6 +271,16 @@ $$
 If beta is 0.20, power is 0.80: the test finds that effect in about 80 out of 100 repetitions. Power depends on the effect size, sample size and rule. There isn't one power number for "any real effect".
 
 A 5% alpha gives a 5% false-positive rate for an exactly calibrated continuous test. Valid discrete tests, like our coin count, may be more conservative. Approximate tests only meet the target approximately. Alpha is not the fraction of significant findings that are wrong.
+
+
+<figure class="fig learn-fig">
+<svg viewBox="0 0 420 460" role="img" aria-labelledby="pv-errors-t pv-errors-d">
+<title id="pv-errors-t">Four combinations of reality and test decision</title>
+<desc id="pv-errors-d">No effect plus reject is a false positive. Real effect plus do not reject is a false negative. The other two combinations are correct decisions.</desc>
+<text x="14" y="25" class="" text-anchor="start">Reality and your decision are different</text><rect x="12" y="47" width="396" height="86" rx="5" fill="var(--l0)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="70" class="" text-anchor="start">No real effect</text><text x="26" y="94" class="sub" text-anchor="start">Do not reject null</text><text x="26" y="118" class="accent" text-anchor="start">Correct restraint</text><rect x="12" y="147" width="396" height="86" rx="5" fill="var(--l3)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="170" class="" text-anchor="start">No real effect</text><text x="26" y="194" class="sub" text-anchor="start">Reject null</text><text x="26" y="218" class="warm" text-anchor="start">False positive (Type I)</text><rect x="12" y="247" width="396" height="86" rx="5" fill="var(--l3)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="270" class="" text-anchor="start">Real effect</text><text x="26" y="294" class="sub" text-anchor="start">Do not reject null</text><text x="26" y="318" class="warm" text-anchor="start">False negative (Type II)</text><rect x="12" y="347" width="396" height="86" rx="5" fill="var(--l0)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="370" class="" text-anchor="start">Real effect</text><text x="26" y="394" class="sub" text-anchor="start">Reject null</text><text x="26" y="418" class="accent" text-anchor="start">Detect effect: power</text>
+</svg>
+<figcaption>A test makes a decision from noisy data; it does not reveal reality. Alpha concerns false positives under the null. Power concerns detection for a specified real effect.</figcaption>
+</figure>
 
 ## From coin flips to the button
 
@@ -472,6 +564,16 @@ The coin let us count every outcome. For a randomised button experiment, we can 
 **Step 3: measure the fake difference.** Subtract the shuffled rates. Repeat many times to see what random assignment alone could produce under this null.
 
 **Step 4: count differences at least as far from zero as +0.008.** Include equally large negative differences for a two-sided test. The fraction is a simulated p-value, close to the z-test here.
+
+
+<figure class="fig learn-fig">
+<svg viewBox="0 0 420 443" role="img" aria-labelledby="pv-shuffle-t pv-shuffle-d">
+<title id="pv-shuffle-t">Permutation keeps the data and changes group labels</title>
+<desc id="pv-shuffle-d">The pooled 20,000 conversion outcomes stay fixed. Each shuffle assigns 10,000 outcomes to each group, calculates a new difference and counts absolute differences at least 0.008.</desc>
+<text x="14" y="25" class="" text-anchor="start">Shuffle labels, not the outcomes</text><rect x="12" y="47" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="75" class="" text-anchor="start">Keep all 20,000 outcomes</text><text x="26" y="100" class="sub" text-anchor="start">2,080 ones + 17,920 zeros</text><path d="M210,121 v17" class="axis"/><rect x="12" y="143" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="171" class="" text-anchor="start">Randomly split into two groups</text><text x="26" y="196" class="sub" text-anchor="start">10,000 in A; 10,000 in B</text><path d="M210,217 v17" class="axis"/><rect x="12" y="239" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="267" class="" text-anchor="start">Record shuffled B rate − A rate</text><text x="26" y="292" class="sub" text-anchor="start">Repeat to build the null distribution</text><path d="M210,313 v17" class="axis"/><rect x="12" y="335" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="363" class="" text-anchor="start">Count |difference| ≥ 0.008</text><text x="26" y="388" class="sub" text-anchor="start">Both negative and positive tails</text>
+</svg>
+<figcaption>The observed conversions do not change. What changes is their allocation to A or B under an exchangeable no-effect model. The resulting distribution shows how much assignment alone can move the difference.</figcaption>
+</figure>
 
 ```python
 import numpy as np
