@@ -28,13 +28,13 @@ Two details of the analogy matter later. First, the jury never proves innocence.
 
 A friend hands you a coin and says it's fair. You flip it 10 times and get **8 heads**. Should you believe them?
 
-Take their claim as the null hypothesis: the coin is fair, so each flip is heads with probability 0.5. Under that assumption, the number of heads $$X$$ in 10 flips follows a **binomial distribution**:
+No formulas yet. Let's answer that one step at a time, slowly enough that you can check every step with pen and paper.
 
-$$
-P(X = k) = \binom{10}{k} \left(\tfrac{1}{2}\right)^{10} = \frac{\binom{10}{k}}{1024}
-$$
+**Step 1: say exactly what you're testing.** Your friend's claim is "this coin is fair". That's the null hypothesis from the courtroom analogy: nothing unusual is going on, and any weirdness in your 10 flips is just luck. From here on, assume the claim is true and ask how well it explains what you saw.
 
-There are $$2^{10} = 1024$$ equally likely sequences of flips, and $$\binom{10}{k}$$ of them have exactly $$k$$ heads. Here is the whole distribution:
+**Step 2: count everything a fair coin could do.** One flip has 2 outcomes. Two flips have 2 x 2 = 4: HH, HT, TH, TT. Each extra flip doubles the list, so 10 flips have ten 2s multiplied together = **1,024** possible sequences, things like HTTHTHHTTT. A fair coin makes every one of those 1,024 sequences equally likely. That single fact does all the work in this section: how likely something is = the number of sequences that produce it, divided by 1,024.
+
+**Step 3: count the sequences that give each number of heads.** Only 1 sequence gives 0 heads (all tails). Exactly 10 sequences give 1 head, because the single heads can sit in any of the 10 positions. Keep counting the same way and you get the chart below: 252 sequences give 5 heads, which is why its bar is tallest, while 8 heads can happen in 45 ways, 9 heads in 10 ways, and 10 heads in just 1 way.
 
 <figure class="fig">
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="p1t p1d">
@@ -78,15 +78,19 @@ There are $$2^{10} = 1024$$ equally likely sequences of flips, and $$\binom{10}{
 <figcaption>What a fair coin does over 10 flips. Five heads is most likely, but 8 or more still happens 5.5% of the time. Counting the equally extreme results on the other side (2 or fewer heads) doubles that to 10.9%.</figcaption>
 </figure>
 
-The p-value asks: *if the coin were fair, how often would I see a result **at least this extreme**?* "At least as extreme" as 8 heads means 8, 9 or 10:
+**Step 4: decide what counts as suspicious.** You got 8 heads. A fair coin's most typical result is 5, so a result looks suspicious when it's far from 5. "At least as far out as your 8" means 8, 9 or 10 heads. And if a coin that gave you only 0, 1 or 2 heads would strike you as equally fishy, count those too. Counting both directions is called a **two-sided** test.
+
+**Step 5: count the suspicious sequences.** One side: 45 + 10 + 1 = 56 sequences, and 56 out of 1,024 is about **5.5%**. Both sides: 56 + 56 = 112, and 112 out of 1,024 is about **10.9%**. That percentage is the **p-value**: *if the coin were fair, how often you'd get a result at least this far from the middle.*
+
+**Step 6: compare against the bar you set in advance.** The courtroom's bar was "beyond reasonable doubt". Here it's the significance level $$\alpha$$, usually 5%. Your 10.9% is above it: a fair coin produces something this lopsided about one time in nine. Unusual, but not rare enough to call your friend a liar. Notice what that does *not* say: you haven't shown the coin is fair. Ten flips just can't tell a fair coin from a slightly biased one.
+
+For the record, here is the same counting written compactly. The number of ways to pick which $$k$$ of the 10 flips come up heads is written $$\binom{10}{k}$$, so
 
 $$
-P(X \ge 8) = \frac{\binom{10}{8} + \binom{10}{9} + \binom{10}{10}}{1024} = \frac{45 + 10 + 1}{1024} \approx 0.055
+P(X = k) = \frac{\binom{10}{k}}{1024}, \qquad p = P(X \ge 8) + P(X \le 2) = \frac{56 + 56}{1024} \approx 0.109
 $$
 
-If you'd be just as suspicious of a coin that landed tails 8 times, you also count 0, 1 and 2 heads. That's a **two-sided** test, and the p-value doubles to about 0.109.
-
-So a fair coin gives a result this lopsided about one time in nine. That's unusual, but hardly damning. With $$\alpha = 0.05$$, you don't have enough evidence to call the coin unfair. Notice what that does *not* mean: you haven't shown the coin is fair. Ten flips just can't tell a fair coin from a slightly biased one.
+The widget below lets you redo steps 4 to 6 for any heads count you like.
 
 <style>
 .pv-widget { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
