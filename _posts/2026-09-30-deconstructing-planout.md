@@ -20,25 +20,6 @@ This is the part of experimentation systems I want to take apart here. One shopp
 .planout-fig .t { font-size: 14px; }
 .planout-fig .m, .planout-fig .ta, .planout-fig .tb { font-size: 12px; }
 .planout-fig .h { font-size: 12px; }
-.planout-fig .po-step { animation: po-trace-in 9s ease-out infinite both; }
-.planout-fig .po-d0 { animation-delay: 0s; }
-.planout-fig .po-d1 { animation-delay: .15s; }
-.planout-fig .po-d2 { animation-delay: .3s; }
-.planout-fig .po-d3 { animation-delay: .45s; }
-.planout-fig .po-d4 { animation-delay: .6s; }
-.planout-fig .po-d5 { animation-delay: .75s; }
-.planout-fig .po-d6 { animation-delay: .9s; }
-@keyframes po-trace-in { 0% { opacity: 0; transform: translateY(8px); } 7%, 86% { opacity: 1; transform: translateY(0); } 91%, 100% { opacity: 0; transform: translateY(0); } }
-.planout-fig .po-bar { transform-box: fill-box; transform-origin: left center; animation: po-bar-grow 9s cubic-bezier(.25,.7,.3,1) infinite both; }
-.planout-fig .po-bar-1 { animation-delay: .15s; }
-.planout-fig .po-bar-2 { animation-delay: .35s; }
-@keyframes po-bar-grow { 0% { transform: scaleX(0); opacity: 1; } 10%, 86% { transform: scaleX(1); opacity: 1; } 91%, 99% { transform: scaleX(1); opacity: 0; } 99.1%, 100% { transform: scaleX(0); opacity: 1; } }
-.planout-fig .po-val { animation: po-fade-in 9s ease-out infinite both; }
-.planout-fig .po-val-0 { animation-delay: .25s; }
-.planout-fig .po-val-1 { animation-delay: 1s; }
-.planout-fig .po-val-2 { animation-delay: 1.2s; }
-@keyframes po-fade-in { 0% { opacity: 0; } 5%, 86% { opacity: 1; } 91%, 100% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .planout-fig .po-step, .planout-fig .po-bar, .planout-fig .po-val { animation: none; } }
 </style>
 
 ## What PlanOut was trying to separate
@@ -97,10 +78,100 @@ The complete key is `checkout-v1.button.user-42`. The default separator is a dot
 <svg viewBox="0 0 420 324" role="img" aria-labelledby="po-hash-t po-hash-d">
 <title id="po-hash-t">Hash</title>
 <desc id="po-hash-d">The exact key checkout-v1.button.user-42 is hashed. Its first 15 hex digits become integer 235347851596851754. Remainder modulo two is zero, selecting blue.</desc>
-<g class="po-step po-d0"><rect class="box" x="12" y="12" width="396" height="60" rx="6"/><text class="t" x="24" y="36">checkout-v1.button.user-42</text><text class="m" x="24" y="55">salt + parameter + unit</text></g><g class="po-step po-d1"><path class="ln" d="M210,72 v20"/></g><g class="po-step po-d2"><rect class="box" x="12" y="92" width="396" height="60" rx="6"/><text class="t" x="24" y="116">SHA-1 → keep first 15 hex digits</text><text class="m" x="24" y="135">3441f9fc514ea2a</text></g><g class="po-step po-d3"><path class="ln" d="M210,152 v20"/></g><g class="po-step po-d4"><rect class="box" x="12" y="172" width="396" height="60" rx="6"/><text class="t" x="24" y="196">Convert hex to integer</text><text class="m" x="24" y="215">235347851596851754</text></g><g class="po-step po-d5"><path class="ln" d="M210,232 v20"/></g><g class="po-step po-d6"><rect class="box" x="12" y="252" width="396" height="60" rx="6"/><text class="t" x="24" y="276">h % 2 = 0 → choices[0] → blue</text><text class="m" x="24" y="295">same key, same answer</text></g>
+<g><rect class="box" x="12" y="12" width="396" height="60" rx="6"/><text class="t" x="24" y="36">checkout-v1.button.user-42</text><text class="m" x="24" y="55">salt + parameter + unit</text></g><g><path class="ln" d="M210,72 v20"/></g><g><rect class="box" x="12" y="92" width="396" height="60" rx="6"/><text class="t" x="24" y="116">SHA-1 → keep first 15 hex digits</text><text class="m" x="24" y="135">3441f9fc514ea2a</text></g><g><path class="ln" d="M210,152 v20"/></g><g><rect class="box" x="12" y="172" width="396" height="60" rx="6"/><text class="t" x="24" y="196">Convert hex to integer</text><text class="m" x="24" y="215">235347851596851754</text></g><g><path class="ln" d="M210,232 v20"/></g><g><rect class="box" x="12" y="252" width="396" height="60" rx="6"/><text class="t" x="24" y="276">h % 2 = 0 → choices[0] → blue</text><text class="m" x="24" y="295">same key, same answer</text></g>
 </svg>
 <figcaption>The computed path for Andi. Nothing is freshly drawn on the second request.</figcaption>
 </figure>
+
+<style>
+.po-playground { margin: 32px 0; padding: 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.po-playground[hidden], .po-playground [hidden] { display: none; }
+.prose .po-playground h3 { margin: 0 0 8px; }
+.prose .po-playground p { margin: 0 0 16px; font-size: 14px; color: var(--muted); }
+.po-playground label { display: block; margin-bottom: 6px; font-size: 14px; }
+.po-playground input { box-sizing: border-box; width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--fg); font: 14px 'Geist Mono', monospace; }
+.po-playground input:focus-visible { outline: 2px solid var(--l0); outline-offset: 3px; }
+.prose .po-playground .po-status { margin: 12px 0 0; }
+.po-playground dl { margin: 20px 0 0; }
+.po-playground .po-row { border-top: 1px solid var(--line); padding: 10px 0; }
+.po-playground dt { color: var(--muted); font-size: 12px; }
+.po-playground dd { margin: 4px 0 0; overflow-wrap: anywhere; font: 13px/1.6 'Geist Mono', monospace; }
+.po-playground dd code { padding: 0; border: 0; background: none; font: inherit; }
+.po-playground .po-choice { display: inline-block; margin-top: 8px; padding: 4px 10px; border: 1px solid currentColor; border-radius: 4px; font-weight: 600; }
+.po-playground .po-choice[data-choice="blue"] { color: var(--l0); }
+.po-playground .po-choice[data-choice="pink"] { color: var(--l3); }
+</style>
+<section class="po-playground" id="po-playground" aria-labelledby="po-playground-title" hidden>
+<h3 id="po-playground-title">Try the coin toss</h3>
+<p>Change the user ID and follow the actual calculation. The salt stays <code>checkout-v1</code>, the parameter stays <code>button</code>. Nothing is sent to a server.</p>
+<label for="po-user-id">User ID</label>
+<input id="po-user-id" type="text" value="user-42" placeholder="e.g. user-42" autocomplete="off" spellcheck="false" aria-describedby="po-status">
+<p class="po-status" id="po-status" role="status" aria-live="polite" aria-atomic="true">Computing the assignment...</p>
+<dl id="po-results" hidden>
+<div class="po-row"><dt>1. Full key: salt.parameter.unit</dt><dd><code id="po-key"></code></dd></div>
+<div class="po-row"><dt>2. SHA-1 of the UTF-8 key</dt><dd><code id="po-hash"></code></dd></div>
+<div class="po-row"><dt>3. Keep the first 15 hex digits (60 bits)</dt><dd><code id="po-prefix"></code></dd></div>
+<div class="po-row"><dt>4. Convert hex to an integer</dt><dd><code id="po-integer"></code></dd></div>
+<div class="po-row"><dt>5. Remainder selects a choice</dt><dd><code id="po-modulo"></code><br><span class="po-choice" id="po-choice"></span></dd></div>
+</dl>
+</section>
+<noscript><p>The example above works without JavaScript. Enable JavaScript to try other user IDs.</p></noscript>
+<script>
+(() => {
+  'use strict';
+  const widget = document.getElementById('po-playground');
+  const input = document.getElementById('po-user-id');
+  const status = document.getElementById('po-status');
+  const results = document.getElementById('po-results');
+  // SHA-1 is PlanOut's assignment mixer here, not a security primitive.
+  if (!window.crypto || !window.crypto.subtle || typeof TextEncoder === 'undefined' || typeof BigInt === 'undefined') {
+    const note = document.createElement('p');
+    note.textContent = 'The interactive example needs a browser with Web Crypto and BigInt on HTTPS. The static calculation above still applies.';
+    widget.replaceWith(note);
+    return;
+  }
+  widget.hidden = false;
+  let revision = 0;
+  async function update() {
+    const current = ++revision;
+    const unit = input.value; // Preserve the exact ID, including spaces and Unicode.
+    results.hidden = true;
+    if (unit === '') {
+      status.textContent = 'Enter a user ID to compute its assignment.';
+      return;
+    }
+    status.textContent = 'Computing the assignment...';
+    try {
+      const key = 'checkout-v1.button.' + unit;
+      const bytes = new TextEncoder().encode(key);
+      const digest = await window.crypto.subtle.digest('SHA-1', bytes);
+      if (current !== revision) return; // An older digest must not overwrite a newer ID.
+      const hash = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, '0')).join('');
+      const prefix = hash.slice(0, 15);
+      // Number would lose precision for a 60-bit hash. Keep this exact with BigInt.
+      const integer = BigInt('0x' + prefix);
+      const remainder = integer % BigInt(2);
+      const choice = ['blue', 'pink'][Number(remainder)];
+      document.getElementById('po-key').textContent = key;
+      document.getElementById('po-hash').textContent = hash;
+      document.getElementById('po-prefix').textContent = prefix;
+      document.getElementById('po-integer').textContent = integer.toString();
+      document.getElementById('po-modulo').textContent = 'h % 2 = ' + remainder + ' → choices[' + remainder + ']';
+      const badge = document.getElementById('po-choice');
+      badge.textContent = choice;
+      badge.dataset.choice = choice;
+      results.hidden = false;
+      status.textContent = 'Assigned to ' + choice + '. Same ID, same answer.';
+    } catch (error) {
+      if (current !== revision) return;
+      status.textContent = 'This browser could not compute SHA-1. The static example above is still available.';
+    }
+  }
+  input.addEventListener('input', update);
+  update();
+})();
+</script>
+
 
 SHA-1 produces 40 hexadecimal digits. The Python implementation keeps the first 15. Each hex digit holds four bits, so that prefix gives a 60-bit integer. For Andi:
 
@@ -159,7 +230,7 @@ The original split was 5,004 blue and 4,996 pink. These are reproducible results
 <svg viewBox="0 0 420 306" role="img" aria-labelledby="po-salt-t po-salt-d">
 <title id="po-salt-t">Salt</title>
 <desc id="po-salt-d">Among ten thousand users, repeating the definition changes zero assignments, changing the experiment salt changes 4984, and reversing the choices changes all ten thousand.</desc>
-<text class="h" x="12" y="20">USERS CHANGED / 10,000</text><text class="t" x="12" y="52">Same salt, same choices</text><rect class="box" x="12" y="64" width="396" height="20" rx="4"/><text class="m po-val po-val-0" x="408" y="104" text-anchor="end">0 / 10,000</text><text class="t" x="12" y="142">New salt</text><rect class="box" x="12" y="154" width="396" height="20" rx="4"/><rect class="fa po-bar po-bar-1" x="12" y="154" width="197.3664" height="20" rx="4"/><text class="m po-val po-val-1" x="408" y="194" text-anchor="end">4,984 / 10,000</text><text class="t" x="12" y="232">Reversed choices</text><rect class="box" x="12" y="244" width="396" height="20" rx="4"/><rect class="fb po-bar po-bar-2" x="12" y="244" width="396.0" height="20" rx="4"/><text class="m po-val po-val-2" x="408" y="284" text-anchor="end">10,000 / 10,000</text>
+<text class="h" x="12" y="20">USERS CHANGED / 10,000</text><text class="t" x="12" y="52">Same salt, same choices</text><rect class="box" x="12" y="64" width="396" height="20" rx="4"/><text class="m" x="408" y="104" text-anchor="end">0 / 10,000</text><text class="t" x="12" y="142">New salt</text><rect class="box" x="12" y="154" width="396" height="20" rx="4"/><rect class="fa" x="12" y="154" width="197.3664" height="20" rx="4"/><text class="m" x="408" y="194" text-anchor="end">4,984 / 10,000</text><text class="t" x="12" y="232">Reversed choices</text><rect class="box" x="12" y="244" width="396" height="20" rx="4"/><rect class="fb" x="12" y="244" width="396.0" height="20" rx="4"/><text class="m" x="408" y="284" text-anchor="end">10,000 / 10,000</text>
 </svg>
 <figcaption>Computed on invented user-0 through user-9999. Bars share the same scale; the input change, not new coin tosses, moves users.</figcaption>
 </figure>
