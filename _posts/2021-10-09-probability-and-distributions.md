@@ -55,6 +55,8 @@ $$P$$ just means "probability of". You can write the same chance as a fraction, 
 
 The "count then divide" shortcut needs equally likely outcomes. A weighted die might show 6 much more often than 1. We'd need to add the actual probabilities instead of treating every face as one equal vote.
 
+We have a chance for one roll. What should that number lead us to expect when we actually roll the die?
+
 ### Chance isn't a promise about the next few tries
 
 **Step 1:** a fair die gives an even number half the time *in the probability model*.
@@ -62,6 +64,8 @@ The "count then divide" shortcut needs equally likely outcomes. A weighted die m
 **Step 2:** ten rolls can still give three evens, seven evens, or even no evens. A 50% chance does not force five evens in every ten rolls.
 
 **Step 3:** over many independent repetitions, the observed fraction tends to settle near the model's probability. It can still move up and down along the way. This is the idea behind the *law of large numbers*, not a rule that the next roll must correct the last one.
+
+That separates the model from a short run of results. Now keep the same six outcomes, but change the question: do we want what is left, either of two events, or their overlap?
 
 ## "Not", "or" and "and" ask different questions
 
@@ -83,7 +87,7 @@ Here that's 3/6 + 2/6 - 1/6 = 4/6. In probability, "or" includes the case where 
 
 **3. A and B: count only the overlap.** On one roll, the number must be even *and* greater than 4. Only 6 qualifies, so the chance is 1/6.
 
-Don't automatically multiply probabilities for "and". That shortcut needs independence. These two events on one die aren't independent: knowing it's greater than 4 changes the chance that it's even.
+For this roll, listing the overlap is enough. Multiplying two probabilities for "and" is a shortcut only when the events are independent. We'll check what that means after looking at new information.
 
 
 <figure class="fig learn-fig">
@@ -94,6 +98,8 @@ Don't automatically multiply probabilities for "and". That shortcut needs indepe
 </svg>
 <figcaption>Read down the same six outcomes. "Or" keeps 2, 4, 5 and 6. "And" keeps only 6. An outlined box is not included; a coloured box is included.</figcaption>
 </figure>
+
+"And" counted the overlap out of all six outcomes. But what if someone has already ruled out part of the list? The overlap stays the same; the list we divide by changes.
 
 ## "Given" means you're looking at a smaller world
 
@@ -123,23 +129,33 @@ Conditional probability changes which outcomes you're considering. It doesn't tr
 <figcaption>The answer happens to stay 1/2 here, but the list changed. Reverse the condition: given even, only 2, 4 and 6 remain, and just 6 is greater than 4 (1/3).</figcaption>
 </figure>
 
-### Independence is a separate assumption
+Our new information left the chance of even at 1/2. That is worth pausing on: a smaller list does not always mean a different probability. It depends on what remains in the list.
 
-For independent events, learning B doesn't change the probability of A:
+### Independence means the chance doesn't change
+
+In our example, half of all six faces are even, and half of the two faces greater than 4 are even. So "even" and "greater than 4" are **independent events** on this fair die. Knowing one happened doesn't change the chance of the other.
+
+In symbols, "the chance of A given B is still the chance of A" becomes:
 
 $$
 P(A\mid B)=P(A)
 $$
 
-Then the chance of both is:
+Compare a different condition: **given greater than 3**, the remaining faces are 4, 5 and 6. Two of three are even. Now the chance is 2/3 instead of 1/2, so "even" and "greater than 3" are not independent.
+
+This explains when multiplication works for "and". Flip a fair coin twice, independently. Half the first flips are heads. Within those cases, half the second flips are heads too. Half of a half is a quarter: the chance of two heads is 0.5 × 0.5 = 0.25.
+
+The short version of "take this fraction, then this fraction of it" is:
 
 $$
 P(A\text{ and }B)=P(A)P(B)
 $$
 
-Two independent fair coin flips both landing heads have chance 0.5 x 0.5 = 0.25. After one head, the next is still 50% heads. A streak doesn't make tails due.
+That second probability can stay P(B) only because the first result doesn't change it. After two heads, a third independent flip is still 50% heads. This answers our opening question: tails isn't due.
 
-Real data aren't automatically independent. Two visits by one user or two people in the same household may be related. Independence is something to justify, not something the multiplication sign grants you.
+Real observations aren't automatically independent. Two visits by one user or two people in the same household may be related. Independence is something to justify, not something the multiplication sign grants you.
+
+We can now answer questions about individual outcomes and combinations. Next, instead of asking only "did this event happen?", let's keep a number from a whole batch and see all the values it could take.
 
 ## A distribution is the whole picture, not one answer
 
@@ -163,41 +179,55 @@ This is the bridge from "a heads count" to "a distribution of heads counts". The
 <figcaption>Every tile has chance 1/16. Six tiles give 2 heads, so that count has chance 6/16. Count the tiles, not just the five columns.</figcaption>
 </figure>
 
-## One yes/no trial: Bernoulli
+The five columns above already form a distribution. We could keep listing sequences for every batch size, but that gets slow. To find a reusable rule, first look at what one flip contributes, then build the batch from those pieces.
 
-Call heads a *success* and tails a *failure*. These are just labels; "success" can mean a broken part or a failed payment if that's the event you want to count.
+### One flip contributes either zero or one
 
-**Step 1:** record a success as 1 and a failure as 0.
+Record heads as **1** and tails as **0**. Adding the four recorded values gives the heads count we just plotted. HHTT becomes 1 + 1 + 0 + 0 = 2.
 
-**Step 2:** give success probability q, so failure has probability 1 - q.
+Call heads a *success* and tails a *failure*. These are counting labels, not judgments: a "success" could also mean a broken part if broken parts are what we want to count.
+
+Suppose the chance of heads is 70%. Then the chance of tails must be the remaining 30%. Let **q** stand for the chance of heads. The two chances are q and 1 - q. For one flip, with its recorded value called X, that is:
 
 $$
 P(X=1)=q,\qquad P(X=0)=1-q
 $$
 
-That's a **Bernoulli distribution**: two values and two probabilities. For a fair coin, q = 0.5. For a conversion model, q might be 0.10. The letter q here is just an event probability.
+Read the first part as "the chance that our recorded number is 1 is q". The second says the same thing for 0. This two-value distribution is called **Bernoulli**. The name adds no new machinery: it is just our one-flip model.
 
-## Many independent yes/no trials: binomial
+Now add several independent flips with the same q. A total of those zeroes and ones is a **binomial** count. We have moved from a single contribution to a batch total, not to an unrelated idea.
 
-Count successes in n trials, with the same success probability q on every trial and independent trials. The count follows a **binomial distribution**.
+## Build the batch rule from one sequence
 
-**Step 1: understand one sequence.** For four fair flips, HHTT has probability $$0.5^4=1/16$$. Multiply one probability for each flip.
+Return to four fair flips. We want the chance of **exactly two heads**, the tallest column in our picture.
 
-**Step 2: count sequences with the same number of heads.** Two heads can occupy the four positions in six ways. The symbol $$\binom{4}{2}$$, "4 choose 2", counts them.
+**First, find the chance of one particular sequence.** HHTT requires heads, heads, tails, tails in that order. Each has chance 0.5, so independence lets us multiply: 0.5 × 0.5 × 0.5 × 0.5 = 1/16. Written with a power, that same multiplication is $$0.5^4=1/16$$.
 
-**Step 3: multiply the chance of a sequence by the number of sequences.** In general:
+**Then, notice that HHTT is only one way to get two heads.** The picture shows six: HHTT, HTHT, HTTH, THHT, THTH and TTHH. Each has chance 1/16. Adding them gives 6/16, or **37.5%**.
+
+So the recipe is: **chance of one matching sequence × number of matching sequences**. The formula below does exactly those two jobs when listing every sequence becomes impractical.
+
+### The binomial equation is that recipe in shorthand
+
+Let **n** be the number of trials and **k** the number of successes we want. In our example, n = 4, k = 2 and q = 0.5.
+
+A matching sequence needs k successes and n - k failures. Its chance is q multiplied k times, followed by 1 - q multiplied n - k times. That gives $$q^k(1-q)^{n-k}$$. It is still the HHTT calculation, with letters so we can use any batch size or coin bias.
+
+We also need the number of ways to put k successes into n positions. The notation $$\binom{n}{k}$$, read "n choose k", names that count. Here $$\binom{4}{2}$$ is the six sequences we just listed.
+
+Put the two jobs together:
 
 $$
 P(X=k)=\binom{n}{k}q^k(1-q)^{n-k}
 $$
 
-Read it in three pieces:
+Read it left to right: "the chance of a total of k successes equals the number of matching sequences times the chance of each one". For two heads in four fair flips, it gives 6 × 0.5² × 0.5² = 6/16. **The equation has not introduced a different answer; it has compressed our counting.**
 
-1. $$\binom{n}{k}$$ counts ways to place k successes among n trials.
-2. $$q^k$$ multiplies the success probability k times.
-3. $$(1-q)^{n-k}$$ multiplies the failure probability for the remaining trials.
+If the coin has a 70% heads chance, the same six sequences each have chance 0.7² × 0.3² = 0.0441. Their total is 6 × 0.0441 = **26.46%**. Exactly two heads becomes less likely because the distribution has shifted toward more heads.
 
-For our four fair flips and two heads: 6 x 0.5² x 0.5² = 6/16 = **37.5%**. For a biased coin, the sequences no longer all have the same chance, but sequences with the same heads count still share the same product under this model.
+This rule needs independent trials and the same q on each trial. With a changing coin bias or related flips, the product above is no longer the right model.
+
+Instead of calculating just one bar, the widget calculates every possible k. Try the four-flip example first, then move the heads chance: you should be able to explain why the bars move before worrying about their exact heights.
 
 <style>
 .pb-widget { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
@@ -228,39 +258,52 @@ For our four fair flips and two heads: 6 x 0.5² x 0.5² = 6/16 = **37.5%**. For
 </section>
 <noscript><p>Without JavaScript, the four-flip example above still gives the exact probabilities: 1, 4, 6, 4 and 1 divided by 16.</p></noscript>
 
-### Centre and spread describe different things
+The widget gives us the whole distribution. Sometimes we want a shorter description: where is its centre, and how much do batches vary around it? Those are two different questions.
 
-**Step 1: find the long-run average count.** A binomial count has expected value:
+### Centre: where batches balance on average
+
+With ten flips and a 70% heads chance, each flip contributes 0.7 heads *on average*: 1 with chance 0.7, otherwise 0. Ten such contributions add to 7. Across many batches, the average heads count settles near 7, even though a particular batch might give 5, 8 or 10.
+
+The name for that long-run average is **expected value**. `E[X]` means "expected value of our count X". Number of trials times chance of success becomes:
 
 $$
 E[X]=nq
 $$
 
-$$E[X]$$ means the average over many repetitions. Ten fair flips give an expected count of 5. Ten flips with q = 0.7 give 7. This average is not a prediction that each run will equal it.
+For ten fair flips, it is 10 × 0.5 = 5. An expected value need not be a possible result: one fair flip averages 0.5 heads, but no flip produces half a head. It is the balance point of repeated results, not a promise about the next batch.
 
-**Step 2: describe the wobble around that average.** The variance is $$nq(1-q)$$. Its square root is the **standard deviation**:
+### Spread: how much the counts wobble
+
+A centre of 5 does not tell us whether batches cluster tightly near 5 or often land far away. **Standard deviation**, abbreviated SD, describes that spread in heads-count units. It is not the largest possible deviation or a hard boundary.
+
+For a binomial count, three features set the spread. More trials give the count more room to vary. A coin close to 50/50 is less predictable than one close to all heads or all tails. At q = 0 or q = 1, there is no wobble at all.
+
+The spread calculation captures those features with n × q × (1 - q). This quantity is called **variance**. It is in squared count units, so taking its square root puts spread back into ordinary count units:
 
 $$
 SD(X)=\sqrt{nq(1-q)}
 $$
 
-Standard deviation is a measure of spread in heads-count units. It is not the biggest possible deviation or a hard boundary. For ten fair flips it's about 1.58 heads.
+For ten fair flips: square root of (10 × 0.5 × 0.5), about **1.58 heads**. This is a summary of the bars' spread, not an instruction to rule out counts beyond 5 ± 1.58.
 
-**Step 3: distinguish counts from rates.** More flips usually make the *count* spread wider, but make the *fraction* of heads more stable. Fifty heads out of 100 and five out of ten both give 50%, yet the larger sample's fraction tends to wobble less. This matters when we compare conversion rates later.
+We can also divide a heads count by the number of flips to get a *fraction*. Five out of ten and fifty out of one hundred both give 50%. The larger batch's count has more room to vary, but its fraction tends to wobble less. Keep this distinction in mind; we'll return to it when we look at averages.
 
-## Continuous values: probability is area
+So far every value has its own bar: 0 heads, 1 head, 2 heads. To understand a smooth curve, we need one change in how we read probability. A bar gives probability to a separate value; a continuous curve spreads it across an interval.
 
-Counts come in separate steps: 0, 1, 2 heads. Other models describe values along a continuous scale, such as an idealised measurement of height or time.
+## From separate bars to continuous area
 
-**Step 1: replace bars with a density curve.** A discrete bar's height can be a probability. A continuous curve's height is **density**, not probability.
+Imagine a spinner that can stop anywhere from 0 to 10, with no part of that scale favoured. Where does its probability live? We cannot give every exact position its own positive share: there are infinitely many positions.
 
-**Step 2: choose an interval.** Probability is the area under the curve between its ends. The whole area is 1. A very narrow interval usually has little area even if the curve is tall there.
+Instead, give **intervals** a share. From 2 to 4 covers 2 of the scale's 10 units, so it gets 2/10 = **20%**. From 2 to 3 covers one unit, so it gets 10%. A wider interval collects more probability.
 
-**Step 3: don't ask the curve for the probability of one exact point.** In a continuous model, the area at a single point is zero. A recorded measurement like "170.0 cm" usually represents a rounding interval, not infinitely precise knowledge.
+We draw this as a flat rectangle of height 0.1. The full width is 10, so its full area is 10 × 0.1 = 1. The interval 2 to 4 has area 2 × 0.1 = 0.2. **Height tells us how much probability there is per unit of width; area gives the probability.** That height is called *density*.
 
-A **continuous uniform distribution** is the simplest example: a flat density between a and b. Equal-length intervals have equal chances. Its height is $$1/(b-a)$$ so the rectangle's total area is 1. A uniform model from 0 to 10 gives a 20% chance between 2 and 4: width 2 times height 0.1.
+This flat model is a **continuous uniform distribution**. For an interval from a to b, its width is b - a. To make the rectangle's area equal 1, its height must be $$1/(b-a)$$. That expression is just "one divided by the full width".
 
-Uniform is a model, not a claim that every real measurement is equally likely. Our fair die was a *discrete* uniform example: six separate outcomes, each with probability 1/6.
+Other continuous models have curved tops, but the reading rule is unchanged: collect area between two ends. The whole area is 1. A single exact point has zero width and therefore zero area, even where the curve is tall. A recorded measurement like "170.0 cm" usually represents a rounding interval, not an infinitely precise point.
+
+Uniform is a chosen model, not a claim that real measurements are equally likely. Our fair die was a *discrete* uniform example: six separate outcomes, each with chance 1/6. The figure below compares our coin bars with a curved continuous model. Read the shaded region as an interval's probability; we'll unpack its bell shape next.
+
 
 
 <figure class="fig learn-fig">
@@ -272,23 +315,31 @@ Uniform is a model, not a claim that every real measurement is equally likely. O
 <figcaption>Separate bars carry separate probabilities. For the bell curve, add the area across an interval; the height at one point is a density, not its probability.</figcaption>
 </figure>
 
+The area rule works for any density curve. A particularly useful shape puts most of the area near a centre and less in the tails. That is the bell in the figure.
+
 ## The normal distribution: a bell with two settings
 
-A **normal distribution** is a continuous bell-shaped model. Values near its centre are more common; values far away are less common. Not all data are normal: revenue, waiting times and counts can look very different.
+A **normal distribution** is a continuous bell-shaped model. It is not a description of all data: revenue, waiting times and counts can look very different.
 
-**Step 1: locate the centre.** The mean, $$\mu$$ ("mu"), moves the bell left or right.
+Two settings describe this bell. Its **mean**, written $$\mu$$ ("mu"), chooses the centre. Its **standard deviation**, written $$\sigma$$ ("sigma"), chooses the spread. Moving the mean shifts the bell. Increasing the spread makes it wider and lower, because its total area must stay 1. Sigma must be positive.
 
-**Step 2: choose the spread.** The standard deviation, $$\sigma$$ ("sigma"), stretches or narrows it. Sigma must be positive. A wider bell is lower because its total area is still 1.
+These are the same centre-and-spread questions we asked about coin batches, now applied to a continuous model.
 
-**Step 3: describe a location relative to those settings.**
+### Measure distance in units of spread
+
+Suppose a normal model for a measurement has centre 100 and standard deviation 10. A value of 120 is 20 above the centre, which is **two standard deviations above it**. A value of 90 is one standard deviation below it.
+
+Subtracting the centre gives the distance. Dividing by the standard deviation tells us how many spread-units that distance contains. Call the answer **z**:
 
 $$
 z=\frac{x-\mu}{\sigma}
 $$
 
-Take a value x, subtract the centre, then divide by the spread. If mu = 0 and sigma = 1, x = 2 has z = 2: two standard deviations above the centre. This is **standardising**. It changes the units; it doesn't make non-normal data normal.
+Here x is the value we're looking at. For 120, z = (120 - 100)/10 = 2. For 90, z = -1. Zero means at the centre; a negative number means below it. This is **standardising**. It changes the units, not the data's shape, so it doesn't turn non-normal data into normal data.
 
-For a normal model, about 68% of the area lies within one standard deviation of the mean, and about 95% within two. These are properties of this model, not guaranteed rules for every dataset.
+Why use these units? Every normal bell has the same share of area within the same number of standard deviations: about **68%** within one and **95%** within two. In our measurement example, those intervals are 90 to 110 and 80 to 120. These are properties of the normal model, not rules that every dataset must follow.
+
+The widget starts with centre 0 and spread 1, so the x-values already equal their z-values. Start with -1 to 1, then widen the interval. Next, keep the interval fixed and widen the bell: the same interval now captures less of the total area.
 
 <section id="pb-normal" class="pb-widget" aria-labelledby="pb-normal-title" hidden>
 <h3 id="pb-normal-title">Try it: change the bell, count the area</h3>
@@ -307,45 +358,70 @@ For a normal model, about 68% of the area lies within one standard deviation of 
 </section>
 <noscript><p>For a standard normal model, the area from -1 to 1 is about 68.3%; from -2 to 2 it is about 95.4%.</p></noscript>
 
-### The density formula draws the same bell
+The widget can answer an interval question without showing its calculation. If you want to connect that answer to an equation, the next two details do separate jobs: one draws the curve, the other counts its area.
 
-You don't need this formula to read the widget. It's here so the picture and symbols can meet:
+<details markdown="1">
+<summary>The equation that draws the bell</summary>
+
+A bell needs to be tallest at the centre, shrink on both sides, and keep its total area at 1. The normal density formula builds those three requirements into one expression.
+
+Start with the distance in spread-units we just called z. Square it so equal distances above and below the centre behave the same. Make it negative and put it in an exponential so greater distance gives a smaller height. Finally, scale the whole curve so its area is 1:
 
 $$
 f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac12\left(\frac{x-\mu}{\sigma}\right)^2}
 $$
 
-1. $$f(x)$$ is the curve height at x: density, not the chance of exactly x.
-2. The fraction at the front keeps total area equal to 1 when sigma changes.
-3. Inside the exponent is the squared standardised distance from the mean. Farther away gives a smaller height. $$e$$ and $$\pi$$ are mathematical constants used to draw this curve.
+Read the right side from the inside out. The fraction inside parentheses is z. Its square measures distance without a direction. The exponential $$e^{-z^2/2}$$ is 1 at the centre and falls as we move away. The fraction at the front scales that shape to total area 1; it also lowers the curve when sigma makes it wider. The letters e and $$\pi$$ are mathematical constants.
 
-To get probability, we add up area instead of reading height. The symbol $$\Phi(z)$$ ("Phi") names the area to the left of z on the **standard normal** curve, whose mean is 0 and standard deviation is 1.
+The left side, **f(x)**, is the density at x, not the probability of exactly x. For centre 0 and spread 1, the height at the centre is about 0.399; one spread-unit away it is about 0.242. Those are heights per x-unit, not 39.9% and 24.2% chances. To get a chance, we still need area.
+
+</details>
+
+<details markdown="1">
+<summary>The equation that counts an interval's area</summary>
+
+An interval's area is "everything to the left of its right end" minus "everything to the left of its left end". The subtraction removes the part we don't want.
+
+For the normal bell with centre 0 and spread 1, the symbol $$\Phi(z)$$ ("Phi") names the area to the left of z. About 84.13% lies left of 1; about 15.87% lies left of -1. Their difference is **68.26%**, within rounding of the widget's 68.27%.
+
+For a bell with another centre or spread, first convert each end to z using the distance equation. Calling the ends a and b, the same subtraction becomes:
 
 $$
 P(a\leq X\leq b)=\Phi\left(\frac{b-\mu}{\sigma}\right)-\Phi\left(\frac{a-\mu}{\sigma}\right)
 $$
 
-First find the area left of b, then subtract the area left of a. What remains is the interval between them, exactly the region shaded in the widget.
+There are only two steps here: put the ends into spread-units, then subtract the two left-hand areas. With centre 100, spread 10 and interval 90 to 110, the ends become -1 and 1. We get the same roughly 68% as the widget.
 
-## Why bell curves appear so often
+Phi is often called the **cumulative distribution function** (CDF) of the standard normal: "cumulative" means it has collected all the area up to that point. The formula above collects just the interval we asked about.
 
-The measurements themselves don't have to look like a bell for an average to have an approximately bell-shaped **sampling distribution**.
+</details>
 
-**Step 1:** imagine repeatedly taking a fresh sample of n independent observations from the same population.
+We now know how to read a bell and how its equations encode that picture. One question remains: why might our coin batches ever look like a bell, when a single flip is only zero or one?
 
-**Step 2:** calculate the average of each sample. Now picture the distribution of those averages, not the distribution of individual observations.
+## Return to the coin: why averages can look like bells
 
-**Step 3:** with a finite population variance and suitable sampling conditions, this distribution becomes approximately normal as n grows. That's the **central limit theorem**. There is no universal sample size that makes it accurate for every population.
+Take many fresh batches of ten flips and record the heads *fraction* for each batch. Then repeat with batches of one hundred flips. Both sets of fractions centre near 50% for a fair coin, but the hundred-flip fractions cluster more tightly.
 
-If individual observations have standard deviation sigma, the sample average has standard error:
+We have made a new distribution: **a distribution of averages across batches**, also called a *sampling distribution*. The individual values are still 0 and 1. It is the average of each batch that starts to look roughly bell-shaped as batches get larger.
+
+This is the **central limit theorem**: for independent observations from the same population with finite variance, the distribution of their average becomes approximately normal as the sample size grows. There is no universal sample size that makes the approximation accurate for every population. For a coin near all heads or all tails, we need larger batches before a bell is a useful approximation.
+
+### More observations narrow the average's spread
+
+For a fair coin recorded as 0 or 1, the individual standard deviation is 0.5. The spread of averages of four independent flips is 0.5/2 = 0.25. For sixteen flips it is 0.5/4 = 0.125. We divide by the square root of the batch size, not by the batch size itself.
+
+The name for this spread of averages is **standard error** (SE). If individual observations have standard deviation sigma, and each batch has n independent observations, the shorthand is:
 
 $$
 SE(\bar X)=\frac{\sigma}{\sqrt n}
 $$
 
-$$\bar X$$ means the sample average. **Standard deviation** describes individual observations; **standard error** describes how an estimate wobbles across samples. More independent data reduce that wobble. In practice we usually estimate sigma from the sample.
+The bar over X means "sample average". For 100 fair flips, the standard error of the heads fraction is 0.5/10 = 0.05, or **5 percentage points**. For 400, it is 2.5 percentage points. Four times as many independent observations halves the average's spread.
 
-For coin flips encoded as 0 or 1, the average is the fraction of heads. So a large number of flips can use the bell curve as a shortcut instead of adding up many exact bars. This shortcut is the normal approximation, and it only gets better as n grows.
+This spread rule does not require the original population to be normal. The *bell-shaped approximation* is a separate claim from the central limit theorem. In practice, when sigma is unknown, we estimate it from the sample.
+
+The figure uses a normal starting population to show the narrowing clearly. For our coin, averages still take separate values, but at large enough batch sizes a bell can approximate their many bars. We haven't replaced the coin model; we have found a simpler picture of its batch averages.
+
 
 
 <figure class="fig learn-fig">
@@ -356,6 +432,8 @@ For coin flips encoded as 0 or 1, the average is the fraction of heads. So a lar
 </svg>
 <figcaption>Here the starting population is normal, so all three curves are exactly normal. Horizontal scales match. Averaging makes the distribution narrower and taller, keeping total probability equal to 1. For other populations, the bell shape is an approximation, not a guarantee.</figcaption>
 </figure>
+
+We began with a chance for one outcome, built a distribution of batch counts, then used centre, spread and area to read it. The same coin connected the steps; these distinctions keep the pictures from getting mixed up.
 
 ## Keep these distinctions
 
