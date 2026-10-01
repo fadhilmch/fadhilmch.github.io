@@ -1,39 +1,39 @@
 .projects-page{width:100%;max-width:1160px;margin:0 auto;padding:46px 32px 54px}
 .projects-heading{max-width:690px;margin-bottom:32px}
-.projects-page h1{font-size:38px;letter-spacing:-.04em;margin:8px 0 12px}
+.projects-page h1{font-size:32px;font-weight:600;letter-spacing:-.02em;margin:8px 0 12px}
 .projects-page .intro{color:var(--muted);line-height:1.7;margin:0}
 .project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
 .project-card{min-width:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
 .project-visual{margin:0;background:#171a1a}
 .project-visual img{width:100%;height:170px;object-fit:contain;display:block;padding:12px}
-.project-visual figcaption{font-size:10px;color:#a7a59f;padding:0 14px 12px;line-height:1.5}
+.project-visual figcaption{font-size:12px;color:#a7a59f;padding:0 14px 12px;line-height:1.5}
 .project-content{padding:22px;flex:1;display:flex;flex-direction:column;align-items:flex-start}
-.project-topic{font:11px/1.6 'Geist Mono',monospace;color:var(--accent);margin:0 0 8px}
+.project-topic{font:12px/1.6 'Geist Mono',monospace;color:var(--accent);margin:0 0 8px}
 .project-topic::before{content:'●';margin-right:7px}
-.project-kind{font-size:11px;color:var(--muted);margin:0 0 7px}
-.projects-page h2,.project-dialog h2{font-size:23px;line-height:1.25;letter-spacing:-.025em;margin:0 0 12px}
-.project-teaser{font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 20px}
-.project-stack{font:10px/1.8 'Geist Mono',monospace;color:var(--muted);margin:0 0 22px}
-.project-links{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;margin-top:auto}
+.project-kind{font-size:13px;color:var(--muted);margin:0 0 7px}
+.projects-page h2,.project-dialog h2{font-size:22px;font-weight:600;line-height:1.25;letter-spacing:-.02em;margin:0 0 12px}
+.project-teaser{font-size:15px;line-height:1.65;color:var(--muted);margin:0 0 20px}
+.project-stack{font:11px/1.8 'Geist Mono',monospace;color:var(--muted);margin:0 0 22px}
+.project-links{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;margin-top:auto}
 .project-links a{text-decoration:none}
 .project-read{width:100%;border-top:1px solid var(--line);padding:16px 0 0;margin-top:18px;font-size:13px;font-weight:500;text-decoration:none;display:flex;justify-content:space-between;gap:12px;min-height:44px}
 .project-read span[aria-hidden]{color:var(--accent)}
-.project-story{font-size:14px;line-height:1.75;margin:24px 0}
+.project-story{font-size:15px;line-height:1.7;margin:24px 0}
 .project-story dt{font-weight:600;color:var(--fg);margin-top:22px}
 .project-story dd{margin:6px 0 0;color:var(--muted)}
-.project-review{padding:12px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:12px}
+.project-review{padding:12px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:13px}
 .project-case{padding:28px;border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-top:28px;scroll-margin-top:20px;overflow-wrap:anywhere}
 .project-case .project-visual{margin-top:24px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .project-case .project-visual img{height:220px}
 .project-case .tag-list{margin-top:16px}
-.project-case .tag-chip{--lane:var(--accent)}
-.project-back{display:inline-block;margin-top:22px;font-size:12px}
+.project-case .tag-chip{--lane:var(--accent);font-size:11px}
+.project-back{display:inline-block;margin-top:22px;font-size:13px}
 .project-dialog{width:min(760px,calc(100% - 48px));max-width:none;max-height:calc(100vh - 48px);max-height:calc(100dvh - 48px);padding:0;border:1px solid var(--line);border-radius:18px;background:var(--panel);color:var(--fg);box-shadow:0 24px 90px rgb(0 0 0 / 30%);overflow:hidden}
 .project-dialog:not([open]){display:none}
 .project-dialog[open]{display:flex;flex-direction:column}
 .project-dialog::backdrop{background:rgb(0 0 0 / 65%);backdrop-filter:blur(5px)}
 .project-dialog-bar{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:10px 22px;border-bottom:1px solid var(--line);flex:none}
-.project-dialog-bar>span{font:11px 'Geist Mono',monospace;color:var(--muted)}
+.project-dialog-bar>span{font:12px 'Geist Mono',monospace;color:var(--muted)}
 .project-close{padding:10px 12px;min-height:44px;border:1px solid var(--line);border-radius:8px;background:var(--panel);cursor:pointer;font-size:13px;line-height:1}
 .project-close:hover{background:var(--line)}
 .project-close span{margin-left:8px;font-size:19px}
@@ -54,9 +54,9 @@
 }
 @media(min-width:681px) and (max-width:960px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){
-  .projects-page{padding:28px 18px 38px}.projects-page h1{font-size:30px}.projects-heading{margin-bottom:24px}
-  .project-grid{grid-template-columns:1fr;gap:20px}.project-visual img{height:175px}.projects-page h2{font-size:24px}.project-content{padding:22px}
+  .projects-page{padding:28px 18px 38px}.projects-page h1{font-size:28px}.projects-heading{margin-bottom:24px}
+  .project-grid{grid-template-columns:1fr;gap:20px}.project-visual img{height:175px}.projects-page h2{font-size:21px}.project-content{padding:22px}
   .project-dialog{width:calc(100% - 20px);max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);border-radius:14px}
-  .project-dialog-bar{padding:8px 16px}.project-dialog-body{padding:22px 20px 26px}.project-dialog h2{font-size:26px}
-  .project-case{padding:22px}.project-case .project-visual img{height:160px}.project-story{font-size:14px}
+  .project-dialog-bar{padding:8px 16px}.project-dialog-body{padding:22px 20px 26px}.project-dialog h2{font-size:22px}
+  .project-case{padding:22px}.project-case .project-visual img{height:160px}
 }
