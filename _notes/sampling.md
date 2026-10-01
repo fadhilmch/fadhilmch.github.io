@@ -1,5 +1,6 @@
 ---
 layout: note
+published: false
 title: Sampling
 tag: music
 links:
