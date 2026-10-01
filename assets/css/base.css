@@ -32,11 +32,11 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .site-footer { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding: 16px 36px; border-top: 1px solid var(--line); color: var(--muted); font: 11px 'Geist Mono', monospace; }
 .site-footer a { text-decoration: none; }
 .site-footer__main, .site-footer__meta { display: flex; justify-content: space-between; align-items: center; gap: 12px 16px; flex-wrap: wrap; }
-.brand--footer { gap: 10px; color: var(--fg); }
+.brand--footer { min-width: 44px; min-height: 44px; gap: 10px; color: var(--fg); }
 .brand--footer .brand__mark { width: 28px; height: 28px; }
-.brand--footer .brand__name { font: 700 14px Geist, ui-sans-serif, system-ui, sans-serif; }
 .footer-links { display: flex; flex-wrap: wrap; gap: 4px 6px; }
-.footer-links a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--fg); font: 500 13px Geist, ui-sans-serif, system-ui, sans-serif; }
+.footer-links a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--fg); font: 500 13px Geist, ui-sans-serif, system-ui, sans-serif; }
+.footer-links svg { display: block; width: 20px; height: 20px; flex: none; }
 .footer-links a:hover { background: var(--line); color: var(--fg); }
 .lane-legend { display: flex; gap: 14px; flex-wrap: wrap; }
 .eyebrow { margin: 0; color: var(--muted); font: 11px/1.5 'Geist Mono', monospace; letter-spacing: .025em; }
