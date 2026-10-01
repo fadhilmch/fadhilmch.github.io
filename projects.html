@@ -18,18 +18,110 @@ permalink: /projects/
         <p class="project-teaser">{{ project.teaser | escape }}</p>
         <p class="project-stack">{{ project.stack | escape }}</p>
         <div class="project-links"><a href="{{ project.repo | escape }}" rel="external">GitHub ↗</a>{% if project.post %}<a href="{{ project.post | relative_url }}">Related post ↗</a>{% endif %}</div>
-        <details>
-          <summary>Read case study</summary>
-          <dl class="project-story">
-            <dt>Problem</dt><dd>{{ project.problem | escape }}</dd>
-            <dt>What we built</dt><dd>{{ project.built | escape }}</dd>
-            <dt>Decision / limit</dt><dd>{{ project.decision | escape }}</dd>
-            <dt>Result / evidence</dt><dd>{{ project.result | escape }}</dd>
-          </dl>
-          {% if project.review %}<p class="project-review"><strong>Case-study draft:</strong> {{ project.review | escape }}</p>{% endif %}
-        </details>
+        <a class="project-read" href="#case-{{ project.id }}">Read case study <span aria-hidden="true">↗</span><span class="sr-only">: {{ project.title | escape }}</span></a>
       </div>
     </article>
   {% endfor %}
   </div>
+  <div class="project-cases">
+  {% for project in site.data.portfolio_projects %}
+    <section class="project-case" id="case-{{ project.id }}" aria-labelledby="case-title-{{ project.id }}" style="--accent:var(--{{ project.color }})">
+      <p class="project-topic">{{ project.topic | escape }} · {{ project.kind | escape }}</p>
+      <h2 id="case-title-{{ project.id }}" tabindex="-1">{{ project.title | escape }}</h2>
+      <div class="tag-list">{% assign tags = project.stack | split: ' · ' %}{% for tag in tags %}<span class="tag-chip">{{ tag | escape }}</span>{% endfor %}</div>
+      <figure class="project-visual"><img src="{{ project.image | relative_url }}" alt="{{ project.image_caption | escape }}" width="640" height="200"><figcaption>{{ project.image_caption | escape }}</figcaption></figure>
+      <dl class="project-story">
+        <dt>Problem</dt><dd>{{ project.problem | escape }}</dd>
+        <dt>What we built</dt><dd>{{ project.built | escape }}</dd>
+        <dt>Decision / limit</dt><dd>{{ project.decision | escape }}</dd>
+        <dt>Result / evidence</dt><dd>{{ project.result | escape }}</dd>
+      </dl>
+      {% if project.review %}<p class="project-review"><strong>Case-study draft:</strong> {{ project.review | escape }}</p>{% endif %}
+      <div class="project-links"><a href="{{ project.repo | escape }}" rel="external">View code on GitHub ↗</a>{% if project.post %}<a href="{{ project.post | relative_url }}">{{ project.post_title | escape }} ↗</a>{% endif %}</div>
+      <a class="project-back" href="#{{ project.id }}">Back to project</a>
+    </section>
+  {% endfor %}
+  </div>
 </div>
+<dialog class="project-dialog" id="project-dialog" aria-label="Project case study">
+  <div class="project-dialog-bar"><span>Case study</span><button type="button" class="project-close" aria-label="Close case study">Close <span aria-hidden="true">×</span></button></div>
+  <div class="project-dialog-body"></div>
+</dialog>
+<script>
+(function () {
+  'use strict';
+  var dialog = document.getElementById('project-dialog');
+  if (!dialog || typeof dialog.showModal !== 'function') return;
+  var cases = document.querySelector('.project-cases');
+  var body = dialog.querySelector('.project-dialog-body');
+  var close = dialog.querySelector('.project-close');
+  var active = null, opener = null, scrollY = 0, savedStyle = '', outside = false;
+  cases.hidden = true;
+  function isOutside(event) {
+    var rect = dialog.getBoundingClientRect();
+    return event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
+  }
+  function openCase(link, section) {
+    if (dialog.open) return;
+    opener = link;
+    active = section;
+    scrollY = window.scrollY;
+    savedStyle = document.body.style.cssText;
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + scrollY + 'px';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    body.appendChild(section);
+    dialog.style.setProperty('--accent', section.style.getPropertyValue('--accent'));
+    dialog.setAttribute('aria-labelledby', section.getAttribute('aria-labelledby'));
+    dialog.showModal();
+    body.scrollTop = 0;
+    section.querySelector('h2').focus({preventScroll: true});
+  }
+  document.querySelectorAll('.project-read').forEach(function (link) {
+    var section = document.getElementById(link.getAttribute('href').slice(1));
+    if (!section) return;
+    link.setAttribute('aria-haspopup', 'dialog');
+    link.setAttribute('aria-controls', 'project-dialog');
+    link.addEventListener('click', function (event) {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      openCase(link, section);
+    });
+  });
+  dialog.addEventListener('keydown', function (event) {
+    if (event.key !== 'Tab') return;
+    var focusable = Array.from(dialog.querySelectorAll('button, a[href]')).filter(function (item) { return item.getClientRects().length; });
+    var first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && (document.activeElement === first || document.activeElement === active.querySelector('h2'))) {
+      event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault(); first.focus();
+    }
+  });
+  close.addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('pointerdown', function (event) { outside = event.target === dialog && isOutside(event); });
+  dialog.addEventListener('pointerup', function (event) {
+    if (outside && event.target === dialog && isOutside(event)) dialog.close();
+    outside = false;
+  });
+  dialog.addEventListener('close', function () {
+    if (active) cases.appendChild(active);
+    document.body.style.cssText = savedStyle;
+    var oldBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    window.scrollTo(0, scrollY);
+    document.documentElement.style.scrollBehavior = oldBehavior;
+    if (opener) opener.focus({preventScroll: true});
+    active = null;
+    opener = null;
+  });
+  // A direct fragment link remains useful even after enhancement.
+  function openFragment() {
+    var link = Array.from(document.querySelectorAll('.project-read')).find(function (item) { return item.getAttribute('href') === window.location.hash; });
+    if (link) openCase(link, document.getElementById(window.location.hash.slice(1)));
+  }
+  window.addEventListener('hashchange', openFragment);
+  openFragment();
+}());
+</script>
