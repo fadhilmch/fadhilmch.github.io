@@ -6,67 +6,130 @@ math: true
 tags:
 - exp
 - data
-summary: "How to tell a real difference from random noise"
+summary: "How to tell a real difference from random noise. We start with ten coin flips you can count by hand, then use exactly the same idea on an A/B test."
 ---
 
-You change the colour of a button. Out of 10,000 people, 1,000 convert with the old one and 1,080 with the new one. That looks better. But would a different group of people have given you a different answer?
+You change the colour of a Buy button. With the old button, 1,000 out of 10,000 people buy. With the new one, 1,080 out of 10,000 do. The new button looks better.
 
-**A real improvement and a lucky sample can look alike.** A statistical test helps you judge the evidence. It cannot tell you with certainty which explanation is true.
+But if you'd shown the *old* button to two different groups of 10,000 people, you wouldn't have got the same number twice either. People are random. One week 1,000 buy, another week 1,040. So is the extra 80 the button, or just the usual noise?
 
-We'll start with ten coin flips, where we can count every possibility. Then we'll use the same thinking for the button. Each time: understand the question, work through an example, then read the formula one piece at a time. The widgets let you change one thing and see why the answer changes.
+That's the question statistical tests answer, and p-values are how they report the answer. I've read the textbook definition of a p-value many times and it still slipped out of my head every time. So in this post I build it up from something small enough to count by hand, ten coin flips, and then take exactly the same idea back to the button.
+
+If words like *distribution*, *standard deviation* or *normal curve* are new to you, my [probability post]({{ '/posts/probability-and-distributions/' | relative_url }}) covers them from scratch. You can also just read on. I explain each one briefly when it first comes up.
 
 <style>
 .fig.learn-fig { overflow:visible; }
-.fig.learn-fig svg { width:100%; min-width:0; max-width:480px; height:auto; }
+.fig.learn-fig svg { width:100%; min-width:0; max-width:500px; height:auto; }
 .learn-fig text { fill:var(--fg); font:16px 'Geist Mono',monospace; }
 .learn-fig .sub { fill:var(--muted); font-size:14px; }
 .learn-fig .accent { fill:var(--l0); }
 .learn-fig .warm { fill:var(--l3); }
-.learn-fig .frame { fill:var(--panel); stroke:var(--line); }
 .learn-fig .axis { stroke:var(--muted); fill:none; }
-.learn-fig .curve { stroke:var(--l0); stroke-width:2.5; fill:none; }
+.pv-widget { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.pv-widget[hidden] { display:none; }
+.prose .pv-widget h3 { margin:0 0 8px; }
+.prose .pv-widget p, .prose .pv-widget li { font-size:14.5px; }
+.pv-widget .pv-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:16px 0; }
+.pv-widget label { display:block; font-size:14px; }
+.pv-widget input[type=range], .pv-widget select { width:100%; min-width:0; box-sizing:border-box; min-height:44px; accent-color:var(--l0); }
+.pv-widget select, .pv-widget button { border:1px solid var(--line); border-radius:4px; color:var(--fg); background:var(--bg); font:inherit; font-size:14px; padding:8px 12px; min-height:44px; cursor:pointer; }
+.pv-widget button:hover { border-color:var(--l0); }
+.pv-widget button:disabled { opacity:.5; cursor:default; }
+.pv-widget :focus-visible { outline:2px solid var(--l0); outline-offset:3px; }
+.pv-widget .pv-buttons { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0; }
+.pv-widget .pv-check { display:flex; align-items:center; gap:8px; min-height:44px; }
+.pv-widget .pv-check input { width:20px; height:20px; accent-color:var(--l3); }
+.pv-widget .pv-note { color:var(--muted); }
+.pv-widget .pv-result { border-top:1px solid var(--line); padding-top:12px; font-family:'Geist Mono',monospace; font-size:13.5px; overflow-wrap:anywhere; }
+.pv-widget .pv-bars { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:3px; height:180px; align-items:end; margin:20px 0 8px; }
+.pv-widget .pv-bar { padding:0; border:0; background:transparent; height:100%; min-height:0; display:flex; flex-direction:column; justify-content:end; align-items:stretch; }
+.pv-widget .pv-bar span { display:block; background:var(--line); border:1px solid var(--muted); min-height:2px; box-sizing:border-box; }
+.pv-widget .pv-bar[data-tail="true"] span { background:var(--l0); border-color:var(--l0); }
+.pv-widget .pv-bar[aria-pressed="true"] { outline:2px solid var(--fg); outline-offset:1px; }
+.pv-widget .pv-bar small { font-size:12px; padding:6px 0; }
+.pv-widget svg { display:block; width:100%; height:auto; margin:8px 0; }
+.pv-widget svg text { font-family:'Geist Mono',monospace; }
+.pv-widget .pv-legend { display:flex; gap:6px 16px; flex-wrap:wrap; font-size:13px; color:var(--muted); }
+.pv-widget .pv-legend i { display:inline-block; width:12px; height:12px; border-radius:2px; margin-right:6px; vertical-align:-1px; }
+.pv-build .build-flips { display:flex; gap:6px; flex-wrap:wrap; margin:16px 0; }
+.pv-build .build-flips span { width:28px; height:32px; display:grid; place-items:center; border:1px solid var(--muted); border-radius:4px; font-family:'Geist Mono',monospace; }
+.pv-build .build-flips .heads { background:var(--l0); border-color:var(--l0); color:var(--bg); }
+.pv-build .build-chart { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:4px; margin:12px 0 4px; }
+.pv-build .build-cell { text-align:center; font-size:12px; }
+.pv-build .build-track { position:relative; height:170px; border-bottom:1px solid var(--muted); }
+.pv-build .build-bar { position:absolute; bottom:0; width:100%; background:var(--line); border-radius:2px 2px 0 0; transition:height .12s; }
+.pv-build .build-cell.edge .build-bar { background:var(--l0); }
+.pv-build .build-model { position:absolute; left:-2px; right:-2px; border-top:2px dashed var(--l3); z-index:1; }
+.pv-build .build-count { display:block; font-size:11px; color:var(--muted); padding-top:2px; }
+.pv-build .build-scale { font-size:12px; color:var(--muted); font-family:'Geist Mono',monospace; }
+@media(max-width:480px) { .pv-widget svg text { font-size:20px; } .pv-widget { padding:14px; } .pv-widget .pv-controls { grid-template-columns:1fr; gap:6px; } .pv-build .build-count { font-size:9px; } }
 </style>
 
-## Start with a coin
+## The idea in one paragraph
 
-A friend says a coin is fair. You flip it **10 times and get 8 heads**. Is that enough reason to doubt the claim?
+Before any maths, here's the whole trick. **Assume nothing interesting is going on. Work out how often pure chance would give you a result at least as extreme as yours. If that's rare, start doubting the "nothing is going on" story.**
 
-**Step 1: make the claim precise.** A fair coin has a 50% chance of heads on each flip. We also assume independent flips: one doesn't change the next. On average you'd expect 5 heads in 10 flips, but a fair coin doesn't promise exactly 5 every time.
+It's the same logic as a courtroom. The defendant is presumed innocent. The question the jury asks is: *if they really were innocent, how surprising would this evidence be?* Their fingerprints on the window: a bit surprising, but there could be an innocent reason. Fingerprints, CCTV footage and the stolen laptop in their car: so surprising that "innocent" stops being believable. A p-value is a number for exactly that: how surprising your data would be if nothing were going on.
 
-The claim we're checking is the **null hypothesis**, written $$H_0$$. Here it means "the coin is fair". For now, assume that claim is true and ask what it could produce.
+Everything else in this post is detail around that one move.
 
-**Step 2: count all possible sequences.** One flip has two outcomes: H or T. Two flips have four: HH, HT, TH, TT. Each extra flip doubles the list. Ten flips have ten 2s multiplied together:
+## Ten coin flips
 
-$$
-2^{10}=1024
-$$
+A friend hands you a coin and says it's fair. You flip it 10 times and get **8 heads**. Do you believe them?
 
-The little 10 means "multiply ten copies of 2". For our fair, independent coin, all **1,024 sequences are equally likely**. Probability is therefore a count divided by 1,024.
+### Step 1: assume the boring explanation
 
+The boring explanation is "the coin is fair": a 50% chance of heads on every flip, and each flip ignores the ones before it. In statistics the boring explanation is called the **null hypothesis**, written $$H_0$$. "Null" as in no effect, nothing going on.
+
+We're not saying we believe it. We're adopting it for a moment so we can ask a question we can actually answer: *what does a fair coin do?*
+
+### Step 2: watch what a fair coin does
+
+The quickest way to get a feel for it is to watch. Below, one "trial" is 10 flips of a fair coin. Each finished trial adds one to the bar for its number of heads. Run a few hundred.
+
+<section class="pv-widget pv-build" id="pv-build" aria-labelledby="pv-build-title" hidden>
+<h3 id="pv-build-title">Try it: what does a fair coin do in 10 flips?</h3>
+<p>The ten boxes are the current trial. Bars count finished trials by number of heads. The purple dashed marks are the exact fair-coin chances, which the bars should drift towards. The blue bars are the "8 heads or something even more lopsided" results we'll care about in a moment.</p>
+<div class="build-flips" id="build-flips" aria-label="Flips in the current trial"></div>
+<div class="pv-buttons">
+<button id="build-step" type="button">Flip once</button>
+<button id="build-play" type="button">Play 100 trials</button>
+<button id="build-pause" type="button" disabled>Pause</button>
+<button id="build-fast" type="button">Add 1,000 trials instantly</button>
+<button id="build-reset" type="button">Start over</button>
+</div>
+<p class="build-scale" id="build-scale"></p>
+<div id="build-chart" class="build-chart" role="img" aria-label="Histogram of finished trials"></div>
+<p class="pv-note" style="text-align:center;font-size:13px;margin-top:4px">number of heads in one trial of 10 flips</p>
+<p class="pv-result" id="build-status" role="status" aria-live="polite" aria-atomic="true"></p>
+</section>
+<noscript><p>With JavaScript on, this spot has a coin-flipping simulation. The exact chart a few paragraphs down shows what it converges to.</p></noscript>
+
+A few things jump out. Five heads is the most common result, but it only happens about a quarter of the time. Four and six are close behind. Eight or more is rare, but not unheard of: a perfectly fair coin produces it every now and then.
+
+We can also get the exact numbers instead of simulating. Each flip has 2 outcomes, so ten flips can come out in 2 × 2 × ... × 2 = 2¹⁰ = 1,024 different orders. With a fair coin, every one of those orders is equally likely.
 
 <figure class="fig learn-fig">
 <svg viewBox="0 0 420 385" role="img" aria-labelledby="pv-double-t pv-double-d">
 <title id="pv-double-t">Ten flips create 1024 sequences</title>
 <desc id="pv-double-d">One flip gives two sequences, two gives four, three gives eight and ten gives 1024. The displayed third-flip sequences are only the four beginning with H.</desc>
-<text x="14" y="26" class="" text-anchor="start">Each extra flip doubles the sequence list</text><rect x="12" y="49" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="73" class="" text-anchor="start">1 flip: 2 sequences</text><text x="26" y="97" class="sub" text-anchor="start">H · T</text><rect x="12" y="131" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="155" class="" text-anchor="start">2 flips: 4 sequences</text><text x="26" y="179" class="sub" text-anchor="start">HH · HT · TH · TT</text><rect x="12" y="213" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="237" class="" text-anchor="start">3 flips: 8 sequences</text><text x="26" y="261" class="sub" text-anchor="start">HHH · HHT · HTH · HTT</text><text x="210" y="289" class="sub" text-anchor="middle">… keep doubling …</text><rect x="12" y="295" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="319" class="" text-anchor="start">10 flips: 1,024 sequences</text><text x="26" y="343" class="sub" text-anchor="start">2¹⁰ = multiply ten copies of 2</text>
+<text x="14" y="26" text-anchor="start">Each extra flip doubles the sequence list</text><rect x="12" y="49" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="73" text-anchor="start">1 flip: 2 sequences</text><text x="26" y="97" class="sub" text-anchor="start">H · T</text><rect x="12" y="131" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="155" text-anchor="start">2 flips: 4 sequences</text><text x="26" y="179" class="sub" text-anchor="start">HH · HT · TH · TT</text><rect x="12" y="213" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="237" text-anchor="start">3 flips: 8 sequences</text><text x="26" y="261" class="sub" text-anchor="start">HHH · HHT · HTH · HTT</text><text x="210" y="289" class="sub" text-anchor="middle">… keep doubling …</text><rect x="12" y="295" width="396" height="66" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="319" text-anchor="start">10 flips: 1,024 sequences</text><text x="26" y="343" class="sub" text-anchor="start">2¹⁰ = multiply ten copies of 2</text>
 </svg>
-<figcaption>Three flips also include THH, THT, TTH and TTT. All 1,024 ten-flip sequences are equally likely only because the coin is fair and the flips are independent.</figcaption>
+<figcaption>Each extra flip doubles the number of possible orders. With ten flips there are 1,024, all equally likely if the coin is fair.</figcaption>
 </figure>
 
-**Step 3: separate a sequence from a heads count.** HHHHHHHHTT and TTHHHHHHHH are different sequences, but both give 8 heads. There are 45 sequences with 8 heads, 10 with 9, and just 1 with 10. Five heads has 252 sequences, which is why the middle bar is tallest.
-
-Read the chart as a list of what a fair coin can do. The horizontal labels count heads; the heights show how often each count happens.
+Now sort those 1,024 orders by how many heads they contain. 252 of them have exactly 5 heads. 45 have exactly 8. 10 have 9, and only 1 has 10 (HHHHHHHHHH). Divide each count by 1,024 and you get the chart below, which is what your simulation was heading towards.
 
 <figure class="fig">
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="p1t p1d">
   <title id="p1t">How often a fair coin gives each number of heads in 10 flips</title>
   <desc id="p1d">Bar chart of the binomial distribution for 10 fair flips. 5 heads is most likely at 24.6%. The bars for 8, 9 and 10 heads are highlighted; together they have probability 5.5%. The mirror bars for 0, 1 and 2 heads are also marked, bringing the two-sided total to 10.9%.</desc>
   <line class="grid" x1="60" x2="650" y1="200" y2="200"/>
-  <g tabindex="0"><title>0 heads: 0.1%</title><rect class="fb" x="66.0" y="199.4" width="41.6" height="0.6" rx="2"/></g>
+  <g tabindex="0"><title>0 heads: 0.1%</title><rect class="fa" x="66.0" y="199.4" width="41.6" height="0.6" rx="2"/></g>
   <text class="m" x="86.8" y="216" text-anchor="middle">0</text>
-  <g tabindex="0"><title>1 heads: 1.0%</title><rect class="fb" x="119.6" y="193.6" width="41.6" height="6.4" rx="2"/></g>
+  <g tabindex="0"><title>1 heads: 1.0%</title><rect class="fa" x="119.6" y="193.6" width="41.6" height="6.4" rx="2"/></g>
   <text class="m" x="140.5" y="216" text-anchor="middle">1</text>
-  <g tabindex="0"><title>2 heads: 4.4%</title><rect class="fb" x="173.3" y="171.3" width="41.6" height="28.7" rx="2"/></g>
+  <g tabindex="0"><title>2 heads: 4.4%</title><rect class="fa" x="173.3" y="171.3" width="41.6" height="28.7" rx="2"/></g>
   <text class="m" x="194.1" y="216" text-anchor="middle">2</text>
   <text class="m" x="194.1" y="165.3" text-anchor="middle">4.4%</text>
   <g tabindex="0"><title>3 heads: 11.7%</title><rect style="fill:var(--line)" x="226.9" y="123.4" width="41.6" height="76.6" rx="2"/></g>
@@ -93,270 +156,240 @@ Read the chart as a list of what a fair coin can do. The horizontal labels count
   <text class="m" x="623.2" y="216" text-anchor="middle">10</text>
   <text class="m" x="650" y="234" text-anchor="end">number of heads in 10 flips</text>
   <text class="ta" x="650" y="60" text-anchor="end">8, 9 or 10 heads: 5.5%</text>
-  <text class="tb" x="60" y="60">0, 1 or 2 heads: 5.5%</text>
+  <text class="ta" x="60" y="60">0, 1 or 2 heads: 5.5%</text>
   <text class="m" x="60" y="16">if the coin is fair · 1,024 equally likely sequences</text>
 </svg>
-<figcaption>What a fair coin does over 10 flips. Five heads is most likely, but 8 or more still happens 5.5% of the time. Counting the equally extreme results on the other side (2 or fewer heads) doubles that to 10.9%.</figcaption>
+<figcaption>Everything a fair coin can do in 10 flips. Five heads is the most likely result, at 24.6%. The blue bars are the results at least as far from 5 as our 8 heads.</figcaption>
 </figure>
 
-**Step 4: say what "at least as unusual" means.** Our 8 heads is 3 away from the expected 5. Every result at least 3 away counts: **0, 1, 2, 8, 9 or 10 heads**. We're looking for bias in either direction, so this is a **two-sided test**.
+### Step 3: decide what "at least this extreme" means
 
-If we'd decided *before flipping* to check only whether the coin favours heads, we'd count 8, 9 and 10 instead. That's a **one-sided test**. Don't choose the direction after seeing which gives the smaller number.
-
+We got 8 heads, which is 3 away from the 5 a fair coin would give on average. So the question becomes: how often does a fair coin land **3 or more away from 5**? That includes 8, 9 and 10 heads, and also 2, 1 and 0. Two heads would be just as suspicious as eight. It's the same distance from fair, just in the other direction.
 
 <figure class="fig learn-fig">
 <svg viewBox="0 0 420 224" role="img" aria-labelledby="pv-extreme-t pv-extreme-d">
 <title id="pv-extreme-t">Extreme means at least the observed distance</title>
 <desc id="pv-extreme-d">Number line of heads counts from 0 through 10. Counts at least 3 away from 5 are highlighted: 0, 1, 2, 8, 9 and 10.</desc>
-<text x="14" y="25" class="" text-anchor="start">Observed: 8 heads, distance 3 from 5</text><path d="M22,92 H398" class="axis"/><circle cx="24.0" cy="92" r="5" fill="var(--l0)"/><text x="24.0" y="121" class="" text-anchor="middle">0</text><circle cx="61.2" cy="92" r="5" fill="var(--l0)"/><text x="61.2" y="121" class="" text-anchor="middle">1</text><circle cx="98.4" cy="92" r="5" fill="var(--l0)"/><text x="98.4" y="121" class="" text-anchor="middle">2</text><circle cx="135.60000000000002" cy="92" r="5" fill="var(--muted)"/><text x="135.60000000000002" y="121" class="" text-anchor="middle">3</text><circle cx="172.8" cy="92" r="5" fill="var(--muted)"/><text x="172.8" y="121" class="" text-anchor="middle">4</text><circle cx="210.0" cy="92" r="5" fill="var(--muted)"/><text x="210.0" y="121" class="" text-anchor="middle">5</text><circle cx="247.20000000000002" cy="92" r="5" fill="var(--muted)"/><text x="247.20000000000002" y="121" class="" text-anchor="middle">6</text><circle cx="284.40000000000003" cy="92" r="5" fill="var(--muted)"/><text x="284.40000000000003" y="121" class="" text-anchor="middle">7</text><circle cx="321.6" cy="92" r="8" fill="var(--l0)"/><text x="321.6" y="121" class="" text-anchor="middle">8</text><circle cx="358.8" cy="92" r="5" fill="var(--l0)"/><text x="358.8" y="121" class="" text-anchor="middle">9</text><circle cx="396.0" cy="92" r="5" fill="var(--l0)"/><text x="396.0" y="121" class="" text-anchor="middle">10</text><path d="M210,67 H321.6" stroke="var(--l3)" stroke-width="2"/><text x="266" y="55" class="sub" text-anchor="middle">3 away</text><rect x="12" y="148" width="396" height="60" rx="5" fill="var(--l0)" fill-opacity="0.14" stroke="var(--line)"/><text x="26" y="173" class="" text-anchor="start">Count: 0, 1, 2 and 8, 9, 10</text><text x="26" y="195" class="sub" text-anchor="start">Ignore: 3, 4, 5, 6, 7</text>
+<text x="14" y="25" text-anchor="start">Observed: 8 heads, distance 3 from 5</text><path d="M22,92 H398" class="axis"/><circle cx="24.0" cy="92" r="5" fill="var(--l0)"/><text x="24.0" y="121" text-anchor="middle">0</text><circle cx="61.2" cy="92" r="5" fill="var(--l0)"/><text x="61.2" y="121" text-anchor="middle">1</text><circle cx="98.4" cy="92" r="5" fill="var(--l0)"/><text x="98.4" y="121" text-anchor="middle">2</text><circle cx="135.60000000000002" cy="92" r="5" fill="var(--muted)"/><text x="135.60000000000002" y="121" text-anchor="middle">3</text><circle cx="172.8" cy="92" r="5" fill="var(--muted)"/><text x="172.8" y="121" text-anchor="middle">4</text><circle cx="210.0" cy="92" r="5" fill="var(--muted)"/><text x="210.0" y="121" text-anchor="middle">5</text><circle cx="247.20000000000002" cy="92" r="5" fill="var(--muted)"/><text x="247.20000000000002" y="121" text-anchor="middle">6</text><circle cx="284.40000000000003" cy="92" r="5" fill="var(--muted)"/><text x="284.40000000000003" y="121" text-anchor="middle">7</text><circle cx="321.6" cy="92" r="8" fill="var(--l0)"/><text x="321.6" y="121" text-anchor="middle">8</text><circle cx="358.8" cy="92" r="5" fill="var(--l0)"/><text x="358.8" y="121" text-anchor="middle">9</text><circle cx="396.0" cy="92" r="5" fill="var(--l0)"/><text x="396.0" y="121" text-anchor="middle">10</text><path d="M210,67 H321.6" stroke="var(--l3)" stroke-width="2"/><text x="266" y="55" class="sub" text-anchor="middle">3 away</text><rect x="12" y="148" width="396" height="60" rx="5" fill="var(--l0)" fill-opacity="0.14" stroke="var(--line)"/><text x="26" y="173" text-anchor="start">Count: 0, 1, 2 and 8, 9, 10</text><text x="26" y="195" class="sub" text-anchor="start">Ignore: 3, 4, 5, 6, 7</text>
 </svg>
-<figcaption>Distance, not direction: 2 heads is just as far from 5 as 8 heads. This is the two-sided rule for this fair-coin example, not a universal definition of every test.</figcaption>
+<figcaption>Distance from 5 is what counts, not direction. Two heads is exactly as lopsided as eight.</figcaption>
 </figure>
 
-**Step 5: add the counts, then divide.** Eight or more heads happens in 45 + 10 + 1 = 56 sequences. Two or fewer happens in another 56. Together:
+Why not just ask how likely *exactly* 8 heads is? Because any single exact result is unlikely. Even the most common result, 5 heads, only happens a quarter of the time, and with a thousand flips every exact count would have a tiny chance. What we want to know is how far out towards the edges our result sits, so we count it together with everything even further out.
+
+### Step 4: add them up
+
+8, 9 or 10 heads: 45 + 10 + 1 = 56 orders. 0, 1 or 2 heads: another 56. So:
 
 $$
-p=\frac{56+56}{1024}=\frac{112}{1024}\approx0.1094
+p = \frac{56 + 56}{1024} = \frac{112}{1024} \approx 0.109
 $$
 
-That's **10.9%**. This is the **p-value**: if the coin is fair, a result at least this far from 5 happens about 11 times in 100 sets of ten flips. We count your result *and more unusual ones*, not just exactly 8 heads.
+That's the **p-value**, about 11%. In plain words: *if the coin is fair, about 11 out of every 100 sets of ten flips would look at least this lopsided.*
 
-**Step 6: compare with a rule chosen beforehand.** Suppose we agreed to question fairness only when that percentage is below 5%. Our 10.9% is above it, so the test doesn't reject fairness. That does **not** prove the coin is fair. Ten flips can miss a real bias.
+Try other results below. Click a bar to pretend that's what you got.
 
-That 5% rule is the **significance level**, written $$\alpha$$ ("alpha"). A result below it is called **statistically significant**. It's a chosen rule, not a natural boundary between truth and falsehood.
-
-### The coin formula is the same counting, written shorter
-
-The symbol $$\binom{10}{k}$$, read "10 choose k", counts ways to choose which $$k$$ flips are heads. For 8 heads, it is 45.
-
-$$
-P(X=k)=\frac{\binom{10}{k}}{2^{10}}
-$$
-
-Read it from left to right:
-
-1. $$X$$ is the number of heads; $$k$$ is the count you're asking about.
-2. $$P(X=k)$$ means "the probability of exactly k heads".
-3. The top counts sequences with that many heads; the bottom counts all sequences.
-
-So $$P(X=8)=45/1024$$. The p-value adds several bars:
-
-$$
-p=P(X\geq8)+P(X\leq2)
-$$
-
-The signs mean "8 or more" and "2 or fewer". That's the same 112/1024 calculation, with shorter labels. Try it below before moving on.
-
-<style>
-.pv-widget { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
-.pv-widget[hidden] { display:none; }
-.prose .pv-widget h3 { margin:0 0 8px; }
-.prose .pv-widget p { margin:12px 0; font-size:14px; }
-.pv-widget .pv-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:20px 0; }
-.pv-widget label { display:block; font-size:14px; }
-.pv-widget input, .pv-widget select { width:100%; min-width:0; box-sizing:border-box; min-height:44px; accent-color:var(--l0); }
-.pv-widget select, .pv-widget button { border:1px solid var(--line); border-radius:4px; color:var(--fg); background:var(--bg); font:inherit; padding:8px; min-height:44px; cursor:pointer; }
-.pv-widget :focus-visible { outline:2px solid var(--l0); outline-offset:3px; }
-.pv-widget .pv-note { color:var(--muted); }
-.pv-widget .pv-result { border-top:1px solid var(--line); padding-top:12px; font-family:'Geist Mono',monospace; overflow-wrap:anywhere; }
-.pv-widget .pv-bars { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:3px; height:180px; align-items:end; margin:20px 0 8px; }
-.pv-widget .pv-bar { padding:0; border:0; background:transparent; height:100%; display:flex; flex-direction:column; justify-content:end; align-items:stretch; }
-.pv-widget .pv-bar span { display:block; background:var(--line); border:1px solid var(--muted); min-height:2px; box-sizing:border-box; }
-.pv-widget .pv-bar[data-tail="true"] span { background:var(--l0); border-color:var(--l0); }
-.pv-widget .pv-bar[aria-pressed="true"] { outline:2px solid var(--fg); outline-offset:1px; }
-.pv-widget .pv-bar small { font-size:12px; padding:6px 0; }
-.pv-widget svg { display:block; width:100%; height:auto; }
-.pv-widget .pv-legend { display:flex; gap:16px; flex-wrap:wrap; font-size:13px; }
-.pv-widget .pv-null { color:var(--l0); }
-.pv-widget .pv-alt { color:var(--l3); }
-@media(max-width:480px) { .pv-widget { padding:14px; } .pv-widget .pv-controls { grid-template-columns:1fr; gap:10px; } .pv-widget svg text { font-size:22px; } }
-</style>
 <section class="pv-widget" id="pv-coin" aria-labelledby="pv-coin-title" hidden>
 <h3 id="pv-coin-title">Try it: count the blue bars</h3>
-<p>Start at 8 heads and leave the test on two-sided. Blue bars show 0, 1, 2, 8, 9 and 10 heads: all the results at least 3 heads away from 5. Add their probabilities to get the p-value below. The outlined bar is your result.</p>
+<p>The outlined bar is your result. Blue bars are every result at least as extreme. The p-value is their total.</p>
 <div class="pv-controls">
 <label for="pv-heads">Heads in 10 flips: <output id="pv-heads-value" for="pv-heads">8</output><input id="pv-heads" type="range" min="0" max="10" step="1" value="8"></label>
-<label for="pv-sided">What are you testing?<select id="pv-sided"><option value="two">Two-sided: coin is not fair</option><option value="upper">One-sided: coin favours heads</option></select></label>
+<label for="pv-sided">What are you checking for?<select id="pv-sided"><option value="two">Biased either way (two-sided)</option><option value="upper">Biased towards heads (one-sided)</option></select></label>
 </div>
 <div class="pv-bars" id="pv-bars" role="group" aria-label="Choose the observed number of heads"></div>
-<button id="pv-flip" type="button">Simulate 10 fair flips</button>
+<div class="pv-buttons"><button id="pv-flip" type="button">Flip a fair coin 10 times</button></div>
 <p class="pv-result" id="pv-coin-result" role="status" aria-live="polite" aria-atomic="true"></p>
-<ol><li>Click 5: every bar turns blue, and p = 1. Every result is at least as far from 5 as this one.</li><li>Click 9: only 0, 1, 9 and 10 count. The total falls to 22/1024, about 2.1%.</li><li>Return to 8, then choose one-sided. Only 8, 9 and 10 count, so the total halves to about 5.5%.</li><li>Simulate fair flips. The coin never becomes biased, even when its result looks unusual.</li></ol>
-<p class="pv-note">The simulated coin is always fair. A small p-value can still happen. Choose one- or two-sided before collecting data, not whichever gives the smaller p-value afterwards. The one-sided test here always counts the upper tail, even when you observe fewer than 5 heads.</p>
+<ol><li>Click 5. Every bar turns blue and p = 1. Nothing is more ordinary than the middle.</li><li>Click 9. Only 0, 1, 9 and 10 count now, so p drops to about 2%.</li><li>Back to 8, then switch to one-sided. Only 8, 9 and 10 count, so p halves to about 5.5%.</li><li>Press "Flip a fair coin" a dozen times. Now and then a perfectly fair coin gives a small p-value. That's not a bug. It's the false alarm rate, which we'll get to.</li></ol>
 </section>
-<noscript><p>The static coin calculation above works without JavaScript. Enable JavaScript to explore other heads counts.</p></noscript>
+<noscript><p>With JavaScript on, this spot lets you pick other results. For 9 heads the two-sided p-value is 22/1024, about 2.1%.</p></noscript>
 
-<style>
-.pv-build .build-flips { display:flex; gap:6px; flex-wrap:wrap; margin:16px 0; }
-.pv-build .build-flips span { width:26px; height:30px; display:grid; place-items:center; border:1px solid var(--muted); border-radius:4px; color:var(--fg); }
-.pv-build .build-flips .heads { background:var(--l0); color:var(--bg); }
-.pv-build progress { width:100%; height:14px; accent-color:var(--l0); }
-.pv-build .build-chart { display:grid; grid-template-columns:repeat(11,minmax(0,1fr)); gap:4px; margin:20px 0 8px; }
-.pv-build .build-cell { text-align:center; font-size:12px; }
-.pv-build .build-track { position:relative; height:160px; border-bottom:1px solid var(--muted); }
-.pv-build .build-bar { position:absolute; bottom:0; width:100%; background:var(--l0); transition:height .15s; }
-.pv-build .build-model { position:absolute; left:0; right:0; border-top:2px dashed var(--l3); z-index:1; }
-.pv-build .build-count { display:block; font-size:11px; padding:6px 0; }
-.pv-build button { margin:4px 4px 4px 0; }
-</style>
-<section class="pv-widget pv-build" id="pv-build" aria-labelledby="pv-build-title" hidden>
-<h3 id="pv-build-title">Watch the distribution grow, one flip at a time</h3>
-<p>One trial is <strong>10 fair flips</strong>. Watch H and T appear, then see one completed trial land in its heads-count bar. A single flip never goes straight into the histogram: the bar counts the result of a whole ten-flip trial.</p>
-<div class="build-flips" id="build-flips" aria-label="Flips in the current trial"></div>
-<label for="build-progress">Progress through this ten-flip trial <progress id="build-progress" max="10" value="0"></progress></label>
-<button id="build-step" type="button">Flip once</button><button id="build-play" type="button">Play 100 trials</button><button id="build-pause" type="button" disabled>Pause</button><button id="build-reset" type="button">Reset</button>
-<div id="build-chart" class="build-chart" role="img" aria-label="Empirical histogram of completed trials, with fair-coin model markers"></div>
-<p class="pv-note">Blue bars: observed fraction of completed trials. Purple dashed marks: exact fair-coin probabilities. Both use the same fixed 0-100% height scale, so a first trial can make one bar reach 100%. Numbers under the bars are trial counts. Heads counts run from 0 to 10.</p>
-<p class="pv-result" id="build-status" role="status" aria-live="polite" aria-atomic="true"></p>
-<ol><li>Click "Flip once" ten times. The trial progress fills, then exactly one histogram bar gets its first count.</li><li>Press "Play 100 trials". Each ten-flip trial takes one second; the bars update after each completed trial. Pause to inspect a partial trial, then continue.</li><li>Compare the blue bars with the dashed model marks. With more trials they tend to look more alike, but the bars still wobble. A fair coin does not force a perfect match.</li><li>Reset to start a fresh run. Completed trials, the current flips and the progress all clear.</li></ol>
-<p class="pv-note">Each flip is independent and uses 50% heads. This is a simulation, not measured coin data. More completed trials improve the histogram's picture of ten-flip results; they do not increase the number of flips inside each trial.</p>
-</section>
-<noscript><p>The static heads-count chart above is the exact distribution for ten fair flips. JavaScript adds a progressive simulation beside it.</p></noscript>
-<script>
-(function(){
-  const root=document.getElementById('pv-build'); if(!root)return;
-  const el=id=>document.getElementById(id), probabilities=[1,10,45,120,210,252,210,120,45,10,1].map(x=>x/1024);
-  let counts=Array(11).fill(0), current=[], total=0, timer=null, target=0;
-  const cells=probabilities.map((p,k)=>{const cell=document.createElement('div');cell.className='build-cell';const track=document.createElement('div');track.className='build-track';const bar=document.createElement('div');bar.className='build-bar';const mark=document.createElement('div');mark.className='build-model';mark.style.bottom=(p*100)+'%';track.append(bar,mark);const label=document.createElement('span');label.textContent=k;const count=document.createElement('span');count.className='build-count';cell.append(track,label,count);el('build-chart').append(cell);return {cell,bar,count};});
-  function draw(announce){
-    el('build-flips').replaceChildren(...Array.from({length:10},(_,i)=>{const s=document.createElement('span');s.textContent=current[i]||'·';if(current[i]==='H')s.className='heads';return s;}));
-    el('build-progress').value=current.length;
-    cells.forEach(({cell,bar,count},k)=>{let fraction=total?counts[k]/total:0;bar.style.height=(fraction*100)+'%';count.textContent=counts[k];cell.title=k+' heads: '+counts[k]+' trials, '+(fraction*100).toFixed(1)+'%; model '+(probabilities[k]*100).toFixed(1)+'%';});
-    const desc=cells.map((_,k)=>k+' heads: '+counts[k]+' trials').join('; ');el('build-chart').setAttribute('aria-label','Completed trials: '+total+'. '+desc+'. Dashed marks show the exact fair-coin distribution.');
-    if(announce)el('build-status').textContent='Completed trials: '+total+'. Total flips: '+(total*10+(current.length===10?0:current.length))+'. Current trial: '+current.length+'/10 flips, '+current.filter(x=>x==='H').length+' heads. '+(timer?'Playing toward '+target+' completed trials.':'Paused.');
-  }
-  function stop(){if(timer)clearInterval(timer);timer=null;el('build-play').disabled=false;el('build-step').disabled=false;el('build-pause').disabled=true;draw(true);}
-  function flip(){if(current.length===10)current=[];current.push(Math.random()<.5?'H':'T');if(current.length===10){counts[current.filter(x=>x==='H').length]++;total++;}draw(!timer||current.length===10);if(timer&&total>=target)stop();}
-  el('build-step').addEventListener('click',flip);
-  el('build-play').addEventListener('click',()=>{target=total+100;el('build-play').disabled=true;el('build-step').disabled=true;el('build-pause').disabled=false;timer=setInterval(flip,100);draw(true);});
-  el('build-pause').addEventListener('click',stop);
-  el('build-reset').addEventListener('click',()=>{stop();counts=Array(11).fill(0);current=[];total=0;target=0;draw(true);});
-  document.addEventListener('visibilitychange',()=>{if(document.hidden&&timer)stop();});
-  draw(true);root.hidden=false;
-})();
-</script>
+### Step 5: decide
 
-## Read the general p-value formula
+Is 11% surprising enough to say the coin isn't fair? Something that happens about one time in nine isn't very rare.
 
-The coin teaches a question we can reuse: **if the null claim were true, how often would we see a result at least this unusual?**
+To avoid arguing about it after the fact, you pick a cut-off *before* looking at the data. The usual cut-off is 5%. It's called the **significance level** and written $$\alpha$$ (alpha). If p comes out below $$\alpha$$, the result is called **statistically significant** and you reject the null hypothesis.
 
-**Step 1: choose a score.** For the coin, it's distance from 5 heads. For the button, it'll be the difference between two rates, measured relative to its usual random wobble. This score is called a **test statistic**.
+Our 10.9% is above 5%, so we don't reject "fair". Be careful with what that means, though. It does **not** prove the coin is fair. Ten flips is very little evidence, and a coin that lands heads 70% of the time would often give results like ours too. Not significant means "not enough evidence", which is a very different statement from "no effect".
 
-**Step 2: imagine repeated experiments under the null.** How often would that score be as far out as the one we observed? That fraction is the p-value:
+The 5% isn't magic either. Ronald Fisher suggested it in the 1920s as a convenient line, and it stuck. A p-value of 4.9% and one of 5.1% are practically the same evidence, even though one gets called significant and the other doesn't.
+
+### One-sided or two-sided
+
+We counted both edges because a coin biased either way would be a problem. That's a **two-sided test**. If, *before flipping*, you only cared whether the coin favours heads, you'd count only 8, 9 and 10 and get half the p-value, 5.5%. That's a **one-sided test**.
+
+The rule is to choose before you see the data. Choosing the side afterwards because it gives the smaller number is cheating, even if it doesn't feel like it.
+
+### The formula, now that you've done it
+
+The chance of exactly $$k$$ heads in 10 fair flips is:
 
 $$
-p=P\big(\text{at least as extreme a result}\mid H_0\big)
+P(X = k) = \frac{\binom{10}{k}}{2^{10}}
 $$
 
-$$P$$ means probability. The vertical bar means **"assuming"**. $$H_0$$ is the null claim. "Extreme" means far out according to the score and direction chosen for this test.
-
-**Step 3: keep the question's direction straight.** We start by assuming $$H_0$$. The answer therefore cannot be "the probability that $$H_0$$ is true". A p-value of 0.03 means results this far out occur 3% of the time under that assumption. It does not mean a 3% chance of no effect, a 3% chance this result is luck, or a 97% chance your change works.
-
-Think of a smoke alarm. "How often does it ring when there's no fire?" differs from "now that it rang, how likely is a fire?" A p-value asks in the first direction.
-
-## Two ways the decision can go wrong
-
-A rule can make mistakes even when the calculation is correct.
-
-**Step 1: imagine no real effect.** Random data sometimes look unusual enough to pass the rule. We declare a difference that isn't there: a **false positive**, or **Type I error**.
-
-**Step 2: imagine a real effect.** Random data sometimes hide it. We don't pass the rule even though a difference exists: a **false negative**, or **Type II error**.
-
-**Step 3: name the chances.** Alpha limits false positives for a valid test. Beta, $$\beta$$, is the false-negative probability for a particular true effect. **Power** is the chance of detecting that effect:
+$$X$$ is the number of heads. $$\binom{10}{k}$$, read "10 choose k", counts the orders with $$k$$ heads: 45 for $$k = 8$$. The bottom counts all the orders. And the p-value is the sum of the bars we picked:
 
 $$
-\text{power}=1-\beta
+p = P(X \ge 8) + P(X \le 2)
 $$
 
-If beta is 0.20, power is 0.80: the test finds that effect in about 80 out of 100 repetitions. Power depends on the effect size, sample size and rule. There isn't one power number for "any real effect".
+"8 or more, plus 2 or fewer". That's the 112/1024 you already worked out, written shorter.
 
-A 5% alpha gives a 5% false-positive rate for an exactly calibrated continuous test. Valid discrete tests, like our coin count, may be more conservative. Approximate tests only meet the target approximately. Alpha is not the fraction of significant findings that are wrong.
+## What a p-value is, and what it isn't
 
+Here's the general version of what we just did:
+
+$$
+p = P(\text{a result at least this extreme} \mid H_0)
+$$
+
+Read the bar as "assuming": *the chance of a result at least this extreme, assuming the null hypothesis is true.*
+
+That "assuming" is where almost everyone goes wrong, me included for a long time. The p-value *starts* by assuming $$H_0$$ is true, so it can't then tell you the chance that $$H_0$$ is true. A p-value of 3% does **not** mean:
+
+- a 3% chance there's no real effect,
+- a 3% chance the result is a fluke,
+- a 97% chance your change works.
+
+It means: if there were no real effect, results this extreme would turn up 3% of the time.
+
+That can sound like hair-splitting, so here's a case where the difference is obvious. A smoke alarm rarely goes off when there's no fire: say 1% of the time. That's like a p-value of 1%. Does it mean that when the alarm goes off, there's a 99% chance of fire? Not in my kitchen. If you burn toast most mornings, most alarms are toast. "How often does it ring when there's no fire?" and "now that it's ringing, how likely is a fire?" are different questions. The p-value only answers the first one. (If you read the probability post, this is the "order matters when you say *given*" trap.)
+
+## Two ways to be wrong
+
+Any rule that makes decisions from noisy data will sometimes get it wrong. There are exactly two ways it can happen:
 
 <figure class="fig learn-fig">
-<svg viewBox="0 0 420 460" role="img" aria-labelledby="pv-errors-t pv-errors-d">
-<title id="pv-errors-t">Four combinations of reality and test decision</title>
-<desc id="pv-errors-d">No effect plus reject is a false positive. Real effect plus do not reject is a false negative. The other two combinations are correct decisions.</desc>
-<text x="14" y="25" class="" text-anchor="start">Reality and your decision are different</text><rect x="12" y="47" width="396" height="86" rx="5" fill="var(--l0)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="70" class="" text-anchor="start">No real effect</text><text x="26" y="94" class="sub" text-anchor="start">Do not reject null</text><text x="26" y="118" class="accent" text-anchor="start">Correct restraint</text><rect x="12" y="147" width="396" height="86" rx="5" fill="var(--l3)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="170" class="" text-anchor="start">No real effect</text><text x="26" y="194" class="sub" text-anchor="start">Reject null</text><text x="26" y="218" class="warm" text-anchor="start">False positive (Type I)</text><rect x="12" y="247" width="396" height="86" rx="5" fill="var(--l3)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="270" class="" text-anchor="start">Real effect</text><text x="26" y="294" class="sub" text-anchor="start">Do not reject null</text><text x="26" y="318" class="warm" text-anchor="start">False negative (Type II)</text><rect x="12" y="347" width="396" height="86" rx="5" fill="var(--l0)" fill-opacity="0.09" stroke="var(--line)"/><text x="26" y="370" class="" text-anchor="start">Real effect</text><text x="26" y="394" class="sub" text-anchor="start">Reject null</text><text x="26" y="418" class="accent" text-anchor="start">Detect effect: power</text>
+<svg viewBox="0 0 500 300" role="img" aria-labelledby="pv-errors-t pv-errors-d">
+<title id="pv-errors-t">Two ways a test can be wrong</title>
+<desc id="pv-errors-d">A two by two grid. Columns: the truth is no effect, or a real effect. Rows: you say it works, or you say nothing happened. No effect but you say it works is a false positive, with chance alpha. Real effect and you say it works is correct, with chance equal to power. No effect and you say nothing is correct. Real effect but you say nothing is a false negative, with chance beta.</desc>
+<text x="14" y="26">What is true vs. what you decide</text><text x="14" y="66" class="sub">In reality:</text><text x="225" y="66" text-anchor="middle">No effect</text><text x="400" y="66" text-anchor="middle">Real effect</text><text x="14" y="128">You say</text><text x="14" y="150" class="sub">"it works"</text><text x="14" y="232">You say</text><text x="14" y="254" class="sub">"nothing"</text><rect x="140" y="84" width="170" height="96" rx="6" fill="var(--l2)" fill-opacity=".14" stroke="var(--line)"/><text x="225" y="126" text-anchor="middle">False positive</text><text x="225" y="150" text-anchor="middle" class="sub">Type I, chance α</text><rect x="315" y="84" width="170" height="96" rx="6" fill="var(--l1)" fill-opacity=".14" stroke="var(--line)"/><text x="400" y="126" text-anchor="middle">Correct</text><text x="400" y="150" text-anchor="middle" class="sub">chance = power</text><rect x="140" y="188" width="170" height="96" rx="6" fill="var(--l1)" fill-opacity=".14" stroke="var(--line)"/><text x="225" y="230" text-anchor="middle">Correct</text><text x="225" y="254" text-anchor="middle" class="sub">chance 1 − α</text><rect x="315" y="188" width="170" height="96" rx="6" fill="var(--l2)" fill-opacity=".14" stroke="var(--line)"/><text x="400" y="230" text-anchor="middle">False negative</text><text x="400" y="254" text-anchor="middle" class="sub">Type II, chance β</text>
 </svg>
-<figcaption>A test makes a decision from noisy data; it does not reveal reality. Alpha concerns false positives under the null. Power concerns detection for a specified real effect.</figcaption>
+<figcaption>The test only sees noisy data, never the truth. Orange cells are the two mistakes. You choose α, the false-positive rate, directly. The false-negative rate β depends on how much data you have and how big the real effect is.</figcaption>
 </figure>
 
-## From coin flips to the button
+- A **false positive** (also called a Type I error) is declaring an effect that isn't there. If there's really nothing going on, this happens with chance $$\alpha$$. At 5%, about 1 in 20 tests of useless changes will still come out "significant".
+- A **false negative** (a Type II error) is missing an effect that is there. Its chance is written $$\beta$$ (beta).
 
-The idea stays the same. The calculation changes because this experiment has many more possible outcomes.
+**Power** is the other side of a false negative: the chance your test catches a real effect of a given size.
 
-**Step 1: define the experiment.** Randomly assign independent users to the old button (A) or new button (B). Each user either converts or doesn't. Each group, also called an *arm*, has 10,000 users.
+$$
+\text{power} = 1 - \beta
+$$
 
-| Group | Users | Conversions | Rate |
+Power depends on how big the real effect is and how much data you have. Big effects are easy to spot. Small ones need a lot of data. We'll work it out for the button shortly.
+
+## Back to the button
+
+Here's the button experiment. Visitors were randomly split into two groups, often called **arms**: group A saw the old button, group B the new one.
+
+| Group | Visitors | Bought | Conversion rate |
 |---|---:|---:|---:|
 | A: old button | 10,000 | 1,000 | 10.0% |
 | B: new button | 10,000 | 1,080 | 10.8% |
 
-The observed difference is **+0.8 percentage points**, or 0.008 as a decimal. That's an 8% *relative* increase over 10%, not a 0.8% relative increase.
+B converts **0.8 percentage points** better: 10.8% against 10.0%. As a relative change, that's 8% better, because 0.8 is 8% of 10. Both are correct. Just be clear which one you mean, because people mix them up all the time.
 
-**Step 2: write the claims.** $$H_0$$: the true conversion rates are equal. $$H_1$$, the *alternative hypothesis*: the true rates differ. We'll use a two-sided test and choose $$\alpha=0.05$$ before collecting data.
+The null hypothesis is that the button makes no difference: both groups have the same true conversion rate, and the 0.8-point gap is noise. We'll use a two-sided test with $$\alpha = 5\%$$, decided before the experiment started.
 
-**Step 3: estimate random wobble.** Even equally good buttons won't give identical sample rates. The **standard error** estimates the typical sample-to-sample wobble in their difference. More independent users usually make it smaller.
+With the coin we could list every possible outcome. With 20,000 people that's hopeless. But there's a neat way to build the "nothing going on" world anyway.
 
-**Step 4: compare our difference with that wobble.** Many tests have this shape:
+### Shuffle the labels
+
+If the button truly makes no difference, then the labels A and B are meaningless. Someone who bought would have bought with either button, and someone who didn't, wouldn't have. So:
+
+1. Take all 20,000 people with their outcomes: 2,080 bought, 17,920 didn't.
+2. Throw the A and B labels away, shuffle, and deal everyone into two new groups of 10,000.
+3. Work out the difference in conversion rate between the two new groups.
+4. Repeat thousands of times.
+
+<figure class="fig learn-fig">
+<svg viewBox="0 0 420 443" role="img" aria-labelledby="pv-shuffle-t pv-shuffle-d">
+<title id="pv-shuffle-t">Permutation keeps the data and changes group labels</title>
+<desc id="pv-shuffle-d">The pooled 20,000 conversion outcomes stay fixed. Each shuffle assigns 10,000 outcomes to each group, calculates a new difference and counts absolute differences at least 0.008.</desc>
+<text x="14" y="25" text-anchor="start">Shuffle labels, not the outcomes</text><rect x="12" y="47" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="75" text-anchor="start">Keep all 20,000 outcomes</text><text x="26" y="100" class="sub" text-anchor="start">2,080 ones + 17,920 zeros</text><path d="M210,121 v17" class="axis"/><rect x="12" y="143" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="171" text-anchor="start">Randomly split into two groups</text><text x="26" y="196" class="sub" text-anchor="start">10,000 in A; 10,000 in B</text><path d="M210,217 v17" class="axis"/><rect x="12" y="239" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="267" text-anchor="start">Record shuffled B rate − A rate</text><text x="26" y="292" class="sub" text-anchor="start">Repeat to build the null distribution</text><path d="M210,313 v17" class="axis"/><rect x="12" y="335" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="363" text-anchor="start">Count |difference| ≥ 0.008</text><text x="26" y="388" class="sub" text-anchor="start">Both negative and positive tails</text>
+</svg>
+<figcaption>The outcomes never change, only which group each person is dealt into. If the button doesn't matter, every deal is as plausible as the real one.</figcaption>
+</figure>
+
+Each shuffle gives you a difference that came purely from how people happened to be split into groups. The pile of shuffled differences is the "nothing going on" world, just like the coin chart was. Then you count: how often is a shuffled difference at least as far from zero as our real +0.8?
+
+<section class="pv-widget" id="pv-shuffle" aria-labelledby="pv-shuffle-title" hidden>
+<h3 id="pv-shuffle-title">Try it: shuffle the labels</h3>
+<p>Each shuffle deals the same 2,080 buyers and 17,920 non-buyers into two new groups of 10,000 and records the difference B − A. Blue marks shuffles at least 0.8 points away from zero in either direction, as far out as the real result.</p>
+<div class="pv-buttons">
+<button id="pv-sh-1" type="button">Shuffle once</button>
+<button id="pv-sh-100" type="button">Shuffle 100 times</button>
+<button id="pv-sh-1000" type="button">Shuffle 1,000 times</button>
+<button id="pv-sh-reset" type="button">Start over</button>
+</div>
+<svg id="pv-shuffle-chart" viewBox="0 0 640 300" role="img" aria-labelledby="pv-shuffle-chart-title pv-shuffle-chart-desc"><title id="pv-shuffle-chart-title">Differences from shuffled labels</title><desc id="pv-shuffle-chart-desc"></desc></svg>
+<div class="pv-legend"><span><i style="background:var(--muted);opacity:.4"></i>shuffle closer to zero than 0.8</span><span><i style="background:var(--l0)"></i>shuffle at least 0.8 away</span></div>
+<label class="pv-check" for="pv-sh-bell"><input id="pv-sh-bell" type="checkbox"> Overlay the bell-curve shortcut (the z-test, next section)</label>
+<p class="pv-result" id="pv-shuffle-result" role="status" aria-live="polite" aria-atomic="true"></p>
+</section>
+<noscript><p>With JavaScript on, this spot runs the shuffle in your browser. Across many shuffles, about 6.7% of the differences land at least 0.8 points away from zero.</p></noscript>
+
+After a few thousand shuffles you'll settle at around 6.7%. That's the p-value. This method is called a **permutation test**, and I like it a lot, because there's no formula hiding anything. It's the coin's count-and-divide, done by a computer. Here it is in Python:
+
+```python
+import numpy as np
+
+rng = np.random.default_rng(0)
+a = np.r_[np.ones(1000), np.zeros(9000)]   # old button: 1 = bought
+b = np.r_[np.ones(1080), np.zeros(8920)]   # new button
+observed = b.mean() - a.mean()             # 0.008
+everyone = np.concatenate([a, b])
+
+shuffles, extreme = 10_000, 0
+for _ in range(shuffles):
+    rng.shuffle(everyone)
+    diff = everyone[10_000:].mean() - everyone[:10_000].mean()
+    extreme += abs(diff) >= abs(observed) - 1e-12   # tiny tolerance for rounding
+
+p = (extreme + 1) / (shuffles + 1)   # count the real split as one of the shuffles
+print(p)  # about 0.067; it moves a little from run to run
+```
+
+One caution: shuffling only works when people were randomly assigned and are independent of each other. If the same person shows up several times, or whole households were assigned together, you have to shuffle those units together, or the "nothing going on" world you build is wrong.
+
+### The shortcut: the z-test
+
+Shuffling works, but before computers it was impossible, and on huge datasets it's still slow. Look at the shape the shuffled differences made, though: a bell. That's the central limit theorem at work. A conversion rate is an average of lots of 0s and 1s, and averages come out bell-shaped.
+
+If we know the null world is a bell centred on zero, we only need one more number to draw it: how wide it is. That width is the **standard error** (SE), the amount the difference between two groups typically wobbles from random sampling alone. Then we measure our result in "standard errors away from zero" and read the answer off the bell. That's the **two-proportion z-test**. One step at a time:
+
+**1. Find the shared conversion rate.** Under the null, both groups have the same rate, so pool them: 2,080 buyers out of 20,000.
 
 $$
-T=\frac{d-d_0}{SE}
+\hat p = \frac{1000 + 1080}{10000 + 10000} = 0.104
 $$
 
-Here T is the score, d is the observed difference, and d with a small 0 is the difference predicted by the null. SE is standard error. The top is the gap we're explaining; the bottom is its estimated random wobble. A score of 2 means two standard errors from what the null predicts, not "twice as likely to work".
+The hat means "estimated from data". Annoyingly, this $$\hat p$$ is a conversion rate, not a p-value. Same letter, different job.
 
-**Step 5: find the p-value.** Use the scores expected under the null, just as we used the coin bars. For these large independent groups, a **two-proportion z-test** uses a bell curve as an approximation. Let's calculate it one piece at a time.
-
-### The button formulas, without skipping the meanings
-
-**1. Estimate the shared rate under the null.** Combine the groups: 2,080 conversions out of 20,000 users.
+**2. Work out the standard error of the difference.**
 
 $$
-\hat p=\frac{1000+1080}{10000+10000}=0.104
+SE = \sqrt{\hat p\,(1-\hat p)\left(\frac{1}{n_A} + \frac{1}{n_B}\right)}
 $$
 
-The hat means "estimated from data". Here $$\hat p$$ is a conversion rate of 10.4%, **not the p-value**. The same letter is doing two different jobs.
-
-**2. Calculate the standard error.** For this test:
+You don't need to memorise it, but you can read it. $$\hat p(1-\hat p)$$ is how unpredictable a single buy-or-not outcome is. The $$1/n$$ parts shrink it as the groups get bigger, where $$n_A$$ and $$n_B$$ are the group sizes. The square root turns it back into ordinary units. With our numbers:
 
 $$
-SE=\sqrt{\hat p(1-\hat p)\left(\frac{1}{n_A}+\frac{1}{n_B}\right)}
+SE = \sqrt{0.104 \times 0.896 \times \frac{2}{10000}} \approx 0.00432
 $$
 
-$$n_A$$ and $$n_B$$ count users. The square root turns variance, a squared measure of wobble, back into rate-difference units. Larger samples make the fractions smaller.
+So two identical buttons would typically differ by about 0.43 percentage points just by chance. Our gap is 0.8.
 
-With our numbers:
-
-$$
-SE=\sqrt{0.104\times0.896\times\frac{2}{10000}}\approx0.00432
-$$
-
-One standard error is about **0.432 percentage points**.
-
-**3. Divide the gap by that error.** The null difference is zero:
+**3. Count how many standard errors our gap is.**
 
 $$
-z=\frac{\hat p_B-\hat p_A}{SE}=\frac{0.108-0.100}{0.00432}\approx1.85
+z = \frac{\hat p_B - \hat p_A}{SE} = \frac{0.108 - 0.100}{0.00432} \approx 1.85
 $$
 
-$$z$$ is the test statistic. Our +0.8-point gap is about 1.85 standard errors above zero.
+This is the **test statistic**, one number for "how far out is my result". It's the same shape as a z-score: (what I saw − what the null expects) / (typical wobble). Here the null expects 0.
 
-**4. Count both far ends of the bell curve.** Under the null and this large-sample approximation, z-scores follow a *standard normal* curve: centred on 0, with standard deviation 1. Scores near the middle are common; large positive or negative scores aren't.
-
-$$
-p=2\big(1-\Phi(\lvert z\rvert)\big)\approx0.064
-$$
-
-Read it in pieces:
-
-- $$\lvert z\rvert$$ is the size of z without its sign: 1.85 here.
-- $$\Phi(1.85)$$ ("Phi") is the fraction of the curve left of 1.85, about 0.968.
-- $$1-\Phi(1.85)$$ is the right tail, about 0.032.
-- Multiply by 2 for the equally far left tail: about 0.064, or **6.4%**.
-
-Unlike the exact coin count, this is approximate. Using the unrounded z gives about 0.0639.
+**4. Read the p-value off the bell.** If the null is true, $$z$$ follows a *standard normal* curve: a bell centred on 0 with a standard deviation of 1. We want the area beyond ±1.85:
 
 <figure class="fig">
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="p2t p2d">
@@ -387,100 +420,112 @@ Unlike the exact coin count, this is approximate. Using the unrounded z gives ab
   <text class="m" x="650" y="234" text-anchor="end">z-score</text>
   <text class="m" x="60" y="16">z-scores you would see if the change did nothing · shaded tails = p-value = 6.4%</text>
 </svg>
-<figcaption>The null distribution of z. If the button did nothing, z-scores beyond ±1.85 would still turn up 6.4% of the time (shaded). The dashed lines at ±1.96 mark the 5% cut-off; the observed z falls just inside them.</figcaption>
+<figcaption>The bell is where z would land if the button did nothing. The shaded tails beyond ±1.85 add up to 6.4%: that's the p-value. The dashed lines at ±1.96 are the 5% cut-off, and our z stops just short of them.</figcaption>
 </figure>
 
-**5. Read only what the answer says.** If the buttons perform equally, a difference at least this far from zero occurs about 6.4% of the time under the model. That's above our 5% rule: **not significant**. We haven't established improvement, but we haven't established equality either.
-
-The dashed lines are at about -1.96 and +1.96. The area outside them totals 5%. That's where 1.96 comes from: the bell-curve cut-off for this two-sided 5% test. A p-value of 0.049 and one of 0.051 are almost the same evidence, even though the rule labels them differently.
-
-## More data, same effect
-
-**Step 1: keep the rates unchanged.** Imagine a separate, larger experiment with 20,000 users per group. It happens to produce the same 10.0% and 10.8% rates. The lift is still +0.8 points.
-
-**Step 2: shrink the wobble.** With equal-sized groups, standard error scales approximately as $$1/\sqrt n$$. Doubling n divides the error by $$\sqrt2$$, about 1.41, not by 2.
-
 $$
-SE\approx0.00305,\qquad z\approx2.62,\qquad p\approx0.0088
+p = 2 \times \big(1 - \Phi(\lvert z\rvert)\big) \approx 0.064
 $$
 
-**Step 3: notice what changed.** The p-value is now below 0.05. The effect stayed the same; the estimate became more precise. A p-value measures neither the size nor the business value of an improvement.
+In pieces:
 
-This compares sample sizes. It is not permission to extend a finished test until it passes. Choose the sample size or a valid sequential stopping rule in advance.
+- $$\lvert z\rvert$$ is z without its sign: 1.85.
+- $$\Phi$$ ("phi") is the area of the standard normal curve to the left of a point. $$\Phi(1.85) \approx 0.968$$.
+- $$1 - 0.968 = 0.032$$ is the area in the right tail.
+- Double it for the left tail: 0.064.
 
-## Power: plan how often you'll find a real lift
+So **p ≈ 6.4%**, very close to the 6.7% from shuffling. Two completely different methods, nearly the same answer. (The small gap is because the bell is a smooth approximation of what are really lumpy, whole-number counts.) Tick the overlay box in the shuffle widget and you'll see the bell sitting right on top of the shuffled bars.
 
-**Step 1: pick an effect worth finding.** Suppose +0.8 points would be worth shipping. Ask: *if that really is the lift, how often would our experiment detect it?*
+**5. Decide.** 6.4% is above our 5% line, so the result is not significant. We haven't shown the new button is better. We also haven't shown it isn't. The dashed lines at ±1.96 in the chart are where the 5% cut-off sits: $$z$$ has to get past 1.96 to count as significant, and ours stopped at 1.85.
 
-**Step 2: imagine many repetitions.** With 10,000 users per group and alpha 5%, the normal approximation gives about **46% power** for that lift. More than half of these experiments would miss it. At 20,000 per group, power is about **75%**.
+You won't do this by hand in practice. In Python it's one line:
 
-**Step 3: use the playground before the formula.** Change only the number of users first. Narrower curves mean less wobble. More of the pink curve lies outside the cut-offs, so more experiments detect the effect.
+```python
+from statsmodels.stats.proportion import proportions_ztest
+
+z, p = proportions_ztest(count=[1080, 1000], nobs=[10000, 10000])
+print(f"z = {z:.2f}, p = {p:.3f}")  # z = 1.85, p = 0.064
+```
+
+## Same effect, more data
+
+Now imagine we'd run the test with 20,000 people per group instead, and got exactly the same rates, 10.0% and 10.8%.
+
+The effect is the same. But the standard error shrinks with more data, by a square root: double the people and the wobble gets divided by √2 ≈ 1.41.
+
+$$
+SE \approx 0.00305, \qquad z \approx 2.62, \qquad p \approx 0.009
+$$
+
+Now it's significant. Nothing about the button changed. We just measured it more precisely. This is worth sitting with for a second: **a p-value mixes up how big an effect is with how much data you collected.** With enough users, a tiny, useless effect becomes "significant". With too few, a big, valuable one doesn't.
+
+That's a comparison between two separate experiments, by the way. It is *not* permission to keep adding users to a finished test until it crosses the line. More on that in the traps section.
+
+## Power: how many users do you need?
+
+Before you run the experiment, ask: if the new button really does add 0.8 points, how likely is this test to notice?
+
+With 10,000 people per group, the answer is only about **46%**. That's worse than a coin flip. You would miss a real, worthwhile improvement more often than you'd find it. With 20,000 per group it's about 75%.
+
+The widget shows why. Imagine running the same experiment many times. The blue curve is where your measured lift would land if the button did nothing. The purple curve is where it would land if the true lift really is +0.8 points. Anything outside the dashed lines counts as significant. Power is the share of the purple curve that ends up outside them.
 
 <section class="pv-widget" id="pv-power" aria-labelledby="pv-power-title" hidden>
-<h3 id="pv-power-title">Try it: same effect, more data</h3>
-<p>Imagine repeating the experiment many times. The horizontal axis is measured lift, in percentage points. Blue shows the spread when the buttons truly perform equally. Pink shows the spread for your chosen true lift. Taller parts mean more common results; each curve has total area 1. Outside the dashed lines, a result is called significant. The pink area outside those lines is power.</p>
+<h3 id="pv-power-title">Try it: what makes a test powerful?</h3>
+<p>Horizontal axis: the lift you'd measure in one experiment, in percentage points. It stays fixed so you can see the curves narrow. The shaded purple area is power.</p>
 <div class="pv-controls">
-<label for="pv-baseline">Control rate: <output id="pv-baseline-value" for="pv-baseline">10.0%</output><input id="pv-baseline" type="range" min="5" max="50" step="1" value="10"></label>
-<label for="pv-lift">True lift: <output id="pv-lift-value" for="pv-lift">0.8 percentage points</output><input id="pv-lift" type="range" min="-3" max="3" step="0.1" value="0.8"></label>
-<label for="pv-n">Users per arm: <output id="pv-n-value" for="pv-n">10,000</output><input id="pv-n" type="range" min="1000" max="50000" step="1000" value="10000"></label>
-<label for="pv-alpha">False-alarm limit (alpha)<select id="pv-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></label>
+<label for="pv-baseline">Old button's conversion rate: <output id="pv-baseline-value" for="pv-baseline">10.0%</output><input id="pv-baseline" type="range" min="5" max="50" step="1" value="10"></label>
+<label for="pv-lift">True lift from the new button: <output id="pv-lift-value" for="pv-lift">+0.8 points</output><input id="pv-lift" type="range" min="-3" max="3" step="0.1" value="0.8"></label>
+<label for="pv-n">Visitors per group: <output id="pv-n-value" for="pv-n">10,000</output><input id="pv-n" type="range" min="1000" max="50000" step="1000" value="10000"></label>
+<label for="pv-alpha">False alarm limit, α<select id="pv-alpha"><option value="0.01">1%</option><option value="0.05" selected>5%</option><option value="0.10">10%</option></select></label>
 </div>
-<svg id="pv-power-chart" viewBox="0 0 680 260" role="img" aria-labelledby="pv-power-chart-title pv-power-chart-desc"><title id="pv-power-chart-title">Sampling distributions of the conversion-rate difference</title><desc id="pv-power-chart-desc"></desc></svg>
-<div class="pv-legend"><span class="pv-null">Blue: null (no effect)</span><span class="pv-alt">Pink: chosen true effect</span><span>Dashed: rejection cut-offs</span></div>
+<svg id="pv-power-chart" viewBox="0 0 680 280" role="img" aria-labelledby="pv-power-chart-title pv-power-chart-desc"><title id="pv-power-chart-title">Where measured lifts land, with and without a real effect</title><desc id="pv-power-chart-desc"></desc></svg>
+<div class="pv-legend"><span><i style="background:var(--l0)"></i>button does nothing</span><span><i style="background:var(--l3)"></i>button has your true lift</span><span>dashed: significance cut-offs</span></div>
 <p class="pv-result" id="pv-power-result" role="status" aria-live="polite" aria-atomic="true"></p>
-<ol><li>Leave the defaults: 10% control, +0.8-point true lift, 10,000 users per arm, alpha 5%. Power is about 46%.</li><li>Move users per arm to 20,000. The curves narrow; power rises to about 75%. The true lift has not changed.</li><li>Set true lift to 0. Pink and blue overlap. The shaded area is about 5%: false positives with no effect.</li><li>Restore the +0.8-point lift, then change alpha to 1%. The cut-offs move outward: fewer false alarms, but less power for the same effect.</li></ol>
-<p class="pv-note">This is a two-sided, fixed-sample normal approximation for independent users and equal-sized arms. The curves describe repeated experiments, not a probability that the null is true. The example p-value assumes observed rates equal the chosen true rates; real samples fluctuate. Power is a planning quantity, not a reinterpretation of an observed p-value. Everything runs in your browser.</p>
+<ol><li>Leave the defaults. Power is about 46%. Most of the purple curve sits between the dashed lines.</li><li>Raise visitors per group to 20,000. Both curves get narrower, the cut-offs move in, and power climbs to about 75%. The true lift didn't change.</li><li>Set the true lift to 0. Purple lands on top of blue and "power" drops to 5%. With no real effect, all that's left is the false alarm rate, α.</li><li>Put the lift back to +0.8 and switch α to 1%. The cut-offs move out: fewer false alarms, but you miss more real effects.</li></ol>
 </section>
-<noscript><p>Without JavaScript, the worked example above still shows why doubling the sample size changes the p-value without changing the effect.</p></noscript>
+<noscript><p>With JavaScript on, this spot has an interactive power chart. At 10,000 visitors per group, a true +0.8-point lift is detected about 46% of the time. At 20,000 per group, about 75%.</p></noscript>
 
-### The sample-size formula answers that planning question
+### The sample size formula
 
-For 80% power to find a true change from 10.0% to 10.8%, a useful normal-approximation planning formula for equal-sized independent groups is:
-
-$$
-n\approx\frac{(z_{1-\alpha/2}+z_{1-\beta})^2[p_A(1-p_A)+p_B(1-p_B)]}{(p_B-p_A)^2}
-$$
-
-Don't read the whole line at once:
-
-1. $$n$$ is users **per group**. $$p_A$$ and $$p_B$$ are the true rates we're planning around, not estimates from a completed test.
-2. $$\alpha=0.05$$ sets the false-alarm limit. Its two-sided normal cut-off, $$z_{1-\alpha/2}$$, is about **1.96**.
-3. For 80% power, $$\beta=0.20$$. The normal cut-off $$z_{1-\beta}$$ is about **0.84**. The two cut-offs account for avoiding false alarms and catching the chosen effect.
-4. The bracket measures outcome variability. The bottom is the effect squared: a smaller effect is harder to find and needs more users.
-
-With rounded values:
+You can also run that backwards: pick the power you want, usually 80%, and solve for the number of people. For two equal-sized groups, a standard approximation is:
 
 $$
-n\approx\frac{(1.96+0.84)^2\times(0.090+0.096)}{0.008^2}\approx22{,}800
+n \approx \frac{\left(z_{1-\alpha/2} + z_{1-\beta}\right)^2 \left[p_A(1-p_A) + p_B(1-p_B)\right]}{(p_B - p_A)^2}
 $$
 
-That's roughly **23,000 users per group**, not total. It's an approximation, not a promise. Try 23,000 in the widget: power is close to 80%. Different planning methods can give slightly different requirements.
+It looks scary, so piece by piece:
 
-Power is a *before-the-experiment* calculation for a chosen true effect. Don't turn the observed lift into "observed power" and use it as new evidence. After testing, read the estimate and its uncertainty.
+- $$n$$ is people **per group**, not in total.
+- $$p_A$$ and $$p_B$$ are the rates you're planning around: 10% and 10.8%. You choose them before the experiment, based on the smallest improvement you'd care about.
+- $$z_{1-\alpha/2} \approx 1.96$$ is the cut-off for a two-sided test at 5%. $$z_{1-\beta} \approx 0.84$$ is the extra distance needed for 80% power.
+- The bracket is how noisy each group is.
+- The bottom is the effect, squared. So **halving the effect you want to detect means four times as many people.**
 
-## Confidence intervals: how big could the effect be?
-
-**Step 1: keep the estimate.** Our original test estimated +0.80 points. A p-value alone hides that size.
-
-**Step 2: add uncertainty.** An approximate 95% confidence interval runs from **-0.05 to +1.65 percentage points**. It includes zero, but also useful improvements. "Not significant" doesn't mean "no effect".
-
-**Step 3: understand the 95%.** If we repeated the sampling and interval procedure many times, about 95% of the intervals would contain the true difference under the model's assumptions. It isn't a 95% probability assigned to this particular fixed interval.
-
-The formula is "estimate plus or minus a margin":
+With our numbers:
 
 $$
-\text{interval}=(\hat p_B-\hat p_A)\pm1.96\times SE_{\text{unpooled}}
+n \approx \frac{(1.96 + 0.84)^2 \times (0.090 + 0.096)}{0.008^2} \approx 22{,}800
 $$
 
-$$\pm$$ means compute both ends: subtract the margin, then add it. For the interval, we estimate each group's variability separately rather than imposing equal true rates:
+So roughly 23,000 people per group. Put 23,000 into the widget and you'll see power land at about 80%.
+
+Power is a planning tool. After the experiment, working out "observed power" from your own result doesn't tell you anything the p-value hasn't already. Look at the confidence interval instead.
+
+## Confidence intervals: how big is the effect?
+
+A p-value tells you whether a result is surprising. It doesn't tell you how big the effect is, and that's usually what you actually want to know. For that, use a **confidence interval**: your estimate, plus or minus a margin for the wobble.
 
 $$
-SE_{\text{unpooled}}=\sqrt{\frac{\hat p_A(1-\hat p_A)}{n_A}+\frac{\hat p_B(1-\hat p_B)}{n_B}}
+\text{interval} = (\hat p_B - \hat p_A) \pm 1.96 \times SE
 $$
 
-Here the error is about 0.00432. The margin is about 0.00846, or 0.846 points. Add and subtract from +0.80 to get the interval. Its inclusion of zero agrees with the test here; this unpooled interval and pooled test aren't exactly identical procedures in every case.
+For our button that's +0.80 ± 0.85 points, so the 95% confidence interval runs from **−0.05 to +1.65 percentage points**.
 
-**Step 4: ask whether the lift is useful.** With enough data, a tiny effect can be significant. This chart compares our test with a larger one whose lift is only +0.1 points:
+Read it as: the data are consistent with anything from "very slightly worse" to "1.65 points better". That's far more useful than "not significant". It tells you zero is still possible, but so is a big win, and that the honest next step is to collect more data.
+
+(Small detail: for the interval, the SE is worked out from each group's own rate instead of the pooled one, because we're no longer assuming the two rates are equal. With these numbers it comes out at 0.00432 either way.)
+
+What does the "95%" mean? It's about the method, not this one interval. If you repeated the experiment many times and built an interval each time, about 95% of those intervals would contain the true difference.
 
 <figure class="fig">
 <svg viewBox="0 0 680 236" role="img" aria-labelledby="p3t p3d">
@@ -508,116 +553,24 @@ Here the error is about 0.00432. The margin is about 0.00846, or 0.846 points. A
   <text class="m" x="600.0" y="206" text-anchor="middle">+2.0</text>
   <text class="m" x="600" y="224" text-anchor="end">lift in conversion rate, percentage points</text>
 </svg>
-<figcaption>Point estimates and 95% confidence intervals. The first test can't rule out zero. The second can. The third is overwhelmingly "significant" (p = 0.0009), yet its entire interval sits below the +0.5 point lift that would justify the work.</figcaption>
+<figcaption>Three experiments. The first can't rule out zero. The second can. The third is hugely "significant", yet its whole interval sits below the +0.5-point lift that would be worth shipping.</figcaption>
 </figure>
 
-Before testing, choose the smallest gain worth the cost of changing the product. Consider the estimate and interval against that threshold, not only against zero. **Statistically significant doesn't mean practically important.**
+Before you run a test, decide the smallest lift that would be worth the work, then compare the interval against *that* line, not just against zero. Statistically significant and worth doing are different questions.
 
-## Choose a test without memorising a menu
+## Three ways to fool yourself
 
-**Step 1: identify one observation.** One independent user? The same person measured twice? A household or team? The sampling design affects the calculation.
+### 1. Testing lots of things at once
 
-**Step 2: identify the measurement.** A yes/no outcome, like conversion, gives a rate. Revenue or time gives a number with an average. Match the method to your question.
-
-| Situation | Starting point | What to check |
-|---|---|---|
-| Two independent conversion rates | Two-proportion z-test | Enough successes and failures; sparse counts may need an exact method |
-| Two independent averages | Welch's t-test | Independence, sample sizes and outliers |
-| Same people measured twice | Paired t-test | Analyse within-person differences |
-| Two independent sets of ranks | Mann-Whitney U test | Compares distributions/ranks, not automatically medians |
-| Three or more averages | ANOVA or an appropriate alternative | Assumptions and adjusted follow-up comparisons |
-| Randomised labels you can shuffle | Permutation test | Labels must be exchangeable under the null; preserve the design |
-
-These are starting points, not automatic answers. Repeated users, clustered assignment or unusual data can need a different analysis.
-
-**Step 3: recognise the familiar shape.** For two independent means, Welch's statistic is:
+Say you check 20 metrics on a button that changes nothing. Each test has a 5% chance of a false alarm. The chance that *at least one* of them comes out significant, if the tests are independent, is:
 
 $$
-t=\frac{\bar x_B-\bar x_A}{\sqrt{s_A^2/n_A+s_B^2/n_B}}
+1 - (1 - 0.05)^{20} \approx 64\%
 $$
 
-$$\bar x_A$$ and $$\bar x_B$$ are sample averages. $$s_A^2$$ and $$s_B^2$$ are sample variances, measuring how spread out observations are. Again: difference on top, estimated wobble below.
+Each test has a 95% chance of staying quiet. All 20 staying quiet is 0.95 multiplied by itself 20 times, about 36%. Everything else, 64%, is at least one false alarm. Look at enough metrics and something will always light up.
 
-Compare the score with a **t-distribution**, a bell-shaped curve with heavier tails than the normal curve at small degrees of freedom. Welch's method estimates those degrees of freedom and doesn't require equal variances. Its reference distribution is an approximation under suitable assumptions, not a universal cure for difficult data.
-
-**Step 4: let software do the arithmetic.** You still choose the question and check assumptions. This uses our button counts and, separately, arrays of revenue observations:
-
-```python
-from scipy import stats
-from statsmodels.stats.proportion import proportions_ztest
-
-z, p = proportions_ztest(count=[1080, 1000], nobs=[10000, 10000])
-print(f"z = {z:.2f}, p = {p:.3f}")  # z = 1.85, p = 0.064
-
-# One revenue value per independent user in each array.
-t, p = stats.ttest_ind(revenue_b, revenue_a, equal_var=False)
-```
-
-## A permutation test: build the no-effect world yourself
-
-The coin let us count every outcome. For a randomised button experiment, we can instead shuffle group labels to build a reference distribution.
-
-**Step 1: keep the outcomes.** We have 2,080 conversions and 17,920 non-conversions. Write each conversion as 1 and each non-conversion as 0.
-
-**Step 2: shuffle group labels.** Under a null that makes outcomes exchangeable across the randomly assigned groups, allocate them into two groups of 10,000 again. Change only the group labels, not who converted.
-
-**Step 3: measure the fake difference.** Subtract the shuffled rates. Repeat many times to see what random assignment alone could produce under this null.
-
-**Step 4: count differences at least as far from zero as +0.008.** Include equally large negative differences for a two-sided test. The fraction is a simulated p-value, close to the z-test here.
-
-
-<figure class="fig learn-fig">
-<svg viewBox="0 0 420 443" role="img" aria-labelledby="pv-shuffle-t pv-shuffle-d">
-<title id="pv-shuffle-t">Permutation keeps the data and changes group labels</title>
-<desc id="pv-shuffle-d">The pooled 20,000 conversion outcomes stay fixed. Each shuffle assigns 10,000 outcomes to each group, calculates a new difference and counts absolute differences at least 0.008.</desc>
-<text x="14" y="25" class="" text-anchor="start">Shuffle labels, not the outcomes</text><rect x="12" y="47" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="75" class="" text-anchor="start">Keep all 20,000 outcomes</text><text x="26" y="100" class="sub" text-anchor="start">2,080 ones + 17,920 zeros</text><path d="M210,121 v17" class="axis"/><rect x="12" y="143" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="171" class="" text-anchor="start">Randomly split into two groups</text><text x="26" y="196" class="sub" text-anchor="start">10,000 in A; 10,000 in B</text><path d="M210,217 v17" class="axis"/><rect x="12" y="239" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="267" class="" text-anchor="start">Record shuffled B rate − A rate</text><text x="26" y="292" class="sub" text-anchor="start">Repeat to build the null distribution</text><path d="M210,313 v17" class="axis"/><rect x="12" y="335" width="396" height="74" rx="5" fill="var(--panel)" fill-opacity="1" stroke="var(--line)"/><text x="26" y="363" class="" text-anchor="start">Count |difference| ≥ 0.008</text><text x="26" y="388" class="sub" text-anchor="start">Both negative and positive tails</text>
-</svg>
-<figcaption>The observed conversions do not change. What changes is their allocation to A or B under an exchangeable no-effect model. The resulting distribution shows how much assignment alone can move the difference.</figcaption>
-</figure>
-
-```python
-import numpy as np
-
-rng = np.random.default_rng(0)
-control = np.r_[np.ones(1000), np.zeros(9000)]
-variant = np.r_[np.ones(1080), np.zeros(8920)]
-observed = variant.mean() - control.mean()  # 0.008
-pooled = np.concatenate([control, variant])
-
-extreme = 0
-repetitions = 10_000
-for _ in range(repetitions):
-    rng.shuffle(pooled)
-    difference = pooled[10_000:].mean() - pooled[:10_000].mean()
-    extreme += abs(difference) >= abs(observed) - 1e-12
-
-p = (extreme + 1) / (repetitions + 1)
-print(p)  # Around 0.06; simulations fluctuate.
-```
-
-The tiny tolerance handles floating-point rounding at the boundary. The +1 adjustment includes the observed arrangement and avoids reporting zero just because a finite simulation saw no extreme result.
-
-This is the coin's *count then divide* idea again. Other tests needn't be equivalent to this particular shuffle: the null and shuffling scheme must fit the experiment. Paired or clustered designs can't be shuffled as if everyone were unrelated.
-
-## Where significance misleads
-
-### 1. More questions mean more chances for false alarms
-
-Imagine testing 20 metrics when the button affects none of them. If each test has a 5% false-positive chance and the tests are independent:
-
-**Step 1:** one test avoids a false positive with probability 0.95.
-
-**Step 2:** all 20 avoid one with probability $$0.95^{20}$$, about 0.36.
-
-**Step 3:** subtract from 1. The chance of at least one false positive is about 64%:
-
-$$
-P(\text{at least one false positive})=1-(1-\alpha)^m
-$$
-
-$$m$$ counts tests. Independence matters: correlated metrics needn't give this exact 64%, though searching many results still creates a multiple-testing problem.
-
-For an exactly calibrated continuous test under the null, p-values are uniformly distributed: equal-width ranges from 0 to 1 are equally likely. So p below 0.05 can happen even when nothing changed. Our discrete coin test only produces certain p-values; they aren't uniformly distributed.
+Here's what p-values look like across many experiments. When nothing is going on, they're spread evenly between 0 and 1, so 5% land below 0.05 by pure chance. When there's a real effect, they pile up near zero.
 
 <figure class="fig">
 <svg viewBox="0 0 680 244" role="img" aria-labelledby="p4t p4d">
@@ -679,166 +632,319 @@ For an exactly calibrated continuous test under the null, p-values are uniformly
   <text class="m" x="650" y="222" text-anchor="end">p-value</text>
   <text class="m" x="40" y="238">2,000 simulated experiments per panel · 10,000 users per arm</text>
 </svg>
-<figcaption>P-values from 2,000 simulated experiments. With no real effect, they're flat: about 5% land below 0.05 by chance. With a real effect, they pile up near zero, but at this sample size fewer than half make it below 0.05, which is the 46% power from earlier.</figcaption>
+<figcaption>P-values from 2,000 simulated experiments each. Left: no real effect, and the p-values are flat, with 5% below 0.05 by chance. Right: a real lift, and the p-values pile up near zero, but at this sample size only about half get below 0.05. That's the low power from earlier.</figcaption>
 </figure>
 
-Choose a primary metric in advance. For claims across many tests, adjust the rule. **Bonferroni** uses $$\alpha/m$$ per test: 0.05/20 = 0.0025 here. It controls the chance of any false positive for valid tests without requiring independence. **Benjamini-Hochberg** instead controls the expected false-discovery proportion under its conditions. These answer different error-control questions.
+The fix: pick one primary metric before the experiment. If you must make claims about many tests, tighten the cut-off. The simplest way is the **Bonferroni correction**: divide $$\alpha$$ by the number of tests, so 0.05 / 20 = 0.0025 each. The **Benjamini-Hochberg** procedure is less strict and controls the share of your "discoveries" that are false, rather than the chance of any false alarm at all.
 
-### 2. Checking until you win changes the rule
+### 2. Peeking
 
-**Step 1:** plan a fixed sample size and a 5% rule. The calibration assumes the planned analysis.
+You plan a two-week test. On day 3 you check: p = 0.04! You stop and ship.
 
-**Step 2:** check daily and stop as soon as p drops below 0.05. You've given random noise extra chances to pass. The overall false-positive rate is no longer that of a single planned look.
+The trouble is that the 5% false alarm rate only holds if you look once, at the end. Every peek is another chance for noise to wander across the line, and noise wanders a lot early on, when there's little data. In a quick simulation of a button that does nothing, checked 20 times along the way and stopped at the first p below 0.05, about **a quarter** of the experiments ended in a false "win".
 
-**Step 3:** keep the fixed analysis plan or use a sequential method designed for repeated monitoring. An ordinary fixed-sample p-value doesn't protect every stopping strategy.
+Either decide the sample size in advance and look once, or use a method built for repeated looks (sequential testing). An ordinary p-value doesn't protect you from peeking.
 
-### 3. Not finding an effect doesn't prove there isn't one
+### 3. Reading "not significant" as "no effect"
 
-Return to the button: estimated +0.80 points, interval -0.05 to +1.65, p about 0.064. The data leave room for no improvement and for useful improvement.
+Back to the button: estimated +0.80 points, interval −0.05 to +1.65, p ≈ 0.064. The data leave room for no improvement *and* for a useful one. "Not significant" just means this experiment couldn't tell. If you need to show that two things are effectively the same, that's a different test (an equivalence test), with its own planning.
 
-Establishing that differences are smaller than a meaningful limit is a different question from testing equality. "Not significant" alone cannot establish that limit.
+## Choosing a test
 
-## Put it together
+The coin and the button used tests for counts and rates. Other data needs other tests, but they mostly share the same shape: **(the difference you saw) / (how much it would wobble by chance)**, compared against what that ratio looks like when nothing is going on.
 
-Read or run a test in this order:
+Two questions get you most of the way to the right one:
 
-1. **What claim are we checking?** Write null and alternative; choose one- or two-sided before looking.
-2. **How big is the observed change?** Keep the units: +0.8 percentage points here.
-3. **How much could it wobble?** Check the design, assumptions and standard error.
-4. **How unusual is it under the null?** That's the p-value, not the probability the null is true.
-5. **What rule did we plan?** Compare with alpha without changing the metric or stopping plan to get a win.
-6. **What can we do with the result?** Read the confidence interval and business value. Plan the next test's power for an effect worth finding.
+1. **What is one observation?** One independent user? The same person measured twice? A whole household? Getting this wrong breaks most tests.
+2. **What are you measuring?** A yes/no outcome gives you a rate. Revenue or time on page gives you numbers with an average.
 
-The coin widget makes the p-value visible: add the blue bars. The power widget makes sample size visible: narrow the curves. The formulas are shorter ways of describing those ideas, not a different story to learn from scratch.
+| Situation | Common test | Watch out for |
+|---|---|---|
+| Two independent conversion rates | Two-proportion z-test | Very small counts need an exact test |
+| Two independent averages | Welch's t-test | Big outliers, such as a few huge orders |
+| The same people measured twice | Paired t-test | Test the per-person differences |
+| Two groups, skewed numbers | Mann-Whitney U test | It compares rankings, not averages |
+| Three or more groups | ANOVA, or similar | Then adjust for multiple comparisons |
+| Randomised groups you can reshuffle | Permutation test | Shuffle the unit that was randomised |
+
+For averages, Welch's t-test has the familiar shape:
+
+$$
+t = \frac{\bar x_B - \bar x_A}{\sqrt{s_A^2/n_A + s_B^2/n_B}}
+$$
+
+$$\bar x_A$$ and $$\bar x_B$$ are the two group averages. $$s_A^2$$ and $$s_B^2$$ are their variances, how spread out each group is. Difference on top, wobble underneath, same as before. The result is compared against a **t-distribution**, which is a bell with slightly fatter tails to account for the extra uncertainty of small samples.
+
+```python
+from scipy import stats
+
+# one revenue value per independent user in each array
+t, p = stats.ttest_ind(revenue_b, revenue_a, equal_var=False)  # Welch's t-test
+```
+
+## The checklist
+
+When I read or run a test now, I go through it in this order:
+
+1. **What's the boring explanation?** Write down the null hypothesis, and decide one- or two-sided, before looking at the data.
+2. **How big is the difference?** Keep the units: +0.8 percentage points, not just "significant".
+3. **How much could it wobble by chance?** Check that observations are independent and the standard error makes sense.
+4. **How surprising is it if nothing is going on?** That's the p-value, and it is *not* the chance the null is true.
+5. **What rule did we agree on?** Compare against $$\alpha$$ without moving the goalposts, switching metrics or stopping early.
+6. **What would we actually do?** Compare the confidence interval with the smallest lift worth shipping, and plan the next test's sample size for an effect that matters.
+
+The coin is the whole idea in miniature: assume fair, count how often fair looks this lopsided, add up the blue bars. Every test after that is the same question with a different way of counting.
 
 ## References
 
-1. Wasserstein, R. L. and Lazar, N. A. *The ASA Statement on p-Values: Context, Process, and Purpose*. The American Statistician, 2016. <https://doi.org/10.1080/00031305.2016.1154108> - what p-values do and do not mean
-2. Greenland, S. et al. *Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations*. European Journal of Epidemiology, 2016. <https://doi.org/10.1007/s10654-016-0149-3> - common misreadings of p-values, intervals and power
-3. Neyman, J. and Pearson, E. S. *On the problem of the most efficient tests of statistical hypotheses*. Philosophical Transactions of the Royal Society A, 1933. <https://doi.org/10.1098/rsta.1933.0009> - Type I and Type II errors
-4. Fisher, R. A. *Statistical Methods for Research Workers*. Oliver and Boyd, 1925. <https://psychclassics.yorku.ca/Fisher/Methods/> - origin of the 0.05 convention
-5. Welch, B. L. *The generalization of "Student's" problem when several different population variances are involved*. Biometrika, 1947. <https://doi.org/10.1093/biomet/34.1-2.28> - the unequal-variance t-test
-6. statsmodels developers. *statsmodels.stats.proportion.proportions_ztest*. statsmodels documentation. <https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html> - two-proportion z-test used in the code
-7. SciPy developers. *scipy.stats.ttest_ind*. SciPy documentation. <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html> - Welch's t-test via `equal_var=False`
-8. Benjamini, Y. and Hochberg, Y. *Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing*. Journal of the Royal Statistical Society: Series B, 1995. <https://doi.org/10.1111/j.2517-6161.1995.tb02031.x> - the Benjamini–Hochberg procedure
-9. Johari, R. et al. *Peeking at A/B Tests*. Proceedings of KDD, 2017. <https://doi.org/10.1145/3097983.3097992> - why repeated looks inflate false positives
-10. Kohavi, R., Tang, D. and Xu, Y. *Trustworthy Online Controlled Experiments*. Cambridge University Press, 2020. <https://doi.org/10.1017/9781108653985> - practical guide to A/B testing
+1. Wasserstein, R. L. and Lazar, N. A. *The ASA Statement on p-Values: Context, Process, and Purpose*. The American Statistician, 2016. <https://doi.org/10.1080/00031305.2016.1154108>. What p-values do and don't mean.
+2. Greenland, S. et al. *Statistical tests, P values, confidence intervals, and power: a guide to misinterpretations*. European Journal of Epidemiology, 2016. <https://doi.org/10.1007/s10654-016-0149-3>. A long list of common misreadings.
+3. Neyman, J. and Pearson, E. S. *On the problem of the most efficient tests of statistical hypotheses*. Philosophical Transactions of the Royal Society A, 1933. <https://doi.org/10.1098/rsta.1933.0009>. Where Type I and Type II errors come from.
+4. Fisher, R. A. *Statistical Methods for Research Workers*. Oliver and Boyd, 1925. <https://psychclassics.yorku.ca/Fisher/Methods/>. The origin of the 0.05 convention.
+5. Welch, B. L. *The generalization of "Student's" problem when several different population variances are involved*. Biometrika, 1947. <https://doi.org/10.1093/biomet/34.1-2.28>. The unequal-variance t-test.
+6. statsmodels developers. *statsmodels.stats.proportion.proportions_ztest*. <https://www.statsmodels.org/stable/generated/statsmodels.stats.proportion.proportions_ztest.html>.
+7. SciPy developers. *scipy.stats.ttest_ind*. <https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.ttest_ind.html>. Welch's t-test via `equal_var=False`.
+8. Benjamini, Y. and Hochberg, Y. *Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing*. Journal of the Royal Statistical Society: Series B, 1995. <https://doi.org/10.1111/j.2517-6161.1995.tb02031.x>.
+9. Johari, R. et al. *Peeking at A/B Tests*. Proceedings of KDD, 2017. <https://doi.org/10.1145/3097983.3097992>. Why repeated looks inflate false positives, and what to do instead.
+10. Kohavi, R., Tang, D. and Xu, Y. *Trustworthy Online Controlled Experiments*. Cambridge University Press, 2020. <https://doi.org/10.1017/9781108653985>. The practical guide to A/B testing.
 
 <script>
 (() => {
   'use strict';
-  // Exact binomial probabilities for 10 independent fair flips.
-  const counts = [1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1];
-  function coinP(heads, sided) {
-    return counts.reduce((sum, count, k) => sum + ((sided === 'upper' ? k >= heads : Math.abs(k - 5) >= Math.abs(heads - 5)) ? count : 0), 0) / 1024;
+  const $ = id => document.getElementById(id);
+  const SVG = 'http://www.w3.org/2000/svg';
+  function svg(tag, attrs, text) {
+    const el = document.createElementNS(SVG, tag);
+    Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    if (text !== undefined) el.textContent = text;
+    return el;
   }
-  // Normal CDF approximation (absolute error < 8e-8); use symmetry for tails.
+  function label(chart, x, y, text, anchor = 'middle', fill = 'var(--muted)') {
+    chart.append(svg('text', { x, y, 'text-anchor': anchor, fill, 'font-size': 14 }, text));
+  }
+  function reset(chart, title, desc) {
+    chart.replaceChildren(svg('title', { id: chart.id + '-title' }, title), svg('desc', { id: chart.id + '-desc' }, desc));
+    chart.setAttribute('aria-labelledby', chart.id + '-title ' + chart.id + '-desc');
+  }
+  const pct = (x, d = 1) => (100 * x).toFixed(d) + '%';
+  const fmtP = p => p < 0.0001 ? '< 0.0001' : '= ' + p.toFixed(4);
+  // Normal CDF approximation (absolute error < 8e-8).
   function normalCDF(x) {
     const t = 1 / (1 + 0.2316419 * Math.abs(x));
-    const tail = Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI) * t *
-      (0.319381530 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
+    const tail = Math.exp(-x * x / 2) / Math.sqrt(2 * Math.PI) * t * (0.319381530 + t * (-0.356563782 + t * (1.781477937 + t * (-1.821255978 + t * 1.330274429))));
     return x < 0 ? tail : 1 - tail;
   }
   function normalQuantile(p) {
     let lo = -9, hi = 9;
-    for (let i = 0; i < 60; i++) {
-      const mid = (lo + hi) / 2;
-      if (normalCDF(mid) < p) lo = mid; else hi = mid;
-    }
+    for (let i = 0; i < 60; i++) { const mid = (lo + hi) / 2; if (normalCDF(mid) < p) lo = mid; else hi = mid; }
     return (lo + hi) / 2;
   }
-  function powerModel(a, lift, n, alpha) {
-    const b = a + lift, pooled = (a + b) / 2;
-    const se0 = Math.sqrt(2 * pooled * (1 - pooled) / n);
-    const se1 = Math.sqrt((a * (1 - a) + b * (1 - b)) / n);
-    const critical = normalQuantile(1 - alpha / 2) * se0;
-    const power = normalCDF((-critical - lift) / se1) + normalCDF((lift - critical) / se1);
-    const z = lift / se0, p = Math.min(1, 2 * normalCDF(-Math.abs(z)));
-    return { se0, se1, critical, power, z, p };
-  }
-  const $ = id => document.getElementById(id);
-  const fmtP = p => p < 0.0001 ? '< 0.0001' : '= ' + p.toFixed(4);
-  const coin = $('pv-coin'), heads = $('pv-heads'), sided = $('pv-sided');
-  const bars = counts.map((count, k) => {
-    const button = document.createElement('button');
-    button.type = 'button'; button.className = 'pv-bar';
-    button.setAttribute('aria-label', k + ' heads: ' + (100 * count / 1024).toFixed(2) + '% probability. Select this outcome.');
-    const bar = document.createElement('span'); bar.style.height = (count / 252 * 140) + 'px';
-    bar.setAttribute('aria-hidden', 'true');
-    const label = document.createElement('small'); label.textContent = k;
-    button.append(bar, label);
-    button.addEventListener('click', () => { heads.value = k; updateCoin(); });
-    $('pv-bars').append(button);
-    return button;
-  });
-  function updateCoin() {
-    const h = Number(heads.value), mode = sided.value;
-    $('pv-heads-value').textContent = h;
-    const tails = counts.map((_, k) => mode === 'upper' ? k >= h : Math.abs(k - 5) >= Math.abs(h - 5));
-    bars.forEach((bar, k) => { bar.dataset.tail = tails[k]; bar.setAttribute('aria-pressed', k === h ? 'true' : 'false'); });
-    const total = counts.reduce((sum, count, k) => sum + (tails[k] ? count : 0), 0);
-    const p = coinP(h, mode);
-    $('pv-coin-result').textContent = 'Counted heads: ' + tails.flatMap((yes, k) => yes ? [k] : []).join(', ') + '. ' + total + '/1024 sequences; p ' + fmtP(p) + '. ' + (p < 0.05 ? 'Significant' : 'Not significant') + ' at alpha = 0.05.';
-  }
-  heads.addEventListener('input', updateCoin); sided.addEventListener('change', updateCoin);
-  $('pv-flip').addEventListener('click', () => {
-    heads.value = Array.from({ length: 10 }, () => Math.random() < 0.5 ? 1 : 0).reduce((a, b) => a + b, 0);
-    updateCoin();
-  });
-  updateCoin(); coin.hidden = false;
+  // Ways to get k heads in 10 fair flips, out of 1,024.
+  const ways = [1, 10, 45, 120, 210, 252, 210, 120, 45, 10, 1];
+  const edge = k => Math.abs(k - 5) >= 3;
 
-  const chart = $('pv-power-chart');
-  function svg(tag, attrs, text) {
-    const element = document.createElementNS('http://www.w3.org/2000/svg', tag);
-    Object.entries(attrs).forEach(([key, value]) => element.setAttribute(key, value));
-    if (text !== undefined) element.textContent = text;
-    return element;
-  }
-  function updatePower() {
-    const a = Number($('pv-baseline').value) / 100, lift = Number($('pv-lift').value) / 100;
-    const n = Number($('pv-n').value), alpha = Number($('pv-alpha').value);
-    const m = powerModel(a, lift, n, alpha);
-    $('pv-baseline-value').textContent = (100 * a).toFixed(1) + '%';
-    $('pv-lift-value').textContent = (100 * lift).toFixed(1) + ' percentage points';
-    $('pv-n-value').textContent = n.toLocaleString('en-US');
-    $('pv-power-result').textContent = 'Approximate power: ' + (100 * m.power).toFixed(1) + '%. Example observed rates: ' + (a * 100).toFixed(1) + '% vs ' + ((a + lift) * 100).toFixed(1) + '%; z = ' + m.z.toFixed(2) + ', p ' + fmtP(m.p) + '. ' + (m.p < alpha ? 'Significant' : 'Not significant') + ' at alpha = ' + alpha + '.';
-    chart.replaceChildren(svg('title', { id:'pv-power-chart-title' }, 'Sampling distributions of the conversion-rate difference'), svg('desc', { id:'pv-power-chart-desc' }, 'Null centred on zero; alternative centred on ' + (lift * 100).toFixed(1) + ' percentage points. Power is ' + (100 * m.power).toFixed(1) + '%. Rejection boundaries at plus and minus ' + (100 * m.critical).toFixed(2) + ' percentage points.'));
-    const lo = Math.min(-4 * m.se0, lift - 4 * m.se1, -m.critical * 1.2);
-    const hi = Math.max(4 * m.se0, lift + 4 * m.se1, m.critical * 1.2);
-    const x = value => 50 + (value - lo) / (hi - lo) * 580;
-    const density = (value, mean, se) => Math.exp(-0.5 * ((value - mean) / se) ** 2) / se;
-    const maxDensity = 1 / Math.min(m.se0, m.se1);
-    const y = (value, mean, se) => 210 - density(value, mean, se) / maxDensity * 165;
-    function curve(mean, se, colour) {
-      const d = Array.from({ length: 301 }, (_, i) => {
-        const value = lo + (hi - lo) * i / 300;
-        return (i ? 'L' : 'M') + x(value).toFixed(2) + ',' + y(value, mean, se).toFixed(2);
-      }).join(' ');
-      return svg('path', { d, fill:'none', stroke:colour, 'stroke-width':2.5 });
+  // 1. Build the ten-flip distribution one trial at a time.
+  (() => {
+    const root = $('pv-build');
+    const model = ways.map(w => w / 1024);
+    let counts = Array(11).fill(0), current = [], total = 0, timer = null, target = 0;
+    const cells = model.map((p, k) => {
+      const cell = document.createElement('div'); cell.className = 'build-cell' + (edge(k) ? ' edge' : '');
+      const track = document.createElement('div'); track.className = 'build-track';
+      const bar = document.createElement('div'); bar.className = 'build-bar';
+      const mark = document.createElement('div'); mark.className = 'build-model';
+      track.append(bar, mark);
+      const name = document.createElement('span'); name.textContent = k;
+      const count = document.createElement('span'); count.className = 'build-count';
+      cell.append(track, name, count);
+      $('build-chart').append(cell);
+      return { cell, bar, mark, count };
+    });
+    function draw(announce) {
+      $('build-flips').replaceChildren(...Array.from({ length: 10 }, (_, i) => {
+        const s = document.createElement('span'); s.textContent = current[i] || '·';
+        if (current[i] === 'H') s.className = 'heads';
+        return s;
+      }));
+      const shares = counts.map(c => total ? c / total : 0);
+      const top = Math.max(0.3, ...shares) * 1.05;
+      $('build-scale').textContent = 'Bar height: share of finished trials. Top of chart = ' + pct(top, 0) + '.';
+      cells.forEach(({ cell, bar, mark, count }, k) => {
+        bar.style.height = (shares[k] / top * 100) + '%';
+        mark.style.bottom = (model[k] / top * 100) + '%';
+        count.textContent = counts[k];
+        cell.title = k + ' heads: ' + counts[k] + ' trials (' + pct(shares[k]) + '); fair-coin chance ' + pct(model[k]);
+      });
+      $('build-chart').setAttribute('aria-label', 'Finished trials: ' + total + '. ' + counts.map((c, k) => k + ' heads: ' + c).join('; ') + '.');
+      if (!announce) return;
+      const lopsided = counts.reduce((s, c, k) => s + (edge(k) ? c : 0), 0);
+      const heads = current.filter(x => x === 'H').length;
+      $('build-status').textContent = total
+        ? 'Finished trials: ' + total.toLocaleString('en-US') + '. Trials with 8 or more heads, or 2 or fewer: ' + lopsided + ' (' + pct(lopsided / total) + '). The exact fair-coin answer is 10.9%.' + (current.length && current.length < 10 ? ' Current trial: ' + current.length + ' flips, ' + heads + ' heads.' : '')
+        : 'No finished trials yet. Flip ten times, or press Play.';
     }
-    function shade(left, right) {
-      const start = Math.max(lo, left), end = Math.min(hi, right);
-      if (start >= end) return;
-      let d = 'M' + x(start) + ',210';
-      for (let i = 0; i <= 150; i++) {
-        const value = start + (end - start) * i / 150;
-        d += ' L' + x(value) + ',' + y(value, lift, m.se1);
+    function flip() {
+      if (current.length === 10) current = [];
+      current.push(Math.random() < 0.5 ? 'H' : 'T');
+      if (current.length === 10) { counts[current.filter(x => x === 'H').length]++; total++; }
+      draw(!timer || current.length === 10);
+      if (timer && total >= target) stop();
+    }
+    function stop() {
+      if (timer) clearInterval(timer);
+      timer = null;
+      ['build-play', 'build-step', 'build-fast'].forEach(id => $(id).disabled = false);
+      $('build-pause').disabled = true;
+      draw(true);
+    }
+    $('build-step').addEventListener('click', flip);
+    $('build-play').addEventListener('click', () => {
+      target = total + 100;
+      ['build-play', 'build-step', 'build-fast'].forEach(id => $(id).disabled = true);
+      $('build-pause').disabled = false;
+      timer = setInterval(flip, 25);
+    });
+    $('build-pause').addEventListener('click', stop);
+    $('build-fast').addEventListener('click', () => {
+      for (let t = 0; t < 1000; t++) { let h = 0; for (let i = 0; i < 10; i++) h += Math.random() < 0.5 ? 1 : 0; counts[h]++; total++; }
+      current = [];
+      draw(true);
+    });
+    $('build-reset').addEventListener('click', () => { stop(); counts = Array(11).fill(0); current = []; total = 0; draw(true); });
+    document.addEventListener('visibilitychange', () => { if (document.hidden && timer) stop(); });
+    draw(true); root.hidden = false;
+  })();
+
+  // 2. Exact coin p-value: click a result, see which bars count.
+  (() => {
+    const root = $('pv-coin'), heads = $('pv-heads'), sided = $('pv-sided');
+    const bars = ways.map((w, k) => {
+      const button = document.createElement('button');
+      button.type = 'button'; button.className = 'pv-bar';
+      button.setAttribute('aria-label', k + ' heads, chance ' + pct(w / 1024, 2) + '. Use as my result.');
+      const bar = document.createElement('span'); bar.style.height = (w / 252 * 140) + 'px'; bar.setAttribute('aria-hidden', 'true');
+      const name = document.createElement('small'); name.textContent = k;
+      button.append(bar, name);
+      button.addEventListener('click', () => { heads.value = k; update(); });
+      $('pv-bars').append(button);
+      return button;
+    });
+    function update() {
+      const h = Number(heads.value), mode = sided.value;
+      $('pv-heads-value').textContent = h;
+      const counted = ways.map((_, k) => mode === 'upper' ? k >= h : Math.abs(k - 5) >= Math.abs(h - 5));
+      bars.forEach((bar, k) => { bar.dataset.tail = counted[k]; bar.setAttribute('aria-pressed', k === h ? 'true' : 'false'); });
+      const n = ways.reduce((s, w, k) => s + (counted[k] ? w : 0), 0), p = n / 1024;
+      $('pv-coin-result').textContent = 'Counted: ' + counted.flatMap((yes, k) => yes ? [k] : []).join(', ') + ' heads. That is ' + n + ' of 1,024 orders, so p ' + fmtP(p) + ' (' + pct(p) + '). ' + (p < 0.05 ? 'Below 5%: significant.' : 'Not below 5%: not significant.');
+    }
+    heads.addEventListener('input', update); sided.addEventListener('change', update);
+    $('pv-flip').addEventListener('click', () => { heads.value = Array.from({ length: 10 }, () => Math.random() < 0.5 ? 1 : 0).reduce((a, b) => a + b, 0); update(); });
+    update(); root.hidden = false;
+  })();
+
+  // 3. Permutation test for the button: deal 2,080 buyers into two groups of 10,000.
+  (() => {
+    const root = $('pv-shuffle'), chart = $('pv-shuffle-chart');
+    const N = 10000, BUYERS = 2080, OBS = 80; // differences are kept as (B buyers - A buyers), so 80 = 0.8 points
+    const SE = Math.sqrt(0.104 * 0.896 * 2 / N) * 100; // pooled SE in percentage points
+    let inner = Array(40).fill(0), outer = Array(40).fill(0), total = 0, extreme = 0, last = null;
+    const bin = m => Math.min(39, Math.max(0, Math.floor((m + 200) / 10))); // 0.1-point bins from -2.0 to +2.0
+    function shuffleOnce() {
+      let left = BUYERS, pool = 2 * N, b = 0;
+      for (let i = 0; i < N; i++) { if (Math.random() * pool < left) { b++; left--; } pool--; }
+      const m = b - (BUYERS - b);
+      (Math.abs(m) >= OBS ? outer : inner)[bin(m)]++;
+      if (Math.abs(m) >= OBS) extreme++;
+      total++;
+      last = { a: BUYERS - b, b, m };
+    }
+    function draw() {
+      const L = 50, R = 620, T = 30, B = 230, x = v => L + (v + 2) / 4 * (R - L), w = (R - L) / 40;
+      const bell = document.getElementById('pv-sh-bell').checked;
+      const expected = v => total * 0.1 * Math.exp(-0.5 * (v / SE) ** 2) / (SE * Math.sqrt(2 * Math.PI));
+      const top = Math.max(5, ...inner.map((c, i) => c + outer[i]), bell ? expected(0) : 0) * 1.1;
+      const y = c => B - c / top * (B - T);
+      reset(chart, 'Differences from shuffled labels', total + ' shuffles. ' + extreme + ' were at least 0.8 points from zero (' + (total ? pct(extreme / total) : '0%') + ').');
+      for (let i = 0; i < 40; i++) {
+        const c1 = inner[i], c2 = outer[i];
+        if (!c1 && !c2) continue;
+        const g = svg('g', { tabindex: 0 });
+        const lo = (i * 10 - 200) / 100;
+        g.append(svg('title', {}, lo.toFixed(1) + ' to ' + (lo + 0.1).toFixed(1) + ' points: ' + (c1 + c2) + ' shuffles'));
+        if (c2) g.append(svg('rect', { x: L + i * w + 1, y: y(c1 + c2), width: w - 2, height: B - y(c2), fill: 'var(--l0)' }));
+        if (c1) g.append(svg('rect', { x: L + i * w + 1, y: y(c1), width: w - 2, height: B - y(c1), fill: 'var(--muted)', 'fill-opacity': 0.3, stroke: 'var(--muted)', 'stroke-width': 0.6 }));
+        chart.append(g);
       }
-      d += ' L' + x(end) + ',210 Z';
-      chart.append(svg('path', { d, fill:'var(--l3)', opacity:0.3 }));
+      if (bell && total) {
+        let d = '';
+        for (let i = 0; i <= 200; i++) { const v = -2 + 4 * i / 200; d += (i ? ' L' : 'M') + x(v).toFixed(1) + ',' + y(expected(v)).toFixed(1); }
+        chart.append(svg('path', { d, fill: 'none', stroke: 'var(--l3)', 'stroke-width': 2.5 }));
+      }
+      [-0.8, 0.8].forEach(v => chart.append(svg('line', { x1: x(v), x2: x(v), y1: T - 6, y2: B, stroke: 'var(--fg)', 'stroke-dasharray': '5 4', 'stroke-width': 1.5 })));
+      label(chart, x(0.8) + 6, T + 4, 'real +0.8', 'start', 'var(--fg)');
+      label(chart, x(-0.8) - 6, T + 4, 'mirror −0.8', 'end', 'var(--fg)');
+      chart.append(svg('line', { x1: L, x2: R, y1: B, y2: B, stroke: 'var(--muted)' }));
+      [-2, -1, 0, 1, 2].forEach(v => label(chart, x(v), B + 22, (v > 0 ? '+' : '') + v));
+      label(chart, (L + R) / 2, B + 48, 'shuffled B − A, percentage points');
+      const lastText = last ? ' Last shuffle: A ' + last.a.toLocaleString('en-US') + ' buyers, B ' + last.b.toLocaleString('en-US') + ', difference ' + (last.m >= 0 ? '+' : '') + (last.m / 100).toFixed(2) + ' points.' : '';
+      $('pv-shuffle-result').textContent = total
+        ? 'Shuffles: ' + total.toLocaleString('en-US') + '. At least 0.8 points from zero: ' + extreme.toLocaleString('en-US') + ', so the simulated p-value is ' + pct(extreme / total) + '.' + lastText
+        : 'No shuffles yet. Start with one, then do a thousand.';
     }
-    shade(lo, -m.critical); shade(m.critical, hi);
-    chart.append(svg('line', { x1:50, x2:630, y1:210, y2:210, stroke:'var(--muted)' }));
-    [-m.critical, m.critical].forEach(c => chart.append(svg('line', { x1:x(c), x2:x(c), y1:25, y2:210, stroke:'var(--muted)', 'stroke-dasharray':'5 4' })));
-    chart.append(curve(0, m.se0, 'var(--l0)'), curve(lift, m.se1, 'var(--l3)'));
-    for (let i = 0; i <= 4; i++) {
-      const value = lo + (hi - lo) * i / 4;
-      chart.append(svg('text', { x:x(value), y:233, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':14 }, (100 * value).toFixed(1)));
+    function run(times) { for (let i = 0; i < times && total < 50000; i++) shuffleOnce(); draw(); }
+    [1, 100, 1000].forEach(t => $('pv-sh-' + t).addEventListener('click', () => run(t)));
+    $('pv-sh-reset').addEventListener('click', () => { inner = Array(40).fill(0); outer = Array(40).fill(0); total = 0; extreme = 0; last = null; draw(); });
+    $('pv-sh-bell').addEventListener('change', draw);
+    draw(); root.hidden = false;
+  })();
+
+  // 4. Power: null and alternative sampling distributions on a fixed axis.
+  (() => {
+    const root = $('pv-power'), chart = $('pv-power-chart');
+    const MIN = -4, MAX = 4, L = 50, R = 650, T = 30, B = 220;
+    const x = v => L + (Math.min(MAX, Math.max(MIN, v)) - MIN) / (MAX - MIN) * (R - L);
+    function model(a, lift, n, alpha) {
+      const b = a + lift, pooled = (a + b) / 2;
+      const se0 = Math.sqrt(2 * pooled * (1 - pooled) / n), se1 = Math.sqrt((a * (1 - a) + b * (1 - b)) / n);
+      const cut = normalQuantile(1 - alpha / 2) * se0;
+      return { se0, se1, cut, power: normalCDF((-cut - lift) / se1) + normalCDF((lift - cut) / se1) };
     }
-    chart.append(svg('text', { x:340, y:255, 'text-anchor':'middle', fill:'var(--muted)', 'font-size':14 }, 'Observed lift (percentage points)'));
-  }
-  ['pv-baseline','pv-lift','pv-n'].forEach(id => $(id).addEventListener('input', updatePower));
-  $('pv-alpha').addEventListener('change', updatePower);
-  updatePower(); $('pv-power').hidden = false;
+    function update() {
+      const a = Number($('pv-baseline').value) / 100, lift = Number($('pv-lift').value) / 100;
+      const n = Number($('pv-n').value), alpha = Number($('pv-alpha').value);
+      const m = model(a, lift, n, alpha);
+      $('pv-baseline-value').textContent = pct(a);
+      $('pv-lift-value').textContent = (lift >= 0 ? '+' : '') + (100 * lift).toFixed(1) + ' points';
+      $('pv-n-value').textContent = n.toLocaleString('en-US');
+      reset(chart, 'Where measured lifts land, with and without a real effect', 'No-effect curve centred on 0, true-lift curve centred on ' + (100 * lift).toFixed(1) + ' points. Cut-offs at plus and minus ' + (100 * m.cut).toFixed(2) + ' points. Power ' + pct(m.power) + '.');
+      // Work in percentage points from here on.
+      const s0 = 100 * m.se0, s1 = 100 * m.se1, mu = 100 * lift, cut = 100 * m.cut;
+      const pdf = (v, mean, s) => Math.exp(-0.5 * ((v - mean) / s) ** 2) / s;
+      const top = 1.08 / Math.min(s0, s1), y = d => B - d / top * (B - T);
+      function shade(from, to) {
+        const lo = Math.max(MIN, from), hi = Math.min(MAX, to);
+        if (lo >= hi) return;
+        let d = 'M' + x(lo) + ',' + B;
+        for (let i = 0; i <= 150; i++) { const v = lo + (hi - lo) * i / 150; d += ' L' + x(v).toFixed(1) + ',' + y(pdf(v, mu, s1)).toFixed(1); }
+        chart.append(svg('path', { d: d + ' L' + x(hi) + ',' + B + ' Z', fill: 'var(--l3)', opacity: 0.3 }));
+      }
+      shade(MIN, -cut); shade(cut, MAX);
+      function curve(mean, s, colour) {
+        let d = '';
+        for (let i = 0; i <= 400; i++) { const v = MIN + (MAX - MIN) * i / 400; d += (i ? ' L' : 'M') + x(v).toFixed(1) + ',' + y(pdf(v, mean, s)).toFixed(1); }
+        chart.append(svg('path', { d, fill: 'none', stroke: colour, 'stroke-width': 2.5 }));
+      }
+      chart.append(svg('line', { x1: L, x2: R, y1: B, y2: B, stroke: 'var(--muted)' }));
+      [-cut, cut].forEach(c => { if (c > MIN && c < MAX) chart.append(svg('line', { x1: x(c), x2: x(c), y1: T - 10, y2: B, stroke: 'var(--muted)', 'stroke-dasharray': '5 4' })); });
+      curve(0, s0, 'var(--l0)'); curve(mu, s1, 'var(--l3)');
+      label(chart, R, T - 12, 'shaded purple = power = ' + pct(m.power, 0), 'end', 'var(--l3)');
+      for (let v = MIN; v <= MAX; v++) label(chart, x(v), B + 22, (v > 0 ? '+' : '') + v);
+      label(chart, (L + R) / 2, B + 48, 'measured lift in one experiment, percentage points');
+      $('pv-power-result').textContent = 'Power: ' + pct(m.power) + '. A result needs to be more than ' + cut.toFixed(2) + ' points away from zero to count as significant at α = ' + pct(alpha, 0) + '. Typical wobble (standard error): ' + s0.toFixed(2) + ' points.';
+    }
+    ['pv-baseline', 'pv-lift', 'pv-n'].forEach(id => $(id).addEventListener('input', update));
+    $('pv-alpha').addEventListener('change', update);
+    update(); root.hidden = false;
+  })();
 })();
 </script>
