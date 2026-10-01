@@ -1,10 +1,19 @@
 ---
-- title: FPGA Implementation of Template Matching Using Binary Sum of Absolute Difference
+- title: FPGA implementation of template matching using binary Sum of Absolute Difference
+  authors: Aditya Rachman Putra · Fadhil Mochammad · Hans Herdian
   venue: IEEE
+  conference: ICSET 2016
+  event: 6th International Conference on System Engineering and Technology
+  pages: pp. 13-17
   year: '2016'
+  doi: 10.1109/icsengt.2016.7849615
   href: https://ieeexplore.ieee.org/document/7849615/
-- title: Implementation of Hazardous Chemical Gas Monitoring System Using Unmanned
-    Aerial Vehicle (UAV)
+- title: Implementation of hazardous chemical gas monitoring system using unmanned aerial vehicle (UAV)
+  authors: Fadhil Mochammad · Aditya Rachman Putra · Bambang Riyanto Trilaksono
   venue: IEEE
+  conference: ICSET 2016
+  event: 6th International Conference on System Engineering and Technology
+  pages: pp. 163-168
   year: '2016'
+  doi: 10.1109/icsengt.2016.7849643
   href: https://ieeexplore.ieee.org/document/7849643/
