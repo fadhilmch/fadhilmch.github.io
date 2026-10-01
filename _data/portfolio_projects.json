@@ -46,7 +46,7 @@
     "result": "The public repository contains notebooks, the architecture, output examples and a report. It does not establish production use or a measured improvement over a baseline.",
     "repo": "https://github.com/fadhilmch/image_colorization",
     "review": "Add my individual contribution and one specific failure or comparison from the experiments before expanding this into a full case study.",
-    "image": "/assets/images/projects/colorization-example.png",
+    "image": "/assets/images/projects/colorization-example.svg",
     "topic": "Data",
     "color": "l5",
     "image_caption": "Repo output · grayscale / prediction / original",
