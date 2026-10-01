@@ -6,20 +6,30 @@ description: Selected public projects, what they demonstrate, and what I would c
 permalink: /projects/
 ---
 <div class="projects-page">
-  <header class="projects-heading"><h1>Projects</h1><p>Selected work with public code. These are earlier team and course projects; my production experience lives in <a href="{{ '/' | relative_url }}#node-work">Work</a>.</p></header>
+  <header class="projects-heading"><h1>Projects</h1><p class="intro">Selected work with public code. These are earlier team and course projects; my production experience lives in <a href="{{ '/' | relative_url }}#node-work">Work</a>.</p></header>
+  <div class="project-grid">
   {% for project in site.data.portfolio_projects %}
-  <article class="project-case" id="{{ project.id }}">
-    <p class="project-meta">{{ project.kind | escape }}</p>
-    <h2>{{ project.title | escape }}</h2>
-    <p class="project-stack">{{ project.stack | escape }}</p>
-    <dl class="project-story">
-      <div><dt>Problem</dt><dd>{{ project.problem | escape }}</dd></div>
-      <div><dt>What we built</dt><dd>{{ project.built | escape }}</dd></div>
-      <div><dt>Decision / limit</dt><dd>{{ project.decision | escape }}</dd></div>
-      <div><dt>Result / evidence</dt><dd>{{ project.result | escape }}</dd></div>
-    </dl>
-    <div class="project-links"><a href="{{ project.repo | escape }}" rel="external">Code on GitHub ↗</a>{% if project.post %}<a href="{{ project.post | relative_url }}">{{ project.post_title | escape }} →</a>{% endif %}</div>
-    {% if project.review %}<p class="project-review"><strong>Case-study draft:</strong> {{ project.review | escape }}</p>{% endif %}
-  </article>
+    <article class="project-card" id="{{ project.id }}" style="--accent:var(--{{ project.color }})">
+      <figure class="project-visual"><img src="{{ project.image | relative_url }}" alt="{{ project.image_caption | escape }}" width="640" height="200"><figcaption>{{ project.image_caption | escape }}</figcaption></figure>
+      <div class="project-content">
+        <p class="project-topic">{{ project.topic | escape }}</p>
+        <p class="project-kind">{{ project.kind | escape }}</p>
+        <h2>{{ project.title | escape }}</h2>
+        <p class="project-teaser">{{ project.teaser | escape }}</p>
+        <p class="project-stack">{{ project.stack | escape }}</p>
+        <div class="project-links"><a href="{{ project.repo | escape }}" rel="external">GitHub ↗</a>{% if project.post %}<a href="{{ project.post | relative_url }}">Related post ↗</a>{% endif %}</div>
+        <details>
+          <summary>Read case study</summary>
+          <dl class="project-story">
+            <dt>Problem</dt><dd>{{ project.problem | escape }}</dd>
+            <dt>What we built</dt><dd>{{ project.built | escape }}</dd>
+            <dt>Decision / limit</dt><dd>{{ project.decision | escape }}</dd>
+            <dt>Result / evidence</dt><dd>{{ project.result | escape }}</dd>
+          </dl>
+          {% if project.review %}<p class="project-review"><strong>Case-study draft:</strong> {{ project.review | escape }}</p>{% endif %}
+        </details>
+      </div>
+    </article>
   {% endfor %}
+  </div>
 </div>
