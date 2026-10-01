@@ -52,7 +52,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
   .primary-nav { order: 3; width: 100%; margin-left: 0; }
   .primary-nav a { flex: 1; text-align: center; }
   .site-footer { padding: 14px 16px; }
-  .footer-links { width: 100%; }
+  .site-footer__main { flex-wrap: nowrap; gap: 12px; }
+  .brand--footer { flex: 0 0 44px; }
+  .footer-links { flex: 1; min-width: 0; flex-wrap: nowrap; }
   .footer-links a { flex: 1; justify-content: center; min-height: 44px; }
 }
 
