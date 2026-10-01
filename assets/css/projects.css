@@ -2,4 +2,21 @@
 
 
 @media(min-width:681px) and (max-width:960px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.project-card{align-self:start;min-width:0}.projects-page summary::-webkit-details-marker{display:none}
+.project-card{min-width:0}.projects-page summary::-webkit-details-marker{display:none}
+
+/* Shared rows align card text, links and disclosures without fixed heights.
+   A story grows the last row only, leaving every card's controls in place. */
+@media(min-width:681px){
+  .project-grid{row-gap:20px}
+  .project-card{align-self:stretch}
+  .project-visual{min-height:212px}
+}
+@supports(grid-template-rows:subgrid){
+  @media(min-width:681px){
+    .project-grid{row-gap:0}
+    .project-card{display:grid;grid-row:span 8;grid-template-rows:subgrid;margin-bottom:20px}
+    .project-content{display:grid;grid-row:span 7;grid-template-rows:subgrid;align-items:stretch;row-gap:0}
+    .project-links{align-self:end;margin-top:0}
+    .projects-page details{align-self:start}
+  }
+}
