@@ -2,7 +2,7 @@
   Normalises one pipeline node into n_* variables (Jekyll includes share scope).
   In:  include.entry  — an entry from _data/workflow.yml `nodes`
        include.skill  — optional; set when the entry is `expand: skills`
-  Out: n_id n_level n_kind n_glyph n_title n_sub n_color n_desc n_source
+  Out: n_id n_level n_kind n_glyph n_title n_sub n_color n_accent n_desc n_source
        n_count (number) n_count_label ("8 roles") n_json_items ("1 item")
 {%- endcomment -%}
 {%- assign n_level = include.entry.level -%}
@@ -13,6 +13,7 @@
   {%- assign n_title = include.skill.group -%}
   {%- assign n_sub = 'auto' -%}
   {%- assign n_color = include.skill.color | default: 'fg' -%}
+  {%- assign n_accent = n_color -%}
   {%- assign n_desc = include.skill.desc -%}
   {%- assign n_source = include.skill.key | prepend: 'skills:' -%}
 {%- else -%}
@@ -22,6 +23,7 @@
   {%- assign n_title = include.entry.title -%}
   {%- assign n_sub = include.entry.subtitle -%}
   {%- assign n_color = include.entry.color | default: 'fg' -%}
+  {%- assign n_accent = include.entry.accent | default: n_color -%}
   {%- assign n_desc = include.entry.desc -%}
   {%- assign n_source = include.entry.source -%}
 {%- endif -%}
