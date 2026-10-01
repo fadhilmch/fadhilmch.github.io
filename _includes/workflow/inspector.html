@@ -27,11 +27,7 @@
           {%- if p.roots %}
           <div><dt>originally from</dt><dd>{{ p.roots | escape }}</dd></div>
           {%- endif %}
-          <div><dt>curious about</dt><dd>{{ p.now | escape }}</dd></div>
           <div><dt>off-hours</dt><dd>{{ p.off_hours | escape }}</dd></div>
-          {%- if p.cares_about and p.cares_about.size > 0 %}
-          <div><dt>cares about</dt><dd><ul class="wf-list">{% for c in p.cares_about %}<li>{{ c | escape }}</li>{% endfor %}</ul></dd></div>
-          {%- endif %}
         {%- when 'education' -%}
           {%- for e in site.data.education %}
           <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
@@ -41,6 +37,7 @@
           <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.place %} · {{ e.place | escape }}{% endif %}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
           {%- endfor -%}
         {%- when 'projects+publications' -%}
+          <div><dt>public code</dt><dd><a href="{{ '/projects/' | relative_url }}">Explore selected projects and their write-ups</a></dd></div>
           {%- for pr in site.data.projects %}
           <div><dt>{{ pr.year | escape }}</dt><dd><span class="wf-item__title">{{ pr.name | escape }}</span>{% if pr.tags %}<span class="wf-item__meta">{{ pr.tags | escape }}</span>{% endif %}<span class="wf-item__note">{{ pr.desc | escape }}</span></dd></div>
           {%- endfor -%}
