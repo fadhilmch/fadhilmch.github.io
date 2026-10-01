@@ -36,14 +36,20 @@
           {%- for e in site.data.experience %}
           <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.place %} · {{ e.place | escape }}{% endif %}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
           {%- endfor -%}
-        {%- when 'projects+publications' -%}
-          <div><dt>public code</dt><dd><a href="{{ '/projects/' | relative_url }}">Explore selected projects and their write-ups</a></dd></div>
-          {%- for pr in site.data.projects %}
-          <div><dt>{{ pr.year | escape }}</dt><dd><span class="wf-item__title">{{ pr.name | escape }}</span>{% if pr.tags %}<span class="wf-item__meta">{{ pr.tags | escape }}</span>{% endif %}<span class="wf-item__note">{{ pr.desc | escape }}</span></dd></div>
-          {%- endfor -%}
-          {%- for pub in site.data.publications %}
-          <div><dt>{{ pub.year | escape }}</dt><dd><a class="wf-item__title" href="{{ pub.href | escape }}" rel="external">{{ pub.title | escape }}</a><span class="wf-item__meta">paper · {{ pub.venue | escape }}</span></dd></div>
-          {%- endfor -%}
+        {%- when 'works' -%}
+          {%- assign latest = site.posts | sort: 'date' | reverse | slice: 0, 3 %}
+          <div><dt>Projects</dt><dd><span class="wf-item__title">Projects with public code</span><a class="wf-more" href="{{ '/projects/' | relative_url }}">more <span aria-hidden="true">→</span></a></dd></div>
+          <div><dt>Latest posts</dt><dd><ul class="wf-post-list">
+            {%- for post in latest %}
+            {%- capture mins %}{% include reading-time.html html=post.content %}{% endcapture %}
+            <li><a class="wf-item__title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a><span class="wf-item__meta">{{ post.date | date: '%Y-%m-%d' }} · {{ mins }} min read</span></li>
+            {%- endfor %}
+          </ul><a class="wf-more" href="{{ '/posts/' | relative_url }}">more <span aria-hidden="true">→</span></a></dd></div>
+          <div><dt>Publications</dt><dd><ul class="wf-pub-list">
+            {%- for pub in site.data.publications %}
+            <li><a class="wf-item__title" href="{{ pub.href | escape }}" rel="external">{{ pub.title | escape }}</a><span class="wf-item__note wf-pub__authors">{{ pub.authors | escape }}</span><span class="wf-item__meta">{{ pub.conference | escape }} · {{ pub.venue | escape }} · {{ pub.pages | escape }}</span><span class="wf-pub__venue">{{ pub.event | escape }}</span><a class="wf-pub__doi" href="https://doi.org/{{ pub.doi | escape }}" rel="external">DOI: {{ pub.doi | escape }} <span aria-hidden="true">↗</span></a></li>
+            {%- endfor %}
+          </ul></dd></div>
         {%- when 'contact' -%}
           {%- for c in site.data.contact %}
           <div><dt>{{ c.label | escape }}</dt><dd><a href="{{ c.href | escape }}">{{ c.value | escape }}</a></dd></div>
@@ -64,4 +70,4 @@
     <div class="wf-json-head"><code>{{ n_id }}.json</code><span>{{ n_json_items }}</span></div>
     <pre><code>{% include workflow/json.html entry=include.entry %}</code></pre>
   </div>
-</section>
+  </section>
