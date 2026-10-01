@@ -10,6 +10,11 @@ nav: about
     <p>{{ profile.bio | escape }}</p>
   </section>
 
+  <nav class="about-shortcuts" aria-label="Explore my work">
+    <a href="#node-exp" data-node="exp">Experience</a> ·
+    <a href="#node-work" data-node="work">Work</a> ·
+    <a href="{{ '/projects/' | relative_url }}">Projects with public code</a>
+  </nav>
   {% include workflow/canvas.html %}
   {% include workflow/panels.html %}
 </div>
