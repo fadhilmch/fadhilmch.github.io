@@ -1,5 +1,6 @@
 ---
 layout: note
+published: false
 title: Multi-agent systems
 tag: agents
 links:
