@@ -1,0 +1,25 @@
+---
+layout: base
+title: Projects
+nav: projects
+description: Selected public projects, what they demonstrate, and what I would change.
+permalink: /projects/
+---
+<div class="projects-page">
+  <header class="projects-heading"><h1>Projects</h1><p>Selected work with public code. These are earlier team and course projects; my production experience lives in <a href="{{ '/' | relative_url }}#node-work">Work</a>.</p></header>
+  {% for project in site.data.portfolio_projects %}
+  <article class="project-case" id="{{ project.id }}">
+    <p class="project-meta">{{ project.kind | escape }}</p>
+    <h2>{{ project.title | escape }}</h2>
+    <p class="project-stack">{{ project.stack | escape }}</p>
+    <dl class="project-story">
+      <div><dt>Problem</dt><dd>{{ project.problem | escape }}</dd></div>
+      <div><dt>What we built</dt><dd>{{ project.built | escape }}</dd></div>
+      <div><dt>Decision / limit</dt><dd>{{ project.decision | escape }}</dd></div>
+      <div><dt>Result / evidence</dt><dd>{{ project.result | escape }}</dd></div>
+    </dl>
+    <div class="project-links"><a href="{{ project.repo | escape }}" rel="external">Code on GitHub ↗</a>{% if project.post %}<a href="{{ project.post | relative_url }}">{{ project.post_title | escape }} →</a>{% endif %}</div>
+    {% if project.review %}<p class="project-review"><strong>Case-study draft:</strong> {{ project.review | escape }}</p>{% endif %}
+  </article>
+  {% endfor %}
+</div>
