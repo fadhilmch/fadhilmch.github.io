@@ -87,3 +87,25 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
   .wf-rows > div { grid-template-columns: 1fr; gap: 4px; }
   .wf-inspector__human, .wf-inspector__json { padding: 12px 16px 16px; }
 }
+
+/* Graph: skill pills and the junction dot between Education/Experience and the pills */
+.wf-pill{width:180px;height:52px;flex-direction:row;align-items:center;justify-content:flex-start;gap:10px;padding:0 12px 0 7px;border:2px solid var(--line);border-radius:14px;background:var(--bg);transition:border-color .2s,box-shadow .2s}
+.wf-pill .wf-node__box{position:static;width:34px;height:34px;border:0;border-radius:9px;background:var(--panel);flex:none}
+.wf-pill .wf-node__label{width:auto;align-items:flex-start;text-align:left}
+.wf-pill .wf-port{top:calc(50% - 4px)}
+.wf-pill .wf-port--in{left:-6px}.wf-pill .wf-port--out{right:-6px}
+.wf-pill:hover{border-color:var(--muted)}
+.wf-pill[aria-expanded="true"]{border-color:var(--fg);box-shadow:0 0 0 4px var(--line)}
+.wf-join{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px var(--panel)}
+
+/* Works inspector */
+.wf-more { display: inline-flex; gap: 8px; margin-top: 14px; color: var(--accent); font: 12px 'Geist Mono', monospace; text-decoration: none; }
+.wf-more:hover { text-decoration: underline; }
+.wf-post-list, .wf-pub-list { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.wf-post-list { gap: 17px; }
+.wf-pub-list { gap: 20px; }
+.wf-pub-list li + li { padding-top: 20px; border-top: 1px solid var(--line); }
+.wf-pub__authors { margin-top: 7px; }
+.wf-pub__venue { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.wf-pub__doi { display: block; margin-top: 8px; color: var(--muted); font: 11px/1.6 'Geist Mono', monospace; overflow-wrap: anywhere; text-decoration: none; }
+.wf-pub__doi:hover { color: var(--accent); }

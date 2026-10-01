@@ -32,7 +32,7 @@
   {%- when 'profile' -%}{%- assign n_count = 1 -%}{%- assign n_unit = 'profile' -%}
   {%- when 'education' -%}{%- assign n_count = site.data.education.size -%}{%- assign n_unit = 'degrees' -%}{%- assign n_json_items = n_count -%}
   {%- when 'experience' -%}{%- assign n_count = site.data.experience.size -%}{%- assign n_unit = 'roles' -%}{%- assign n_json_items = n_count -%}
-  {%- when 'projects+publications' -%}{%- assign n_count = site.data.projects.size | plus: site.data.publications.size -%}{%- assign n_unit = 'items' -%}
+  {%- when 'works' -%}{%- assign n_count = 3 | plus: site.data.publications.size -%}{%- assign n_unit = 'items' -%}
   {%- when 'contact' -%}{%- assign n_count = site.data.contact.size -%}{%- assign n_unit = 'links' -%}
   {%- when 'custom' -%}{%- assign n_count = include.entry.rows.size | default: 0 -%}{%- assign n_unit = 'items' -%}
   {%- else -%}

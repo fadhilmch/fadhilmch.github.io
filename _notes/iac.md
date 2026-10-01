@@ -1,5 +1,6 @@
 ---
 layout: note
+published: false
 title: Infra as code
 tag: mlops
 links: []

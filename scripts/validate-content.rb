@@ -40,7 +40,7 @@ if errors.empty?
 
   if errors.empty?
     profile = content['profile']
-    %w[name role location headline bio now off_hours].each do |key|
+    %w[name role location headline bio off_hours].each do |key|
       fail_with(errors, "profile is missing #{key}") if profile[key].to_s.empty?
     end
     %w[stats education experience skills projects publications contact lanes].each do |key|
@@ -73,6 +73,7 @@ if errors.empty?
     fail_with(errors, 'expected the start-here note in _notes/index.md') unless note_files.include?(File.join(ROOT, '_notes', 'index.md'))
     fail_with(errors, 'expected dated posts in _posts/') if post_files.empty?
 
+    note_files = note_files.reject { |path| File.read(path).match?(/^published: false$/) }
     note_ids = note_files.map { |path| File.basename(path, '.md') }
     note_files.each do |path|
       raw = File.read(path)

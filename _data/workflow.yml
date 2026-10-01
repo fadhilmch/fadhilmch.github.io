@@ -2,12 +2,18 @@
 canvas:
   node_width: 76
   node_height: 72
-  col_gap: 202
-  row_gap: 118
-  pad_x: 30
-  center_y: 250
+  pill_width: 180
+  pill_height: 52
+  pill_gap: 66
+  branch_gap: 160
+  pad_y: 30
+  min_height: 442
+  width: 1150
+  join_x: 365
+  join_size: 14
 nodes:
 - id: profile
+  x: 34
   level: 0
   glyph: "@"
   title: Fadhil
@@ -15,10 +21,11 @@ nodes:
   kind: profile
   color: fg
   accent: l0
-  desc: 'I like the part of machine learning that starts after the demo: making the
-    system useful, measurable, and reliable enough to keep running.'
+  desc: ML engineering at Electrolux, previously ML and experimentation platforms at Traveloka.
   source: profile
 - id: edu
+  x: 214
+  branch: 0
   level: 1
   glyph: "∑"
   title: Education
@@ -30,7 +37,9 @@ nodes:
     at KTH in Stockholm.
   source: education
 - id: exp
-  level: 2
+  x: 214
+  branch: 1
+  level: 1
   glyph: "≡"
   title: Experience
   subtitle: auto
@@ -40,20 +49,23 @@ nodes:
   desc: From a robotics lab in Bandung to machine learning work in Stockholm.
   source: experience
 - expand: skills
-  level: 3
+  x: 540
+  level: 2
   kind: tool
 - id: work
-  level: 4
+  x: 860
+  level: 3
   glyph: "▣"
-  title: Work
-  subtitle: auto
+  title: Works
+  subtitle: Projects · Posts
   kind: output
   color: fg
   accent: l3
-  desc: Selected production systems and two early IEEE papers.
-  source: projects+publications
+  desc: Projects with public code, the latest posts and research papers.
+  source: works
 - id: contact
-  level: 5
+  x: 1020
+  level: 4
   glyph: "→"
   title: Say hello
   subtitle: contact
@@ -64,10 +76,10 @@ nodes:
   source: contact
 edges:
 - from: profile
-  to: edu
-- from: edu
-  to: exp
-- from: exp
+  to: edu,exp
+- from: edu,exp
+  to: join
+- from: join
   to: "@skills"
 - from: "@skills"
   to: work

@@ -1,9 +1,12 @@
 ---
 layout: note
-title: Human in the loop
+title: Human review
 tag: agents
 links:
-- design-thinking
+- golden-dataset
+- triage
 ---
 
-When the evidence is missing or conflicting, stop and ask a person.
+People approve proposed evaluation records and handle doubtful feedback cases. Keep those jobs explicit: approving a reference answer is different from deciding which owner should investigate an incident. The triage workflow routes missing or conflicting evidence to review instead of treating a confident explanation as a decision.
+
+Read the full example: [related post]({{ '/posts/an-agent-that-triages-its-own-feedback/' | relative_url }}).

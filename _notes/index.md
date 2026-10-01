@@ -6,9 +6,9 @@ links:
 - agents
 - ab-testing
 - serving
-- design-thinking
-- robotics
+- kubernetes
+- synthesis
 - exposure
 ---
 
-An index into the vault. Notes are small, linked, and rewritten often. Follow any edge.
+These notes are short companions to the posts, not a separate set of claims. Start with a concept, follow its related notes, then open the article for the example and the limits. For code and worked projects, see [Projects]({{ '/projects/' | relative_url }}).
