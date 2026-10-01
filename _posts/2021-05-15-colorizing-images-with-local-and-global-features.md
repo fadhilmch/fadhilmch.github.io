@@ -145,44 +145,9 @@ Here is the whole path, using the layer sizes from the v2 notebook. Step through
 <figcaption>Tensor sizes and layer order are read from the v2 notebook. The blocks are a drawing of those sizes, not captured activations.</figcaption>
 </figure>
 
-## 4. What the loss asks for
+## 4. Looking at what it predicted
 
-I used Adam with an initial learning rate of 0.001 and mean squared error on the colour channels. First think about one channel of one pixel. A prediction of 8 when the target is 10 has error -2. Squaring gives 4. A prediction of 6 gives error -4 and squared error 16. Larger misses cost more.
-
-For N pixels and two normalized colour channels, the same idea is:
-
-<div class="color-equation" role="math" aria-label="Mean squared error is the sum of squared errors in both colour channels, divided by twice the number of pixels">MSE = Σ [(âᵢ - aᵢ)² + (b̂ᵢ - bᵢ)²] / (2N)</div>
-
-Here aᵢ and bᵢ are the training targets; the hats mark predictions. Minimizing this value helps reproduce known training colours. It does not remove the ambiguity in a new grayscale image.
-
-Consider a toy case where otherwise identical inputs have an a&#42; target of -40 half the time and +40 half the time. A fixed prediction of 0 has average squared error 1,600. A prediction of +40 has average error 3,200: it is exact half the time but badly wrong the other half. Squared error favours the middle in this example.
-
-
-This explains why an uncertain model can prefer less vivid colour. It is not a diagnosis of my later brownish output. A bug in a data pipeline and uncertainty in the learning problem are different explanations, and need different tests.
-
-## 5. Start small enough to see what is broken
-
-Before broader training, I deliberately trained and tested on the same image. The model recovered its colours. That was a useful wiring check: the architecture could fit one example. It was **not evidence of generalization** to unseen photographs.
-
-Then I increased the scope. The report records several experiments, rather than one final benchmark:
-
-<div class="color-experiments">
-<div><strong>One image</strong><span>Can the model fit a known example?</span><p>Yes. A sanity check, not a test of unseen images.</p></div>
-<div><strong>300 Tiny ImageNet images</strong><span>Can it learn more than one picture?</span><p>Some recognizable colours, but weak object boundaries.</p></div>
-<div><strong>1,200 images from one class</strong><span>Does a narrower task help?</span><p>Better boundaries in the reported examples, but restricted to particular classes.</p></div>
-<div><strong>2,000 mixed-class images</strong><span>Can it handle more varied scenes?</span><p>About 15 hours of training. Grass and sky were easier than clothing details.</p></div>
-<div><strong>10,000 images with TFRecords</strong><span>Can preprocessing make training faster?</span><p>About 100 minutes in the report, but brownish test outputs. The suspected implementation problem was not confirmed.</p></div>
-</div>
-
-I ran the experiments on a Google Cloud VM with an NVIDIA K80. To avoid repeatedly computing pretrained features during training, I also tried resizing and embedding images in advance, storing the results in TFRecords.
-
-That changed the data path as well as the size of the dataset. The faster run did not give better images. The report suspected that the TFRecords implementation was incorrect, but did not isolate the cause. The two reported training times are observations from different runs, not a controlled speedup measurement.
-
-The next check would be to send the **same example** through the old preprocessing path and the TFRecords path, then compare L&#42;, target a&#42;/b&#42; and the pretrained vector. Only after those match does training on more data become a clean experiment. That is a proposed debugging step, not something the report says I completed.
-
-## 6. Looking at what it predicted
-
-The output examples are from the 2,000-image run. First, the three examples side by side. These are the figure from the project, cropped into separate images.
+With the architecture in place, the next question is what its predictions look like. The output examples are from the 2,000-image run. First, the three examples side by side. These are the figure from the project, cropped into separate images.
 
 <figure class="fig color-viz">
 <div class="viz-grid3">
@@ -217,10 +182,10 @@ The most useful picture is of the colours themselves. Each plot below places eve
 
 <figure class="fig color-viz">
 <img src="{{ '/assets/images/projects/colorization/chroma-spread.png' | relative_url }}" alt="Two-dimensional histograms of a-star and b-star for three examples, ground truth on the top row, prediction on the bottom row. The predictions cluster tightly near the centre, the originals spread much further out.">
-<figcaption>The predictions sit close to the neutral centre while the originals spread outward. Average chroma, measured as distance from the centre, is about 11 against 21 in example 1, 14 against 23 in example 2 and 13 against 21 in example 3. This is the squared-error effect from section 4 showing up in real output: when a shirt could be blue or red, the safe guess is something muted. These numbers come from the 150-pixel image crops in the project's figure, so treat them as approximate.</figcaption>
+<figcaption>The predictions sit close to the neutral centre while the originals spread outward. Average chroma, measured as distance from the centre, is about 11 against 21 in example 1, 14 against 23 in example 2 and 13 against 21 in example 3. These numbers come from the 150-pixel image crops in the project's figure, so treat them as approximate.</figcaption>
 </figure>
 
-That does not explain every failure. The brownish TFRecords outputs may still be a data-path bug. But it separates two things I could not tell apart by looking at single images: colours that are dull because the problem is ambiguous, and colours that are wrong because something is broken.
+These plots show how muted the predictions are, but they do not establish the cause. Colour ambiguity and an implementation problem are different possible explanations; the output images alone cannot distinguish them.
 
 ## Plausible colour is not recovered history
 
