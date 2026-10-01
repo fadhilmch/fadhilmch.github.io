@@ -32,13 +32,19 @@
     {{- nl }}{{ i2 }}<span class="j-key">"years"</span>{{ colon }}{% include workflow/jv.html v=e.years %}
     {{- nl }}{{ i1 }}{{ cb }}{% unless forloop.last %}{{ cm }}{% endunless %}
   {%- endfor -%}{{ nl }}{{ ca }}
-{%- when 'projects+publications' -%}
-  {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"projects"</span>{{ colon }}{{ oa }}
-  {%- for pr in site.data.projects -%}
-    {{ nl }}{{ i2 }}{% include workflow/jv.html v=pr.name %}{% unless forloop.last %}{{ cm }}{% endunless %}
+{%- when 'works' -%}
+  {%- assign latest = site.posts | sort: 'date' | reverse | slice: 0, 3 -%}
+  {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"projects"</span>{{ colon }}{% include workflow/jv.html v='Projects with public code' %}{{ cm }}
+  {{- nl }}{{ i1 }}<span class="j-key">"latest_posts"</span>{{ colon }}{{ oa }}
+  {%- for post in latest -%}
+    {{ nl }}{{ i2 }}{% include workflow/jv.html v=post.title %}{% unless forloop.last %}{{ cm }}{% endunless %}
   {%- endfor -%}
   {{ nl }}{{ i1 }}{{ ca }}{{ cm }}
-  {{- nl }}{{ i1 }}<span class="j-key">"publications"</span>{{ colon }}{% include workflow/jv.html v=site.data.publications.size %}{{ nl }}{{ cb }}
+  {{- nl }}{{ i1 }}<span class="j-key">"publications"</span>{{ colon }}{{ oa }}
+  {%- for pub in site.data.publications -%}
+    {{ nl }}{{ i2 }}{% include workflow/jv.html v=pub.title %}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}
+  {{ nl }}{{ i1 }}{{ ca }}{{ nl }}{{ cb }}
 {%- when 'contact' -%}
   {{ ob }}{%- for c in site.data.contact -%}
     {{ nl }}{{ i1 }}<span class="j-key">{{ c.label | jsonify | escape }}</span>{{ colon }}{% include workflow/jv.html v=c.value %}{% unless forloop.last %}{{ cm }}{% endunless %}
