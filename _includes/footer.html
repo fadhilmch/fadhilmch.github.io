@@ -1,8 +1,24 @@
+{%- assign gh = site.data.contact | where: 'label', 'github' | first -%}
+{%- assign li = site.data.contact | where: 'label', 'linkedin' | first -%}
+{%- assign em = site.data.contact | where: 'label', 'email' | first -%}
 <footer class="site-footer">
-  <span>© {{ site.time | date: '%Y' }} {{ site.data.profile.name }} · {{ site.data.profile.city | default: site.data.profile.location }}</span>
-  <span class="lane-legend">
-    {%- for lane in site.data.lanes -%}{%- unless lane.branch == false %}
-    <span><span style="color:var(--{{ lane.color }})" aria-hidden="true">●</span> {{ lane.label }}</span>
-    {%- endunless -%}{%- endfor %}
-  </span>
+  <div class="site-footer__main">
+    <a class="brand brand--footer" href="{{ '/' | relative_url }}" aria-label="{{ site.data.profile.name | default: site.title }}, home">
+      {% include logo.svg %}
+      <span class="brand__name">{{ site.data.profile.name | default: site.title }}</span>
+    </a>
+    <nav class="footer-links" aria-label="Contact">
+      <a href="{{ gh.href }}" rel="me noopener">GitHub</a>
+      <a href="{{ li.href }}" rel="me noopener">LinkedIn</a>
+      <a href="{{ em.href }}">Email</a>
+    </nav>
+  </div>
+  <div class="site-footer__meta">
+    <span>© {{ site.time | date: '%Y' }} {{ site.data.profile.name }} · {{ site.data.profile.city | default: site.data.profile.location }}</span>
+    <span class="lane-legend">
+      {%- for lane in site.data.lanes -%}{%- unless lane.branch == false %}
+      <span><span style="color:var(--{{ lane.color }})" aria-hidden="true">●</span> {{ lane.label }}</span>
+      {%- endunless -%}{%- endfor %}
+    </span>
+  </div>
 </footer>
