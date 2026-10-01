@@ -14,6 +14,7 @@ nodes:
   subtitle: Stockholm, Sweden
   kind: profile
   color: fg
+  accent: l0
   desc: 'I like the part of machine learning that starts after the demo: making the
     system useful, measurable, and reliable enough to keep running.'
   source: profile
@@ -24,6 +25,7 @@ nodes:
   subtitle: EE → ML
   kind: input
   color: fg
+  accent: l4
   desc: Electrical engineering at ITB in Bandung, then a master’s in machine learning
     at KTH in Stockholm.
   source: education
@@ -34,6 +36,7 @@ nodes:
   subtitle: auto
   kind: loop
   color: fg
+  accent: l1
   desc: From a robotics lab in Bandung to machine learning work in Stockholm.
   source: experience
 - expand: skills
@@ -46,6 +49,7 @@ nodes:
   subtitle: auto
   kind: output
   color: fg
+  accent: l3
   desc: Selected production systems and two early IEEE papers.
   source: projects+publications
 - id: contact
@@ -55,6 +59,7 @@ nodes:
   subtitle: contact
   kind: respond
   color: l2
+  accent: l2
   desc: Happy to talk about agents, evaluation or experimentation.
   source: contact
 edges:

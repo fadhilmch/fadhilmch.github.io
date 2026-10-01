@@ -2,15 +2,21 @@
   One inspector panel. Call after workflow/resolve.html has set n_*.
   In: include.entry (needed for `custom` rows/output), include.first (bool)
 {%- endcomment -%}
-<section class="wf-inspector" id="wf-i-{{ n_id }}" data-inspector="{{ n_id }}" aria-labelledby="wf-t-{{ n_id }}"{% unless include.first %} hidden{% endunless %}>
-  <div class="wf-inspector__human">
+<section class="wf-inspector" id="wf-i-{{ n_id }}" data-inspector="{{ n_id }}" aria-labelledby="wf-t-{{ n_id }}" style="--accent:var(--{{ n_accent }})"{% unless include.first %} hidden{% endunless %}>
+  <div class="wf-inspector__bar">
     <div class="wf-inspector__heading">
-      <span class="wf-inspector__glyph" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
+      <span class="wf-inspector__glyph" aria-hidden="true">{{ n_glyph | escape }}</span>
       <div>
         <h2 id="wf-t-{{ n_id }}">{{ n_title | escape }}</h2>
         <p class="wf-inspector__hint">click another node to read more</p>
       </div>
     </div>
+    <div class="wf-view" role="group" aria-label="View as">
+      <button type="button" data-view-btn="readable" aria-pressed="true">Readable</button>
+      <button type="button" data-view-btn="json" aria-pressed="false">JSON</button>
+    </div>
+  </div>
+  <div class="wf-inspector__human">
     {% if n_desc %}<p class="wf-inspector__desc">{{ n_desc | escape }}</p>{% endif %}
     <dl class="wf-rows">
       {%- case n_source -%}
@@ -24,22 +30,22 @@
           <div><dt>curious about</dt><dd>{{ p.now | escape }}</dd></div>
           <div><dt>off-hours</dt><dd>{{ p.off_hours | escape }}</dd></div>
           {%- if p.cares_about and p.cares_about.size > 0 %}
-          <div><dt>cares about</dt><dd>{% for c in p.cares_about %}{% unless forloop.first %}<br>{% endunless %}{{ c | escape }}{% endfor %}</dd></div>
+          <div><dt>cares about</dt><dd><ul class="wf-list">{% for c in p.cares_about %}<li>{{ c | escape }}</li>{% endfor %}</ul></dd></div>
           {%- endif %}
         {%- when 'education' -%}
           {%- for e in site.data.education %}
-          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }}, {{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}. {{ e.note | escape }}</dd></div>
+          <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
           {%- endfor -%}
         {%- when 'experience' -%}
           {%- for e in site.data.experience %}
-          <div><dt>{{ e.years | escape }}</dt><dd>{{ e.role | escape }} · {{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %} — {{ e.note | escape }}</dd></div>
+          <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.place %} · {{ e.place | escape }}{% endif %}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
           {%- endfor -%}
         {%- when 'projects+publications' -%}
           {%- for pr in site.data.projects %}
-          <div><dt>{{ pr.name | escape }}{% if pr.year %}<span class="wf-rows__year">{{ pr.year | escape }}</span>{% endif %}</dt><dd>{{ pr.desc | escape }}</dd></div>
+          <div><dt>{{ pr.year | escape }}</dt><dd><span class="wf-item__title">{{ pr.name | escape }}</span>{% if pr.tags %}<span class="wf-item__meta">{{ pr.tags | escape }}</span>{% endif %}<span class="wf-item__note">{{ pr.desc | escape }}</span></dd></div>
           {%- endfor -%}
           {%- for pub in site.data.publications %}
-          <div><dt>paper · {{ pub.venue | escape }} {{ pub.year | escape }}</dt><dd><a href="{{ pub.href | escape }}" rel="external">{{ pub.title | escape }}</a></dd></div>
+          <div><dt>{{ pub.year | escape }}</dt><dd><a class="wf-item__title" href="{{ pub.href | escape }}" rel="external">{{ pub.title | escape }}</a><span class="wf-item__meta">paper · {{ pub.venue | escape }}</span></dd></div>
           {%- endfor -%}
         {%- when 'contact' -%}
           {%- for c in site.data.contact %}
@@ -52,7 +58,7 @@
         {%- else -%}
           {%- assign by_where = n_skill.items | group_by: 'where' -%}
           {%- for g in by_where %}
-          <div><dt>{{ g.name | escape }}</dt><dd>{% for t in g.items %}{% unless forloop.first %}<br>{% endunless %}{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}{% endfor %}</dd></div>
+          <div><dt>{{ g.name | escape }}</dt><dd><ul class="wf-list">{% for t in g.items %}<li>{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}</li>{% endfor %}</ul></dd></div>
           {%- endfor -%}
       {%- endcase %}
     </dl>

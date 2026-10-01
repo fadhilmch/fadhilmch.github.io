@@ -35,6 +35,22 @@
     t.addEventListener('click', function () { select(t.dataset.node, { hash: true, toggle: true }); });
   });
 
+  // Readable / JSON toggle: one choice for every inspector, remembered per browser.
+  var viewBtns = $$('[data-view-btn]');
+  function setView(view) {
+    document.documentElement.setAttribute('data-wf-view', view);
+    viewBtns.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.viewBtn === view)); });
+  }
+  var savedView = null;
+  try { savedView = localStorage.getItem('wf-view'); } catch (e) {}
+  setView(savedView === 'json' ? 'json' : 'readable');
+  viewBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      setView(b.dataset.viewBtn);
+      try { localStorage.setItem('wf-view', b.dataset.viewBtn); } catch (e) {}
+    });
+  });
+
   mobile.addEventListener('change', function () {
     if (!current) select(inspectors[0].dataset.inspector);
     else place(current);
