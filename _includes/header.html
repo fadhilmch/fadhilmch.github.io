@@ -8,6 +8,7 @@
   </a>
   <nav class="primary-nav" aria-label="Primary">
     <a href="{{ '/' | relative_url }}"{% if page.nav == 'about' %} aria-current="page"{% endif %}>About</a>
+    <a href="{{ '/projects/' | relative_url }}"{% if page.nav == 'projects' %} aria-current="page"{% endif %}>Projects</a>
     <a href="{{ '/posts/' | relative_url }}"{% if page.nav == 'posts' %} aria-current="page"{% endif %}>Posts</a>
     <a href="{{ '/notes/' | relative_url }}"{% if page.nav == 'notes' %} aria-current="page"{% endif %}>Notes</a>
   </nav>
