@@ -15,8 +15,7 @@ nodes:
   kind: profile
   color: fg
   accent: l0
-  desc: 'I like the part of machine learning that starts after the demo: making the
-    system useful, measurable, and reliable enough to keep running.'
+  desc: ML engineering at Electrolux, previously ML and experimentation platforms at Traveloka.
   source: profile
 - id: edu
   level: 1
