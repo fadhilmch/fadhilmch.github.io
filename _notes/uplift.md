@@ -1,5 +1,6 @@
 ---
 layout: note
+published: false
 title: Uplift modeling
 tag: exp
 links: []
