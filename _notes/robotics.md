@@ -1,5 +1,6 @@
 ---
 layout: note
+published: false
 title: Robotics roots
 tag: meta
 links:
