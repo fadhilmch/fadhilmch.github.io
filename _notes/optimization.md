@@ -1,5 +1,6 @@
 ---
 layout: note
+published: false
 title: Mixed-integer optimization
 tag: data
 links:
