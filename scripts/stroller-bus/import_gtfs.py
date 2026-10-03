@@ -43,7 +43,7 @@ def build(archive,out,start,days=3):
         if key in service:return service[key]
         weekday=['monday','tuesday','wednesday','thursday','friday','saturday','sunday'][date.weekday()]
         return any(c['service_id']==s and c['start_date']<=datekey<=c['end_date'] and c.get(weekday)=='1' for c in calendars)
-    walks=[];restricted=0;mintransfer={}
+    walks=[];rules=[];restricted=0;mintransfer={}
     for x in rows('transfers.txt'):
         if x.get('from_trip_id') or x.get('to_trip_id') or x.get('from_route_id') or x.get('to_route_id'):
             # Count only restrictions which can apply to retained trips/routes.
@@ -51,8 +51,11 @@ def build(archive,out,start,days=3):
             if x.get('to_trip_id') and x['to_trip_id'] not in trips: continue
             if x.get('from_route_id') and x['from_route_id'] not in routes: continue
             if x.get('to_route_id') and x['to_route_id'] not in routes: continue
-            restricted+=1
-            if restricted<=5: print('Bus transfer rule sample:',json.dumps(x))
+            if x['from_stop_id'] not in idx or x['to_stop_id'] not in idx:continue
+            rules.append({'from':idx[x['from_stop_id']],'to':idx[x['to_stop_id']],
+                'fromTrip':x.get('from_trip_id') or None,'toTrip':x.get('to_trip_id') or None,
+                'fromRoute':x.get('from_route_id') or None,'toRoute':x.get('to_route_id') or None,
+                'type':int(x.get('transfer_type') or 0),'seconds':int(x.get('min_transfer_time') or 0)})
             continue
         f=x['from_stop_id'];t=x['to_stop_id']
         if f not in idx or t not in idx:continue
@@ -63,7 +66,7 @@ def build(archive,out,start,days=3):
         if f==t:mintransfer[f]=max(mintransfer.get(f,120),duration)
         else:walks.append({'from':idx[f],'to':idx[t],'seconds':max(duration,120)})
     # Do not silently discard trip/route transfer restrictions. This first validation detects them.
-    if restricted: raise ValueError(f'Feed contains {restricted} trip/route-specific transfer restrictions; router support required before publishing')
+    if any(r['type'] not in (0,1,2,3) for r in rules):raise ValueError('Unsupported trip-specific transfer type')
     frequencies=list(rows('frequencies.txt'))
     if any(f['trip_id'] in trips for f in frequencies):raise ValueError('Frequency-based bus trips require expansion')
     stopdata=[{'id':s,'name':stops[s]['stop_name'],'lat':float(stops[s]['stop_lat']),'lon':float(stops[s]['stop_lon']),'minTransfer':mintransfer.get(s,120)} for s in ids]
@@ -77,8 +80,8 @@ def build(archive,out,start,days=3):
                 cs=calls[tid];shift=offset*86400
                 if cs[-1][2]+shift<0:continue
                 r=routes[t['route_id']];line=r.get('route_long_name') or r.get('route_short_name')
-                daytrips.append({'id':tid+':'+service_date.isoformat(),'line':line,'calls':[{'stop':idx[c[1]],'arrival':c[2]+shift,'departure':c[3]+shift,'pickup':not c[4],'dropoff':not c[5]} for c in cs]})
-        key=date.isoformat();payload=json.dumps({'date':key,'stops':stopdata,'walks':walks,'trips':daytrips},separators=(',',':')).encode()
+                daytrips.append({'id':tid+':'+service_date.isoformat(),'line':line,'baseId':tid,'route':t['route_id'],'calls':[{'stop':idx[c[1]],'arrival':c[2]+shift,'departure':c[3]+shift,'pickup':not c[4],'dropoff':not c[5]} for c in cs]})
+        key=date.isoformat();payload=json.dumps({'date':key,'stops':stopdata,'walks':walks,'rules':rules,'trips':daytrips},separators=(',',':')).encode()
         if len(payload)>100_000_000:raise ValueError('Daily JSON exceeds 100 MB safety limit')
         compressed=gzip.compress(payload);(out/(key+'.json.gz')).write_bytes(compressed)
         manifest['dates'].append({'date':key,'file':key+'.json.gz','bytes':len(compressed),'decodedBytes':len(payload),'trips':len(daytrips)})
