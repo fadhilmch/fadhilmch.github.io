@@ -24,3 +24,10 @@ Sources:
 - https://gtfs.org/documentation/schedule/reference/
 - https://www.trafiklab.se/api/other-apis/sl/journey-planner-2/
 - https://sl.se/aktuellt/nyheter/barnvagn-pa-buss-1-2-3-4-och-6
+
+Map addition: Sweden-inspired blue/yellow palette, local GTFS stop-sequence overview with zero map-provider requests. "Show street map" explicitly opts in to OpenStreetMap tiles (IP, referrer and viewed area disclosed beforehand). Self-hosted Leaflet 1.9.4, BSD-2-Clause licence preserved in vendor/LEAFLET-LICENSE.txt. OSM attribution always visible and linked; map data ODbL. Only visible tiles loaded, browser caching, no prefetch or analytics/GPS. Bus lines follow stop sequence, not exact road geometry; dashed walks are estimates. Numbered bus labels correspond to a stop-to-stop legend; dots open stop-name popups.
+
+Policies checked 2026-10-03:
+- https://operations.osmfoundation.org/policies/tiles/
+- https://osmfoundation.org/wiki/Attribution_Policy
+- https://github.com/Leaflet/Leaflet/blob/master/LICENSE
