@@ -43,26 +43,17 @@ test('duplicate date check', () => {
   assert.equal(M.hasDate(doc(), '12 Sep'), false);
 });
 
-test('who-owes card for each kind of person', () => {
+test('per-person owed list: totals across sessions, sorted high to low, matches share text', () => {
   const T = M.totals(doc(), cfg);
-  assert.deepEqual(M.meSummary(T, cfg, ''), { kind: 'unknown' });
-  const dedy = M.meSummary(T, cfg, 'Dedy');
-  assert.equal(dedy.kind, 'owes');
-  assert.equal(dedy.amount, 305);                  // 900/3 + 5
+  const amts = T.owes.map(o => o.amount);
+  assert.deepEqual(amts, [...amts].sort((a, b) => b - a));
+  assert.equal(T.owes.reduce((a, o) => a + o.amount, 0), T.outstanding);
+  const dedy = T.owes.find(o => o.name === 'Dedy');
+  assert.equal(dedy.amount, 305);
   assert.deepEqual(dedy.dates, ['11 Sep']);
-  assert.equal(dedy.swish, '072-160 66 41');
-  assert.equal(M.meSummary(T, cfg, 'Aldo').kind, 'settled');
-  assert.equal(M.meSummary(T, cfg, 'Nobody').kind, 'absent');
-  const payer = M.meSummary(T, cfg, 'Fadel');
-  assert.equal(payer.kind, 'payer');
-  assert.equal(payer.amount, T.outstanding);
-});
-
-test('card amount matches the owes list and the share text', () => {
-  const T = M.totals(doc(), cfg);
+  assert.equal(T.owes.find(o => o.name === 'Aldo'), undefined);
   const txt = M.recapText(doc(), cfg, T, 'id', { today: '3 Oct' });
-  const amt = M.meSummary(T, cfg, 'Dedy').amount;
-  assert.ok(txt.includes('Dedy ' + M.fId(amt) + ' kr'));
+  assert.ok(txt.includes('Dedy ' + M.fId(dedy.amount) + ' kr'));
 });
 
 test('edits never change the doc they are given', () => {
