@@ -110,9 +110,8 @@ test('Indonesian recap text: totals, kas and layout', () => {
   const lines = txt.split('\n');
   assert.equal(lines[0], '🎾 REKAP TENIS (update 3 Oct)');
   assert.ok(lines.includes('📅 11 Sep - court 900 kr (Fadel talangin), 117,5 kr/orang'));
-  assert.ok(lines.includes('📅 18 Sep - total 900 kr (724 kr sewa + 176 kr membership, Fadel talangin 724 kr), 117,5 kr/orang'));
+  assert.ok(lines.includes('📅 25 Sep - total 595 kr (455 kr sewa + 140 kr membership, Fadel talangin 455 kr), 90 kr/orang'));
   assert.ok(lines.includes('⏳ Belum bayar: Dedy 117,5 kr | Qiang 117,5 kr | Naufal 117,5 kr'));
-  assert.ok(lines.includes('✅ Lunas semua 🎉'));
   assert.ok(lines.includes('• Dedy, Qiang, Naufal: 117,5 kr masing-masing'));
   assert.ok(lines.includes('• HS Putra, Alif Harfian, Dartagnan, Suci, Assevitto: 90 kr masing-masing'));
   assert.ok(lines.includes('💵 Total yang masih masuk ke Fadel: 802,5 kr'));
@@ -140,4 +139,38 @@ test('recap says everyone is settled when nothing is owed', () => {
   const txt = M.recapText(d, cfg, M.totals(d, cfg), 'id', { today: '3 Oct' });
   assert.ok(txt.includes('• Semua lunas 🎉'));
   assert.ok(txt.includes('Total yang masih masuk ke Fadel: 0 kr'));
+});
+
+test('share text lists only sessions that still have unpaid players', () => {
+  const d = doc();                              // 18 Sep is fully paid, 11 Sep and 25 Sep are not
+  const T = M.totals(d, cfg);
+  const id = M.recapText(d, cfg, T, 'id', { today: '3 Oct' });
+  assert.ok(id.includes('📅 11 Sep'));
+  assert.ok(id.includes('📅 25 Sep'));
+  assert.ok(!id.includes('18 Sep'), 'completed session is left out');
+  assert.ok(!id.includes('Lunas semua'));
+  assert.equal(id.split('\n').filter(l => l.startsWith('📅')).length, 2);
+  const en = M.recapText(d, cfg, T, 'en', { today: '3 Oct' });
+  assert.ok(!en.includes('18 Sep'));
+  assert.ok(!en.includes('All paid'));
+});
+
+test('leaving completed sessions out does not change the totals in the text', () => {
+  const d = doc();
+  const T = M.totals(d, cfg);
+  const id = M.recapText(d, cfg, T, 'id', { today: '3 Oct' });
+  assert.ok(id.includes('Total yang masih masuk ke Fadel: 802,5 kr'));
+  assert.ok(id.includes('• Real: 200 kr'));
+  assert.ok(id.includes('• Pending: 40 kr'));
+  assert.ok(id.includes('• Total nanti: 240 kr'));
+  assert.deepEqual(T, M.totals(d, cfg));
+});
+
+test('when every session is paid the text has no session blocks, only the settled summary', () => {
+  const d = doc();
+  d.sessions.forEach(s => { s.paid = [...s.players]; });
+  const txt = M.recapText(d, cfg, M.totals(d, cfg), 'id', { today: '3 Oct' });
+  assert.equal(txt.split('\n').filter(l => l.startsWith('📅')).length, 0);
+  assert.ok(txt.includes('• Semua lunas 🎉'));
+  assert.ok(txt.includes('• Real: 240 kr'));       // 125 + 5 x 23 paid players
 });
