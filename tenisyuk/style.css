@@ -56,7 +56,7 @@ h3{font-weight:400;font-size:21px;margin:0 0 10px}
 .tile small{color:var(--ink2);font-size:13px;line-height:20px}.tile b{font-size:22px;letter-spacing:-.02em}
 .warnc{color:var(--warnInk)}
 .rows{display:grid;gap:10px;margin:8px 0}
-.srow{display:grid;grid-template-columns:96px 1fr auto;gap:10px;align-items:center;font-size:14px}
+.srow{display:grid;grid-template-columns:96px 1fr auto auto;gap:10px;align-items:center;font-size:14px}
 .srow span small{display:block;color:var(--ink2);font-size:12px}.srow b{font-variant-numeric:tabular-nums}
 .scroll{overflow-x:auto}
 .grid{border-collapse:collapse;width:100%;font-size:14px}.grid th,.grid td{padding:8px 10px 8px 0;border-bottom:1px solid var(--hair);text-align:left;white-space:nowrap}
@@ -91,3 +91,5 @@ input,select,textarea,.form input,.form select,.venue select,.venue input,.admin
 .foot{margin:28px 0 80px;text-align:center}
 details.more summary{font-size:20px;margin:24px 0 8px;cursor:pointer;min-height:44px;display:flex;align-items:center}
 details.more summary::before{content:'▸ ';color:var(--ink2)}details.more[open] summary::before{content:'▾ '}
+
+.pay{display:inline-flex;align-items:center;justify-content:center;min-width:56px;min-height:44px;padding:0 12px;border-radius:22px;background:var(--ok);color:#fff;font-weight:700;text-decoration:none}
