@@ -4,11 +4,13 @@
 function search(data,q){
  const labels=()=>Array.from({length:data.stops.length},()=>new Map());
  let previous=labels(),best=null;
+ const ruleWalks=Array.from({length:data.stops.length},()=>[]);for(const r of data.rules||[])if(r.from!==r.to&&r.type!==3)ruleWalks[r.from].push(r);
+ function metre(a,b){const rad=Math.PI/180,x=(a.lat-b.lat)*rad,y=(a.lon-b.lon)*rad,z=Math.sin(x/2)**2+Math.cos(a.lat*rad)*Math.cos(b.lat*rad)*Math.sin(y/2)**2;return 6371000*2*Math.atan2(Math.sqrt(z),Math.sqrt(1-z))}
  const put=(ls,stop,l)=>{const key=l.trip?.id||'access';const old=ls[stop].get(key);if(!old||l.time<old.time){ls[stop].set(key,l);return true}return false};
  for(const a of q.access||[])put(previous,a.stop,{time:q.departure+a.seconds,path:a.seconds?[{kind:'walk',to:a.stop,seconds:a.seconds}]:[],trip:null,lastStop:null,lastArrival:null});
  const walks=Array.from({length:data.stops.length},()=>[]);for(const w of data.walks||[])walks[w.from].push(w);
  function closure(ls){const queue=[];ls.forEach((m,s)=>m.forEach(l=>queue.push({stop:s,label:l})));let head=0;
-  while(head<queue.length){const x=queue[head++];if(x.label.time>=Math.min(best?.arrival||Infinity,q.departure+14400))continue;for(const w of walks[x.stop]){if(w.seconds<0)throw Error('Negative walking time');const l={...x.label,time:x.label.time+w.seconds,path:[...x.label.path,{kind:'walk',from:x.stop,to:w.to,seconds:w.seconds}]};if(put(ls,w.to,l))queue.push({stop:w.to,label:l});}}return ls}
+  while(head<queue.length){const x=queue[head++];if(x.label.time>=Math.min(best?.arrival||Infinity,q.departure+14400))continue;const conditioned=[];if(x.label.trip&&x.label.lastStop===x.stop)for(const r of ruleWalks[x.stop]){if(r.fromTrip&&r.fromTrip!==x.label.trip.baseId)continue;if(r.fromRoute&&r.fromRoute!==x.label.trip.route)continue;const distance=metre(data.stops[r.from],data.stops[r.to]);if(Number.isFinite(distance))conditioned.push({from:r.from,to:r.to,seconds:Math.max(30,Math.ceil(distance*1.35/0.9),r.seconds||0)})}for(const w of [...walks[x.stop],...conditioned]){if(w.seconds<0)throw Error('Negative walking time');const l={...x.label,time:x.label.time+w.seconds,path:[...x.label.path,{kind:'walk',from:x.stop,to:w.to,seconds:w.seconds}]};if(put(ls,w.to,l))queue.push({stop:w.to,label:l});}}return ls}
  previous=closure(previous);
  const rulesByPair=new Map();for(const r of data.rules||[]){const k=r.from+':'+r.to;if(!rulesByPair.has(k))rulesByPair.set(k,[]);rulesByPair.get(k).push(r)}
  function ready(l,trip,stop){if(!l.trip)return l.time;let seconds=data.stops[stop].minTransfer||120;let score=-1,rule=null;
