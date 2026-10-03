@@ -8,7 +8,7 @@ function search(data,q){
  for(const a of q.access||[])put(previous,a.stop,{time:q.departure+a.seconds,path:a.seconds?[{kind:'walk',to:a.stop,seconds:a.seconds}]:[],trip:null,lastStop:null,lastArrival:null});
  const walks=Array.from({length:data.stops.length},()=>[]);for(const w of data.walks||[])walks[w.from].push(w);
  function closure(ls){const queue=[];ls.forEach((m,s)=>m.forEach(l=>queue.push({stop:s,label:l})));let head=0;
-  while(head<queue.length){const x=queue[head++];for(const w of walks[x.stop]){if(w.seconds<0)throw Error('Negative walking time');const l={...x.label,time:x.label.time+w.seconds,path:[...x.label.path,{kind:'walk',from:x.stop,to:w.to,seconds:w.seconds}]};if(put(ls,w.to,l))queue.push({stop:w.to,label:l});}}return ls}
+  while(head<queue.length){const x=queue[head++];if(x.label.time>=Math.min(best?.arrival||Infinity,q.departure+14400))continue;for(const w of walks[x.stop]){if(w.seconds<0)throw Error('Negative walking time');const l={...x.label,time:x.label.time+w.seconds,path:[...x.label.path,{kind:'walk',from:x.stop,to:w.to,seconds:w.seconds}]};if(put(ls,w.to,l))queue.push({stop:w.to,label:l});}}return ls}
  previous=closure(previous);
  const rulesByPair=new Map();for(const r of data.rules||[]){const k=r.from+':'+r.to;if(!rulesByPair.has(k))rulesByPair.set(k,[]);rulesByPair.get(k).push(r)}
  function ready(l,trip,stop){if(!l.trip)return l.time;let seconds=data.stops[stop].minTransfer||120;let score=-1,rule=null;
@@ -18,8 +18,8 @@ function search(data,q){
  }
  for(let round=1;round<=(q.maxBoardings||5);round++){
   const next=labels();let changed=false;
-  for(const trip of data.trips){let board=null;
-   for(const call of trip.calls){
+  for(const trip of data.trips){if(trip.calls.at(-1).arrival<q.departure||trip.calls[0].departure>Math.min(best?.arrival||Infinity,q.departure+14400))continue;let board=null;
+   for(const call of trip.calls){if(call.arrival>=Math.min(best?.arrival||Infinity,q.departure+14400))break;
     if(board&&call.dropoff!==false){const l={time:call.arrival,path:[...board.label.path,{kind:'bus',line:trip.line,trip:trip.id,from:board.stop,to:call.stop,departure:board.departure,arrival:call.arrival}],trip,lastStop:call.stop,lastArrival:call.arrival};if(put(next,call.stop,l))changed=true;}
     if(!board&&call.pickup!==false){let candidate=null;for(const l of previous[call.stop].values()){if(ready(l,trip,call.stop)<=call.departure&&(!candidate||l.time<candidate.time))candidate=l}if(candidate)board={label:candidate,stop:call.stop,departure:call.departure};}
    }
