@@ -57,7 +57,9 @@
     const F = n => (id ? fId(n) : fEn(n)) + ' kr';
     const unpaid = s => unpaidOthers(s, P);
     L.push(id ? `🎾 REKAP TENIS (update ${o.today})` : `🎾 TENNIS RECAP (update ${o.today})`, '');
-    for (const s of ss) {
+    // Only sessions that still have unpaid players go in the share text.
+    // Totals below still cover every session.
+    for (const s of ss.filter(x => unpaid(x).length)) {
       const g = gap(s), c = charge(s);
       L.push(id
         ? (g > 0
