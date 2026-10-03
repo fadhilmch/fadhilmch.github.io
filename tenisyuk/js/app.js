@@ -1,7 +1,7 @@
 const CFG=window.TY||{};const DEMO=!CFG.url;const $=s=>document.querySelector(s);
 const H=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const{fEn,fId,kr,charge,court,gap,MONTHS}=TYMoney;
-const S={code:localStorage.getItem('ty_code')||sessionStorage.getItem('ty_code')||'',me:localStorage.getItem('ty_me')||'',toast:null,admin:sessionStorage.getItem('ty_admin')||'',doc:null,cfg:null,tab:'history',open:{},err:'',asking:false,addOpen:false,lang:'id',venueAdd:false,theme:localStorage.getItem('ty_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')};
+const S={code:localStorage.getItem('ty_code')||sessionStorage.getItem('ty_code')||'',toast:null,admin:sessionStorage.getItem('ty_admin')||'',doc:null,cfg:null,tab:'history',open:{},err:'',asking:false,addOpen:false,lang:'id',venueAdd:false,theme:localStorage.getItem('ty_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')};
 document.documentElement.dataset.theme=S.theme;
 const demoDoc=()=>JSON.parse(localStorage.getItem('ty_demo')||'null')||{sessions:[
 {id:'s11',date:'11 Sep',billed:900,real:900,venue:'',players:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian','Dedy','Qiang','Naufal'],paid:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian']},
@@ -33,7 +33,7 @@ function view(){const root=$('#app');if(!S.doc){root.innerHTML=gate();bindGate()
  <div class="tools">${adm}<button class="btn sm" id="th">${S.theme==='dark'?'☀️':'🌙'}<span class="hide-s"> ${S.theme==='dark'?'Light':'Dark'}</span></button></div></header>
  <div class="summary"><div><small>Sessions</small><b>${ss.length}</b></div><div><small>Still owed</small><b class="warnc">${kr(T.outstanding)}</b></div><div><small>Kas</small><b>${kr(T.kasReal)}</b></div><small class="upd">Updated ${todayLabel()}${DEMO?' · demo data':''}</small></div>
  ${S.err?`<div class="err">${H(S.err)}</div>`:''}
- <section>${(S.tab==='history'||S.tab==='cash')?meCard(T):''}${S.tab==='history'?history(T,admin):S.tab==='stats'?stats(T):S.tab==='cash'?cash(T,admin):share(T)}</section>
+ <section>${S.tab==='history'?history(T,admin):S.tab==='stats'?stats(T):S.tab==='cash'?cash(T,admin):share(T)}</section>
  <footer class="foot"><button class="linkbtn" id="forget">Forget this device</button></footer>${toastBar()}`;bind()}
 function gate(){return`<div class="gate"><div class="gatebox"><div class="brand"><img class="wm wm-l" src="${TY_WM.light}" alt="tennis yuk"><img class="wm wm-d" src="${TY_WM.dark}" alt=""></div><p>Enter the viewer code from the group chat.</p><input id="code" type="password" placeholder="Viewer code" aria-label="Viewer code" autofocus><button class="btn primary" id="go">Open</button><small class="${S.err?'badc':''}" id="gerr">${S.err?H(S.err):(DEMO?'Demo mode: code demo (admin: admin)':'')}</small></div></div>`}
 function card(s,admin){const o=!!S.open[s.id],u=unpaidO(s),others=s.players.length-1,P=PAYER(),ch=charge(s);
@@ -73,12 +73,12 @@ function ledger(acct,T,admin){const d=S.doc,rows=[];
  ${admin&&acct==='kas'?(S.txOpen?`<div class="form"><div class="seg"><button data-kind="out" class="${S.txKind!=='in'?'on':''}">Money out</button><button data-kind="in" class="${S.txKind==='in'?'on':''}">Money in</button></div><div class="two"><label>Amount (kr)<input id="x_amt" inputmode="decimal" placeholder="50"></label><label>Date<input id="x_date" type="date" value="${todayIsoNow()}"></label></div><label>Note<input id="x_note" placeholder="e.g. new balls"></label><div class="actions"><button class="btn primary" id="x_add">Add entry</button><button class="btn" id="x_cancel">Cancel</button></div></div>`:`<button class="btn wide" id="x_open">＋ Add transaction</button>`):''}`}
 function cash(T,admin){const P=PAYER();
  return`<div class="hero"><small>💵 Still owed to ${H(P)}</small><b>${kr(T.outstanding)}</b>${bar([{v:T.collected,c:'var(--ok)'},{v:T.outstanding,c:'var(--warn)'}],10)}<small>${kr(T.collected)} collected of ${kr(T.charged)} charged to others</small></div>
- <div class="rows">${T.owes.map(o=>`<div class="srow"><span>${H(o.name)}<small>${o.dates.join(' + ')}</small></span>${bar([{v:o.amount,c:'var(--warn)'},{v:Math.max(0,250-o.amount),c:'transparent'}],10)}<b>${kr(o.amount)}</b></div>`).join('')}</div>${T.owes.length?'':'<p class="note">Everyone is settled 🎉</p>'}
+ <details class="more" id="owedd"${(S.owedOpen===undefined?innerWidth>=700:S.owedOpen)?' open':''}><summary>Still owed per person (${T.owes.length})</summary><div class="swishrow card"><span>📲 Swish to ${H(P)}: <b>${H(S.cfg.swish)}</b></span><button class="btn sm" id="cp_swish" data-swish="${H(S.cfg.swish)}">Copy number</button></div>
+ <div class="rows">${T.owes.map(o=>`<div class="srow"><span>${H(o.name)}<small>${o.dates.join(' + ')}</small></span>${bar([{v:o.amount,c:'var(--warn)'},{v:Math.max(0,250-o.amount),c:'transparent'}],10)}<b>${kr(o.amount)}</b></div>`).join('')}</div>${T.owes.length?'':'<p class="note">Everyone is settled 🎉</p>'}</details>
  <h2>🏦 Ball cash (kas)</h2><div class="tiles three"><div class="tile"><small>Real</small><b>${kr(T.kasReal)}</b></div><div class="tile"><small>Pending</small><b class="warnc">${kr(T.kasPending)}</b></div><div class="tile"><small>Total later</small><b>${kr(T.kasReal+T.kasPending)}</b></div></div>
  <p class="note">Real = ${S.cfg.kasOpening} opening + ${T.kasPersons} payments × 5${T.kasManual?(T.kasManual>0?' + ':' − ')+fEn(Math.abs(T.kasManual))+' manual':''}. Pending = ${T.kasPending/5} unpaid × 5.</p>
  ${ledger('kas',T,admin)}${ledger('membership',T,admin)}
- <h2>${H(P)}'s cash flow</h2><dl class="kv"><div><dt>Fronted for court</dt><dd>${kr(T.realCost)}</dd></div><div><dt>Received from others</dt><dd>${kr(T.collected)}</dd></div><div><dt>Still out of pocket</dt><dd>${kr(T.realCost-T.collected)}</dd></div></dl>
- <p class="note">📲 Swish to ${H(P)}: <b>${H(S.cfg.swish)}</b></p>`}
+ <h2>${H(P)}'s cash flow</h2><dl class="kv"><div><dt>Fronted for court</dt><dd>${kr(T.realCost)}</dd></div><div><dt>Received from others</dt><dd>${kr(T.collected)}</dd></div><div><dt>Still out of pocket</dt><dd>${kr(T.realCost-T.collected)}</dd></div></dl>`}
 const recapText=(T,lang)=>TYMoney.recapText(S.doc,S.cfg,T,lang,{today:todayLabel(),siteUrl:CFG.siteUrl});
 function share(T){const t=recapText(T,S.lang);return`<p class="note" style="margin-top:16px">Builds the recap in your fixed format from the current data. The text includes the page link; members enter the viewer code from the group chat.</p>
  <div class="seg"><button data-lang="id" class="${S.lang==='id'?'on':''}">Bahasa (your format)</button><button data-lang="en" class="${S.lang==='en'?'on':''}">English</button></div>
@@ -93,12 +93,6 @@ async function change(next,msg){const{result:r,prev}=await TYEdits.commitChange(
  view();return r==='ok'}
 const todayIsoNow=()=>TYMoney.todayIso(new Date());
 const copyText=async(t,btn)=>{try{await navigator.clipboard.writeText(t);if(btn){btn.textContent='Copied';setTimeout(()=>{btn.textContent='Copy number'},1500)}}catch(e){if(btn)btn.textContent=t}};
-function meCard(T){const m=TYMoney.meSummary(T,S.cfg,S.me),P=S.cfg.payer;
- if(m.kind==='unknown')return`<div class="mecard"><b>Who are you?</b><small>Pick your name once to see what you owe. Saved on this phone only.</small><select id="me_sel" aria-label="Your name"><option value="">Pick your name</option>${T.names.map(n=>`<option value="${H(n)}">${H(n)}</option>`).join('')}</select></div>`;
- const hi=`<small class="mehi">Hi ${H(S.me)} · <button class="linkbtn" id="me_clear">not you?</button></small>`;
- if(m.kind==='owes')return`<div class="mecard owes">${hi}<b class="big">You owe ${kr(m.amount)}</b><small>${m.dates.map(H).join(' + ')} · to ${H(P)}</small><div class="swishrow"><span>📲 Swish ${H(m.swish)}</span><button class="btn sm" id="cp_swish" data-swish="${H(m.swish)}">Copy number</button></div></div>`;
- if(m.kind==='payer')return`<div class="mecard">${hi}<b class="big">${kr(m.amount)} still to come in to you</b></div>`;
- return`<div class="mecard ok">${hi}<b class="big">You're all paid, thanks 🎉</b></div>`}
 function toastBar(){return S.toast?`<div class="toast" role="status"><span>${H(S.toast.msg)}</span><button class="linkbtn" id="undo">Undo</button></div>`:''}
 async function checkAdmin(c){if(DEMO)return c==='admin';const r=await rpc('check_admin',{p_code:c});return !!r.ok}
 function bindGate(){const go=async()=>{const c=$('#code').value;try{const r=await load(c);if(r.error){S.err=r.error==='locked'?'Too many tries. Wait 15 minutes.':'Wrong code.';return view()}S.code=c;localStorage.setItem('ty_code',c);S.doc=r;S.cfg=r.cfg;S.err='';view()}catch(e){S.err='No connection.';view()}};$('#go').onclick=go;$('#code').onkeydown=e=>{if(e.key==='Enter')go()}}
@@ -125,9 +119,7 @@ function bind(){document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=
  const cp=$('#cp');if(cp)cp.onclick=async()=>{try{await navigator.clipboard.writeText($('#sh').value);$('#cpm').textContent='Copied'}catch(e){$('#sh').select();$('#cpm').textContent='Select the text and copy it'}}
  document.querySelectorAll('[data-date]').forEach(e=>e.onchange=()=>{const l=TYMoney.dateToLabel(e.value);if(l)change(TYEdits.setDate(S.doc,e.dataset.date,l),'Date changed to '+l)});
  const us=$('#undo');if(us)us.onclick=()=>{const p=S.toast.prev;S.toast=null;clearTimeout(toastTimer);change(p,null)};
- const ms=$('#me_sel');if(ms)ms.onchange=()=>{if(ms.value){S.me=ms.value;localStorage.setItem('ty_me',S.me);view()}};
- const mc=$('#me_clear');if(mc)mc.onclick=()=>{S.me='';localStorage.removeItem('ty_me');view()};
- const cs=$('#cp_swish');if(cs)cs.onclick=()=>copyText(cs.dataset.swish,cs);
- const fg=$('#forget');if(fg)fg.onclick=()=>{['ty_code','ty_me'].forEach(k=>localStorage.removeItem(k));['ty_code','ty_admin'].forEach(k=>sessionStorage.removeItem(k));S.code='';S.me='';S.admin='';S.doc=null;S.cfg=null;S.err='';view()};
+ const od=$('#owedd');if(od)od.ontoggle=()=>{S.owedOpen=od.open};const cs=$('#cp_swish');if(cs)cs.onclick=()=>copyText(cs.dataset.swish,cs);
+ const fg=$('#forget');if(fg)fg.onclick=()=>{localStorage.removeItem('ty_code');['ty_code','ty_admin'].forEach(k=>sessionStorage.removeItem(k));S.code='';S.admin='';S.doc=null;S.cfg=null;S.err='';view()};
 }
 (async()=>{if(S.code){try{const r=await load(S.code);if(!r.error){S.doc=r;S.cfg=r.cfg}}catch(e){}}view()})();
