@@ -133,3 +133,12 @@ test('a server refusal keeps what the save routine reloaded', async () => {
   assert.equal(r.result, 'server');
   assert.equal(state.doc, server);
 });
+
+test('swishLink follows the official Swish link format', () => {
+  const u = M.swishLink('072-160 66 41', 117.5, 'Tennis Dedy');
+  assert.equal(u, 'https://app.swish.nu/1/p/sw/?sw=46721606641&amt=117.50&msg=Tennis%20Dedy');
+  assert.equal(M.swishLink('+46 72 160 66 41'.replace('+', '00'), 90, 'x'), 'https://app.swish.nu/1/p/sw/?sw=46721606641&amt=90.00&msg=x');
+  assert.equal(M.swishLink('0721606641', 0, ''), 'https://app.swish.nu/1/p/sw/?sw=46721606641');
+  assert.equal(M.swishLink('', 10, 'x'), '');
+  assert.ok(M.swishLink('0721606641', 5, 'A&B=C').endsWith('msg=A%26B%3DC'));
+});
