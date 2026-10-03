@@ -60,7 +60,8 @@ def build(archive,out,start,days=3):
         f=x['from_stop_id'];t=x['to_stop_id']
         if f not in idx or t not in idx:continue
         kind=int(x.get('transfer_type') or 0)
-        if kind==3:continue
+        if kind==3:
+            rules.append({'from':idx[f],'to':idx[t],'type':3,'seconds':0});continue
         if kind not in (0,1,2):raise ValueError('Unsupported transfer type')
         duration=int(x.get('min_transfer_time') or 120)
         if f==t:mintransfer[f]=max(mintransfer.get(f,120),duration)
@@ -73,11 +74,12 @@ def build(archive,out,start,days=3):
     out=Path(out);out.mkdir(parents=True,exist_ok=True);manifest={'builtAt':datetime.now(ZoneInfo('Europe/Stockholm')).isoformat(),'source':'Trafiklab SL GTFS Regional Static','dates':[],'stops':len(ids),'routes':len(routes)}
     for n in range(days):
         date=start+timedelta(days=n);daytrips=[]
-        for offset in (-1,0):
+        for offset in (-1,0,1):
             service_date=date+timedelta(days=offset)
             for tid,t in trips.items():
                 if not active(t['service_id'],service_date):continue
                 cs=calls[tid];shift=offset*86400
+                if offset==1 and cs[0][3]>4*3600:continue
                 if cs[-1][2]+shift<0:continue
                 r=routes[t['route_id']];line=r.get('route_long_name') or r.get('route_short_name')
                 daytrips.append({'id':tid+':'+service_date.isoformat(),'line':line,'baseId':tid,'route':t['route_id'],'calls':[{'stop':idx[c[1]],'arrival':c[2]+shift,'departure':c[3]+shift,'pickup':not c[4],'dropoff':not c[5]} for c in cs]})
