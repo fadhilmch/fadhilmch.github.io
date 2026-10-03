@@ -1,16 +1,26 @@
-# Stroller bus route page
+# Stockholm stroller bus planner
 
-Standalone static page at `/stroller-bus/`. No build step, API key or backend.
+Own round-based earliest-arrival search over Trafiklab SL GTFS Regional Static. Non-bus routes and lines 1-6 are removed during preprocessing, before searches. Physical platforms, pickup/dropoff restrictions, service dates/exception dates, previous-day after-midnight trips, general and trip-specific transfers are preserved. Labels remain separate per arriving trip to honor transfer restrictions.
 
-Tests: `node --test scripts/stroller-bus/route.test.cjs`
+Search runs in a Web Worker on the phone. Limit: 4 hours, at most 5 buses, access/egress stops within 650 m straight-line radius. Access walks use 1.35 distance factor and 0.9 m/s plus a minute; these are estimates, not street routing. Transfers come from GTFS. Routing ignores live delays/cancellations. Unknown frequency and transfer features fail the build. Dataset expires if absent for today or build older than 48 hours.
 
-Route search uses SL Journey Planner v2, leaving now, requesting 3 bus-only suggestions. SL may return more or fewer. If no journey survives, up to three further requests try the other preferences then the original preference 30 minutes later. Maximum four trip requests per search. Results stay in API order; the user can choose fastest, fewer transfers or less walking. The filter removes any whole journey with bus lines 1-6, unknown line/mode or a non-bus transit leg. Class 99 walking legs are allowed; walking-only journeys are not. Per the owner's request, there is no terminal exclusion. The page shows the official reader/gate fare condition, not a promise of free travel.
+Daily refresh uses standard public GitHub Actions runners and the TRAFIKLAB_GTFS_KEY repository secret. No secret is shipped. Generated daily files are gzip, decompressed with the browser's DecompressionStream. Old browsers without that API aren't supported. Daily download measured 3.35 MB Saturday / 4.98 MB Monday, 34.5 / 51.5 MB decoded. No actual physical phone benchmark yet.
 
-This is not an exhaustive route planner. The SL line-exclusion parameters did not remove line 4 in our live check, so the page relies on client-side filtering. An empty result means none of SL's suggestions matched, not that no such journey exists. Do not label this page "all free bus routes".
+Tests:
+- node --test scripts/stroller-bus/*.test.cjs
+- python scripts/stroller-bus/import.test.py
 
-Lookup is explicit on submit, then the user chooses the location match. No background polling, saved locations, tracking or secrets. Request timeouts are 20 seconds. API text is rendered with textContent.
+Real data validation 2026-10-03:
+- Vasaparken -> Odenplan at 16:00: bus 61 departs 16:07:18, arrives 16:10:00. Exact scheduled match with SL v2.
+- Vasaparken -> Stadsbiblioteket: bus 61 departs 16:07:18, arrives 16:13:00. Exact scheduled match with SL v2.
+- Odenplan -> Gullmarsplan: own router finds 61 -> 74 -> 168. Each leg checked separately in SL v2; same lines and stops, schedule endpoints match within 4 seconds. SL's unconstrained route suggestions prefer 4 and 1 for some portions, showing why post-filtering would lose alternatives.
+- Laptop/headless browser 390px: data load and search about 1.2 sec. Local stop-to-stop engine ~73 ms short trip / ~356 ms three-bus trip after pruning. Not a physical-phone guarantee.
 
-Sources checked October 3, 2026:
-- https://www.trafiklab.se/api/other-apis/sl/journey-planner-2/ (no key, request and response documentation)
-- https://www.trafiklab.se/openapi/sl-journey-planner.json (transport classes, parameters)
-- https://sl.se/aktuellt/nyheter/barnvagn-pa-buss-1-2-3-4-och-6 (fare conditions)
+The older app.js and route.js filter helper is retained but not the main page; only route.js's key-free location lookup is reused. No gate-terminal exclusion per owner request. Official fare reminder remains, since buses-only and excluding 1-6 does not guarantee free travel.
+
+Sources:
+- https://www.trafiklab.se/api/gtfs-datasets/gtfs-regional/
+- https://raw.githubusercontent.com/trafiklab/openApi-docs/master/gtfsRegionalStatic.yaml
+- https://gtfs.org/documentation/schedule/reference/
+- https://www.trafiklab.se/api/other-apis/sl/journey-planner-2/
+- https://sl.se/aktuellt/nyheter/barnvagn-pa-buss-1-2-3-4-och-6
