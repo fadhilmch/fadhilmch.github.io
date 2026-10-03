@@ -142,3 +142,13 @@ test('swishLink follows the official Swish link format', () => {
   assert.equal(M.swishLink('', 10, 'x'), '');
   assert.ok(M.swishLink('0721606641', 5, 'A&B=C').endsWith('msg=A%26B%3DC'));
 });
+
+test('owedBreakdown adds up to the per-person total', () => {
+  const d = doc(), T = M.totals(d, cfg);
+  for (const o of T.owes) {
+    const items = M.owedBreakdown(d, cfg, o.name);
+    assert.equal(items.reduce((a, i) => a + i.amount, 0), o.amount);
+    assert.deepEqual(items.map(i => i.date), o.dates);
+  }
+  assert.deepEqual(M.owedBreakdown(d, cfg, 'Aldo'), []);
+});
