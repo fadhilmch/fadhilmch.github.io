@@ -82,8 +82,10 @@ if __name__=='__main__':
     try:
         key=os.environ.get('TRAFIKLAB_GTFS_KEY')
         if not key:raise ValueError('TRAFIKLAB_GTFS_KEY missing')
-        req=urllib.request.Request('https://opendata.samtrafiken.se/gtfs/sl/sl.zip?key='+urllib.parse.quote(key))
-        with urllib.request.urlopen(req,timeout=120) as response: content=response.read(300_000_001)
+        req=urllib.request.Request('https://opendata.samtrafiken.se/gtfs/sl/sl.zip?key='+urllib.parse.quote(key),headers={'Accept-Encoding':'gzip','User-Agent':'StrollerBusValidation/1.0'})
+        with urllib.request.urlopen(req,timeout=120) as response:
+            content=response.read(300_000_001)
+            if response.headers.get('Content-Encoding')=='gzip':content=gzip.decompress(content)
         if len(content)>300_000_000:raise ValueError('Feed archive exceeds size limit')
         print('Archive bytes:',len(content))
         with zipfile.ZipFile(io.BytesIO(content)) as archive:build(archive,sys.argv[1],datetime.now(ZoneInfo('Europe/Stockholm')).date())
