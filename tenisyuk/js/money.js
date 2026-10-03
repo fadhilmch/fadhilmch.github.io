@@ -125,8 +125,14 @@
     if (d.startsWith('00')) d = d.slice(2);
     else if (d.startsWith('0')) d = '46' + d.slice(1);
     let u = 'https://app.swish.nu/1/p/sw/?sw=' + d;
-    if (amount > 0) u += '&amt=' + (Math.round(amount * 100) / 100).toFixed(2);
-    if (msg) u += '&msg=' + encodeURIComponent(msg);
+    // Amount like the official examples: "170.0", "117.5", "33.33" (at least one decimal, at most two)
+    if (amount > 0) {
+      const a = (Math.round(amount * 100) / 100).toFixed(2);
+      u += '&amt=' + (a.endsWith('0') ? a.slice(0, -1) : a);
+    }
+    // Swish allows up to 50 characters: letters a-o, digits and !?(),.-:; (https://developer.swish.nu/api/qr-codes)
+    const m = String(msg || '').replace(/[^0-9A-Za-zÅÄÖåäö !?(),.\-:;]/g, '').replace(/\s+/g, ' ').trim().slice(0, 50);
+    if (m) u += '&msg=' + encodeURIComponent(m);
     return u;
   }
 
