@@ -130,7 +130,14 @@
     return u;
   }
 
-  const api = { swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
+  // Sessions that make up one player's total owed: [{date, amount}]
+  function owedBreakdown(doc, cfg, name) {
+    return doc.sessions
+      .filter(s => unpaidOthers(s, cfg.payer).includes(name))
+      .map(s => ({ date: s.date, amount: charge(s) }));
+  }
+
+  const api = { owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
