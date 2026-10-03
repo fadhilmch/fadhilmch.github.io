@@ -116,7 +116,21 @@
   }).format(now || new Date());
   const hasDate = (doc, label) => doc.sessions.some(s => s.date === label);
 
-  const api = { dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
+  // Swish link per the official spec (developer.swish.nu, "Create QR code from specification"):
+  // https://app.swish.nu/1/p/sw/?sw=<number with country code>&amt=<amount>&msg=<text>
+  // Amount and message are locked in the payment form by default.
+  function swishLink(number, amount, msg) {
+    let d = String(number || '').replace(/\D/g, '');
+    if (!d) return '';
+    if (d.startsWith('00')) d = d.slice(2);
+    else if (d.startsWith('0')) d = '46' + d.slice(1);
+    let u = 'https://app.swish.nu/1/p/sw/?sw=' + d;
+    if (amount > 0) u += '&amt=' + (Math.round(amount * 100) / 100).toFixed(2);
+    if (msg) u += '&msg=' + encodeURIComponent(msg);
+    return u;
+  }
+
+  const api = { swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
