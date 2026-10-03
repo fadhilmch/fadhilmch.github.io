@@ -46,7 +46,14 @@ def build(archive,out,start,days=3):
     walks=[];restricted=0;mintransfer={}
     for x in rows('transfers.txt'):
         if x.get('from_trip_id') or x.get('to_trip_id') or x.get('from_route_id') or x.get('to_route_id'):
-            restricted+=1; continue
+            # Count only restrictions which can apply to retained trips/routes.
+            if x.get('from_trip_id') and x['from_trip_id'] not in trips: continue
+            if x.get('to_trip_id') and x['to_trip_id'] not in trips: continue
+            if x.get('from_route_id') and x['from_route_id'] not in routes: continue
+            if x.get('to_route_id') and x['to_route_id'] not in routes: continue
+            restricted+=1
+            if restricted<=5: print('Bus transfer rule sample:',json.dumps(x))
+            continue
         f=x['from_stop_id'];t=x['to_stop_id']
         if f not in idx or t not in idx:continue
         kind=int(x.get('transfer_type') or 0)
