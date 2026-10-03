@@ -136,11 +136,15 @@ test('a server refusal keeps what the save routine reloaded', async () => {
 
 test('swishLink follows the official Swish link format', () => {
   const u = M.swishLink('072-160 66 41', 117.5, 'Tennis Dedy');
-  assert.equal(u, 'https://app.swish.nu/1/p/sw/?sw=46721606641&amt=117.50&msg=Tennis%20Dedy');
-  assert.equal(M.swishLink('+46 72 160 66 41'.replace('+', '00'), 90, 'x'), 'https://app.swish.nu/1/p/sw/?sw=46721606641&amt=90.00&msg=x');
+  assert.equal(u, 'https://app.swish.nu/1/p/sw/?sw=46721606641&amt=117.5&msg=Tennis%20Dedy');
+  assert.equal(M.swishLink('+46 72 160 66 41'.replace('+', '00'), 90, 'x'), 'https://app.swish.nu/1/p/sw/?sw=46721606641&amt=90.0&msg=x');
   assert.equal(M.swishLink('0721606641', 0, ''), 'https://app.swish.nu/1/p/sw/?sw=46721606641');
   assert.equal(M.swishLink('', 10, 'x'), '');
-  assert.ok(M.swishLink('0721606641', 5, 'A&B=C').endsWith('msg=A%26B%3DC'));
+  assert.ok(M.swishLink('0721606641', 5, 'A&B=C').endsWith('amt=5.0&msg=ABC'));
+  assert.ok(M.swishLink('0721606641', 33.333, 'x').includes('amt=33.33&'));
+  assert.ok(M.swishLink('0721606641', 10, 'Åsa Öberg').endsWith('msg=%C3%85sa%20%C3%96berg'));
+  assert.ok(M.swishLink('0721606641', 10, '😀 Tennis 😀').endsWith('msg=Tennis'));
+  assert.ok(M.swishLink('0721606641', 10, 'a'.repeat(80)).endsWith('msg=' + 'a'.repeat(50)));
 });
 
 test('owedBreakdown adds up to the per-person total', () => {
