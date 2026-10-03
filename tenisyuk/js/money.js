@@ -93,7 +93,40 @@
     return L.join('\n');
   }
 
-  const api = { KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
+
+  // ---- dates: the page stores labels like "2 Oct" (no year) ----
+  const dateToLabel = iso => {
+    const p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!p) return '';
+    const mo = Number(p[2]), d = Number(p[3]);
+    if (mo < 1 || mo > 12 || d < 1 || d > 31) return '';
+    return d + ' ' + MONTHS[mo - 1];
+  };
+  const labelToIso = (label, year) => {
+    const p = /^(\d{1,2})\s+([A-Za-z]{3})$/.exec(String(label || '').trim());
+    if (!p) return '';
+    const mo = MONTHS.findIndex(x => x.toLowerCase() === p[2].toLowerCase()) + 1;
+    const d = Number(p[1]);
+    if (!mo || d < 1 || d > 31) return '';
+    return String(year) + '-' + String(mo).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+  };
+  // Today's date in Stockholm as YYYY-MM-DD (en-CA formats that way).
+  const todayIso = (now, tz) => new Intl.DateTimeFormat('en-CA', {
+    timeZone: tz || 'Europe/Stockholm', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(now || new Date());
+  const hasDate = (doc, label) => doc.sessions.some(s => s.date === label);
+
+  // ---- "what do I owe" card ----
+  // kind: 'unknown' (no name picked), 'payer', 'owes', 'settled', 'absent' (name not in any session)
+  function meSummary(T, cfg, me) {
+    if (!me) return { kind: 'unknown' };
+    if (me === cfg.payer) return { kind: 'payer', amount: T.outstanding, swish: cfg.swish };
+    const o = T.owes.find(x => x.name === me);
+    if (o) return { kind: 'owes', amount: o.amount, dates: o.dates, payer: cfg.payer, swish: cfg.swish };
+    return { kind: T.names.includes(me) ? 'settled' : 'absent', amount: 0 };
+  }
+
+  const api = { dateToLabel, labelToIso, todayIso, hasDate, meSummary, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
