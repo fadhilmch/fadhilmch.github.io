@@ -42,7 +42,7 @@
     card.append(el('div',time(start)+' - '+time(end),'summary'));
     const buses=j.legs.filter(l=>R.kind(l)==='bus');
     const seconds=j.tripRtDuration||j.tripDuration;
-    card.append(el('div',(seconds?Math.round(seconds/60)+' min · ':'')+Math.max(0,buses.length-1)+' transfers','small'));
+    card.append(el('div',(seconds?Math.round(seconds/60)+' min · ':'')+Math.max(0,buses.length-1)+(buses.length===2?' transfer':' transfers'),'small'));
     const list=el('ol',undefined,'legs');
     for(const leg of j.legs) {
       const item=el('li');
@@ -71,7 +71,7 @@
     card.append(list);return card;
   }
   $('form').addEventListener('submit',async e=>{
-    e.preventDefault();if(busy)return;busy=true;$('search').disabled=true;$('results').replaceChildren();$('status').textContent='Looking up your places…';
+    e.preventDefault();if(busy)return;busy=true;for(const id of ['search','from','to','preference'])$(id).disabled=true;$('results').replaceChildren();$('status').textContent='Looking up your places…';
     try {
       if(!await resolve('from'))return;
       if(!await resolve('to'))return;
@@ -86,6 +86,6 @@
       journeys.forEach(j=>$('results').append(render(j)));
       $('results').scrollIntoView({behavior:'smooth',block:'start'});
     } catch(e) {$('status').textContent=e.message==='Failed to fetch'?'Could not reach SL. Check your connection and try again.':e.message;}
-    finally {busy=false;$('search').disabled=false;}
+    finally {busy=false;for(const id of ['search','from','to','preference'])$(id).disabled=false;}
   });
 })();
