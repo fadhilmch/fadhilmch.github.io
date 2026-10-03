@@ -116,17 +116,7 @@
   }).format(now || new Date());
   const hasDate = (doc, label) => doc.sessions.some(s => s.date === label);
 
-  // ---- "what do I owe" card ----
-  // kind: 'unknown' (no name picked), 'payer', 'owes', 'settled', 'absent' (name not in any session)
-  function meSummary(T, cfg, me) {
-    if (!me) return { kind: 'unknown' };
-    if (me === cfg.payer) return { kind: 'payer', amount: T.outstanding, swish: cfg.swish };
-    const o = T.owes.find(x => x.name === me);
-    if (o) return { kind: 'owes', amount: o.amount, dates: o.dates, payer: cfg.payer, swish: cfg.swish };
-    return { kind: T.names.includes(me) ? 'settled' : 'absent', amount: 0 };
-  }
-
-  const api = { dateToLabel, labelToIso, todayIso, hasDate, meSummary, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
+  const api = { dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
