@@ -4,6 +4,7 @@ Static page, no build step. Served as-is by GitHub Pages.
 
 - `index.html` - page shell
 - `style.css` - styles (light and dark)
+- `js/wordmarks.js` - logo images as data URIs
 - `js/money.js` - money math and recap text (pure functions, no DOM)
 - `js/app.js` - screens, data loading and admin actions
 - `config.js` - public Supabase URL and publishable key
