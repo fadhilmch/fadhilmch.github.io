@@ -23,14 +23,16 @@ function draw(container,result,data,from,to){
 }
 async function street(container,result,data,from,to){
  if(!root.L){await Promise.all([new Promise((resolve,reject)=>{const css=document.createElement('link');css.rel='stylesheet';css.href='vendor/leaflet.css';css.onload=resolve;css.onerror=()=>reject(Error('Could not load map styles.'));document.head.append(css)}),new Promise((resolve,reject)=>{const js=document.createElement('script');js.src='vendor/leaflet.js';js.onload=resolve;js.onerror=()=>reject(Error('Could not load the map library.'));document.head.append(js)})])}
- container.replaceChildren();container.style.height='320px';
+ container.replaceChildren();container.style.height='380px';
  const map=L.map(container,{scrollWheelZoom:false,attributionControl:true});
  const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',referrerPolicy:'strict-origin-when-cross-origin'}).addTo(map);
  const routes=legs(result,data,from,to),points=routes.flatMap(r=>r.points);
  for(const r of routes)L.polyline(r.points,{color:r.kind==='bus'?'#006aa7':'#766112',weight:r.kind==='bus'?5:3,dashArray:r.kind==='bus'?null:'7 6'}).addTo(map);
  const locations=[{p:points[0],name:from.name},{p:points.at(-1),name:to.name},...result.path.filter(p=>p.kind==='bus').flatMap(p=>[{p:[data.stops[p.from].lat,data.stops[p.from].lon],name:'Bus '+p.line+': '+data.stops[p.from].name},{p:[data.stops[p.to].lat,data.stops[p.to].lon],name:'Get off: '+data.stops[p.to].name}])];
  for(const l of locations){const text=document.createElement('span');text.textContent=l.name;L.circleMarker(l.p,{radius:6,color:'#003e6d',weight:2,fillColor:'#fecc00',fillOpacity:1}).addTo(map).bindPopup(text)}
- map.fitBounds(points,{padding:[24,24],maxZoom:15});
+ const numbered=result.path.filter(p=>p.kind==='bus');
+ numbered.forEach((p,i)=>{const stop=data.stops[p.from];const tip=document.createElement('span');tip.textContent=(i+1)+'. Bus '+p.line;L.circleMarker([stop.lat,stop.lon],{radius:7,color:'#003e6d',weight:2,fillColor:'#fecc00',fillOpacity:1}).addTo(map).bindTooltip(tip,{permanent:true,direction:i===0?'bottom':'top',offset:[0,i===0?9:-9],className:'route-label'})});
+ map.fitBounds(points,{padding:[52,52],maxZoom:15});
  let failures=0;tiles.on('tileerror',()=>{failures++;if(failures===1){const note=document.createElement('p');note.className='small';note.textContent='Street tiles could not load. Route lines remain; use the route list for stop names.';container.after(note)}});
  return map;
 }
