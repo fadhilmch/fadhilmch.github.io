@@ -1,0 +1,18 @@
+const {test}=require('node:test');const assert=require('node:assert/strict');const R=require('../../stroller-bus/route.js');
+const leg=(n,c=5)=>({transportation:{product:{class:c},disassembledName:String(n)}});
+for(let n=1;n<=6;n++)test('excludes bus '+n,()=>assert.equal(R.eligible({legs:[leg(n)]}),false));
+for(const n of ['7','53','173','401','600','Bus 65'])test('accepts bus '+n,()=>assert.equal(R.eligible({legs:[leg(n)]}),true));
+for(const c of [0,2,4,9,10,14,19,null])test('rejects mode '+c,()=>assert.equal(R.eligible({legs:[leg(53),leg(53,c)]}),false));
+test('walking between buses is allowed',()=>assert.ok(R.eligible({legs:[leg(53),leg('',99),leg(65)]})));
+test('walking alone is not a bus journey',()=>assert.equal(R.eligible({legs:[leg('',99)]}),false));
+test('missing mode and line fail closed',()=>{assert.equal(R.eligible({legs:[{}]}),false);assert.equal(R.eligible({legs:[leg('')]}),false)});
+test('one forbidden bus rejects whole journey',()=>assert.equal(R.eligible({legs:[leg(53),leg(4)]}),false));
+test('no terminal exclusion',()=>assert.ok(R.eligible({legs:[{...leg(53),origin:{name:'Liljeholmen'}}]})));
+test('leading zero and prefixed line normalize',()=>{assert.equal(R.line(leg('Bus 04')),'4');assert.equal(R.eligible({legs:[leg('Bus 04')]}),false)});
+test('malformed journeys fail closed',()=>{for(const j of [null,{}, {legs:[] }])assert.equal(R.eligible(j),false)});
+test('query includes only bus transit and future departures',()=>{const u=new URL(R.tripURL('a','b'));for(const c of [0,2,4,9,10,14,19])assert.equal(u.searchParams.get('incl_mot_'+c),'false');assert.equal(u.searchParams.get('incl_mot_5'),'true');assert.equal(u.searchParams.get('calc_one_direction'),'true')});
+test('location search covers address, stops and POI',()=>{const u=new URL(R.lookupURL('S:t Eriksgatan 10'));assert.equal(u.searchParams.get('any_obj_filter_sf'),'46');assert.equal(u.searchParams.get('name_sf'),'S:t Eriksgatan 10')});
+test('fallback stops immediately with valid results',async()=>{let calls=0;const r=await R.search('a','b','leasttime',async()=>{calls++;return{journeys:[{legs:[leg(53)]}]}});assert.equal(calls,1);assert.equal(r.journeys.length,1)});
+test('fallback tries other preferences then later, capped at four',async()=>{const urls=[];const r=await R.search('a','b','leasttime',async u=>{urls.push(new URL(u));return{journeys:[{legs:[leg(4)]}]}});assert.equal(urls.length,4);assert.equal(r.journeys.length,0);assert.deepEqual(urls.slice(0,3).map(u=>u.searchParams.get('route_type')),['leasttime','leastinterchange','leastwalking']);assert.match(urls[3].searchParams.get('itd_date'),/^\d{8}$/);assert.match(urls[3].searchParams.get('itd_time'),/^\d{4}$/)});
+test('fallback handles different chosen preference',async()=>{let calls=0;const r=await R.search('a','b','leastwalking',async()=>({journeys:[{legs:[leg(++calls===2?65:4)]}]}));assert.equal(calls,2);assert.equal(r.preference,'leasttime')});
+test('later query uses Stockholm date across midnight',()=>{const u=new URL(R.tripURL('a','b','leasttime',new Date('2026-10-03T22:30:00Z')));assert.equal(u.searchParams.get('itd_date'),'20261004');assert.equal(u.searchParams.get('itd_time'),'0030')});
