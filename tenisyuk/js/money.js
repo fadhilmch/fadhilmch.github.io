@@ -93,7 +93,51 @@
     return L.join('\n');
   }
 
-  const api = { KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
+
+  // ---- dates: the page stores labels like "2 Oct" (no year) ----
+  const dateToLabel = iso => {
+    const p = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    if (!p) return '';
+    const mo = Number(p[2]), d = Number(p[3]);
+    if (mo < 1 || mo > 12 || d < 1 || d > 31) return '';
+    return d + ' ' + MONTHS[mo - 1];
+  };
+  const labelToIso = (label, year) => {
+    const p = /^(\d{1,2})\s+([A-Za-z]{3})$/.exec(String(label || '').trim());
+    if (!p) return '';
+    const mo = MONTHS.findIndex(x => x.toLowerCase() === p[2].toLowerCase()) + 1;
+    const d = Number(p[1]);
+    if (!mo || d < 1 || d > 31) return '';
+    return String(year) + '-' + String(mo).padStart(2, '0') + '-' + String(d).padStart(2, '0');
+  };
+  // Today's date in Stockholm as YYYY-MM-DD (en-CA formats that way).
+  const todayIso = (now, tz) => new Intl.DateTimeFormat('en-CA', {
+    timeZone: tz || 'Europe/Stockholm', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(now || new Date());
+  const hasDate = (doc, label) => doc.sessions.some(s => s.date === label);
+
+  // Swish link per the official spec (developer.swish.nu, "Create QR code from specification"):
+  // https://app.swish.nu/1/p/sw/?sw=<number with country code>&amt=<amount>&msg=<text>
+  // Amount and message are locked in the payment form by default.
+  function swishLink(number, amount, msg) {
+    let d = String(number || '').replace(/\D/g, '');
+    if (!d) return '';
+    if (d.startsWith('00')) d = d.slice(2);
+    else if (d.startsWith('0')) d = '46' + d.slice(1);
+    let u = 'https://app.swish.nu/1/p/sw/?sw=' + d;
+    if (amount > 0) u += '&amt=' + (Math.round(amount * 100) / 100).toFixed(2);
+    if (msg) u += '&msg=' + encodeURIComponent(msg);
+    return u;
+  }
+
+  // Sessions that make up one player's total owed: [{date, amount}]
+  function owedBreakdown(doc, cfg, name) {
+    return doc.sessions
+      .filter(s => unpaidOthers(s, cfg.payer).includes(name))
+      .map(s => ({ date: s.date, amount: charge(s) }));
+  }
+
+  const api = { owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
