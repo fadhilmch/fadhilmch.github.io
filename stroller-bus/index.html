@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102824"><title>Stroller bus routes | Stockholm</title>
+<style>
+:root{color-scheme:light;--bg:#f4f6ef;--ink:#102824;--muted:#53635d;--line:#d4ded3;--accent:#246b53}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif}main{max-width:480px;margin:auto;padding:24px 20px 40px}a{color:var(--accent)}.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}h1{font-size:34px;line-height:1.08;letter-spacing:-.04em;margin:12px 0}h2{font-size:21px;margin:0 0 10px}p{margin:10px 0}.intro{color:var(--muted);margin-bottom:24px}.panel,article{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin:16px 0}label{display:block;font-weight:650;margin:14px 0 6px}label:first-child{margin-top:0}input,select,button{font:inherit;width:100%;min-height:48px;border:1px solid var(--line);border-radius:10px;padding:10px 12px}input,select{background:white;color:var(--ink)}input:focus,select:focus,button:focus-visible{outline:3px solid #80b29b;outline-offset:2px}button{cursor:pointer;background:var(--accent);color:white;font-weight:650;margin-top:16px;border:0}button:disabled{opacity:.55;cursor:wait}.choices{display:grid;gap:6px}.choices button{margin:0;background:#eef4ed;color:var(--ink);text-align:left;font-weight:400}.selected{font-size:14px;color:var(--accent);margin-top:4px}.small{font-size:13px;color:var(--muted)}.rule{border-left:3px solid #b98328;padding-left:12px;font-size:14px}.status{font-size:15px;margin:18px 0}.summary{font-weight:750;font-size:20px}.legs{list-style:none;padding:0;margin:14px 0}.legs li{border-left:2px solid var(--line);padding:0 0 18px 14px}.legs li:last-child{padding-bottom:0}.badge{display:inline-block;background:#e7f2e7;color:#215b43;border-radius:6px;padding:2px 8px;font-weight:700;margin-bottom:5px}.stop{overflow-wrap:anywhere}.time{color:var(--muted);font-size:14px}.warn{font-size:13px;color:#815619}.footer{border-top:1px solid var(--line);margin-top:24px;padding-top:16px}#results:empty{display:none}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">Stockholm / with a stroller</div>
+<h1>Bus routes.<br>No lines 1-6.</h1>
+<p class="intro">Choose where you're going. We'll show bus journeys, with walking and transfers.</p>
+<form class="panel" id="form">
+<label for="from">From</label><input id="from" autocomplete="off" placeholder="Address, place or stop" required maxlength="160"><div id="from-choices" class="choices"></div><div id="from-selected" class="selected"></div>
+<label for="to">To</label><input id="to" autocomplete="off" placeholder="Address, place or stop" required maxlength="160"><div id="to-choices" class="choices"></div><div id="to-selected" class="selected"></div>
+<label for="preference">Prefer</label><select id="preference"><option value="leasttime">Fastest</option><option value="leastinterchange">Fewer transfers</option><option value="leastwalking">Less walking</option></select>
+<button id="search" type="submit">Find bus routes</button>
+<p class="small">Leaving now. Times shown in Stockholm time.</p>
+</form>
+<p class="rule">Free only with a child and stroller, where the reader is at the front door. If you pass a ticket gate or see readers at every door, you need a ticket.</p>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<section id="results" aria-label="Bus route results"></section>
+<div class="footer small"><p>Only buses, walking and transfers. Lines 1-6 are removed. Ticket-gate terminals are not filtered.</p><p>This filters SL's suggested journeys, not every possible route. If none match, we try the other preferences and departures in 30 minutes. Walking paths aren't verified as stroller-accessible.</p><p><a href="https://sl.se/aktuellt/nyheter/barnvagn-pa-buss-1-2-3-4-och-6">SL's stroller ticket rule</a> · <a href="https://www.trafiklab.se/api/other-apis/sl/journey-planner-2/">Route data</a></p><p>No sign-in or saved locations. Your searches go directly to SL's journey planner.</p></div>
+</main><script src="route.js"></script><script src="app.js"></script></body></html>
