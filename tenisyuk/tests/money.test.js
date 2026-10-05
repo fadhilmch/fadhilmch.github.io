@@ -114,7 +114,7 @@ test('Indonesian recap text: totals, kas and layout', () => {
   assert.ok(lines.includes('⏳ Belum bayar: Dedy 117,5 kr | Qiang 117,5 kr | Naufal 117,5 kr'));
   assert.ok(lines.includes('• Dedy, Qiang, Naufal: 117,5 kr masing-masing'));
   assert.ok(lines.includes('• HS Putra, Alif Harfian, Dartagnan, Suci, Assevitto: 90 kr masing-masing'));
-  assert.ok(lines.includes('💵 Total yang masih masuk ke Fadel: 802,5 kr'));
+  assert.ok(lines.includes('💵 Total yang belum dibayar ke Fadel: 802,5 kr'));
   assert.ok(lines.includes('• Real: 200 kr'));
   assert.ok(lines.includes('• Pending: 40 kr'));
   assert.ok(lines.includes('• Total nanti: 240 kr'));
@@ -128,7 +128,7 @@ test('English recap text uses dot decimals and English wording', () => {
   const T = M.totals(d, cfg);
   const txt = M.recapText(d, cfg, T, 'en', { today: '3 Oct', siteUrl: '' });
   assert.ok(txt.startsWith('🎾 TENNIS RECAP (update 3 Oct)'));
-  assert.ok(txt.includes('Still to come in to Fadel: 802.5 kr'));
+  assert.ok(txt.includes('Total still owed to Fadel: 802.5 kr'));
   assert.ok(txt.includes('• Dedy, Qiang, Naufal: 117.5 kr each'));
   assert.ok(txt.includes('• Total later: 240 kr'));
 });
@@ -138,7 +138,7 @@ test('recap says everyone is settled when nothing is owed', () => {
   d.sessions.forEach(s => { s.paid = [...s.players]; });
   const txt = M.recapText(d, cfg, M.totals(d, cfg), 'id', { today: '3 Oct' });
   assert.ok(txt.includes('• Semua lunas 🎉'));
-  assert.ok(txt.includes('Total yang masih masuk ke Fadel: 0 kr'));
+  assert.ok(txt.includes('Total yang belum dibayar ke Fadel: 0 kr'));
 });
 
 test('share text lists only sessions that still have unpaid players', () => {
@@ -159,7 +159,7 @@ test('leaving completed sessions out does not change the totals in the text', ()
   const d = doc();
   const T = M.totals(d, cfg);
   const id = M.recapText(d, cfg, T, 'id', { today: '3 Oct' });
-  assert.ok(id.includes('Total yang masih masuk ke Fadel: 802,5 kr'));
+  assert.ok(id.includes('Total yang belum dibayar ke Fadel: 802,5 kr'));
   assert.ok(id.includes('• Real: 200 kr'));
   assert.ok(id.includes('• Pending: 40 kr'));
   assert.ok(id.includes('• Total nanti: 240 kr'));
@@ -173,4 +173,10 @@ test('when every session is paid the text has no session blocks, only the settle
   assert.equal(txt.split('\n').filter(l => l.startsWith('📅')).length, 0);
   assert.ok(txt.includes('• Semua lunas 🎉'));
   assert.ok(txt.includes('• Real: 240 kr'));       // 125 + 5 x 23 paid players
+});
+
+test('othersCount: payer not playing means everyone owes', () => {
+  const { othersCount } = require('../js/money.js');
+  assert.strictEqual(othersCount({ players: ['Fadel', 'A', 'B'] }, 'Fadel'), 2);
+  assert.strictEqual(othersCount({ players: ['A', 'B'] }, 'Fadel'), 2);
 });
