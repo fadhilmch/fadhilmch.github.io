@@ -1,0 +1,29 @@
+{
+  "builtAt": "2026-10-03T15:43:28.612413+02:00",
+  "source": "Trafiklab SL GTFS Regional Static",
+  "dates": [
+    {
+      "date": "2026-10-03",
+      "file": "2026-10-03.json.gz",
+      "bytes": 3345691,
+      "decodedBytes": 34530584,
+      "trips": 19062
+    },
+    {
+      "date": "2026-10-04",
+      "file": "2026-10-04.json.gz",
+      "bytes": 3211105,
+      "decodedBytes": 33061360,
+      "trips": 18140
+    },
+    {
+      "date": "2026-10-05",
+      "file": "2026-10-05.json.gz",
+      "bytes": 4980012,
+      "decodedBytes": 51486326,
+      "trips": 29673
+    }
+  ],
+  "stops": 10849,
+  "routes": 553
+}

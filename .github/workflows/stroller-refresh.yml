@@ -1,0 +1,48 @@
+# Activates only after the owner approves merging this PR.
+name: Refresh stroller bus timetable
+on:
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Refresh bus timetable
+        env:
+          TRAFIKLAB_GTFS_KEY: ${{ secrets.TRAFIKLAB_GTFS_KEY }}
+        run: python scripts/stroller-bus/import_gtfs.py stroller-bus/data
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+          bundler-cache: true
+      - uses: actions/configure-pages@v5
+      - run: bundle exec jekyll build --trace
+        env:
+          JEKYLL_ENV: production
+      - run: bundle exec htmlproofer _site --disable-external --ignore-missing-alt
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          retention-days: 1
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
