@@ -16,6 +16,7 @@
   const court = s => s.billed / s.players.length;      // court share per person
   const charge = s => court(s) + KAS;                  // court share + kas
   const gap = s => s.billed - s.real;                  // membership part of a session
+  const othersCount = (s, payer) => s.players.filter(p => p !== payer).length;
   const unpaidOthers = (s, payer) => s.players.filter(p => !s.paid.includes(p) && p !== payer);
 
   function totals(doc, cfg) {
@@ -38,7 +39,7 @@
     const kasReal = cfg.kasOpening + KAS * kasPersons + kasManual;
     const kasPending = KAS * ss.reduce((a, s) => a + unpaid(s).length, 0);
     const realCost = ss.reduce((a, s) => a + s.real, 0);
-    const charged = ss.reduce((a, s) => a + charge(s) * (s.players.length - 1), 0);
+    const charged = ss.reduce((a, s) => a + charge(s) * othersCount(s, P), 0);
     const attendance = names
       .map(n => ({ name: n, count: ss.filter(s => s.players.includes(n)).length }))
       .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
@@ -84,7 +85,7 @@
       L.push(`• ${ns.join(', ')}: ${F(a)}${ns.length > 1 ? (id ? ' masing-masing' : ' each') : ''}`));
     if (!T.owes.length) L.push(id ? '• Semua lunas 🎉' : '• Everyone is settled 🎉');
     L.push('',
-      `💵 ${id ? `Total yang masih masuk ke ${P}` : `Still to come in to ${P}`}: ${F(T.outstanding)}`, '',
+      `💵 ${id ? `Total yang belum dibayar ke ${P}` : `Total still owed to ${P}`}: ${F(T.outstanding)}`, '',
       id ? '🏦 Kas bola (5 kr/orang):' : '🏦 Ball cash (5 kr/person):',
       `• Real: ${F(T.kasReal)}`, `• Pending: ${F(T.kasPending)}`,
       `• ${id ? 'Total nanti' : 'Total later'}: ${F(T.kasReal + T.kasPending)}`, '',
@@ -137,7 +138,7 @@
       .map(s => ({ date: s.date, amount: charge(s) }));
   }
 
-  const api = { owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, totals, recapText };
+  const api = { owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
