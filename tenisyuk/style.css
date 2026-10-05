@@ -104,3 +104,8 @@ details.more summary::before{content:'▸ ';color:var(--ink2)}details.more[open]
 .sheet h3{margin:0;font-size:18px}.sheet .big{font-size:28px;letter-spacing:-.02em;color:var(--warnInk)}.sheet small{color:var(--ink2);font-size:13px;line-height:20px}
 .sheet .sess{list-style:none;margin:0;padding:0;border-top:1px solid var(--hair)}.sheet .sess li{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--hair)}
 .sheet .btn.wide{min-height:48px;display:flex;align-items:center;justify-content:center;text-decoration:none}
+/* New session form: date input fits the card and reads left-aligned like the other fields */
+.form input,.form select{box-sizing:border-box;min-width:0;max-width:100%}
+.form input[type=date]{-webkit-appearance:none;appearance:none;text-align:left;display:block;line-height:44px}
+.form input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
+.form input[type=date]::-webkit-datetime-edit{padding:0}
