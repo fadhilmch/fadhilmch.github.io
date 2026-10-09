@@ -202,3 +202,10 @@ Open <http://localhost:4000>. The development build also shows broken note-link 
 ## Publish
 
 Commit and push to `master`. GitHub Actions builds the site, runs HTML-Proofer, and deploys it to GitHub Pages. If a build fails, open the failed workflow run in the repository's **Actions** tab; the build step usually identifies the YAML, Markdown, or link that needs attention.
+
+## Browser editing
+
+For existing blog posts, use the [CMS setup and review guide](CMS.md). The first
+version edits full source in plain text, including YAML front matter, HTML/SVG,
+JavaScript and Liquid. Saves create review PRs and cannot publish from the CMS.
+Keep using GitHub or your local editor for new post filenames, notes and assets.
