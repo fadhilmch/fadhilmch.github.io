@@ -20,7 +20,7 @@ Rules the tests lock in: kas is 5 kr per person only; membership is billed minus
 
 Validation errors on the Cash form (empty or zero amount) show as a floating red alert at the top (`showAlert` in `js/app.js`, `.alertbar` in `style.css`), auto-dismiss after 4 seconds or on tap. The amount field keeps its red border.
 
-Cash tab graphs: the Kas ledger has a balance-over-time chart (SVG, `balanceChart` in `js/app.js`) and money in/out bars with amounts beside them. Membership has a progress card: pot so far / 700 kr target, kr to go and percent (capped at 100). The 700 kr is the whole membership pot, not per person; `cfg.membershipTarget` overrides it. Data comes from `ledgerRows`, `ledgerSeries` and `membershipProgress` in `js/money.js` (tested).
+Cash tab graphs: the Kas ledger has a balance-over-time chart (SVG, `balanceChart` in `js/app.js`) and a column chart of money in (up, green) and out (down, red) per ledger row with the amounts above each column. Membership has a progress card: pot so far / 700 kr target, kr to go and percent (capped at 100). The 700 kr is the whole membership pot, not per person; `cfg.membershipTarget` overrides it. Data comes from `ledgerRows`, `ledgerSeries` and `membershipProgress` in `js/money.js` (tested).
 
 Tabs: Sessions, Stats, Owed (who still owes Fadel, tap a name to pay with Swish), Cash (kas, membership, cash flow, admin entries), Share.
 
