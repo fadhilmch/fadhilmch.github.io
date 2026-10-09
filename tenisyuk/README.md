@@ -52,3 +52,5 @@ Competitive mini rules (separate from the visual rework): 0/15/30/40, deuce, adv
 This is arcade tennis, not full real-tennis simulation: crossing a singles sideline is immediately OUT against the last hitter, with no side-wall rebound. There is no bounce/landing physics, diagonal service-box rule, two-serve fault rule, let or end-change animation. The mini-game uses the tennis point/set scoring, not all ITF play rules. Scoring reference: https://www.itftennis.com/media/7221/2026-rules-of-tennis-english.pdf
 
 Example: 40-40 is Deuce. Your next point makes AD-40. Lose the next point and it returns to Deuce. Win two consecutive points from Deuce to win that game. At 6-6 games the tie-break starts; 7-6 tie-break points is not enough, 8-6 wins the set 7-6.
+
+Scoreboard: rows for You and Computer, Set 1 games and current game points. A dot marks who serves, hidden when the set ends; a winning row gets a theme-aware accent. Tie-break points replace normal point labels at six-all. Current set and points reset only on New set or closing the game. Short phone screens use a smaller court so the scoreboard and controls stay in reach.
