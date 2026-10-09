@@ -1,5 +1,5 @@
 :root{--page:#f5f9ef;--raised:#fff;--white:#fff;--ink:#0f3d2d;--ink2:#4a6558;--ink3:#7a8f84;--hair:#dbe5d3;--red:#b3261e;
---ok:#1f7a45;--warn:#9bc21f;--warnInk:#5c7d0a;--court:#5f776a;--mem:#a8cc1a;--kas:#0f3d2d;--mute:#cfdcc9;--teal:#2f8a4f;--chip:#eaf1e0;--lime:#a8cc1a;--onLime:#0f3d2d;--font:"DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--head:"Fraunces",Georgia,"Times New Roman",serif}
+--ok:#1f7a45;--warn:#9bc21f;--warnInk:#5c7d0a;--court:#5f776a;--mem:#a8cc1a;--kas:#0f3d2d;--mute:#cfdcc9;--teal:#2f8a4f;--chip:#eaf1e0;--lime:#a8cc1a;--onLime:#0f3d2d;--font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--head:"Plus Jakarta Sans","Inter",system-ui,sans-serif}
 :root[data-theme=dark]{color-scheme:dark;--page:#121212;--raised:#1c1c1c;--white:#161616;--ink:#ececec;--ink2:#a9a9a9;--ink3:#7c7c7c;--hair:#2e2e2e;--red:#ef7b6c;
 --ok:#2f9e5a;--warn:#c6ec3c;--warnInk:#c6ec3c;--court:#7c7c7c;--mem:#b4dc2a;--kas:#c9c9c9;--mute:#333;--teal:#b4dc2a;--chip:#222;--lime:#a8cc1a;--onLime:#111}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%}
