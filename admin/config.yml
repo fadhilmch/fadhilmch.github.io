@@ -1,0 +1,322 @@
+{
+  "backend": {
+    "name": "github",
+    "repo": "fadhilmch/fadhilmch.github.io",
+    "branch": "master",
+    "auth_methods": [
+      "token"
+    ]
+  },
+  "publish_mode": "editorial_workflow",
+  "site_url": "https://fadhilmch.github.io",
+  "app_title": "Fadhil \u00b7 Post editor",
+  "media_folder": "admin/media-readonly",
+  "public_folder": "/admin/media-readonly",
+  "collections": [
+    {
+      "name": "posts",
+      "label": "Blog posts",
+      "publish": false,
+      "delete": false,
+      "editor": {
+        "preview": false
+      },
+      "files": [
+        {
+          "name": "2020-11-14-rereading-a-2019-sentiment-model",
+          "label": "My first text classifier for sentiment analysis",
+          "file": "_posts/2020-11-14-rereading-a-2019-sentiment-model.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2021-04-17-building-a-streaming-pipeline",
+          "label": "Learning data streaming by building one",
+          "file": "_posts/2021-04-17-building-a-streaming-pipeline.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2021-05-15-colorizing-images-with-local-and-global-features",
+          "label": "Image colorization: learning what grayscale leaves out",
+          "file": "_posts/2021-05-15-colorizing-images-with-local-and-global-features.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2021-10-09-probability-and-distributions",
+          "label": "Probability and distributions, one step at a time",
+          "file": "_posts/2021-10-09-probability-and-distributions.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2021-10-16-p-values-and-statistical-tests",
+          "label": "Real or luck? P-values, significance and statistical tests",
+          "file": "_posts/2021-10-16-p-values-and-statistical-tests.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2022-05-21-making-sense-of-kubernetes",
+          "label": "Making sense of Kubernetes",
+          "file": "_posts/2022-05-21-making-sense-of-kubernetes.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2022-08-20-from-a-click-to-a-database",
+          "label": "From a click to a database: how a request crosses the internet",
+          "file": "_posts/2022-08-20-from-a-click-to-a-database.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2023-03-18-managed-identity-on-gcp",
+          "label": "Managed identity on GCP: why we're deleting our key files",
+          "file": "_posts/2023-03-18-managed-identity-on-gcp.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2024-07-13-go-worker-pools-for-experiment-assignment",
+          "label": "What firmware taught me about Go worker pools",
+          "file": "_posts/2024-07-13-go-worker-pools-for-experiment-assignment.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2025-01-18-from-polling-to-push",
+          "label": "From polling to push: getting experiment config to every service",
+          "file": "_posts/2025-01-18-from-polling-to-push.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2025-03-01-fm-synthesis-and-explore-exploit",
+          "label": "FM synthesis and explore\u2013exploit",
+          "file": "_posts/2025-03-01-fm-synthesis-and-explore-exploit.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2025-03-22-sse-through-a-service-mesh",
+          "label": "SSE on Kubernetes: what a service mesh fixes, and what it doesn't",
+          "file": "_posts/2025-03-22-sse-through-a-service-mesh.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2025-06-14-a-serving-sdk-data-scientists-actually-use",
+          "label": "A serving SDK data scientists actually use",
+          "file": "_posts/2025-06-14-a-serving-sdk-data-scientists-actually-use.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2025-10-18-the-exposure-triangle-but-for-learning-rates",
+          "label": "The exposure triangle, but for learning rates",
+          "file": "_posts/2025-10-18-the-exposure-triangle-but-for-learning-rates.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-02-28-one-definition-of-conversion",
+          "label": "One definition of conversion",
+          "file": "_posts/2026-02-28-one-definition-of-conversion.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-04-11-thompson-sampling-explained-with-coupons",
+          "label": "Bandits in production: Thompson sampling, explained with coupons",
+          "file": "_posts/2026-04-11-thompson-sampling-explained-with-coupons.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-06-20-golden-datasets-without-the-gold-rush",
+          "label": "Golden datasets without the gold rush",
+          "file": "_posts/2026-06-20-golden-datasets-without-the-gold-rush.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-08-02-an-agent-that-triages-its-own-feedback",
+          "label": "An agent that triages its own feedback",
+          "file": "_posts/2026-08-02-an-agent-that-triages-its-own-feedback.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-09-10-evaluating-an-agent-honestly",
+          "label": "Evaluating an agent honestly",
+          "file": "_posts/2026-09-10-evaluating-an-agent-honestly.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-09-30-deconstructing-planout",
+          "label": "Deconstructing PlanOut: a coin toss you can repeat",
+          "file": "_posts/2026-09-30-deconstructing-planout.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        },
+        {
+          "name": "2026-10-02-tuning-retrieval-for-multilingual-rag",
+          "label": "What I learned tuning retrieval for a multilingual RAG chatbot",
+          "file": "_posts/2026-10-02-tuning-retrieval-for-multilingual-rag.md",
+          "format": "raw",
+          "fields": [
+            {
+              "name": "body",
+              "label": "Full post source (YAML + Markdown + HTML)",
+              "widget": "text",
+              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
