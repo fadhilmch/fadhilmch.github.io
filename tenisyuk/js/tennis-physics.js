@@ -6,10 +6,10 @@ const SETTINGS={width:320,height:400,ballRadius:7,paddleWidth:64,paddleY:366,
  startSpeed:165,speedPerReturn:6,maxSpeed:260,serveSideSpeed:72,
  aimStrength:5,swipeInfluence:.16,maxSideSpeed:170,maxSwipeSpeed:600,
  swipeDecay:12,opponentSpeed:180,opponentReturnY:34,
- maxFrameSeconds:.025,slowMotionFactor:.65};
+ spinPerPixel:.018,maxFrameSeconds:.025,slowMotionFactor:.65};
 const {width:W,height:H,ballRadius:R,paddleWidth:PW,paddleY:PY}=SETTINGS;
 const clamp=(n,lo,hi)=>Math.max(lo,Math.min(hi,n));
-function create(){return{x:160,y:320,vx:SETTINGS.serveSideSpeed,vy:-SETTINGS.startSpeed,paddle:160,paddleV:0,ai:160,rally:0,over:false};}
+function create(){return{x:160,y:320,vx:SETTINGS.serveSideSpeed,vy:-SETTINGS.startSpeed,paddle:160,paddleV:0,ai:160,rally:0,spin:0,over:false};}
 function movePaddle(s,x,dt){const next=clamp(x,PW/2,W-PW/2);s.paddleV=clamp((next-s.paddle)/Math.max(.016,dt||.016),-SETTINGS.maxSwipeSpeed,SETTINGS.maxSwipeSpeed);s.paddle=next;return s;}
 // Swap this policy later (e.g. an RL agent). Input is a state snapshot + dt.
 // Return a target x for the opponent paddle; physics owns applying limits.
@@ -17,6 +17,7 @@ function followBallPolicy(state,dt){return state.x;}
 function step(s,dt,slow=false,policy=followBallPolicy){
  if(s.over)return s;dt=clamp(dt,0,SETTINGS.maxFrameSeconds)*(slow?SETTINGS.slowMotionFactor:1);
  const action=policy({...s},dt);const target=Number.isFinite(action)?clamp(action,PW/2,W-PW/2):s.ai;
+ if(!slow)s.spin=(s.spin+Math.hypot(s.vx,s.vy)*SETTINGS.spinPerPixel*dt*(s.vx<0?-1:1))%(Math.PI*2);
  s.ai+=clamp(target-s.ai,-SETTINGS.opponentSpeed*dt,SETTINGS.opponentSpeed*dt);s.x+=s.vx*dt;s.y+=s.vy*dt;
  if(s.x<R){s.x=R;s.vx=Math.abs(s.vx)}if(s.x>W-R){s.x=W-R;s.vx=-Math.abs(s.vx)}
  // Rally mode: opponent always returns, even if its drawing is still catching up.
