@@ -3,7 +3,7 @@
 'use strict';
 // Edit these values to tune feel. Speeds use logical court pixels per second.
 const SETTINGS={width:320,height:400,ballRadius:7,paddleWidth:64,paddleY:366,
- startSpeed:165,speedPerReturn:6,maxSpeed:260,serveSideSpeed:72,
+ startSpeed:165,speedPerReturn:6,maxSpeed:260,serveSideSpeed:22,
  aimStrength:5,swipeInfluence:.16,maxSideSpeed:170,maxSwipeSpeed:600,
  swipeDecay:12,opponentSpeed:180,opponentReturnY:34,
  courtLeft:48,courtRight:272,difficulty:'normal',gamesToSet:6,tieBreakTo:7,
