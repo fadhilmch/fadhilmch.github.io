@@ -4,4 +4,4 @@
 .game-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.game-head h2{margin:0;font-family:var(--head);font-size:20px;padding:0}.game-head h2::before{display:none}
 .game-score{display:flex;justify-content:space-between;padding:12px 0;font-size:14px}.game-score b{font-family:var(--head);font-size:20px;margin-left:5px;font-variant-numeric:tabular-nums}
 .tennis-game canvas{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain;background:#246346;border-radius:8px;touch-action:none;outline-offset:3px}
-.game-actions{display:flex;gap:8px}.game-actions button{flex:1}.game-hint{margin-bottom:0}.tennis-game-launch{font-size:20px;min-width:44px;padding:0 10px}
+.game-actions{display:flex;gap:8px}.game-actions button{flex:1}.game-hint{margin-bottom:0}.tennis-game-launch{font:20px/1 var(--font);color:inherit;min-width:44px;min-height:44px;padding:10px;background:none;border:0;border-radius:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.tennis-game-launch:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:4px}
