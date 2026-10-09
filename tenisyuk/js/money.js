@@ -138,7 +138,14 @@
       .map(s => ({ date: s.date, amount: charge(s) }));
   }
 
-  const api = { owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
+  // "12,5", "12.5", "1 250,50" -> number; anything else -> NaN
+  const parseAmount = v => {
+    const s = String(v == null ? '' : v).trim().replace(/[\s\u00a0]/g, '').replace(/kr$/i, '');
+    if (!/^\d+([.,]\d{1,2})?$/.test(s)) return NaN;
+    return Number(s.replace(',', '.'));
+  };
+
+  const api = { parseAmount, owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
