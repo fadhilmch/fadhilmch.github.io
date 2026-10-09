@@ -7,3 +7,7 @@ test('miss ends rally, cannot keep moving',()=>{let s=G.create();s.x=20;s.y=410;
 test('slow mode moves less',()=>{let a=G.create(),b=G.create();G.step(a,.02);G.step(b,.02,true);assert(b.y>a.y)});
 test('zero delta and frame cap prevent jumps',()=>{let a=G.create(),b=G.create();G.step(a,0);assert.equal(a.y,320);G.step(a,1);G.step(b,.025);assert.equal(a.y,b.y)});
 test('paddle clamp handles both edges',()=>{assert.equal(G.clamp(-50,32,288),32);assert.equal(G.clamp(500,32,288),288)});
+
+test('left and right edges aim the return',()=>{for(const sign of [-1,1]){let s=G.create();s.x=s.paddle+sign*20;s.vx=0;s.y=359;s.vy=180;G.step(s,.02);assert.equal(Math.sign(s.vx),sign)}});
+test('racket motion adds direction to center hit',()=>{let s=G.create();G.movePaddle(s,180,.02);s.x=180;s.vx=0;s.y=359;s.vy=180;G.step(s,.02);assert(s.vx>0);assert(s.vx<=170)});
+test('movement influence fades when racket is still',()=>{let s=G.create();G.movePaddle(s,180,.02);const old=s.paddleV;G.step(s,.025);assert(s.paddleV<old)});
