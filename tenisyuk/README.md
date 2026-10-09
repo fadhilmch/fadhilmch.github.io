@@ -34,3 +34,5 @@ Mini tennis: tap the plain tennis ball in the header. Serve starts play, drag le
 The mini-game launcher and title use an inline SVG tennis ball so the icon is consistent across devices, rather than the platform-dependent tennis emoji. Header control stays plain with a 44px tap target. In-game rackets are simple solid rounded paddle bars. Rally rules stay unchanged.
 
 Aim returns by where the ball hits the racket: left/right of center sends it that way, center is straighter. Moving the racket at contact adds direction; that influence fades quickly when held still. Horizontal speed is capped, rally scoring and opponent returns are unchanged.
+
+Canvas rendering scales the backing pixels by devicePixelRatio (up to 3×) while physics stays in logical court units. Crisp court lines, seamed shaded ball, solid rounded paddles and score panels match the green/lime UI. Only gameplay animates after Serve; reduced-motion play is slower.
