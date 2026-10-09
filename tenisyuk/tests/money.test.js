@@ -219,3 +219,18 @@ test('membership progress is against the total 700 kr pot', () => {
   assert.equal(M.membershipProgress(-20, 700).have, 0);
   assert.equal(M.membershipProgress(0, 700).pct, 0);
 });
+
+test('ledgerByDate merges the same date into one entry (in and out together)', () => {
+  const d = doc();
+  d.tx.push({ id: 'k1', date: '25 Sep', account: 'kas', kind: 'out', amount: 91.5, note: 'balls' });
+  d.tx.push({ id: 'k2', date: '25 Sep', account: 'kas', kind: 'in', amount: 10, note: 'cash' });
+  const rows = M.ledgerRows(d, cfg, 'kas'), D = M.ledgerByDate(rows);
+  const dates = D.map(e => e.label);
+  assert.equal(new Set(dates).size, dates.length, 'one entry per date');
+  assert.equal(dates[0], 'Start');
+  const sep = D.find(e => e.label === '25 Sep');
+  assert.equal(sep.out, 91.5);
+  assert.equal(sep.in, 10 + 10);               // 2 players paid x 5 + 10 cash in
+  assert.equal(D[D.length - 1].balance, M.totals(d, cfg).kasReal);
+  assert.deepEqual(M.ledgerByDate([]), []);
+});

@@ -82,6 +82,20 @@
       balance: bal.length ? bal[bal.length - 1] : 0,
     };
   }
+  // One entry per date for the charts: money in, money out and the balance at the end of that date.
+  // Rows with the same date label merge (consecutive or not); first-seen order is kept. No date = 'Start'.
+  function ledgerByDate(rows) {
+    const out = [], idx = new Map();
+    rows.forEach(r => {
+      const label = r.d || 'Start';
+      if (!idx.has(label)) { idx.set(label, out.length); out.push({ label, in: 0, out: 0, balance: 0 }); }
+      const e = out[idx.get(label)];
+      if (r.v >= 0) e.in = round2(e.in + r.v); else e.out = round2(e.out - r.v);
+    });
+    let run = 0;
+    out.forEach(e => { run = round2(run + e.in - e.out); e.balance = run; });
+    return out;
+  }
   // Membership pot vs target (total pot, not per person). pct is capped at 100.
   function membershipProgress(total, target) {
     const t = target > 0 ? target : DEFAULT_MEMBERSHIP_TARGET;
@@ -184,7 +198,7 @@
     return Number(s.replace(',', '.'));
   };
 
-  const api = { ledgerRows, ledgerSeries, membershipProgress, DEFAULT_MEMBERSHIP_TARGET, parseAmount, owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
+  const api = { ledgerRows, ledgerSeries, ledgerByDate, membershipProgress, DEFAULT_MEMBERSHIP_TARGET, parseAmount, owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
