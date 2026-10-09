@@ -7,7 +7,7 @@ const demoDoc=()=>JSON.parse(localStorage.getItem('ty_demo')||'null')||{sessions
 {id:'s11',date:'11 Sep',billed:900,real:900,venue:'',players:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian','Dedy','Qiang','Naufal'],paid:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian']},
 {id:'s18',date:'18 Sep',billed:900,real:724,venue:'',players:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian','Dartagnan','Suci','Assevitto'],paid:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian','Dartagnan','Suci','Assevitto']},
 {id:'s25',date:'25 Sep',billed:595,real:455,venue:'',players:['Fadel','HS Putra','Alif Harfian','Suci','Assevitto','Dartagnan','Aldo'],paid:['Fadel','Aldo']}],tx:[],venues:[]};
-const demoCfg={payer:'Fadel',swish:'072-160 66 41',kasOpening:125,membershipTarget:700};
+const demoCfg={payer:'Fadel',swish:'072-160 66 41',kasOpening:125,membershipTarget:TYMoney.DEFAULT_MEMBERSHIP_TARGET};
 async function rpc(fn,args){const r=await fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:Object.assign({apikey:CFG.anonKey,'Content-Type':'application/json'},CFG.anonKey.startsWith('eyJ')?{Authorization:'Bearer '+CFG.anonKey}:{}),body:JSON.stringify(args)});if(!r.ok)throw new Error('network');return r.json()}
 async function load(code){
  if(DEMO){if(code!=='demo')return{error:'wrong_code'};const d=demoDoc();return{...d,cfg:demoCfg,version:String(d.version||'0')}}
@@ -79,7 +79,7 @@ function flowBars(rows){const E=TYMoney.ledgerByDate(rows),n=E.length;if(!n)retu
  return`<svg class="chart" viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Money in and out per date"><line x1="${L}" x2="${W-R}" y1="${y0.toFixed(1)}" y2="${y0.toFixed(1)}" class="cz"/>${cols}</svg>${legend([['var(--ok)','Money in'],['var(--red)','Money out']])}`}
 function kasGraphs(rows){const D=TYMoney.ledgerSeries(rows);
  return`<h3 class="gh">Kas balance over time</h3>${balanceChart(rows)}<dl class="kv two"><div><dt>Money in</dt><dd>${kr(D.moneyIn)}</dd></div><div><dt>Money out</dt><dd>${kr(D.moneyOut)}</dd></div></dl><h3 class="gh">Money in and out</h3>${flowBars(rows)}`}
-function membershipCard(T){const P=TYMoney.membershipProgress(T.membership,S.cfg.membershipTarget);
+function membershipCard(T){const P=TYMoney.membershipProgress(T.membership,CFG.membershipTarget ?? S.cfg.membershipTarget);
  return`<div class="hero"><small>🎟️ Membership</small><b>${kr(P.have)} / ${kr(P.target)}</b><div class="sbar" style="height:12px" role="progressbar" aria-valuemin="0" aria-valuemax="${P.target}" aria-valuenow="${P.have}"><div class="bar-track"><i style="width:${P.pct}%;background:var(--mem)"></i></div></div><small>${P.reached?'Target reached 🎉':kr(P.remaining)+' to go'} · ${fEn(P.pct)}%</small></div>`}
 function ledger(acct,T,admin){const R=TYMoney.ledgerRows(S.doc,S.cfg,acct),run=R.length?R[R.length-1].run:0; return`${acct==='kas'?'<h3 class="gh">Ledger</h3>':'<h2>🧾 Membership ledger</h2>'}<div class="lrows">${R.map(r=>`<div class="lrow ${admin&&r.manual?'x':''}"><span class="ld">${H(r.d||'-')}</span><span>${H(r.n)}</span><b class="${r.v<0?'neg':'pos'}">${r.v<0?'−':'+'}${kr(Math.abs(r.v))}</b><em>${kr(r.run)}</em>${admin&&r.manual?`<button data-deltx="${r.id}" aria-label="Delete entry">✕</button>`:''}</div>`).join('')}</div>
  <p class="note">${acct==='kas'?'':'Balance: <b>'+kr(run)+'</b>. '}Session rows are automatic. Manual entries come from admin.</p>
