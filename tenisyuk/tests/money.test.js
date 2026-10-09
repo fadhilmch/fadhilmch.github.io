@@ -211,13 +211,13 @@ test('ledger series: in, out, balance, min and max', () => {
   assert.deepEqual(M.ledgerSeries([]), { points: [], moneyIn: 0, moneyOut: 0, min: 0, max: 0, balance: 0 });
 });
 
-test('membership progress is against the total 800 kr pot', () => {
-  assert.deepEqual(M.membershipProgress(316, 800), { have: 316, target: 800, remaining: 484, pct: 39.5, reached: false });
-  assert.equal(M.membershipProgress(316).target, 800);            // missing target falls back to 800
-  assert.equal(M.membershipProgress(316, 0).target, 800);
-  assert.deepEqual(M.membershipProgress(850, 800), { have: 850, target: 800, remaining: 0, pct: 100, reached: true });
-  assert.equal(M.membershipProgress(-20, 800).have, 0);
-  assert.equal(M.membershipProgress(0, 800).pct, 0);
+test('membership progress is against the total 1000 kr pot', () => {
+  assert.deepEqual(M.membershipProgress(316, 1000), { have: 316, target: 1000, remaining: 684, pct: 31.6, reached: false });
+  assert.equal(M.membershipProgress(316).target, 1000);            // missing target falls back to 1000
+  assert.equal(M.membershipProgress(316, 0).target, 1000);
+  assert.deepEqual(M.membershipProgress(1050, 1000), { have: 1050, target: 1000, remaining: 0, pct: 100, reached: true });
+  assert.equal(M.membershipProgress(-20, 1000).have, 0);
+  assert.equal(M.membershipProgress(0, 1000).pct, 0);
 });
 
 test('ledgerByDate merges the same date into one entry (in and out together)', () => {
@@ -249,10 +249,10 @@ test('site target overrides old backend target without changing the pot or charg
   const before = M.totals(doc(), cfg);
   vm.runInContext('S.cfg={membershipTarget:700};', context);
   const card = vm.runInContext('membershipCard({membership:316})', context);
-  assert.match(card, /316 kr \/ 800 kr/);
-  assert.match(card, /484 kr to go/);
-  assert.match(card, /39.5%/);
-  assert.match(card, /aria-valuemax="800"/);
+  assert.match(card, /316 kr \/ 1,000 kr/);
+  assert.match(card, /684 kr to go/);
+  assert.match(card, /31.6%/);
+  assert.match(card, /aria-valuemax="1000"/);
   assert.deepEqual(M.totals(doc(), cfg), before);
   vm.runInContext('delete CFG.membershipTarget; S.cfg.membershipTarget=900;', context);
   assert.match(vm.runInContext('membershipCard({membership:316})', context), /316 kr \/ 900 kr/);
