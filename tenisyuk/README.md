@@ -20,7 +20,7 @@ Rules the tests lock in: kas is 5 kr per person only; membership is billed minus
 
 Validation errors on the Cash form (empty or zero amount) show as a floating red alert at the top (`showAlert` in `js/app.js`, `.alertbar` in `style.css`), auto-dismiss after 4 seconds or on tap. The amount field keeps its red border.
 
-Cash tab graphs: the old Ball cash card and the Kas ledger are one section, titled Cash (Real, Pending, Total later, the explanation line, charts, ledger rows). It has a balance-over-time chart (SVG, `balanceChart` in `js/app.js`) and a column chart of money in (up, green) and out (down, red) per date (same-date rows share one x slot: in above the line, out below) with the amounts beside each column; the balance chart shows the end-of-date balance. Membership has a progress card: pot so far / 1000 kr target, kr to go and percent (capped at 100). The 1000 kr is the whole membership pot, not per person; `config.js` sets the displayed target to 1000 kr, ahead of any older `cfg.membershipTarget` returned by the backend. With no site override, the backend target is used; missing or invalid targets fall back to 1000 kr. No database settings or session prices are changed. Example (demo data): 316 kr in the pot / 1000 kr target = 684 kr to go, 31.6%. Kas and all player charges stay unchanged. Data comes from `ledgerRows`, `ledgerSeries`, `ledgerByDate` and `membershipProgress` in `js/money.js` (tested).
+Cash tab graphs: the old Ball cash card and the Kas ledger are one section, titled Cash (Real, Pending, Total later, the explanation line, charts, ledger rows). It has a balance-over-time chart (SVG, `balanceChart` in `js/app.js`) and a column chart of money in (up, green) and out (down, red) per date (same-date rows share one x slot: in above the line, out below) with the amounts beside each column; the balance chart shows the end-of-date balance. Membership has a progress card: pot so far / 700 kr target, kr to go and percent (capped at 100). The 700 kr is the whole membership pot, not per person; `cfg.membershipTarget` overrides it. Data comes from `ledgerRows`, `ledgerSeries`, `ledgerByDate` and `membershipProgress` in `js/money.js` (tested).
 
 Tabs: Sessions, Stats, Owed (who still owes Fadel, tap a name to pay with Swish), Cash (kas, membership, cash flow, admin entries), Share.
 
@@ -56,3 +56,15 @@ This is arcade tennis, not full real-tennis simulation: crossing a singles sidel
 Example: 40-40 is Deuce. Your next point makes AD-40. Lose the next point and it returns to Deuce. Win two consecutive points from Deuce to win that game. At 6-6 games the tie-break starts; 7-6 tie-break points is not enough, 8-6 wins the set 7-6.
 
 Scoreboard: rows for You and Computer, Set 1 games and current game points. A dot marks who serves, hidden when the set ends; a winning row gets a theme-aware accent. Tie-break points replace normal point labels at six-all. Current set and points reset only on New set or closing the game. Short phone screens use a smaller court so the scoreboard and controls stay in reach.
+
+## Versioned admin saves (prepared migration)
+
+`js/sync.js` sends the loaded version to `admin_save_v2`, reloads on a conflict
+or unknown outcome, and never falls back to the unversioned writer. Unknown
+versions disable saves. Admin session cards include **Edit fronted**, with
+old/new confirmation before saving; billed and player prices stay unchanged.
+See [GUIDE.md](GUIDE.md) for the example, bot scopes, staging tests, migration
+approval gates and deployment order. `sql/001-versioned-saves.sql` is a prepared
+file only, not an applied Supabase change. Read-only bot capabilities are empty
+by default. No key creation, live price changes or personal-agent tools are
+included.
