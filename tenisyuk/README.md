@@ -16,3 +16,6 @@ Run the tests (Node 18+, no install needed):
     cd tenisyuk && node --test tests/*.test.js
 
 Rules the tests lock in: kas is 5 kr per person only; membership is billed minus the real booking only; the two are always separate.
+
+
+Validation errors on the Cash form (empty or zero amount) show as a floating red alert at the top (`showAlert` in `js/app.js`, `.alertbar` in `style.css`), auto-dismiss after 4 seconds or on tap. The amount field keeps its red border.
