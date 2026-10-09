@@ -128,3 +128,6 @@ button:active,.btn:active{transform:scale(.97)}
 .lrow,.chip,.card{transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease}
 @media (hover:hover){.tile:hover,.card:hover{box-shadow:0 2px 10px rgba(0,0,0,.12)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+
+@media(max-width:640px){.tabs{gap:0;justify-content:space-between}.tabs button{padding:10px 8px;font-size:15px}}
