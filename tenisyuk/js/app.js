@@ -88,7 +88,7 @@ function owed(T){const P=PAYER();
  <h2>Still owed per person</h2>
  <div class="plist">${T.owes.map(o=>`<button class="prow" data-who="${H(o.name)}"><span class="pn">${H(o.name)}<small>${o.dates.join(' + ')}</small></span><b>${kr(o.amount)}</b><i class="chev" aria-hidden="true">›</i></button>`).join('')}</div>${T.owes.length?'<p class="note">Tap a name to pay with Swish.</p>':'<p class="note">Everyone is settled 🎉</p>'}`}
 function cash(T,admin){const P=PAYER();
- return`<h2>🏦 Ball cash (kas)</h2><div class="tiles three"><div class="tile"><small>Real</small><b>${kr(T.kasReal)}</b></div><div class="tile"><small>Pending</small><b class="warnc">${kr(T.kasPending)}</b></div><div class="tile"><small>Total later</small><b>${kr(T.kasReal+T.kasPending)}</b></div></div>
+ return`<h2>🏦 Cash</h2><div class="tiles three"><div class="tile"><small>Real</small><b>${kr(T.kasReal)}</b></div><div class="tile"><small>Pending</small><b class="warnc">${kr(T.kasPending)}</b></div><div class="tile"><small>Total later</small><b>${kr(T.kasReal+T.kasPending)}</b></div></div>
  <p class="note">Real = ${S.cfg.kasOpening} opening + ${T.kasPersons} payments × 5${T.kasManual?(T.kasManual>0?' + ':' − ')+fEn(Math.abs(T.kasManual))+' manual':''}. Pending = ${T.kasPending/5} unpaid × 5.</p>
  ${kasGraphs(TYMoney.ledgerRows(S.doc,S.cfg,'kas'))}${ledger('kas',T,admin)}${membershipCard(T)}${ledger('membership',T,admin)}
  <h2>${H(P)}'s cash flow</h2><dl class="kv"><div><dt>Fronted for court</dt><dd>${kr(T.realCost)}</dd></div><div><dt>Received from others</dt><dd>${kr(T.collected)}</dd></div><div><dt>Still out of pocket</dt><dd>${kr(T.realCost-T.collected)}</dd></div></dl>`}
