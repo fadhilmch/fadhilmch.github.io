@@ -150,4 +150,4 @@ button:active,.btn:active{transform:scale(.97)}
 .tennis-ball::before{left:-10px}.tennis-ball::after{right:-10px}
 /* Keep graph numbers readable and give the marker room at phone widths. */
 .srow .sbar{min-width:0}
-@media(max-width:640px){.srow{grid-template-columns:82px minmax(0,1fr);row-gap:5px}.srow>b{grid-column:2;font-size:13px;justify-self:end}.srow .sbar{grid-column:2;grid-row:auto}}
+@media(max-width:640px){.srow{grid-template-columns:62px minmax(24px,1fr) auto;gap:8px}.srow>b{font-size:12px;white-space:nowrap;justify-self:end}.srow .sbar{grid-column:auto;grid-row:auto}}
