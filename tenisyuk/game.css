@@ -7,3 +7,5 @@
 .game-actions{display:flex;gap:8px}.game-actions button{flex:1}.game-hint{margin-bottom:0}.tennis-game-launch{font:20px/1 var(--font);color:inherit;min-width:44px;min-height:44px;padding:10px;background:none;border:0;border-radius:0;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.tennis-game-launch:focus-visible{outline:2px solid var(--lime);outline-offset:2px;border-radius:4px}
 
 .game-ball-icon{display:inline-block;width:24px;height:24px;flex-shrink:0;vertical-align:-4px}.game-head h2{display:flex;align-items:center;gap:8px}
+
+.game-score{gap:10px}.game-score>span{flex:1;background:var(--raised);border:1px solid var(--hair);border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between}.tennis-game canvas{box-shadow:inset 0 0 0 1px rgba(255,255,255,.18),0 3px 12px rgba(0,0,0,.15)}.game-aim{padding:8px 10px;border-left:3px solid var(--lime);background:var(--raised);border-radius:0 6px 6px 0}
