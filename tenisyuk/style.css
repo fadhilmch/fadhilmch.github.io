@@ -78,6 +78,7 @@ h3{font-weight:400;font-size:21px;margin:0 0 10px}
 .gatebox input{height:44px;width:100%;border:1px solid var(--hair);border-radius:4px;padding:0 12px;background:var(--white);color:var(--ink);font:inherit;text-align:center}
 .gatebox .btn{width:100%}.gatebox small{color:var(--ink2)}
 @media(max-width:640px){.sitebar{gap:8px}.tabs{order:3;width:100%;flex:none;overflow-x:auto}.tabs button{padding:10px 12px}.hide-s{display:none}.adminbar small{display:none}.brand{height:26px}}
+@media(max-width:640px){.tabs{gap:0;justify-content:space-between}.tabs button{padding:10px 8px;font-size:15px}}
 
 /* v2: form text 16px (stops iOS zoom), date inputs, who-am-I card, toast, footer */
 input,select,textarea,.form input,.form select,.venue select,.venue input,.adminbar input,.gatebox input{font-size:16px}
@@ -131,5 +132,3 @@ button:active,.btn:active{transform:scale(.97)}
 
 
 .hero small,.warnc{font-family:var(--head)}
-
-@media(max-width:640px){.tabs{gap:0;justify-content:space-between}.tabs button{padding:10px 8px;font-size:15px}}
