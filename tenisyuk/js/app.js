@@ -26,14 +26,14 @@ const totals=()=>TYMoney.totals(S.doc,S.cfg);
 // ---- views ----
 function view(){const root=$('#app');if(!S.doc){root.innerHTML=gate();bindGate();return}
  const T=totals(),admin=!!S.admin,ss=S.doc.sessions;
- const tabs=[['history','Sessions'],['stats','Stats'],['cash','Cash'],['share','Share']];
+ const tabs=[['history','Sessions'],['stats','Stats'],['owed','Owed'],['cash','Cash'],['share','Share']];
  const adm=admin?`<div class="adminbar on">🔓<span class="hide-s"> Admin mode</span> <button class="btn sm" id="adm">Lock</button></div>`:S.asking?`<div class="adminbar"><input id="adm_code" type="password" placeholder="Admin code" aria-label="Admin code" autofocus><button class="btn primary sm" id="adm_go">Unlock</button><small class="${S.badAdmin?'badc':''}">${S.badAdmin?'Wrong code':''}</small></div>`:`<div class="adminbar"><button class="btn sm" id="adm">🔒 Admin</button></div>`;
  root.innerHTML=`<header class="sitebar"><div class="brand"><img class="wm wm-l" src="${TY_WM.light}" alt="tennis yuk"><img class="wm wm-d" src="${TY_WM.dark}" alt=""></div>
  <nav class="tabs">${tabs.map(([k,l])=>`<button data-tab="${k}" class="${S.tab===k?'on':''}">${l}</button>`).join('')}</nav>
  <div class="tools">${adm}<button class="btn sm" id="th">${S.theme==='dark'?'☀️':'🌙'}<span class="hide-s"> ${S.theme==='dark'?'Light':'Dark'}</span></button></div></header>
  <div class="summary"><div><small>Sessions</small><b>${ss.length}</b></div><div><small>Still owed</small><b class="warnc">${kr(T.outstanding)}</b></div><div><small>Kas</small><b>${kr(T.kasReal)}</b></div><small class="upd">Updated ${todayLabel()}${DEMO?' · demo data':''}</small></div>
  ${S.err?`<div class="err">${H(S.err)}</div>`:''}
- <section>${S.tab==='history'?history(T,admin):S.tab==='stats'?stats(T):S.tab==='cash'?cash(T,admin):share(T)}</section>
+ <section>${S.tab==='history'?history(T,admin):S.tab==='stats'?stats(T):S.tab==='owed'?owed(T):S.tab==='cash'?cash(T,admin):share(T)}</section>
  <footer class="foot"><button class="linkbtn" id="forget">Forget this device</button></footer>${toastBar()}${sheet(T)}`;bind()}
 function gate(){return`<div class="gate"><div class="gatebox"><div class="brand"><img class="wm wm-l" src="${TY_WM.light}" alt="tennis yuk"><img class="wm wm-d" src="${TY_WM.dark}" alt=""></div><p>Enter the viewer code from the group chat.</p><input id="code" type="password" placeholder="Viewer code" aria-label="Viewer code" autofocus><button class="btn primary" id="go">Open</button><small class="${S.err?'badc':''}" id="gerr">${S.err?H(S.err):(DEMO?'Demo mode: code demo (admin: admin)':'')}</small></div></div>`}
 function card(s,admin){const o=!!S.open[s.id],u=unpaidO(s),others=TYMoney.othersCount(s,PAYER()),P=PAYER(),ch=charge(s);
@@ -71,11 +71,12 @@ function ledger(acct,T,admin){const d=S.doc,rows=[];
  return`<h2>🧾 ${acct==='kas'?'Kas':'Membership'} ledger</h2><div class="lrows">${R.map(r=>`<div class="lrow ${admin&&r.manual?'x':''}"><span class="ld">${H(r.d||'-')}</span><span>${H(r.n)}</span><b class="${r.v<0?'neg':'pos'}">${r.v<0?'−':'+'}${kr(Math.abs(r.v))}</b><em>${kr(r.run)}</em>${admin&&r.manual?`<button data-deltx="${r.id}" aria-label="Delete entry">✕</button>`:''}</div>`).join('')}</div>
  <p class="note">Balance: <b>${kr(run)}</b>. Session rows are automatic. Manual entries come from admin.</p>
  ${admin&&acct==='kas'?(S.txOpen?`<div class="form"><div class="seg"><button data-kind="out" class="${S.txKind!=='in'?'on':''}">Money out</button><button data-kind="in" class="${S.txKind==='in'?'on':''}">Money in</button></div><div class="two"><label>Amount (kr)<input id="x_amt" inputmode="decimal" placeholder="50"></label><label>Date<input id="x_date" type="date" value="${todayIsoNow()}"></label></div><label>Note<input id="x_note" placeholder="e.g. new balls"></label><div class="actions"><button class="btn primary" id="x_add">Add entry</button><button class="btn" id="x_cancel">Cancel</button></div></div>`:`<button class="btn wide" id="x_open">＋ Add transaction</button>`):''}`}
-function cash(T,admin){const P=PAYER();
+function owed(T){const P=PAYER();
  return`<div class="hero"><small>💵 Still owed to ${H(P)}</small><b>${kr(T.outstanding)}</b>${bar([{v:T.collected,c:'var(--ok)'},{v:T.outstanding,c:'var(--warn)'}],10)}<small>${kr(T.collected)} collected of ${kr(T.charged)} charged to others</small></div>
  <h2>Still owed per person</h2>
- <div class="plist">${T.owes.map(o=>`<button class="prow" data-who="${H(o.name)}"><span class="pn">${H(o.name)}<small>${o.dates.join(' + ')}</small></span><b>${kr(o.amount)}</b><i class="chev" aria-hidden="true">›</i></button>`).join('')}</div>${T.owes.length?'<p class="note">Tap a name to pay with Swish.</p>':'<p class="note">Everyone is settled 🎉</p>'}
- <h2>🏦 Ball cash (kas)</h2><div class="tiles three"><div class="tile"><small>Real</small><b>${kr(T.kasReal)}</b></div><div class="tile"><small>Pending</small><b class="warnc">${kr(T.kasPending)}</b></div><div class="tile"><small>Total later</small><b>${kr(T.kasReal+T.kasPending)}</b></div></div>
+ <div class="plist">${T.owes.map(o=>`<button class="prow" data-who="${H(o.name)}"><span class="pn">${H(o.name)}<small>${o.dates.join(' + ')}</small></span><b>${kr(o.amount)}</b><i class="chev" aria-hidden="true">›</i></button>`).join('')}</div>${T.owes.length?'<p class="note">Tap a name to pay with Swish.</p>':'<p class="note">Everyone is settled 🎉</p>'}`}
+function cash(T,admin){const P=PAYER();
+ return`<h2>🏦 Ball cash (kas)</h2><div class="tiles three"><div class="tile"><small>Real</small><b>${kr(T.kasReal)}</b></div><div class="tile"><small>Pending</small><b class="warnc">${kr(T.kasPending)}</b></div><div class="tile"><small>Total later</small><b>${kr(T.kasReal+T.kasPending)}</b></div></div>
  <p class="note">Real = ${S.cfg.kasOpening} opening + ${T.kasPersons} payments × 5${T.kasManual?(T.kasManual>0?' + ':' − ')+fEn(Math.abs(T.kasManual))+' manual':''}. Pending = ${T.kasPending/5} unpaid × 5.</p>
  ${ledger('kas',T,admin)}${ledger('membership',T,admin)}
  <h2>${H(P)}'s cash flow</h2><dl class="kv"><div><dt>Fronted for court</dt><dd>${kr(T.realCost)}</dd></div><div><dt>Received from others</dt><dd>${kr(T.collected)}</dd></div><div><dt>Still out of pocket</dt><dd>${kr(T.realCost-T.collected)}</dd></div></dl>`}
