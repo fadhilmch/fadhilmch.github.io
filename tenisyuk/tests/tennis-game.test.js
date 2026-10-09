@@ -13,3 +13,5 @@ test('racket motion adds direction to center hit',()=>{let s=G.create();G.movePa
 test('movement influence fades when racket is still',()=>{let s=G.create();G.movePaddle(s,180,.02);const old=s.paddleV;G.step(s,.025);assert(s.paddleV<old)});
 
 test('opponent policy is swappable and cannot mutate state',()=>{const s=G.create();const x=s.x;G.step(s,.02,false,(obs)=>{obs.x=999;return 32});assert.equal(s.x,x+s.vx*.02);assert(s.ai<160)});
+
+test('spin follows direction and stops for reduced motion',()=>{let a=G.create(),b=G.create(),c=G.create();b.vx=-72;G.step(a,.02);G.step(b,.02);G.step(c,.02,true);assert(a.spin>0);assert(b.spin<0);assert.equal(c.spin,0)});
