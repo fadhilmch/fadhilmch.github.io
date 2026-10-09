@@ -180,3 +180,11 @@ test('othersCount: payer not playing means everyone owes', () => {
   assert.strictEqual(othersCount({ players: ['Fadel', 'A', 'B'] }, 'Fadel'), 2);
   assert.strictEqual(othersCount({ players: ['A', 'B'] }, 'Fadel'), 2);
 });
+
+test('parseAmount accepts comma and dot decimals, rejects junk', () => {
+  assert.equal(M.parseAmount('12,5'), 12.5);
+  assert.equal(M.parseAmount('12.50'), 12.5);
+  assert.equal(M.parseAmount('50'), 50);
+  assert.equal(M.parseAmount(' 1 250,50 kr'), 1250.5);
+  for (const bad of ['', 'abc', '0,5,5', '-5', '1,234', null]) assert.ok(Number.isNaN(M.parseAmount(bad)), String(bad));
+});
