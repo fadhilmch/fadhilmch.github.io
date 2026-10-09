@@ -188,3 +188,34 @@ test('parseAmount accepts comma and dot decimals, rejects junk', () => {
   assert.equal(M.parseAmount(' 1 250,50 kr'), 1250.5);
   for (const bad of ['', 'abc', '0,5,5', '-5', '1,234', null]) assert.ok(Number.isNaN(M.parseAmount(bad)), String(bad));
 });
+
+test('ledger rows keep a running balance and match totals', () => {
+  const d = doc(), T = M.totals(d, cfg);
+  const kas = M.ledgerRows(d, cfg, 'kas'), mem = M.ledgerRows(d, cfg, 'membership');
+  assert.equal(kas[0].n, 'Opening balance');
+  assert.equal(kas[kas.length - 1].run, T.kasReal);
+  assert.equal(mem[mem.length - 1].run, T.membership);
+  assert.deepEqual(mem.map(r => r.run), [176, 316]);
+});
+
+test('ledger series: in, out, balance, min and max', () => {
+  const d = doc();
+  d.tx.push({ id: 'k1', date: '3 Oct', account: 'kas', kind: 'out', amount: 60.5, note: 'balls' });
+  const S = M.ledgerSeries(M.ledgerRows(d, cfg, 'kas'));
+  assert.equal(S.moneyOut, 60.5);
+  assert.equal(S.moneyIn, M.totals(d, cfg).kasReal + 60.5);
+  assert.equal(S.balance, M.totals(d, cfg).kasReal);
+  assert.equal(S.min, 0);
+  assert.ok(S.max >= S.balance);
+  assert.equal(S.points.length, M.ledgerRows(d, cfg, 'kas').length);
+  assert.deepEqual(M.ledgerSeries([]), { points: [], moneyIn: 0, moneyOut: 0, min: 0, max: 0, balance: 0 });
+});
+
+test('membership progress is against the total 700 kr pot', () => {
+  assert.deepEqual(M.membershipProgress(316, 700), { have: 316, target: 700, remaining: 384, pct: 45.1, reached: false });
+  assert.equal(M.membershipProgress(316).target, 700);            // missing target falls back to 700
+  assert.equal(M.membershipProgress(316, 0).target, 700);
+  assert.deepEqual(M.membershipProgress(850, 700), { have: 850, target: 700, remaining: 0, pct: 100, reached: true });
+  assert.equal(M.membershipProgress(-20, 700).have, 0);
+  assert.equal(M.membershipProgress(0, 700).pct, 0);
+});
