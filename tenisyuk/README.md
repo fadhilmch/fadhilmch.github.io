@@ -56,3 +56,15 @@ This is arcade tennis, not full real-tennis simulation: crossing a singles sidel
 Example: 40-40 is Deuce. Your next point makes AD-40. Lose the next point and it returns to Deuce. Win two consecutive points from Deuce to win that game. At 6-6 games the tie-break starts; 7-6 tie-break points is not enough, 8-6 wins the set 7-6.
 
 Scoreboard: rows for You and Computer, Set 1 games and current game points. A dot marks who serves, hidden when the set ends; a winning row gets a theme-aware accent. Tie-break points replace normal point labels at six-all. Current set and points reset only on New set or closing the game. Short phone screens use a smaller court so the scoreboard and controls stay in reach.
+
+## Versioned admin saves (prepared migration)
+
+`js/sync.js` sends the loaded version to `admin_save_v2`, reloads on a conflict
+or unknown outcome, and never falls back to the unversioned writer. Unknown
+versions disable saves. Admin session cards include **Edit fronted**, with
+old/new confirmation before saving; billed and player prices stay unchanged.
+See [GUIDE.md](GUIDE.md) for the example, bot scopes, staging tests, migration
+approval gates and deployment order. `sql/001-versioned-saves.sql` is a prepared
+file only, not an applied Supabase change. Read-only bot capabilities are empty
+by default. No key creation, live price changes or personal-agent tools are
+included.

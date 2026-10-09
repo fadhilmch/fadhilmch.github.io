@@ -1,7 +1,7 @@
 const CFG=window.TY||{};const DEMO=!CFG.url;const $=s=>document.querySelector(s);
 const H=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const{fEn,fId,kr,charge,court,gap,MONTHS}=TYMoney;
-const S={code:localStorage.getItem('ty_code')||sessionStorage.getItem('ty_code')||'',toast:null,admin:sessionStorage.getItem('ty_admin')||'',doc:null,cfg:null,tab:'history',open:{},err:'',asking:false,addOpen:false,lang:'id',venueAdd:false,theme:localStorage.getItem('ty_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')};
+const S={code:localStorage.getItem('ty_code')||sessionStorage.getItem('ty_code')||'',toast:null,admin:sessionStorage.getItem('ty_admin')||'',doc:null,cfg:null,version:null,saving:false,tab:'history',open:{},err:'',asking:false,addOpen:false,lang:'id',venueAdd:false,theme:localStorage.getItem('ty_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')};
 document.documentElement.dataset.theme=S.theme;
 const demoDoc=()=>JSON.parse(localStorage.getItem('ty_demo')||'null')||{sessions:[
 {id:'s11',date:'11 Sep',billed:900,real:900,venue:'',players:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian','Dedy','Qiang','Naufal'],paid:['Fadel','Aldo','HS Putra','Sabrina','Alif Harfian']},
@@ -10,7 +10,7 @@ const demoDoc=()=>JSON.parse(localStorage.getItem('ty_demo')||'null')||{sessions
 const demoCfg={payer:'Fadel',swish:'072-160 66 41',kasOpening:125,membershipTarget:TYMoney.DEFAULT_MEMBERSHIP_TARGET};
 async function rpc(fn,args){const r=await fetch(CFG.url+'/rest/v1/rpc/'+fn,{method:'POST',headers:Object.assign({apikey:CFG.anonKey,'Content-Type':'application/json'},CFG.anonKey.startsWith('eyJ')?{Authorization:'Bearer '+CFG.anonKey}:{}),body:JSON.stringify(args)});if(!r.ok)throw new Error('network');return r.json()}
 async function load(code){
- if(DEMO){if(code!=='demo')return{error:'wrong_code'};const d=demoDoc();return{...d,cfg:demoCfg}}
+ if(DEMO){if(code!=='demo')return{error:'wrong_code'};const d=demoDoc();return{...d,cfg:demoCfg,version:String(d.version||'0')}}
  return rpc('get_recap',{p_code:code})}
 // ---- helpers ----
 const PAYER=()=>S.cfg.payer;
@@ -36,7 +36,7 @@ function view(){const root=$('#app');if(!S.doc){root.innerHTML=gate();bindGate()
  <div class="tools"><button class="tennis-game-launch" data-tennis-game aria-label="Play mini tennis" title="Play mini tennis">🎾</button>${adm}<button class="btn sm" id="th">${S.theme==='dark'?'☀️':'🌙'}<span class="hide-s"> ${S.theme==='dark'?'Light':'Dark'}</span></button></div></header>
  <div class="summary"><div><small>Sessions</small><b>${ss.length}</b></div><div><small>Still owed</small><b class="warnc">${kr(T.outstanding)}</b></div><div><small>Kas</small><b>${kr(T.kasReal)}</b></div><small class="upd">Updated ${todayLabel()}${DEMO?' · demo data':''}</small></div>
  ${S.err?`<div class="err">${H(S.err)}</div>`:''}
- <section>${S.tab==='history'?history(T,admin):S.tab==='stats'?stats(T):S.tab==='owed'?owed(T):S.tab==='cash'?cash(T,admin):share(T)}</section>
+ ${S.saving?'<p role="status">Saving…</p>':''}<section${S.saving?' inert aria-busy="true"':''}>${S.tab==='history'?history(T,admin):S.tab==='stats'?stats(T):S.tab==='owed'?owed(T):S.tab==='cash'?cash(T,admin):share(T)}</section>
  <footer class="foot"><button class="linkbtn" id="forget">Forget this device</button></footer>${toastBar()}${sheet(T)}`;bind()}
 function gate(){return`<div class="gate"><div class="gatebox"><div class="brand"><img class="wm wm-l" src="${TY_WM.light}" alt="tennis yuk"><img class="wm wm-d" src="${TY_WM.dark}" alt=""></div><p>Enter the viewer code from the group chat.</p><input id="code" type="password" placeholder="Viewer code" aria-label="Viewer code" autofocus><button class="btn primary" id="go">Open</button><small class="${S.err?'badc':''}" id="gerr">${S.err?H(S.err):(DEMO?'Demo mode: code demo (admin: admin)':'')}</small></div></div>`}
 function card(s,admin){const o=!!S.open[s.id],u=unpaidO(s),others=TYMoney.othersCount(s,PAYER()),P=PAYER(),ch=charge(s);
@@ -45,7 +45,7 @@ function card(s,admin){const o=!!S.open[s.id],u=unpaidO(s),others=TYMoney.others
  ${bar([{v:pn,c:'var(--ok)'},{v:u.length,c:'var(--warn)'}],6)}
  ${o?`<div class="card-body"><dl class="kv">
  <div><dt>Venue</dt><dd>${admin?`<div class="venue" style="min-width:190px">${venueSel('v_'+s.id,s.venue||'')}</div>`:(s.venue?H(s.venue):'<span class="muted">not set</span>')}</dd></div>
- <div><dt>Date</dt><dd>${admin?`<input class="dateinp" type="date" data-date="${s.id}" value="${TYMoney.labelToIso(s.date,new Date().getFullYear())}" aria-label="Session date">`:H(s.date)}</dd></div><div><dt>Billed</dt><dd>${kr(s.billed)}</dd></div><div><dt>Real booking (${H(P)} fronted)</dt><dd>${kr(s.real)}</dd></div>
+ <div><dt>Date</dt><dd>${admin?`<input class="dateinp" type="date" data-date="${s.id}" value="${TYMoney.labelToIso(s.date,new Date().getFullYear())}" aria-label="Session date">`:H(s.date)}</dd></div><div><dt>Billed</dt><dd>${kr(s.billed)}</dd></div><div><dt>Real booking (${H(P)} fronted)</dt><dd>${kr(s.real)}${admin?` <button class="btn sm" data-fronted="${s.id}">Edit fronted</button>`:''}</dd></div>
  <div><dt>Per person</dt><dd>${fEn(court(s))} + 5 kas = ${kr(ch)}</dd></div><div><dt>To membership</dt><dd>${kr(gap(s))}</dd></div><div><dt>Still owed</dt><dd>${kr(u.length*ch)}</dd></div></dl>
  <div class="chips">${s.players.map(p=>{const pd=s.paid.includes(p),can=admin&&p!==P;return`<button class="chip ${pd?'paid':'open'} ${can?'adm':''}" ${can?`data-tog="${s.id}|${H(p)}"`:'disabled'}>${pd?'✅':'⏳'} ${H(p)}${pd?'':' '+fEn(ch)}</button>`}).join('')}</div>
  ${admin?`<div class="actions"><button class="btn" data-allpaid="${s.id}">Mark all paid</button><button class="btn danger" data-del="${s.id}">Delete session</button></div>`:'<p class="note">Tap a name to toggle paid. Admin mode only.</p>'}</div>`:''}</article>`}
@@ -98,12 +98,12 @@ function share(T){const t=recapText(T,S.lang);return`<p class="note" style="marg
  <div class="seg"><button data-lang="id" class="${S.lang==='id'?'on':''}">Bahasa (your format)</button><button data-lang="en" class="${S.lang==='en'?'on':''}">English</button></div>
  <textarea id="sh" class="recap" readonly rows="22">${H(t)}</textarea>
  <div class="actions"><a class="btn primary" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(t)}">Share to WhatsApp</a><button class="btn" id="cp">Copy text</button></div><p class="note" id="cpm">WhatsApp opens with the text ready. You pick the group and press send.</p>`}
-async function save(){if(DEMO){localStorage.setItem('ty_demo',JSON.stringify(S.doc));return'ok'}
- try{const r=await rpc('admin_save',{p_code:S.admin,p_doc:S.doc});if(r.error){S.err=r.error==='too_many_removals'?'Only one removal per save.':'Not saved: '+r.error;S.doc=(await load(S.code));S.cfg=S.doc.cfg;return'server'}S.err='';return'ok'}catch(e){S.err='Not saved (no connection). Nothing was changed.';return'offline'}}
+async function save(){if(DEMO){S.version=String(BigInt(S.version||'0')+1n);S.doc.version=S.version;localStorage.setItem('ty_demo',JSON.stringify(S.doc));return'ok'}
+ return TYSync.save(S,rpc,load);}
 let toastTimer=null,alertTimer=null;
 function showAlert(msg){let el=document.getElementById('alertbar');if(!el){el=document.createElement('div');el.id='alertbar';el.className='alertbar';el.setAttribute('role','alert');el.onclick=()=>el.remove();document.body.appendChild(el)}else{el.style.animation='none';void el.offsetWidth;el.style.animation=''}el.textContent=msg;clearTimeout(alertTimer);alertTimer=setTimeout(()=>el.remove(),4000)}
 // Apply a change, save it, and put the old doc back if it could not be saved.
-async function change(next,msg){const{result:r,prev}=await TYEdits.commitChange(S,next,save);
+async function change(next,msg){if(S.saving)return false;S.saving=true;S.toast=null;view();let r,prev;try{({result:r,prev}=await TYEdits.commitChange(S,next,save))}finally{S.saving=false}
  if(r==='ok'&&msg){S.toast={msg,prev};clearTimeout(toastTimer);toastTimer=setTimeout(()=>{S.toast=null;view()},6000)}else S.toast=null;
  view();return r==='ok'}
 const todayIsoNow=()=>TYMoney.todayIso(new Date());
@@ -119,13 +119,14 @@ function sheet(T){const o=S.sheet&&T.owes.find(x=>x.name===S.sheet);if(!o)return
  <button class="btn wide" id="sheet_x">Close</button></div></div>`}
 function toastBar(){return S.toast?`<div class="toast" role="status"><span>${H(S.toast.msg)}</span><button class="linkbtn" id="undo">Undo</button></div>`:''}
 async function checkAdmin(c){if(DEMO)return c==='admin';const r=await rpc('check_admin',{p_code:c});return !!r.ok}
-function bindGate(){const go=async()=>{const c=$('#code').value;try{const r=await load(c);if(r.error){S.err=r.error==='locked'?'Too many tries. Wait 15 minutes.':'Wrong code.';return view()}S.code=c;localStorage.setItem('ty_code',c);S.doc=r;S.cfg=r.cfg;S.err='';view()}catch(e){S.err='No connection.';view()}};$('#go').onclick=go;$('#code').onkeydown=e=>{if(e.key==='Enter')go()}}
+function bindGate(){const go=async()=>{const c=$('#code').value;try{const r=await load(c);if(r.error){S.err=r.error==='locked'?'Too many tries. Wait 15 minutes.':'Wrong code.';return view()}S.code=c;localStorage.setItem('ty_code',c);S.doc=r;S.cfg=r.cfg;S.version=r.version;S.err='';view()}catch(e){S.err='No connection.';view()}};$('#go').onclick=go;$('#code').onkeydown=e=>{if(e.key==='Enter')go()}}
 function bind(){document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{S.tab=b.dataset.tab;view()});
  $('#th').onclick=()=>{S.theme=S.theme==='dark'?'light':'dark';localStorage.setItem('ty_theme',S.theme);document.documentElement.dataset.theme=S.theme;view()};
  const adm=$('#adm');if(adm)adm.onclick=()=>{if(S.admin){S.admin='';sessionStorage.removeItem('ty_admin')}else{S.asking=true;S.badAdmin=false}view()};
  const ac=$('#adm_code');if(ac){const go=async()=>{const c=ac.value;if(await checkAdmin(c)){S.admin=c;sessionStorage.setItem('ty_admin',c);S.asking=false;S.badAdmin=false;S.err=''}else S.badAdmin=true;view()};$('#adm_go').onclick=go;ac.onkeydown=e=>{if(e.key==='Enter')go()};ac.focus()}
  document.querySelectorAll('[data-open]').forEach(e=>e.onclick=()=>{S.open[e.dataset.open]=!S.open[e.dataset.open];view()});
  document.querySelectorAll('[data-tog]').forEach(e=>e.onclick=()=>{const[id,p]=e.dataset.tog.split('|');const s=S.doc.sessions.find(x=>x.id===id);const was=s.paid.includes(p);change(TYEdits.toggle(S.doc,id,p,PAYER()),p+(was?' marked unpaid':' marked paid'))});
+ document.querySelectorAll('[data-fronted]').forEach(e=>e.onclick=()=>{const id=e.dataset.fronted,s=S.doc.sessions.find(x=>x.id===id);const input=prompt('Fronted price for '+s.date+' (kr)',String(s.real));if(input===null)return;const amount=TYMoney.parseAmount(input);if(!(amount>=0)||input.trim()===''){showAlert('Enter a fronted amount of 0 or above.');return}if(amount===s.real)return;const text=s.date+': fronted '+kr(s.real)+' to '+kr(amount)+'\nMembership part '+kr(gap(s))+' to '+kr(s.billed-amount)+'\nPlayers still pay '+kr(charge(s))+' each. Billed stays '+kr(s.billed)+'.';if(!confirm(text))return;change(TYEdits.setReal(S.doc,id,amount),'Fronted price changed')});
  document.querySelectorAll('[data-allpaid]').forEach(e=>e.onclick=()=>change(TYEdits.markAllPaid(S.doc,e.dataset.allpaid),'Everyone marked paid'));
  document.querySelectorAll('[data-del]').forEach(e=>e.onclick=()=>{if(!confirm('Delete this session? It is kept in the audit log.'))return;change(TYEdits.removeSession(S.doc,e.dataset.del),'Session deleted')});
  document.querySelectorAll('[data-deltx]').forEach(e=>e.onclick=()=>{if(!confirm('Remove this entry?'))return;change(TYEdits.removeTx(S.doc,e.dataset.deltx),'Entry removed')});
@@ -146,4 +147,4 @@ function bind(){document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=
  document.querySelectorAll('[data-who]').forEach(e=>e.onclick=()=>{S.sheet=e.dataset.who;view()});const sx=$('#sheet_x');if(sx)sx.onclick=()=>{S.sheet=null;view()};const sb=$('#sheet_bg');if(sb)sb.onclick=ev=>{if(ev.target===sb){S.sheet=null;view()}};const cs=$('#cp_swish');if(cs)cs.onclick=()=>copyText(cs.dataset.swish,cs);
  const fg=$('#forget');if(fg)fg.onclick=()=>{localStorage.removeItem('ty_code');['ty_code','ty_admin'].forEach(k=>sessionStorage.removeItem(k));S.code='';S.admin='';S.doc=null;S.cfg=null;S.err='';view()};
 }
-(async()=>{if(S.code){try{const r=await load(S.code);if(!r.error){S.doc=r;S.cfg=r.cfg}}catch(e){}}view()})();
+(async()=>{if(S.code){try{const r=await load(S.code);if(!r.error){S.doc=r;S.cfg=r.cfg;S.version=r.version}}catch(e){}}view()})();

@@ -17,6 +17,7 @@
   const setVenue = (doc, id, venue) => withSession(doc, id, s => {
     if (venue) s.venue = venue; else delete s.venue;
   });
+  const setReal = (doc,id,amount) => {if(!Number.isFinite(amount)||amount<0)throw new Error('Invalid fronted amount');return withSession(doc,id,s=>{s.real=amount})};
   const setDate = (doc, id, label) => withSession(doc, id, s => { if (label) s.date = label; });
   const removeSession = (doc, id) => {
     const n = clone(doc);
@@ -48,7 +49,7 @@
     return { result, prev };
   }
 
-  const api = { commitChange, toggle, markAllPaid, setVenue, setDate, removeSession, addSession, addTx, removeTx, makeUndo };
+  const api = { commitChange, toggle, markAllPaid, setVenue, setReal, setDate, removeSession, addSession, addTx, removeTx, makeUndo };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYEdits = api;
 })(typeof window !== 'undefined' ? window : globalThis);
