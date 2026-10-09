@@ -156,3 +156,4 @@ button:active,.btn:active{transform:scale(.97)}
 .chart{width:100%;height:auto;display:block}.chart .cz{stroke:var(--hair);stroke-width:1}.chart .cl{fill:none;stroke:var(--ok);stroke-width:2.5;stroke-linejoin:round}.chart .ca{fill:var(--ok);opacity:.12}.chart .cd{fill:var(--raised);stroke:var(--ok);stroke-width:2}
 .chart .ct{fill:var(--ink3);font-size:9px}.chart .cv{fill:var(--ink);font-size:11px;font-weight:700}
 .hero .sbar{margin:8px 0}
+.chart .bi{fill:var(--ok)}.chart .bo{fill:var(--red)}.chart .cv2{fill:var(--ink);font-size:9px;font-weight:700}
