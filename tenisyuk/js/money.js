@@ -51,6 +51,45 @@
     };
   }
 
+  // ---- ledger rows, chart data, membership progress ----
+  const DEFAULT_MEMBERSHIP_TARGET = 700;
+  // Rows for one account ('kas' or 'membership') in page order, each with a running balance.
+  // Session rows are automatic; manual rows carry manual:true and their tx id.
+  function ledgerRows(doc, cfg, acct) {
+    const rows = [];
+    if (acct === 'kas') rows.push({ d: '', n: 'Opening balance', v: cfg.kasOpening });
+    doc.sessions.forEach(s => {
+      if (acct === 'kas') {
+        const k = s.paid.filter(p => s.players.includes(p)).length;
+        if (k) rows.push({ d: s.date, n: k + (k === 1 ? ' player' : ' players') + ' paid × 5', v: k * KAS });
+      } else if (gap(s) > 0) rows.push({ d: s.date, n: 'Gap ' + fEn(s.billed) + ' − ' + fEn(s.real), v: gap(s) });
+    });
+    doc.tx.filter(t => t.account === acct).forEach(t => rows.push({
+      id: t.id, d: t.date, n: t.note || (t.kind === 'in' ? 'Money in' : 'Money out'),
+      v: (t.kind === 'in' ? 1 : -1) * t.amount, manual: true }));
+    let run = 0;
+    return rows.map(r => { run = round2(run + r.v); return { ...r, run }; });
+  }
+  // Chart data from ledger rows: balance after each row, money in, money out, min/max balance.
+  function ledgerSeries(rows) {
+    const bal = rows.map(r => r.run);
+    return {
+      points: rows.map((r, i) => ({ label: r.d || 'Start', value: r.run, delta: r.v, index: i })),
+      moneyIn: round2(rows.filter(r => r.v > 0).reduce((a, r) => a + r.v, 0)),
+      moneyOut: round2(rows.filter(r => r.v < 0).reduce((a, r) => a - r.v, 0)),
+      min: bal.length ? Math.min(0, ...bal) : 0,
+      max: bal.length ? Math.max(0, ...bal) : 0,
+      balance: bal.length ? bal[bal.length - 1] : 0,
+    };
+  }
+  // Membership pot vs target (total pot, not per person). pct is capped at 100.
+  function membershipProgress(total, target) {
+    const t = target > 0 ? target : DEFAULT_MEMBERSHIP_TARGET;
+    const have = Math.max(0, total);
+    return { have, target: t, remaining: Math.max(0, round2(t - have)),
+             pct: Math.min(100, Math.round(have / t * 1000) / 10), reached: have >= t };
+  }
+
   // opts: { today: '3 Oct', siteUrl: 'https://...' }
   function recapText(doc, cfg, T, lang, opts) {
     const o = opts || {};
@@ -145,7 +184,7 @@
     return Number(s.replace(',', '.'));
   };
 
-  const api = { parseAmount, owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
+  const api = { ledgerRows, ledgerSeries, membershipProgress, DEFAULT_MEMBERSHIP_TARGET, parseAmount, owedBreakdown, swishLink, dateToLabel, labelToIso, todayIso, hasDate, KAS, MONTHS, fEn, fId, kr, court, charge, gap, unpaidOthers, othersCount, totals, recapText };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TYMoney = api;
 })(typeof window !== 'undefined' ? window : globalThis);
