@@ -23,3 +23,6 @@ Validation errors on the Cash form (empty or zero amount) show as a floating red
 Tabs: Sessions, Stats, Owed (who still owes Fadel, tap a name to pay with Swish), Cash (kas, membership, cash flow, admin entries), Share.
 
 Motion: the Owed tab's collected/still-owed bar grows left-to-right to its existing proportions in 450ms (`ty-grow`, ease-out) when rendered. Other bars are unchanged. With `prefers-reduced-motion: reduce`, it appears at full size immediately.
+
+
+Mini tennis: tap 🎾 in the header. Serve starts play, drag left/right on the court to move your racket, or use arrow keys and Space. Every return adds to the rally; best score is stored only on the device as `ty_tennis_best`. Pause, tab switching and Close stop the game loop. Reduced-motion users get slower play, with no automatic start or decorative motion. The native dialog traps focus, Escape closes it and focus returns to the header button. `js/tennis-game.js` and `game.css` are isolated from money math and make no network requests. Unit tests cover wall/top returns, paddle hits, misses, zero delta, frame-delta cap and slower play.
