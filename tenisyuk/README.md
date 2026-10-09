@@ -21,3 +21,5 @@ Rules the tests lock in: kas is 5 kr per person only; membership is billed minus
 Validation errors on the Cash form (empty or zero amount) show as a floating red alert at the top (`showAlert` in `js/app.js`, `.alertbar` in `style.css`), auto-dismiss after 4 seconds or on tap. The amount field keeps its red border.
 
 Tabs: Sessions, Stats, Owed (who still owes Fadel, tap a name to pay with Swish), Cash (kas, membership, cash flow, admin entries), Share.
+
+Motion: the Owed tab's collected/still-owed bar grows left-to-right to its existing proportions in 450ms (`ty-grow`, ease-out) when rendered. Other bars are unchanged. With `prefers-reduced-motion: reduce`, it appears at full size immediately.
