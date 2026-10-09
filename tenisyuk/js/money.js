@@ -52,7 +52,7 @@
   }
 
   // ---- ledger rows, chart data, membership progress ----
-  const DEFAULT_MEMBERSHIP_TARGET = 800;
+  const DEFAULT_MEMBERSHIP_TARGET = 1000;
   // Rows for one account ('kas' or 'membership') in page order, each with a running balance.
   // Session rows are automatic; manual rows carry manual:true and their tx id.
   function ledgerRows(doc, cfg, acct) {
