@@ -211,13 +211,13 @@ test('ledger series: in, out, balance, min and max', () => {
   assert.deepEqual(M.ledgerSeries([]), { points: [], moneyIn: 0, moneyOut: 0, min: 0, max: 0, balance: 0 });
 });
 
-test('membership progress is against the total 700 kr pot', () => {
-  assert.deepEqual(M.membershipProgress(316, 700), { have: 316, target: 700, remaining: 384, pct: 45.1, reached: false });
-  assert.equal(M.membershipProgress(316).target, 700);            // missing target falls back to 700
-  assert.equal(M.membershipProgress(316, 0).target, 700);
-  assert.deepEqual(M.membershipProgress(850, 700), { have: 850, target: 700, remaining: 0, pct: 100, reached: true });
-  assert.equal(M.membershipProgress(-20, 700).have, 0);
-  assert.equal(M.membershipProgress(0, 700).pct, 0);
+test('membership progress is against the total 800 kr pot', () => {
+  assert.deepEqual(M.membershipProgress(316, 800), { have: 316, target: 800, remaining: 484, pct: 39.5, reached: false });
+  assert.equal(M.membershipProgress(316).target, 800);            // missing target falls back to 800
+  assert.equal(M.membershipProgress(316, 0).target, 800);
+  assert.deepEqual(M.membershipProgress(850, 800), { have: 850, target: 800, remaining: 0, pct: 100, reached: true });
+  assert.equal(M.membershipProgress(-20, 800).have, 0);
+  assert.equal(M.membershipProgress(0, 800).pct, 0);
 });
 
 test('ledgerByDate merges the same date into one entry (in and out together)', () => {
