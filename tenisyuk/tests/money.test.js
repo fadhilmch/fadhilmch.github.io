@@ -234,3 +234,26 @@ test('ledgerByDate merges the same date into one entry (in and out together)', (
   assert.equal(D[D.length - 1].balance, M.totals(d, cfg).kasReal);
   assert.deepEqual(M.ledgerByDate([]), []);
 });
+
+test('site target overrides old backend target without changing the pot or charges', () => {
+  const fs = require('node:fs');
+  const vm = require('node:vm');
+  const context = { window: {}, TYMoney: M, localStorage: { getItem: () => null },
+    sessionStorage: { getItem: () => null }, matchMedia: () => ({ matches: false }),
+    document: { documentElement: { dataset: {} } } };
+  vm.createContext(context);
+  vm.runInContext(fs.readFileSync(require.resolve('../config.js'), 'utf8'), context);
+  const source = fs.readFileSync(require.resolve('../js/app.js'), 'utf8');
+  // Do not run the page bootstrap or any network requests in this pure render test.
+  vm.runInContext(source.slice(0, source.lastIndexOf('(async()=>')), context);
+  const before = M.totals(doc(), cfg);
+  vm.runInContext('S.cfg={membershipTarget:700};', context);
+  const card = vm.runInContext('membershipCard({membership:316})', context);
+  assert.match(card, /316 kr \/ 800 kr/);
+  assert.match(card, /484 kr to go/);
+  assert.match(card, /39.5%/);
+  assert.match(card, /aria-valuemax="800"/);
+  assert.deepEqual(M.totals(doc(), cfg), before);
+  vm.runInContext('delete CFG.membershipTarget; S.cfg.membershipTarget=900;', context);
+  assert.match(vm.runInContext('membershipCard({membership:316})', context), /316 kr \/ 900 kr/);
+});
