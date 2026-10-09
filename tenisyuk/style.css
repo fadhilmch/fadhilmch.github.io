@@ -47,7 +47,7 @@ h3{font-weight:400;font-size:21px;margin:0 0 10px}
 .form label,.lbl{display:block;font-size:13px;color:var(--ink2);margin:10px 0 4px}
 .form input,.form select,.venue select,.venue input{display:block;width:100%;height:44px;margin-top:4px;border:1px solid var(--hair);border-radius:4px;padding:0 10px;background:var(--page);color:var(--ink);font:inherit}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
-.sbar{display:flex;width:100%;border-radius:999px;overflow:hidden;background:var(--hair)}.sbar i{display:block;height:100%}
+.sbar{position:relative;width:100%}.bar-track{display:flex;height:100%;width:100%;border-radius:999px;overflow:hidden;background:var(--hair)}.sbar i{display:block;height:100%;flex-shrink:0}
 .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink2);margin:8px 0}
 .legend b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tiles.four{grid-template-columns:repeat(4,1fr)}.tiles.three{grid-template-columns:repeat(3,1fr)}
@@ -133,3 +133,21 @@ button:active,.btn:active{transform:scale(.97)}
 
 
 .hero small,.warnc{font-family:var(--head)}
+
+/* Quiet court backdrop, net dividers and decorative tennis details. Fonts unchanged. */
+.wrap{position:relative;isolation:isolate}
+.wrap::before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:150px 8px 70px;border:1px solid var(--hair);border-radius:2px;opacity:.48;
+ background:linear-gradient(var(--hair),var(--hair)) center/1px 100% no-repeat,
+ linear-gradient(var(--hair),var(--hair)) center/100% 1px no-repeat,
+ linear-gradient(var(--hair),var(--hair)) center 25%/100% 1px no-repeat,
+ linear-gradient(var(--hair),var(--hair)) center 75%/100% 1px no-repeat}
+.wrap h2{position:relative;padding-top:12px;margin-top:26px}
+.wrap h2::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;pointer-events:none;opacity:.55;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);background:repeating-linear-gradient(90deg,var(--hair) 0 1px,transparent 1px 7px)}
+.tennis-heading{display:inline-block;font-size:18px;vertical-align:1px}
+.tennis-progress{overflow:visible}
+.tennis-ball{position:absolute;top:50%;left:clamp(9px,var(--paid),calc(100% - 9px));width:18px;height:18px;transform:translate(-50%,-50%);border:1px solid #688518;border-radius:50%;background:#c8e64b;box-shadow:0 1px 3px rgba(15,61,45,.18);overflow:hidden;pointer-events:none}
+.tennis-ball::before,.tennis-ball::after{content:"";position:absolute;top:-2px;width:14px;height:20px;border:1.5px solid #f7ffe0;border-radius:50%}
+.tennis-ball::before{left:-10px}.tennis-ball::after{right:-10px}
+/* Keep graph numbers readable and give the marker room at phone widths. */
+.srow .sbar{min-width:0}
+@media(max-width:640px){.srow{grid-template-columns:82px minmax(0,1fr);row-gap:5px}.srow>b{grid-column:2;font-size:13px;justify-self:end}.srow .sbar{grid-column:2;grid-row:auto}}
