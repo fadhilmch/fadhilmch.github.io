@@ -99,9 +99,14 @@ hides it too.
   adds one `.wf-flow` projection per edge with `pathLength="1"` for equal travel duration.
   Its stage comes from the edge-group order. Reduced-motion hides the projection and
   leaves the original graph static. The phone accordion has no added motion.
-- Avatar: replace `assets/images/fadhil-avatar-300.webp` and `-600.webp` with transparent
-  WebP exports of the same cutout (300 and 600 px wide, same aspect ratio). Keep `alt=""`,
-  since the heading already names Fadhil. The circle clips the body; the head rises above it.
+- Avatar: `assets/css/avatar-images.css` holds transparent 300 and 600 px WebP cutouts
+  as base64 data URIs in `--avatar-image`. The browser chooses the 1x or 2x source; both
+  the visible cutout and circle-only shadow use it. No binary files are required. To
+  replace the avatar, export the same transparent cutout at both widths with the same
+  aspect ratio, base64-encode each WebP, and replace the two data URIs. If the aspect
+  ratio changes, update `.avatar__img` in `depth.css`. The wrapper stays `aria-hidden`
+  because the heading already names Fadhil. The circle clips the body; the head rises
+  above it. This asset stylesheet loads only on About and adds no new JavaScript.
 
 Check About, Posts, Projects and Notes at 390 and 1280 px in both themes, and with
 reduced motion on, after changing any of this.
