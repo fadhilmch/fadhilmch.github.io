@@ -110,7 +110,7 @@ html[data-depth="soft"] {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../images/fadhil-avatar-600.webp") center bottom / 128% auto no-repeat;
+    background: var(--avatar-image) center bottom / 128% auto no-repeat;
     filter: var(--depth-avatar-shadow);
     clip-path: circle(50% at 50% 50%);
     pointer-events: none;
@@ -121,7 +121,8 @@ html[data-depth="soft"] {
     bottom: 0;
     left: -14%;
     width: 128%; /* wider than the circle: the clip trims the sides, the head rises above */
-    height: auto;
+    aspect-ratio: 600 / 610;
+    background: var(--avatar-image) center / contain no-repeat;
     /* Shadow is on the circle-only projection, not on this breakout layer. */
   }
 }
