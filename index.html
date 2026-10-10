@@ -8,6 +8,9 @@ nav: about
   <section class="hero" aria-labelledby="about-title">
     <h1 id="about-title">{{ profile.headline | escape }}</h1>
     <p>{{ profile.bio | escape }}</p>
+    <div class="avatar" aria-hidden="true">
+      <span class="avatar__img"></span>
+    </div>
   </section>
 
   <span id="node-exp"></span><span id="node-work"></span>

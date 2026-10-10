@@ -75,6 +75,7 @@
 {%- comment -%} Pass 2: edges. "@skills" fans out to every skill pill. {%- endcomment -%}
 {%- capture edge_html -%}
   {%- for edge in wf.edges -%}
+    {%- assign edge_stage = forloop.index0 -%}
     {%- if edge.from == '@skills' -%}{%- assign froms = skill_ids -%}{%- else -%}{%- assign froms = edge.from | split: ',' -%}{%- endif -%}
     {%- if edge.to == '@skills' -%}{%- assign tos = skill_ids -%}{%- else -%}{%- assign tos = edge.to | split: ',' -%}{%- endif -%}
     {%- for from_id in froms -%}{%- for to_id in tos -%}
@@ -93,7 +94,8 @@
         {%- assign stroke = b[4] -%}
         {%- assign stroke_first = stroke | slice: 0 -%}
         {%- unless stroke_first == 'l' -%}{%- assign stroke = 'ok' -%}{%- endunless -%}
-        <path class="wf-edge" d="M{{ x1 }} {{ y1 }} C{{ mx }} {{ y1 }} {{ mx }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }})"/>
+        <path pathLength="1" class="wf-edge" d="M{{ x1 }} {{ y1 }} C{{ mx }} {{ y1 }} {{ mx }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }});--wf-stage:{{ edge_stage }}"/>
+        <path pathLength="1" class="wf-flow" d="M{{ x1 }} {{ y1 }} C{{ mx }} {{ y1 }} {{ mx }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }});--wf-stage:{{ edge_stage }}"/>
       {%- endif -%}
     {%- endfor -%}{%- endfor -%}
   {%- endfor -%}
@@ -105,4 +107,4 @@
     <span class="wf-join" style="left:{{ join_x_in }}px;top:{{ join_y }}px" aria-hidden="true"></span>
     {{ node_html }}
   </div>
-</div>
+  </div>
