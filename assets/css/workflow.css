@@ -3,6 +3,7 @@
 
 .hero { display: flex; flex-direction: column; gap: 6px; }
 .hero h1 { margin: 0; max-width: 24ch; font-size: clamp(30px, 3.6vw, 44px); line-height: 1.05; font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
+.avatar { display: none; } /* shown only by depth.css (html[data-depth="soft"]) */
 .hero p { margin: 6px 0 0; max-width: 62ch; color: var(--muted); text-wrap: pretty; }
 
 /* Canvas */
