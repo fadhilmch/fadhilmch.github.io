@@ -4,7 +4,7 @@ Personal site of Fadhil Mochammad, an ML engineer in Stockholm. Live at https://
 
 ## What's on the site
 
-- **About**: a node pipeline built from `_data/workflow.yml`. Click a node to inspect it.
+- **About**: a hero with a circular avatar, then a node pipeline built from `_data/workflow.yml`. Click a node to inspect it.
 - **Posts**: dated essays, grouped by year and filterable by topic lane.
 - **Notes**: a linked vault with an explorer, backlinks and a force-directed graph.
 
@@ -17,6 +17,7 @@ All content lives in `_data/*.yml`, `_posts/` and `_notes/`. Layouts, includes a
 | Publish a post | add `_posts/YYYY-MM-DD-slug.md` |
 | Add a note | add `_notes/<id>.md` |
 | Change bio, role or location | `_data/profile.yml` |
+| Replace the About avatar | `assets/images/fadhil-avatar-{300,600}.webp` (see [guide](docs/EDITING.md#soft-depth-and-motion)) |
 | Add a job, degree, project or paper | `_data/experience.yml`, `education.yml`, `projects.yml`, `publications.yml` |
 | Add a toolkit or workflow node | `_data/skills.yml`, `_data/workflow.yml` |
 | Add or recolour a topic lane | `_data/lanes.yml`, `_data/tags.yml` |
@@ -29,7 +30,7 @@ _posts/     essays in Markdown
 _notes/     linked notes in Markdown
 _layouts/   base, page, post and note layouts
 _includes/  head, header, footer, and workflow / notes / posts partials
-assets/     hand-written CSS and vanilla JS, favicon
+assets/     hand-written CSS (depth.css is the opt-in soft-depth layer), vanilla JS, images, favicon
 docs/       editing guide and implementation plan (not published)
 scripts/    content validation and data migration helpers (not published)
 _archive/   design reference mockup and screenshots (not published)
@@ -61,7 +62,7 @@ Pushing to `master` triggers `.github/workflows/pages.yml`, which builds with Je
 
 ## Tech
 
-Jekyll 4 with `jekyll-feed`, `jekyll-seo-tag` and `jekyll-sitemap`. Hand-written CSS and vanilla JavaScript, set in Geist and Geist Mono. No npm, no framework.
+Jekyll 4 with `jekyll-feed`, `jekyll-seo-tag` and `jekyll-sitemap`. Hand-written CSS (native nesting, custom properties) and vanilla JavaScript, set in Geist and Geist Mono. No npm, no framework.
 
 ## Design
 
