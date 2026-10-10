@@ -75,6 +75,29 @@ List hobbies once, in `off_hours`. Toolkits in `_data/skills.yml` flow into Work
 
 Keep values quoted when they contain punctuation, a percent sign, or a leading zero.
 
+## Soft depth and motion
+
+All depth, avatar and animation styling lives in `assets/css/depth.css`. Every rule is
+scoped to `html[data-depth="soft"]`, which `_layouts/base.html` sets. **To go back to the
+flat look, remove that attribute or the `depth.css` link in `_includes/head.html`.** The
+avatar is hidden by a one-line `.avatar { display: none }` in `workflow.css`, so reverting
+hides it too.
+
+- Colours and shadows are variables at the top of the file (`--depth-*`). Change the circle
+  colour with `--depth-circle` (one value for light, one for dark).
+- Raised panels share `--depth-shadow-rest`, `--depth-shadow-raised` and `--depth-shadow-hover`.
+  Add a new raised element by adding its selector to the `:is(...)` list in "Surfaces".
+- The Posts and Projects page headings are intentionally flat. Do not add them to that list.
+- Motion is in section 7: a staggered page-load rise, an avatar pop-in, a smooth theme
+  switch and a 2px hover lift on cards. It only runs under `prefers-reduced-motion: no-preference`
+  and `hover: hover`, so reduced-motion users get a static page.
+- Avatar: replace `assets/images/fadhil-avatar-300.webp` and `-600.webp` with transparent
+  WebP exports of the same cutout (300 and 600 px wide, same aspect ratio). Keep `alt=""`,
+  since the heading already names Fadhil. The circle clips the body; the head rises above it.
+
+Check About, Posts, Projects and Notes at 390 and 1280 px in both themes, and with
+reduced motion on, after changing any of this.
+
 ## Add jobs, degrees, projects, and papers
 
 Add entries to the matching data file. For example:
