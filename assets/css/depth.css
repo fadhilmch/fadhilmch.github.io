@@ -1,0 +1,226 @@
+/* Soft depth - opt-in visual layer.
+   Everything here is scoped to html[data-depth="soft"] (set in _layouts/base.html).
+   To revert to the flat look, remove that attribute or the <link> in _includes/head.html.
+   Sections: 1 tokens, 2 surfaces, 3 About hero, 4 Posts, 5 Notes, 6 phones, 7 motion. */
+
+/* 1. Tokens ------------------------------------------------------------- */
+html[data-depth="soft"] {
+  --depth-radius: 16px;
+  --depth-highlight: rgb(255 255 255 / 0.86);
+  --depth-edge: #ddd8ce;
+  --depth-ink: 49 38 23;
+  --depth-ink-alpha: 0.06;
+  --depth-ink-far: 0.19;
+  --depth-circle: #e2dccd;
+  --depth-lift: -2px;
+  --depth-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --depth-fast: 160ms;
+  --depth-slow: 420ms;
+  --depth-shadow-rest:
+    inset 0 1px 0 var(--depth-highlight),
+    0 2px 3px rgb(var(--depth-ink) / var(--depth-ink-alpha)),
+    0 8px 18px -9px rgb(var(--depth-ink) / var(--depth-ink-far));
+  --depth-shadow-raised:
+    inset 0 1px 0 var(--depth-highlight),
+    0 3px 5px rgb(var(--depth-ink) / var(--depth-ink-alpha)),
+    0 14px 28px -12px rgb(var(--depth-ink) / var(--depth-ink-far));
+  --depth-shadow-hover:
+    inset 0 1px 0 var(--depth-highlight),
+    0 4px 8px rgb(var(--depth-ink) / 0.08),
+    0 18px 30px -12px rgb(var(--depth-ink) / 0.26);
+}
+
+html[data-depth="soft"][data-theme="dark"] {
+  --depth-highlight: rgb(255 255 255 / 0.085);
+  --depth-edge: #373632;
+  --depth-ink: 0 0 0;
+  --depth-ink-alpha: 0.3;
+  --depth-ink-far: 0.6;
+  --depth-circle: #3a3833;
+}
+
+/* 2. Surfaces ----------------------------------------------------------- */
+html[data-depth="soft"] {
+  .primary-nav { box-shadow: inset 0 1px 0 var(--depth-highlight), 0 2px 5px rgb(0 0 0 / 0.04); }
+  .primary-nav a[aria-current="page"] {
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 2px 3px rgb(0 0 0 / 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* Raised panels. Posts and Projects page headings are deliberately not listed: they stay flat. */
+  :is(.wf-scroll, .wf-inspector, .wf-node__box, .wf-pill, .wf-acc__item,
+      .project-card, .note-card, .notes-graphbox, .post-pagination a) {
+    border-color: var(--depth-edge);
+    box-shadow: var(--depth-shadow-rest);
+  }
+  .wf-node__box { background: var(--panel); }
+  .project-card { border-radius: var(--depth-radius); }
+
+  .wf-acc { border: 0; background: none; overflow: visible; }
+  .wf-acc__item {
+    margin-bottom: 10px;
+    overflow: hidden;
+    border: 1px solid var(--depth-edge);
+    border-radius: 12px;
+    background: var(--panel);
+  }
+  .wf-acc__item + .wf-acc__item { border-top: 1px solid var(--depth-edge); }
+}
+
+/* 3. About hero --------------------------------------------------------- */
+html[data-depth="soft"] {
+  .hero {
+    position: relative;
+    justify-content: center;
+    min-height: 260px;
+    margin-top: 70px; /* room for the head that rises above the panel */
+    padding: 24px 340px 24px 28px;
+    border: 1px solid var(--depth-edge);
+    border-radius: var(--depth-radius);
+    background: var(--panel);
+    box-shadow: var(--depth-shadow-raised);
+  }
+  .hero h1 { font-size: 40px; }
+  .hero p { font-size: 15px; }
+
+  /* The circle is the ::before; the clip keeps the body inside it and lets the head rise above. */
+  .avatar {
+    display: block;
+    position: absolute;
+    right: 40px;
+    bottom: 22px;
+    width: 230px;
+    height: 230px;
+    clip-path: inset(-100px 0 0 0 round 0 0 115px 115px);
+    pointer-events: none;
+  }
+  .avatar::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--depth-circle);
+    box-shadow: inset 0 2px 0 rgb(255 255 255 / 0.25);
+  }
+  .avatar__img {
+    position: absolute;
+    bottom: 0;
+    left: -14%;
+    width: 128%; /* wider than the circle: the clip trims the sides, the head rises above */
+    height: auto;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.12));
+  }
+}
+
+/* 4. Posts -------------------------------------------------------------- */
+html[data-depth="soft"] {
+  .year-posts { gap: 14px; }
+  .post-row {
+    margin-left: 20px;
+    padding: 16px 20px 18px;
+    border: 1px solid var(--depth-edge);
+    border-radius: 14px;
+    background: var(--panel);
+    box-shadow: var(--depth-shadow-rest);
+  }
+  .post-row__dot { top: 22px; left: -29px; }
+  .lane-filters button { background: var(--panel); box-shadow: inset 0 1px 0 var(--depth-highlight); }
+  .lane-filters button[aria-pressed="true"] {
+    background: var(--fg);
+    color: var(--bg);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.2), 0 2px 4px rgb(0 0 0 / 0.15);
+  }
+}
+
+/* 5. Notes -------------------------------------------------------------- */
+html[data-depth="soft"] {
+  .notes-workspace {
+    grid-template-columns: 240px minmax(0, 1fr) 290px;
+    gap: 18px;
+    padding: 18px;
+    background-image: radial-gradient(var(--dot) 0.8px, transparent 0.8px);
+    background-size: 18px 18px;
+  }
+  .notes-explorer, .notes-side {
+    overflow: hidden;
+    border: 1px solid var(--depth-edge);
+    border-radius: var(--depth-radius);
+    box-shadow: var(--depth-shadow-rest);
+  }
+  .notes-side { overflow: auto; }
+  .notes-reader { border: 1px solid var(--line); border-radius: var(--depth-radius); background: var(--bg); }
+  /* Reading surfaces stay flat. */
+  :is(.article-header, .prose, .prose p, .prose h2, .prose h3, .note-body) { box-shadow: none; }
+}
+
+/* 6. Phones ------------------------------------------------------------- */
+@media (max-width: 680px) {
+  html[data-depth="soft"] {
+    .hero { min-height: 0; margin-top: 100px; padding: 140px 20px 20px; }
+    .hero h1 { font-size: 30px; }
+    .avatar {
+      --avatar-size: 176px;
+      top: -60px;
+      right: calc(50% - var(--avatar-size) / 2);
+      bottom: auto;
+      width: var(--avatar-size);
+      height: var(--avatar-size);
+      clip-path: inset(-100px 0 0 0 round 0 0 calc(var(--avatar-size) / 2) calc(var(--avatar-size) / 2));
+    }
+    .year-posts { gap: 14px; border-left: 0; }
+    .post-row { margin-left: 0; padding: 16px 16px 18px 20px; }
+    .post-row__dot { top: 22px; left: 8px; width: 8px; height: 8px; box-shadow: none; }
+    .notes-workspace { gap: 14px; padding: 14px; background: none; }
+    .notes-reader { border: 0; border-radius: 0; background: none; }
+  }
+}
+
+/* 7. Motion ------------------------------------------------------------- */
+@keyframes depth-rise {
+  from { opacity: 0; transform: translateY(10px); }
+}
+@keyframes depth-pop {
+  from { opacity: 0; transform: translateY(14px) scale(0.96); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html[data-depth="soft"] {
+    /* Page-load fade: each top-level block rises in, staggered. */
+    :is(.about-page, .posts-page, .projects-page, .notes-workspace) > * {
+      animation: depth-rise var(--depth-slow) var(--depth-ease) backwards;
+    }
+    :is(.about-page, .posts-page, .projects-page) > :nth-child(2) { animation-delay: 70ms; }
+    :is(.about-page, .posts-page, .projects-page) > :nth-child(3) { animation-delay: 140ms; }
+    :is(.about-page, .posts-page, .projects-page) > :nth-child(n + 4) { animation-delay: 210ms; }
+    .avatar__img { animation: depth-pop 560ms var(--depth-ease) 160ms backwards; }
+
+    /* Smooth theme switch. */
+    :is(body, .site-header, .site-footer, .primary-nav, .hero, .avatar::before, .panel,
+        .wf-scroll, .wf-inspector, .wf-node__box, .wf-acc__item,
+        .post-row, .project-card, .note-card, .notes-workspace, .notes-explorer,
+        .notes-side, .notes-reader, .lane-filters button) {
+      transition:
+        background-color var(--depth-slow) ease,
+        border-color var(--depth-slow) ease,
+        color var(--depth-slow) ease,
+        box-shadow var(--depth-slow) ease;
+    }
+  }
+}
+
+/* Hover lift only where hover exists, and only with motion allowed. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  html[data-depth="soft"] :is(.post-row, .project-card, .note-card, .wf-node) {
+    transition:
+      transform var(--depth-fast) var(--depth-ease),
+      box-shadow var(--depth-fast) var(--depth-ease),
+      background-color var(--depth-slow) ease,
+      border-color var(--depth-slow) ease;
+  }
+  html[data-depth="soft"] :is(.post-row, .project-card, .note-card, .wf-node):hover {
+    transform: translateY(var(--depth-lift));
+  }
+  html[data-depth="soft"] :is(.post-row, .project-card, .note-card):hover {
+    box-shadow: var(--depth-shadow-hover);
+  }
+}
