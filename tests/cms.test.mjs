@@ -12,7 +12,7 @@ test('token-only, PR-only, existing-post-only configuration', () => {
   assert.equal(config.publish_mode, 'editorial_workflow');
   assert.equal(posts.publish, false);
   assert.equal(posts.delete, false);
-  assert.equal(posts.editor.preview, false);
+  assert.equal(posts.editor.preview, true); // pane is ours: a sandboxed iframe, see admin/source-field.js
   assert.equal(config.media_folder, 'admin/media-readonly'); // Sveltia reserves admin as read-only.
   assert.deepEqual(posts.files.map(f => f.file).sort(), readdirSync(new URL('_posts/', root)).filter(f => f.endsWith('.md')).map(f => `_posts/${f}`).sort());
 });
@@ -20,7 +20,7 @@ for (const file of posts.files) {
   test(`${file.file}: pinned raw pipeline is byte-identical`, () => {
     assert.equal(file.format, 'raw');
     assert.equal(file.fields.length, 1);
-    assert.equal(file.fields[0].widget, 'text');
+    assert.equal(file.fields[0].widget, 'post-source'); // textarea field type, value passes through unchanged
     const original = readFileSync(new URL(file.file, root), 'utf8');
     // Sveltia 0.233.0 parseEntryFile and formatEntryFile raw branches.
     const parsed = original.trim().replace(/\r\n?/g, '\n');
