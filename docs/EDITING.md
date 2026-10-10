@@ -85,12 +85,20 @@ hides it too.
 
 - Colours and shadows are variables at the top of the file (`--depth-*`). Change the circle
   colour with `--depth-circle` (one value for light, one for dark).
+- `--depth-avatar-shadow` controls the cast shadow (lighter in dark mode). The avatar's
+  CSS projection is clipped to the circle; the visible head has no shadow onto the panel.
+  Keep its background sizing aligned with `.avatar__img` if you change the crop.
 - Raised panels share `--depth-shadow-rest`, `--depth-shadow-raised` and `--depth-shadow-hover`.
   Add a new raised element by adding its selector to the `:is(...)` list in "Surfaces".
 - The Posts and Projects page headings are intentionally flat. Do not add them to that list.
 - Motion is in section 7: a staggered page-load rise, an avatar pop-in, a smooth theme
   switch and a 2px hover lift on cards. It only runs under `prefers-reduced-motion: no-preference`
-  and `hover: hover`, so reduced-motion users get a static page.
+  (the hover lift also requires `hover: hover`), so reduced-motion users get a static page.
+- Workflow nodes and full base lines always stay visible. A short accent travels along
+  the lines in a 2.4-second loop; `--depth-flow-period` controls speed. The SVG template
+  adds one `.wf-flow` projection per edge with `pathLength="1"` for equal travel duration.
+  Its stage comes from the edge-group order. Reduced-motion hides the projection and
+  leaves the original graph static. The phone accordion has no added motion.
 - Avatar: replace `assets/images/fadhil-avatar-300.webp` and `-600.webp` with transparent
   WebP exports of the same cutout (300 and 600 px wide, same aspect ratio). Keep `alt=""`,
   since the heading already names Fadhil. The circle clips the body; the head rises above it.
