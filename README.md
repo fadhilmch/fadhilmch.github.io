@@ -17,7 +17,7 @@ All content lives in `_data/*.yml`, `_posts/` and `_notes/`. Layouts, includes a
 | Publish a post | add `_posts/YYYY-MM-DD-slug.md` |
 | Add a note | add `_notes/<id>.md` |
 | Change bio, role or location | `_data/profile.yml` |
-| Replace the About avatar | `assets/images/fadhil-avatar-{300,600}.webp` (see [guide](docs/EDITING.md#soft-depth-and-motion)) |
+| Replace the About avatar | `assets/css/avatar-images.css` (embedded WebPs; see [guide](docs/EDITING.md#soft-depth-and-motion)) |
 | Add a job, degree, project or paper | `_data/experience.yml`, `education.yml`, `projects.yml`, `publications.yml` |
 | Add a toolkit or workflow node | `_data/skills.yml`, `_data/workflow.yml` |
 | Add or recolour a topic lane | `_data/lanes.yml`, `_data/tags.yml` |
