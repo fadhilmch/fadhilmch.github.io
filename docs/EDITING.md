@@ -205,7 +205,7 @@ Commit and push to `master`. GitHub Actions builds the site, runs HTML-Proofer, 
 
 ## Browser editing
 
-For existing blog posts, use the [CMS setup and review guide](CMS.md). The first
-version edits full source in plain text, including YAML front matter, HTML/SVG,
+For existing blog posts, use the [CMS setup and review guide](CMS.md). It edits full
+source with syntax colors and a live preview (approximate, not Jekyll), including YAML front matter, HTML/SVG,
 JavaScript and Liquid. Saves create review PRs and cannot publish from the CMS.
 Keep using GitHub or your local editor for new post filenames, notes and assets.

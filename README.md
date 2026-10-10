@@ -73,8 +73,8 @@ Content © Fadhil Mochammad. All rights reserved.
 
 ## Blog source editor
 
-The `/admin/index.html` page uses pinned Sveltia CMS 0.233.0 with a plain-text,
-full-source editor. It covers the 21 existing posts only. Notes, site settings,
+The `/admin/index.html` page uses pinned Sveltia CMS 0.233.0 with a full-source
+editor: a plain textarea with syntax colors and a live, sandboxed preview. It covers the 21 existing posts only. Notes, site settings,
 TenisYuk and asset uploads are intentionally outside this first setup.
 
 Sign in with a fine-grained GitHub token limited to this repository. Saves open
@@ -86,7 +86,7 @@ setup, the worked example, checks and known limits.
 Run the dependency-free source checks with Node 22:
 
 ```bash
-node --test tests/cms.test.mjs
+node --test tests/*.test.mjs
 ```
 
 PR checks also build Jekyll and run html-proofer; they do not deploy previews.
