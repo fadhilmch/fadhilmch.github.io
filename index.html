@@ -9,11 +9,7 @@ nav: about
     <h1 id="about-title">{{ profile.headline | escape }}</h1>
     <p>{{ profile.bio | escape }}</p>
     <div class="avatar" aria-hidden="true">
-      <img class="avatar__img"
-        src="{{ '/assets/images/fadhil-avatar-600.webp' | relative_url }}"
-        srcset="{{ '/assets/images/fadhil-avatar-300.webp' | relative_url }} 300w, {{ '/assets/images/fadhil-avatar-600.webp' | relative_url }} 600w"
-        sizes="(max-width: 680px) 176px, 230px"
-        width="600" height="610" alt="" decoding="async">
+      <span class="avatar__img"></span>
     </div>
   </section>
 
