@@ -16,6 +16,7 @@ html[data-depth="soft"] {
   --depth-lift: -2px;
   --depth-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --depth-fast: 160ms;
+  --depth-flow-period: 2400ms;
   --depth-slow: 420ms;
   --depth-shadow-rest:
     inset 0 1px 0 var(--depth-highlight),
@@ -235,5 +236,29 @@ html[data-depth="soft"] {
   }
   html[data-depth="soft"] :is(.post-row, .project-card, .note-card):hover {
     box-shadow: var(--depth-shadow-hover);
+  }
+}
+
+/* Static graph and base lines, with a small travelling flow accent. */
+@keyframes depth-flow {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+html[data-depth="soft"] .wf-flow { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  html[data-depth="soft"] {
+    .about-page > :is(.wf-scroll, .wf-acc) { animation: none; }
+    .wf-flow {
+      display: block;
+      fill: none;
+      stroke: var(--edge);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 0.06 0.94;
+      opacity: 0.95;
+      pointer-events: none;
+      animation: depth-flow var(--depth-flow-period) linear infinite;
+      animation-delay: calc(var(--wf-stage) * -180ms);
+    }
   }
 }
