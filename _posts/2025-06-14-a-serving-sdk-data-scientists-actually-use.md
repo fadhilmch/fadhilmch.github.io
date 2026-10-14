@@ -160,7 +160,7 @@ We never had to ask anyone to follow a standard. Teams got it by taking the easi
 
 Existing tools cover a lot of this, so it's fair to ask whether to build anything at all. If an existing serving framework already matches your company's authentication, tracing and deployment conventions, adopt it and spend the time elsewhere. If most of the work is fitting those conventions, then what you're really building is the thin layer that connects a model to them, and that layer is worth owning. Either way, you still decide what your data scientists see, and the questions above still apply.
 
-## What I'd take from it
+## If you're building one
 
 - Treat data scientists as users of an interface, and design that interface the way you would a public API.
 - Decide what belongs to the platform by asking whether any two authors would legitimately choose differently.

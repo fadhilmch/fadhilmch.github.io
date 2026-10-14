@@ -163,7 +163,7 @@ I've pushed the comparison as far as I can. These are the places where it stops 
 
 **Noise means different things.** Grain in a photo is nearly always unwanted. Noise in gradient descent is sometimes a nuisance and sometimes useful, because it can help a run escape sharp regions. A smaller batch isn't just a worse estimate.
 
-## What I take from it
+## How I use it
 
 I don't think the analogy predicts anything. It gives me a way to explain to a colleague, or to myself, why "just change the learning rate" is rarely a single-variable question. It also reminds me to start from what I care about, the way you would with a subject that moves or a scene that's dim.
 

@@ -165,7 +165,7 @@ If I were starting again, I'd check for these early:
 - **Local variants hiding in plain sight.** Watch what people compute outside the layer. It shows you the gaps.
 - **Ownership drifting.** People move teams. An owner field that is out of date is worse than none, because it looks like governance.
 
-## What I took from it
+## The short version
 
 The schema and the engine mattered, but people only reuse a shared definition if someone owns it, changes to it are visible, and it's easier to reach than writing a copy. When those held, the meeting about two dashboards went back to being about the product.
 
