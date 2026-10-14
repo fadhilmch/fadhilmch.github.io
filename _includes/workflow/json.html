@@ -59,6 +59,9 @@
   {%- endfor -%}{{ nl }}{{ cb }}
 {%- else -%}
   {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"toolkit"</span>{{ colon }}{% include workflow/jv.html v=n_skill.group %}{{ cm }}
+  {%- if n_skill.spotlight %}
+  {{- nl }}{{ i1 }}<span class="j-key">"spotlight"</span>{{ colon }}{% include workflow/jv.html v=n_skill.spotlight %}{{ cm }}
+  {%- endif -%}
   {{- nl }}{{ i1 }}<span class="j-key">"tools"</span>{{ colon }}{{ oa }}
   {%- for t in n_skill.items -%}
     {{ nl }}{{ i2 }}{% include workflow/jv.html v=t.name %}{% unless forloop.last %}{{ cm }}{% endunless %}

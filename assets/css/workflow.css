@@ -18,6 +18,7 @@
 .wf-btn--primary { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 .wf-btn--primary:hover { color: var(--bg); opacity: .85; }
 .wf-btn:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; }
+.wf-btn__icon { width: 15px; height: 15px; flex: none; fill: currentColor; }
 .wf-edges { position: absolute; inset: 0; overflow: visible; }
 .wf-edge { fill: none; stroke: var(--edge); stroke-width: 2; opacity: .85; transition: stroke .2s, opacity .2s; }
 
@@ -68,6 +69,12 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
 .wf-list { display: flex; flex-direction: column; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .wf-list li { position: relative; padding-left: 14px; }
 .wf-list li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.wf-rows > .wf-skill-spotlight { padding: 12px 14px; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 10px; background: var(--bg); }
+.wf-skill-spotlight dt { color: var(--accent); }
+.wf-skill-spotlight dd { font-size: 14px; }
+.wf-skill-tools dd { min-width: 0; }
+.wf-skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.wf-skill-tags li { padding: 4px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font-size: 12px; line-height: 1.4; }
 .wf-json-head { display: flex; justify-content: space-between; color: var(--muted); font: 11px 'Geist Mono', monospace; }
 .wf-json-head code { font: inherit; }
 .wf-json-head span { color: var(--ok); }

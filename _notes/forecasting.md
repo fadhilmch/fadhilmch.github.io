@@ -2,7 +2,7 @@
 layout: note
 published: false
 title: Forecasting
-tag: data
+tag: models
 links:
 - gam
 ---

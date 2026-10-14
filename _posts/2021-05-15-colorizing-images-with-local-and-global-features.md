@@ -3,7 +3,7 @@ layout: post
 title: "Image colorization: learning what grayscale leaves out"
 date: 2021-05-15
 tags:
-- data
+- models
 summary: How local detail and scene context help a neural network predict colour, and why plausible is not the same as correct.
 ---
 

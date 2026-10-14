@@ -30,8 +30,8 @@
     "post": "/posts/rereading-a-2019-sentiment-model/",
     "post_title": "My first text classifier for sentiment analysis",
     "image": "/assets/images/projects/sentiment-illustration.svg",
-    "topic": "Data",
-    "color": "l5",
+    "topic": "Data science",
+    "color": "l1",
     "image_caption": "AI-generated concept illustration · not model output",
     "teaser": "A sentiment experiment where the dataset and preprocessing mattered as much as the model."
   },
@@ -46,8 +46,8 @@
     "result": "When we scaled training with precomputed features stored in TFRecords, the model produced brownish images. We suspected a TFRecords implementation problem, but did not confirm the cause. Our smaller mixed-class model handled grass and sky better than clothing details. The public repository contains notebooks, the architecture, output examples and a report. It does not establish production use or a measured improvement over a baseline.",
     "repo": "https://github.com/fadhilmch/image_colorization",
     "image": "/assets/images/projects/colorization-example.svg",
-    "topic": "Data",
-    "color": "l5",
+    "topic": "Data science",
+    "color": "l1",
     "image_caption": "Repo output · grayscale / prediction / original",
     "teaser": "A small team reproduction combining an encoder with pretrained image features."
   }

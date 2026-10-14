@@ -7,18 +7,13 @@
   tags:
   - agents
 - key: exp
-  title: Experimentation
-  label: experimentation
-  long: Experimentation
+  title: Data science
+  label: data-science
+  long: Data science
   color: l1
   tags:
   - exp
-- key: data
-  title: Data
-  label: data
-  long: Data & exploration
-  color: l5
-  tags:
+  - models
   - data
 - key: mlops
   title: ML platform
@@ -34,17 +29,24 @@
   color: l4
   tags:
   - systems
-- key: creative
-  title: Creative
-  label: creative
-  long: Creative practice
-  color: l2
+- key: product
+  title: Product design
+  label: product-design
+  long: Product design
+  color: l5
   tags:
   - design
+- key: creative
+  title: After work
+  label: after-work
+  long: After work
+  color: l2
+  tags:
   - photo
   - music
   - coffee
   - cooking
+  - graphic
 - key: meta
   title: Meta
   label: meta

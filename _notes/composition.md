@@ -2,7 +2,7 @@
 layout: note
 published: false
 title: Composition
-tag: design
+tag: graphic
 links:
 - exposure
 ---

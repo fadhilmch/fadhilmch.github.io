@@ -2,7 +2,7 @@
 layout: note
 published: false
 title: GAMs & LASSO
-tag: data
+tag: models
 links: []
 ---
 

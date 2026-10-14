@@ -4,6 +4,8 @@ title: About
 nav: about
 ---
 {%- assign profile = site.data.profile -%}
+{%- assign linkedin = site.data.contact | where: 'label', 'linkedin' | first -%}
+{%- assign email = site.data.contact | where: 'label', 'email' | first -%}
 <div class="about-page">
   <section class="hero" aria-labelledby="about-title">
     {%- assign greets = profile.greetings -%}
@@ -29,8 +31,14 @@ nav: about
     <p>{{ bio }}</p>
     <div class="hero__cta">
       <a class="wf-btn wf-btn--primary" href="{{ '/posts/' | relative_url }}">Read the posts <span aria-hidden="true">→</span></a>
-      <a class="wf-btn" href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" target="_blank" rel="noopener">CV</a>
-      <a class="wf-btn" href="mailto:{{ site.email }}">Email</a>
+      <a class="wf-btn" href="{{ linkedin.href | escape }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg class="wf-btn__icon wf-btn__icon--linkedin" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67V9.4h2.67ZM7 8.23a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1ZM18.34 18h-2.67v-4.18c0-1-.02-2.28-1.39-2.28s-1.6 1.09-1.6 2.21V18h-2.67V9.4h2.56v1.17h.04a2.81 2.81 0 0 1 2.53-1.39c2.7 0 3.2 1.78 3.2 4.1Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="wf-btn" href="{{ email.href | escape }}" aria-label="Email">
+        <svg class="wf-btn__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16a2 2 0 0 1 2 2v.3l-10 6.2L2 8.3V8a2 2 0 0 1 2-2Zm18 4.6V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6.4l9.5 5.9a1 1 0 0 0 1 0Z"/></svg>
+        Email
+      </a>
     </div>
     <div class="avatar" aria-hidden="true"><span class="avatar__img"></span></div>
   

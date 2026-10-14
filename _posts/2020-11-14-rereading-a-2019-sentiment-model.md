@@ -3,7 +3,7 @@ layout: post
 title: My first text classifier for sentiment analysis
 date: 2020-11-14
 tags:
-- data
+- models
 summary: Naive Bayes, a linear SVM and a CNN on 1.6 million tweets, and why the data mattered more than the model.
 ---
 

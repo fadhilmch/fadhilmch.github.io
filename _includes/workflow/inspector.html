@@ -57,9 +57,12 @@
           <div><dt>{{ r.k | escape }}</dt><dd>{% if r.href %}<a href="{{ r.href | escape }}">{{ r.v | escape }}</a>{% else %}{{ r.v | escape }}{% endif %}</dd></div>
           {%- endfor -%}
         {%- else -%}
+          {%- if n_skill.spotlight %}
+          <div class="wf-skill-spotlight"><dt>Selected work</dt><dd>{{ n_skill.spotlight | escape }}</dd></div>
+          {%- endif -%}
           {%- assign by_where = n_skill.items | group_by: 'where' -%}
           {%- for g in by_where %}
-          <div><dt>{{ g.name | escape }}</dt><dd><ul class="wf-list">{% for t in g.items %}<li>{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}</li>{% endfor %}</ul></dd></div>
+          <div class="wf-skill-tools"><dt>{{ g.name | escape }}</dt><dd><ul class="wf-skill-tags">{% for t in g.items %}<li>{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}</li>{% endfor %}</ul></dd></div>
           {%- endfor -%}
           {%- if n_lane %}{% include workflow/related.html lane=n_lane %}{% endif -%}
       {%- endcase %}
