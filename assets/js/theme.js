@@ -3,7 +3,11 @@
   var button = document.querySelector('[data-theme-toggle]');
   if (!button) return;
   var root = document.documentElement;
-  function sync() { button.setAttribute('aria-pressed', String(root.getAttribute('data-theme') === 'dark')); }
+  function sync() {
+    var dark = root.getAttribute('data-theme') === 'dark';
+    button.setAttribute('aria-pressed', String(dark));
+    button.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+  }
   button.addEventListener('click', function () {
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);

@@ -8,6 +8,8 @@ url: https://fadhilmch.github.io
 baseurl: ""
 github_username: fadhilmch
 linkedin_username: fadhilmch
+twitter:
+  card: summary_large_image
 google_site_verification: isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU
 timezone: Europe/Stockholm
 markdown: kramdown
@@ -20,6 +22,10 @@ collections:
     permalink: /notes/:name/
 
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/og-default.png
   - scope:
       path: ""
       type: posts

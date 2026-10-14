@@ -27,6 +27,17 @@
     }
   }
 
+  var surprise = document.querySelector('[data-surprise]');
+  if (surprise) surprise.addEventListener('click', function () {
+    var pool = rows.filter(function (r) { return !r.hidden; });
+    if (!pool.length) return;
+    var href = pool[Math.floor(Math.random() * pool.length)].getAttribute('href');
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    surprise.classList.add('is-rolling');
+    setTimeout(function () { window.location.href = href; }, still ? 0 : 450);
+  });
+  window.addEventListener('pageshow', function () { if (surprise) surprise.classList.remove('is-rolling'); });
+
   chips.forEach(function (c) {
     c.addEventListener('click', function () { apply(c.getAttribute('data-lane-filter'), true); });
   });

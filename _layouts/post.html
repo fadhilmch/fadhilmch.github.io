@@ -14,6 +14,26 @@ layout: base
     </div>
   </header>
   <div class="prose">{{ content }}</div>
+  {%- assign rel = '' | split: '' -%}
+  {%- assign rel_slugs = '' | split: '' -%}
+  {%- for n in site.notes -%}{%- if n.slug != 'index' and n.content contains page.url -%}{%- assign rel = rel | push: n -%}{%- assign rel_slugs = rel_slugs | push: n.slug -%}{%- endif -%}{%- endfor -%}
+  {%- for n in site.notes -%}{%- if n.slug != 'index' and n.tag and n.tag != 'meta' and page.tags contains n.tag and rel.size < 4 -%}{%- unless rel_slugs contains n.slug -%}{%- assign rel = rel | push: n -%}{%- endunless -%}{%- endif -%}{%- endfor -%}
+  {%- assign more_lane = lane_list | first -%}
+  {%- if rel.size > 0 or more_lane -%}
+  <aside class="keep-exploring" aria-labelledby="keep-exploring-h">
+    <h2 id="keep-exploring-h">Keep exploring</h2>
+    {%- if rel.size > 0 %}
+    <div class="keep-exploring__row"><span>related notes</span>
+      {%- for n in rel limit: 4 %}{%- assign nc = 'fg' -%}{%- for lane in site.data.lanes -%}{%- if lane.tags contains n.tag -%}{%- assign nc = lane.color -%}{%- break -%}{%- endif -%}{%- endfor -%}<a class="tag-chip" href="{{ n.url | relative_url }}" style="--lane:var(--{{ nc }})">{{ n.title | escape }}</a>{% endfor %}
+    </div>
+    {%- endif -%}
+    {%- if more_lane %}
+    <div class="keep-exploring__row"><span>more in</span>
+      {%- for lk in lane_list %}{%- assign ln = site.data.lanes | where: 'key', lk | first -%}<a class="tag-chip" href="{{ '/posts/' | relative_url }}?lane={{ lk }}" style="--lane:var(--{{ ln.color }})">{{ ln.title }}</a>{% endfor %}
+    </div>
+    {%- endif %}
+  </aside>
+  {%- endif %}
   <nav class="post-pagination" aria-label="Post navigation">
     {% if page.previous %}<a class="prev" href="{{ page.previous.url | relative_url }}"><small>← older</small>{{ page.previous.title | escape }}</a>{% else %}<span></span>{% endif %}
     {% if page.next %}<a class="next" href="{{ page.next.url | relative_url }}"><small>newer →</small>{{ page.next.title | escape }}</a>{% endif %}
