@@ -7,7 +7,7 @@ tags:
 summary: How local detail and scene context help a neural network predict colour, and why plausible is not the same as correct.
 ---
 
-A grayscale photograph still tells us a lot. We can see a person, a tree, a patch of sky. But a shirt that looks dark might have been blue, green or red. Removing colour throws away information. Putting colour back means making a prediction, not undoing a reversible operation.
+A grayscale photograph still tells us a lot. We can see a person, a tree, a patch of sky. But a shirt that looks dark might have been blue, green or red. Removing colour throws away information. So putting colour back is a prediction. There's nothing to undo.
 
 In 2019, I built an image colorization model for the DD2424 course at KTH. I used TensorFlow and Keras to reproduce the approach in *Deep Koalarization*, with some modifications. The model combined a convolutional encoder with a pretrained Inception-ResNet-v2 network, then decoded their combined features into colour.
 
@@ -106,7 +106,7 @@ I send a grayscale version of the image to Inception-ResNet-v2, pretrained on Im
 <figcaption>The encoder keeps spatial information. The pretrained path gives the decoder another source of evidence about the scene.</figcaption>
 </figure>
 
-The project report calls the pretrained representation high-level features. There is a useful implementation detail here: the v2 notebook creates Inception-ResNet-v2 with `include_top=True` and uses `inception.predict`. That gives the 1,000 class outputs. The report describes a vector before softmax, so its wording and this notebook are not identical. The safe description is a **1,000-value pretrained representation**, rather than claiming every version uses pre-softmax activations.
+The project report calls the pretrained representation high-level features. There is a useful implementation detail here: the v2 notebook creates Inception-ResNet-v2 with `include_top=True` and uses `inception.predict`. That gives the 1,000 class outputs. The report describes a vector before softmax, so its wording and this notebook are not identical. So in this post I just call it a **1,000-value pretrained representation**.
 
 ## 3. Put the scene context at every location
 
@@ -185,13 +185,13 @@ The most useful picture is of the colours themselves. Each plot below places eve
 <figcaption>The predictions sit close to the neutral centre while the originals spread outward. Average chroma, measured as distance from the centre, is about 11 against 21 in example 1, 14 against 23 in example 2 and 13 against 21 in example 3. These numbers come from the 150-pixel image crops in the project's figure, so treat them as approximate.</figcaption>
 </figure>
 
-These plots show how muted the predictions are, but they do not establish the cause. Colour ambiguity and an implementation problem are different possible explanations; the output images alone cannot distinguish them.
+These plots show how muted the predictions are, but not why. It could be genuine colour ambiguity or a bug in my implementation, and I can't tell which from the outputs alone.
 
-## Plausible colour is not recovered history
+## What the model can and can't do
 
-The output examples are the most honest ending to this project. The model can put blue into sky and green into grass, while missing a shirt's actual colour. Local detail and scene context help make a guess; they do not turn that guess into a record of what was there.
+The output examples are a fair place to end. The model can put blue into sky and green into grass, while missing a shirt's actual colour. Local detail and scene context help make a guess; they do not turn that guess into a record of what was there.
 
-I reproduced an approach and got a small model working. I did not establish excellent generalization, a production system, or a measured improvement over a baseline. The useful lesson is to keep those claims separate: fitting one image, producing a plausible example and reliably handling unseen images are different milestones.
+I reproduced an approach and got a small model working. I didn't show that it generalises well, and I never compared it against a baseline. What I took away is to keep milestones apart when describing a project like this: fitting one image, producing one plausible example and handling unseen images reliably are three very different claims.
 
 ## Code and references
 

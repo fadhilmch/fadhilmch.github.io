@@ -9,7 +9,7 @@ summary: Every step from typing an address to a row in a database, each piece ex
 
 After [making sense of Kubernetes]({{ '/posts/making-sense-of-kubernetes/' | relative_url }}), I understood what happens to a request once it reaches our cluster. Everything before that was a blur. Someone types an address, and a fraction of a second later a page appears, built from data in a database in another country. I also kept hearing infra words I couldn't place: region, zone, VPC, CDN, anycast, active–active, failover.
 
-This post follows one request from start to finish and explains each piece it meets, with an everyday analogy for each. Then it zooms out to the decisions infra and ops teams make with those pieces: where to run things, how to survive failures, and how to operate it all. It ends with the practices I'd now call best practice.
+So I followed one request from start to finish, and gave each piece it meets an everyday analogy so it would stick. After that I look at the decisions infra and ops teams make with those pieces, such as where to run things and how to survive failures, and finish with the practices I'd now recommend.
 
 The example throughout: someone in Jakarta opens `shop.example.com`, and the shop runs in a cloud region in Singapore.
 
@@ -73,7 +73,7 @@ The internet is thousands of separate networks that have agreed to carry each ot
 
 Everything travels as **packets**, which are like letters. Each has a sender and a destination **IP address**, such as `203.0.113.10`, the way a letter has a street address. **Routers** are the post offices: each reads the destination and passes the packet one step closer. Networks tell each other which addresses they can deliver to using a protocol called **BGP**, which is like post offices sharing their delivery maps.
 
-One fact shaped everything else for me: distance costs time, and nothing makes it free. Light in fibre travels about 200,000 km per second. A packet from Jakarta to Singapore and back covers about 1,800 km, which takes at least 9 ms. To a US data centre and back it's over 30,000 km, at least 157 ms. Cables don't run in straight lines, so real numbers are higher.
+One fact shaped everything else for me: distance costs time. Light in fibre travels about 200,000 km per second. A packet from Jakarta to Singapore and back covers about 1,800 km, which takes at least 9 ms. To a US data centre and back it's over 30,000 km, at least 157 ms. Cables don't run in straight lines, so real numbers are higher.
 
 <figure class="fig">
 <svg viewBox="0 0 680 200" role="img" aria-labelledby="n1t n1d">
@@ -312,13 +312,13 @@ Other things push you towards more regions:
 
 ## Part 4: operating it
 
-Building the path is half the job. Keeping it healthy is the other half.
+Once the path exists, someone has to keep it healthy. These are the main tools for that:
 
 - **Observability** is the car's dashboard. **Metrics** are the gauges: request rate, error rate, latency. **Logs** are the trip diary: what happened, line by line. **Traces** follow one request across every service it touched, showing where the time went.
 - **SLOs and alerts.** Agree on what "healthy" means from the user's side, for example "99.9% of requests succeed within 300 ms". Alert when that promise is in danger, not every time a CPU is busy. Someone woken at night should always have something to fix.
 - **Safe deploys.** A **rolling** deploy replaces pods a few at a time. A **canary** sends a small share of traffic to the new version first and compares errors. **Blue–green** runs both versions side by side and switches traffic in one step. All of them need a fast, practised **rollback**.
 - **Infrastructure as code.** Networks, load balancers, clusters and databases are written as code, for example with Terraform, reviewed like code and applied by a pipeline. It's the blueprint for the building: you can rebuild it, see every change, and create a second region from the same files.
-- **Backups and drills.** A backup you've never restored is a hope, not a backup. Test restores regularly, and practise failing over to another zone or region before you need to.
+- **Backups and drills.** You don't know a backup works until you've restored from it, so test restores regularly, and practise failing over to another zone or region before you need to.
 - **Capacity and cost.** Autoscaling handles the daily rush. Planning handles the known peaks, like a big sale. Check the bill for surprises, especially data transfer.
 - **Secrets and access.** Keep passwords and keys in a secret manager, not in code. Give every service and person the least access they need.
 
@@ -339,10 +339,10 @@ This is the list I'd give my past self.
 
 **Latency**
 
-- Count round trips, then ask how far each one travels. Distance is the one cost you can't optimise away.
+- Count round trips, then ask how far each one travels. Tuning won't make light go faster.
 - Reuse connections, and keep TLS handshakes close to users by ending them at the edge.
 - Serve everything that's the same for every user from a CDN, with versioned file names.
-- Keep each app in the same region as its database. To be fast far away, copy data closer, not just servers.
+- Keep each app in the same region as its database. To be fast for distant users, copy the data closer as well as the servers.
 
 **Reliability**
 
@@ -368,10 +368,10 @@ This is the list I'd give my past self.
 
 - Measure what users feel, set SLOs on it, and alert on those, not on machine noise.
 - Collect metrics, logs and traces from day one; you can't add them during an outage.
-- Test restores and failovers on a schedule. The first time shouldn't be the real one.
+- Test restores and failovers on a schedule, so a real outage isn't the first time you try one.
 - Watch the bill, especially data moving between zones and regions.
 
-The Kubernetes part I'd spent months learning turned out to be the last few metres of a long trip. Knowing the rest of the route is what makes the infra decisions make sense.
+The Kubernetes part I'd spent months learning turned out to be the last few metres of a long trip. Most of the infra decisions I'd been hearing about only made sense once I could see the rest of the route.
 
 ## References
 

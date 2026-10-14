@@ -10,11 +10,11 @@ summary: An SDK is an interface, so design it like one. What we hid, what we kep
 
 An SDK is an interface. The people calling it are data scientists instead of other engineers, but the same rules apply: a small surface, sensible defaults, and errors that say what to do next. If every model author has to learn cluster setup, authentication, tracing and deployment conventions before shipping a model, the platform is exposing its machinery instead of helping with the task.
 
-I built a serving engine and SDK for an ML platform. It supported approximately 40 model deployments, and the teams behind them did not have to configure the underlying infrastructure. This post is about the design thinking behind it. I'll describe the shape of the interface and the decisions I'd defend. Where I'm talking about general practice rather than my own system, I'll say so.
+I built a serving engine and SDK for an ML platform. It supported approximately 40 model deployments, and the teams behind them did not have to configure the underlying infrastructure. This post covers how I thought about the design: what the interface looks like and which decisions I'd make again. Some of it is general practice rather than what I built, and I'll flag which is which.
 
-## The problem: a model is not a service
+## From notebook function to production service
 
-A trained model in a notebook is a function: features in, prediction out. A model in production is a service, and the gap between the two is mostly not machine learning. Someone has to:
+A trained model in a notebook is a function: features in, prediction out. A model in production is a service, and most of what separates the two has little to do with machine learning. Someone has to:
 
 - put the model behind an HTTP or gRPC endpoint
 - authenticate callers
@@ -23,7 +23,7 @@ A trained model in a notebook is a function: features in, prediction out. A mode
 - handle concurrent requests, including any parallel execution the model needs
 - keep the same conventions as every other service in the company
 
-None of these are hard individually. Together they are a lot of unfamiliar surface area for someone whose expertise is modelling. A data scientist can learn them, but each one who does spends days on work that isn't their job, and each ends up with slightly different choices. Ten teams shipping ten models by hand gives you ten ways of doing authentication and ten different sets of dashboards.
+Each of these is learnable. All of them together is a lot of unfamiliar ground for someone whose expertise is modelling. A data scientist can learn them, but each one who does spends days on work that isn't their job, and each ends up with slightly different choices. When ten teams each ship a model by hand, you end up with ten ways of doing authentication and ten sets of dashboards.
 
 <figure class="fig">
 <svg viewBox="0 0 680 300" role="img" aria-labelledby="sdk1t sdk1d">
@@ -67,13 +67,7 @@ None of these are hard individually. Together they are a lot of unfamiliar surfa
 
 ## What I put behind the interface
 
-The engine took over the parts that are the same for every model:
-
-- **Authentication.** Callers were checked the same way for every endpoint, so model authors did not write auth code.
-- **Tracing.** The engine handled it, so model code needed no instrumentation calls.
-- **Kubernetes orchestration.** The engine took care of running the model on the cluster, so authors did not configure it.
-- **Parallel execution.** Running work in parallel was the engine's job.
-- **Observability.** Metrics and logs came out in one consistent form for every model.
+The engine took over the parts that are the same for every model. It checked callers the same way on every endpoint, handled tracing, ran the model on the cluster, took care of parallel execution, and emitted metrics and logs in one format. Model authors didn't write auth code, add instrumentation calls or touch Kubernetes config.
 
 The design test I used for each item was simple: would two different data scientists ever have a good reason to make a different choice here? For authentication and tracing the answer is almost always no, so they belong in the platform. For anything where the answer is yes, they belong in the interface, as an option with a default.
 
@@ -136,23 +130,23 @@ class ChurnModel(Model):
 config = Config(cpu="1", memory="2Gi", replicas=2)
 ```
 
-Two things make this a good interface rather than just a short one. First, the class has exactly the three methods and attributes a model needs, so there is little to misuse. Second, nothing in it refers to the framework. The engine calls `load` and `predict`, and what happens inside is the author's business. That is how a serving engine stays framework-agnostic: the contract is about requests and responses, not about scikit-learn or PyTorch or anything else.
+Two things about this interface matter more than its length. First, the class has exactly the three methods and attributes a model needs, so there is little to misuse. Second, nothing in it refers to the framework. The engine calls `load` and `predict`, and what happens inside is the author's business. That's what keeps the engine framework-agnostic. The contract only talks about requests and responses, so it doesn't care whether the model is scikit-learn, PyTorch or something else.
 
 ## Design choices I'd defend
 
 **Make the right thing the default.** Settings that matter for safety or operability, like authentication and tracing, should need no configuration to be on. Turning something off should be deliberate. A default the author must remember to enable will be missed by some teams.
 
-**Narrow beats flexible.** It is tempting to offer hooks for every possible need. Each hook is a promise you have to keep as the platform changes, and each one lets teams drift back into bespoke setups. I would rather have a smaller interface that covers most models cleanly, and add an option only when several teams have asked for the same thing.
+**Keep it narrow.** It is tempting to offer hooks for every possible need. Each hook is a promise you have to keep as the platform changes, and each one lets teams drift back into bespoke setups. I would rather have a smaller interface that covers most models cleanly, and add an option only when several teams have asked for the same thing.
 
-**Errors are part of the interface.** A stack trace from deep inside the engine tells a data scientist nothing. Validation before deployment, with messages such as "the output schema says `score` is a float but `predict` returned a string", turns a support conversation into a fix the author makes alone. When people say a platform is "easy to use", a lot of that is error messages.
+**Write good error messages.** A stack trace from deep inside the engine tells a data scientist nothing. Validation before deployment, with messages such as "the output schema says `score` is a float but `predict` returned a string", turns a support conversation into a fix the author makes alone. When people say a platform is "easy to use", a lot of that is error messages.
 
-**Examples are documentation.** A working example for each common model type does more than a reference page. Most people will copy the closest example and edit it, so the examples define the real interface.
+**Ship working examples.** A working example for each common model type does more than a reference page. Most people will copy the closest example and edit it, so in practice the examples are the interface people learn.
 
-**Keep the escape hatch honest.** Some models will not fit. The choice is between a documented way out and a quiet fork of the platform. A documented way out, even a clumsy one, keeps those teams visible and lets you learn from them.
+**Document the way out.** Some models will not fit. The choice is between a documented way out and a quiet fork of the platform. A documented way out, even a clumsy one, keeps those teams visible and lets you learn from them.
 
 ## Where abstractions leak
 
-Every abstraction leaks somewhere, and the useful question is where you want it to. A common place is performance: a model that needs a lot of memory or a slow start-up behaves differently under the platform's scheduling from how it did in a notebook. When the layer hides Kubernetes completely, the author has no vocabulary for the problem.
+The abstraction will leak somewhere, so it's worth choosing where. A common place is performance: a model that needs a lot of memory or a slow start-up behaves differently under the platform's scheduling from how it did in a notebook. When the layer hides Kubernetes completely, the author has no vocabulary for the problem.
 
 The general fix I prefer is to expose the *effects* rather than the machinery. Let the author declare what the model needs (memory, warm-up time, concurrency) in the config, and surface what happened (a start-up that took too long, a request that timed out) in terms of those settings. They shouldn't need to know what a pod is to fix it.
 
@@ -160,13 +154,13 @@ The general fix I prefer is to expose the *effects* rather than the machinery. L
 
 Building one serving path had a second benefit that I underrated at the start. When every deployment is produced the same way, the platform can also say something consistent about all of them. Authentication, tracing and metrics come out in one form, so a single set of dashboards and alerts can cover every model. Governance questions, such as which models are running and who owns them, have one place to be answered.
 
-Nobody had to be asked to follow a standard. It came with the easiest way to deploy.
+We never had to ask anyone to follow a standard. Teams got it by taking the easiest route to deployment.
 
 ## Build or adopt
 
-Existing tools cover this ground, and the build-versus-adopt question is a fair one. My view is a general one and depends on your situation. If an existing serving framework already matches your company's authentication, tracing and deployment conventions, adopt it and spend the time elsewhere. If most of the work is fitting those conventions, then the real product is the thin layer that connects a model to them, and that layer is where an in-house SDK earns its keep. Either way, the design questions above still apply: the interface your data scientists see is yours to shape.
+Existing tools cover a lot of this, so it's fair to ask whether to build anything at all. If an existing serving framework already matches your company's authentication, tracing and deployment conventions, adopt it and spend the time elsewhere. If most of the work is fitting those conventions, then what you're really building is the thin layer that connects a model to them, and that layer is worth owning. Either way, you still decide what your data scientists see, and the questions above still apply.
 
-## What I'd take from it
+## If you're building one
 
 - Treat data scientists as users of an interface, and design that interface the way you would a public API.
 - Decide what belongs to the platform by asking whether any two authors would legitimately choose differently.
@@ -174,12 +168,12 @@ Existing tools cover this ground, and the build-versus-adopt question is a fair 
 - Invest in defaults, examples and error messages. They are most of what people experience.
 - Expect leaks, and choose in advance where they show up.
 
-The measure of success was not the SDK's feature list. It was that teams could take a model from a notebook to a running endpoint without becoming infrastructure engineers, and that there was one path to keep secure and observable.
+The part I was happiest with was that teams could take a model from a notebook to a running endpoint without becoming infrastructure engineers, and that we only had one path to keep secure and observable.
 
 ## References
 
 1. Sculley, D. et al. *Hidden Technical Debt in Machine Learning Systems*. NeurIPS, 2015. <https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html>
-2. OpenTelemetry. *Traces*. <https://opentelemetry.io/docs/concepts/signals/traces/> — spans, trace IDs and context propagation
-3. Kubernetes. *Resource Management for Pods and Containers*. <https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/> — CPU and memory requests and limits
-4. KServe. *KServe documentation*. <https://kserve.github.io/website/> — an open-source model serving platform on Kubernetes
-5. BentoML. *BentoML documentation*. <https://docs.bentoml.com/en/latest/> — a Python framework for packaging and serving models
+2. OpenTelemetry. *Traces*. <https://opentelemetry.io/docs/concepts/signals/traces/>. Spans, trace IDs and context propagation.
+3. Kubernetes. *Resource Management for Pods and Containers*. <https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/>. CPU and memory requests and limits.
+4. KServe. *KServe documentation*. <https://kserve.github.io/website/>. An open-source model serving platform on Kubernetes.
+5. BentoML. *BentoML documentation*. <https://docs.bentoml.com/en/latest/>. A Python framework for packaging and serving models.
