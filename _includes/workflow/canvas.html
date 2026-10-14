@@ -9,13 +9,14 @@
   Every edge is a node-editor curve (control offset max(dx/2, 60)) from a node's right port to the next node's left port.
 {%- endcomment -%}
 {%- assign wf = site.data.workflow -%}
+{%- assign active_skills = site.data.skills | where_exp: 'skill', 'skill.enabled != false' -%}
 {%- assign cv = wf.canvas -%}
 {%- assign node_w = cv.node_width -%}
 {%- assign node_h = cv.node_height -%}
 {%- assign half_h = node_h | divided_by: 2 -%}
 {%- assign branch_half = cv.branch_gap | divided_by: 2 -%}
 {%- assign pill_half = cv.pill_height | divided_by: 2 -%}
-{%- assign skill_n = site.data.skills.size -%}
+{%- assign skill_n = active_skills.size -%}
 {%- assign span = skill_n | minus: 1 | times: cv.pill_gap | plus: cv.pill_height -%}
 {%- assign canvas_h = span | plus: cv.pad_y | plus: cv.pad_y -%}
 {%- if canvas_h < cv.min_height -%}{%- assign canvas_h = cv.min_height -%}{%- endif -%}
@@ -31,7 +32,7 @@
 {%- capture positions -%}join|{{ join_x_in }}|{{ join_x_out }}|{{ cy }}|fg;{%- endcapture -%}
 {%- capture node_html -%}
   {%- for e in wf.nodes -%}
-    {%- if e.expand == 'skills' -%}{%- assign group = site.data.skills -%}{%- else -%}{%- assign group = '_' | split: ',' -%}{%- endif -%}
+    {%- if e.expand == 'skills' -%}{%- assign group = active_skills -%}{%- else -%}{%- assign group = '_' | split: ',' -%}{%- endif -%}
     {%- for skill in group -%}
       {%- if e.expand == 'skills' -%}
         {%- include workflow/resolve.html entry=e skill=skill -%}

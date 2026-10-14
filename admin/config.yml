@@ -163,20 +163,6 @@
           ]
         },
         {
-          "name": "2025-03-01-fm-synthesis-and-explore-exploit",
-          "label": "FM synthesis and explore\u2013exploit",
-          "file": "_posts/2025-03-01-fm-synthesis-and-explore-exploit.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
-        },
-        {
           "name": "2025-03-22-sse-through-a-service-mesh",
           "label": "SSE on Kubernetes: what a service mesh fixes, and what it doesn't",
           "file": "_posts/2025-03-22-sse-through-a-service-mesh.md",
@@ -194,20 +180,6 @@
           "name": "2025-06-14-a-serving-sdk-data-scientists-actually-use",
           "label": "A serving SDK data scientists actually use",
           "file": "_posts/2025-06-14-a-serving-sdk-data-scientists-actually-use.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
-        },
-        {
-          "name": "2025-10-18-the-exposure-triangle-but-for-learning-rates",
-          "label": "The exposure triangle, but for learning rates",
-          "file": "_posts/2025-10-18-the-exposure-triangle-but-for-learning-rates.md",
           "format": "raw",
           "fields": [
             {

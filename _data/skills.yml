@@ -90,6 +90,7 @@
   - name: Latency budgets · P95 monitoring
     where: Traveloka
 - key: design
+  enabled: false
   lane: product
   group: Product design
   desc: Product and interaction design from side work. One is a virtual-sports platform I co-founded; the other is interactive-wall installations in Bandung.

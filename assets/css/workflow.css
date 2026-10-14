@@ -157,7 +157,7 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
 @keyframes wf-attn { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 40%, transparent); } 50% { box-shadow: 0 0 0 6px transparent; } }
 @media (prefers-reduced-motion: reduce) {
   .wf-node, .wf-join { transition: none; }
-  .wf-node.is-done .wf-node__box, .wf-toast, .wf-node.is-bump .wf-node__box, .wf-tool--run.is-attn, .wf-after__steam { animation: none; }
+  .wf-node.is-done .wf-node__box, .wf-toast, .wf-node.is-bump .wf-node__box, .wf-tool--run.is-attn { animation: none; }
   .wf-toast.is-out { transition: none; }
 }
 
@@ -177,7 +177,7 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
 .bio-link:hover { text-decoration-style: solid; }
 .bio-link:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; border-radius: 3px; }
 
-/* Below the graph: inspector + latest writing / after work */
+/* Below the graph: inspector + latest posts */
 .wf-below { display: flex; flex-direction: column; gap: 18px; }
 .wf-below__main { min-width: 0; }
 .wf-aside { display: flex; flex-direction: column; gap: 14px; }
@@ -190,19 +190,26 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
 .wf-latest__title { display: block; margin-top: 2px; font-size: 14px; font-weight: 600; line-height: 1.35; text-decoration: none; text-wrap: pretty; }
 .wf-latest__title:hover { text-decoration: underline; text-underline-offset: 3px; }
 .wf-aside .wf-more { margin-top: 14px; color: var(--fg); }
-.wf-after { display: flex; gap: 14px; align-items: center; transition: border-color .2s; }
-.wf-after:hover { border-color: var(--muted); }
-.wf-after:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; }
-.wf-after__cup { flex: none; color: var(--l2); }
-.wf-after__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.wf-after__body .wf-card__title { margin: 0; }
-.wf-after__line { font-size: 13.5px; line-height: 1.4; text-wrap: pretty; }
-.wf-after__count { color: var(--muted); font: 11px 'Geist Mono', monospace; }
-.wf-after__steam { animation: wf-steam 2.8s ease-in-out infinite; }
-.wf-after__steam--b { animation-delay: .9s; }
-.wf-after__steam--c { animation-delay: 1.8s; }
-@keyframes wf-steam { 0%, 100% { opacity: .25; transform: translateY(1px); } 50% { opacity: 1; transform: translateY(-2px); } }
 @media (min-width: 1100px) {
   .wf-below { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; }
   .wf-below .wf-inspector { max-width: none; }
+}
+
+/* Each node keeps its branch color visible at rest, on desktop and mobile. */
+.wf-node:not(.wf-pill) .wf-node__box,
+.wf-pill,
+.wf-acc__glyph {
+  border-color: color-mix(in srgb, var(--glow) 45%, var(--line));
+  background: color-mix(in srgb, var(--glow) 8%, var(--bg));
+}
+.wf-pill .wf-node__box {
+  background: color-mix(in srgb, var(--glow) 15%, var(--panel));
+}
+.wf-node .wf-port { background: var(--glow); }
+.wf-node:hover .wf-node__box,
+.wf-pill:hover { border-color: var(--glow); }
+.wf-node[aria-expanded="true"] .wf-node__box,
+.wf-pill[aria-expanded="true"] {
+  border-color: var(--glow);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--glow) 18%, transparent);
 }

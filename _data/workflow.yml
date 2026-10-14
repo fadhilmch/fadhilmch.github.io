@@ -19,7 +19,7 @@ nodes:
   title: Fadhil
   subtitle: Stockholm, Sweden
   kind: profile
-  color: fg
+  color: l0
   accent: l0
   desc: ML engineering at Electrolux, previously ML and experimentation platforms at Traveloka.
   source: profile
@@ -31,7 +31,7 @@ nodes:
   title: Education
   subtitle: EE → ML
   kind: input
-  color: fg
+  color: l4
   accent: l4
   desc: Electrical engineering at ITB in Bandung, then a master’s in machine learning
     at KTH in Stockholm.
@@ -44,7 +44,7 @@ nodes:
   title: Experience
   subtitle: auto
   kind: loop
-  color: fg
+  color: l1
   accent: l1
   desc: From a robotics lab in Bandung to machine learning work in Stockholm.
   source: experience
@@ -59,7 +59,7 @@ nodes:
   title: Works
   subtitle: Projects · Posts
   kind: output
-  color: fg
+  color: l3
   accent: l3
   desc: Projects with public code, the latest posts and research papers.
   source: works

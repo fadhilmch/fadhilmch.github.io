@@ -32,7 +32,6 @@
     "image": "/assets/images/projects/sentiment-illustration.svg",
     "topic": "Data science",
     "color": "l1",
-    "image_caption": "AI-generated concept illustration · not model output",
     "teaser": "A sentiment experiment where the dataset and preprocessing mattered as much as the model."
   },
   {

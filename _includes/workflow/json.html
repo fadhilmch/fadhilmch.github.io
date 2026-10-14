@@ -24,6 +24,7 @@
     {{ nl }}{{ i1 }}{{ ob }}
     {{- nl }}{{ i2 }}<span class="j-key">"degree"</span>{{ colon }}{% include workflow/jv.html v=e.role %}{{ cm }}
     {{- nl }}{{ i2 }}<span class="j-key">"school"</span>{{ colon }}{% include workflow/jv.html v=e.org %}{{ cm }}
+    {{- nl }}{{ i2 }}<span class="j-key">"country"</span>{{ colon }}{% include workflow/jv.html v=e.country %}{{ cm }}
     {{- nl }}{{ i2 }}<span class="j-key">"years"</span>{{ colon }}{% include workflow/jv.html v=e.years %}
     {{- nl }}{{ i1 }}{{ cb }}{% unless forloop.last %}{{ cm }}{% endunless %}
   {%- endfor -%}{{ nl }}{{ ca }}

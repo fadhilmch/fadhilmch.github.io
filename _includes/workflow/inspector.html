@@ -28,7 +28,7 @@
           {%- endfor -%}
         {%- when 'education' -%}
           {%- for e in site.data.education %}
-          <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
+          <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.country %} · {{ e.country | escape }}{% endif %}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
           {%- endfor -%}
         {%- when 'experience' -%}
           {%- for e in site.data.experience %}

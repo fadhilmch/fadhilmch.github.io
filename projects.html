@@ -10,7 +10,7 @@ permalink: /projects/
   <div class="project-grid">
   {% for project in site.data.portfolio_projects %}
     <article class="project-card" id="{{ project.id }}" style="--accent:var(--{{ project.color }})">
-      <figure class="project-visual"><img src="{{ project.image | relative_url }}" alt="{{ project.image_caption | escape }}" width="640" height="200"><figcaption>{{ project.image_caption | escape }}</figcaption></figure>
+      <figure class="project-visual"><img src="{{ project.image | relative_url }}" alt="{{ project.image_caption | default: project.title | escape }}" width="640" height="200">{% if project.image_caption %}<figcaption>{{ project.image_caption | escape }}</figcaption>{% endif %}</figure>
       <div class="project-content">
         <p class="project-topic">{{ project.topic | escape }}</p>
         <p class="project-kind">{{ project.kind | escape }}</p>
@@ -29,7 +29,7 @@ permalink: /projects/
       <p class="project-topic">{{ project.topic | escape }} · {{ project.kind | escape }}</p>
       <h2 id="case-title-{{ project.id }}" tabindex="-1">{{ project.title | escape }}</h2>
       <div class="tag-list">{% assign tags = project.stack | split: ' · ' %}{% for tag in tags %}<span class="tag-chip">{{ tag | escape }}</span>{% endfor %}</div>
-      <figure class="project-visual"><img src="{{ project.image | relative_url }}" alt="{{ project.image_caption | escape }}" width="640" height="200"><figcaption>{{ project.image_caption | escape }}</figcaption></figure>
+      <figure class="project-visual"><img src="{{ project.image | relative_url }}" alt="{{ project.image_caption | default: project.title | escape }}" width="640" height="200">{% if project.image_caption %}<figcaption>{{ project.image_caption | escape }}</figcaption>{% endif %}</figure>
       <dl class="project-story">
         <dt>Problem</dt><dd>{{ project.problem | escape }}</dd>
         <dt>What we built</dt><dd>{{ project.built | escape }}</dd>

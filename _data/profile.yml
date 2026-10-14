@@ -21,8 +21,12 @@ bio_links:
   node: tool-llms
 - text: evaluation
   node: tool-llms
+- text: MLOps
+  node: tool-ml-platform
 - text: Traveloka
   node: exp
+- text: ML platforms
+  node: tool-ml-platform
 - text: experimentation platforms
   node: tool-experimentation
 - text: coffee and cooking
@@ -30,8 +34,8 @@ bio_links:
   color: l2
 bio: >-
   I'm an ML engineer at Electrolux in Stockholm, working on AI agents,
-  evaluation and production operations. Before that, I spent almost five years
-  at Traveloka in Jakarta building ML and experimentation platforms.
+  evaluation, and MLOps. Before that, I spent almost five years at Traveloka
+  in Jakarta building ML platforms and experimentation platforms.
   I'm originally from Indonesia. Outside work I take photos, make music,
   and treat coffee and cooking as small experiments.
 flag: "🇸🇪"
