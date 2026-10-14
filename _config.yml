@@ -20,6 +20,12 @@ collections:
   notes:
     output: true
     permalink: /notes/:name/
+  coffee:
+    output: true
+    permalink: /after-work/coffee/:name/
+  food:
+    output: true
+    permalink: /after-work/food/:name/
 
 defaults:
   - scope:
@@ -37,6 +43,20 @@ defaults:
     values:
       layout: note
       nav: notes
+  - scope:
+      path: ""
+      type: coffee
+    values:
+      layout: recipe
+      nav: after-work
+      kind: coffee
+  - scope:
+      path: ""
+      type: food
+    values:
+      layout: recipe
+      nav: after-work
+      kind: food
 
 plugins:
   - jekyll-feed

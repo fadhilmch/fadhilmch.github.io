@@ -19,6 +19,7 @@ All content lives in `_data/*.yml`, `_posts/` and `_notes/`. Layouts, includes a
 | Change bio, role or location | `_data/profile.yml` |
 | Add a job, degree, project or paper | `_data/experience.yml`, `education.yml`, `projects.yml`, `publications.yml` |
 | Add a toolkit or workflow node | `_data/skills.yml`, `_data/workflow.yml` |
+| Add a coffee or food recipe | add `_coffee/<slug>.md` or `_food/<slug>.md` |
 | Add or recolour a topic lane | `_data/lanes.yml`, `_data/tags.yml` |
 
 ## Project structure

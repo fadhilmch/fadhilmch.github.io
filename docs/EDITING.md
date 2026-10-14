@@ -184,6 +184,30 @@ Each raw tag also needs a display label in `_data/tags.yml`; that file's order i
 
 A lane with `branch: false` (like `meta`) groups notes in the explorer but gets no filter chip on Posts and no footer entry.
 
+## Add a coffee or food recipe
+
+Recipes live in two collections: `_coffee/` and `_food/`. The filename is the URL slug (`_coffee/my-v60.md` becomes `/after-work/coffee/my-v60/`). Copy the `todo-*` placeholder and replace every `TODO`.
+
+```markdown
+---
+title: My everyday V60
+method: V60
+beans: Roaster, origin, roast date
+dose_g: 15
+water_g: 250        # the 1:16.7 ratio is computed for you
+grind: medium-fine
+temp_c: 94
+time: "3:00"
+steps:
+  - "0:00 bloom 50g"
+  - "0:45 pour to 150g"
+  - "3:00 done"
+notes: Anything worth remembering.
+---
+```
+
+Start each coffee step with `m:ss` to power the "Start brew timer" button, which highlights the current step. Food recipes use `title`, `cuisine`, `serves`, `time`, `ingredients` (list), `steps` (list) and `notes`. Delete the placeholder when you add the real recipe.
+
 ## What not to edit
 
 Do not edit `_layouts/`, `_includes/`, or `assets/` for normal content changes. They contain the site structure, styling, and behavior.
