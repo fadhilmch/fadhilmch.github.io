@@ -428,7 +428,7 @@ Every filter in a stream quietly decides what counts:
 - **Tracks only:** albums and playlists were dropped.
 - **No tweet id:** a retweet was indistinguishable from an original share, and there was no way to remove duplicates.
 
-None of these is wrong on its own, but each changes the chart, and none was visible on the page. In a stream, the definition of an event is the schema of everything downstream. It deserves a written decision, and each filter deserves a counter.
+None of these is wrong on its own, but each changes the chart, and none was visible on the page. In a stream, what counts as one event shapes everything downstream, so I'd write that decision down and put a counter on every filter.
 
 ## How I'd deploy it for real
 
@@ -514,7 +514,7 @@ Nothing about this product needs a big cluster; the stream fit comfortably on a 
 - **Serving:** a small query API caches the current top 20 and pushes updates to the dashboard, instead of every open browser running its own `GROUP BY` every five seconds.
 - **Metrics:** consumer lag says whether the stream is keeping up; drop counters by reason say how much of the stream the chart actually represents.
 
-The biggest differences from what we built aren't the extra machines. They're the things that make results repeatable: saved offsets, idempotent writes, event time and counted drops. Those would have been worth doing even on one laptop.
+Looking at that list, the extra machines matter less than the things that make results repeatable: saved offsets, idempotent writes, event time and counted drops. We could have done all four on one laptop.
 
 The code and the report are on [GitHub](https://github.com/fadhilmch/streaming-twitter-spotify-trending-artists).
 
