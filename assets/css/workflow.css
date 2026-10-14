@@ -7,8 +7,17 @@
 .hero p { margin: 6px 0 0; max-width: 62ch; color: var(--muted); text-wrap: pretty; }
 
 /* Canvas */
-.wf-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background-color: var(--panel); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; }
+.wf-scroll { position: relative; overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background-color: var(--panel); background-image: radial-gradient(var(--dot) 1.2px, transparent 1.2px); background-size: 18px 18px; }
 .wf-canvas { position: relative; margin: 0 auto; }
+.wf-hint { position: absolute; top: 12px; left: 16px; z-index: 1; color: var(--muted); font: 11px 'Geist Mono', monospace; pointer-events: none; }
+
+/* Hero CTAs */
+.hero__cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.wf-btn { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 13px; text-decoration: none; transition: color .2s, border-color .2s; }
+.wf-btn:hover { color: var(--fg); border-color: var(--muted); }
+.wf-btn--primary { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.wf-btn--primary:hover { color: var(--bg); opacity: .85; }
+.wf-btn:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; }
 .wf-edges { position: absolute; inset: 0; overflow: visible; }
 .wf-edge { fill: none; stroke: var(--edge); stroke-width: 2; opacity: .85; transition: stroke .2s, opacity .2s; }
 
@@ -29,9 +38,9 @@
 .wf-node:focus-visible .wf-node__box { outline: 3px solid var(--l2); outline-offset: 3px; }
 
 /* Inspector */
-.wf-inspector { --accent: var(--fg); display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.wf-inspector { --accent: var(--fg); max-width: 900px; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
 .wf-inspector__bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 24px 0; }
-.wf-inspector__human { display: flex; flex-direction: column; gap: 12px; min-width: 0; max-width: 860px; padding: 14px 24px 20px; }
+.wf-inspector__human { display: flex; flex-direction: column; gap: 12px; min-width: 0; padding: 14px 24px 20px; }
 .wf-inspector__json { display: none; flex-direction: column; gap: 10px; min-width: 0; padding: 14px 24px 20px; }
 /* Readable is the default; JS sets data-wf-view on <html>. Without JS the toggle stays hidden. */
 .wf-view { display: none; flex: none; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); }
@@ -110,3 +119,83 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
 .wf-pub__venue { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.5; }
 .wf-pub__doi { display: block; margin-top: 8px; color: var(--muted); font: 11px/1.6 'Geist Mono', monospace; overflow-wrap: anywhere; text-decoration: none; }
 .wf-pub__doi:hover { color: var(--accent); }
+
+/* Explore: tools, hover path, drag, run */
+.wf-tools { position: absolute; top: 8px; right: 12px; z-index: 3; display: flex; gap: 6px; }
+.wf-tool { padding: 4px 11px; border: 1px solid var(--line); border-radius: 9px; background: var(--bg); color: var(--muted); cursor: pointer; font: 11px 'Geist Mono', monospace; transition: color .2s, border-color .2s; }
+.wf-tool[hidden] { display: none; }
+.wf-tool:hover { color: var(--fg); border-color: var(--muted); }
+.wf-tool:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; }
+.wf-tool--run[aria-busy="true"] { color: var(--ok); border-color: var(--ok); cursor: default; }
+.wf-node { user-select: none; -webkit-user-select: none; touch-action: none; transition: opacity .2s; }
+.wf-node.is-drag { z-index: 2; cursor: grabbing; }
+.wf-node.is-drag .wf-node__box { box-shadow: 0 8px 22px rgb(0 0 0 / 18%); border-color: var(--muted); }
+.wf-join { transition: opacity .2s, transform .3s; }
+.wf-canvas.is-focus .wf-node:not(.is-lit), .wf-canvas.is-focus .wf-join:not(.is-lit) { opacity: .35; }
+.wf-canvas.is-focus .wf-edge:not(.is-lit) { opacity: .12; }
+.wf-canvas.is-focus .wf-edge.is-lit { opacity: 1; }
+.wf-packet { fill: var(--edge, var(--ok)); filter: drop-shadow(0 0 4px var(--edge, var(--ok))); pointer-events: none; }
+.wf-node.is-active .wf-node__box, .wf-pill.is-active { border-color: var(--glow, var(--ok)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--glow, var(--ok)) 22%, transparent), 0 0 20px color-mix(in srgb, var(--glow, var(--ok)) 40%, transparent); }
+.wf-join.is-active { transform: scale(1.7); box-shadow: 0 0 0 4px var(--panel), 0 0 16px var(--ok); }
+.wf-node.is-done .wf-node__box { animation: wf-pulse .9s ease-out 2; }
+@keyframes wf-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--glow, var(--ok)) 55%, transparent); } 100% { box-shadow: 0 0 0 18px transparent; } }
+.wf-toast { position: absolute; z-index: 3; padding: 4px 10px; border: 1px solid var(--ok); border-radius: 9px; background: var(--bg); color: var(--ok); cursor: pointer; font: 11px 'Geist Mono', monospace; white-space: nowrap; transform: translateX(-100%); animation: wf-in .3s ease-out; }
+.wf-toast:hover { color: var(--fg); }
+.wf-toast:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; }
+@keyframes wf-in { from { opacity: 0; margin-top: 6px; } }
+.wf-node.is-bump .wf-node__box { animation: wf-bump .28s ease-out; }
+@keyframes wf-bump { 40% { transform: scale(1.12); } }
+.wf-toast.is-out { opacity: 0; transition: opacity .35s; }
+.wf-tool--run.is-attn { color: var(--fg); border-color: var(--ok); animation: wf-attn 2s ease-in-out infinite; }
+@keyframes wf-attn { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 40%, transparent); } 50% { box-shadow: 0 0 0 6px transparent; } }
+@media (prefers-reduced-motion: reduce) {
+  .wf-node, .wf-join { transition: none; }
+  .wf-node.is-done .wf-node__box, .wf-toast, .wf-node.is-bump .wf-node__box, .wf-tool--run.is-attn, .wf-after__steam { animation: none; }
+  .wf-toast.is-out { transition: none; }
+}
+
+/* Greeting: the word types in place; hidden sizers reserve the longest word's width */
+.wf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.greet { position: relative; display: inline-grid; vertical-align: baseline; }
+.greet__size { display: none; }
+.greet__size > span { grid-area: 1 / 1; }
+.greet__word { grid-area: 1 / 1; white-space: nowrap; }
+.greet.is-live .greet__word { border-right: 2px solid var(--muted); margin-right: -2px; animation: wf-caret 1s steps(1) infinite; }
+.greet__lang { position: absolute; left: 0; top: -1.1em; color: var(--muted); font: 500 10px/1 'Geist Mono', monospace; letter-spacing: .08em; }
+@keyframes wf-caret { 50% { border-right-color: transparent; } }
+@media (prefers-reduced-motion: reduce) { .greet.is-live .greet__word { animation: none; } }
+
+/* Bio phrases wired to the graph */
+.bio-link { padding: 0; border: 0; background: none; color: var(--fg); cursor: pointer; font: inherit; text-decoration: underline dotted 2px var(--bl, var(--muted)); text-underline-offset: 4px; transition: text-decoration-color .2s, color .2s; }
+.bio-link:hover { text-decoration-style: solid; }
+.bio-link:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; border-radius: 3px; }
+
+/* Below the graph: inspector + latest writing / after work */
+.wf-below { display: flex; flex-direction: column; gap: 18px; }
+.wf-below__main { min-width: 0; }
+.wf-aside { display: flex; flex-direction: column; gap: 14px; }
+.wf-card { display: block; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); color: var(--fg); text-decoration: none; }
+.wf-card__title { display: block; margin: 0 0 10px; color: var(--muted); font: 11px 'Geist Mono', monospace; letter-spacing: .06em; text-transform: uppercase; }
+.wf-latest { display: flex; flex-direction: column; gap: 12px; margin: 0; padding: 0; list-style: none; }
+.wf-latest__meta { display: flex; align-items: center; gap: 4px; color: var(--muted); font: 11px 'Geist Mono', monospace; }
+.wf-latest__dots { display: inline-flex; gap: 3px; margin-left: 4px; }
+.wf-latest__dots i { width: 7px; height: 7px; border-radius: 50%; }
+.wf-latest__title { display: block; margin-top: 2px; font-size: 14px; font-weight: 600; line-height: 1.35; text-decoration: none; text-wrap: pretty; }
+.wf-latest__title:hover { text-decoration: underline; text-underline-offset: 3px; }
+.wf-aside .wf-more { margin-top: 14px; color: var(--fg); }
+.wf-after { display: flex; gap: 14px; align-items: center; transition: border-color .2s; }
+.wf-after:hover { border-color: var(--muted); }
+.wf-after:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; }
+.wf-after__cup { flex: none; color: var(--l2); }
+.wf-after__body { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.wf-after__body .wf-card__title { margin: 0; }
+.wf-after__line { font-size: 13.5px; line-height: 1.4; text-wrap: pretty; }
+.wf-after__count { color: var(--muted); font: 11px 'Geist Mono', monospace; }
+.wf-after__steam { animation: wf-steam 2.8s ease-in-out infinite; }
+.wf-after__steam--b { animation-delay: .9s; }
+.wf-after__steam--c { animation-delay: 1.8s; }
+@keyframes wf-steam { 0%, 100% { opacity: .25; transform: translateY(1px); } 50% { opacity: 1; transform: translateY(-2px); } }
+@media (min-width: 1100px) {
+  .wf-below { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; }
+  .wf-below .wf-inspector { max-width: none; }
+}

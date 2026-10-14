@@ -5,6 +5,29 @@ city: Stockholm
 role: Machine Learning Engineer
 location: Stockholm, Sweden
 headline: Hi, I’m Fadhil 👋
+# The headline's first word cycles through these (Jakarta -> Stockholm). First entry must match the headline's word.
+greetings:
+- word: Hi
+  lang: EN
+- word: Hej
+  lang: SV
+- word: Halo
+  lang: ID
+# Bio phrases that become interactive. `node` lights/opens a graph node; `href` is a plain link. First occurrence only.
+bio_links:
+- text: Electrolux
+  node: exp
+- text: AI agents
+  node: tool-llms
+- text: evaluation
+  node: tool-llms
+- text: Traveloka
+  node: exp
+- text: experimentation platforms
+  node: tool-experimentation
+- text: coffee and cooking
+  href: /after-work/
+  color: l2
 bio: >-
   I'm an ML engineer at Electrolux in Stockholm, working on AI agents,
   evaluation and production operations. Before that, I spent almost five years
@@ -12,4 +35,17 @@ bio: >-
   I'm originally from Indonesia. Outside work I take photos, make music,
   and treat coffee and cooking as small experiments.
 flag: "🇸🇪"
+now:
+- k: building
+  v: "Agentic chatbot and personal assistant"
+- k: learning
+  v: "Agent loop and harness engineering"
+- k: reading
+  v: "The Book You Wish Your Parents Had Read"
+- k: listening
+  v: "Tom Misch"
+  href: https://open.spotify.com/artist/1uiEZYehlNivdK3iQyAbye
+- k: brewing
+  v: "AeroPress"
+  href: /after-work/coffee/
 off_hours: photography · digital design · music · coffee · cooking

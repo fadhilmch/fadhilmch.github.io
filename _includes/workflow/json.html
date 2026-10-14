@@ -13,8 +13,12 @@
 {%- when 'profile' -%}
   {%- assign p = site.data.profile -%}
   {{ ob }}{{ nl }}{{ i1 }}<span class="j-key">"name"</span>{{ colon }}{% include workflow/jv.html v=p.name %}{{ cm }}
-  {{- nl }}{{ i1 }}<span class="j-key">"role"</span>{{ colon }}{% include workflow/jv.html v=p.role %}{{ cm }}
-  {{- nl }}{{ i1 }}<span class="j-key">"location"</span>{{ colon }}{% include workflow/jv.html v=p.location %}{{ nl }}{{ cb }}
+  {{- nl }}{{ i1 }}<span class="j-key">"location"</span>{{ colon }}{% include workflow/jv.html v=p.location %}{{ cm }}
+  {{- nl }}{{ i1 }}<span class="j-key">"now"</span>{{ colon }}{{ ob }}
+  {%- for r in p.now -%}
+    {{ nl }}{{ i2 }}<span class="j-key">{{ r.k | jsonify | escape }}</span>{{ colon }}{% include workflow/jv.html v=r.v %}{% unless forloop.last %}{{ cm }}{% endunless %}
+  {%- endfor -%}
+  {{ nl }}{{ i1 }}{{ cb }}{{ nl }}{{ cb }}
 {%- when 'education' -%}
   {{ oa }}{%- for e in site.data.education -%}
     {{ nl }}{{ i1 }}{{ ob }}
@@ -59,5 +63,14 @@
   {%- for t in n_skill.items -%}
     {{ nl }}{{ i2 }}{% include workflow/jv.html v=t.name %}{% unless forloop.last %}{{ cm }}{% endunless %}
   {%- endfor -%}
-  {{ nl }}{{ i1 }}{{ ca }}{{ nl }}{{ cb }}
+  {{ nl }}{{ i1 }}{{ ca }}
+  {%- if n_lane -%}
+    {%- include workflow/related.html lane=n_lane data=true -%}
+    {{ cm }}{{ nl }}{{ i1 }}<span class="j-key">"related"</span>{{ colon }}{{ oa }}
+    {%- for r in rel_items -%}
+      {{ nl }}{{ i2 }}{% include workflow/jv.html v=r.title %}{% unless forloop.last %}{{ cm }}{% endunless %}
+    {%- endfor -%}
+    {{ nl }}{{ i1 }}{{ ca }}
+  {%- endif -%}
+  {{ nl }}{{ cb }}
 {%- endcase -%}

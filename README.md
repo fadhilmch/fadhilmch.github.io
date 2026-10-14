@@ -20,6 +20,7 @@ All content lives in `_data/*.yml`, `_posts/` and `_notes/`. Layouts, includes a
 | Replace the About avatar | `assets/css/avatar-images.css` (embedded WebPs; see [guide](docs/EDITING.md#soft-depth-and-motion)) |
 | Add a job, degree, project or paper | `_data/experience.yml`, `education.yml`, `projects.yml`, `publications.yml` |
 | Add a toolkit or workflow node | `_data/skills.yml`, `_data/workflow.yml` |
+| Add a coffee or food recipe | add `_coffee/<slug>.md` or `_food/<slug>.md` |
 | Add or recolour a topic lane | `_data/lanes.yml`, `_data/tags.yml` |
 
 ## Project structure
@@ -91,3 +92,20 @@ node --test tests/*.test.mjs
 ```
 
 PR checks also build Jekyll and run html-proofer; they do not deploy previews.
+
+## Explorable About and After work (PR48)
+
+The greeting cycles through Hi, Hej and Halo. Bio links open workflow inspectors;
+workflow nodes support dragging, reset and a run animation. The ambient flow
+paths follow dragged nodes. Reduced-motion settings stop the animated greeting
+and ambient motion. After work keeps the coffee and food recipe collections.
+
+Edit the Now rows in `_data/profile.yml`. Each row has `k` (label), `v` (text),
+and optional `href`. The Learning row is data-driven, not a separate component.
+The listening row links to Tom Misch's verified Spotify artist page.
+
+Conflict QA: `node --test tests/cms.test.mjs`, JavaScript syntax checks, and
+desktop/mobile browser checks of drag/reset, matching edge/flow geometry, Now
+links and overflow. Local browser screenshots use a Liquid-rendered About
+harness; they are not a deployed Jekyll build. Jekyll/html-proofer still need
+the Ruby build environment before merge.

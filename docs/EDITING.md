@@ -220,6 +220,30 @@ Each raw tag also needs a display label in `_data/tags.yml`; that file's order i
 
 A lane with `branch: false` (like `meta`) groups notes in the explorer but gets no filter chip on Posts and no footer entry.
 
+## Add a coffee or food recipe
+
+Recipes live in two collections: `_coffee/` and `_food/`. The filename is the URL slug (`_coffee/my-v60.md` becomes `/after-work/coffee/my-v60/`). Copy the `todo-*` placeholder and replace every `TODO`.
+
+```markdown
+---
+title: My everyday V60
+method: V60
+beans: Roaster, origin, roast date
+dose_g: 15
+water_g: 250        # the 1:16.7 ratio is computed for you
+grind: medium-fine
+temp_c: 94
+time: "3:00"
+steps:
+  - "0:00 bloom 50g"
+  - "0:45 pour to 150g"
+  - "3:00 done"
+notes: Anything worth remembering.
+---
+```
+
+Start each coffee step with `m:ss` to power the "Start brew timer" button, which highlights the current step. Food recipes use `title`, `cuisine`, `serves`, `time`, `ingredients` (list), `steps` (list) and `notes`. Delete the placeholder when you add the real recipe.
+
 ## What not to edit
 
 Do not edit `_layouts/`, `_includes/`, or `assets/` for normal content changes. They contain the site structure, styling, and behavior.
@@ -245,3 +269,14 @@ For existing blog posts, use the [CMS setup and review guide](CMS.md). It edits 
 source with syntax colors and a live preview (approximate, not Jekyll), including YAML front matter, HTML/SVG,
 JavaScript and Liquid. Saves create review PRs and cannot publish from the CMS.
 Keep using GitHub or your local editor for new post filenames, notes and assets.
+
+### Now rows and graph motion
+
+Use `_data/profile.yml` to change the About inspector's Now rows. Rows accept
+`k`, `v` and optional `href`; adding Learning requires no layout change.
+Keep external links as complete HTTPS URLs, including the Tom Misch Spotify
+artist link. Coffee and food recipes remain in their own collections.
+
+The draggable workflow keeps its solid edge and ambient flow paths aligned.
+Use Reset layout to return nodes to their starting positions. Test desktop
+and mobile, plus normal and reduced-motion settings before merging changes.

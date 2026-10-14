@@ -10,11 +10,14 @@ permalink: /posts/
     <h1>Posts</h1>
     <span class="post-count" data-post-count aria-live="polite">{{ site.posts.size }} {% if site.posts.size == 1 %}post{% else %}posts{% endif %}</span>
   </div>
+  <div class="lane-bar">
   <div class="lane-filters" role="group" aria-label="Filter posts by topic">
     <button type="button" data-lane-filter="all" aria-pressed="true"><i style="background:var(--fg)"></i>All</button>
     {%- for lane in site.data.lanes -%}{%- unless lane.branch == false -%}
     <button type="button" data-lane-filter="{{ lane.key }}" aria-pressed="false"><i style="background:var(--{{ lane.color }})"></i>{{ lane.title }}</button>
     {%- endunless -%}{%- endfor %}
+  </div>
+  <button type="button" class="surprise" data-surprise title="Open a random post in the current filter"><span class="surprise__die" aria-hidden="true">⚄</span> Surprise me</button>
   </div>
   <div class="post-years">
     {%- assign previous_year = '' -%}

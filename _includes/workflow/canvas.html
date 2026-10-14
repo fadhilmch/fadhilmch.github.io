@@ -6,7 +6,7 @@
     pills:    y = cy - span / 2 + i * pill_gap          (span = pills' total height)
     branches: y = cy + (i - 0.5) * branch_gap - node_h / 2   (two nodes at level 1)
     others:   y = cy - node_h / 2
-  Every edge is an S-curve from a node's right port to the next node's left port.
+  Every edge is a node-editor curve (control offset max(dx/2, 60)) from a node's right port to the next node's left port.
 {%- endcomment -%}
 {%- assign wf = site.data.workflow -%}
 {%- assign cv = wf.canvas -%}
@@ -51,13 +51,13 @@
       {%- assign x_in = e.x | minus: 4 -%}
       {%- capture positions -%}{{ positions }}{{ n_id }}|{{ x_in }}|{{ x_out }}|{{ y_mid }}|{{ n_color }};{%- endcapture -%}
       {%- if e.expand == 'skills' -%}
-        <button class="wf-node wf-pill" id="wf-n-{{ n_id }}" type="button" style="left:{{ e.x }}px;top:{{ y }}px" data-node="{{ n_id }}" data-level="{{ e.level }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
+        <button class="wf-node wf-pill" id="wf-n-{{ n_id }}" type="button" style="left:{{ e.x }}px;top:{{ y }}px;--glow:var(--{{ n_accent }})" data-node="{{ n_id }}" data-level="{{ e.level }}" data-g="{{ x_in | minus: e.x }},{{ x_out | minus: e.x }},{{ y_mid | minus: y }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
           <span class="wf-node__box"><span class="wf-node__glyph" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span></span>
           <span class="wf-node__label"><span class="wf-node__title">{{ n_title | escape }}</span><span class="wf-node__sub">{{ n_sub | escape }}</span></span>
           <span class="wf-port wf-port--in" aria-hidden="true"></span><span class="wf-port wf-port--out" aria-hidden="true"></span>
         </button>
       {%- else -%}
-        <button class="wf-node wf-node--{{ n_kind }}" id="wf-n-{{ n_id }}" type="button" style="left:{{ e.x }}px;top:{{ y }}px" data-node="{{ n_id }}" data-level="{{ e.level }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
+        <button class="wf-node wf-node--{{ n_kind }}" id="wf-n-{{ n_id }}" type="button" style="left:{{ e.x }}px;top:{{ y }}px;--glow:var(--{{ n_accent }})" data-node="{{ n_id }}" data-level="{{ e.level }}" data-g="{{ x_in | minus: e.x }},{{ x_out | minus: e.x }},{{ y_mid | minus: y }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
           <span class="wf-node__box">
             <span class="wf-node__glyph" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
             {%- unless n_kind == 'profile' %}<span class="wf-port wf-port--in" aria-hidden="true"></span>{% endunless -%}
@@ -90,21 +90,31 @@
         {%- assign y1 = a[3] -%}
         {%- assign x2 = b[1] -%}
         {%- assign y2 = b[3] -%}
-        {%- assign mx = x1 | plus: x2 | divided_by: 2.0 -%}
+        {%- assign c = x2 | minus: x1 | divided_by: 2.0 -%}
+        {%- if c < 60 -%}{%- assign c = 60 -%}{%- endif -%}
+        {%- assign c1 = x1 | plus: c -%}
+        {%- assign c2 = x2 | minus: c -%}
         {%- assign stroke = b[4] -%}
+        {%- if skill_ids contains from_id -%}{%- assign stroke = a[4] -%}{%- endif -%}
         {%- assign stroke_first = stroke | slice: 0 -%}
         {%- unless stroke_first == 'l' -%}{%- assign stroke = 'ok' -%}{%- endunless -%}
-        <path pathLength="1" class="wf-edge" d="M{{ x1 }} {{ y1 }} C{{ mx }} {{ y1 }} {{ mx }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }});--wf-stage:{{ edge_stage }}"/>
-        <path pathLength="1" class="wf-flow" d="M{{ x1 }} {{ y1 }} C{{ mx }} {{ y1 }} {{ mx }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }});--wf-stage:{{ edge_stage }}"/>
+        <path pathLength="1" class="wf-edge" data-from="{{ from_id }}" data-to="{{ to_id }}" d="M{{ x1 }} {{ y1 }} C{{ c1 }} {{ y1 }} {{ c2 }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }});--wf-stage:{{ edge_stage }}"/>
+
+        <path pathLength="1" class="wf-flow" data-flow-from="{{ from_id }}" data-flow-to="{{ to_id }}" d="M{{ x1 }} {{ y1 }} C{{ c1 }} {{ y1 }} {{ c2 }} {{ y2 }} {{ x2 }} {{ y2 }}" style="--edge:var(--{{ stroke }});--wf-stage:{{ edge_stage }}"/>
       {%- endif -%}
     {%- endfor -%}{%- endfor -%}
   {%- endfor -%}
 {%- endcapture -%}
 
 <div class="wf-scroll">
+  <span class="wf-hint" aria-hidden="true">click · drag · run</span>
+  <div class="wf-tools">
+    <button class="wf-tool" type="button" data-wf-reset aria-label="Reset node layout" hidden>reset layout</button>
+    <button class="wf-tool wf-tool--run" type="button" data-wf-run aria-label="Run the pipeline animation">run ▶</button>
+  </div>
   <div class="wf-canvas" style="width:{{ canvas_w }}px;height:{{ canvas_h }}px">
     <svg class="wf-edges" width="{{ canvas_w }}" height="{{ canvas_h }}" viewBox="0 0 {{ canvas_w }} {{ canvas_h }}" aria-hidden="true" focusable="false">{{ edge_html }}</svg>
-    <span class="wf-join" style="left:{{ join_x_in }}px;top:{{ join_y }}px" aria-hidden="true"></span>
+    <span class="wf-join" data-join data-g="0,{{ cv.join_size }},{{ join_half }}" style="left:{{ join_x_in }}px;top:{{ join_y }}px" aria-hidden="true"></span>
     {{ node_html }}
   </div>
   </div>
