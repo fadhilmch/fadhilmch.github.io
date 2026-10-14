@@ -9,7 +9,7 @@
   },
   "publish_mode": "editorial_workflow",
   "site_url": "https://fadhilmch.github.io",
-  "app_title": "Fadhil \u00b7 Post editor",
+  "app_title": "Fadhil \u00b7 Site editor",
   "media_folder": "admin/media-readonly",
   "public_folder": "/admin/media-readonly",
   "collections": [
@@ -21,272 +21,845 @@
       "editor": {
         "preview": true
       },
+      "folder": "_posts",
+      "format": "post-raw",
+      "slug": {
+        "editable": [
+          "create"
+        ],
+        "hint": "Enter the new post filename as YYYY-MM-DD-slug, for example 2026-10-14-my-new-post.",
+        "pattern": [
+          "^\\d{4}-\\d{2}-\\d{2}-[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "Use YYYY-MM-DD-slug with lowercase words separated by hyphens"
+        ]
+      },
+      "fields": [
+        {
+          "name": "body",
+          "label": "Full post source (YAML + Markdown + HTML)",
+          "widget": "post-source",
+          "hint": "Edit title, date and article content in this source. For a new post, open the Slug panel in the sidebar and set YYYY-MM-DD-slug. Save opens a review PR, never publishes."
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "label": "About",
+      "publish": false,
       "files": [
         {
-          "name": "2020-11-14-rereading-a-2019-sentiment-model",
-          "label": "My first text classifier for sentiment analysis",
-          "file": "_posts/2020-11-14-rereading-a-2019-sentiment-model.md",
-          "format": "raw",
+          "name": "profile",
+          "label": "Profile",
+          "file": "_data/profile.yml",
           "fields": [
             {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
+              "name": "name",
+              "label": "Name",
+              "widget": "string"
+            },
+            {
+              "name": "short_role",
+              "label": "Short role",
+              "widget": "string"
+            },
+            {
+              "name": "city",
+              "label": "City",
+              "widget": "string"
+            },
+            {
+              "name": "role",
+              "label": "Role",
+              "widget": "string"
+            },
+            {
+              "name": "location",
+              "label": "Location",
+              "widget": "string"
+            },
+            {
+              "name": "headline",
+              "label": "Headline",
+              "widget": "string"
+            },
+            {
+              "name": "greetings",
+              "label": "Greetings",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "word",
+                  "label": "Word",
+                  "widget": "string"
+                },
+                {
+                  "name": "lang",
+                  "label": "Language",
+                  "widget": "string"
+                }
+              ]
+            },
+            {
+              "name": "bio_links",
+              "label": "Interactive bio links",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": "Text",
+                  "widget": "string"
+                },
+                {
+                  "name": "node",
+                  "label": "Graph node",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "href",
+                  "label": "Link URL",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "bio",
+              "label": "Bio",
+              "widget": "text"
+            },
+            {
+              "name": "flag",
+              "label": "Flag",
+              "widget": "string"
+            },
+            {
+              "name": "now",
+              "label": "Now",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "k",
+                  "label": "Label",
+                  "widget": "string"
+                },
+                {
+                  "name": "v",
+                  "label": "Value",
+                  "widget": "string"
+                },
+                {
+                  "name": "href",
+                  "label": "Link URL",
+                  "widget": "string",
+                  "required": false
+                }
+              ]
+            },
+            {
+              "name": "off_hours",
+              "label": "Off hours",
+              "widget": "string"
             }
           ]
         },
         {
-          "name": "2021-04-17-building-a-streaming-pipeline",
-          "label": "Learning data streaming by building one",
-          "file": "_posts/2021-04-17-building-a-streaming-pipeline.md",
-          "format": "raw",
+          "name": "lanes",
+          "label": "Lanes",
+          "file": "_data/lanes.yml",
           "fields": [
             {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
+              "name": "items",
+              "label": "Lanes",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "key",
+                  "label": "Key",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "branch",
+                  "label": "Branch visible",
+                  "widget": "boolean",
+                  "required": false,
+                  "default": true,
+                  "hint": "Set Product design to true when enabling the Product design skill group."
+                },
+                {
+                  "name": "title",
+                  "label": "Title",
+                  "widget": "string"
+                },
+                {
+                  "name": "label",
+                  "label": "Label",
+                  "widget": "string"
+                },
+                {
+                  "name": "long",
+                  "label": "Long label",
+                  "widget": "string"
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Blue",
+                      "value": "l0"
+                    },
+                    {
+                      "label": "Rose",
+                      "value": "l1"
+                    },
+                    {
+                      "label": "Orange",
+                      "value": "l2"
+                    },
+                    {
+                      "label": "Purple",
+                      "value": "l3"
+                    },
+                    {
+                      "label": "Teal",
+                      "value": "l4"
+                    },
+                    {
+                      "label": "Gold",
+                      "value": "l5"
+                    },
+                    {
+                      "label": "Neutral",
+                      "value": "fg"
+                    }
+                  ]
+                },
+                {
+                  "name": "tags",
+                  "label": "Tags",
+                  "widget": "list"
+                }
+              ],
+              "max": 7,
+              "root": true
             }
           ]
+        }
+      ]
+    },
+    {
+      "name": "experience",
+      "label": "Experience",
+      "publish": false,
+      "files": [
+        {
+          "name": "experience",
+          "label": "Experience",
+          "file": "_data/experience.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Experience",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "years",
+                  "label": "Years",
+                  "widget": "string"
+                },
+                {
+                  "name": "role",
+                  "label": "Role",
+                  "widget": "string"
+                },
+                {
+                  "name": "org",
+                  "label": "Organization",
+                  "widget": "string"
+                },
+                {
+                  "name": "place",
+                  "label": "Location",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "note",
+                  "label": "Description",
+                  "widget": "text",
+                  "required": false
+                }
+              ],
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "education",
+      "label": "Education",
+      "publish": false,
+      "files": [
+        {
+          "name": "education",
+          "label": "Education",
+          "file": "_data/education.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Education",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "years",
+                  "label": "Years",
+                  "widget": "string"
+                },
+                {
+                  "name": "role",
+                  "label": "Degree",
+                  "widget": "string"
+                },
+                {
+                  "name": "org",
+                  "label": "Institution",
+                  "widget": "string"
+                },
+                {
+                  "name": "country",
+                  "label": "Country",
+                  "widget": "string",
+                  "required": false
+                }
+              ],
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "skills",
+      "label": "Skills",
+      "publish": false,
+      "files": [
+        {
+          "name": "skills",
+          "label": "Skills",
+          "file": "_data/skills.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Skills",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "key",
+                  "label": "Key",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "lane",
+                  "label": "Lane key",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "group",
+                  "label": "Group",
+                  "widget": "string"
+                },
+                {
+                  "name": "desc",
+                  "label": "Description",
+                  "widget": "text"
+                },
+                {
+                  "name": "spotlight",
+                  "label": "Spotlight",
+                  "widget": "text",
+                  "required": false
+                },
+                {
+                  "name": "glyph",
+                  "label": "Glyph",
+                  "widget": "string"
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Blue",
+                      "value": "l0"
+                    },
+                    {
+                      "label": "Rose",
+                      "value": "l1"
+                    },
+                    {
+                      "label": "Orange",
+                      "value": "l2"
+                    },
+                    {
+                      "label": "Purple",
+                      "value": "l3"
+                    },
+                    {
+                      "label": "Teal",
+                      "value": "l4"
+                    },
+                    {
+                      "label": "Gold",
+                      "value": "l5"
+                    },
+                    {
+                      "label": "Neutral",
+                      "value": "fg"
+                    }
+                  ]
+                },
+                {
+                  "name": "items",
+                  "label": "Skills",
+                  "widget": "list",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "label": "Name",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "where",
+                      "label": "Where",
+                      "widget": "string",
+                      "required": false
+                    }
+                  ]
+                },
+                {
+                  "name": "enabled",
+                  "label": "Enabled",
+                  "widget": "boolean",
+                  "required": false,
+                  "default": true,
+                  "hint": "For Product design, also set About \u2192 Lanes \u2192 Product design \u2192 Branch visible to true."
+                }
+              ],
+              "max": 5,
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "projects",
+      "label": "Projects",
+      "publish": false,
+      "files": [
+        {
+          "name": "portfolio-projects",
+          "label": "Portfolio projects",
+          "file": "_data/portfolio_projects.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "projects",
+              "label": "Projects",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "id",
+                  "label": "ID",
+                  "widget": "string"
+                },
+                {
+                  "name": "title",
+                  "label": "Title",
+                  "widget": "string"
+                },
+                {
+                  "name": "kind",
+                  "label": "Kind",
+                  "widget": "string"
+                },
+                {
+                  "name": "stack",
+                  "label": "Technology stack",
+                  "widget": "string"
+                },
+                {
+                  "name": "problem",
+                  "label": "Problem",
+                  "widget": "text"
+                },
+                {
+                  "name": "built",
+                  "label": "What I built",
+                  "widget": "text"
+                },
+                {
+                  "name": "decision",
+                  "label": "Decision and lessons",
+                  "widget": "text"
+                },
+                {
+                  "name": "result",
+                  "label": "Result",
+                  "widget": "text"
+                },
+                {
+                  "name": "repo",
+                  "label": "Repository URL",
+                  "widget": "string",
+                  "pattern": [
+                    "^https://",
+                    "Use an HTTPS repository URL"
+                  ]
+                },
+                {
+                  "name": "post",
+                  "label": "Related post URL",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "post_title",
+                  "label": "Related post title",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "image",
+                  "label": "Image path",
+                  "widget": "string",
+                  "hint": "Path to an existing image, for example /assets/images/projects/example.svg."
+                },
+                {
+                  "name": "topic",
+                  "label": "Topic",
+                  "widget": "string"
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Blue",
+                      "value": "l0"
+                    },
+                    {
+                      "label": "Rose",
+                      "value": "l1"
+                    },
+                    {
+                      "label": "Orange",
+                      "value": "l2"
+                    },
+                    {
+                      "label": "Purple",
+                      "value": "l3"
+                    },
+                    {
+                      "label": "Teal",
+                      "value": "l4"
+                    },
+                    {
+                      "label": "Gold",
+                      "value": "l5"
+                    },
+                    {
+                      "label": "Neutral",
+                      "value": "fg"
+                    }
+                  ]
+                },
+                {
+                  "name": "image_caption",
+                  "label": "Image caption",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "teaser",
+                  "label": "Teaser",
+                  "widget": "text"
+                }
+              ],
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "publications",
+      "label": "Publications",
+      "publish": false,
+      "files": [
+        {
+          "name": "publications",
+          "label": "Publications",
+          "file": "_data/publications.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Publications",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "Title",
+                  "widget": "string"
+                },
+                {
+                  "name": "authors",
+                  "label": "Authors",
+                  "widget": "string"
+                },
+                {
+                  "name": "venue",
+                  "label": "Venue",
+                  "widget": "string"
+                },
+                {
+                  "name": "conference",
+                  "label": "Conference",
+                  "widget": "string"
+                },
+                {
+                  "name": "event",
+                  "label": "Event",
+                  "widget": "string"
+                },
+                {
+                  "name": "pages",
+                  "label": "Pages",
+                  "widget": "string"
+                },
+                {
+                  "name": "year",
+                  "label": "Year",
+                  "widget": "string"
+                },
+                {
+                  "name": "doi",
+                  "label": "DOI",
+                  "widget": "string"
+                },
+                {
+                  "name": "href",
+                  "label": "URL",
+                  "widget": "string"
+                }
+              ],
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact",
+      "label": "Contact",
+      "publish": false,
+      "files": [
+        {
+          "name": "contact",
+          "label": "Contact",
+          "file": "_data/contact.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Contact",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "label",
+                  "label": "Label",
+                  "widget": "string"
+                },
+                {
+                  "name": "value",
+                  "label": "Value",
+                  "widget": "string"
+                },
+                {
+                  "name": "href",
+                  "label": "Link URL",
+                  "widget": "string"
+                }
+              ],
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "coffee",
+      "label": "Coffee",
+      "label_singular": "Coffee recipe",
+      "folder": "_coffee",
+      "path": "{{slug}}",
+      "extension": "md",
+      "format": "yaml-frontmatter",
+      "create": true,
+      "delete": false,
+      "publish": false,
+      "fields": [
+        {
+          "name": "layout",
+          "label": "Layout",
+          "widget": "hidden",
+          "default": "recipe"
         },
         {
-          "name": "2021-05-15-colorizing-images-with-local-and-global-features",
-          "label": "Image colorization: learning what grayscale leaves out",
-          "file": "_posts/2021-05-15-colorizing-images-with-local-and-global-features.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "title",
+          "label": "Title",
+          "widget": "string"
         },
         {
-          "name": "2021-10-09-probability-and-distributions",
-          "label": "Probability and distributions, one step at a time",
-          "file": "_posts/2021-10-09-probability-and-distributions.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "kind",
+          "label": "Recipe type",
+          "widget": "hidden",
+          "default": "coffee"
         },
         {
-          "name": "2021-10-16-p-values-and-statistical-tests",
-          "label": "Real or luck? P-values, significance and statistical tests",
-          "file": "_posts/2021-10-16-p-values-and-statistical-tests.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "method",
+          "label": "Brew method",
+          "widget": "string"
         },
         {
-          "name": "2022-05-21-making-sense-of-kubernetes",
-          "label": "Making sense of Kubernetes",
-          "file": "_posts/2022-05-21-making-sense-of-kubernetes.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "dose_g",
+          "label": "Coffee dose (g)",
+          "widget": "number",
+          "value_type": "float",
+          "min": 0.1,
+          "step": 0.1
         },
         {
-          "name": "2022-08-20-from-a-click-to-a-database",
-          "label": "From a click to a database: how a request crosses the internet",
-          "file": "_posts/2022-08-20-from-a-click-to-a-database.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "water_g",
+          "label": "Water (g)",
+          "widget": "number",
+          "value_type": "float",
+          "min": 0.1,
+          "step": 0.1
         },
         {
-          "name": "2023-03-18-managed-identity-on-gcp",
-          "label": "Managed identity on GCP: why we're deleting our key files",
-          "file": "_posts/2023-03-18-managed-identity-on-gcp.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "grind",
+          "label": "Grind setting",
+          "widget": "string"
         },
         {
-          "name": "2024-07-13-go-worker-pools-for-experiment-assignment",
-          "label": "What firmware taught me about Go worker pools",
-          "file": "_posts/2024-07-13-go-worker-pools-for-experiment-assignment.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "temp_c",
+          "label": "Water temperature (\u00b0C)",
+          "widget": "number",
+          "value_type": "float",
+          "min": 0.1,
+          "step": 0.1
         },
         {
-          "name": "2025-01-18-from-polling-to-push",
-          "label": "From polling to push: getting experiment config to every service",
-          "file": "_posts/2025-01-18-from-polling-to-push.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "time",
+          "label": "Time",
+          "widget": "string",
+          "hint": "Use the time format shown on the site, e.g. 2:30."
         },
         {
-          "name": "2025-03-22-sse-through-a-service-mesh",
-          "label": "SSE on Kubernetes: what a service mesh fixes, and what it doesn't",
-          "file": "_posts/2025-03-22-sse-through-a-service-mesh.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "beans",
+          "label": "Beans",
+          "widget": "string",
+          "required": false
         },
         {
-          "name": "2025-06-14-a-serving-sdk-data-scientists-actually-use",
-          "label": "A serving SDK data scientists actually use",
-          "file": "_posts/2025-06-14-a-serving-sdk-data-scientists-actually-use.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "steps",
+          "label": "Brew steps",
+          "widget": "list",
+          "min": 1
         },
         {
-          "name": "2026-02-28-one-definition-of-conversion",
-          "label": "One definition of conversion",
-          "file": "_posts/2026-02-28-one-definition-of-conversion.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "notes",
+          "label": "Notes",
+          "widget": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "food",
+      "label": "Food",
+      "label_singular": "Food recipe",
+      "folder": "_food",
+      "path": "{{slug}}",
+      "extension": "md",
+      "format": "yaml-frontmatter",
+      "create": true,
+      "delete": false,
+      "publish": false,
+      "fields": [
+        {
+          "name": "layout",
+          "label": "Layout",
+          "widget": "hidden",
+          "default": "recipe"
         },
         {
-          "name": "2026-04-11-thompson-sampling-explained-with-coupons",
-          "label": "Bandits in production: Thompson sampling, explained with coupons",
-          "file": "_posts/2026-04-11-thompson-sampling-explained-with-coupons.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "title",
+          "label": "Title",
+          "widget": "string"
         },
         {
-          "name": "2026-06-20-golden-datasets-without-the-gold-rush",
-          "label": "Golden datasets without the gold rush",
-          "file": "_posts/2026-06-20-golden-datasets-without-the-gold-rush.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "kind",
+          "label": "Recipe type",
+          "widget": "hidden",
+          "default": "food"
         },
         {
-          "name": "2026-08-02-an-agent-that-triages-its-own-feedback",
-          "label": "An agent that triages its own feedback",
-          "file": "_posts/2026-08-02-an-agent-that-triages-its-own-feedback.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "cuisine",
+          "label": "Cuisine",
+          "widget": "string"
         },
         {
-          "name": "2026-09-10-evaluating-an-agent-honestly",
-          "label": "Evaluating an agent honestly",
-          "file": "_posts/2026-09-10-evaluating-an-agent-honestly.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "serves",
+          "label": "Serves",
+          "widget": "number",
+          "value_type": "int",
+          "min": 1
         },
         {
-          "name": "2026-09-30-deconstructing-planout",
-          "label": "Deconstructing PlanOut: a coin toss you can repeat",
-          "file": "_posts/2026-09-30-deconstructing-planout.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "time",
+          "label": "Time",
+          "widget": "string",
+          "hint": "Use the time format shown on the site, e.g. 2:30."
         },
         {
-          "name": "2026-10-02-tuning-retrieval-for-multilingual-rag",
-          "label": "What I learned tuning retrieval for a multilingual RAG chatbot",
-          "file": "_posts/2026-10-02-tuning-retrieval-for-multilingual-rag.md",
-          "format": "raw",
-          "fields": [
-            {
-              "name": "body",
-              "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "post-source",
-              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
-            }
-          ]
+          "name": "ingredients",
+          "label": "Ingredients",
+          "widget": "list",
+          "min": 1
+        },
+        {
+          "name": "steps",
+          "label": "Method steps",
+          "widget": "list",
+          "min": 1
+        },
+        {
+          "name": "notes",
+          "label": "Notes",
+          "widget": "text",
+          "required": false
         }
       ]
     }

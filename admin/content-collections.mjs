@@ -1,0 +1,170 @@
+const field = (name, label, widget = 'string', extra = {}) => ({ name, label, widget, ...extra });
+const text = (name, label, extra = {}) => field(name, label, 'text', extra);
+const list = (name, label, fields, extra = {}) => field(name, label, 'list', { ...(fields ? { fields } : {}), ...extra });
+const colorField = () => field('color', 'Color', 'select', { options: [
+  { label: 'Blue', value: 'l0' }, { label: 'Rose', value: 'l1' },
+  { label: 'Orange', value: 'l2' }, { label: 'Purple', value: 'l3' },
+  { label: 'Teal', value: 'l4' }, { label: 'Gold', value: 'l5' },
+  { label: 'Neutral', value: 'fg' },
+] });
+const rootListFile = (name, label, filePath, fields, listOptions = {}) => ({
+  name,
+  label,
+  file: filePath,
+  fields: [list('items', label, fields, { ...listOptions, root: true })],
+});
+
+const experienceFields = [
+  field('years', 'Years'),
+  field('role', 'Role'),
+  field('org', 'Organization'),
+  field('place', 'Location', 'string', { required: false }),
+  text('note', 'Description', { required: false }),
+];
+
+const educationFields = [
+  field('years', 'Years'),
+  field('role', 'Degree'),
+  field('org', 'Institution'),
+  field('country', 'Country', 'string', { required: false }),
+];
+
+const skillItemFields = [field('name', 'Name'), field('where', 'Where', 'string', { required: false })];
+const skillFields = [
+  field('key', 'Key', 'hidden'),
+  field('lane', 'Lane key', 'hidden'),
+  field('group', 'Group'),
+  text('desc', 'Description'),
+  text('spotlight', 'Spotlight', { required: false }),
+  field('glyph', 'Glyph'),
+  colorField(),
+  list('items', 'Skills', skillItemFields),
+  field('enabled', 'Enabled', 'boolean', {
+    required: false,
+    default: true,
+    hint: 'For Product design, also set About → Lanes → Product design → Branch visible to true.',
+  }),
+];
+
+const laneFields = [
+  field('key', 'Key', 'hidden'),
+  field('branch', 'Branch visible', 'boolean', {
+    required: false,
+    default: true,
+    hint: 'Set Product design to true when enabling the Product design skill group.',
+  }),
+  field('title', 'Title'),
+  field('label', 'Label'),
+  field('long', 'Long label'),
+  colorField(),
+  list('tags', 'Tags'),
+];
+
+const projectFields = [
+  field('id', 'ID'), field('title', 'Title'), field('kind', 'Kind'), field('stack', 'Technology stack'),
+  text('problem', 'Problem'), text('built', 'What I built'), text('decision', 'Decision and lessons'), text('result', 'Result'),
+  field('repo', 'Repository URL', 'string', { pattern: ['^https://', 'Use an HTTPS repository URL'] }),
+  field('post', 'Related post URL', 'string', { required: false }),
+  field('post_title', 'Related post title', 'string', { required: false }),
+  field('image', 'Image path', 'string', { hint: 'Path to an existing image, for example /assets/images/projects/example.svg.' }),
+  field('topic', 'Topic'), colorField(),
+  field('image_caption', 'Image caption', 'string', { required: false }),
+  text('teaser', 'Teaser'),
+];
+
+const recipeCommonFields = [
+  field('layout', 'Layout', 'hidden', { default: 'recipe' }),
+  field('title', 'Title'),
+  field('kind', 'Recipe type', 'hidden'),
+  field('time', 'Time', 'string', { hint: 'Use the time format shown on the site, e.g. 2:30.' }),
+];
+
+const coffeeFields = [
+  ...recipeCommonFields.slice(0, 2),
+  field('kind', 'Recipe type', 'hidden', { default: 'coffee' }),
+  field('method', 'Brew method'),
+  field('dose_g', 'Coffee dose (g)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
+  field('water_g', 'Water (g)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
+  field('grind', 'Grind setting'),
+  field('temp_c', 'Water temperature (°C)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
+  recipeCommonFields[3],
+  field('beans', 'Beans', 'string', { required: false }),
+  list('steps', 'Brew steps', undefined, { min: 1 }),
+  text('notes', 'Notes', { required: false }),
+];
+
+const foodFields = [
+  ...recipeCommonFields.slice(0, 2),
+  field('kind', 'Recipe type', 'hidden', { default: 'food' }),
+  field('cuisine', 'Cuisine'),
+  field('serves', 'Serves', 'number', { value_type: 'int', min: 1 }),
+  recipeCommonFields[3],
+  list('ingredients', 'Ingredients', undefined, { min: 1 }),
+  list('steps', 'Method steps', undefined, { min: 1 }),
+  text('notes', 'Notes', { required: false }),
+];
+
+export const contentCollections = [
+  {
+    name: 'about',
+    label: 'About',
+    publish: false,
+    files: [{
+      name: 'profile',
+      label: 'Profile',
+      file: '_data/profile.yml',
+      fields: [
+        field('name', 'Name'), field('short_role', 'Short role'), field('city', 'City'),
+        field('role', 'Role'), field('location', 'Location'), field('headline', 'Headline'),
+        list('greetings', 'Greetings', [field('word', 'Word'), field('lang', 'Language')]),
+        list('bio_links', 'Interactive bio links', [
+          field('text', 'Text'), field('node', 'Graph node', 'string', { required: false }),
+          field('href', 'Link URL', 'string', { required: false }), field('color', 'Color', 'string', { required: false }),
+        ]),
+        text('bio', 'Bio'), field('flag', 'Flag'),
+        list('now', 'Now', [field('k', 'Label'), field('v', 'Value'), field('href', 'Link URL', 'string', { required: false })]),
+        field('off_hours', 'Off hours'),
+      ],
+    }, rootListFile('lanes', 'Lanes', '_data/lanes.yml', laneFields, { max: 7 })],
+  },
+  {
+    name: 'experience', label: 'Experience', publish: false,
+    files: [rootListFile('experience', 'Experience', '_data/experience.yml', experienceFields)],
+  },
+  {
+    name: 'education', label: 'Education', publish: false,
+    files: [rootListFile('education', 'Education', '_data/education.yml', educationFields)],
+  },
+  {
+    name: 'skills', label: 'Skills', publish: false,
+    files: [rootListFile('skills', 'Skills', '_data/skills.yml', skillFields, { max: 5 })],
+  },
+  {
+    name: 'projects', label: 'Projects', publish: false,
+    files: [{
+      name: 'portfolio-projects', label: 'Portfolio projects', file: '_data/portfolio_projects.json', format: 'json',
+      fields: [list('projects', 'Projects', projectFields, { root: true })],
+    }],
+  },
+  {
+    name: 'publications', label: 'Publications', publish: false,
+    files: [rootListFile('publications', 'Publications', '_data/publications.yml', [
+      field('title', 'Title'), field('authors', 'Authors'), field('venue', 'Venue'), field('conference', 'Conference'),
+      field('event', 'Event'), field('pages', 'Pages'), field('year', 'Year'), field('doi', 'DOI'), field('href', 'URL'),
+    ])],
+  },
+  {
+    name: 'contact', label: 'Contact', publish: false,
+    files: [rootListFile('contact', 'Contact', '_data/contact.yml', [field('label', 'Label'), field('value', 'Value'), field('href', 'Link URL')])],
+  },
+  {
+    name: 'coffee', label: 'Coffee', label_singular: 'Coffee recipe',
+    folder: '_coffee', path: '{{slug}}', extension: 'md', format: 'yaml-frontmatter',
+    create: true, delete: false, publish: false, fields: coffeeFields,
+  },
+  {
+    name: 'food', label: 'Food', label_singular: 'Food recipe',
+    folder: '_food', path: '{{slug}}', extension: 'md', format: 'yaml-frontmatter',
+    create: true, delete: false, publish: false, fields: foodFields,
+  },
+];

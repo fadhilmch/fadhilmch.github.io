@@ -73,25 +73,26 @@ Direction "Workflow v2". The reference mockup is in `_archive/design-reference/`
 
 Content © Fadhil Mochammad. All rights reserved.
 
-## Blog source editor
+## Site editor
 
-The `/admin/index.html` page uses pinned Sveltia CMS 0.233.0 with a full-source
-editor: a plain textarea with syntax colors and a live, sandboxed preview. It covers the 21 existing posts only. Notes, site settings,
-TenisYuk and asset uploads are intentionally outside this first setup.
+The `/admin/index.html` page uses pinned Sveltia CMS 0.233.0. It supports new
+and existing blog posts, About content, experience, education, skills, projects,
+publications, contact details, and coffee/food recipes. Articles keep the full
+source editor with syntax colors and a sandboxed preview. Other content uses
+structured forms. Notes and asset uploads use GitHub/local editing.
 
-Sign in with a fine-grained GitHub token limited to this repository. Saves open
-review PRs against `master`; publishing and deletion controls are disabled.
-Merge reviewed PRs on GitHub, not in the editor. The token stays in your browser's
-local storage, never in this repository. See [the CMS guide](docs/CMS.md) for
-setup, the worked example, checks and known limits.
+Sign in with a repository-scoped fine-grained GitHub token. Saves create review
+PRs against `master`; merge reviewed PRs on GitHub. Publishing and file deletion
+controls are disabled. See [the CMS guide](docs/CMS.md) for setup and limitations.
 
-Run the dependency-free source checks with Node 22:
+After editing structured form schemas, regenerate the served config and run checks:
 
 ```bash
+node scripts/sync-cms-config.mjs
 node --test tests/*.test.mjs
 ```
 
-PR checks also build Jekyll and run html-proofer; they do not deploy previews.
+PR checks also build Jekyll and check internal links. They do not deploy previews.
 
 ## Explorable About and After work (PR48)
 
