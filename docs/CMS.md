@@ -2,18 +2,51 @@
 
 ## Scope and design
 
-This first setup lists the 21 existing `_posts/*.md` files. It uses Sveltia CMS
-0.233.0, token login and Editorial Workflow. A plain-text field edits the entire
-file, including front matter. There is no rich-text conversion, HTML execution,
-structured front matter rewrite or Jekyll preview in the editor. The highlighted
-code widget was rejected after browser QA found unstable edit state; the native
-text field has a smaller failure surface and passed the Save test.
+This setup lists the 21 existing `_posts/*.md` files. It uses Sveltia CMS
+0.233.0, token login and Editorial Workflow. One field edits the entire file,
+including front matter. There is no rich-text conversion, HTML execution in the
+editor, or structured front matter rewrite. Two display-only helpers sit on top
+(see the next section). An earlier highlighted code widget was rejected after
+browser QA found unstable edit state; the colors here work differently, so the
+edited value is still a plain `<textarea>` string.
 
 File collections are deliberate: they keep existing filenames fixed and display
 human-readable titles. If a file or title changes outside the CMS, update its
 entry in `admin/config.yml` as a review PR. The config is JSON syntax, which is
 valid YAML. New posts, notes and assets remain in the GitHub/local editing flow.
 Never point this setup at TenisYuk or add its database credentials here.
+
+## Syntax colors and live preview
+
+**Colors.** The source box is a normal textarea. A read-only copy of its text is
+drawn behind it, colored by `admin/highlight.mjs` (front matter keys and strings,
+Markdown headings/lists/code/links, HTML tags and attributes, inline `<script>`
+and `<style>`, comments and Liquid). The textarea text is transparent, so you see
+the colors and type in the real field. Untick **Colors** above the box to get the
+plain textarea. Colors never write back: a test joins the tokens of all 21 posts
+and requires the exact source. The box keeps its own copy of the text while you
+type and only adopts a value the CMS did not get from you (reload, restore after
+Later). Without this the caret jumped and keys were lost, because the CMS hands
+the value back a moment after each key.
+
+**Preview.** The Preview pane (the eye button on mobile) renders the source in an
+iframe with the site's own CSS, front matter header and tags. It updates about
+a third of a second after you stop typing and keeps its scroll position.
+
+- **Static** (default): scripts removed, frame sandboxed. Widgets look inert.
+- **Interactive**: the post's own scripts run in a frame with an opaque origin
+  (`sandbox="allow-scripts"` only). It cannot read the admin page, your token in
+  local storage or the repository. It reloads from the top on edits.
+- **Approximate.** Markdown is rendered by `marked` (vendored in
+  `admin/vendor/`, MIT) instead of kramdown, and Liquid is not run. Only
+  `{{ '/path' | relative_url }}` is resolved so images show. Every other Liquid
+  tag is a grey chip, `{% raw %}` blocks show literally. Kramdown extras
+  (`{: .class}`, `markdown="1"`), the site header/footer, reading time, prev/next
+  links and KaTeX are not reproduced. The PR build is still the real check.
+- Fonts and any scripts' own network requests need internet access.
+
+Neither helper changes the saved file. The preview reads the draft and builds a
+separate document; nothing from it is written to the post.
 
 ## Start using it after merging the setup PR
 
@@ -75,9 +108,18 @@ saved source exactly and `master` unchanged. Restoring the title produces the
 original file byte-for-byte. Do not confuse this fixture test with a live GitHub
 PAT test; first real sign-in and save require your token after deployment.
 
+Browser QA for the colors and preview (same in-memory fixture, real Sveltia
+0.233.0 bundle, headless Chrome): for each of the 21 posts, type a marker into
+the title in the colored editor, confirm the preview shows it, Save, and compare
+the PR file with the original plus that marker. All 21 were exact and `master`
+was unchanged. On PlanOut: fast typing mid-file, toggling Colors, deleting the
+typing, Save, reopen the draft, remove the one character, Save again, and the
+PR file equals the original byte-for-byte. The Interactive frame reported origin
+`null`, blocked access to the parent and to local storage, and ran the widgets.
+
 ## Maintenance and recovery
 
-Run `node --test tests/cms.test.mjs` on Node 22 before changing config or upgrading
+Run `node --test tests/*.test.mjs` on Node 22 before changing config or upgrading
 Sveltia. Upgrade the exact CDN version only in a PR, repeating browser Save,
 restore, desktop/mobile and inert-widget checks. Do not use `latest` in the CDN
 URL. If the CDN is unavailable, the editor will not load; the public site and

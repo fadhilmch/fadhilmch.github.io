@@ -19,7 +19,7 @@
       "publish": false,
       "delete": false,
       "editor": {
-        "preview": false
+        "preview": true
       },
       "files": [
         {
@@ -31,8 +31,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -45,8 +45,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -59,8 +59,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -73,8 +73,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -87,8 +87,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -101,8 +101,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -115,8 +115,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -129,8 +129,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -143,8 +143,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -157,8 +157,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -171,8 +171,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -185,8 +185,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -199,8 +199,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -213,8 +213,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -227,8 +227,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -241,8 +241,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -255,8 +255,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -269,8 +269,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -283,8 +283,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -297,8 +297,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         },
@@ -311,8 +311,8 @@
             {
               "name": "body",
               "label": "Full post source (YAML + Markdown + HTML)",
-              "widget": "text",
-              "hint": "Edit source only. Keep front matter and widgets intact. Save opens a review PR, never publishes."
+              "widget": "post-source",
+              "hint": "Edit source only. Colors and preview are display only; what you type is what is saved. Save opens a review PR, never publishes."
             }
           ]
         }

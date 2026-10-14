@@ -1,4 +1,5 @@
 import { validatePostSource } from './validation.mjs';
+import './source-field.js';
 
 // Defer runs before DOMContentLoaded, so CMS is available when this fires.
 function registerChecks() {

@@ -1,7 +1,7 @@
 name: CMS source checks
 on:
   pull_request:
-    paths: ['_posts/**', 'admin/**', 'tests/cms.test.mjs', '.github/workflows/cms-checks.yml']
+    paths: ['_posts/**', 'admin/**', 'tests/**', '.github/workflows/cms-checks.yml']
 permissions:
   contents: read
 jobs:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/cms.test.mjs
+      - run: node --test tests/*.test.mjs
   build:
     runs-on: ubuntu-latest
     steps:
