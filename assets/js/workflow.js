@@ -122,7 +122,9 @@
     function route(e) {
       var a = nodes[e.a], b = nodes[e.b];
       var x1 = a.x + a.g[1], y1 = a.y + a.g[2], x2 = b.x + b.g[0], y2 = b.y + b.g[2], c = Math.max(Math.abs(x2 - x1) / 2, 60);
-      e.el.setAttribute('d', 'M' + x1 + ' ' + y1 + ' C' + (x1 + c) + ' ' + y1 + ' ' + (x2 - c) + ' ' + y2 + ' ' + x2 + ' ' + y2);
+      var geometry = 'M' + x1 + ' ' + y1 + ' C' + (x1 + c) + ' ' + y1 + ' ' + (x2 - c) + ' ' + y2 + ' ' + x2 + ' ' + y2;
+      e.el.setAttribute('d', geometry);
+      $$('.wf-flow', svg).forEach(function (flow) { if (flow.dataset.flowFrom === e.a && flow.dataset.flowTo === e.b) flow.setAttribute('d', geometry); });
     }
     function put(n) {
       n.el.style.left = n.x + 'px'; n.el.style.top = n.y + 'px';
