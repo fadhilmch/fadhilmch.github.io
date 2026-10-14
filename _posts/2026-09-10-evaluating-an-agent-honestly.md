@@ -7,7 +7,7 @@ tags:
 summary: "Relevance, retrieval recall, groundedness and latency each catch a different failure. Here is how I use them as evidence, and why the report is not a deploy gate."
 ---
 
-A single score cannot tell you whether an agent is useful. I work on a production assistant that answers questions by searching a body of documents and writing a reply from what it finds, a pattern usually called retrieval-augmented generation, or RAG. It's agentic, meaning a model decides which steps to take, so there are more places for it to go wrong than in a fixed pipeline. This post is about how I evaluate it, and about one decision that surprises people: the evaluation produces a report for engineers, not an automatic pass or fail on deployment.
+I don't trust a single score to tell me whether an agent is useful. I work on a production assistant that answers questions by searching a body of documents and writing a reply from what it finds, a pattern usually called retrieval-augmented generation, or RAG. It's agentic, meaning a model decides which steps to take, so there are more places for it to go wrong than in a fixed pipeline. This post is about how I evaluate it, and about one decision that surprises people: the evaluation produces a report for engineers, not an automatic pass or fail on deployment.
 
 ## Why "it looks better" stops working
 
@@ -15,16 +15,16 @@ In the first weeks of building an agent you can iterate by feel. You try a handf
 
 It breaks down once the system has some reach. The assistant I work on serves several markets, takes questions in any language and mixes global and region-specific knowledge. A change that improves one language can quietly degrade another. Nobody can read enough answers by hand to notice. And because the output is fluent, a worse answer doesn't look worse.
 
-So I treat evaluation as engineering evidence. Compare a change with a baseline, look at the failures one by one, and only then decide what to change next. This is what people mean by **evaluation-driven development**: the eval isn't a check at the end, it's what steers the design.
+So I treat evaluation as engineering evidence. Compare a change with a baseline, look at the failures one by one, and only then decide what to change next. This is what people mean by **evaluation-driven development**: the eval steers the design from the start, instead of sitting at the end as a final check.
 
-## Four metrics, four different failures
+## The four metrics
 
-I measure four things: answer relevance, retrieval recall, groundedness and latency. I want to be specific about why those four, because each one exists to catch something the others miss.
+I measure four things: answer relevance, retrieval recall, groundedness and latency. I picked those four because each one catches something the others miss.
 
 - **Answer relevance:** does the answer address what the user asked?
 - **Retrieval recall:** did the search find the documents that contain the answer? This one needs a reference, the source a good answer should come from, which is why my golden examples record one.
 - **Groundedness:** is every claim in the answer supported by what was retrieved? An answer can be relevant and still invent a detail.
-- **Latency:** how long did the user wait? A correct answer that arrives too late is, for most purposes, not a good one.
+- **Latency:** how long did the user wait? Past a certain point, a correct answer that arrives late is still a bad experience.
 
 <figure class="fig">
 <svg viewBox="0 0 680 290" role="img" aria-labelledby="ev1t ev1d">
@@ -62,7 +62,7 @@ Two rows in that matrix deserve a comment. "Faithful to sources, but off-topic" 
 
 This is why I don't collapse the four into one number. An average lets a good latency score hide a poor recall score. Reading them side by side tells you which part of the system to look at.
 
-## Two kinds of evaluation, two jobs
+## Offline and online
 
 There are two evaluations in the loop, and they answer different questions.
 
@@ -105,15 +105,15 @@ There are two evaluations in the loop, and they answer different questions.
 <figcaption>The two kinds of evaluation do different jobs. Offline runs answer "is this change better?" before release. Online evaluation answers "what did we miss?" after it, and feeds the offline set.</figcaption>
 </figure>
 
-The loop closes when a failure found online becomes a new offline case. Over time the test set stops being what you thought users would ask and becomes a record of what actually broke. Neither kind is a substitute for the other, and neither is a substitute for understanding the task: someone has to read the failures.
+The loop closes when a failure found online becomes a new offline case. Over time the test set shifts from what you guessed users would ask towards a record of what actually broke. You need both kinds, and you still need someone who understands the task to read the failures.
 
 Readiness reviews for a new market combine the offline results with something else: the history of issues that came through support tickets. The eval tells you how the system does on the test questions, and the ticket history tells you what people have actually run into. In practice, the findings from that combination have mostly led to improvements in the source content, not in the code.
 
-## Why the report is not a gate
+## Why I don't gate releases on it
 
-The default instinct, and it's a reasonable one, is to wire the eval into CI and block a release if the score falls below a threshold. It's what we do with unit tests. I chose not to, and the pipeline I built produces a comprehensive report that compares the current run with a baseline or with agreed criteria, and leaves the decision to an engineer.
+The default instinct, and it's a reasonable one, is to wire the eval into CI and block a release if the score falls below a threshold. It's what we do with unit tests. I chose not to, and the pipeline I built produces a report that compares the current run with a baseline or with agreed criteria, and leaves the decision to an engineer.
 
-My reasoning comes down to three points.
+I had three reasons.
 
 **The scores are noisy.** Metrics like relevance and groundedness are commonly scored by a language model acting as a judge, and the agent itself is not deterministic. Run the same system twice and you'll get slightly different numbers. A hard threshold turns that noise into a coin flip:
 
@@ -164,19 +164,19 @@ My reasoning comes down to three points.
 
 **A single threshold hides the trade-offs.** A change that lifts recall while costing a little relevance on a narrow slice might be exactly the change you want. A gate sees one number and says no. A report shows the per-metric differences, the slices that moved, and the actual examples that got worse, so a person can judge whether the trade is worth it.
 
-**A red cross ends the conversation.** When a gate fails, the natural response is to make it pass: tune until the number moves, or lower the bar. When a report arrives, the natural response is to read it. I'd like the team to argue about specific failing examples, not about the threshold.
+**Gates get gamed.** When a gate fails, the natural response is to make it pass: tune until the number moves, or lower the bar. When a report arrives, the natural response is to read it. I'd rather the team argued about specific failing examples than about where the threshold sits.
 
-## Where a gate does belong
+## Where I do use gates
 
 I'm not against gates in general. A hard gate suits checks that are cheap, deterministic and clearly binary. A latency budget is a good example: either the response time is inside the budget or it isn't, and there's little to interpret. The same goes for a safety filter that must never be bypassed, or a schema check on tool output. Those I'd happily block on.
 
 The metrics I'd keep as reports are the ones that need reading: relevance, and the finer judgements about groundedness. The rule of thumb I use is that if a person would want to look at the case before deciding, it shouldn't be an automatic block.
 
-## What changes on a team
+## Making the report worth reading
 
-Making the evaluation a report changes how people use it. It becomes something you read before a review, alongside the diff, and not a gate that you try to get past. Reports that people actually want to read need to be legible: baseline next to current, differences by metric and slice, and the worst examples one click away. If nobody reads the report, you've built a gate with extra steps, so it's worth spending effort on the reading experience.
+Making the evaluation a report changes how people use it. People read it before a review, alongside the diff, instead of trying to get past it. Reports that people actually want to read need to be legible: baseline next to current, differences by metric and slice, and the worst examples one click away. A report nobody opens is no better than a gate, so the reading experience deserves real effort.
 
-The practical lesson is to make evaluation part of the development loop, keep the reports readable by the people making the next decision, and keep a human in the seat where the decision is a judgement call.
+So my advice is to build evaluation into the development loop, make the reports easy to read for whoever makes the next decision, and leave the judgement calls to a person.
 
 ## References
 
