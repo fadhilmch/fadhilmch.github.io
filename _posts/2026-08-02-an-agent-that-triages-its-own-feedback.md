@@ -8,11 +8,11 @@ tags:
 summary: "Replay the flagged question, check the evidence, name the likely cause, route it to an owner, and send anything doubtful to a person."
 ---
 
-Once an AI assistant is in production, users start telling you when it gets things wrong. Someone clicks a thumbs-down, or leaves a comment like "this isn't right for my situation". That feedback is valuable, and it is also close to useless as it arrives. It says that something went wrong. It doesn't say what, or whose problem it is.
+Once an AI assistant is in production, users start telling you when it gets things wrong. Someone clicks a thumbs-down, or leaves a comment like "this isn't right for my situation". That feedback is worth having, but in the form it arrives you can't do much with it. It tells you something went wrong without saying what, or whose problem it is.
 
 Working out the what and the who is a small investigation every time. You find the conversation, read the question, look at what the assistant retrieved and what it said, check whether the right information exists anywhere, and decide whether to fix a document or fix the software. Then you find the person who owns that thing and explain it to them. Done by hand, on every flagged item, it eats the time of the people who should be improving the assistant.
 
-I built and run a workflow that does the first pass of that investigation. This post describes how it's put together and, more to the point, where I chose not to let the agent decide anything.
+I built and run a workflow that does the first pass of that investigation. This post describes how it's put together, and especially the places where I chose not to let the agent decide anything.
 
 ## The shape of the loop
 
@@ -49,7 +49,7 @@ The workflow runs weekly, or on demand when someone wants an answer sooner. It r
 <figcaption>Three steps are agent work. The fourth is a lookup. Anywhere the evidence doesn't line up, the loop stops and hands the case to a person.</figcaption>
 </figure>
 
-**Replay.** The trace records what the user asked and what the assistant did. The workflow asks the same question again, in the language it was originally asked. This matters more than it sounds. Some complaints describe a problem that has since been fixed, some can't be reproduced, and some reproduce every time. A flag you can't reproduce is a different kind of case from one you can.
+**Replay.** The trace records what the user asked and what the assistant did. The workflow asks the same question again, in the language it was originally asked. I didn't expect this step to matter as much as it does. Some complaints describe a problem that has since been fixed, some can't be reproduced, and some reproduce every time. A flag you can't reproduce is a different kind of case from one you can.
 
 **Check the evidence.** This is the step I'd insist on in any version of this system. The workflow looks at what the assistant retrieved and asks whether the information needed for a good answer was actually there. Was the relevant document in the knowledge base at all? Was it retrieved? Does the answer follow from what was retrieved? Everything after this step depends on the answer, so it comes before any conclusion, not after.
 
@@ -66,7 +66,7 @@ The workflow handles feedback, traces and conversations in whatever language the
 
 It's easy to treat all bad feedback as "the AI got it wrong" and send it to the engineers. That's a waste, and in my experience it's also the wrong diagnosis for a lot of cases. If the answer was wrong because a policy document was ambiguous, the engineer can do nothing useful with the ticket. The person who maintains that document can.
 
-Separating content gaps from application faults sends work to the people who can act on it. It also gives you a quiet second benefit. Counting causes over a few weeks tells you where the assistant's weak spots really are. If most of the problems turn out to be content gaps, the most useful improvement isn't a cleverer prompt but better source material. Which way it falls will differ from system to system, but you can't know until the causes are counted.
+Separating content gaps from application faults sends work to the people who can act on it. It has a second benefit too. Counting causes over a few weeks tells you where the assistant's weak spots really are. If most of the problems turn out to be content gaps, the most useful improvement is better source material, and prompt work can wait. Which way it falls will differ from system to system, but you can't know until the causes are counted.
 
 A made-up example shows the difference. Suppose a user asks how a policy applies in their region and marks the answer as wrong. The replay reproduces the same answer. The evidence check finds that the regional document exists and was retrieved, but that the answer quotes the global one. That points at how the application chose between sources, so the cause is configuration, and the ticket goes to the engineers. Change one fact: the regional document doesn't exist, so the assistant fell back to the global one, which was the best it had. Now the cause is a content gap, and the ticket goes to whoever maintains that content. The complaint was identical both times, and the right owner was different.
 
@@ -76,9 +76,9 @@ An agent that always produces an answer is dangerous in a triage role, because t
 
 Missing evidence means the replay couldn't be run or the trace was incomplete. Conflicting evidence means the signals disagree, for example the right document was retrieved but the answer contradicts it in a way that could point at either the content or the model. In both cases the workflow doesn't pick a side. It says what it found, says what it couldn't establish, and hands the case over with the material already gathered.
 
-I think this is the difference between a triage tool people trust and one they route around. The first time it confidently blames the wrong team, the reports stop being read. A tool that says "I can't tell, here is what I've got" loses very little, and it keeps its credibility for the cases where it does commit.
+I think this decides whether people trust a triage tool or start routing around it. The first time it confidently blames the wrong team, people stop reading the reports. A tool that says "I can't tell, here is what I've got" loses very little, and it keeps its credibility for the cases where it does commit.
 
-## Judgement by the model, decisions by code
+## Which parts the model decides
 
 The last design choice is about who does what. The model is good at the fuzzy parts: reading a trace, comparing an answer with retrieved passages, deciding which cause on the list fits. It's a poor choice for deciding who gets paged, because you want that to be predictable and easy to change.
 
@@ -96,7 +96,7 @@ def route(cause):
     return OWNER_BY_CAUSE.get(cause, "human-review")
 ```
 
-This is a sketch, not the real table, but the principle is what I'm after. If a team reorganises, you edit a mapping. If someone asks why a case went where it did, the answer is a line of code and not "the model felt like it". And because the classifier has to choose from a fixed list, its output is something the rest of the system can check.
+This is a sketch, not the real table, but the principle is what I'm after. If a team reorganises, you edit a mapping. If someone asks why a case went where it did, you can point to a line of code. And because the classifier has to choose from a fixed list, its output is something the rest of the system can check.
 
 <figure class="fig">
 <svg viewBox="0 0 680 168" role="img" aria-labelledby="tr2t tr2d">
@@ -129,9 +129,9 @@ This is a sketch, not the real table, but the principle is what I'm after. If a 
 
 ## What I haven't measured
 
-The workflow has helped the team deal with recurring issues and content gaps. I haven't formally measured how often its root-cause call and its owner assignment are right, and I'd rather say so than quote a number. The comparison I'd make at this stage isn't accuracy but effort: how much of the manual investigation is already done when a case reaches a person. Because it produces a report with the replay and the evidence attached, a reviewer starts from a worked lead instead of a blank page. My own estimate is that it removes most of the digging per item, based on comparing the manual and the automated routes. It's an estimate, not a controlled measurement.
+The workflow has helped the team deal with recurring issues and content gaps. I haven't formally measured how often its root-cause call and its owner assignment are right, and I'd rather say so than quote a number. At this stage I'd judge it on effort saved rather than accuracy: how much of the manual investigation is already done when a case reaches a person. Because it produces a report with the replay and the evidence attached, a reviewer starts from a worked lead instead of a blank page. My own estimate is that it removes most of the digging per item, based on comparing the manual and the automated routes. I haven't run a controlled comparison.
 
-If you're building something like this, the parts I'd carry over are these: check the evidence before concluding anything, make the cause list small and explicit, keep routing deterministic, and give the agent a clear way to say it doesn't know. The goal is to shorten the investigation, not to automate certainty.
+If I built this again somewhere else, I'd keep the same rules: check the evidence before concluding anything, keep the cause list small and explicit, route with plain code, and give the agent a clear way to say it doesn't know. I want it to shorten the investigation. I don't need it to be sure.
 
 ## References
 
