@@ -335,14 +335,14 @@ The price is an extra proxy on every hop, more memory per pod, and one more syst
 
 ## What made it click
 
-- Treat YAML as a description of the end state, not a list of steps.
+- Treat YAML as a description of the end state you want.
 - Helm writes the YAML; Kubernetes still does the work. When in doubt, render the chart and read what it produced.
 - When something is wrong, read the object's status and events with `kubectl describe` before the logs. They tell you which controller gave up, and why.
 - Components coordinate through the API server, never directly.
-- A Service is a set of rules on every node, not a box in the middle.
+- A Service is a set of rules written on every node. There's no box in the middle.
 - Load is balanced per connection, unless something above kube-proxy does better.
 
-Kubernetes is still big. But it's one idea applied many times, and seeing that made the rest learnable.
+Kubernetes is still big. Once I saw that most of it is the same reconcile idea repeated, the rest got a lot easier to learn.
 
 ## References
 
