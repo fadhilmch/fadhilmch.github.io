@@ -37,12 +37,15 @@ bio: >-
 flag: "🇸🇪"
 now:
 - k: building
-  v: "TODO: what you're building"
+  v: "Agentic chatbot and personal assistant"
+- k: learning
+  v: "Agent loop and harness engineering"
 - k: reading
-  v: "TODO: what you're reading"
+  v: "The Book You Wish Your Parents Had Read"
 - k: listening
-  v: "TODO: what you're listening to"
+  v: "Tom Misch"
+  href: https://open.spotify.com/artist/1uiEZYehlNivdK3iQyAbye
 - k: brewing
-  v: "TODO: what you're brewing"
+  v: "AeroPress"
   href: /after-work/coffee/
 off_hours: photography · digital design · music · coffee · cooking
