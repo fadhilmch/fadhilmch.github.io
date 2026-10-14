@@ -8,7 +8,7 @@ tags:
 summary: The architecture we had, the one we moved to, and the designs I'd weigh today, for the unglamorous job of keeping experiment config fresh everywhere.
 ---
 
-An experimentation platform looks like it's about statistics. A lot of the engineering is about something plainer: making sure that when someone changes an experiment, every service that assigns users to variants finds out, quickly and cheaply.
+People assume an experimentation platform is mostly statistics. In my experience a lot of the engineering is plumbing: making sure that when someone changes an experiment, every service that assigns users to variants finds out, quickly and cheaply.
 
 I led the modernisation of a platform that ran hundreds of experiments a year for dozens of product teams. This post is about one part of that work, the path config takes from where people edit it to where it's used. We went from polling to event-driven caching, cut the platform's cloud bill by 95% and API latency by 90% over a year, and ended up with a much clearer design. I'll finish with the alternatives I'd consider if I were building it again.
 
@@ -99,7 +99,7 @@ The rate of change doesn't appear in that formula. The bill grew with fleet size
 
 **The apps assigned on the device.** The app fetched config at start-up and computed each user's variant locally. That was cheap, but config only refreshed when the app restarted, and a backgrounded mobile app might not restart for days or weeks. When a team paused a broken experiment, users who hadn't restarted kept seeing it. It also meant the assignment logic existed twice, in the backend and in the apps, and the two had to stay identical.
 
-So the backend paid to stay fresh when it didn't need to, and the apps stayed stale when it mattered most.
+So the backend paid all day to stay fresh even though config rarely changed, and the apps were stale exactly when a team needed to pause something.
 
 ## Where we ended up
 
@@ -169,7 +169,7 @@ sequenceDiagram
 
 The service itself was rewritten in Go, handling requests concurrently with worker pools. Together with serving config from memory instead of a Firestore round trip, that's where the 90% latency drop came from.
 
-### Freshness is the real requirement
+### How stale is too stale
 
 Caching trades cost for correctness, so the key question is how stale config is allowed to be. We never had a serious incident from it, but the what-if drove the design. Suppose a team ships a broken experiment, say a variant that fails at checkout, and pauses it. If the pause doesn't reach the serving path, users keep landing in the broken variant, and every minute of that is lost sales.
 
@@ -239,11 +239,11 @@ Firestore can already push changes itself. A **snapshot listener** subscribes to
 <figcaption>Each pod subscribes to the config collection. Firestore sends the full set once on connect, then only the documents that change.</figcaption>
 </figure>
 
-This replaces the change event, the TTL, and arguably Redis: the source of truth notifies the pods directly, so there's no separate channel to fall out of sync. The costs are different rather than zero. Each listener pays for reading the full result set when it connects and for each changed document after that. A listener that stays disconnected too long is billed as a new query when it reconnects. And every pod holds an open connection to the database. At ten changes a day and tens of pods, that's cheap. I'd still keep a slow periodic resync, in case a listener silently stops.
+This replaces the change event, the TTL, and arguably Redis: the source of truth notifies the pods directly, so there's no separate channel to fall out of sync. It still costs something, just in different places. Each listener pays for reading the full result set when it connects and for each changed document after that. A listener that stays disconnected too long is billed as a new query when it reconnects. And every pod holds an open connection to the database. At ten changes a day and tens of pods, that's cheap. I'd still keep a slow periodic resync, in case a listener silently stops.
 
 ### 2. Poll cheaply with ETags
 
-Polling itself isn't the problem; paying for a full read on every poll is. HTTP already has the fix. Serve the whole config from one URL, from a storage bucket or a small service, with an **ETag**: a short fingerprint of the content, usually a hash of it. The client keeps the ETag it last received and sends it back on its next poll in an `If-None-Match` header. If the config hasn't changed, the server replies `304 Not Modified` with no body. If it has, it sends the new config with its new ETag.
+Polling was never the expensive part. Paying for a full document read on every poll was. HTTP already has the fix. Serve the whole config from one URL, from a storage bucket or a small service, with an **ETag**: a short fingerprint of the content, usually a hash of it. The client keeps the ETag it last received and sends it back on its next poll in an `If-None-Match` header. If the config hasn't changed, the server replies `304 Not Modified` with no body. If it has, it sends the new config with its new ETag.
 
 <figure class="fig">
 <svg viewBox="0 0 680 190" role="img" aria-labelledby="x2t x2d">
@@ -307,7 +307,7 @@ I considered SSE at the time and held back, mostly out of worry about the networ
 - **Reconnect storms.** Every deploy or pod restart drops its connections at once, and all those clients reconnect together. They need backoff with jitter, and a way to catch up on what they missed: SSE's `Last-Event-ID`, or simply refetching the full config on reconnect.
 - **Cost per connection.** Each open stream holds memory and a file descriptor on the server.
 
-None of these is a blocker. Feature-flag vendors and service meshes run exactly this pattern. But each is engineering you have to own, so it's worth it when you have many clients and a strict freshness requirement, not before.
+None of these would stop me. Feature-flag vendors and service meshes run exactly this pattern. But each is engineering you have to own, so it's worth it when you have many clients and a strict freshness requirement, not before.
 
 ### Side by side
 
@@ -320,13 +320,13 @@ None of these is a blocker. Feature-flag vendors and service meshes run exactly 
 
 For the scale we had, around ten changes a day and a few dozen pods, I'd move the backend to **Firestore listeners** with a slow resync as a backstop. It deletes the most moving parts and keeps the freshness we needed. Apps would stay on server-side assignment, for the kill switch. If client count or read volume grew by an order of magnitude, I'd move to **ETag polling** behind a CDN, and add push over long-lived connections only if sub-second freshness became a hard requirement.
 
-## What I took from it
+## Looking back
 
-If a system reads something far more often than it changes, look at what you're paying for the reads, in money and in latency. Polling is the easiest design to build and the hardest to notice, because each poll is tiny and the total only shows up on the bill.
+If a system reads something far more often than it changes, look at what you're paying for the reads, in money and in latency. Polling is easy to build and easy to forget about, because each poll is tiny and the total only shows up on the bill.
 
-The version I'd defend now:
+What I'd do now:
 
-- make reads free (serve them from memory) and make changes loud (push them);
+- serve reads from memory and push changes;
 - pick the staleness bound from the kill switch, not from cost;
 - keep assignment in one place you control;
 - and before adding infrastructure to push changes, check whether your data store can already push them.
