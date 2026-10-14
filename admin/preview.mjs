@@ -81,7 +81,7 @@ export function buildPreviewDocument(source, { baseUrl, theme = 'light', runScri
   // Static mode drops <script> elements so the browser has nothing to block or log.
   const html = runScripts ? rendered.html : rendered.html.replace(/<script\b[\s\S]*?<\/script\s*>/gi, '');
   const hasScripts = /<script\b/i.test(body);
-  const tags = meta.tags.map((t) => `<span class="tag-chip">${escapeHtml(t)}</span>`).join('');
+  const tags = (Array.isArray(meta.tags) ? meta.tags : []).map((t) => `<span class="tag-chip">${escapeHtml(t)}</span>`).join('');
   const css = STYLES.map((n) => `<link rel="stylesheet" href="${escapeHtml(new URL(`assets/css/${n}.css`, baseUrl).href)}">`).join('');
   const doc = `<!doctype html><html lang="en" data-theme="${theme === 'dark' ? 'dark' : 'light'}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><base href="${escapeHtml(baseUrl)}" target="_blank"><link href="${FONTS}" rel="stylesheet">${css}<style>${CHROME}</style></head><body><main id="main"><article class="article-shell"><header class="article-header"><p class="article-meta"><time>${escapeHtml(meta.date || '')}</time></p><h1>${escapeHtml(meta.title || 'Untitled')}</h1><p class="standfirst">${escapeHtml(meta.summary || '')}</p><div class="tag-list">${tags}</div></header><div class="prose">${html}</div></article></main></body></html>`;
   return { html: doc, liquidCount, hasScripts, title: meta.title || '' };

@@ -69,3 +69,10 @@ for (const name of posts) {
     assert.ok(html.includes('class="prose"'));
   });
 }
+
+test('new-post preview tolerates empty and incomplete front matter while typing', () => {
+  for (const source of ['', '---', '---\ntitle: Draft', '---\ntitle: Draft\ntags: agents\n---\n\nBody']) {
+    const preview = buildPreviewDocument(source, { baseUrl: BASE });
+    assert.match(preview.html, /class="prose"/);
+  }
+});

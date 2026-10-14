@@ -5,6 +5,7 @@
 // the text in a sandboxed iframe. Neither writes back to the post.
 import { tokenize } from './highlight.mjs';
 import { buildPreviewDocument } from './preview.mjs';
+import { createPostSource } from './post-format.mjs';
 
 const EDITOR_CSS = `
 .src { position: relative; border: 1px solid color-mix(in srgb, currentColor 25%, transparent); border-radius: 8px; overflow: hidden; }
@@ -44,18 +45,37 @@ function register() {
   if (!CMS) return;
   const { createElement: h, useState, useEffect, useLayoutEffect, useMemo, useRef } = CMS.React;
 
-  function SourceControl({ value, onChange, forID }) {
+  function SourceControl({ value, onChange, forID, entry }) {
     const incoming = typeof value === 'string' ? value : '';
     // The CMS hands the value back a moment after each key. Writing that straight into the
     // textarea would move the caret and drop keys, so the textarea keeps its own copy and only
     // takes a value the CMS did not get from us (reload, restore after Later, discard).
     const [text, setText] = useState(incoming);
     const sent = useRef([]);
+    const initialized = useRef(false);
     useEffect(() => {
       const i = sent.current.indexOf(incoming);
       if (i >= 0) sent.current = i === sent.current.length - 1 ? [] : sent.current; // echo of our own edit
       else { sent.current = []; setText(incoming); }
     }, [incoming]);
+    useEffect(() => {
+      if (initialized.current || incoming.trim()) return;
+      initialized.current = true;
+      const today = new Date().toISOString().slice(0, 10);
+      const date = entry?.getIn(['data', 'date']);
+      const title = entry?.getIn(['data', 'title']);
+      const summary = entry?.getIn(['data', 'summary']);
+      const tags = entry?.getIn(['data', 'tags']);
+      const template = createPostSource({
+        title: title || 'New post',
+        date: typeof date === 'string' && date ? date.slice(0, 10) : today,
+        summary: summary || 'Write a short summary.',
+        tags: tags?.toJS?.() ?? [],
+      });
+      sent.current = [...sent.current, template];
+      setText(template);
+      onChange(template);
+    }, [incoming, entry, onChange]);
     const edit = (next) => {
       sent.current = [...sent.current.slice(-50), next];
       setText(next);
@@ -123,7 +143,11 @@ function register() {
 
   CMS.registerFieldType('post-source', SourceControl);
   fetch(new URL('config.yml', import.meta.url)).then((r) => r.json()).then((config) => {
-    for (const c of config.collections) for (const f of c.files || []) CMS.registerPreviewTemplate(f.name, PreviewPane);
+    for (const c of config.collections) {
+      if (c.name !== 'posts') continue;
+      if (c.folder) CMS.registerPreviewTemplate(c.name, PreviewPane);
+      for (const f of c.files || []) CMS.registerPreviewTemplate(f.name, PreviewPane);
+    }
   });
 }
 

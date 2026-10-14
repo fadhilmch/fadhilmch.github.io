@@ -15,6 +15,7 @@ export function validatePostSource(source) {
   if (!/^date:\s*["']?\d{4}-\d{2}-\d{2}/m.test(head)) throw new Error('Use YYYY-MM-DD for date.');
   if (!source.slice(end + 5).trim()) throw new Error('The post body cannot be empty.');
   if (source.includes('\r')) throw new Error('Use LF line endings; CRLF would be normalized.');
-  if (source !== source.trim()) throw new Error('Remove outer blank lines before saving. The CMS adds one final newline.');
+  const withoutFinalNewline = source.endsWith('\n') ? source.slice(0, -1) : source;
+  if (withoutFinalNewline !== withoutFinalNewline.trim()) throw new Error('Remove outer blank lines before saving. Keep at most the final newline.');
   return source;
 }
