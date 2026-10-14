@@ -210,9 +210,9 @@ Use an A/B test when you need to *learn*: a product decision, an effect size, so
 
 ## References
 
-1. Thompson, W. R. *On the Likelihood That One Unknown Probability Exceeds Another in View of the Evidence of Two Samples*. Biometrika, 1933. <https://doi.org/10.1093/biomet/25.3-4.285> — the original idea.
+1. Thompson, W. R. *On the Likelihood That One Unknown Probability Exceeds Another in View of the Evidence of Two Samples*. Biometrika, 1933. <https://doi.org/10.1093/biomet/25.3-4.285>. The original idea.
 2. Russo, D. et al. *A Tutorial on Thompson Sampling*. Foundations and Trends in Machine Learning, 2018. <https://arxiv.org/abs/1707.02038>
 3. Lattimore, T. and Szepesvári, C. *Bandit Algorithms*. Cambridge University Press, 2020. <https://www.cambridge.org/core/books/bandit-algorithms/8E39FD004E6CE036680F90DD0C6F09FC>
 4. Chapelle, O. and Li, L. *An Empirical Evaluation of Thompson Sampling*. Advances in Neural Information Processing Systems 24 (NIPS), 2011. <https://papers.nips.cc/paper/2011/hash/e53a0a2978c28872a4505bdb51db06dc-Abstract.html>
-5. Agrawal, S. and Goyal, N. *Analysis of Thompson Sampling for the Multi-armed Bandit Problem*. arXiv, 2011 (rev. 2012). <https://arxiv.org/abs/1111.1797> — regret bounds.
+5. Agrawal, S. and Goyal, N. *Analysis of Thompson Sampling for the Multi-armed Bandit Problem*. arXiv, 2011 (rev. 2012). <https://arxiv.org/abs/1111.1797>. Regret bounds.
 6. Nie, X. et al. *Why Adaptively Collected Data Have Negative Bias and How to Correct for It*. AISTATS, 2018. <https://arxiv.org/abs/1708.01977>

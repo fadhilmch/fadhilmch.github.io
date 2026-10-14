@@ -34,7 +34,7 @@ That on its own is fine. The problem is everything that happens to the file afte
 - **Rotation is manual work.** Rotating means creating a new key, updating every copy, restarting what reads it, and only then deleting the old one. In practice it happens after an incident, not on a schedule.
 - **It doesn't say where it's used.** Audit logs tell you the service account made a call. They can't tell you whether the call came from your pod or from someone who found the key in an old commit.
 
-Most of these are not about cryptography. They're about distribution. A key is a secret you have to hand out, and every hand-off is a chance to lose it. Rotating more often shrinks the window but keeps the hand-offs.
+Most of these problems come from handing the key around. None of them are about cryptography. A key is a secret you have to hand out, and every hand-off is a chance to lose it. Rotating more often shrinks the window but keeps the hand-offs.
 
 <figure class="fig">
 <svg viewBox="0 0 680 232" role="img" aria-labelledby="m0t m0d">
@@ -269,7 +269,7 @@ Seeing the two clouds side by side made the idea clearer to me than either did a
 
 ## Why it matters
 
-Put together, this changes a few things that are easy to undersell:
+Put together, the changes add up to more than they first seem:
 
 - **Nothing to steal at rest.** No file in a Secret, a repository, a backup or a laptop. The token a pod holds dies within the hour.
 - **Identity follows the workload.** The permission is tied to "this namespace and service account in this cluster" or "this Cloud Run service", not to whoever has the file.
@@ -300,9 +300,9 @@ We're doing this service by service, not as one big switch:
 4. **Disable, then delete.** Disable the old key first. If nothing breaks for a week, delete it.
 5. **Close the door.** Once a project has no keys left, enforce the `iam.disableServiceAccountKeyCreation` organisation policy on it, so new ones can't appear.
 
-The last step is the one that makes the change stick. Without it, the next person under deadline pressure downloads a key "just for now", and the file starts its journey again.
+The last step is the one that makes the change stick. Without it, the next person under deadline pressure downloads a key "just for now", and the whole cycle starts again.
 
-## What made it click
+## Summary
 
 - An access token and a credential are different things. Managed identity keeps the token and removes the credential.
 - The metadata server is the platform vouching for you, because it already knows where your code runs.
@@ -312,7 +312,7 @@ The last step is the one that makes the change stick. Without it, the next perso
 - Federation is the same exchange, with GitHub or another cloud as the issuer.
 - Azure has the same three pieces under different names: managed identities, AKS workload identity and federated identity credentials.
 
-What we're really getting rid of isn't key files. It's the step where someone hands out a secret, and everything that goes wrong after it.
+Deleting key files is the visible part of this. Underneath, we're removing the step where someone hands out a secret, along with everything that tends to go wrong after it.
 
 ## References
 

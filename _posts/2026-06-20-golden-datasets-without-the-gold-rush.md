@@ -11,7 +11,7 @@ A **golden dataset** is the set of questions, with known-good answers, that you 
 
 The usual advice for building one is to sit down and write fifty question and answer pairs by hand. That advice is fine for a prototype. It stops working when the assistant serves several markets, several languages and a knowledge base that keeps changing, because nobody has the time to write, and re-write, enough examples to cover all of that.
 
-I work on a production assistant of this kind, and I'm building a pipeline that generates the candidates instead. This post describes the design: simulated personas propose evaluation records, and a person approves each one before it counts. I'll keep it about the mechanism, not the system it runs in, and I won't give sizes or rates because those aren't mine to share.
+I work on a production assistant of this kind, and I'm building a pipeline that generates the candidates instead. This post describes the design: simulated personas propose evaluation records, and a person approves each one before it counts. I'll stick to the mechanism and leave out sizes and rates, which aren't mine to share.
 
 ## What a record contains
 
@@ -22,7 +22,7 @@ An evaluation record is more than a question and an answer. In the pipeline I'm 
 - **A source document URL**, the place in the knowledge base where the answer comes from.
 - **Metadata**: the language of the query, the geography it applies to, and the intent behind it.
 
-The source URL matters most. It **anchors** the record to something checkable. An expected answer with no source is an opinion. An expected answer that points at a specific document can be verified by opening the document, and it gives you a second thing to measure: whether the assistant's retrieval found that document at all. I'll come back to that in the last section.
+The source URL matters most. It **anchors** the record to something checkable. Without a source, an expected answer is just someone's word. With one, you can check it by opening the document, and it gives you a second thing to measure: whether the assistant's retrieval found that document at all. I'll come back to that in the last section.
 
 The metadata is what lets you slice results later. An average score across everything hides a lot. If the same assistant does well in one language and badly in another, you want to see that, which means every record needs to say which language it belongs to.
 
@@ -82,7 +82,7 @@ What does the reviewer actually check? Three things, together, for each record:
 2. **The expected answer.** Is it correct, and complete enough to compare against? Does it say more than the source does?
 3. **The source.** Open the document. Does it support the answer? Is it current, and is it the right document for this user, or one that has been superseded?
 
-Checking all three at once is faster than it sounds, because the record puts the three side by side. The reviewer is reading, comparing and deciding, not researching from scratch. That's the whole trade: the model does the tedious drafting and the person keeps the judgement.
+Checking all three at once is faster than it sounds, because the record puts the three side by side. The reviewer is reading, comparing and deciding, not researching from scratch. The model does the tedious drafting and the person keeps the judgement.
 
 ## What goes wrong in generated data
 
@@ -118,7 +118,7 @@ Generated evaluation data fails in a handful of predictable ways, and it helps t
 
 The last row is the one people skip. Each record can be individually fine and the set can still be lopsided: twenty near-identical questions about the same document, and nothing about the one that users actually struggle with. Reviewing records one by one won't show you that. You need to look at the distribution by document, language, geography and intent, and then adjust the personas or the sampling.
 
-## A bigger set is not a better set
+## Measuring the set itself
 
 It's tempting to report the size of the golden set as an achievement. I'd avoid that. A set padded with near-duplicates is worse than a smaller one that covers the real spread of what people ask, because it gives you a confident number about a narrow slice. The measures I'd care about are coverage, how much reviewers agree with each other, and how many records they had to edit. A headline count tells you none of that.
 
@@ -128,13 +128,13 @@ The same goes for keeping the set alive. The knowledge base changes, so a record
 
 Because each record names its source, the evaluation can ask two separate questions. Did the assistant give a good answer? And did it retrieve the document that answer should come from? When the first is bad and the second is good, the fault is in how the answer was written. When both are bad, look at retrieval. That split is much harder to make when the golden set is only questions and answers, and it's the main reason I insist on the URL.
 
-If you're building something similar, the parts I'd keep are these: anchor every record to a source, use personas to widen what gets asked, keep a person as the only route into the golden set, and review the set as a whole as well as record by record. The rest is tooling.
+If I were starting over, I'd keep four things: anchor every record to a source, use personas to widen what gets asked, keep a person as the only route into the golden set, and review the set as a whole as well as record by record. Everything else is tooling, and that can change.
 
 ## References
 
 1. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS, 2020. <https://arxiv.org/abs/2005.11401>
 2. Es, S. et al. *Ragas: Automated Evaluation of Retrieval Augmented Generation*. arXiv, 2023. <https://arxiv.org/abs/2309.15217>
-3. Saad-Falcon, J. et al. *ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems*. NAACL, 2024. <https://arxiv.org/abs/2311.09476> — synthetic evaluation data plus human annotations.
+3. Saad-Falcon, J. et al. *ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems*. NAACL, 2024. <https://arxiv.org/abs/2311.09476>. Synthetic evaluation data plus human annotations.
 4. Ge, T. et al. *Scaling Synthetic Data Creation with 1,000,000,000 Personas*. arXiv, 2024. <https://arxiv.org/abs/2406.20094>
 5. Zheng, L. et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS Datasets and Benchmarks, 2023. <https://arxiv.org/abs/2306.05685>
-6. Panickssery, A., Bowman, S. R. and Feng, S. *LLM Evaluators Recognize and Favor Their Own Generations*. arXiv, 2024. <https://arxiv.org/abs/2404.13076> — why a model shouldn't grade its own output.
+6. Panickssery, A., Bowman, S. R. and Feng, S. *LLM Evaluators Recognize and Favor Their Own Generations*. arXiv, 2024. <https://arxiv.org/abs/2404.13076>. Why a model shouldn't grade its own output.

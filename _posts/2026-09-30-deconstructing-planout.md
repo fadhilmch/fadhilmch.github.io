@@ -12,7 +12,7 @@ Andi opens a checkout page. We want to test two buttons: A is blue, B is pink. H
 
 That sounds like a small requirement. It rules out the most obvious implementation: toss a fresh coin on every request. You could save every user's choice in a database, but then every server needs access to that record. PlanOut offers another way: make the coin toss repeatable from the inputs.
 
-This is the part of experimentation systems I want to take apart here. One shopper, one button, and the actual numbers from the archived Python implementation. No production traffic or company internals: the example below uses invented IDs.
+This post takes that idea apart with one shopper, one button and the actual numbers from PlanOut's archived Python implementation. The user IDs are made up.
 
 <style>
 .prose .fig.planout-fig { max-width: 540px; }
@@ -28,7 +28,7 @@ The product owns the checkout page. The experiment owns the rule for choosing th
 
 PlanOut was developed at Facebook as a language and framework for defining online experiments. Its 2014 paper describes how an experiment maps a unit, such as a user ID, to parameter values. A parameter might be a button colour, a piece of text, or a discount. Product code asks for that value and uses it.
 
-In other words, the experiment says "blue". It does not draw the button, count purchases, or tell us whether blue is better.
+So the experiment's whole job is to say "blue". Drawing the button, counting purchases and working out whether blue is better all happen somewhere else.
 
 <figure class="fig planout-fig">
 <svg viewBox="0 0 420 324" role="img" aria-labelledby="po-flow-t po-flow-d">
@@ -58,13 +58,13 @@ experiment = CheckoutButton(userid="user-42")
 colour = experiment.get("button")  # "blue"
 ```
 
-Andi's invented ID is `user-42`. It is the *unit*: the thing we randomise. If we used a session ID instead, we'd be randomising sessions, and Andi could get a different button on his next visit. Choosing the unit is a design decision, not a detail to leave to the SDK.
+Andi's invented ID is `user-42`. It is the *unit*: the thing we randomise. If we used a session ID instead, we'd be randomising sessions, and Andi could get a different button on his next visit. Picking the unit is a design decision, and I wouldn't leave it to whatever the SDK defaults to.
 
 ## A coin toss without a coin
 
 A hash function turns an input string into a fixed-length output. The same input always gives the same output. Small changes to the input usually produce very different outputs.
 
-PlanOut uses SHA-1 as a mixing function for assignment. This is not a password scheme or a way to hide someone's group. We want repeatable, well-spread values, not secrecy.
+PlanOut uses SHA-1 as a mixing function for assignment. None of this is about security or hiding which group someone is in. SHA-1 is just a convenient way to get values that repeat exactly and spread evenly.
 
 For this example, PlanOut joins three pieces with dots:
 
@@ -208,11 +208,11 @@ For the second operation, the scale is `2**60 - 1`, or `1,152,921,504,606,846,97
 <figcaption>Two different operators. The example uses the same blue/pink order and equal weights, but matching probabilities do not guarantee matching users.</figcaption>
 </figure>
 
-Both operations happen to give Andi blue here. That does not mean they assign every user identically. Replacing one with the other can move users even if both advertise a 50/50 split.
+Both operations happen to give Andi blue, but they won't agree for every user. Swap one for the other and some users change groups, even though both are a 50/50 split.
 
-A small source-level detail matters if you want compatibility: PlanOut converts that scale to a floating-point value, and uses `<=` at the weighted boundaries. The mathematical normalization includes 1 at the maximum hash. Replacing the denominator with `2**60`, changing the comparison, or switching to another port without checking its hash behaviour is not a harmless cleanup.
+A small source-level detail matters if you want compatibility: PlanOut converts that scale to a floating-point value, and uses `<=` at the weighted boundaries. The mathematical normalization includes 1 at the maximum hash. Replacing the denominator with `2**60`, changing the comparison, or switching to another port without checking its hash behaviour can quietly move users.
 
-## A salt is the name of the shuffle
+## Salts: same label, same shuffle
 
 Think of the salt as the label on a shuffled deck. With the same deck label and the same user ID, draw the same card again. Change the label and you get a new shuffle.
 
@@ -224,7 +224,7 @@ Here are computed results for 10,000 invented users, `user-0` through `user-9999
 | Change salt to `checkout-v2` | 4,984 / 10,000 |
 | Keep salt, reverse `[blue, pink]` | 10,000 / 10,000 |
 
-The original split was 5,004 blue and 4,996 pink. These are reproducible results for this toy population, not a promise that every experiment produces those exact counts.
+The original split was 5,004 blue and 4,996 pink. Those exact counts belong to this made-up population. Another set of IDs would land slightly differently.
 
 <figure class="fig planout-fig">
 <svg viewBox="0 0 420 306" role="img" aria-labelledby="po-salt-t po-salt-d">
@@ -274,9 +274,9 @@ The original split was 5,004 blue and 4,996 pink. These are reproducible results
 
 For Andi, the new salt produces prefix `5c87192d9dc8829`, integer `416707841066043433`, and remainder 1. He moves to pink. Reversing the original choices also gives him pink, but for a different reason: his original index is still 0; index 0 now means pink.
 
-That last row is the trap. Keeping the hash stable is not enough. Keep the meaning of its output stable too.
+That last row is the trap. The hash didn't change at all, but what its output points to did, and every single user moved.
 
-A new experiment can use a new salt deliberately. A live experiment should not casually rename its salt, change ID formatting, reorder choices, edit weights, or switch hashing algorithms. Any of those can change the experience for people already enrolled. Stateless repeatability is not the same thing as a saved sticky assignment that survives definition changes.
+A new experiment can use a new salt deliberately. A live experiment should not casually rename its salt, change ID formatting, reorder choices, edit weights, or switch hashing algorithms. Any of those can change the experience for people already enrolled. Hashing only repeats the same answer while the definition stays the same. If assignments have to survive a definition change, you need to store them.
 
 The parameter name acts as a salt too. `button` and `hint` get different hash keys for the same user, unless you intentionally share an explicit salt. This keeps two parameters from being perfectly tied to each other by accident.
 
@@ -295,17 +295,17 @@ A namespace is a shared allocation space. In the Python implementation, a user h
 <figcaption>Two decisions: namespace routing, then treatment assignment. Separate namespaces can still overlap in people.</figcaption>
 </figure>
 
-The numbered tiles above are an illustration, not Andi's computed upstream namespace segment. The real `add_experiment()` samples from the available segments, so an experiment's allocation need not be a neat contiguous range.
+The numbered tiles above are only a sketch. I didn't compute Andi's real segment. The real `add_experiment()` samples from the available segments, so an experiment's allocation need not be a neat contiguous range.
 
 Mutual exclusion applies inside that namespace: a segment cannot belong to both checkout experiments at once. A separate namespace for the homepage can also enrol Andi. Namespaces do not automatically prevent interactions between experiments on different surfaces.
 
 The namespace name, unit, segment count and allocation history are part of the routing contract. Preserving only the button's salt will not preserve routing if those change.
 
-## Assignment is not exposure
+## Exposure logging
 
 We have computed a button colour. Has Andi seen the button? Not necessarily. The page might fail before rendering it. The application might ask for the colour on a route where checkout is never shown.
 
-PlanOut gives you a logging hook. In the default Python experiment behaviour, the first eligible `get()` on an instance triggers exposure logging before returning the parameter. The instance remembers that it logged, so repeated `get()` calls on that same instance do not each emit a new automatic exposure. A new instance is a new situation; there is no global per-user deduplication promise.
+PlanOut gives you a logging hook. In the default Python experiment behaviour, the first eligible `get()` on an instance triggers exposure logging before returning the parameter. The instance remembers that it logged, so repeated `get()` calls on that same instance do not each emit a new automatic exposure. A new instance starts over, and nothing deduplicates across instances for the same user.
 
 <figure class="fig planout-fig">
 <svg viewBox="0 0 420 324" role="img" aria-labelledby="po-logging-t po-logging-d">
@@ -316,11 +316,11 @@ PlanOut gives you a logging hook. In the default Python experiment behaviour, th
 <figcaption>A parameter-access log is useful evidence, but it is not proof that a person saw the pixels.</figcaption>
 </figure>
 
-That hook records parameter access, not human viewability. Automatic logging can be disabled, and an experiment marked out of experiment does not log an exposure. The base experiment delegates the log to your implementation; `SimpleExperiment` writes JSON to a file. Getting a production event pipeline right is still your job.
+What the hook records is that the code asked for the parameter. Whether a person actually saw the button is a separate question. Automatic logging can be disabled, and an experiment marked out of experiment does not log an exposure. The base experiment delegates the log to your implementation; `SimpleExperiment` writes JSON to a file. Getting a production event pipeline right is still your job.
 
 A useful record connects the unit, experiment, parameter values and time to the definition that produced them. Upstream also records a checksum when available. In a production system I would make the definition version, override, surface and event ID explicit, then decide where the application should emit the event that analysis treats as exposure.
 
-A hash can reconstruct an intended choice if the original inputs and definition survive. It cannot reconstruct a missing render event or a fallback that nobody recorded.
+If you still have the inputs and the definition, you can recompute which button someone was meant to get. You can't recompute a render that never got logged, or a fallback nobody recorded.
 
 ## What the hash cannot tell you
 
@@ -439,35 +439,35 @@ A hash can reconstruct an intended choice if the original inputs and definition 
 
 Suppose the button experiment expects an even split, but the logged population contains 700 blue and 300 pink users. That is a sample ratio mismatch, or SRM: the observed group counts are unexpectedly far from the planned allocation.
 
-It is a warning to investigate the experiment, not evidence that pink loses. Maybe assignment changed. Maybe one group has missing events. Maybe the eligibility filter is different on the two paths. Check the population you count, the planned allocation, and the logging before reading an effect estimate. A fixed 50/50 check also does not fit a bandit that intentionally moves traffic.
+It tells you to go and look at the experiment. It says nothing yet about whether pink loses. Maybe assignment changed. Maybe one group has missing events. Maybe the eligibility filter is different on the two paths. Check the population you count, the planned allocation, and the logging before reading an effect estimate. A fixed 50/50 check also does not fit a bandit that intentionally moves traffic.
 
-PlanOut does not perform that investigation or estimate lift for you. Repeatable assignment is one part of trustworthy experimentation. Exposure data, outcome definitions and statistical analysis are separate parts.
+PlanOut won't do that investigation for you, and it doesn't estimate lift either. It handles repeatable assignment. Exposure data, outcome definitions and the statistics are left to you.
 
-## Archived does not mean the idea failed
+## The archive badge
 
-The public repository was archived on June 1, 2021 and is read-only. That is verifiable. An exact public explanation from the maintainers for *why* it was archived is not established in the sources linked below.
+The public repository was archived on June 1, 2021 and is now read-only. I couldn't find the maintainers saying why.
 
-So I would not turn the archive badge into a story about Facebook abandoning experimentation, maintenance costs, or a single successor replacing PlanOut. Its own documentation described the interpreter as one way to define experiments at Facebook, running on top of QuickExperiment. The public library was never the whole internal platform.
+So I wouldn't read much into it. It's tempting to turn it into a story about Facebook giving up on experimentation, or a successor replacing PlanOut, but I haven't seen evidence for either. Its own documentation described the interpreter as one way to define experiments at Facebook, running on top of QuickExperiment. The public library was never the whole internal platform.
 
-What has changed for someone choosing a tool today is the available scope. A language gives you definitions and operators. Modern experimentation products can also provide configuration delivery, allocation controls, exposure handling, metric definitions and analysis. Those are reasons to evaluate a broader platform, not proof of the archive's motive.
+What has changed for someone choosing a tool today is the available scope. A language gives you definitions and operators. Modern experimentation products can also provide configuration delivery, allocation controls, exposure handling, metric definitions and analysis. That's a good reason to look at a broader platform today, whatever the reason for the archive was.
 
 ## What I would use instead today
 
-There is no official replacement established by the PlanOut sources. The replacement depends on which job you need done.
+PlanOut doesn't name an official successor, and the right replacement depends on which part of its job you need.
 
 - For owning the assignment implementation, a small SDK can work, but stable identity, versioned definitions and compatibility tests become your responsibility. GrowthBook's [build-your-own guide](https://docs.growthbook.io/lib/build-your-own) is a useful current example of an SDK contract.
-- For an experimentation platform, [GrowthBook](https://docs.growthbook.io/app/sticky-bucketing) and [Statsig](https://docs.statsig.com/experiments-plus) are examples worth evaluating. Compare their allocation, logging, warehouse and analysis paths against your requirements. They are alternatives, not drop-in replicas of PlanOut's byte-level behaviour.
+- For an experimentation platform, [GrowthBook](https://docs.growthbook.io/app/sticky-bucketing) and [Statsig](https://docs.statsig.com/experiments-plus) are examples worth evaluating. Compare their allocation, logging, warehouse and analysis paths against your requirements. Neither hashes the way PlanOut does, so a running experiment won't keep its groups if you switch.
 - For adaptive allocation, the policy is another layer. A bandit updates traffic based on rewards; a deterministic hash does not learn which button sells more. I covered that distinction in [Thompson sampling, explained with coupons]({{ '/posts/thompson-sampling-explained-with-coupons/' | relative_url }}).
 
 If I were moving an existing experiment, I would first make a test set of IDs, salts, definitions, overrides and expected outputs. Run old and new systems against it. Explain every disagreement before moving live traffic. A new SDK producing "roughly half in each group" is not enough if it puts different people in those groups.
 
-The lesson I keep from PlanOut is smaller than a whole platform: separate the experiment definition from product code, make assignment repeatable, and make the boundary between a decision and an observation explicit. Andi getting blue twice is easy to demonstrate. Knowing whether blue helped him is a different system.
+What I keep from PlanOut is smaller than a platform: separate the experiment definition from product code, make assignment repeatable, and be explicit about where deciding stops and observing starts. Getting Andi blue twice turned out to be the easy part. Finding out whether blue helped him takes a lot more machinery.
 
 ## References
 
 - Bakshy, Eckles and Bernstein, [Designing and Deploying Online Field Experiments](https://hci.stanford.edu/publications/2014/planout/planout-www2014.pdf), WWW 2014. The design motivation and system boundaries.
 - [PlanOut repository](https://github.com/facebookarchive/planout) and [release page](https://github.com/facebookarchive/planout/releases). Public archival status and date.
 - Python source: [random operators](https://github.com/facebookarchive/planout/blob/master/python/planout/ops/random.py), [assignment](https://github.com/facebookarchive/planout/blob/master/python/planout/assignment.py), [namespaces](https://github.com/facebookarchive/planout/blob/master/python/planout/namespace.py), and [experiment logging](https://github.com/facebookarchive/planout/blob/master/python/planout/experiment.py). The mechanics here refer to this implementation, not every language port.
-- Fabijan et al., [Diagnosing Sample Ratio Mismatch](https://www.microsoft.com/en-us/research/publication/diagnosing-sample-ratio-mismatch-in-online-controlled-experiments-a-taxonomy-and-rules-of-thumb-for-practitioners/), KDD 2019. Why the count mismatch is a diagnostic warning, not a treatment-effect result.
+- Fabijan et al., [Diagnosing Sample Ratio Mismatch](https://www.microsoft.com/en-us/research/publication/diagnosing-sample-ratio-mismatch-in-online-controlled-experiments-a-taxonomy-and-rules-of-thumb-for-practitioners/), KDD 2019. Why a count mismatch should send you looking for a bug before you read the result.
 - [About PlanOut](https://github.com/facebook/planout/blob/master/python/docs/08-about-planout.md). Its relationship to QuickExperiment.
-- [GrowthBook SDK guide](https://docs.growthbook.io/lib/build-your-own), [sticky bucketing](https://docs.growthbook.io/app/sticky-bucketing), and [Statsig Experiments](https://docs.statsig.com/experiments-plus). Examples of current alternatives, not evidence of an official succession.
+- [GrowthBook SDK guide](https://docs.growthbook.io/lib/build-your-own), [sticky bucketing](https://docs.growthbook.io/app/sticky-bucketing), and [Statsig Experiments](https://docs.statsig.com/experiments-plus). Examples of current alternatives.

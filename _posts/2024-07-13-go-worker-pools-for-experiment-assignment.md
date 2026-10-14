@@ -39,7 +39,7 @@ int main(void) {
 }
 ```
 
-Three decisions are baked into those lines. The buffer has a **fixed size**, because there's no heap to grow into. When it's full, the handler **drops** the byte: a deliberate overload policy, not an accident. And a **watchdog** resets the chip if the main loop ever hangs.
+Three decisions are baked into those lines. The buffer has a **fixed size**, because there's no heap to grow into. When it's full, the handler **drops** the byte, on purpose. That's the overload policy. And a **watchdog** resets the chip if the main loop ever hangs.
 
 ## The Go version
 
@@ -218,16 +218,16 @@ A test like that is only meaningful if you state its shape: how long, what paylo
 
 - **Make the limit a number you chose.** Firmware forces this because memory is finite. In Go you have to impose it yourself, because goroutines make unbounded concurrency feel free until it isn't.
 - **Keep the fast path fast.** The interrupt handler and the HTTP handler both do the minimum, then hand off.
-- **Design the overload behaviour.** Dropping a byte, shedding a request, or serving the control variant are all fine answers if they're deliberate, counted and visible. The failure mode to avoid is the undesigned one.
-- **Always have a watchdog.** A deadline on every call is the difference between one slow dependency and a whole service stuck waiting.
+- **Design the overload behaviour.** Dropping a byte, shedding a request, or serving the control variant are all fine answers if they're deliberate, counted and visible. The bad case is overload behaviour that nobody chose.
+- **Always have a watchdog.** With a deadline on every call, one slow dependency can't leave the whole service stuck waiting.
 
-Microcontrollers with kilobytes of memory and a Kubernetes deployment have almost nothing in common, except this: whatever you don't bound, the next traffic spike will bound for you.
+Microcontrollers with kilobytes of memory and a Kubernetes deployment have almost nothing in common. Both taught me the same thing, though: if I don't set a limit, the next traffic spike sets one for me, usually at a worse moment.
 
 ## References
 
 1. MAVLink. *MAVLink Developer Guide: Introduction*. mavlink.io. <https://mavlink.io/en/>
-2. Go documentation. *Effective Go: Concurrency*. go.dev. <https://go.dev/doc/effective_go#concurrency> — channels, goroutines and semaphores via buffered channels
-3. Go documentation. *The Go Programming Language Specification*. go.dev. <https://go.dev/ref/spec> — channel types and select statements
+2. Go documentation. *Effective Go: Concurrency*. go.dev. <https://go.dev/doc/effective_go#concurrency>. Channels, goroutines and semaphores via buffered channels.
+3. Go documentation. *The Go Programming Language Specification*. go.dev. <https://go.dev/ref/spec>. Channel types and select statements.
 4. Ajmani, S. *Go Concurrency Patterns: Pipelines and cancellation*. The Go Blog, 2014. <https://go.dev/blog/pipelines>
-5. Ajmani, S. *Go Concurrency Patterns: Context*. The Go Blog, 2014. <https://go.dev/blog/context> — deadlines and cancellation
-6. Dean, J. and Barroso, L. A. *The Tail at Scale*. Communications of the ACM 56(2), 2013. <https://research.google/pubs/the-tail-at-scale/> — why P95 and tail latency matter
+5. Ajmani, S. *Go Concurrency Patterns: Context*. The Go Blog, 2014. <https://go.dev/blog/context>. Deadlines and cancellation.
+6. Dean, J. and Barroso, L. A. *The Tail at Scale*. Communications of the ACM 56(2), 2013. <https://research.google/pubs/the-tail-at-scale/>. Why P95 and tail latency matter.

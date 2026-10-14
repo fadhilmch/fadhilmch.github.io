@@ -8,15 +8,15 @@ tags:
 summary: What building a metric semantic layer taught me about teams. The schema was the easy part. Ownership, and making the shared definition easier than a copy, decided whether it got used.
 ---
 
-Two dashboards show a metric called "conversion" for the same week. The numbers differ. Someone asks which one is right, and the next hour goes on reading two pieces of SQL side by side. By the end nobody has learned anything about the product. The conversation has become a debate about queries.
+Two dashboards show a metric called "conversion" for the same week. The numbers differ. Someone asks which one is right, and the next hour goes on reading two pieces of SQL side by side. By the end nobody has learned anything about the product, because the meeting turned into a debate about queries.
 
-I designed a metric semantic layer for an experimentation platform that served dozens of product teams: a centralised metadata schema, plus a query engine on BigQuery that computed metrics from it. The catalogue held more than 100 reusable metrics, and every product team's experiments used them. This post is about what that work taught me. Most of it was about people, and the schema was the smaller part.
+I designed a metric semantic layer for an experimentation platform that served dozens of product teams: a centralised metadata schema, plus a query engine on BigQuery that computed metrics from it. The catalogue held more than 100 reusable metrics, and every product team's experiments used them. This post is about what that work taught me, and most of the lessons were about people. The schema was the easier part.
 
 ## What a semantic layer is
 
 A **semantic layer** is a place where the meaning of a metric is written down once, in a form that both people and programs can read. Instead of each dashboard or experiment analysis carrying its own SQL for "conversion", they all refer to one definition, and a query engine turns that definition into the query that runs against the warehouse.
 
-Vendors have plenty to say about this. I'm going to skip the theory and describe the problem it solves.
+Vendors have written plenty about the theory, so I'll stick to the problem it solves.
 
 ## How drift happens
 
@@ -27,7 +27,7 @@ Nobody sets out to define a metric wrongly. Drift happens because every team has
 - One excludes internal test traffic. Another never got round to it.
 - One counts per user per day. Another counts per session.
 
-Each choice is defensible. The trouble is that all of them carry the same name, and a name is what people compare.
+Each of these is defensible on its own. They just all go by the same name, and people compare numbers by name.
 
 <figure class="fig">
 <svg viewBox="0 0 680 346" role="img" aria-labelledby="odc1t odc1d">
@@ -118,24 +118,24 @@ The schema had to be precise enough for a program to compute from it. That was t
 <figcaption>Every consumer gets its number through the same path, so there is no second place for a definition to live.</figcaption>
 </figure>
 
-## Ownership matters more than the schema
+## Who owns a definition
 
 You can build the schema and engine and still end up with two versions of conversion, one governed and one not. The technical work leaves open the harder question: who decides what "conversion" means?
 
-In my experience the answer has to be a named owner for each metric. Not a committee, and not "the data team" in general. The person who owns a definition can decide when a request to change it is right, and can say no when a team wants a local variant that would fragment the meaning. Without that, the catalogue turns into a list of opinions.
+In my experience the answer has to be a named owner for each metric: a specific person or team, rather than a committee or "the data team" in general. The person who owns a definition can decide when a request to change it is right, and can say no when a team wants a local variant that would fragment the meaning. Without one, the catalogue slowly fills up with competing versions.
 
-A few practices follow, and they are the ones I'd insist on:
+A few practices follow from that:
 
 1. **Every metric has an owner in the definition itself.** If you can't say who owns it, don't publish it.
 2. **Changes are reviewed and versioned.** A change to a definition changes past comparisons, so it should be visible and deliberate. Old versions stay readable.
-3. **Disagreements get resolved in the definition.** If two teams need different things, that usually means two metrics with two names, not one metric with a silent fork.
+3. **Disagreements get resolved in the definition.** If two teams need different things, that usually means two metrics with two names, rather than one name quietly covering both.
 4. **Deprecation is explicit.** A metric nobody owns any more should be marked so, rather than lingering.
 
-## Adoption is the real test
+## Getting teams to use it
 
-A catalogue that nobody uses is documentation. What made the difference to me was that the governed definition had to be the *easiest* option, not just the correct one. If a team can write its own SQL in ten minutes but must file a request and wait a week to use a shared metric, the local copy wins every time, and it wins for good reasons.
+A catalogue only helps if teams actually pick their metrics from it. What I learned was that the governed definition had to be the *easiest* option for a team. Being correct wasn't enough. If a team can write its own SQL in ten minutes but must file a request and wait a week to use a shared metric, the local copy wins every time, and it wins for good reasons.
 
-That pointed the design at a few things. Some of these I did and some are what I'd emphasise now, and I'll keep to the general principle rather than the detail of any one system:
+That shaped a few design choices. Some of these I did, and some I'd push harder on now:
 
 - **Meet people where they already work.** The natural home for a governed metric was the experimentation workflow, because that is where teams pick the metrics an experiment is judged on. If choosing a shared metric is a step in a task people already do, it costs less than writing a query.
 - **Cover the metrics people argue about first.** A catalogue with the thirty metrics that cause the most disagreement is worth more than one with three hundred that nobody trusts. The catalogue grew past 100 reusable metrics, and the growth mattered less than whether it contained the ones teams actually reached for.
@@ -143,18 +143,18 @@ That pointed the design at a few things. Some of these I did and some are what I
 - **Treat requests as a signal.** When a team wants something the catalogue doesn't have, either the catalogue has a gap or an existing metric is described badly. Both are fixable, and both are better than letting the team quietly go its own way.
 - **Make the first use painless.** The moment someone tries a governed metric and gets a number they trust is the moment they stop writing their own. Anything that makes that first attempt fail, such as a confusing name or a missing filter, sends them back to local SQL.
 
-Every product team ended up using the catalogue in its experiments. I'd credit that to the definitions being useful and reachable, and I don't think a mandate would have produced the same result. A rule can make people register a metric. Only a metric that saves them work makes them keep using it.
+Every product team ended up using the catalogue in its experiments. I'd credit that to the definitions being useful and easy to reach. I doubt a mandate would have got the same result: a rule can make people register a metric, but they only keep using one that saves them work.
 
-## Ownership needs a process, not just a field
+## A process for changing a definition
 
-An owner field is a start. What it needs behind it is a path for changing a definition that people can follow without heroics. A common shape looks like this:
+An owner field is a start. Behind it you need a way to change a definition that people can follow without heroics. A common shape looks like this:
 
 1. Someone proposes a change to a definition, with the reason and an example of the difference in the number.
 2. The owner reviews it, and any team that depends on the metric is told.
 3. The new version is published alongside the old one for a while, so results can be compared across the change.
 4. The old version is retired on a date everyone knows.
 
-None of this is complicated. The point is that changing what "conversion" means is a decision that affects other people's results, and the process makes it visible. Otherwise the definition changes silently, and the next dashboard comparison is a debate again.
+It's a simple process. It exists because changing what "conversion" means changes other people's results, and they should see it happen. Otherwise the definition changes silently, and the next dashboard comparison is a debate again.
 
 ## What I'd watch for
 
@@ -165,14 +165,14 @@ If I were starting again, I'd check for these early:
 - **Local variants hiding in plain sight.** Watch what people compute outside the layer. It shows you the gaps.
 - **Ownership drifting.** People move teams. An owner field that is out of date is worse than none, because it looks like governance.
 
-## What I took from it
+## The short version
 
-The schema and the engine mattered, but a shared definition only becomes a working practice through reuse, and reuse depends on people. Someone has to own each definition, changes have to be visible, and the shared version has to be easier to reach than a copy. Get those right and a dashboard comparison goes back to being a conversation about the product.
+The schema and the engine mattered, but people only reuse a shared definition if someone owns it, changes to it are visible, and it's easier to reach than writing a copy. When those held, the meeting about two dashboards went back to being about the product.
 
 ## References
 
-1. Chang, R. *How Airbnb Achieved Metric Consistency at Scale*. The Airbnb Tech Blog. <https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70> — Minerva, a metric platform with one definition per metric
-2. dbt Labs. *dbt Semantic Layer*. dbt documentation. <https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl> — centralised metric definitions, reused across tools
-3. dbt Labs. *About MetricFlow*. dbt documentation. <https://docs.getdbt.com/docs/build/about-metricflow> — generating SQL from metric definitions
+1. Chang, R. *How Airbnb Achieved Metric Consistency at Scale*. The Airbnb Tech Blog. <https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70>. Minerva, a metric platform with one definition per metric.
+2. dbt Labs. *dbt Semantic Layer*. dbt documentation. <https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl>. Centralised metric definitions, reused across tools.
+3. dbt Labs. *About MetricFlow*. dbt documentation. <https://docs.getdbt.com/docs/build/about-metricflow>. Generating SQL from metric definitions.
 4. Kohavi, R., Tang, D., and Xu, Y. *Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing*. Cambridge University Press, 2020. <https://experimentguide.com/>
 5. Google Cloud. *BigQuery overview*. Google Cloud documentation. <https://docs.cloud.google.com/bigquery/docs/introduction>
