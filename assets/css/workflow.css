@@ -194,22 +194,3 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
   .wf-below { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; }
   .wf-below .wf-inspector { max-width: none; }
 }
-
-/* Each node keeps its branch color visible at rest, on desktop and mobile. */
-.wf-node:not(.wf-pill) .wf-node__box,
-.wf-pill,
-.wf-acc__glyph {
-  border-color: color-mix(in srgb, var(--glow) 45%, var(--line));
-  background: color-mix(in srgb, var(--glow) 8%, var(--bg));
-}
-.wf-pill .wf-node__box {
-  background: color-mix(in srgb, var(--glow) 15%, var(--panel));
-}
-.wf-node .wf-port { background: var(--glow); }
-.wf-node:hover .wf-node__box,
-.wf-pill:hover { border-color: var(--glow); }
-.wf-node[aria-expanded="true"] .wf-node__box,
-.wf-pill[aria-expanded="true"] {
-  border-color: var(--glow);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--glow) 18%, transparent);
-}

@@ -19,7 +19,7 @@
         {%- capture acc_html -%}{{ acc_html }}
     <li class="wf-acc__item" data-acc="{{ n_id }}">
       <button class="wf-acc__btn" type="button" data-node="{{ n_id }}" data-level="{{ level }}" aria-controls="wf-i-{{ n_id }}" aria-expanded="false">
-        <span class="wf-acc__glyph wf-node--{{ n_kind }}" style="color:var(--{{ n_color }});--glow:var(--{{ n_accent }})" aria-hidden="true">{{ n_glyph | escape }}</span>
+        <span class="wf-acc__glyph wf-node--{{ n_kind }}" style="color:var(--{{ n_color }})" aria-hidden="true">{{ n_glyph | escape }}</span>
         <span class="wf-acc__title">{{ n_title | escape }}</span>
         <span class="wf-acc__sub">{{ n_sub | escape }}</span>
         <span class="wf-acc__caret" aria-hidden="true">▸</span>

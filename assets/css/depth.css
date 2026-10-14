@@ -56,15 +56,7 @@ html[data-depth="soft"] {
     border-color: var(--depth-edge);
     box-shadow: var(--depth-shadow-rest);
   }
-  .wf-node:not(.wf-pill) .wf-node__box, .wf-pill {
-    border-color: color-mix(in srgb, var(--glow) 45%, var(--depth-edge));
-    background: color-mix(in srgb, var(--glow) 8%, var(--panel));
-  }
-  .wf-pill .wf-node__box { background: color-mix(in srgb, var(--glow) 15%, var(--panel)); }
-  .wf-node:hover .wf-node__box, .wf-pill:hover,
-  .wf-node[aria-expanded="true"] .wf-node__box, .wf-pill[aria-expanded="true"] {
-    border-color: var(--glow);
-  }
+  .wf-node__box { background: var(--panel); }
   .project-card { border-radius: var(--depth-radius); }
 
   .wf-acc { border: 0; background: none; overflow: visible; }
