@@ -6,11 +6,38 @@ nav: about
 {%- assign profile = site.data.profile -%}
 <div class="about-page">
   <section class="hero" aria-labelledby="about-title">
+    {%- assign greets = profile.greetings -%}
+    {%- if greets.size > 1 -%}
+    <h1 id="about-title"><span class="wf-sr">{{ profile.headline | escape }}</span><span aria-hidden="true"><span class="greet" data-greet><span class="greet__size">{% for g in greets %}<span data-w data-lang="{{ g.lang | escape }}">{{ g.word | escape }}</span>{% endfor %}</span><span class="greet__word">{{ greets[0].word | escape }}</span><span class="greet__lang">{{ greets[0].lang | escape }}</span></span>{{ profile.headline | remove_first: greets[0].word | escape }}</span></h1>
+    {%- else -%}
     <h1 id="about-title">{{ profile.headline | escape }}</h1>
-    <p>{{ profile.bio | escape }}</p>
+    {%- endif -%}
+    {%- assign bio = profile.bio | escape -%}
+    {%- for l in profile.bio_links -%}
+      {%- assign c = l.color -%}
+      {%- if l.node and l.node contains 'tool-' -%}
+        {%- assign sk_key = l.node | remove_first: 'tool-' -%}
+        {%- assign sk = site.data.skills | where: 'key', sk_key | first -%}
+        {%- assign c = sk.color -%}
+      {%- elsif l.node -%}
+        {%- assign wn = site.data.workflow.nodes | where: 'id', l.node | first -%}
+        {%- assign c = wn.accent -%}
+      {%- endif -%}
+      {%- capture rep -%}{%- if l.href -%}<a class="bio-link" style="--bl:var(--{{ c | default: 'muted' }})" href="{{ l.href | relative_url }}">{{ l.text | escape }}</a>{%- else -%}<button type="button" class="bio-link" style="--bl:var(--{{ c | default: 'muted' }})" data-bio-node="{{ l.node }}">{{ l.text | escape }}</button>{%- endif -%}{%- endcapture -%}
+      {%- assign bio = bio | replace_first: l.text, rep -%}
+    {%- endfor -%}
+    <p>{{ bio }}</p>
+    <div class="hero__cta">
+      <a class="wf-btn wf-btn--primary" href="{{ '/posts/' | relative_url }}">Read the posts <span aria-hidden="true">→</span></a>
+      <a class="wf-btn" href="https://www.linkedin.com/in/{{ site.linkedin_username }}/" target="_blank" rel="noopener">CV</a>
+      <a class="wf-btn" href="mailto:{{ site.email }}">Email</a>
+    </div>
   </section>
 
   <span id="node-exp"></span><span id="node-work"></span>
   {% include workflow/canvas.html %}
-  {% include workflow/panels.html %}
+  <div class="wf-below">
+    <div class="wf-below__main">{% include workflow/panels.html %}</div>
+    {% include workflow/aside.html %}
+  </div>
 </div>

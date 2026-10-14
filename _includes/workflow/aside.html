@@ -1,0 +1,41 @@
+{%- comment -%}
+  Right-hand column under the graph: latest posts + After work teaser.
+  Dots use the same lane colours as posts/row.html (one dot per lane).
+{%- endcomment -%}
+<aside class="wf-aside" aria-label="Latest writing and after work">
+  <section class="wf-card">
+    <h2 class="wf-card__title">Latest writing</h2>
+    <ul class="wf-latest">
+      {%- for post in site.posts limit: 3 -%}
+      {%- capture mins %}{% include reading-time.html html=post.content %}{% endcapture %}
+      <li>
+        <span class="wf-latest__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time> · {{ mins }} min
+          <span class="wf-latest__dots" aria-hidden="true">
+            {%- assign seen = '' -%}
+            {%- for tag in post.tags -%}{%- for lane in site.data.lanes -%}
+              {%- assign lk = lane.key | append: ',' -%}{%- if lane.branch != false and lane.tags contains tag -%}{%- unless seen contains lk -%}<i style="background:var(--{{ lane.color }})"></i>{%- assign seen = seen | append: lk -%}{%- endunless -%}{%- endif -%}
+            {%- endfor -%}{%- endfor -%}
+          </span>
+        </span>
+        <a class="wf-latest__title" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </li>
+      {%- endfor -%}
+    </ul>
+    <a class="wf-more" href="{{ '/posts/' | relative_url }}">all posts <span aria-hidden="true">→</span></a>
+  </section>
+  <a class="wf-card wf-after" href="{{ '/after-work/' | relative_url }}">
+    <svg class="wf-after__cup" viewBox="0 0 48 48" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path class="wf-after__steam" d="M16 14c-2-3 2-4 0-8"/>
+      <path class="wf-after__steam wf-after__steam--b" d="M23 14c-2-3 2-4 0-8"/>
+      <path class="wf-after__steam wf-after__steam--c" d="M30 14c-2-3 2-4 0-8"/>
+      <path d="M11 20h24v8a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z"/>
+      <path d="M35 22h2a4 4 0 0 1 0 8h-3"/>
+      <path d="M13 43h20"/>
+    </svg>
+    <span class="wf-after__body">
+      <span class="wf-card__title">After work</span>
+      <span class="wf-after__line">Coffee I’m still dialling in, and food from home.</span>
+      <span class="wf-after__count">{{ site.coffee.size }} coffee · {{ site.food.size }} food <span aria-hidden="true">→</span></span>
+    </span>
+  </a>
+</aside>

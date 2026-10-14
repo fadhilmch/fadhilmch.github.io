@@ -6,6 +6,7 @@
        n_count (number) n_count_label ("8 roles") n_json_items ("1 item")
 {%- endcomment -%}
 {%- assign n_level = include.entry.level -%}
+{%- assign n_lane = nil -%}
 {%- if include.skill -%}
   {%- assign n_id = include.skill.key | prepend: 'tool-' -%}
   {%- assign n_kind = include.entry.kind | default: 'tool' -%}
@@ -16,6 +17,7 @@
   {%- assign n_accent = n_color -%}
   {%- assign n_desc = include.skill.desc -%}
   {%- assign n_source = include.skill.key | prepend: 'skills:' -%}
+  {%- assign n_lane = include.skill.lane -%}
 {%- else -%}
   {%- assign n_id = include.entry.id -%}
   {%- assign n_kind = include.entry.kind -%}
@@ -27,6 +29,7 @@
   {%- assign n_desc = include.entry.desc -%}
   {%- assign n_source = include.entry.source -%}
 {%- endif -%}
+{%- if n_kind == 'profile' -%}{%- assign n_sub = site.data.profile.short_role | default: n_sub -%}{%- endif -%}
 {%- assign n_json_items = 1 -%}
 {%- case n_source -%}
   {%- when 'profile' -%}{%- assign n_count = 1 -%}{%- assign n_unit = 'profile' -%}

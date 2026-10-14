@@ -1,5 +1,6 @@
 ---
 - key: llms
+  lane: agents
   group: LLMs & agents
   desc: Mostly from building the agentic knowledge assistant at Electrolux, plus an LLM experimentation pipeline at Traveloka.
   glyph: "◎"
@@ -16,6 +17,7 @@
   - name: LLM experimentation pipeline
     where: Traveloka
 - key: experimentation
+  lane: exp
   group: Experimentation
   desc: Most of this comes from leading Traveloka's experimentation platform; the bandit work started with an internship at Spotify.
   glyph: "⚖"
@@ -34,6 +36,7 @@
   - name: MLflow experiment tracking
     where: Electrolux
 - key: data-science
+  lane: data
   group: Data science
   desc: Forecasting, exploration and modelling, from a KTH thesis and internships at Electrolux and Scania.
   glyph: "◇"
@@ -50,6 +53,7 @@
   - name: Sentiment analysis · NLP
     where: KTH
 - key: ml-platform
+  lane: mlops
   group: ML platform
   desc: The plumbing behind serving, training and experimentation, on Google Cloud at Traveloka and on Azure at Electrolux.
   glyph: "∞"
@@ -72,6 +76,7 @@
   - name: Azure · AKS
     where: Electrolux
 - key: systems
+  lane: systems
   group: System design
   desc: Services and pipelines built to stay fast and correct under load, from student projects to production at Traveloka.
   glyph: "⌗"
@@ -88,6 +93,7 @@
   - name: Observability · tracing
     where: Traveloka · Electrolux
 - key: design
+  lane: creative
   group: Design
   desc: Product and interaction design from side work. One is a virtual-sports platform I co-founded; the other is interactive-wall installations in Bandung.
   glyph: "◐"

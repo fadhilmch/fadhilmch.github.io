@@ -8,7 +8,7 @@
       <span class="wf-inspector__glyph" aria-hidden="true">{{ n_glyph | escape }}</span>
       <div>
         <h2 id="wf-t-{{ n_id }}">{{ n_title | escape }}</h2>
-        <p class="wf-inspector__hint">click another node to read more</p>
+        <p class="wf-inspector__hint">{{ n_sub | escape }}</p>
       </div>
     </div>
     <div class="wf-view" role="group" aria-label="View as">
@@ -17,17 +17,15 @@
     </div>
   </div>
   <div class="wf-inspector__human">
-    {% if n_desc %}<p class="wf-inspector__desc">{{ n_desc | escape }}</p>{% endif %}
+    {% if n_desc and n_source != 'profile' %}<p class="wf-inspector__desc">{{ n_desc | escape }}</p>{% endif %}
     <dl class="wf-rows">
       {%- case n_source -%}
         {%- when 'profile' -%}
           {%- assign p = site.data.profile %}
-          <div><dt>role</dt><dd>{{ p.role | escape }}</dd></div>
           <div><dt>based in</dt><dd>{{ p.location | escape }}{% if p.flag %} {{ p.flag | escape }}{% endif %}</dd></div>
-          {%- if p.roots %}
-          <div><dt>originally from</dt><dd>{{ p.roots | escape }}</dd></div>
-          {%- endif %}
-          <div><dt>off-hours</dt><dd>{{ p.off_hours | escape }}</dd></div>
+          {%- for r in p.now %}
+          <div><dt>{{ r.k | escape }}</dt><dd>{% if r.href %}<a href="{{ r.href | relative_url }}">{{ r.v | escape }}</a>{% else %}{{ r.v | escape }}{% endif %}</dd></div>
+          {%- endfor -%}
         {%- when 'education' -%}
           {%- for e in site.data.education %}
           <div><dt>{{ e.years | escape }}</dt><dd><span class="wf-item__title">{{ e.role | escape }}</span><span class="wf-item__meta">{{ e.org | escape }}{% if e.flag %} {{ e.flag | escape }}{% endif %}</span>{% if e.note %}<span class="wf-item__note">{{ e.note | escape }}</span>{% endif %}</dd></div>
@@ -63,6 +61,7 @@
           {%- for g in by_where %}
           <div><dt>{{ g.name | escape }}</dt><dd><ul class="wf-list">{% for t in g.items %}<li>{% if t.emoji %}{{ t.emoji | escape }} {% endif %}{{ t.name | escape }}</li>{% endfor %}</ul></dd></div>
           {%- endfor -%}
+          {%- if n_lane %}{% include workflow/related.html lane=n_lane %}{% endif -%}
       {%- endcase %}
     </dl>
   </div>
