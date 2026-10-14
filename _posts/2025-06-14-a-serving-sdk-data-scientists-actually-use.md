@@ -179,7 +179,7 @@ The measure of success was not the SDK's feature list. It was that teams could t
 ## References
 
 1. Sculley, D. et al. *Hidden Technical Debt in Machine Learning Systems*. NeurIPS, 2015. <https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html>
-2. OpenTelemetry. *Traces*. <https://opentelemetry.io/docs/concepts/signals/traces/> — spans, trace IDs and context propagation
-3. Kubernetes. *Resource Management for Pods and Containers*. <https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/> — CPU and memory requests and limits
-4. KServe. *KServe documentation*. <https://kserve.github.io/website/> — an open-source model serving platform on Kubernetes
-5. BentoML. *BentoML documentation*. <https://docs.bentoml.com/en/latest/> — a Python framework for packaging and serving models
+2. OpenTelemetry. *Traces*. <https://opentelemetry.io/docs/concepts/signals/traces/>. Spans, trace IDs and context propagation.
+3. Kubernetes. *Resource Management for Pods and Containers*. <https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/>. CPU and memory requests and limits.
+4. KServe. *KServe documentation*. <https://kserve.github.io/website/>. An open-source model serving platform on Kubernetes.
+5. BentoML. *BentoML documentation*. <https://docs.bentoml.com/en/latest/>. A Python framework for packaging and serving models.

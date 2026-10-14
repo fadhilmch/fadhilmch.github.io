@@ -136,8 +136,8 @@ If you're building something like this, the parts I'd carry over are these: chec
 ## References
 
 1. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS, 2020. <https://arxiv.org/abs/2005.11401>
-2. Barnett, S. et al. *Seven Failure Points When Engineering a Retrieval Augmented Generation System*. arXiv, 2024. <https://arxiv.org/abs/2401.05856> — a taxonomy of RAG failures.
-3. Anthropic. *Building Effective AI Agents*. Anthropic Engineering, 2024. <https://www.anthropic.com/engineering/building-effective-agents> — routing and workflows versus agents.
+2. Barnett, S. et al. *Seven Failure Points When Engineering a Retrieval Augmented Generation System*. arXiv, 2024. <https://arxiv.org/abs/2401.05856>. A taxonomy of RAG failures.
+3. Anthropic. *Building Effective AI Agents*. Anthropic Engineering, 2024. <https://www.anthropic.com/engineering/building-effective-agents>. Routing and workflows versus agents.
 4. Es, S. et al. *Ragas: Automated Evaluation of Retrieval Augmented Generation*. arXiv, 2023. <https://arxiv.org/abs/2309.15217>
 5. Zheng, L. et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS Datasets and Benchmarks, 2023. <https://arxiv.org/abs/2306.05685>
-6. Geifman, Y. and El-Yaniv, R. *Selective Classification for Deep Neural Networks*. arXiv, 2017. <https://arxiv.org/abs/1705.08500> — letting a model abstain when unsure.
+6. Geifman, Y. and El-Yaniv, R. *Selective Classification for Deep Neural Networks*. arXiv, 2017. <https://arxiv.org/abs/1705.08500>. Letting a model abstain when unsure.

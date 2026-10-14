@@ -254,10 +254,10 @@ My worry was right about which problems exist. I overestimated how hard they are
 
 ## References
 
-1. WHATWG. *HTML Standard: Server-sent events*. <https://html.spec.whatwg.org/multipage/server-sent-events.html> — the SSE format, `Last-Event-ID` and comment heartbeats
+1. WHATWG. *HTML Standard: Server-sent events*. <https://html.spec.whatwg.org/multipage/server-sent-events.html>. The SSE format, `Last-Event-ID` and comment heartbeats.
 2. MDN Web Docs. *Using server-sent events*. Mozilla. <https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events>
-3. Istio. *Architecture*. <https://istio.io/latest/docs/ops/deployment/architecture/> — istiod, Envoy sidecars and the data plane
-4. Amazon Web Services. *Application Load Balancers*. Elastic Load Balancing documentation. <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html> — idle timeout, 60 seconds by default
-5. Envoy. *How do I configure timeouts?* Envoy proxy documentation. <https://www.envoyproxy.io/docs/envoy/latest/faq/configuration/timeouts> — route and stream idle timeouts
-6. NGINX. *Module ngx_http_proxy_module*. <https://nginx.org/en/docs/http/ngx_http_proxy_module.html> — `proxy_buffering` and `X-Accel-Buffering`
-7. Kubernetes. *Sidecar Containers*. <https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/> — sidecar start and stop ordering
+3. Istio. *Architecture*. <https://istio.io/latest/docs/ops/deployment/architecture/>. Covers istiod, Envoy sidecars and the data plane.
+4. Amazon Web Services. *Application Load Balancers*. Elastic Load Balancing documentation. <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html>. Idle timeout, 60 seconds by default.
+5. Envoy. *How do I configure timeouts?* Envoy proxy documentation. <https://www.envoyproxy.io/docs/envoy/latest/faq/configuration/timeouts>. Route and stream idle timeouts.
+6. NGINX. *Module ngx_http_proxy_module*. <https://nginx.org/en/docs/http/ngx_http_proxy_module.html>. `proxy_buffering` and `X-Accel-Buffering`.
+7. Kubernetes. *Sidecar Containers*. <https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/>. Sidecar start and stop ordering.

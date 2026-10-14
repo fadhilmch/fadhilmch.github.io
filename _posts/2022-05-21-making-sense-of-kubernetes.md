@@ -353,4 +353,4 @@ Kubernetes is still big. But it's one idea applied many times, and seeing that m
 5. Kubernetes documentation. *Network Policies*. kubernetes.io. <https://kubernetes.io/docs/concepts/services-networking/network-policies/>
 6. Helm. *Charts*. helm.sh. <https://helm.sh/docs/topics/charts/>
 7. Kubernetes documentation. *Ingress*. kubernetes.io. <https://kubernetes.io/docs/concepts/services-networking/ingress/>
-8. Istio. *Architecture*. istio.io. <https://istio.io/latest/docs/ops/deployment/architecture/> — sidecar proxies and the mesh control plane.
+8. Istio. *Architecture*. istio.io. <https://istio.io/latest/docs/ops/deployment/architecture/>. Sidecar proxies and the mesh control plane.

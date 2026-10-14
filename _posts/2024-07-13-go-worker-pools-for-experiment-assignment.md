@@ -226,8 +226,8 @@ Microcontrollers with kilobytes of memory and a Kubernetes deployment have almos
 ## References
 
 1. MAVLink. *MAVLink Developer Guide: Introduction*. mavlink.io. <https://mavlink.io/en/>
-2. Go documentation. *Effective Go: Concurrency*. go.dev. <https://go.dev/doc/effective_go#concurrency> — channels, goroutines and semaphores via buffered channels
-3. Go documentation. *The Go Programming Language Specification*. go.dev. <https://go.dev/ref/spec> — channel types and select statements
+2. Go documentation. *Effective Go: Concurrency*. go.dev. <https://go.dev/doc/effective_go#concurrency>. Channels, goroutines and semaphores via buffered channels.
+3. Go documentation. *The Go Programming Language Specification*. go.dev. <https://go.dev/ref/spec>. Channel types and select statements.
 4. Ajmani, S. *Go Concurrency Patterns: Pipelines and cancellation*. The Go Blog, 2014. <https://go.dev/blog/pipelines>
-5. Ajmani, S. *Go Concurrency Patterns: Context*. The Go Blog, 2014. <https://go.dev/blog/context> — deadlines and cancellation
-6. Dean, J. and Barroso, L. A. *The Tail at Scale*. Communications of the ACM 56(2), 2013. <https://research.google/pubs/the-tail-at-scale/> — why P95 and tail latency matter
+5. Ajmani, S. *Go Concurrency Patterns: Context*. The Go Blog, 2014. <https://go.dev/blog/context>. Deadlines and cancellation.
+6. Dean, J. and Barroso, L. A. *The Tail at Scale*. Communications of the ACM 56(2), 2013. <https://research.google/pubs/the-tail-at-scale/>. Why P95 and tail latency matter.

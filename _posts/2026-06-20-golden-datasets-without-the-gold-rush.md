@@ -134,7 +134,7 @@ If you're building something similar, the parts I'd keep are these: anchor every
 
 1. Lewis, P. et al. *Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks*. NeurIPS, 2020. <https://arxiv.org/abs/2005.11401>
 2. Es, S. et al. *Ragas: Automated Evaluation of Retrieval Augmented Generation*. arXiv, 2023. <https://arxiv.org/abs/2309.15217>
-3. Saad-Falcon, J. et al. *ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems*. NAACL, 2024. <https://arxiv.org/abs/2311.09476> — synthetic evaluation data plus human annotations.
+3. Saad-Falcon, J. et al. *ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems*. NAACL, 2024. <https://arxiv.org/abs/2311.09476>. Synthetic evaluation data plus human annotations.
 4. Ge, T. et al. *Scaling Synthetic Data Creation with 1,000,000,000 Personas*. arXiv, 2024. <https://arxiv.org/abs/2406.20094>
 5. Zheng, L. et al. *Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena*. NeurIPS Datasets and Benchmarks, 2023. <https://arxiv.org/abs/2306.05685>
-6. Panickssery, A., Bowman, S. R. and Feng, S. *LLM Evaluators Recognize and Favor Their Own Generations*. arXiv, 2024. <https://arxiv.org/abs/2404.13076> — why a model shouldn't grade its own output.
+6. Panickssery, A., Bowman, S. R. and Feng, S. *LLM Evaluators Recognize and Favor Their Own Generations*. arXiv, 2024. <https://arxiv.org/abs/2404.13076>. Why a model shouldn't grade its own output.
