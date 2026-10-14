@@ -269,3 +269,14 @@ For existing blog posts, use the [CMS setup and review guide](CMS.md). The first
 version edits full source in plain text, including YAML front matter, HTML/SVG,
 JavaScript and Liquid. Saves create review PRs and cannot publish from the CMS.
 Keep using GitHub or your local editor for new post filenames, notes and assets.
+
+### Now rows and graph motion
+
+Use `_data/profile.yml` to change the About inspector's Now rows. Rows accept
+`k`, `v` and optional `href`; adding Learning requires no layout change.
+Keep external links as complete HTTPS URLs, including the Tom Misch Spotify
+artist link. Coffee and food recipes remain in their own collections.
+
+The draggable workflow keeps its solid edge and ambient flow paths aligned.
+Use Reset layout to return nodes to their starting positions. Test desktop
+and mobile, plus normal and reduced-motion settings before merging changes.
