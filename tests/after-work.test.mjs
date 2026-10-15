@@ -8,10 +8,10 @@ test('gateway has exactly two active interests and bundled illustrative assets',
  assert.match(s,/after-work\/coffee\//);assert.match(s,/after-work\/food\//);assert.doesNotMatch(s,/aw-laptop|desk-wrap/);
  for(const [,p] of s.matchAll(/include (after-work\/images\/[^ ]+)/g))assert.ok(existsSync(new URL('../_includes/'+p,import.meta.url)),p);
 });
-test('gateway uses the supplied camera, tennis ball and doodle stickers',()=>{
+test('gateway uses the supplied stickers and a reduced set of doodles',()=>{
  const s=read('after-work/index.html');
- for(const n of ['camera','tennis-ball','sparkles','shooting-star','heart','squiggle','loop-arrow','sparkle'])assert.match(s,new RegExp('images/'+n+'\\.html'),n);
- assert.doesNotMatch(s,/headphones|plant|doodle\.html/);
+ for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow'])assert.match(s,new RegExp('images/'+n+'\\.html'),n);
+ assert.doesNotMatch(s,/doodle\.html/);
  assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
  for(const f of ['coffee','food'])assert.match(read('after-work/'+f+'.html'),/doodle="(sparkle|squiggle)"/);
 });
