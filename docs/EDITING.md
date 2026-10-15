@@ -250,7 +250,7 @@ Start each coffee step with `m:ss` to power the "Start brew timer" button, which
 
 ### After Work design
 
-The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. Category markup is shared in `_includes/after-work/category.html`; doodles in `doodle.html`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` are illustrative cutouts, not recipe photos.
+The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. Category markup is shared in `_includes/after-work/category.html`; its title sticker and doodle (`sticker=`, `doodle=`) are names of files in `_includes/after-work/images/`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` (camera, tennis ball and six crayon doodles, plus the Coffee, Cooking and avatar cutouts) are illustrative stickers, not recipe photos. To change a decoration, replace its file there and adjust its `.aw-deco--name` position in `assets/css/after-work-grid.css` (desktop rules, then the mobile block).
 
 Before opening a PR, run `node --test tests/*.test.mjs`, `bundle exec jekyll build` and HTML Proofer. Check gateway → both categories → a real recipe at 320, 390 and 1280px, plus empty categories, missing photos, keyboard focus, light/dark site chrome and reduced motion. No recipe content is shipped just for a screenshot.
 
