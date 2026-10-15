@@ -8,6 +8,13 @@ test('gateway has exactly two active interests and bundled illustrative assets',
  assert.match(s,/after-work\/coffee\//);assert.match(s,/after-work\/food\//);assert.doesNotMatch(s,/aw-laptop|desk-wrap/);
  for(const [,p] of s.matchAll(/include (after-work\/images\/[^ ]+)/g))assert.ok(existsSync(new URL('../_includes/'+p,import.meta.url)),p);
 });
+test('gateway uses the supplied camera, tennis ball and doodle stickers',()=>{
+ const s=read('after-work/index.html');
+ for(const n of ['camera','tennis-ball','sparkles','shooting-star','heart','squiggle','loop-arrow','sparkle'])assert.match(s,new RegExp('images/'+n+'\\.html'),n);
+ assert.doesNotMatch(s,/headphones|plant|doodle\.html/);
+ assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
+ for(const f of ['coffee','food'])assert.match(read('after-work/'+f+'.html'),/doodle="(sparkle|squiggle)"/);
+});
 test('category template is data-driven, with empty, missing-photo and draft states',()=>{
  const s=read('_includes/after-work/category.html');assert.match(s,/include.items \| sort/);assert.match(s,/Photo coming later/);assert.match(s,/Recipe coming later/);assert.match(s,/for r in items/);assert.match(s,/else %}<p class="aw-empty"/);assert.doesNotMatch(s,/coffee\.png|cooking\.png/);
  assert.match(read('after-work/food.html'),/permalink: \/after-work\/food\//);
