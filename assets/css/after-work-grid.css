@@ -14,21 +14,21 @@
 .aw-sticker span { display:flex; align-items:center; min-height:44px; padding:5px 13px; color:#232820; background:#fcf7e9; border-radius:4px; box-shadow:0 5px 8px #0003; font-size:18px; font-weight:600; white-space:nowrap; }
 .aw-sticker--coffee { width:220px; top:65px; left:8%; transform:rotate(-9deg); }
 .aw-sticker--cooking { width:260px; top:350px; right:6%; transform:rotate(8deg); }
-.aw-decoration,.aw-paper { position:absolute; pointer-events:none; }
-.aw-decoration--camera { width:135px; right:6%; top:18px; transform:rotate(12deg); }
-.aw-decoration--music { width:125px; left:7%; top:420px; transform:rotate(-15deg); }
-.aw-decoration--plant { width:90px; left:45%; top:25px; transform:rotate(-8deg); }
-.aw-doodle { display:block; width:100%; height:auto; filter:drop-shadow(0 3px 2px #0003); }
-.aw-paper--lines { width:115px; left:4%; top:300px; transform:rotate(-12deg); }
-.aw-paper--arrow { width:110px; right:25%; top:100px; transform:rotate(8deg); }
-.aw-paper--wave { width:135px; left:40%; top:515px; transform:rotate(4deg); }
-.aw-paper--star { width:86px; right:8%; top:250px; transform:rotate(9deg); }
+.aw-stickers .aw-deco { position:absolute; height:auto; pointer-events:none; }
+.aw-stickers .aw-deco--camera { width:135px; right:6%; top:18px; transform:rotate(12deg); }
+.aw-stickers .aw-deco--tennis { width:105px; left:9%; top:490px; transform:rotate(-14deg); }
+.aw-stickers .aw-deco--shooting-star { width:130px; left:42%; top:30px; transform:rotate(-6deg); }
+.aw-stickers .aw-deco--sparkles { width:105px; left:3%; top:350px; transform:rotate(-8deg); }
+.aw-stickers .aw-deco--loop-arrow { width:120px; right:26%; top:105px; transform:rotate(4deg); }
+.aw-stickers .aw-deco--squiggle { width:130px; left:38%; top:535px; transform:rotate(4deg); }
+.aw-stickers .aw-deco--sparkle { width:70px; right:8%; top:250px; transform:rotate(9deg); }
+.aw-stickers .aw-deco--heart { width:80px; right:30%; top:560px; transform:rotate(-10deg); }
 .aw-art-note { margin:0; padding-top:16px; font-size:11px; }
 .aw-category-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin:0 0 28px; }
 .aw-category-title { display:flex; align-items:center; gap:14px; }
 .aw-category-title h1 { font-size:clamp(34px,5vw,58px); margin:0; letter-spacing:-.035em; }
 .aw-category-title>img { width:70px; height:70px; object-fit:contain; }
-.aw-category-title>.aw-doodle { width:78px; height:45px; transform:rotate(-7deg); }
+.aw-category-title>.aw-category-title__doodle { transform:rotate(-7deg); }
 .aw-switch { display:flex; gap:12px; }
 .aw-switch a { min-height:44px; padding:0 14px; border:1px solid var(--aw-rule); border-radius:24px; text-decoration:none; display:flex; align-items:center; font-size:13px; }
 .aw-switch a[aria-current] { background:#e8eddb; color:#252b23; font-weight:600; }
@@ -55,16 +55,16 @@
  .aw-sticker--coffee { width:100px; top:20px; left:4%; }
  .aw-sticker--cooking { width:110px; top:440px; right:2%; }
  .aw-sticker span { padding:5px 9px; font-size:14px; }
- .aw-decoration--camera { width:72px; top:22px; right:3%; }
- .aw-decoration--music { width:64px; right:0; left:auto; top:175px; }
- .aw-decoration--plant { width:68px; left:2%; top:430px; }
- .aw-paper--lines { left:3%; top:215px; width:68px; }
- .aw-paper--arrow { right:25%; top:135px; width:65px; }
- .aw-paper--wave { left:28%; top:460px; width:80px; }
- .aw-paper--star { right:7%; top:360px; width:54px; }
+ .aw-stickers .aw-deco--camera { width:72px; top:22px; right:3%; }
+ .aw-stickers .aw-deco--tennis { width:60px; left:3%; top:175px; }
+ .aw-stickers .aw-deco--shooting-star { width:78px; left:34%; top:22px; }
+ .aw-stickers .aw-deco--sparkles { left:3%; top:262px; width:62px; }
+ .aw-stickers .aw-deco--loop-arrow { right:24%; top:135px; width:70px; }
+ .aw-stickers .aw-deco--squiggle { left:24%; top:500px; width:78px; }
+ .aw-stickers .aw-deco--sparkle { right:6%; top:330px; width:46px; }
+ .aw-stickers .aw-deco--heart { left:6%; top:440px; width:50px; }
  .aw-category-title { gap:8px; }
  .aw-category-title>img { width:44px; height:44px; }
- .aw-category-title>.aw-doodle { width:44px; height:30px; }
  .aw-menu { grid-template-columns:1fr; }
 }
 @media(prefers-reduced-motion:reduce){.aw-sticker{transition:none}.aw-sticker:hover{translate:none}}
