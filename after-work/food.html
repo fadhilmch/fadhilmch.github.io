@@ -1,21 +1,9 @@
 ---
 layout: base
-title: Food
+title: Cooking
 nav: after-work
+section: food
 description: Dishes I cook at home.
 permalink: /after-work/food/
 ---
-<div class="aw-page">
-  <a class="back-link" href="{{ '/after-work/' | relative_url }}">← After work</a>
-  <header class="aw-head"><p class="eyebrow">after work<span>/</span>food</p><h1>Food</h1><p class="intro">Dishes I cook at home.</p></header>
-  {%- assign items = site.food | sort: 'title' -%}
-  <div class="menu">
-    {%- for r in items %}
-    <a class="menu-card" href="{{ r.url | relative_url }}">
-      <h2>{{ r.title | escape }}</h2>
-      {% include after-work/spec.html r=r %}
-      <span class="menu-card__go" aria-hidden="true">open →</span>
-    </a>
-    {%- else %}<p class="intro">Nothing here yet.</p>{% endfor %}
-  </div>
-</div>
+{% include after-work/category.html items=site.food sticker="cooking-cutout" doodle="wave" %}
