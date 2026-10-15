@@ -222,7 +222,7 @@ A lane with `branch: false` (like `meta`) groups notes in the explorer but gets 
 
 ## Add a coffee or food recipe
 
-Recipes live in two collections: `_coffee/` and `_food/`. The filename is the URL slug (`_coffee/my-v60.md` becomes `/after-work/coffee/my-v60/`). Copy the `todo-*` placeholder and replace every `TODO`.
+Recipes live in two collections: `_coffee/` and `_food/`. The filename is the URL slug (`_coffee/my-v60.md` becomes `/after-work/coffee/my-v60/`). Create a new Markdown file with front matter and recipe details. The collections may be empty; the category pages show an honest empty state. Do not restore deleted placeholder recipes.
 
 ```markdown
 ---
@@ -238,11 +238,21 @@ steps:
   - "0:00 bloom 50g"
   - "0:45 pour to 150g"
   - "3:00 done"
+photo: /assets/recipes/my-v60.webp # optional, your actual image
+photo_alt: V60 brewer on the kitchen counter
+photo_credit: Photo by Fadhil # optional
+status: published # use draft to show Recipe coming later
 notes: Anything worth remembering.
 ---
 ```
 
-Start each coffee step with `m:ss` to power the "Start brew timer" button, which highlights the current step. Food recipes use `title`, `cuisine`, `serves`, `time`, `ingredients` (list), `steps` (list) and `notes`. Delete the placeholder when you add the real recipe.
+Start each coffee step with `m:ss` to power the "Start brew timer" button, which highlights the current step. Food recipes use `title`, `cuisine`, `serves`, `time`, `ingredients` (list), `steps` (list) and `notes`. Missing photos show a neutral "Photo coming later" panel, never a sample presented as your photo. Draft entries suppress specs/ingredients/steps until ready. Real photos appear on both category cards and entry pages. A Markdown body is optional and appears after the structured recipe.
+
+### After Work design
+
+The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. Category markup is shared in `_includes/after-work/category.html`; doodles in `doodle.html`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` are illustrative cutouts, not recipe photos.
+
+Before opening a PR, run `node --test tests/*.test.mjs`, `bundle exec jekyll build` and HTML Proofer. Check gateway → both categories → a real recipe at 320, 390 and 1280px, plus empty categories, missing photos, keyboard focus, light/dark site chrome and reduced motion. No recipe content is shipped just for a screenshot.
 
 ## What not to edit
 
@@ -280,3 +290,6 @@ artist link. Coffee and food recipes remain in their own collections.
 The draggable workflow keeps its solid edge and ambient flow paths aligned.
 Use Reset layout to return nodes to their starting positions. Test desktop
 and mobile, plus normal and reduced-motion settings before merging changes.
+
+Illustration WebPs are embedded as data URIs in `_includes/after-work/images/`
+to support text-editor commits. Keep those bytes unchanged when editing templates.
