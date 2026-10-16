@@ -12,6 +12,7 @@ permalink: /after-work/
 {%- endcomment -%}
 {%- assign layout = site.data.after_work_layout -%}
 <div class="aw-page aw-page--gateway aw-grid">
+  <svg class="aw-defs" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><filter id="aw-cut" x="-30%" y="-70%" width="170%" height="240%" color-interpolation-filters="sRGB"><feMorphology in="SourceAlpha" operator="dilate" radius="4" result="d"/><feGaussianBlur in="d" stdDeviation="3" result="b"/><feComponentTransfer in="b" result="t"><feFuncA type="linear" slope="14" intercept="-5"/></feComponentTransfer><feFlood flood-color="#fbfaf5" result="w"/><feComposite in="w" in2="t" operator="in" result="c"/><feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge></filter></svg>
   <header class="aw-head"><h1><span class="aw-w1">After</span> <span class="aw-accent aw-w2">work</span> <span class="aw-w3" aria-hidden="true">↙</span></h1><p>Welcome to my life after work.</p></header>
   <section class="aw-board" style="--dbw:{{ layout.boards.desktop.w }};--dbh:{{ layout.boards.desktop.h }};--mbw:{{ layout.boards.mobile.w }};--mbh:{{ layout.boards.mobile.h }}">
     <div class="aw-stickers" aria-label="Interests" data-attached='{{ layout.attached | jsonify }}' data-min-gap='{{ layout.min_gap | jsonify }}' data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
