@@ -128,3 +128,8 @@ are not part of this design change. See [the editing guide](docs/EDITING.md#afte
 
 Illustration WebPs are embedded as data URIs in `_includes/after-work/images/`
 to support text-editor commits. Keep those bytes unchanged when editing templates.
+
+The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
+(desktop and phone layouts, outline-based spacing checks, publish through a pull request).
+Visitors get an optional Play/Reset mode that is never saved. Details:
+[layout editor](docs/EDITING.md#after-work-layout-editor).
