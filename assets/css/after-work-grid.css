@@ -54,18 +54,19 @@
 .aw-item img, img.aw-item { height:auto; object-fit:contain; filter:drop-shadow(0 2px 2px #0005) drop-shadow(0 9px 12px #0004); pointer-events:none; }
 img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); pointer-events:none; }
 .aw-sticker { flex-direction:column; align-items:center; gap:calc(6*var(--u)); text-decoration:none; transition:translate .2s,scale .2s; }
-/* Link labels are cream pills (the old hover tag, now always visible) below the art, 12px clear of it. --aw-pill-shift is a per-sticker optical offset for art whose visual center is not its box center (the Coffee handle widens the box to the right). Hover and focus still lift the whole sticker. */
-.aw-label { position:relative; left:var(--aw-pill-shift,0); margin-top:calc(12px - 6*var(--u)); padding:3px 10px; border-radius:999px; background:#fff8e6; color:#232820; font-size:12px; font-weight:600; line-height:1.4; white-space:nowrap; box-shadow:0 3px 6px #0005; }
+/* Link labels are cream pills (the old hover tag, now always visible) below the art, 12px clear of it. --aw-pill-shift is a per-sticker optical offset for art whose visual center is not its box center (the Coffee handle widens the box to the right). On hover and keyboard focus the sticker stays still and only the pill reacts: it lifts 3px, grows 10%, turns pink-cream and its shadow deepens. */
+.aw-label { position:relative; left:var(--aw-pill-shift,0); margin-top:calc(12px - 6*var(--u)); padding:3px 10px; border-radius:999px; background:#fff8e6; color:#232820; font-size:12px; font-weight:600; line-height:1.4; white-space:nowrap; box-shadow:0 3px 6px #0005; transition:translate .2s,scale .2s,background-color .2s,box-shadow .2s; }
 .aw-sticker--coffee { --aw-pill-shift:-8%; }
 .aw-steam { position:absolute; left:34%; top:-14%; width:30%; height:22%; pointer-events:none; }
 .aw-steam b { position:absolute; bottom:0; width:6%; height:100%; border-radius:99px; background:linear-gradient(#fff0,#ffffffb0); opacity:0; filter:blur(1.5px); animation:aw-steam 2.8s ease-in-out infinite; }
 .aw-steam b:nth-child(1) { left:10%; } .aw-steam b:nth-child(2) { left:44%; animation-delay:.9s; } .aw-steam b:nth-child(3) { left:78%; animation-delay:1.8s; }
 @keyframes aw-steam { 0% { opacity:0; transform:translateY(20%) scaleY(.6); } 30% { opacity:.7; } 100% { opacity:0; transform:translateY(-60%) scaleY(1.1); } }
 @media(hover:hover){
- .aw-sticker:hover { translate:0 calc(-7*var(--u)); scale:1.04; }
+ .aw-sticker:hover .aw-label { translate:0 -3px; scale:1.1; background:#ffe1d6; box-shadow:0 5px 10px #0007; }
 }
-.aw-sticker:focus-visible { translate:0 calc(-7*var(--u)); scale:1.04; }
-.aw-sticker:active { translate:0 calc(-3*var(--u)); scale:1.02; }
+.aw-sticker:focus-visible { outline:none; }
+.aw-sticker:focus-visible .aw-label { translate:0 -3px; scale:1.1; background:#ffe1d6; box-shadow:0 5px 10px #0007; }
+.aw-sticker:active .aw-label { translate:0 -1px; scale:1.05; background:#ffe1d6; }
 @keyframes aw-blink { 50% { opacity:0; } }
 .aw-page--gateway { max-width:1248px; padding-top:12px; }
 /* ---- owner editor (/after-work/?edit) ---- */
@@ -92,7 +93,7 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 .aw-editor fieldset { border:1px solid #ffffff24; border-radius:10px; margin:8px 0; }
 .aw-editor ul, .aw-editor ol { margin:4px 0; padding-left:18px; } .aw-editor .is-ok { list-style:none; margin-left:-18px; color:#9be6b8; }
 .aw-editor__warn { color:#ffb39f; } .aw-editor__hint { color:#b2b7aa; }
-@media(prefers-reduced-motion:reduce){ .aw-sticker { transition:none; } .aw-steam b { animation:none; } .aw-steam { display:none; } }
+@media(prefers-reduced-motion:reduce){ .aw-sticker, .aw-label { transition:none; } .aw-steam b { animation:none; } .aw-steam { display:none; } }
 .aw-head p { min-height:1.5em; }
 .aw-typed { font-family:var(--mono, ui-monospace, monospace); }
 .aw-head p.is-typing .aw-typed::after { content:""; display:inline-block; width:.55em; height:1em; margin-left:2px; vertical-align:-.15em; background:#c5d788; animation:aw-caret 1s steps(1) infinite; }
