@@ -13,7 +13,7 @@ test('gateway has exactly two links, Coffee and Cooking, first in the markup',()
 });
 test('gateway uses the supplied stickers and a reduced set of doodles',()=>{
  const ids=layout().items.map(i=>i.asset);
- for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow','avatar-cutout','coffee-cutout','cooking-cutout'])assert.ok(ids.includes(n),n);
+ for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow','avatar-cutout','coffee-pourover','cooking-cutout'])assert.ok(ids.includes(n),n);
  assert.equal(layout().items.filter(i=>i.type==='deco'&&/sparkles|loop-arrow|shooting-star/.test(i.asset)).length,4);
  for(const n of ['heart','sparkle','squiggle'])assert.ok(ids.includes(n),n);
  assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
@@ -50,7 +50,7 @@ test('non-timed or empty recipes never expose a non-working timer',()=>{
 });
 
 test('gateway title keeps a stable accent class and the header icon has open and closed shapes',()=>{
- assert.match(read('after-work/index.html'),/<span class="aw-accent">work<\/span>/);
+ assert.match(read('after-work/index.html'),/<span class="aw-accent[^"]*">work<\/span>/);
  assert.match(read('_includes/header.html'),/class="mt-open"[\s\S]*class="mt-shut"/);
 });
 test('sticker effects: entrance, shake and tilt are off for reduced motion and in edit mode, and never block links',()=>{
@@ -78,4 +78,11 @@ test('header: lamp button is roomy with a hover state, laptop pictures share one
  assert.match(b,/\.theme-toggle:hover img \{ transform/);
  assert.match(m,/\.mt-img img \{[^}]*width:100%; height:auto/);
  assert.match(h,/theme-color" content="\{% if page\.nav == 'after-work' %\}#171e19/);
+});
+test('title words and arrow fade in once, only when motion is allowed',()=>{
+ const s=read('after-work/index.html'),c=read('assets/css/after-work-grid.css');
+ for(const k of['aw-w1','aw-w2','aw-w3'])assert.match(s,new RegExp(k));
+ assert.match(s,/aw-w3" aria-hidden="true">↙/);
+ assert.match(c,/@media \(prefers-reduced-motion:no-preference\) \{[^@]*aw-w3[^@]*animation:aw-title-in/);
+ assert.doesNotMatch(c,/aw-title-in[^;]*infinite/);
 });
