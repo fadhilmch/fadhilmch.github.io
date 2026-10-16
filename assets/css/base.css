@@ -32,7 +32,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 .theme-toggle:hover img { transform: scale(1.05); }
 .theme-toggle:active { box-shadow: inset 0 3px 7px rgb(0 0 0 / .6); }
 .theme-toggle:active img { transform: scale(.97); }
-[data-theme="light"] .theme-toggle { box-shadow: inset 0 2px 4px rgb(0 0 0 / .18), inset 0 -1px 0 rgb(255 255 255 / .08), 0 1px 0 rgb(255 255 255 / .1); }
+[data-theme="light"] body:not(.is-after-work) .theme-toggle { background-image: none; border-color: var(--line); box-shadow: inset 0 1px 2px rgb(70 55 30 / .10), 0 1px 0 rgb(255 255 255 / .7); }
+[data-theme="light"] body:not(.is-after-work) .theme-toggle:hover, [data-theme="light"] body:not(.is-after-work) .theme-toggle:focus-visible { background: var(--panel); border-color: var(--fg); box-shadow: inset 0 1px 2px rgb(70 55 30 / .14), 0 1px 0 rgb(255 255 255 / .7); }
+[data-theme="light"] body:not(.is-after-work) .theme-toggle:active { box-shadow: inset 0 2px 3px rgb(70 55 30 / .18); }
 /* Lamp: unlit in light mode, lit in dark mode. */
 .theme-toggle .theme-toggle__on, [data-theme="dark"] .theme-toggle .theme-toggle__off { display: none; }
 [data-theme="dark"] .theme-toggle__on { display: block; }
