@@ -20,7 +20,7 @@
    "id": "coffee",
    "type": "link",
    "asset": "coffee-pourover",
-   "label": "Coffee ↗",
+   "label": "Coffee",
    "tag": "coffee recipes →",
    "href": "/after-work/coffee/",
    "desktop": {
@@ -54,7 +54,7 @@
    "id": "cooking",
    "type": "link",
    "asset": "cooking-cutout",
-   "label": "Cooking ↗",
+   "label": "Cooking",
    "tag": "food →",
    "href": "/after-work/food/",
    "desktop": {

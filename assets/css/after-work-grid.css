@@ -50,8 +50,10 @@
 .aw-item img, img.aw-item { height:auto; object-fit:contain; filter:drop-shadow(0 2px 2px #0005) drop-shadow(0 9px 12px #0004); pointer-events:none; }
 img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); pointer-events:none; }
 .aw-sticker { flex-direction:column; align-items:center; gap:calc(6*var(--u)); text-decoration:none; transition:translate .2s,scale .2s; }
-.aw-label { display:flex; align-items:center; justify-content:center; width:calc(var(--lw)*var(--u)); height:calc(var(--lh)*var(--u)); box-sizing:border-box; color:#232820; background:#fff8e6; border-radius:999px;
- box-shadow:0 0 0 calc(4*var(--u)) #fff, 0 calc(7*var(--u)) calc(10*var(--u)) calc(2*var(--u)) #0006; font-size:calc(var(--lh)*var(--u)*.34); font-weight:700; letter-spacing:.01em; white-space:nowrap; }
+/* Link labels are die-cut stickers: Oswald Bold caps in a cream cut line, with a raised edge so they read as a button. The #aw-cut filter lives in after-work/index.html. */
+.aw-label { display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:auto; min-width:calc(var(--lw)*var(--u)*.78); height:calc(var(--lh)*var(--u)*.72); margin-top:calc(-6*var(--u)); padding:0 16px; color:#1b1d1a; background:none;
+ filter:url(#aw-cut) drop-shadow(0 3px 0 #bdb7a2) drop-shadow(0 1px 0 #d8d4c6) drop-shadow(0 7px 8px #000a); font-family:'Oswald','Arial Narrow',sans-serif; font-size:2.34em; font-weight:700; line-height:1.1; text-transform:uppercase; letter-spacing:.03em; white-space:nowrap; }
+@container aw-board (max-width:660px) { .aw-label { font-size:1.95em; } }
 .aw-tag { position:absolute; left:50%; top:0; translate:-50% -115%; padding:3px 10px; border-radius:999px; background:#fff8e6; color:#232820; font-size:12px; font-weight:600; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .2s; box-shadow:0 3px 6px #0005; }
 .aw-steam { position:absolute; left:34%; top:-14%; width:30%; height:22%; pointer-events:none; }
 .aw-steam b { position:absolute; bottom:0; width:6%; height:100%; border-radius:99px; background:linear-gradient(#fff0,#ffffffb0); opacity:0; filter:blur(1.5px); animation:aw-steam 2.8s ease-in-out infinite; }
@@ -60,7 +62,6 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 @media(hover:hover){
  .aw-sticker:hover { translate:0 calc(-7*var(--u)); scale:1.04; }
  .aw-sticker:hover .aw-tag { opacity:1; }
- .aw-sticker:hover .aw-label { box-shadow:0 0 0 calc(4*var(--u)) #fff, 0 calc(11*var(--u)) calc(14*var(--u)) calc(2*var(--u)) #0006; }
 }
 .aw-sticker:focus-visible { translate:0 calc(-7*var(--u)); scale:1.04; }
 .aw-sticker:focus-visible .aw-tag { opacity:1; }
