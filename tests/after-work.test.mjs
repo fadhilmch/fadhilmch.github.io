@@ -3,17 +3,25 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import vm from 'node:vm';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
-test('gateway has exactly two active interests and bundled illustrative assets',()=>{
- const s=read('after-work/index.html');assert.equal((s.match(/<a /g)||[]).length,2);
- assert.match(s,/after-work\/coffee\//);assert.match(s,/after-work\/food\//);assert.doesNotMatch(s,/aw-laptop|desk-wrap/);
- for(const [,p] of s.matchAll(/include (after-work\/images\/[^ ]+)/g))assert.ok(existsSync(new URL('../_includes/'+p,import.meta.url)),p);
+const layout=()=>JSON.parse(read('_data/after_work_layout.json'));
+test('gateway has exactly two links, Coffee and Cooking, first in the markup',()=>{
+ const items=layout().items,links=items.filter(i=>i.type==='link');
+ assert.deepEqual(links.map(i=>i.href),['/after-work/coffee/','/after-work/food/']);
+ assert.deepEqual(items.slice(0,2).map(i=>i.id),['coffee','cooking']);
+ const s=read('after-work/index.html');assert.match(s,/layout\.items/);assert.doesNotMatch(s,/href="\/after-work\/(coffee|food)/);
+ for(const i of items)assert.ok(existsSync(new URL('../_includes/after-work/images/'+i.asset+'.html',import.meta.url)),i.asset);
 });
 test('gateway uses the supplied stickers and a reduced set of doodles',()=>{
- const s=read('after-work/index.html');
- for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow'])assert.match(s,new RegExp('images/'+n+'\\.html'),n);
- assert.doesNotMatch(s,/doodle\.html/);
+ const ids=layout().items.map(i=>i.asset);
+ for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow','avatar-cutout','coffee-cutout','cooking-cutout'])assert.ok(ids.includes(n),n);
+ assert.equal(layout().items.filter(i=>i.type==='deco'&&/sparkles|loop-arrow|shooting-star/.test(i.asset)).length,3);
  assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
  for(const f of ['coffee','food'])assert.match(read('after-work/'+f+'.html'),/doodle="(sparkle|squiggle)"/);
+});
+test('the laptop is the only decoration that is a control, and comes last for tab order',()=>{
+ const items=layout().items;assert.equal(items[items.length-1].action,'terminal');
+ assert.equal(items.filter(i=>i.action).length,1);
+ const s=read('after-work/index.html');assert.match(s,/role="button" tabindex="0"/);assert.match(s,/type="module"/);
 });
 test('category template is data-driven, with empty, missing-photo and draft states',()=>{
  const s=read('_includes/after-work/category.html');assert.match(s,/include.items \| sort/);assert.match(s,/Photo coming later/);assert.match(s,/Recipe coming later/);assert.match(s,/for r in items/);assert.match(s,/else %}<p class="aw-empty"/);assert.doesNotMatch(s,/coffee\.png|cooking\.png/);
