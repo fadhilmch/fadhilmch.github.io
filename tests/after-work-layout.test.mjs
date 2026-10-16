@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { checkLayout, decodeShape } from '../assets/js/after-work-layout.js';
 import { createHistory, updateItem, attachPair, detachPair, moveToFront, moveToBack, exportLayout, normalizePlace, LIMITS } from '../assets/js/after-work-edit-state.js';
-import { typeLine, LINE } from '../assets/js/after-work-terminal.js';
+import { typeLine } from '../assets/js/after-work-terminal.js';
 
 const read = (p) => JSON.parse(readFileSync(new URL('../' + p, import.meta.url), 'utf8'));
 const layout = () => read('_data/after_work_layout.json');
@@ -93,8 +93,8 @@ test('terminal line types one character at a time, or at once with reduced motio
   typeLine('abc', (t) => seen.push(t), { schedule: (fn) => { tick = fn; return 1; }, cancel: () => { tick = null; } });
   tick(); tick(); tick();
   assert.deepEqual(seen, ['', 'a', 'ab', 'abc']);
-  const instant = []; typeLine(LINE, (t) => instant.push(t), { reduce: true });
-  assert.deepEqual(instant, [LINE]);
+  const instant = []; typeLine('> pick', (t) => instant.push(t), { reduce: true });
+  assert.deepEqual(instant, ['> pick']);
 });
 
 test('site editor field: raw layout format, save gate and collection wiring', async () => {

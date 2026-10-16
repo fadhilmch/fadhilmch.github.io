@@ -11,8 +11,8 @@ permalink: /after-work/
   Coffee and Cooking are first in tab order.
 {%- endcomment -%}
 {%- assign layout = site.data.after_work_layout -%}
-<div class="aw-page aw-grid">
-  <header class="aw-head"><h1>After <span>work</span> <span aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
+<div class="aw-page aw-page--gateway aw-grid">
+  <header class="aw-head"><h1>After <span class="aw-accent">work</span> <span aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
   <section class="aw-board" style="--dbw:{{ layout.boards.desktop.w }};--dbh:{{ layout.boards.desktop.h }};--mbw:{{ layout.boards.mobile.w }};--mbh:{{ layout.boards.mobile.h }}">
     <div class="aw-stickers" aria-label="Interests" data-attached='{{ layout.attached | jsonify }}' data-min-gap='{{ layout.min_gap | jsonify }}' data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
 {%- for it in layout.items -%}
@@ -22,19 +22,15 @@ permalink: /after-work/
       <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.label }}</span><span class="aw-tag" aria-hidden="true">{{ it.tag }}</span></a>
 {%- elsif it.type == 'avatar' %}
       <div class="aw-item aw-avatar" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="{{ it.alt }}" draggable="false"></div>
-{%- elsif it.action == 'terminal' %}
-      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" data-aw-action="terminal" role="button" tabindex="0" aria-label="Laptop. Activate to see what is on the screen" src="{% include {{ file }} %}" alt="" draggable="false" style="{{ vars }}">
+{%- elsif it.action == 'bounce' %}
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" data-aw-action="bounce" role="button" tabindex="0" aria-label="Tennis ball. Activate to bounce it" src="{% include {{ file }} %}" alt="" draggable="false" style="{{ vars }}">
 {%- else %}
       <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" src="{% include {{ file }} %}" alt="" aria-hidden="true" draggable="false" style="{{ vars }}">
 {%- endif -%}
 {%- endfor %}
     </div>
-    <div class="aw-tools">
-      <button type="button" class="aw-btn" data-aw-play aria-pressed="false" hidden>Play</button>
-      <button type="button" class="aw-btn" data-aw-reset hidden>Reset</button>
-    </div>
   </section>
-  <p class="aw-art-note">Illustrative stickers. Play moves things around for fun and is never saved.</p>
+  <p class="aw-art-note">Illustrative stickers.</p>
 </div>
 <script type="application/json" id="aw-layout">{{ layout | jsonify }}</script>
 <script type="module" src="{{ '/assets/js/after-work-gateway.js' | relative_url }}"></script>

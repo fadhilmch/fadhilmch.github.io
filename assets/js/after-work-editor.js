@@ -44,7 +44,6 @@ export async function initEditor(stickers) {
   let selected = null, problems = [], timer = 0, savedNote = '';
 
   document.body.classList.add('aw-editing');
-  document.querySelectorAll('[data-aw-play], [data-aw-reset]').forEach((n) => { n.hidden = true; });
   const items = new Map([...stickers.querySelectorAll('[data-aw-id]')].map((n) => [n.dataset.awId, n]));
   items.forEach((n) => { n.tabIndex = 0; });
   const handles = el('div', { className: 'aw-item aw-handles', hidden: true },
