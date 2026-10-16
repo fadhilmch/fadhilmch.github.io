@@ -13,7 +13,7 @@
     <a href="{{ '/notes/' | relative_url }}"{% if page.nav == 'notes' %} aria-current="page"{% endif %}>Notes</a>
     {%- assign aw_closed = false -%}{%- if page.nav == 'after-work' %}{% assign aw_closed = true %}{% endif -%}
     <a class="mode-toggle{% if aw_closed %} is-closed{% endif %}" href="{% if aw_closed %}{{ '/' | relative_url }}{% else %}{{ '/after-work/' | relative_url }}{% endif %}" data-mode-toggle="{% if aw_closed %}open{% else %}close{% endif %}" aria-label="{% if aw_closed %}Open the laptop and go to the main page{% else %}Close the laptop and go to After work{% endif %}">
-      <span class="mt-img" aria-hidden="true"><img class="mt-open" src="{{ '/assets/images/ui/laptop-open.png' | relative_url }}" alt="" width="36" height="31"><img class="mt-half" src="{{ '/assets/images/ui/laptop-half.png' | relative_url }}" alt="" width="36" height="31"><img class="mt-shut" src="{{ '/assets/images/ui/laptop-closed.png' | relative_url }}" alt="" width="36" height="31"></span>
+      <span class="mt-img" aria-hidden="true"><img class="mt-open" src="{{ '/assets/images/ui/laptop-open.svg' | relative_url }}" alt="" width="36" height="31"><img class="mt-half" src="{{ '/assets/images/ui/laptop-half.svg' | relative_url }}" alt="" width="36" height="31"><img class="mt-shut" src="{{ '/assets/images/ui/laptop-closed.svg' | relative_url }}" alt="" width="36" height="31"></span>
     </a>
   </nav>
   {% include theme-toggle.html %}
