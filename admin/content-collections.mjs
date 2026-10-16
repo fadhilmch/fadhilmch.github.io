@@ -87,7 +87,7 @@ const recipeExtraFields = [
     { label: 'Published', value: 'published' }, { label: 'Draft (shows "Recipe coming later")', value: 'draft' },
   ] }),
   list('tags', 'Tags', undefined, { required: false, hint: 'Short labels shown as filter chips on the list page, e.g. pour-over, weeknight.' }),
-  field('photo', 'Photo path', 'string', { required: false, hint: 'Path to an image already in the repo, for example /assets/recipes/my-recipe.webp. Photo upload is not enabled in this editor. Leave empty to show "Photo coming later".' }),
+  field('photo', 'Photo', 'image', { required: false, media_folder: '/assets/recipes', public_folder: '/assets/recipes', choose_url: false, hint: 'Choose or drop a photo. It is converted to WebP and saved in assets/recipes. Best as a landscape 3:2 photo, up to 2 MB. Leave empty to show "Photo coming later".' }),
   field('photo_alt', 'Photo description', 'string', { required: false, hint: 'Describe the photo for screen readers.' }),
   field('photo_credit', 'Photo credit', 'string', { required: false, hint: 'Shown under the photo, for example Photo by Fadhil.' }),
 ];
