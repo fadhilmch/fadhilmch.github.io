@@ -131,5 +131,5 @@ to support text-editor commits. Keep those bytes unchanged when editing template
 
 The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
 (desktop and phone layouts, outline-based spacing checks, publish through a pull request).
-Visitors get an optional Play/Reset mode that is never saved. Details:
+The tennis ball on the gateway gives one quiet bounce on tap (no sound, off for reduced motion). Details:
 [layout editor](docs/EDITING.md#after-work-layout-editor).
