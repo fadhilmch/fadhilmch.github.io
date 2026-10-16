@@ -12,7 +12,7 @@ permalink: /after-work/
 {%- endcomment -%}
 {%- assign layout = site.data.after_work_layout -%}
 <div class="aw-page aw-page--gateway aw-grid">
-  <header class="aw-head"><h1>After <span class="aw-accent">work</span> <span aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
+  <header class="aw-head"><h1><span class="aw-w1">After</span> <span class="aw-accent aw-w2">work</span> <span class="aw-w3" aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
   <section class="aw-board" style="--dbw:{{ layout.boards.desktop.w }};--dbh:{{ layout.boards.desktop.h }};--mbw:{{ layout.boards.mobile.w }};--mbh:{{ layout.boards.mobile.h }}">
     <div class="aw-stickers" aria-label="Interests" data-attached='{{ layout.attached | jsonify }}' data-min-gap='{{ layout.min_gap | jsonify }}' data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
 {%- for it in layout.items -%}
