@@ -131,5 +131,5 @@ to support text-editor commits. Keep those bytes unchanged when editing template
 
 The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
 (desktop and phone layouts, outline-based spacing checks, publish through a pull request).
-The tennis ball on the gateway gives one quiet bounce on tap (no sound, off for reduced motion). Details:
+The tennis ball on the gateway gives one quiet bounce on tap (no sound, off for reduced motion). The title resolves from symbols once on load (`after-work-title.js`, off for reduced motion, plain text kept for screen readers), and the header laptop icon is an open laptop on the main site and a flat closed slab on After work. Details:
 [layout editor](docs/EDITING.md#after-work-layout-editor).
