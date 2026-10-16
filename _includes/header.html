@@ -10,10 +10,12 @@
     <a href="{{ '/posts/' | relative_url }}"{% if page.nav == 'posts' %} aria-current="page"{% endif %}>Posts</a>
     <a href="{{ '/projects/' | relative_url }}"{% if page.nav == 'projects' %} aria-current="page"{% endif %}>Projects</a>
     <a href="{{ '/notes/' | relative_url }}"{% if page.nav == 'notes' %} aria-current="page"{% endif %}>Notes</a>
+  </nav>
+  <div class="header-tools">
     {%- assign aw_closed = false -%}{%- if page.nav == 'after-work' %}{% assign aw_closed = true %}{% endif -%}
     <a class="mode-toggle{% if aw_closed %} is-closed{% endif %}" href="{% if aw_closed %}{{ '/' | relative_url }}{% else %}{{ '/after-work/' | relative_url }}{% endif %}" data-mode-toggle="{% if aw_closed %}open{% else %}close{% endif %}" aria-label="{% if aw_closed %}Open the laptop and go to the main page{% else %}Close the laptop and go to After work{% endif %}">
-      <span class="mt-img" aria-hidden="true"><img class="mt-open" src="{{ '/assets/images/ui/laptop-open.svg' | relative_url }}" alt="" width="36" height="31"><img class="mt-half" src="{{ '/assets/images/ui/laptop-half.svg' | relative_url }}" alt="" width="36" height="31"><img class="mt-shut" src="{{ '/assets/images/ui/laptop-closed.svg' | relative_url }}" alt="" width="36" height="31"></span>
+      <span class="mt-img" aria-hidden="true"><img class="mt-open" src="{{ '/assets/images/ui/laptop-open.svg' | relative_url }}" alt="" width="28" height="24"><img class="mt-half" src="{{ '/assets/images/ui/laptop-half.svg' | relative_url }}" alt="" width="28" height="24"><img class="mt-shut" src="{{ '/assets/images/ui/laptop-closed.svg' | relative_url }}" alt="" width="28" height="24"></span>
     </a>
-  </nav>
-  {% include theme-toggle.html %}
+    {% include theme-toggle.html %}
+  </div>
 </header>
