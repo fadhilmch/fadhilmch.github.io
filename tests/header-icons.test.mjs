@@ -5,8 +5,8 @@ const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 test('header laptop and lamp use the shipped pictures',()=>{
  const h=read('_includes/header.html')+read('_includes/theme-toggle.html');
  for(const n of ['laptop-open','laptop-half','laptop-closed','lamp-on','lamp-off']){
-  assert.ok(existsSync(new URL('../assets/images/ui/'+n+'.png',import.meta.url)),n);
-  assert.ok(h.includes('/assets/images/ui/'+n+'.png'),n);
+  assert.ok(existsSync(new URL('../assets/images/ui/'+n+'.svg',import.meta.url)),n);
+  assert.ok(h.includes('/assets/images/ui/'+n+'.svg'),n);
  }
 });
 test('laptop images are decorative and the link keeps its label',()=>{
