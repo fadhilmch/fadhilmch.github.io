@@ -38,3 +38,21 @@ export function initTerminal(stickers, laptop) {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); run(); }
   });
 }
+
+// Subtitle under the title: types its line once with a caret, in the same style as the laptop chip.
+// Screen readers get the line from the start. Reduced motion shows it at once.
+export function initSubtitle(p) {
+  const text = p.textContent.trim();
+  p.setAttribute('aria-label', text);
+  const out = document.createElement('span');
+  out.setAttribute('aria-hidden', 'true');
+  out.className = 'aw-typed';
+  p.textContent = '';
+  p.append(out);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { out.textContent = '> ' + text; return; }
+  p.classList.add('is-typing');
+  typeLine('> ' + text, (v) => { out.textContent = v; }, {
+    delay: 45, cancel: (id) => { clearInterval(id); setTimeout(() => p.classList.remove('is-typing'), 900); },
+  });
+}

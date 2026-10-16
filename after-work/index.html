@@ -14,18 +14,18 @@ permalink: /after-work/
 <div class="aw-page aw-grid">
   <header class="aw-head"><h1>After <span>work</span> <span aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
   <section class="aw-board" style="--dbw:{{ layout.boards.desktop.w }};--dbh:{{ layout.boards.desktop.h }};--mbw:{{ layout.boards.mobile.w }};--mbh:{{ layout.boards.mobile.h }}">
-    <div class="aw-stickers" aria-label="Interests" data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
+    <div class="aw-stickers" aria-label="Interests" data-attached='{{ layout.attached | jsonify }}' data-min-gap='{{ layout.min_gap | jsonify }}' data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
 {%- for it in layout.items -%}
 {%- assign file = it.asset | prepend: 'after-work/images/' | append: '.html' -%}
 {%- capture vars -%}--dx:{{ it.desktop.x }};--dy:{{ it.desktop.y }};--dw:{{ it.desktop.w }};--dr:{{ it.desktop.r }};--dz:{{ it.desktop.z }};--dd:{% if it.desktop.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %};--mx:{{ it.mobile.x }};--my:{{ it.mobile.y }};--mw:{{ it.mobile.w }};--mr:{{ it.mobile.r }};--mz:{{ it.mobile.z }};--md:{% if it.mobile.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %}{%- if it.label_box -%};--dlw:{{ it.label_box.desktop.w }};--dlh:{{ it.label_box.desktop.h }};--mlw:{{ it.label_box.mobile.w }};--mlh:{{ it.label_box.mobile.h }}{%- endif -%}{%- endcapture %}
 {%- if it.type == 'link' %}
-      <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.label }}</span><span class="aw-tag" aria-hidden="true">{{ it.tag }}</span>{% if it.id == 'coffee' %}<i class="aw-steam" aria-hidden="true"><b></b><b></b><b></b></i>{% endif %}</a>
+      <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.label }}</span><span class="aw-tag" aria-hidden="true">{{ it.tag }}</span></a>
 {%- elsif it.type == 'avatar' %}
-      <div class="aw-item aw-avatar" data-aw-id="{{ it.id }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="{{ it.alt }}" draggable="false"></div>
+      <div class="aw-item aw-avatar" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="{{ it.alt }}" draggable="false"></div>
 {%- elsif it.action == 'terminal' %}
-      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-action="terminal" role="button" tabindex="0" aria-label="Laptop. Activate to see what is on the screen" src="{% include {{ file }} %}" alt="" draggable="false" style="{{ vars }}">
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" data-aw-action="terminal" role="button" tabindex="0" aria-label="Laptop. Activate to see what is on the screen" src="{% include {{ file }} %}" alt="" draggable="false" style="{{ vars }}">
 {%- else %}
-      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" src="{% include {{ file }} %}" alt="" aria-hidden="true" draggable="false" style="{{ vars }}">
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" src="{% include {{ file }} %}" alt="" aria-hidden="true" draggable="false" style="{{ vars }}">
 {%- endif -%}
 {%- endfor %}
     </div>

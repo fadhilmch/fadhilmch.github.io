@@ -11,7 +11,10 @@
     <a href="{{ '/posts/' | relative_url }}"{% if page.nav == 'posts' %} aria-current="page"{% endif %}>Posts</a>
     <a href="{{ '/projects/' | relative_url }}"{% if page.nav == 'projects' %} aria-current="page"{% endif %}>Projects</a>
     <a href="{{ '/notes/' | relative_url }}"{% if page.nav == 'notes' %} aria-current="page"{% endif %}>Notes</a>
-    <a href="{{ '/after-work/' | relative_url }}"{% if page.nav == 'after-work' %} aria-current="page"{% endif %}>After work</a>
+    {%- assign aw_closed = false -%}{%- if page.nav == 'after-work' %}{% assign aw_closed = true %}{% endif -%}
+    <a class="mode-toggle{% if aw_closed %} is-closed{% endif %}" href="{% if aw_closed %}{{ '/' | relative_url }}{% else %}{{ '/after-work/' | relative_url }}{% endif %}" data-mode-toggle="{% if aw_closed %}open{% else %}close{% endif %}" aria-label="{% if aw_closed %}Open the laptop and go to the main page{% else %}Close the laptop and go to After work{% endif %}">
+      <svg viewBox="0 0 44 30" width="30" height="21" aria-hidden="true" focusable="false"><g class="mt-lid"><rect x="9" y="2" width="26" height="17" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><rect class="mt-screen" x="11.5" y="4.5" width="21" height="12" rx="1" fill="currentColor" opacity=".16"/></g><path d="M3 22h38l-3 5H6z" fill="currentColor"/></svg>
+    </a>
   </nav>
   {% include theme-toggle.html %}
 </header>

@@ -16,7 +16,7 @@ test('gateway uses the supplied stickers and a reduced set of doodles',()=>{
  for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow','avatar-cutout','coffee-cutout','cooking-cutout'])assert.ok(ids.includes(n),n);
  assert.equal(layout().items.filter(i=>i.type==='deco'&&/sparkles|loop-arrow|shooting-star/.test(i.asset)).length,3);
  assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
- for(const f of ['coffee','food'])assert.match(read('after-work/'+f+'.html'),/doodle="(sparkle|squiggle)"/);
+ for(const f of ['coffee','food'])assert.doesNotMatch(read('after-work/'+f+'.html'),/doodle=/);
 });
 test('the laptop is the only decoration that is a control, and comes last for tab order',()=>{
  const items=layout().items;assert.equal(items[items.length-1].action,'terminal');
@@ -33,16 +33,18 @@ test('image-led entries retain recipe/timer flow and hide unfinished recipes',()
 test('scoped grid styles include reduced-motion and straight consistent image cards',()=>{
  const css=read('assets/css/after-work-grid.css');assert.match(css,/prefers-reduced-motion/);assert.match(css,/\.aw-card__photo[^{]+\{[^}]*aspect-ratio:3\/2/);assert.doesNotMatch(css,/\.aw-card__photo[^}]+rotate/);assert.match(read('_includes/head.html'),/page.nav == 'after-work'[^\n]+after-work-grid.css/);
 });
-test('brew timer starts, completes, restarts and stops without duplicate intervals',()=>{
+test('brew stopwatch starts, pauses, resumes, completes and resets without duplicate intervals',()=>{
  let now=0,callback,active=false;
- const items=['0:00 Bloom','0:02 Finish'].map(text=>({textContent:text,classList:{values:new Set(),toggle(k,v){v?this.values.add(k):this.values.delete(k)}}}));
- const clock={textContent:''},button={textContent:'Start brew timer',addEventListener(e,fn){this.click=fn}};
- const box={hidden:true,querySelector:s=>s==='output'?clock:button};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:{children:items}},Date:{now:()=>now},setInterval:fn=>{callback=fn;active=true;return 1},clearInterval:()=>{active=false}});
- assert.equal(box.hidden,false);button.click();assert.equal(button.textContent,'Stop');assert.equal(clock.textContent,'0:00');assert.ok(items[0].classList.values.has('is-now'));
- now=2000;callback();assert.equal(active,false);assert.equal(clock.textContent,'0:02');assert.equal(button.textContent,'Restart brew timer');
- button.click();assert.equal(active,true);button.click();assert.equal(active,false);assert.equal(clock.textContent,'0:00');
+ const items=['0:00 Bloom','0:02 Finish'].map(text=>({textContent:text,classList:{values:new Set(),toggle(k,v){v?this.values.add(k):this.values.delete(k)},contains(k){return this.values.has(k)}}}));
+ const clock={textContent:''},go={textContent:'',attrs:{},addEventListener(e,fn){this.click=fn},setAttribute(k,v){this.attrs[k]=v}},reset={addEventListener(e,fn){this.click=fn}},bar={style:{}};
+ const box={hidden:true,classList:{toggle(){},add(){},remove(){}},querySelector:s=>s==='output'?clock:s==='[data-timer-go]'?go:s==='[data-timer-reset]'?reset:bar};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:items}:null},Date:{now:()=>now},setInterval:fn=>{callback=fn;active=true;return 1},clearInterval:()=>{active=false}});
+ assert.equal(box.hidden,false);assert.equal(go.textContent,'Start');
+ go.click();assert.equal(go.textContent,'Pause');assert.equal(active,true);now=1000;callback();assert.equal(clock.textContent,'0:01');
+ go.click();assert.equal(active,false);assert.equal(go.textContent,'Resume');
+ go.click();now=2000;callback();now=3000;callback();assert.equal(active,false);assert.equal(clock.textContent,'0:02');assert.equal(go.textContent,'Again');
+ reset.click();assert.equal(clock.textContent,'0:00');assert.equal(go.textContent,'Start');
 });
 test('non-timed or empty recipes never expose a non-working timer',()=>{
- const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:{children:[]}}});assert.equal(box.hidden,true);
+ const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:[]}:null}});assert.equal(box.hidden,true);
 });
