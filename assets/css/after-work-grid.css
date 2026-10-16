@@ -54,21 +54,17 @@
 .aw-item img, img.aw-item { height:auto; object-fit:contain; filter:drop-shadow(0 2px 2px #0005) drop-shadow(0 9px 12px #0004); pointer-events:none; }
 img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); pointer-events:none; }
 .aw-sticker { flex-direction:column; align-items:center; gap:calc(6*var(--u)); text-decoration:none; transition:translate .2s,scale .2s; }
-/* Link labels are die-cut stickers: Oswald Bold caps in a cream cut line, with a raised edge so they read as a button. The #aw-cut filter lives in after-work/index.html. */
-.aw-label { display:flex; align-items:center; justify-content:center; box-sizing:border-box; width:auto; min-width:calc(var(--lw)*var(--u)*.78); height:calc(var(--lh)*var(--u)*.72); margin-top:calc(-6*var(--u)); padding:0 16px; color:#1b1d1a; background:none;
- filter:url(#aw-cut) drop-shadow(0 3px 0 #bdb7a2) drop-shadow(0 1px 0 #d8d4c6) drop-shadow(0 7px 8px #000a); font-family:'Oswald','Arial Narrow',sans-serif; font-size:2.34em; font-weight:700; line-height:1.1; text-transform:uppercase; letter-spacing:.03em; white-space:nowrap; }
-@container aw-board (max-width:660px) { .aw-label { font-size:1.95em; } }
-.aw-tag { position:absolute; left:50%; top:0; translate:-50% -115%; padding:3px 10px; border-radius:999px; background:#fff8e6; color:#232820; font-size:12px; font-weight:600; white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .2s; box-shadow:0 3px 6px #0005; }
+/* Link labels are cream pills (the old hover tag, now always visible) below the art, 12px clear of it. --aw-pill-shift is a per-sticker optical offset for art whose visual center is not its box center (the Coffee handle widens the box to the right). Hover and focus still lift the whole sticker. */
+.aw-label { position:relative; left:var(--aw-pill-shift,0); margin-top:calc(12px - 6*var(--u)); padding:3px 10px; border-radius:999px; background:#fff8e6; color:#232820; font-size:12px; font-weight:600; line-height:1.4; white-space:nowrap; box-shadow:0 3px 6px #0005; }
+.aw-sticker--coffee { --aw-pill-shift:-8%; }
 .aw-steam { position:absolute; left:34%; top:-14%; width:30%; height:22%; pointer-events:none; }
 .aw-steam b { position:absolute; bottom:0; width:6%; height:100%; border-radius:99px; background:linear-gradient(#fff0,#ffffffb0); opacity:0; filter:blur(1.5px); animation:aw-steam 2.8s ease-in-out infinite; }
 .aw-steam b:nth-child(1) { left:10%; } .aw-steam b:nth-child(2) { left:44%; animation-delay:.9s; } .aw-steam b:nth-child(3) { left:78%; animation-delay:1.8s; }
 @keyframes aw-steam { 0% { opacity:0; transform:translateY(20%) scaleY(.6); } 30% { opacity:.7; } 100% { opacity:0; transform:translateY(-60%) scaleY(1.1); } }
 @media(hover:hover){
  .aw-sticker:hover { translate:0 calc(-7*var(--u)); scale:1.04; }
- .aw-sticker:hover .aw-tag { opacity:1; }
 }
 .aw-sticker:focus-visible { translate:0 calc(-7*var(--u)); scale:1.04; }
-.aw-sticker:focus-visible .aw-tag { opacity:1; }
 .aw-sticker:active { translate:0 calc(-3*var(--u)); scale:1.02; }
 @keyframes aw-blink { 50% { opacity:0; } }
 .aw-page--gateway { max-width:1248px; padding-top:12px; }
@@ -81,7 +77,7 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 .aw-editing img.aw-item { pointer-events:auto; }
 .aw-editing .aw-item.is-selected { outline:2px solid #c5d788; outline-offset:3px; }
 .aw-editing .aw-item.is-bad { outline:2px solid #ff8f7a; outline-offset:3px; }
-.aw-editing .aw-tag, .aw-editing .aw-steam { display:none; }
+.aw-editing .aw-steam { display:none; }
 .aw-editing .aw-handles, .aw-handles { pointer-events:none; outline:2px solid #c5d788; outline-offset:3px; }
 .aw-knob { position:absolute; width:22px; height:22px; border-radius:50%; background:#c5d788; border:2px solid #171e19; pointer-events:auto; touch-action:none; }
 .aw-knob--size { right:-14px; bottom:-14px; cursor:nwse-resize; }
@@ -96,7 +92,7 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 .aw-editor fieldset { border:1px solid #ffffff24; border-radius:10px; margin:8px 0; }
 .aw-editor ul, .aw-editor ol { margin:4px 0; padding-left:18px; } .aw-editor .is-ok { list-style:none; margin-left:-18px; color:#9be6b8; }
 .aw-editor__warn { color:#ffb39f; } .aw-editor__hint { color:#b2b7aa; }
-@media(prefers-reduced-motion:reduce){ .aw-sticker,.aw-tag { transition:none; } .aw-steam b { animation:none; } .aw-steam { display:none; } }
+@media(prefers-reduced-motion:reduce){ .aw-sticker { transition:none; } .aw-steam b { animation:none; } .aw-steam { display:none; } }
 .aw-head p { min-height:1.5em; }
 .aw-typed { font-family:var(--mono, ui-monospace, monospace); }
 .aw-head p.is-typing .aw-typed::after { content:""; display:inline-block; width:.55em; height:1em; margin-left:2px; vertical-align:-.15em; background:#c5d788; animation:aw-caret 1s steps(1) infinite; }
