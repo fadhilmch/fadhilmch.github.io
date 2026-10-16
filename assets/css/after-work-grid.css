@@ -71,7 +71,7 @@ img.aw-deco[data-aw-action] { pointer-events:auto; }
 @keyframes aw-blink { 50% { opacity:0; } }
 .aw-page--gateway { max-width:1248px; }
 .aw-deco.is-bouncing { animation:aw-bounce .9s cubic-bezier(.3,.6,.4,1); }
-@keyframes aw-bounce { 0%,100% { translate:0 0; } 30% { translate:0 calc(-60*var(--u)); } 60% { translate:0 0; } 75% { translate:0 calc(-18*var(--u)); } 88% { translate:0 0; } 94% { translate:0 calc(-5*var(--u)); } }
+@keyframes aw-bounce { 0%,100% { translate:0 0; } 30% { translate:0 calc(-44*var(--u)); } 60% { translate:0 0; } 75% { translate:0 calc(-14*var(--u)); } 88% { translate:0 0; } 94% { translate:0 calc(-4*var(--u)); } }
 /* ---- owner editor (/after-work/?edit) ---- */
 .aw-embed .skip-link, .aw-embed .site-header, .aw-embed .site-footer, .aw-embed .aw-head, .aw-embed .aw-art-note { display:none; }
 .aw-embed .aw-page { padding-top:8px; }
