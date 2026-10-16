@@ -96,3 +96,23 @@ test('terminal line types one character at a time, or at once with reduced motio
   const instant = []; typeLine(LINE, (t) => instant.push(t), { reduce: true });
   assert.deepEqual(instant, [LINE]);
 });
+
+test('site editor field: raw layout format, save gate and collection wiring', async () => {
+  const { validateLayout, registerLayoutFormat, LAYOUT_COLLECTION } = await import('../admin/layout-field.js');
+  let format;
+  registerLayoutFormat({ registerCustomFormat: (name, ext, f) => { format = { name, ext, ...f }; } });
+  const raw = readFileSync(new URL('../_data/after_work_layout.json', import.meta.url), 'utf8');
+  assert.equal(format.name, 'layout-raw');
+  assert.equal(format.toFile(format.fromFile(raw)), raw);
+  validateLayout(raw, shapes());
+  const bad = layout();
+  bad.items.find((i) => i.id === 'tennis').desktop.x = bad.items.find((i) => i.id === 'laptop').desktop.x;
+  assert.throws(() => validateLayout(exportLayout(bad), shapes()), /spacing/);
+  assert.throws(() => validateLayout('{nope', shapes()), /valid JSON/);
+  const config = JSON.parse(readFileSync(new URL('../admin/config.yml', import.meta.url), 'utf8'));
+  const c = config.collections.find((x) => x.name === LAYOUT_COLLECTION);
+  assert.equal(c.publish, false);
+  assert.equal(c.files[0].file, '_data/after_work_layout.json');
+  assert.equal(c.files[0].format, 'layout-raw');
+  assert.equal(c.files[0].fields[0].widget, 'aw-layout');
+});
