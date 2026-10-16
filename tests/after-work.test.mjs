@@ -48,3 +48,9 @@ test('brew stopwatch starts, pauses, resumes, completes and resets without dupli
 test('non-timed or empty recipes never expose a non-working timer',()=>{
  const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:[]}:null}});assert.equal(box.hidden,true);
 });
+
+test('gateway title has a stable accent class and the header icon has open and closed shapes',()=>{
+ assert.match(read('after-work/index.html'),/<span class="aw-accent">work<\/span>/);
+ assert.match(read('_includes/header.html'),/class="mt-open"[\s\S]*class="mt-shut"/);
+ assert.match(read('assets/js/after-work-gateway.js'),/initTitle/);
+});
