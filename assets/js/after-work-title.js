@@ -1,7 +1,7 @@
 // Title entrance: each letter of "After work" churns through symbols, then resolves left to right
 // and cools from mint to its normal colour. Runs once on load. Skipped with reduced motion.
 // The heading keeps its plain text for screen readers through aria-label.
-const SYMBOLS = '>_*%#/+=<~';
+const SYMBOLS = '>_*/+=<~';
 const STAGGER = 70, CHURN = 380, COOL = 350;
 
 export function initTitle(h1, { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches } = {}) {
@@ -24,7 +24,7 @@ export function initTitle(h1, { reduce = matchMedia('(prefers-reduced-motion: re
     });
   };
   wrap(h1);
-  cells.forEach((i) => { i.style.minWidth = i.getBoundingClientRect().width + 'px'; });
+  cells.forEach((i) => { i.style.width = i.getBoundingClientRect().width + 'px'; });
   const t0 = performance.now();
   const step = (t) => {
     const e = t - t0; let busy = false;
@@ -38,7 +38,7 @@ export function initTitle(h1, { reduce = matchMedia('(prefers-reduced-motion: re
       }
     });
     if (busy) requestAnimationFrame(step);
-    else cells.forEach((i) => { i.style.minWidth = ''; });
+    else cells.forEach((i) => { i.style.width = ''; });
   };
   requestAnimationFrame(step);
 }
