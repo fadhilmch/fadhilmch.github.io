@@ -2,108 +2,39 @@
 layout: base
 title: After work
 nav: after-work
-description: Coffee I am still dialling in and food from home.
+description: Coffee and cooking, after work.
 permalink: /after-work/
 ---
-<div class="aw-page">
-  <header class="aw-head">
-    <p class="eyebrow">after work<span>/</span>desk</p>
-    <h1>After work</h1>
-    <p class="intro">What happens after I close the laptop: coffee I'm still dialling in and food from home. Poke around the desk.</p>
-  </header>
-
-  <figure class="desk-wrap">
-    <svg class="desk" viewBox="0 0 800 500" role="group" aria-label="Illustration of a desk seen from above, with a laptop, a coffee cup and a plate of nasi goreng">
-      <defs>
-        <radialGradient id="aw-lamp" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="var(--aw-lamp)" stop-opacity=".55"/><stop offset="1" stop-color="var(--aw-lamp)" stop-opacity="0"/></radialGradient>
-      </defs>
-      <rect width="800" height="500" fill="var(--aw-desk)"/>
-      <g class="grain" fill="none" stroke="var(--aw-desk-2)" stroke-width="2">
-        <path d="M0 100H800M0 200H800M0 300H800M0 400H800"/>
-        <path d="M120 0V100M560 0V100M300 100V200M700 100V200M60 200V300M430 200V300M240 300V400M640 300V400M150 400V500M500 400V500" stroke-width="1.5"/>
-        <path d="M40 40q80-12 160 0M420 160q90 10 180-2M90 250q70 12 150 0M520 350q80-10 160 4" stroke-width="1" opacity=".6"/>
-      </g>
-      <rect class="lamp" x="0" y="0" width="800" height="500" fill="url(#aw-lamp)"/>
-
-      <!-- plant leaves -->
-      <g class="leaf" aria-hidden="true">
-        <path d="M800 0v120C740 110 690 70 680 0z" fill="var(--aw-leaf)"/>
-        <path d="M800 20C760 40 730 20 705 0" fill="none" stroke="var(--aw-leaf-2)" stroke-width="3"/>
-        <path d="M800 70C750 80 725 60 700 30" fill="none" stroke="var(--aw-leaf-2)" stroke-width="3"/>
-        <path d="M0 500v-70c50 0 95 20 110 70z" fill="var(--aw-leaf)"/>
-        <path d="M0 490C40 470 70 480 90 500" fill="none" stroke="var(--aw-leaf-2)" stroke-width="3"/>
-      </g>
-
-      <!-- notebook + pen -->
-      <g aria-hidden="true" transform="rotate(8 420 270)">
-        <rect x="372" y="232" width="110" height="150" rx="6" fill="var(--aw-shadow)" transform="translate(5 6)"/>
-        <rect x="372" y="232" width="110" height="150" rx="6" fill="var(--aw-paper)" stroke="var(--aw-line)" stroke-width="2"/>
-        <rect x="372" y="232" width="14" height="150" rx="4" fill="var(--aw-accent)"/>
-        <g stroke="var(--aw-line)" stroke-width="2"><path d="M398 262h66M398 282h66M398 302h50M398 322h66M398 342h40"/></g>
-        <rect x="448" y="236" width="8" height="110" rx="4" fill="var(--aw-fg)" transform="rotate(14 452 290) translate(14 20)"/>
-      </g>
-
-      <!-- laptop: easter egg -->
-      <g class="laptop" id="aw-laptop" role="button" tabindex="0" aria-label="Laptop. Activate to see what is on the screen">
-        <rect x="36" y="48" width="326" height="418" rx="14" fill="var(--aw-shadow)" transform="translate(8 10)"/>
-        <rect x="30" y="40" width="322" height="200" rx="12" fill="var(--aw-metal)"/>
-        <rect class="screen" x="42" y="50" width="298" height="180" rx="6" fill="var(--aw-screen)"/>
-        <g class="screen-lines" stroke="var(--aw-screen-line)" stroke-width="4" stroke-linecap="round"><path d="M60 78h90M60 98h140M60 118h70M60 138h120"/></g>
-        <text id="aw-type" x="60" y="196" class="type" fill="var(--aw-screen-text)"><tspan id="aw-type-text"></tspan><tspan class="cursor">▌</tspan></text>
-        <rect x="22" y="238" width="338" height="232" rx="12" fill="var(--aw-metal)"/>
-        <rect x="40" y="254" width="302" height="130" rx="6" fill="var(--aw-keys-bed)"/>
-        <g fill="var(--aw-keys)">
-          {%- for row in (0..4) -%}{%- for col in (0..11) -%}<rect x="{{ col | times: 25 | plus: 46 }}" y="{{ row | times: 25 | plus: 259 }}" width="21" height="21" rx="3"/>{%- endfor -%}{%- endfor -%}
-        </g>
-        <rect x="136" y="394" width="110" height="64" rx="6" fill="var(--aw-keys-bed)"/>
-        <rect class="hit" x="22" y="40" width="338" height="430" fill="transparent"/>
-      </g>
-
-      <!-- coffee -->
-      <a class="obj" href="{{ '/after-work/coffee/' | relative_url }}" aria-label="Coffee recipes">
-        <g class="lift" style="transform-origin:590px 140px">
-          <circle class="shadow" cx="596" cy="148" r="86" fill="var(--aw-shadow)"/>
-          <circle cx="590" cy="140" r="82" fill="var(--aw-saucer)" stroke="var(--aw-line)" stroke-width="2"/>
-          <circle cx="590" cy="140" r="64" fill="none" stroke="var(--aw-line)" stroke-width="2"/>
-          <rect x="636" y="128" width="46" height="24" rx="12" fill="var(--aw-cup)" stroke="var(--aw-line)" stroke-width="2" transform="translate(-6 0)"/>
-          <circle cx="590" cy="140" r="52" fill="var(--aw-cup)" stroke="var(--aw-line)" stroke-width="2"/>
-          <circle cx="590" cy="140" r="42" fill="var(--aw-coffee)"/>
-          <path d="M590 168c-30-18-26-40-10-44 8-2 10 4 10 8 0-4 2-10 10-8 16 4 20 26-10 44z" fill="var(--aw-foam)"/>
-          <path d="M590 160c-14-10-14-22-6-24M590 160c14-10 14-22 6-24" fill="none" stroke="var(--aw-coffee)" stroke-width="3" stroke-linecap="round"/>
-          <g class="steam" fill="none" stroke="var(--aw-steam)" stroke-width="4" stroke-linecap="round">
-            <path class="w1" d="M570 100c-10-14 10-22 0-36"/><path class="w2" d="M592 98c-10-14 10-24 0-40"/><path class="w3" d="M614 100c-10-14 10-22 0-34"/>
-          </g>
-          <g class="tag"><rect x="486" y="236" width="208" height="34" rx="17"/><text x="590" y="258" text-anchor="middle">coffee recipes →</text></g>
-          <circle class="hit" cx="590" cy="140" r="90" fill="transparent"/>
-        </g>
-      </a>
-
-      <!-- food -->
-      <a class="obj" href="{{ '/after-work/food/' | relative_url }}" aria-label="Food recipes">
-        <g class="lift" style="transform-origin:590px 370px">
-          <circle class="shadow" cx="596" cy="378" r="104" fill="var(--aw-shadow)"/>
-          <circle cx="590" cy="370" r="100" fill="var(--aw-plate)" stroke="var(--aw-line)" stroke-width="2"/>
-          <circle cx="590" cy="370" r="80" fill="none" stroke="var(--aw-line)" stroke-width="2"/>
-          <path d="M520 350c-6-40 40-62 80-58 44 4 78 30 70 68-6 34-44 54-80 50-40-4-64-28-70-60z" fill="var(--aw-rice)"/>
-          <g fill="var(--aw-rice-2)"><circle cx="545" cy="330" r="6"/><circle cx="575" cy="312" r="5"/><circle cx="640" cy="338" r="6"/><circle cx="560" cy="392" r="5"/><circle cx="618" cy="404" r="6"/><circle cx="650" cy="372" r="5"/></g>
-          <g fill="var(--aw-chili)"><rect x="556" y="344" width="10" height="5" rx="2.5"/><rect x="622" y="316" width="10" height="5" rx="2.5"/><rect x="600" y="400" width="10" height="5" rx="2.5"/></g>
-          <path d="M572 340c-14-18 8-38 32-32 24 4 40 20 30 40-8 16-34 18-48 10-8-4-12-10-14-18z" fill="var(--aw-white)" stroke="var(--aw-line)" stroke-width="1.5"/>
-          <circle cx="606" cy="338" r="15" fill="var(--aw-yolk)"/><circle cx="601" cy="333" r="4" fill="var(--aw-white)" opacity=".6"/>
-          <g fill="var(--aw-cuke)" stroke="var(--aw-leaf-2)" stroke-width="2"><circle cx="520" cy="418" r="11"/><circle cx="542" cy="434" r="11"/></g>
-          <g fill="var(--aw-krupuk)" stroke="var(--aw-line)" stroke-width="1.5"><path d="M648 420c10-8 28-6 32 6s-8 24-22 22-20-20-10-28z"/></g>
-          <g class="tag tag--food"><rect x="520" y="262" width="140" height="34" rx="17"/><text x="590" y="284" text-anchor="middle">food →</text></g>
-          <circle class="hit" cx="590" cy="370" r="104" fill="transparent"/>
-        </g>
-      </a>
-    </svg>
-    <figcaption class="desk-note">nasi goreng, a flat white and a laptop I should really close.</figcaption>
-  </figure>
-
-  <nav class="aw-links" aria-label="After work sections">
-    <ul>
-      <li><a href="{{ '/after-work/coffee/' | relative_url }}"><strong>Coffee</strong><span>{{ site.coffee.size }} brew recipe{% if site.coffee.size != 1 %}s{% endif %}</span></a></li>
-      <li><a href="{{ '/after-work/food/' | relative_url }}"><strong>Food</strong><span>{{ site.food.size }} recipe{% if site.food.size != 1 %}s{% endif %}</span></a></li>
-    </ul>
-  </nav>
+{%- comment -%}
+  The sticker scene is data driven: positions live in _data/after_work_layout.json (one set for
+  desktop, one for phones) and are edited at /after-work/?edit. Links come first in the file so
+  Coffee and Cooking are first in tab order.
+{%- endcomment -%}
+{%- assign layout = site.data.after_work_layout -%}
+<div class="aw-page aw-grid">
+  <header class="aw-head"><h1>After <span>work</span> <span aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
+  <section class="aw-board" style="--dbw:{{ layout.boards.desktop.w }};--dbh:{{ layout.boards.desktop.h }};--mbw:{{ layout.boards.mobile.w }};--mbh:{{ layout.boards.mobile.h }}">
+    <div class="aw-stickers" aria-label="Interests" data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
+{%- for it in layout.items -%}
+{%- assign file = it.asset | prepend: 'after-work/images/' | append: '.html' -%}
+{%- capture vars -%}--dx:{{ it.desktop.x }};--dy:{{ it.desktop.y }};--dw:{{ it.desktop.w }};--dr:{{ it.desktop.r }};--dz:{{ it.desktop.z }};--dd:{% if it.desktop.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %};--mx:{{ it.mobile.x }};--my:{{ it.mobile.y }};--mw:{{ it.mobile.w }};--mr:{{ it.mobile.r }};--mz:{{ it.mobile.z }};--md:{% if it.mobile.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %}{%- if it.label_box -%};--dlw:{{ it.label_box.desktop.w }};--dlh:{{ it.label_box.desktop.h }};--mlw:{{ it.label_box.mobile.w }};--mlh:{{ it.label_box.mobile.h }}{%- endif -%}{%- endcapture %}
+{%- if it.type == 'link' %}
+      <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.label }}</span><span class="aw-tag" aria-hidden="true">{{ it.tag }}</span>{% if it.id == 'coffee' %}<i class="aw-steam" aria-hidden="true"><b></b><b></b><b></b></i>{% endif %}</a>
+{%- elsif it.type == 'avatar' %}
+      <div class="aw-item aw-avatar" data-aw-id="{{ it.id }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="{{ it.alt }}" draggable="false"></div>
+{%- elsif it.action == 'terminal' %}
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-action="terminal" role="button" tabindex="0" aria-label="Laptop. Activate to see what is on the screen" src="{% include {{ file }} %}" alt="" draggable="false" style="{{ vars }}">
+{%- else %}
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" src="{% include {{ file }} %}" alt="" aria-hidden="true" draggable="false" style="{{ vars }}">
+{%- endif -%}
+{%- endfor %}
+    </div>
+    <div class="aw-tools">
+      <button type="button" class="aw-btn" data-aw-play aria-pressed="false" hidden>Play</button>
+      <button type="button" class="aw-btn" data-aw-reset hidden>Reset</button>
+    </div>
+  </section>
+  <p class="aw-art-note">Illustrative stickers. Play moves things around for fun and is never saved.</p>
 </div>
-<script src="{{ '/assets/js/after-work.js' | relative_url }}" defer></script>
+<script type="application/json" id="aw-layout">{{ layout | jsonify }}</script>
+<script type="module" src="{{ '/assets/js/after-work-gateway.js' | relative_url }}"></script>

@@ -1,27 +1,4 @@
 (function () {
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Laptop easter egg: type a line on the screen.
-  var laptop = document.getElementById('aw-laptop');
-  var out = document.getElementById('aw-type-text');
-  if (laptop && out) {
-    var msg = '> git push && go home', timer;
-    var type = function () {
-      clearInterval(timer);
-      laptop.classList.add('is-on');
-      if (reduce) { out.textContent = msg; return; }
-      var i = 0;
-      out.textContent = '';
-      timer = setInterval(function () {
-        out.textContent = msg.slice(0, ++i);
-        if (i >= msg.length) clearInterval(timer);
-      }, 70);
-    };
-    laptop.addEventListener('mouseenter', function () { if (!laptop.classList.contains('is-on')) type(); });
-    laptop.addEventListener('click', type);
-    laptop.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); type(); } });
-  }
-
   // Brew timer: steps starting with m:ss are highlighted as the clock passes them.
   var box = document.querySelector('[data-brew-timer]');
   var list = document.querySelector('[data-steps]');

@@ -1,0 +1,16 @@
+{%- assign items = include.items | sort: 'title' -%}
+<div class="aw-page aw-grid">
+  <a class="back-link" href="{{ '/after-work/' | relative_url }}">← After work</a>
+  <header class="aw-category-head">
+    <div class="aw-category-title"><h1>{{ page.title | escape }}</h1>{% assign sticker_path = include.sticker | prepend: 'after-work/images/' | append: '.html' %}<img src="{% include {{ sticker_path }} %}" alt="" width="60" height="60">{% assign doodle_path = include.doodle | prepend: 'after-work/images/' | append: '.html' %}<img class="aw-category-title__doodle" src="{% include {{ doodle_path }} %}" alt="" width="60" height="60"></div>
+    <nav class="aw-switch" aria-label="Interests"><a href="{{ '/after-work/coffee/' | relative_url }}"{% if page.section == 'coffee' %} aria-current="page"{% endif %}>Coffee</a><a href="{{ '/after-work/food/' | relative_url }}"{% if page.section == 'food' %} aria-current="page"{% endif %}>Cooking</a></nav>
+  </header>
+  <div class="aw-menu">
+    {%- for r in items %}
+    <a class="aw-card" href="{{ r.url | relative_url }}">
+      {% if r.photo %}<img class="aw-card__photo" src="{{ r.photo | relative_url }}" alt="{{ r.photo_alt | default: r.title | escape }}" width="600" height="400" loading="lazy">{% else %}<div class="aw-card__placeholder"><span>Photo coming later</span></div>{% endif %}
+      <div class="aw-card__caption"><h2>{{ r.title | escape }}</h2><span aria-hidden="true">↗</span><div class="aw-card__details">{% if r.status == 'draft' or r.title contains 'TODO' %}Recipe coming later{% else %}{% include after-work/spec.html r=r %}{% endif %}</div></div>
+    </a>
+    {%- else %}<p class="aw-empty">{% if page.section == 'coffee' %}Brew notes{% else %}Recipes{% endif %} coming later.</p>{% endfor %}
+  </div>
+</div>

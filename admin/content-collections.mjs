@@ -167,4 +167,12 @@ export const contentCollections = [
     folder: '_food', path: '{{slug}}', extension: 'md', format: 'yaml-frontmatter',
     create: true, delete: false, publish: false, fields: foodFields,
   },
+  {
+    // Visual editor field, saved as the raw layout file through a review PR (see admin/layout-field.js).
+    name: 'after-work-layout', label: 'After work layout', publish: false,
+    files: [{
+      name: 'gateway-layout', label: 'Sticker layout', file: '_data/after_work_layout.json', format: 'layout-raw',
+      fields: [field('layout', 'Sticker layout', 'aw-layout')],
+    }],
+  },
 ];

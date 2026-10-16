@@ -2,20 +2,8 @@
 layout: base
 title: Coffee
 nav: after-work
+section: coffee
 description: Brew recipes I use and keep adjusting.
 permalink: /after-work/coffee/
 ---
-<div class="aw-page">
-  <a class="back-link" href="{{ '/after-work/' | relative_url }}">← After work</a>
-  <header class="aw-head"><p class="eyebrow">after work<span>/</span>coffee</p><h1>Coffee</h1><p class="intro">Brew recipes I use and keep adjusting.</p></header>
-  {%- assign items = site.coffee | sort: 'title' -%}
-  <div class="menu">
-    {%- for r in items %}
-    <a class="menu-card" href="{{ r.url | relative_url }}">
-      <h2>{{ r.title | escape }}</h2>
-      {% include after-work/spec.html r=r %}
-      <span class="menu-card__go" aria-hidden="true">open →</span>
-    </a>
-    {%- else %}<p class="intro">Nothing here yet.</p>{% endfor %}
-  </div>
-</div>
+{% include after-work/category.html items=site.coffee sticker="coffee-cutout" doodle="sparkle" %}

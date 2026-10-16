@@ -2,13 +2,17 @@
 layout: base
 ---
 {%- assign r = page -%}
-<article class="recipe">
-  <a class="back-link" href="{{ '/after-work/' | relative_url }}">← After work</a>
+<article class="recipe aw-grid">
+  <a class="back-link" href="{% if page.kind == 'coffee' %}{{ '/after-work/coffee/' | relative_url }}{% else %}{{ '/after-work/food/' | relative_url }}{% endif %}">← {% if page.kind == 'coffee' %}Coffee{% else %}Cooking{% endif %}</a>
   <header class="recipe__head">
     <p class="eyebrow">{% if page.kind == 'coffee' %}coffee<span>/</span>{{ page.method | escape }}{% else %}food<span>/</span>{{ page.cuisine | escape }}{% endif %}</p>
     <h1>{{ page.title | escape }}</h1>
-    {% include after-work/spec.html r=r full=true %}
+    {% unless page.status == 'draft' or page.title contains 'TODO' %}{% include after-work/spec.html r=r full=true %}{% endunless %}
   </header>
+  {% if page.photo %}<figure class="recipe__image"><img src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title | escape }}" width="720" height="480">{% if page.photo_credit %}<figcaption>{{ page.photo_credit | escape }}</figcaption>{% endif %}</figure>{% endif %}
+  {% if page.status == 'draft' or page.title contains 'TODO' %}
+  <section class="recipe__block"><h2>Recipe coming later.</h2><p>Photos and recipe notes will go here.</p></section>
+  {% else %}
   {%- if page.kind == 'coffee' and page.beans %}<p class="recipe__beans"><span>beans</span> {{ page.beans | escape }}</p>{% endif %}
   {%- if page.kind == 'food' %}
   <section class="recipe__block" aria-labelledby="ing-h">
@@ -29,5 +33,7 @@ layout: base
     <p>{{ page.notes | escape }}</p>
   </section>
   {%- endif %}
+  {% if content != empty %}<div class="recipe__block">{{ content }}</div>{% endif %}
+  {% endif %}
 </article>
 <script src="{{ '/assets/js/after-work.js' | relative_url }}" defer></script>
