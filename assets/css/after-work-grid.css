@@ -83,6 +83,8 @@ img.aw-deco[data-aw-action].is-on { filter:drop-shadow(0 1px 1px #0005) drop-sha
 .is-play .is-drag { cursor:grabbing; z-index:200; }
 .is-play .is-drag img, .is-play img.is-drag { filter:drop-shadow(0 4px 4px #0005) drop-shadow(0 16px 18px #0005); }
 /* ---- owner editor (/after-work/?edit) ---- */
+.aw-embed .skip-link, .aw-embed .site-header, .aw-embed .site-footer, .aw-embed .aw-head, .aw-embed .aw-art-note, .aw-embed .aw-tools { display:none; }
+.aw-embed .aw-page { padding-top:8px; }
 .aw-editing .aw-stickers { outline:1px dashed #c5d78880; outline-offset:6px; }
 .aw-editing .aw-item { cursor:move; touch-action:none; pointer-events:auto; }
 .aw-editing .aw-item img { pointer-events:none; }
@@ -90,10 +92,11 @@ img.aw-deco[data-aw-action].is-on { filter:drop-shadow(0 1px 1px #0005) drop-sha
 .aw-editing .aw-item.is-selected { outline:2px solid #c5d788; outline-offset:3px; }
 .aw-editing .aw-item.is-bad { outline:2px solid #ff8f7a; outline-offset:3px; }
 .aw-editing .aw-tag, .aw-editing .aw-steam { display:none; }
-.aw-handles { pointer-events:none; outline:2px solid #c5d788; outline-offset:3px; }
+.aw-editing .aw-handles, .aw-handles { pointer-events:none; outline:2px solid #c5d788; outline-offset:3px; }
 .aw-knob { position:absolute; width:22px; height:22px; border-radius:50%; background:#c5d788; border:2px solid #171e19; pointer-events:auto; touch-action:none; }
 .aw-knob--size { right:-14px; bottom:-14px; cursor:nwse-resize; }
 .aw-knob--turn { left:50%; top:-30px; margin-left:-11px; cursor:grab; }
+@media(pointer:coarse){ .aw-knob { width:44px; height:44px; } .aw-knob--size { right:-30px; bottom:-30px; } .aw-knob--turn { top:-58px; margin-left:-22px; } }
 .aw-editor { margin:18px auto 0; max-width:560px; padding:14px 16px; border-radius:16px; background:#10150f; color:#f2f1e8; font-size:13px; box-shadow:0 10px 30px #000a; }
 .aw-editor h2 { font-size:16px; margin:0 0 8px; } .aw-editor h3 { font-size:13px; margin:12px 0 4px; }
 .aw-editor button { min-height:36px; margin:2px 4px 2px 0; padding:0 12px; border:0; border-radius:999px; background:#2a3329; color:inherit; font:inherit; cursor:pointer; }
