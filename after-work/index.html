@@ -20,7 +20,7 @@ permalink: /after-work/
 {%- assign file = it.asset | prepend: 'after-work/images/' | append: '.html' -%}
 {%- capture vars -%}--dx:{{ it.desktop.x }};--dy:{{ it.desktop.y }};--dw:{{ it.desktop.w }};--dr:{{ it.desktop.r }};--dz:{{ it.desktop.z }};--dd:{% if it.desktop.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %};--mx:{{ it.mobile.x }};--my:{{ it.mobile.y }};--mw:{{ it.mobile.w }};--mr:{{ it.mobile.r }};--mz:{{ it.mobile.z }};--md:{% if it.mobile.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %}{%- if it.label_box -%};--dlw:{{ it.label_box.desktop.w }};--dlh:{{ it.label_box.desktop.h }};--mlw:{{ it.label_box.mobile.w }};--mlh:{{ it.label_box.mobile.h }}{%- endif -%}{%- endcapture %}
 {%- if it.type == 'link' %}
-      <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.label }}</span><span class="aw-tag" aria-hidden="true">{{ it.tag }}</span></a>
+      <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.tag }}</span></a>
 {%- elsif it.type == 'avatar' %}
       <div class="aw-item aw-avatar" data-aw-id="{{ it.id }}" data-aw-asset="{{ it.asset }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="{{ it.alt }}" draggable="false"></div>
 {%- else %}
