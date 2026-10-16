@@ -10,7 +10,7 @@ from PIL import Image
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ASSETS = ['camera', 'tennis-ball', 'headphones', 'laptop', 'tablet', 'monstera', 'pothos', 'sparkles',
-          'loop-arrow', 'shooting-star', 'avatar-cutout', 'coffee-cutout', 'cooking-cutout']
+          'loop-arrow', 'shooting-star', 'avatar-cutout', 'coffee-cutout', 'cooking-cutout', 'bread']
 COLS, ALPHA = 96, 24
 
 def mask(name):
