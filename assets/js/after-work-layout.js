@@ -156,4 +156,4 @@ export function describe(p) {
   if (p.type === 'overlap') return `${pair} overlap${when}`;
   if (p.type === 'tangent') return `${pair} are marked as attached but only touch${when}`;
   return `${pair} are only ${Math.round(p.dist)} units apart${when}`;
-                                        }
+}
