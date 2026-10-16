@@ -60,10 +60,19 @@ test('sticker effects: entrance, shake and tilt are off for reduced motion and i
  assert.match(f,/a\.aw-sticker[\s\S]*shake/);assert.doesNotMatch(f,/preventDefault|stopPropagation/);
  assert.match(f,/hover: hover/);
  const c=read('assets/css/after-work-grid.css');
- assert.match(c,/\.aw-stickers\.has-fx \.aw-item \{ animation:aw-pop/);
+ assert.match(c,/\.aw-stickers\.has-fx:not\(\.fx-ready\) \.aw-item \{ animation:aw-pop/);
+ assert.match(f,/fx-ready/);
  assert.match(c,/\.aw-stickers\.has-fx \.aw-item\.is-shaking/);
 });
 test('doodle shapes exist for every placed doodle asset',()=>{
  const shapes=JSON.parse(read('assets/data/after-work-shapes.json'));
  for(const i of layout().items)assert.ok(shapes[i.asset],i.asset);
+});
+
+test('header: lamp button is roomy with a hover state, laptop pictures share one visible width, After work sets a dark theme-color',()=>{
+ const b=read('assets/css/base.css'),m=read('assets/css/mode-toggle.css'),h=read('_includes/head.html');
+ assert.match(b,/\.theme-toggle \{[^}]*width: 44px; height: 44px/);
+ assert.match(b,/\.theme-toggle:hover img \{ transform/);
+ assert.match(m,/\.mt-img img \{[^}]*width:100%; height:auto/);
+ assert.match(h,/theme-color" content="\{% if page\.nav == 'after-work' %\}#171e19/);
 });
