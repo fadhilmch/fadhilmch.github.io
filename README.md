@@ -131,5 +131,6 @@ to support text-editor commits. Keep those bytes unchanged when editing template
 
 The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
 (desktop and phone layouts, outline-based spacing checks, publish through a pull request).
+The header name reads "Fadhilmch." (18px, with "mch" in the muted color) on every page with no subtitle; the footer keeps the full name. Styles are `.brand__name` and `.brand__muted` in `assets/css/base.css`.
 The header laptop icon is an open laptop picture on the main site and a closed one on After work; hover or keyboard focus shows a half-open laptop. The theme button is a desk lamp, unlit in light mode and lit in dark mode (the glow comes from the bulb only). In dark mode the M (wave) in the logo glows and warms up once on load; reduced motion skips the warm-up. The pictures are in `assets/images/ui/`, styles in `assets/css/mode-toggle.css` and `assets/css/base.css`. Details:
 [layout editor](docs/EDITING.md#after-work-layout-editor).
