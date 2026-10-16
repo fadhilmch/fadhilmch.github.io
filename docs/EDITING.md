@@ -250,7 +250,7 @@ Start each coffee step with `m:ss` to power the "Start brew timer" button, which
 
 ### After Work design
 
-The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. Category markup is shared in `_includes/after-work/category.html`; its title sticker and doodle (`sticker=`, `doodle=`) are names of files in `_includes/after-work/images/`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` (camera, tennis ball, headphones, laptop, tablet, two plants and three crayon doodles on the gateway; the sparkle and squiggle on category headings; the Coffee, Cooking and avatar cutouts). `heart.html` is kept but not currently shown are illustrative stickers, not recipe photos. To change a decoration, replace its file there and adjust its `.aw-deco--name` position in `assets/css/after-work-grid.css` (desktop rules, then the mobile block).
+The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. Category markup is shared in `_includes/after-work/category.html`; its title sticker and doodle (`sticker=`, `doodle=`) are names of files in `_includes/after-work/images/`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` (camera, tennis ball, headphones, laptop, tablet, two plants and three crayon doodles on the gateway; the sparkle and squiggle on category headings; the Coffee, Cooking and avatar cutouts). `heart.html` is kept but not currently shown are illustrative stickers, not recipe photos. Sticker positions are data, not CSS: see the next section.
 
 Before opening a PR, run `node --test tests/*.test.mjs`, `bundle exec jekyll build` and HTML Proofer. Check gateway → both categories → a real recipe at 320, 390 and 1280px, plus empty categories, missing photos, keyboard focus, light/dark site chrome and reduced motion. No recipe content is shipped just for a screenshot.
 
@@ -279,6 +279,18 @@ For existing blog posts, use the [CMS setup and review guide](CMS.md). It edits 
 source with syntax colors and a live preview (approximate, not Jekyll), including YAML front matter, HTML/SVG,
 JavaScript and Liquid. Saves create review PRs and cannot publish from the CMS.
 Keep using GitHub or your local editor for new post filenames, notes and assets.
+
+### After Work layout editor
+
+Positions, sizes, turns, stacking and visibility of every gateway sticker live in `_data/after_work_layout.json`, as one set for desktop (a 1000 x 680 unit board) and one for phones (350 x 760). The page scales the whole board, and phones get their own set below a board width of 660px.
+
+- **Edit:** open `/after-work/?edit` (a normal page with an extra panel; the address is not a secret and is not a security boundary, because nothing it does can write to the site). Choose Desktop or Phone, drag a sticker, use the corner knob to resize and the top knob to turn. Arrow keys nudge, `+`/`-` resize, `[`/`]` turn. Undo, redo and "Reset to published" are in the panel. Hidden stickers are listed and can be added back.
+- **Spacing check:** on every change the panel checks the visible outline of each sticker (not its box), at rest and in the hover state of Coffee and Cooking. Stickers must keep the gap shown in the panel (12 units desktop, 10 phone). Pairs that are meant to overlap, like the camera on Coffee, are listed under "Attached on purpose" (use "Mark as attached" next to a reported overlap). Publish stays blocked while either layout has a problem.
+- **Save draft** keeps your work in this browser only. Visitors always see the published file.
+- **Publish:** the panel copies the new layout and links to GitHub's editor for `_data/after_work_layout.json`. Paste, choose "Create a new branch and start a pull request", review the preview, then merge. This uses your GitHub login, not the CMS, and nothing goes live until the pull request is merged.
+- **Add a sticker:** put its WebP data URI in `_includes/after-work/images/NAME.html`, run `python3 scripts/build-after-work-shapes.py` (needs Pillow; add NAME to its list first), then add an item with both layouts to the JSON. The outline masks in `assets/data/after-work-shapes.json` are 96 columns wide, so they are an approximation that errs on the safe side.
+- **Visitors:** a Play button lets anyone drag the avatar and decorations for fun (overlap allowed, nothing saved); Reset puts everything back. Coffee and Cooking cannot be dragged. The laptop shows a small terminal line on hover, click or Enter and stays keyboard reachable after Coffee and Cooking.
+- **Code:** `assets/js/after-work-layout.js` (geometry), `after-work-edit-state.js` (history and export), `after-work-editor.js` (panel, loaded only with `?edit`), `after-work-play.js`, `after-work-terminal.js`; tests are in `tests/after-work-layout.test.mjs`.
 
 ### Now rows and graph motion
 
