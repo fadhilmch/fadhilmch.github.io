@@ -140,7 +140,6 @@ body.is-after-work .primary-nav { background:#1f2a23; border-color:#ffffff24; bo
 body.is-after-work .primary-nav a[aria-current="page"], body.is-after-work .mode-toggle.is-closed { background:#e8eddb; color:#252b23; }
 body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 body.is-after-work .primary-nav a.mode-toggle.is-closed:hover { background:#e8eddb; color:#252b23; }
-body.is-after-work .brand__meta { color:var(--muted); }
 
 /* recipe detail pages */
 .recipe.aw-grid { max-width:960px; }
