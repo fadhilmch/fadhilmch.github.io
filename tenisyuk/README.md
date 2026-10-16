@@ -2,7 +2,10 @@
 
 Static page, no build step. Served as-is by GitHub Pages.
 
-- `index.html` - page shell
+Address: the page is served at `/tennisyuk/` (`../tennisyuk/index.html`), which loads its styles and scripts from this `tenisyuk/` folder. The old `/tenisyuk/` address stays as a small redirect that keeps `?query` and `#hash`, so links that were already shared still work. The recap link comes from `siteUrl` in `config.js`.
+
+- `index.html` - redirect from the old address to `/tennisyuk/`
+- `../tennisyuk/index.html` - page shell
 - `style.css` - styles (light and dark)
 - `js/wordmarks.js` - logo images as data URIs
 - `js/edits.js` - admin edits as pure functions (toggle paid, add, delete, undo, rollback)
