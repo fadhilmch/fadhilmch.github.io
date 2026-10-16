@@ -157,3 +157,8 @@ button:active,.btn:active{transform:scale(.97)}
 .chart .ct{fill:var(--ink3);font-size:9px}.chart .cv{fill:var(--ink);font-size:11px;font-weight:700}
 .hero .sbar{margin:8px 0}
 .chart .bi{fill:var(--ok)}.chart .bo{fill:var(--red)}.chart .cv2{fill:var(--ink);font-size:9px;font-weight:700}
+
+.sitefoot{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:20px 16px 28px;border-top:1px solid var(--hair);color:var(--ink2);font-size:13px;line-height:20px;text-align:center}
+.sitefoot-mark{display:block;width:20px;height:20px;border-radius:5px;border:1px solid var(--hair)}
+.sitefoot a{color:inherit;font-weight:600;text-decoration:none}
+.sitefoot a:hover{color:var(--ink);text-decoration:underline}
