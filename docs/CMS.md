@@ -60,12 +60,17 @@ Projects use the same pattern for `_data/portfolio_projects.json`; its list can
 add or remove project entries within a reviewed file change.
 
 Keep stable keys and IDs intact, since graph links and project anchors use them.
-To restore Product design, enable it under Skills and enable its topic lane under
-About → Lanes. Both are currently disabled. Missing visibility flags mean visible;
-form defaults reflect that existing site behavior.
+Skills and Lanes keep their keys hidden, so those two lists cannot add, duplicate
+or remove items in the editor; hide one with its visibility flag instead, or add
+one in GitHub with a new key. To restore Product design, enable it under Skills
+and enable its topic lane under About → Lanes. Both are currently disabled.
+Missing visibility flags mean visible; form defaults reflect that existing site
+behavior, so the first save writes `enabled: true` and `branch: true` explicitly.
 
 Structured YAML saves may normalize formatting and remove YAML comments. Review
-the resulting values and diff. The full-source post editor preserves the article
+the resulting values and diff. The editor double-quotes strings, because Jekyll
+reads a plain `2:30` as a number, and it omits blank optional fields, because
+Liquid treats an empty string as true. The full-source post editor preserves the article
 source instead of converting it to rich text.
 
 ## Source colors and post preview

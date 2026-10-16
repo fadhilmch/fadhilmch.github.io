@@ -9,7 +9,7 @@
   },
   "publish_mode": "editorial_workflow",
   "site_url": "https://fadhilmch.github.io",
-  "app_title": "Fadhil \u00b7 Site editor",
+  "app_title": "Fadhil · Site editor",
   "media_folder": "admin/media-readonly",
   "public_folder": "/admin/media-readonly",
   "collections": [
@@ -97,7 +97,8 @@
                   "label": "Language",
                   "widget": "string"
                 }
-              ]
+              ],
+              "summary": "{{fields.word}} · {{fields.lang}}"
             },
             {
               "name": "bio_links",
@@ -127,7 +128,8 @@
                   "widget": "string",
                   "required": false
                 }
-              ]
+              ],
+              "summary": "{{fields.text}}"
             },
             {
               "name": "bio",
@@ -160,7 +162,8 @@
                   "widget": "string",
                   "required": false
                 }
-              ]
+              ],
+              "summary": "{{fields.k}}: {{fields.v}}"
             },
             {
               "name": "off_hours",
@@ -249,6 +252,10 @@
                 }
               ],
               "max": 7,
+              "summary": "{{fields.title}}",
+              "allow_add": false,
+              "allow_duplicate": false,
+              "allow_remove": false,
               "root": true
             }
           ]
@@ -298,6 +305,7 @@
                   "required": false
                 }
               ],
+              "summary": "{{fields.years}} · {{fields.role}}, {{fields.org}}",
               "root": true
             }
           ]
@@ -341,6 +349,7 @@
                   "required": false
                 }
               ],
+              "summary": "{{fields.years}} · {{fields.role}}",
               "root": true
             }
           ]
@@ -444,7 +453,8 @@
                       "widget": "string",
                       "required": false
                     }
-                  ]
+                  ],
+                  "summary": "{{fields.name}}"
                 },
                 {
                   "name": "enabled",
@@ -452,10 +462,14 @@
                   "widget": "boolean",
                   "required": false,
                   "default": true,
-                  "hint": "For Product design, also set About \u2192 Lanes \u2192 Product design \u2192 Branch visible to true."
+                  "hint": "For Product design, also set About → Lanes → Product design → Branch visible to true."
                 }
               ],
               "max": 5,
+              "summary": "{{fields.group}}",
+              "allow_add": false,
+              "allow_duplicate": false,
+              "allow_remove": false,
               "root": true
             }
           ]
@@ -597,7 +611,8 @@
                   "widget": "text"
                 }
               ],
-              "root": true
+              "root": true,
+              "summary": "{{fields.title}}"
             }
           ]
         }
@@ -664,6 +679,7 @@
                   "widget": "string"
                 }
               ],
+              "summary": "{{fields.year}} · {{fields.title}}",
               "root": true
             }
           ]
@@ -701,6 +717,7 @@
                   "widget": "string"
                 }
               ],
+              "summary": "{{fields.label}}",
               "root": true
             }
           ]
@@ -764,7 +781,7 @@
         },
         {
           "name": "temp_c",
-          "label": "Water temperature (\u00b0C)",
+          "label": "Water temperature (°C)",
           "widget": "number",
           "value_type": "float",
           "min": 0.1,
@@ -786,7 +803,8 @@
           "name": "steps",
           "label": "Brew steps",
           "widget": "list",
-          "min": 1
+          "min": 1,
+          "hint": "Start a step with m:ss, e.g. 0:45 Pour to 150 g, so the brew timer highlights it."
         },
         {
           "name": "notes",
@@ -863,5 +881,12 @@
         }
       ]
     }
-  ]
+  ],
+  "output": {
+    "omit_empty_optional_fields": true,
+    "yaml": {
+      "quote": "double",
+      "indent_sequences": false
+    }
+  }
 }
