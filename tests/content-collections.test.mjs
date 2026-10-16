@@ -63,6 +63,20 @@ test('product design enabled state has a corresponding lane visibility control',
   assert.equal(lanes.fields[0].max, 7);
 });
 
+test('lists with hidden keys cannot create keyless items', () => {
+  for (const name of ['skills', 'lanes']) {
+    const list = file(name).fields[0];
+    for (const option of ['allow_add', 'allow_duplicate', 'allow_remove']) assert.equal(list[option], false, `${name}.${option}`);
+  }
+});
+
+test('root lists label collapsed items', () => {
+  for (const definition of contentCollections.flatMap((item) => item.files ?? [])) {
+    const [first] = definition.fields;
+    if (first.root) assert.match(first.summary ?? '', /\{\{fields\.\w+\}\}/, definition.name);
+  }
+});
+
 test('optional data fields stay optional and CMS colors use the site palette', () => {
   const skills = file('skills').fields[0].fields;
   const lanes = file('lanes').fields[0].fields;
@@ -99,10 +113,31 @@ test('recipe numeric fields prevent invalid ratios and serving counts', () => {
 test('served config includes every schema and uses review PRs for every collection', () => {
   const config = JSON.parse(readFileSync(new URL('../admin/config.yml', import.meta.url), 'utf8'));
   assert.equal(config.publish_mode, 'editorial_workflow');
+  // Blank optional strings would be truthy in Liquid, e.g. an empty bio link href.
+  assert.equal(config.output?.omit_empty_optional_fields, true);
+  // A plain 2:30 parses as 9000 in Jekyll's YAML 1.1 reader.
+  assert.equal(config.output?.yaml?.quote, 'double');
   assert.deepEqual(config.collections.filter(({ name }) => name !== 'posts'), contentCollections);
   for (const collection of config.collections) {
     assert.equal(collection.publish, false, collection.name);
     assert.ok(!collection.publish_mode || collection.publish_mode === 'editorial_workflow', collection.name);
     if (collection.folder) assert.equal(collection.delete, false, collection.name);
   }
+});
+
+test('recipe photos upload only to assets/recipes, as WebP under 2 MB', () => {
+  const config = JSON.parse(readFileSync(new URL('../admin/config.yml', import.meta.url)));
+  assert.equal(config.media_folder, 'admin/media-readonly');
+  assert.equal(config.media_libraries.default.config.max_file_size, 2097152);
+  assert.equal(config.media_libraries.default.config.transformations.raster_image.format, 'webp');
+  for (const name of ['coffee', 'food']) {
+    const photo = collection(name).fields.find((item) => item.name === 'photo');
+    assert.equal(photo.widget, 'image');
+    assert.equal(photo.media_folder, '/assets/recipes');
+    assert.equal(photo.public_folder, '/assets/recipes');
+    assert.equal(photo.choose_url, false);
+    assert.equal(photo.required, false);
+  }
+  const others = contentCollections.filter((item) => !['coffee', 'food'].includes(item.name));
+  assert.doesNotMatch(JSON.stringify(others), /"widget":"image"|"media_folder"/);
 });

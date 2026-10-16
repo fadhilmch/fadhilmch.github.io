@@ -17,8 +17,8 @@ deletion controls remain disabled in the editor.
 | Projects | Project cards and case studies, repository/post links, image paths and captions |
 | Publications | Papers, authors, venue and DOI links |
 | Contact | Email and social links |
-| Coffee | Create and edit brew recipes, doses, water, temperature, steps and notes |
-| Food | Create and edit recipes, ingredients, servings, steps and notes |
+| Coffee | Create and edit brew recipes, doses, water, temperature, steps, notes and a photo |
+| Food | Create and edit recipes, ingredients, servings, steps, notes and a photo |
 
 Coffee and food start empty. Adding CMS support does not recreate removed posts.
 Notes and asset uploads still use GitHub or local editing. Image fields accept
@@ -60,12 +60,17 @@ Projects use the same pattern for `_data/portfolio_projects.json`; its list can
 add or remove project entries within a reviewed file change.
 
 Keep stable keys and IDs intact, since graph links and project anchors use them.
-To restore Product design, enable it under Skills and enable its topic lane under
-About → Lanes. Both are currently disabled. Missing visibility flags mean visible;
-form defaults reflect that existing site behavior.
+Skills and Lanes keep their keys hidden, so those two lists cannot add, duplicate
+or remove items in the editor; hide one with its visibility flag instead, or add
+one in GitHub with a new key. To restore Product design, enable it under Skills
+and enable its topic lane under About → Lanes. Both are currently disabled.
+Missing visibility flags mean visible; form defaults reflect that existing site
+behavior, so the first save writes `enabled: true` and `branch: true` explicitly.
 
 Structured YAML saves may normalize formatting and remove YAML comments. Review
-the resulting values and diff. The full-source post editor preserves the article
+the resulting values and diff. The editor double-quotes strings, because Jekyll
+reads a plain `2:30` as a number, and it omits blank optional fields, because
+Liquid treats an empty string as true. The full-source post editor preserves the article
 source instead of converting it to rich text.
 
 ## Source colors and post preview
@@ -110,3 +115,10 @@ check the token's Pull requests permission before retrying.
 References: [Sveltia entry collections](https://sveltiacms.app/en/docs/collections/entries),
 [file collections](https://sveltiacms.app/en/docs/collections/files),
 [Editorial Workflow](https://sveltiacms.app/en/docs/workflows/editorial).
+
+## Recipe photos
+
+Coffee and Food recipes have a Photo field with a picker. Choose or drop an image and
+the editor converts it to WebP (up to 1600 px, quality 85), saves it in `assets/recipes/`
+and fills in the path. Files over 2 MB are rejected. The photo is committed in the same
+review PR as the recipe. Everything else, including the global media folder, stays read-only.

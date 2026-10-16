@@ -59,8 +59,10 @@ function register() {
       else { sent.current = []; setText(incoming); }
     }, [incoming]);
     useEffect(() => {
-      if (initialized.current || incoming.trim()) return;
+      // Only a new entry gets the template; clearing an existing post must stay empty.
+      if (initialized.current) return;
       initialized.current = true;
+      if (incoming.trim()) return;
       const today = new Date().toISOString().slice(0, 10);
       const date = entry?.getIn(['data', 'date']);
       const title = entry?.getIn(['data', 'title']);
@@ -142,13 +144,7 @@ function register() {
   }
 
   CMS.registerFieldType('post-source', SourceControl);
-  fetch(new URL('config.yml', import.meta.url)).then((r) => r.json()).then((config) => {
-    for (const c of config.collections) {
-      if (c.name !== 'posts') continue;
-      if (c.folder) CMS.registerPreviewTemplate(c.name, PreviewPane);
-      for (const f of c.files || []) CMS.registerPreviewTemplate(f.name, PreviewPane);
-    }
-  });
+  CMS.registerPreviewTemplate('posts', PreviewPane);
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', register, { once: true });

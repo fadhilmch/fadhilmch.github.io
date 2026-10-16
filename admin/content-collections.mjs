@@ -7,6 +7,9 @@ const colorField = () => field('color', 'Color', 'select', { options: [
   { label: 'Teal', value: 'l4' }, { label: 'Gold', value: 'l5' },
   { label: 'Neutral', value: 'fg' },
 ] });
+// Skills and lanes carry hidden keys that graph IDs and lane links depend on. Items the form
+// added or duplicated would have no key, so these lists only edit, reorder and toggle visibility.
+const fixedKeys = { allow_add: false, allow_duplicate: false, allow_remove: false };
 const rootListFile = (name, label, filePath, fields, listOptions = {}) => ({
   name,
   label,
@@ -38,7 +41,7 @@ const skillFields = [
   text('spotlight', 'Spotlight', { required: false }),
   field('glyph', 'Glyph'),
   colorField(),
-  list('items', 'Skills', skillItemFields),
+  list('items', 'Skills', skillItemFields, { summary: '{{fields.name}}' }),
   field('enabled', 'Enabled', 'boolean', {
     required: false,
     default: true,
@@ -84,7 +87,7 @@ const recipeExtraFields = [
     { label: 'Published', value: 'published' }, { label: 'Draft (shows "Recipe coming later")', value: 'draft' },
   ] }),
   list('tags', 'Tags', undefined, { required: false, hint: 'Short labels shown as filter chips on the list page, e.g. pour-over, weeknight.' }),
-  field('photo', 'Photo path', 'string', { required: false, hint: 'Path to an image already in the repo, for example /assets/recipes/my-recipe.webp. Photo upload is not enabled in this editor. Leave empty to show "Photo coming later".' }),
+  field('photo', 'Photo', 'image', { required: false, media_folder: '/assets/recipes', public_folder: '/assets/recipes', choose_url: false, hint: 'Choose or drop a photo. It is converted to WebP and saved in assets/recipes. Best as a landscape 3:2 photo, up to 2 MB. Leave empty to show "Photo coming later".' }),
   field('photo_alt', 'Photo description', 'string', { required: false, hint: 'Describe the photo for screen readers.' }),
   field('photo_credit', 'Photo credit', 'string', { required: false, hint: 'Shown under the photo, for example Photo by Fadhil.' }),
 ];
@@ -100,7 +103,7 @@ const coffeeFields = [
   recipeCommonFields[3],
   field('beans', 'Beans', 'string', { required: false }),
   ...recipeExtraFields,
-  list('steps', 'Brew steps', undefined, { min: 1 }),
+  list('steps', 'Brew steps', undefined, { min: 1, hint: 'Start a step with m:ss, e.g. 0:45 Pour to 150 g, so the brew timer highlights it.' }),
   text('notes', 'Notes', { required: false }),
   text('comments', 'My comments', { required: false, hint: 'Your own thoughts on this recipe. Shown under the method as "My comments".' }),
 ];
@@ -129,34 +132,34 @@ export const contentCollections = [
       fields: [
         field('name', 'Name'), field('short_role', 'Short role'), field('city', 'City'),
         field('role', 'Role'), field('location', 'Location'), field('headline', 'Headline'),
-        list('greetings', 'Greetings', [field('word', 'Word'), field('lang', 'Language')]),
+        list('greetings', 'Greetings', [field('word', 'Word'), field('lang', 'Language')], { summary: '{{fields.word}} · {{fields.lang}}' }),
         list('bio_links', 'Interactive bio links', [
           field('text', 'Text'), field('node', 'Graph node', 'string', { required: false }),
           field('href', 'Link URL', 'string', { required: false }), field('color', 'Color', 'string', { required: false }),
-        ]),
+        ], { summary: '{{fields.text}}' }),
         text('bio', 'Bio'), field('flag', 'Flag'),
-        list('now', 'Now', [field('k', 'Label'), field('v', 'Value'), field('href', 'Link URL', 'string', { required: false })]),
+        list('now', 'Now', [field('k', 'Label'), field('v', 'Value'), field('href', 'Link URL', 'string', { required: false })], { summary: '{{fields.k}}: {{fields.v}}' }),
         field('off_hours', 'Off hours'),
       ],
-    }, rootListFile('lanes', 'Lanes', '_data/lanes.yml', laneFields, { max: 7 })],
+    }, rootListFile('lanes', 'Lanes', '_data/lanes.yml', laneFields, { max: 7, summary: '{{fields.title}}', ...fixedKeys })],
   },
   {
     name: 'experience', label: 'Experience', publish: false,
-    files: [rootListFile('experience', 'Experience', '_data/experience.yml', experienceFields)],
+    files: [rootListFile('experience', 'Experience', '_data/experience.yml', experienceFields, { summary: '{{fields.years}} · {{fields.role}}, {{fields.org}}' })],
   },
   {
     name: 'education', label: 'Education', publish: false,
-    files: [rootListFile('education', 'Education', '_data/education.yml', educationFields)],
+    files: [rootListFile('education', 'Education', '_data/education.yml', educationFields, { summary: '{{fields.years}} · {{fields.role}}' })],
   },
   {
     name: 'skills', label: 'Skills', publish: false,
-    files: [rootListFile('skills', 'Skills', '_data/skills.yml', skillFields, { max: 5 })],
+    files: [rootListFile('skills', 'Skills', '_data/skills.yml', skillFields, { max: 5, summary: '{{fields.group}}', ...fixedKeys })],
   },
   {
     name: 'projects', label: 'Projects', publish: false,
     files: [{
       name: 'portfolio-projects', label: 'Portfolio projects', file: '_data/portfolio_projects.json', format: 'json',
-      fields: [list('projects', 'Projects', projectFields, { root: true })],
+      fields: [list('projects', 'Projects', projectFields, { root: true, summary: '{{fields.title}}' })],
     }],
   },
   {
@@ -164,11 +167,11 @@ export const contentCollections = [
     files: [rootListFile('publications', 'Publications', '_data/publications.yml', [
       field('title', 'Title'), field('authors', 'Authors'), field('venue', 'Venue'), field('conference', 'Conference'),
       field('event', 'Event'), field('pages', 'Pages'), field('year', 'Year'), field('doi', 'DOI'), field('href', 'URL'),
-    ])],
+    ], { summary: '{{fields.year}} · {{fields.title}}' })],
   },
   {
     name: 'contact', label: 'Contact', publish: false,
-    files: [rootListFile('contact', 'Contact', '_data/contact.yml', [field('label', 'Label'), field('value', 'Value'), field('href', 'Link URL')])],
+    files: [rootListFile('contact', 'Contact', '_data/contact.yml', [field('label', 'Label'), field('value', 'Value'), field('href', 'Link URL')], { summary: '{{fields.label}}' })],
   },
   {
     name: 'coffee', label: 'Coffee', label_singular: 'Coffee recipe',
