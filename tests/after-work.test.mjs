@@ -67,3 +67,6 @@ test('doodle shapes exist for every placed doodle asset',()=>{
  const shapes=JSON.parse(read('assets/data/after-work-shapes.json'));
  for(const i of layout().items)assert.ok(shapes[i.asset],i.asset);
 });
+test('the gateway shows no caption under the stickers',()=>{
+ assert.doesNotMatch(read('after-work/index.html'),/aw-art-note|Illustrative stickers/);
+});
