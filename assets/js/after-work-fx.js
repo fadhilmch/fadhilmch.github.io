@@ -40,7 +40,10 @@ export function initFx(stickers) {
     const stack = items.filter((n) => !n.matches('a') && getComputedStyle(n).display !== 'none')
       .sort((p, q) => (+getComputedStyle(q).zIndex || 0) - (+getComputedStyle(p).zIndex || 0));
     const top = stack.find((n) => hit(n, e.clientX, e.clientY));
-    if (top) shake(top);
+    if (!top) return;
+    // A tap shakes the sticker; picking it up and dragging does not (after-work-play.js sets awMoved).
+    const done = () => { stickers.removeEventListener('pointerup', done); if (!stickers.dataset.awMoved) shake(top); };
+    stickers.addEventListener('pointerup', done);
   });
 
   if (matchMedia('(hover: hover)').matches) {
