@@ -1,7 +1,7 @@
 /* Header laptop switch: open laptop = main site, closed laptop = After work. Icon only, no label.
    Three images in a fixed box so the header never shifts: open, half-open (hover/focus), closed. */
-.primary-nav .mode-toggle { display:inline-flex; align-items:center; justify-content:center; padding:2px 8px; min-width:44px; min-height:34px; }
-.mode-toggle .mt-img { position:relative; display:block; width:36px; height:31px; }
+.mode-toggle { text-decoration:none; }
+.mode-toggle .mt-img { position:relative; display:block; width:28px; height:24px; }
 .mode-toggle .mt-img img { position:absolute; left:0; top:50%; width:100%; height:auto; opacity:0; transform:translateY(-50.5%); transition:opacity .16s ease; }
 /* The three pictures have different padding, so each is sized by its visible width and centred on its visible middle: the laptop keeps the same width in every state. */
 .mode-toggle .mt-half { transform:translateY(-52.6%); }
@@ -13,7 +13,6 @@
 }
 .mode-toggle:focus-visible .mt-half { opacity:1; }
 .mode-toggle:focus-visible .mt-open, .mode-toggle:focus-visible .mt-shut { opacity:0; }
-.mode-toggle.is-closed { box-shadow:inset 0 0 0 1px var(--line); border-radius:8px; }
 .mode-toggle:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
 @media (prefers-reduced-motion:reduce) { .mode-toggle .mt-img img { transition:none; } }
 /* Page change: a plain quick cross-fade where the browser supports it. Nothing moves, nothing waits. */

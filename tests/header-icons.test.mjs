@@ -29,3 +29,11 @@ test('lamp is lit in dark mode with a bulb-only glow, and the logo wave glows in
  assert.match(c,/prefers-reduced-motion: no-preference\) \{\s*\[data-theme="dark"\] \.brand__wave \{ animation/);
  assert.doesNotMatch(c,/brand-neon-on[^;]*infinite/);
 });
+
+test('laptop switch sits in its own framed tile next to the lamp, outside the nav pill', () => {
+  const h = read('_includes/header.html');
+  const nav = h.slice(h.indexOf('<nav'), h.indexOf('</nav>'));
+  assert.doesNotMatch(nav, /mode-toggle/);
+  assert.match(h, /<div class="header-tools">[\s\S]*mode-toggle[\s\S]*theme-toggle[\s\S]*<\/div>/);
+  assert.match(read('assets/css/base.css'), /\.theme-toggle, \.mode-toggle \{/);
+});
