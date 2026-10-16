@@ -8,6 +8,6 @@ test('After work drops the bright soft-depth highlight on the nav pill', () => {
 });
 test('light lamp styling is soft and never applies on After work', () => {
   const b = read('assets/css/base.css');
-  assert.match(b, /\[data-theme="light"\] body:not\(\.is-after-work\) \.theme-toggle \{ background-image: none;/);
+  assert.match(b, /\[data-theme="light"\] body:not\(\.is-after-work\) \.theme-toggle, \[data-theme="light"\] body:not\(\.is-after-work\) \.mode-toggle \{ background-image: none;/);
   assert.doesNotMatch(b, /^\[data-theme="light"\] \.theme-toggle \{ box-shadow/m);
 });
