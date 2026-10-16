@@ -91,6 +91,7 @@ const coffeeFields = [
   field('beans', 'Beans', 'string', { required: false }),
   list('steps', 'Brew steps', undefined, { min: 1 }),
   text('notes', 'Notes', { required: false }),
+  text('comments', 'My comments', { required: false, hint: 'Your own thoughts on this recipe. Shown under the method as "My comments".' }),
 ];
 
 const foodFields = [
