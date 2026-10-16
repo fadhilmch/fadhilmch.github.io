@@ -292,6 +292,7 @@ Positions, sizes, turns, stacking and visibility of every gateway sticker live i
 - **Add a sticker:** put its WebP data URI in `_includes/after-work/images/NAME.html`, run `python3 scripts/build-after-work-shapes.py` (needs Pillow; add NAME to its list first), then add an item with both layouts to the JSON. The outline masks in `assets/data/after-work-shapes.json` are 96 columns wide, so they are an approximation that errs on the safe side.
 - **Visitors:** stickers are static and the header icon swaps between an open laptop and a closed slab (the lid dips on hover or focus, and the closed slab lifts a lid outline; off for reduced motion).
 - **Code:** `assets/js/after-work-layout.js` (geometry), `after-work-edit-state.js` (history and export), `after-work-editor.js` (panel, loaded only with `?edit`), `after-work-terminal.js` (subtitle typing); tests are in `tests/after-work-layout.test.mjs`.
+- **Sticker effects:** `assets/js/after-work-fx.js` adds a staggered entrance, a short shake when a sticker is clicked or tapped (Coffee and Cooking still open at once), and a soft pointer tilt with moving shadows on devices with a mouse. All of it is off for reduced motion and while editing (`?edit`). Styles are at the end of `assets/css/after-work-grid.css`. A new doodle needs an entry in `ASSETS` in `scripts/build-after-work-shapes.py`; run it to rebuild `assets/data/after-work-shapes.json`.
 
 ### Now rows and graph motion
 
