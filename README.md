@@ -131,5 +131,5 @@ to support text-editor commits. Keep those bytes unchanged when editing template
 
 The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
 (desktop and phone layouts, outline-based spacing checks, publish through a pull request).
-The header laptop icon is an open laptop on the main site and a flat closed slab on After work. Details:
+The header laptop icon is an open laptop picture on the main site and a closed one on After work; hover or keyboard focus shows a half-open laptop. The theme button is a desk lamp, unlit in light mode and lit in dark mode (the glow comes from the bulb only). In dark mode the M (wave) in the logo glows and warms up once on load; reduced motion skips the warm-up. The pictures are in `assets/images/ui/`, styles in `assets/css/mode-toggle.css` and `assets/css/base.css`. Details:
 [layout editor](docs/EDITING.md#after-work-layout-editor).
