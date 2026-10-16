@@ -11,6 +11,9 @@ Static page, no build step. Served as-is by GitHub Pages.
 - `config.js` - public Supabase URL and publishable key
 - `tests/money.test.js`, `tests/edits.test.js` - tests for the money math, dates, who-owes card and edits
 
+Footer: a small static site footer in `index.html` (`.sitefoot` in `style.css`) shows the site owner's favicon mark, "Created by fadhilmch" linking to https://fadhilmch.github.io, and 2026, the year TenisYuk was created. It is plain HTML, theme-aware through the existing CSS variables, and needs no JavaScript.
+
+
 Run the tests (Node 18+, no install needed):
 
     cd tenisyuk && node --test tests/*.test.js
