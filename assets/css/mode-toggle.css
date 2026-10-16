@@ -1,8 +1,8 @@
 /* Header laptop switch: open laptop = main site, closed laptop = After work. Icon only, no label, no lid animation. */
 .primary-nav .mode-toggle { display:inline-flex; align-items:center; justify-content:center; padding:4px 12px; min-width:44px; min-height:32px; }
 .mode-toggle svg { overflow:visible; }
-.mode-toggle .mt-lid { transform-box:fill-box; transform-origin:50% 100%; }
-.mode-toggle.is-closed .mt-lid { transform:scaleY(.16); }
+.mode-toggle .mt-shut, .mode-toggle.is-closed .mt-open { display:none; }
+.mode-toggle.is-closed .mt-shut { display:inline; }
 .mode-toggle.is-closed { background:var(--fg); color:var(--bg); }
 .mode-toggle:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
 /* Page change: a plain quick cross-fade where the browser supports it. Nothing moves, nothing waits. */
