@@ -21,9 +21,25 @@ export async function initEditor(stickers) {
   const shapes = await (await fetch(stickers.dataset.shapes)).json();
   const editUrl = stickers.dataset.editUrl;
   const board = stickers.closest('.aw-board');
-  let draft = null;
-  try { draft = JSON.parse(localStorage.getItem(DRAFT_KEY)); } catch { draft = null; }
-  const history = createHistory(draft && draft.version === published.version ? draft : published);
+  // Embedded in the site editor (/admin/): the CMS owns loading and saving, so no drafts or publish steps here.
+  const embed = new URLSearchParams(location.search).has('embed') && window.parent !== window;
+  let draft = null, fromCms = null;
+  if (embed) {
+    document.body.classList.add('aw-embed');
+    fromCms = await new Promise((resolve) => {
+      const done = (e) => {
+        if (e.origin !== location.origin || !e.data || e.data.awEmbed !== 'init') return;
+        removeEventListener('message', done); resolve(e.data.layout || null);
+      };
+      addEventListener('message', done);
+      window.parent.postMessage({ awEmbed: 'ready' }, location.origin);
+      setTimeout(() => { removeEventListener('message', done); resolve(null); }, 3000);
+    });
+  } else {
+    try { draft = JSON.parse(localStorage.getItem(DRAFT_KEY)); } catch { draft = null; }
+  }
+  const start = (fromCms && fromCms.version === published.version && Array.isArray(fromCms.items)) ? fromCms : draft && draft.version === published.version ? draft : published;
+  const history = createHistory(start);
   let bp = matchMedia('(max-width: 700px)').matches ? 'mobile' : 'desktop';
   let selected = null, problems = [], timer = 0, savedNote = '';
 
@@ -69,7 +85,14 @@ export async function initEditor(stickers) {
   // ----- spacing check -----
   function runChecks() {
     problems = checkLayout(layout(), shapes, bp);
-    paintAll(); renderPanel();
+    paintAll(); renderPanel(); notifyCms();
+  }
+  // Tell the CMS what the layout is now and how many spacing problems it has on either layout.
+  function notifyCms() {
+    if (!embed) return;
+    const count = ['desktop', 'mobile'].reduce((n, k) => n + checkLayout(layout(), shapes, k).length, 0);
+    window.parent.postMessage({ awEmbed: 'change', text: exportLayout(layout()), problems: count }, location.origin);
+    window.parent.postMessage({ awEmbed: 'height', height: document.documentElement.scrollHeight }, location.origin);
   }
   const scheduleChecks = () => { clearTimeout(timer); timer = setTimeout(runChecks, 120); };
 
@@ -206,7 +229,8 @@ export async function initEditor(stickers) {
         ...l.attached.map(([a, b]) => el('li', {}, `${a} + ${b} `, button('Remove', () => change((x) => detachPair(x, a, b)))))));
     }
 
-    parts.push(el('div', { className: 'aw-editor__row' },
+    if (embed) parts.push(el('p', { className: 'aw-editor__hint', textContent: 'Use Save in the editor header to open a review pull request. Nothing goes live until it is merged. Save is blocked while either layout has a spacing problem.' }));
+    else parts.push(el('div', { className: 'aw-editor__row' },
       button('Save draft', () => { saveDraft(); }),
       button('Publish…', publish, { className: 'is-primary' })),
       el('p', { className: 'aw-editor__hint', textContent: savedNote || 'Drafts stay in this browser. Visitors see the published layout only.' }));
