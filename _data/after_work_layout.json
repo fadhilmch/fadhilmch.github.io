@@ -131,7 +131,6 @@
    "id": "tennis",
    "type": "deco",
    "asset": "tennis-ball",
-   "action": "bounce",
    "desktop": {
     "x": 782.4,
     "y": 563,

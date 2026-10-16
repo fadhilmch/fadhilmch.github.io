@@ -18,10 +18,9 @@ test('gateway uses the supplied stickers and a reduced set of doodles',()=>{
  assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
  for(const f of ['coffee','food'])assert.doesNotMatch(read('after-work/'+f+'.html'),/doodle=/);
 });
-test('the tennis ball is the only decoration that is a control, and comes after the links in tab order',()=>{
- const items=layout().items;const acts=items.filter(i=>i.action);assert.equal(acts.length,1);assert.equal(acts[0].id,'tennis');assert.equal(acts[0].action,'bounce');
- assert.ok(items.findIndex(i=>i.action)>items.findLastIndex(i=>i.type==='link'));
- const s=read('after-work/index.html');assert.match(s,/role="button" tabindex="0"/);assert.match(s,/type="module"/);
+test('no decoration is a control and the gateway has no interactive stickers',()=>{
+ const items=layout().items;assert.equal(items.filter(i=>i.action).length,0);
+ const s=read('after-work/index.html');assert.doesNotMatch(s,/role="button"/);assert.match(s,/type="module"/);
 });
 test('category template is data-driven, with empty, missing-photo and draft states',()=>{
  const s=read('_includes/after-work/category.html');assert.match(s,/include.items \| sort/);assert.match(s,/Photo coming later/);assert.match(s,/Recipe coming later/);assert.match(s,/for r in items/);assert.match(s,/else %}<p class="aw-empty"/);assert.doesNotMatch(s,/coffee\.png|cooking\.png/);
@@ -49,8 +48,7 @@ test('non-timed or empty recipes never expose a non-working timer',()=>{
  const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:[]}:null}});assert.equal(box.hidden,true);
 });
 
-test('gateway title has a stable accent class and the header icon has open and closed shapes',()=>{
+test('gateway title keeps a stable accent class and the header icon has open and closed shapes',()=>{
  assert.match(read('after-work/index.html'),/<span class="aw-accent">work<\/span>/);
  assert.match(read('_includes/header.html'),/class="mt-open"[\s\S]*class="mt-shut"/);
- assert.match(read('assets/js/after-work-gateway.js'),/initTitle/);
 });
