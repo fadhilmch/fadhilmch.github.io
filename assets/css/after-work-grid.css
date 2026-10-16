@@ -2,11 +2,14 @@
 .aw-grid { --aw-ink:#f2f1e8; --aw-muted:#b2b7aa; --aw-rule:#ffffff24; color:var(--aw-ink); background-color:#171e19; background-image:linear-gradient(#bbc49a0c 1px,transparent 1px),linear-gradient(90deg,#bbc49a0c 1px,transparent 1px); background-size:24px 24px; }
 .aw-grid a { color:inherit; }
 .aw-grid .back-link { color:var(--aw-muted); min-height:44px; display:inline-flex; align-items:center; }
+.aw-page.aw-grid:not(.aw-page--gateway) { padding-top:8px; }
+.aw-page .back-link { margin:-8px 0 -8px; }
+.aw-category-title h1 { margin-block:0; }
 .aw-head { padding:8px 4px 14px; }
 .aw-head h1 { font-size:clamp(38px,6vw,64px); margin:0 0 16px; letter-spacing:-.04em; }
 .aw-head h1 .aw-accent { color:#c5d788; }
 .aw-head p { color:var(--aw-muted); font-size:13px; }
-.aw-category-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin:0 0 28px; }
+.aw-category-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin:0 0 12px; }
 .aw-category-title { display:flex; align-items:center; gap:14px; }
 .aw-category-title h1 { font-size:clamp(34px,5vw,58px); margin:0; letter-spacing:-.035em; }
 .aw-category-title>img { width:70px; height:70px; object-fit:contain; }
@@ -31,6 +34,7 @@
 .recipe.aw-grid .ingredients li { border-color:var(--aw-rule); }
 @media(min-width:700px){.aw-menu:has(.aw-card:only-child){grid-template-columns:minmax(0,620px)}}
 @media(max-width:700px){
+ .aw-page.aw-grid:not(.aw-page--gateway) { padding-top:6px; }
  .aw-category-title { gap:8px; }
  .aw-category-title>img { width:44px; height:44px; }
  .aw-menu { grid-template-columns:1fr; }
