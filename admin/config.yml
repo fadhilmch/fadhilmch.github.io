@@ -783,6 +783,51 @@
           "required": false
         },
         {
+          "name": "status",
+          "label": "Status",
+          "widget": "select",
+          "required": false,
+          "default": "published",
+          "options": [
+            {
+              "label": "Published",
+              "value": "published"
+            },
+            {
+              "label": "Draft (shows \"Recipe coming later\")",
+              "value": "draft"
+            }
+          ]
+        },
+        {
+          "name": "tags",
+          "label": "Tags",
+          "widget": "list",
+          "required": false,
+          "hint": "Short labels shown as filter chips on the list page, e.g. pour-over, weeknight."
+        },
+        {
+          "name": "photo",
+          "label": "Photo path",
+          "widget": "string",
+          "required": false,
+          "hint": "Path to an image already in the repo, for example /assets/recipes/my-recipe.webp. Photo upload is not enabled in this editor. Leave empty to show \"Photo coming later\"."
+        },
+        {
+          "name": "photo_alt",
+          "label": "Photo description",
+          "widget": "string",
+          "required": false,
+          "hint": "Describe the photo for screen readers."
+        },
+        {
+          "name": "photo_credit",
+          "label": "Photo credit",
+          "widget": "string",
+          "required": false,
+          "hint": "Shown under the photo, for example Photo by Fadhil."
+        },
+        {
           "name": "steps",
           "label": "Brew steps",
           "widget": "list",
@@ -848,7 +893,52 @@
           "name": "time",
           "label": "Time",
           "widget": "string",
-          "hint": "Use the time format shown on the site, e.g. 2:30."
+          "hint": "Free text shown on the site, for example 35 min."
+        },
+        {
+          "name": "status",
+          "label": "Status",
+          "widget": "select",
+          "required": false,
+          "default": "published",
+          "options": [
+            {
+              "label": "Published",
+              "value": "published"
+            },
+            {
+              "label": "Draft (shows \"Recipe coming later\")",
+              "value": "draft"
+            }
+          ]
+        },
+        {
+          "name": "tags",
+          "label": "Tags",
+          "widget": "list",
+          "required": false,
+          "hint": "Short labels shown as filter chips on the list page, e.g. pour-over, weeknight."
+        },
+        {
+          "name": "photo",
+          "label": "Photo path",
+          "widget": "string",
+          "required": false,
+          "hint": "Path to an image already in the repo, for example /assets/recipes/my-recipe.webp. Photo upload is not enabled in this editor. Leave empty to show \"Photo coming later\"."
+        },
+        {
+          "name": "photo_alt",
+          "label": "Photo description",
+          "widget": "string",
+          "required": false,
+          "hint": "Describe the photo for screen readers."
+        },
+        {
+          "name": "photo_credit",
+          "label": "Photo credit",
+          "widget": "string",
+          "required": false,
+          "hint": "Shown under the photo, for example Photo by Fadhil."
         },
         {
           "name": "ingredients",
