@@ -7,7 +7,7 @@
   --muted: #62605a;
   --line: #dedbd3;
   --dot: #d3cfc6;
-  --ghost: #dcd8ce;
+  --ghost: #d2cec0;
   --k-key: oklch(0.5 0.14 255);
   --k-str: oklch(0.5 0.13 150);
   --k-num: oklch(0.55 0.16 30);
@@ -47,7 +47,7 @@
   --muted: #9b9993;
   --line: #2e2d2a;
   --dot: #2a2927;
-  --ghost: #2e2d2a;
+  --ghost: #3c3b37;
   --k-key: oklch(0.78 0.11 255);
   --k-str: oklch(0.78 0.12 150);
   --k-num: oklch(0.78 0.13 30);
