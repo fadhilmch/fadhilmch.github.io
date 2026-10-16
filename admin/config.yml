@@ -9,7 +9,7 @@
   },
   "publish_mode": "editorial_workflow",
   "site_url": "https://fadhilmch.github.io",
-  "app_title": "Fadhil \u00b7 Site editor",
+  "app_title": "Fadhil · Site editor",
   "media_folder": "admin/media-readonly",
   "public_folder": "/admin/media-readonly",
   "collections": [
@@ -452,7 +452,7 @@
                   "widget": "boolean",
                   "required": false,
                   "default": true,
-                  "hint": "For Product design, also set About \u2192 Lanes \u2192 Product design \u2192 Branch visible to true."
+                  "hint": "For Product design, also set About → Lanes → Product design → Branch visible to true."
                 }
               ],
               "max": 5,
@@ -764,7 +764,7 @@
         },
         {
           "name": "temp_c",
-          "label": "Water temperature (\u00b0C)",
+          "label": "Water temperature (°C)",
           "widget": "number",
           "value_type": "float",
           "min": 0.1,
@@ -860,6 +860,26 @@
           "label": "Notes",
           "widget": "text",
           "required": false
+        }
+      ]
+    },
+    {
+      "name": "after-work-layout",
+      "label": "After work layout",
+      "publish": false,
+      "files": [
+        {
+          "name": "gateway-layout",
+          "label": "Sticker layout",
+          "file": "_data/after_work_layout.json",
+          "format": "layout-raw",
+          "fields": [
+            {
+              "name": "layout",
+              "label": "Sticker layout",
+              "widget": "aw-layout"
+            }
+          ]
         }
       ]
     }
