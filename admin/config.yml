@@ -793,6 +793,13 @@
           "label": "Notes",
           "widget": "text",
           "required": false
+        },
+        {
+          "name": "comments",
+          "label": "My comments",
+          "widget": "text",
+          "required": false,
+          "hint": "Your own thoughts on this recipe. Shown under the method as \"My comments\"."
         }
       ]
     },
