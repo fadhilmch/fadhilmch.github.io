@@ -136,6 +136,8 @@ body.is-after-work { color-scheme:dark; --bg:#171e19; --panel:#1f2a23; --fg:#f2f
 body.is-after-work .aw-grid { background:none; }
 body.is-after-work .site-header, body.is-after-work .site-footer { background:#171e19cc; border-color:#ffffff1f; box-shadow:none; }
 body.is-after-work .primary-nav { background:#1f2a23; border-color:#ffffff24; box-shadow:none; }
+/* The soft-depth layer adds a bright top highlight to the nav pill (made for light pages); After work is always dark, so keep it quiet there. */
+html[data-depth="soft"] body.is-after-work .primary-nav { box-shadow:none; }
 body.is-after-work .primary-nav a[aria-current="page"], body.is-after-work .mode-toggle.is-closed { background:#e8eddb; color:#252b23; }
 body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 body.is-after-work .primary-nav a.mode-toggle.is-closed:hover { background:#e8eddb; color:#252b23; }
