@@ -6,8 +6,10 @@ export function initFx(stickers) {
   items.forEach((n, i) => n.style.setProperty('--i', i));
   if (reduce || stickers.classList.contains('aw-editing')) return;
   stickers.classList.add('has-fx');
+  // The entrance only runs once. Without this, the pop animation restarts (from invisible) when a shake ends.
+  setTimeout(() => stickers.classList.add('fx-ready'), 120 + items.length * 55 + 700);
 
-  const shake = (el) => { el.classList.remove('is-shaking'); void el.offsetWidth; el.classList.add('is-shaking'); };
+  const shake = (el) => { stickers.classList.add('fx-ready'); el.classList.remove('is-shaking'); void el.offsetWidth; el.classList.add('is-shaking'); };
   items.forEach((n) => n.addEventListener('animationend', (e) => { if (e.animationName === 'aw-shake') n.classList.remove('is-shaking'); }));
   stickers.querySelectorAll('a.aw-sticker').forEach((a) => a.addEventListener('click', () => shake(a)));
 
