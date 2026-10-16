@@ -131,7 +131,7 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 .aw-grid .brew-timer__btn--ghost:hover { background:#ffffff14; color:var(--aw-ink); border-color:var(--aw-muted); }
 
 /* One green theme for every After work page, header and footer included (light or dark site mode) */
-body.is-after-work { color-scheme:dark; --bg:#171e19; --panel:#1f2a23; --fg:#f2f1e8; --muted:#b2b7aa; --line:#ffffff24; --dot:#ffffff24; --ghost:#2a3a2f; --shadow:none;
+body.is-after-work { color-scheme:dark; --bg:#171e19; --panel:#1f2a23; --fg:#f2f1e8; --muted:#b2b7aa; --line:#ffffff24; --dot:#ffffff24; --ghost:#36493c; --shadow:none;
   background-color:#171e19; background-image:linear-gradient(#bbc49a0c 1px,transparent 1px),linear-gradient(90deg,#bbc49a0c 1px,transparent 1px); background-size:24px 24px; color:var(--fg); }
 body.is-after-work .aw-grid { background:none; }
 body.is-after-work .site-header, body.is-after-work .site-footer { background:#171e19cc; border-color:#ffffff1f; box-shadow:none; }
@@ -139,6 +139,7 @@ body.is-after-work .primary-nav { background:#1f2a23; border-color:#ffffff24; bo
 /* The soft-depth layer adds a bright top highlight to the nav pill (made for light pages); After work is always dark, so keep it quiet there. */
 html[data-depth="soft"] body.is-after-work .primary-nav { box-shadow:none; }
 body.is-after-work .primary-nav a[aria-current="page"] { background:#e8eddb; color:#252b23; }
+[data-theme="dark"] body.is-after-work .brand__wave { stroke:oklch(0.86 0.16 30); }
 body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 
 /* recipe detail pages */
@@ -265,3 +266,7 @@ img.aw-deco, .aw-avatar img, .aw-sticker > img { filter:drop-shadow(0 1px 0 #fff
 .aw-stickers.has-fx .aw-item.is-held { transition:none; scale:1.05; z-index:60; }
 .aw-stickers.has-fx .aw-item.is-held img, .aw-stickers.has-fx img.aw-item.is-held { filter:drop-shadow(0 2px 2px #0006) drop-shadow(0 14px 14px #0005); }
 @media (prefers-reduced-motion:reduce) { .aw-deco, .aw-avatar { transition:none; } }
+
+/* Quiet easter-egg hint that the stickers can be moved. Not a tutorial: small, muted, brightens on hover. */
+.aw-nudge { text-align:center; margin:18px 0 8px; font-size:12px; color:var(--aw-muted); opacity:.55; transition:opacity .2s; }
+.aw-nudge:hover { opacity:.95; }
