@@ -79,6 +79,16 @@ const recipeCommonFields = [
   field('time', 'Time', 'string', { hint: 'Use the time format shown on the site, e.g. 2:30.' }),
 ];
 
+const recipeExtraFields = [
+  field('status', 'Status', 'select', { required: false, default: 'published', options: [
+    { label: 'Published', value: 'published' }, { label: 'Draft (shows "Recipe coming later")', value: 'draft' },
+  ] }),
+  list('tags', 'Tags', undefined, { required: false, hint: 'Short labels shown as filter chips on the list page, e.g. pour-over, weeknight.' }),
+  field('photo', 'Photo path', 'string', { required: false, hint: 'Path to an image already in the repo, for example /assets/recipes/my-recipe.webp. Photo upload is not enabled in this editor. Leave empty to show "Photo coming later".' }),
+  field('photo_alt', 'Photo description', 'string', { required: false, hint: 'Describe the photo for screen readers.' }),
+  field('photo_credit', 'Photo credit', 'string', { required: false, hint: 'Shown under the photo, for example Photo by Fadhil.' }),
+];
+
 const coffeeFields = [
   ...recipeCommonFields.slice(0, 2),
   field('kind', 'Recipe type', 'hidden', { default: 'coffee' }),
@@ -89,6 +99,7 @@ const coffeeFields = [
   field('temp_c', 'Water temperature (°C)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
   recipeCommonFields[3],
   field('beans', 'Beans', 'string', { required: false }),
+  ...recipeExtraFields,
   list('steps', 'Brew steps', undefined, { min: 1 }),
   text('notes', 'Notes', { required: false }),
   text('comments', 'My comments', { required: false, hint: 'Your own thoughts on this recipe. Shown under the method as "My comments".' }),
@@ -99,7 +110,8 @@ const foodFields = [
   field('kind', 'Recipe type', 'hidden', { default: 'food' }),
   field('cuisine', 'Cuisine'),
   field('serves', 'Serves', 'number', { value_type: 'int', min: 1 }),
-  recipeCommonFields[3],
+  field('time', 'Time', 'string', { hint: 'Free text shown on the site, for example 35 min.' }),
+  ...recipeExtraFields,
   list('ingredients', 'Ingredients', undefined, { min: 1 }),
   list('steps', 'Method steps', undefined, { min: 1 }),
   text('notes', 'Notes', { required: false }),
