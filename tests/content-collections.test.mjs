@@ -124,3 +124,20 @@ test('served config includes every schema and uses review PRs for every collecti
     if (collection.folder) assert.equal(collection.delete, false, collection.name);
   }
 });
+
+test('recipe photos upload only to assets/recipes, as WebP under 2 MB', () => {
+  const config = JSON.parse(readFileSync(new URL('../admin/config.yml', import.meta.url)));
+  assert.equal(config.media_folder, 'admin/media-readonly');
+  assert.equal(config.media_libraries.default.config.max_file_size, 2097152);
+  assert.equal(config.media_libraries.default.config.transformations.raster_image.format, 'webp');
+  for (const name of ['coffee', 'food']) {
+    const photo = collection(name).fields.find((item) => item.name === 'photo');
+    assert.equal(photo.widget, 'image');
+    assert.equal(photo.media_folder, '/assets/recipes');
+    assert.equal(photo.public_folder, '/assets/recipes');
+    assert.equal(photo.choose_url, false);
+    assert.equal(photo.required, false);
+  }
+  const others = contentCollections.filter((item) => !['coffee', 'food'].includes(item.name));
+  assert.doesNotMatch(JSON.stringify(others), /"widget":"image"|"media_folder"/);
+});
