@@ -5,22 +5,36 @@ nav: after-work
 description: Coffee and cooking, after work.
 permalink: /after-work/
 ---
+{%- comment -%}
+  The sticker scene is data driven: positions live in _data/after_work_layout.json (one set for
+  desktop, one for phones) and are edited at /after-work/?edit. Links come first in the file so
+  Coffee and Cooking are first in tab order.
+{%- endcomment -%}
+{%- assign layout = site.data.after_work_layout -%}
 <div class="aw-page aw-grid">
   <header class="aw-head"><h1>After <span>work</span> <span aria-hidden="true">↙</span></h1><p>Pick an interest.</p></header>
-  <section class="aw-stickers" aria-label="Interests">
-    <img class="aw-deco aw-deco--camera" src="{% include after-work/images/camera.html %}" alt="" width="280" height="223" aria-hidden="true">
-    <img class="aw-deco aw-deco--tennis" src="{% include after-work/images/tennis-ball.html %}" alt="" width="275" height="280" aria-hidden="true">
-    <img class="aw-deco aw-deco--headphones" src="{% include after-work/images/headphones.html %}" alt="" width="274" height="280" aria-hidden="true">
-    <img class="aw-deco aw-deco--laptop" src="{% include after-work/images/laptop.html %}" alt="" width="300" height="282" aria-hidden="true">
-    <img class="aw-deco aw-deco--tablet" src="{% include after-work/images/tablet.html %}" alt="" width="300" height="226" aria-hidden="true">
-    <img class="aw-deco aw-deco--monstera" src="{% include after-work/images/monstera.html %}" alt="" width="268" height="280" aria-hidden="true">
-    <img class="aw-deco aw-deco--pothos" src="{% include after-work/images/pothos.html %}" alt="" width="252" height="280" aria-hidden="true">
-    <div class="aw-avatar"><img src="{% include after-work/images/avatar-cutout.html %}" alt="Fadhil's illustrated avatar" width="500" height="600"></div>
-    <img class="aw-deco aw-deco--sparkles" src="{% include after-work/images/sparkles.html %}" alt="" width="280" height="259" aria-hidden="true">
-    <img class="aw-deco aw-deco--loop-arrow" src="{% include after-work/images/loop-arrow.html %}" alt="" width="280" height="135" aria-hidden="true">
-    <img class="aw-deco aw-deco--shooting-star" src="{% include after-work/images/shooting-star.html %}" alt="" width="280" height="174" aria-hidden="true">
-    <a class="aw-sticker aw-sticker--coffee" href="{{ '/after-work/coffee/' | relative_url }}"><img src="{% include after-work/images/coffee-cutout.html %}" alt="" width="500" height="600"><span>Coffee ↗</span></a>
-    <a class="aw-sticker aw-sticker--cooking" href="{{ '/after-work/food/' | relative_url }}"><img src="{% include after-work/images/cooking-cutout.html %}" alt="" width="600" height="600"><span>Cooking ↗</span></a>
+  <section class="aw-board" style="--dbw:{{ layout.boards.desktop.w }};--dbh:{{ layout.boards.desktop.h }};--mbw:{{ layout.boards.mobile.w }};--mbh:{{ layout.boards.mobile.h }}">
+    <div class="aw-stickers" aria-label="Interests" data-shapes="{{ '/assets/data/after-work-shapes.json' | relative_url }}" data-edit-url="https://github.com/fadhilmch/fadhilmch.github.io/edit/master/_data/after_work_layout.json">
+{%- for it in layout.items -%}
+{%- assign file = it.asset | prepend: 'after-work/images/' | append: '.html' -%}
+{%- capture vars -%}--dx:{{ it.desktop.x }};--dy:{{ it.desktop.y }};--dw:{{ it.desktop.w }};--dr:{{ it.desktop.r }};--dz:{{ it.desktop.z }};--dd:{% if it.desktop.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %};--mx:{{ it.mobile.x }};--my:{{ it.mobile.y }};--mw:{{ it.mobile.w }};--mr:{{ it.mobile.r }};--mz:{{ it.mobile.z }};--md:{% if it.mobile.show %}{% if it.type == 'link' %}flex{% else %}block{% endif %}{% else %}none{% endif %}{%- if it.label_box -%};--dlw:{{ it.label_box.desktop.w }};--dlh:{{ it.label_box.desktop.h }};--mlw:{{ it.label_box.mobile.w }};--mlh:{{ it.label_box.mobile.h }}{%- endif -%}{%- endcapture %}
+{%- if it.type == 'link' %}
+      <a class="aw-item aw-sticker aw-sticker--{{ it.id }}" data-aw-id="{{ it.id }}" href="{{ it.href | relative_url }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="" draggable="false"><span class="aw-label">{{ it.label }}</span><span class="aw-tag" aria-hidden="true">{{ it.tag }}</span>{% if it.id == 'coffee' %}<i class="aw-steam" aria-hidden="true"><b></b><b></b><b></b></i>{% endif %}</a>
+{%- elsif it.type == 'avatar' %}
+      <div class="aw-item aw-avatar" data-aw-id="{{ it.id }}" style="{{ vars }}"><img src="{% include {{ file }} %}" alt="{{ it.alt }}" draggable="false"></div>
+{%- elsif it.action == 'terminal' %}
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" data-aw-action="terminal" role="button" tabindex="0" aria-label="Laptop. Activate to see what is on the screen" src="{% include {{ file }} %}" alt="" draggable="false" style="{{ vars }}">
+{%- else %}
+      <img class="aw-item aw-deco aw-deco--{{ it.id }}" data-aw-id="{{ it.id }}" src="{% include {{ file }} %}" alt="" aria-hidden="true" draggable="false" style="{{ vars }}">
+{%- endif -%}
+{%- endfor %}
+    </div>
+    <div class="aw-tools">
+      <button type="button" class="aw-btn" data-aw-play aria-pressed="false" hidden>Play</button>
+      <button type="button" class="aw-btn" data-aw-reset hidden>Reset</button>
+    </div>
   </section>
-  <p class="aw-art-note">Illustrative stickers.</p>
+  <p class="aw-art-note">Illustrative stickers. Play moves things around for fun and is never saved.</p>
 </div>
+<script type="application/json" id="aw-layout">{{ layout | jsonify }}</script>
+<script type="module" src="{{ '/assets/js/after-work-gateway.js' | relative_url }}"></script>
