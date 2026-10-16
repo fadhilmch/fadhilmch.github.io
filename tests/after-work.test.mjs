@@ -74,7 +74,7 @@ test('doodle shapes exist for every placed doodle asset',()=>{
 
 test('header: lamp button is roomy with a hover state, laptop pictures share one visible width, After work sets a dark theme-color',()=>{
  const b=read('assets/css/base.css'),m=read('assets/css/mode-toggle.css'),h=read('_includes/head.html');
- assert.match(b,/\.theme-toggle \{[^}]*width: 44px; height: 44px/);
+ assert.match(b,/\.theme-toggle, \.mode-toggle \{[^}]*width: 44px; height: 44px/);
  assert.match(b,/\.theme-toggle:hover img \{ transform/);
  assert.match(m,/\.mt-img img \{[^}]*width:100%; height:auto/);
  assert.match(h,/theme-color" content="\{% if page\.nav == 'after-work' %\}#171e19/);
