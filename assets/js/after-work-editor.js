@@ -128,10 +128,10 @@ export async function initEditor(stickers) {
       paintAll();
     };
     const up = () => {
-      node.removeEventListener('pointermove', move); node.removeEventListener('pointerup', up);
+      node.removeEventListener('pointermove', move); node.removeEventListener('pointerup', up); node.removeEventListener('pointercancel', up);
       if (moved) { savedNote = ''; scheduleChecks(); }
     };
-    node.addEventListener('pointermove', move); node.addEventListener('pointerup', up);
+    node.addEventListener('pointermove', move); node.addEventListener('pointerup', up); node.addEventListener('pointercancel', up);
   });
 
   function knobDrag(kind) {
@@ -150,10 +150,10 @@ export async function initEditor(stickers) {
         paintAll();
       };
       const up = () => {
-        handles.removeEventListener('pointermove', move); handles.removeEventListener('pointerup', up);
+        handles.removeEventListener('pointermove', move); handles.removeEventListener('pointerup', up); handles.removeEventListener('pointercancel', up);
         if (moved) { savedNote = ''; scheduleChecks(); }
       };
-      handles.addEventListener('pointermove', move); handles.addEventListener('pointerup', up);
+      handles.addEventListener('pointermove', move); handles.addEventListener('pointerup', up); handles.addEventListener('pointercancel', up);
     };
   }
   handles.querySelector('.aw-knob--size').addEventListener('pointerdown', knobDrag('size'));
