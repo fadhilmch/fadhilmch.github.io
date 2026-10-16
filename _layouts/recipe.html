@@ -2,32 +2,70 @@
 layout: base
 ---
 {%- assign r = page -%}
-<article class="recipe">
-  <a class="back-link" href="{{ '/after-work/' | relative_url }}">← After work</a>
+{%- assign is_draft = false -%}{%- if page.status == 'draft' or page.title contains 'TODO' %}{% assign is_draft = true %}{% endif -%}
+<article class="recipe aw-grid recipe--{{ page.kind }}" data-sheet="charcoal">
+  <a class="back-link" href="{% if page.kind == 'coffee' %}{{ '/after-work/coffee/' | relative_url }}{% else %}{{ '/after-work/food/' | relative_url }}{% endif %}">← {% if page.kind == 'coffee' %}Coffee{% else %}Cooking{% endif %}</a>
+  <div class="recipe__sheet">
   <header class="recipe__head">
     <p class="eyebrow">{% if page.kind == 'coffee' %}coffee<span>/</span>{{ page.method | escape }}{% else %}food<span>/</span>{{ page.cuisine | escape }}{% endif %}</p>
     <h1>{{ page.title | escape }}</h1>
-    {% include after-work/spec.html r=r full=true %}
+    {%- if page.tags and page.tags.size > 0 %}<ul class="aw-tags" aria-label="Tags">{% for t in page.tags %}<li>{{ t | escape }}</li>{% endfor %}</ul>{% endif %}
+    {%- if page.sample %}<p class="aw-sample-note">Sample recipe, only here to preview the layout.</p>{% endif %}
+    {%- unless is_draft %}
+    {%- if page.kind == 'coffee' and page.dose_g and page.water_g and page.dose_g > 0 %}
+    {%- assign ratio = page.water_g | times: 1.0 | divided_by: page.dose_g | round: 1 %}
+    <dl class="stats" aria-label="Recipe details">
+      <div><dt>Coffee</dt><dd>{{ page.dose_g }}<small>g</small></dd></div>
+      <div><dt>Water</dt><dd>{{ page.water_g }}<small>g</small></dd></div>
+      <div><dt>Ratio</dt><dd>1:{{ ratio }}</dd></div>
+      <div><dt>Temp</dt><dd>{{ page.temp_c }}<small>°C</small></dd></div>
+      <div><dt>Time</dt><dd>{{ page.time | escape }}</dd></div>
+      <div><dt>Grind</dt><dd class="stats__text">{{ page.grind | escape }}</dd></div>
+    </dl>
+    {%- elsif page.kind == 'food' %}
+    <dl class="stats" aria-label="Recipe details">
+      {%- if page.serves %}<div><dt>Serves</dt><dd>{{ page.serves }}</dd></div>{% endif %}
+      {%- if page.time %}<div><dt>Time</dt><dd class="stats__text">{{ page.time | escape }}</dd></div>{% endif %}
+      {%- if page.cuisine %}<div><dt>Style</dt><dd class="stats__text">{{ page.cuisine | escape }}</dd></div>{% endif %}
+    </dl>
+    {%- endif %}
+    {%- endunless %}
   </header>
-  {%- if page.kind == 'coffee' and page.beans %}<p class="recipe__beans"><span>beans</span> {{ page.beans | escape }}</p>{% endif %}
-  {%- if page.kind == 'food' %}
-  <section class="recipe__block" aria-labelledby="ing-h">
-    <h2 id="ing-h">Ingredients</h2>
-    <ul class="ingredients">{% for i in page.ingredients %}<li>{{ i | escape }}</li>{% endfor %}</ul>
+  {% if page.photo %}<figure class="recipe__image"><img src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title | escape }}" width="720" height="480">{% if page.photo_credit %}<figcaption>{{ page.photo_credit | escape }}</figcaption>{% endif %}</figure>{% endif %}
+  {% if is_draft %}
+  <section class="recipe__block"><h2>Recipe coming later.</h2><p>Photos and recipe notes will go here.</p></section>
+  {% else %}
+  <div class="recipe__body{% if page.kind == 'food' %} has-aside{% endif %}">
+    {%- if page.kind == 'food' %}
+    <aside class="recipe__aside" aria-labelledby="ing-h">
+      <h2 id="ing-h">Ingredients</h2>
+      <ul class="ingredients" data-checklist>{% for i in page.ingredients %}<li><label><input type="checkbox"><span>{{ i | escape }}</span></label></li>{% endfor %}</ul>
+    </aside>
+    {%- endif %}
+    <section class="recipe__main" aria-labelledby="steps-h">
+      {%- if page.kind == 'coffee' and page.beans %}<p class="recipe__beans"><span>beans</span> {{ page.beans | escape }}</p>{% endif %}
+      <div class="recipe__row">
+        <h2 id="steps-h">{% if page.kind == 'coffee' %}Brew{% else %}Method{% endif %}</h2>
+        {%- if page.kind == 'coffee' %}<div class="brew-timer" data-brew-timer hidden><output class="brew-timer__clock" aria-live="off">0:00</output><button type="button" class="brew-timer__btn" data-timer-go>Start</button><button type="button" class="brew-timer__btn brew-timer__btn--ghost" data-timer-reset>Reset</button><span class="brew-timer__bar" aria-hidden="true"><i></i></span></div>
+        {%- else %}<p class="steps-progress" data-steps-progress hidden aria-live="polite"></p>{% endif %}
+      </div>
+      <ol class="steps"{% if page.kind == 'coffee' %} data-steps{% else %} data-tick-steps{% endif %}>{% for s in page.steps %}<li>{{ s | escape }}</li>{% endfor %}</ol>
+    </section>
+  </div>
+  {%- if page.comments %}
+  <section class="recipe__block recipe__comments" aria-labelledby="comments-h">
+    <h2 id="comments-h">My comments</h2>
+    <p>{{ page.comments | escape | newline_to_br }}</p>
   </section>
   {%- endif %}
-  <section class="recipe__block" aria-labelledby="steps-h">
-    <div class="recipe__row">
-      <h2 id="steps-h">{% if page.kind == 'coffee' %}Brew{% else %}Method{% endif %}</h2>
-      {%- if page.kind == 'coffee' %}<div class="brew-timer" data-brew-timer hidden><output class="brew-timer__clock" aria-live="off">0:00</output><button type="button" class="brew-timer__btn">Start brew timer</button></div>{% endif %}
-    </div>
-    <ol class="steps"{% if page.kind == 'coffee' %} data-steps{% endif %}>{% for s in page.steps %}<li>{{ s | escape }}</li>{% endfor %}</ol>
-  </section>
   {%- if page.notes %}
   <section class="recipe__block" aria-labelledby="notes-h">
     <h2 id="notes-h">Notes</h2>
     <p>{{ page.notes | escape }}</p>
   </section>
   {%- endif %}
+  {% if content != empty %}<div class="recipe__block">{{ content }}</div>{% endif %}
+  {% endif %}
+  </div>
 </article>
 <script src="{{ '/assets/js/after-work.js' | relative_url }}" defer></script>

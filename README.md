@@ -110,3 +110,26 @@ desktop/mobile browser checks of drag/reset, matching edge/flow geometry, Now
 links and overflow. Local browser screenshots use a Liquid-rendered About
 harness; they are not a deployed Jekyll build. Jekyll/html-proofer still need
 the Ruby build environment before merge.
+
+## After Work grid gateway
+
+After Work uses an illustrated sticker gateway, then Coffee/Cooking category lists
+and image-led recipe pages. Only those two interests are links. Cooking retains
+`/after-work/food/` and `_food/` for existing URLs and CMS compatibility.
+
+Content comes from `_coffee/` and `_food/`; empty collections stay empty. Add an
+optional `photo`, `photo_alt`, `photo_credit` and `status` to recipe front matter.
+Missing photos show a neutral placeholder; draft recipes are labelled incomplete.
+The decorative cutouts are illustrations, not the owner's actual recipe photos.
+
+Shared templates live in `_includes/after-work/`; the scoped grid/sticker layer is
+`assets/css/after-work-grid.css`. About, site navigation and the default branch
+are not part of this design change. See [the editing guide](docs/EDITING.md#after-work-design).
+
+Illustration WebPs are embedded as data URIs in `_includes/after-work/images/`
+to support text-editor commits. Keep those bytes unchanged when editing templates.
+
+The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
+(desktop and phone layouts, outline-based spacing checks, publish through a pull request).
+Visitors get an optional Play/Reset mode that is never saved. Details:
+[layout editor](docs/EDITING.md#after-work-layout-editor).

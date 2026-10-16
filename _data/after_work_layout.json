@@ -1,0 +1,342 @@
+{
+ "version": 1,
+ "min_gap": {
+  "desktop": 12,
+  "mobile": 10
+ },
+ "boards": {
+  "desktop": {
+   "w": 1000,
+   "h": 680
+  },
+  "mobile": {
+   "w": 350,
+   "h": 760
+  }
+ },
+ "attached": [],
+ "items": [
+  {
+   "id": "coffee",
+   "type": "link",
+   "asset": "coffee-cutout",
+   "label": "Coffee ↗",
+   "tag": "coffee recipes →",
+   "href": "/after-work/coffee/",
+   "desktop": {
+    "x": 410,
+    "y": 25,
+    "w": 225,
+    "r": 6,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 8,
+    "y": 12,
+    "w": 158,
+    "r": -6,
+    "z": 3,
+    "show": true
+   },
+   "label_box": {
+    "desktop": {
+     "w": 170,
+     "h": 56
+    },
+    "mobile": {
+     "w": 120,
+     "h": 46
+    }
+   }
+  },
+  {
+   "id": "cooking",
+   "type": "link",
+   "asset": "cooking-cutout",
+   "label": "Cooking ↗",
+   "tag": "food →",
+   "href": "/after-work/food/",
+   "desktop": {
+    "x": 10,
+    "y": 250,
+    "w": 375,
+    "r": -5,
+    "z": 2,
+    "show": true
+   },
+   "mobile": {
+    "x": 0,
+    "y": 440,
+    "w": 238,
+    "r": 4,
+    "z": 2,
+    "show": true
+   },
+   "label_box": {
+    "desktop": {
+     "w": 190,
+     "h": 56
+    },
+    "mobile": {
+     "w": 130,
+     "h": 46
+    }
+   }
+  },
+  {
+   "id": "avatar",
+   "type": "avatar",
+   "asset": "avatar-cutout",
+   "alt": "Fadhil's illustrated avatar",
+   "desktop": {
+    "x": 660,
+    "y": 75,
+    "w": 290,
+    "r": 2,
+    "z": 2,
+    "show": true
+   },
+   "mobile": {
+    "x": 190,
+    "y": 135,
+    "w": 150,
+    "r": 2,
+    "z": 2,
+    "show": true
+   }
+  },
+  {
+   "id": "camera",
+   "type": "deco",
+   "asset": "camera",
+   "desktop": {
+    "x": 450,
+    "y": 418,
+    "w": 95,
+    "r": -12,
+    "z": 4,
+    "show": true
+   },
+   "mobile": {
+    "x": 255,
+    "y": 22,
+    "w": 84,
+    "r": 10,
+    "z": 4,
+    "show": true
+   }
+  },
+  {
+   "id": "tennis",
+   "type": "deco",
+   "asset": "tennis-ball",
+   "desktop": {
+    "x": 900,
+    "y": 595,
+    "w": 70,
+    "r": -14,
+    "z": 4,
+    "show": true
+   },
+   "mobile": {
+    "x": 285,
+    "y": 555,
+    "w": 52,
+    "r": -14,
+    "z": 4,
+    "show": true
+   }
+  },
+  {
+   "id": "headphones",
+   "type": "deco",
+   "asset": "headphones",
+   "desktop": {
+    "x": 765,
+    "y": 550,
+    "w": 115,
+    "r": 10,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 259,
+    "y": 455,
+    "w": 88,
+    "r": 10,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "monstera",
+   "type": "deco",
+   "asset": "monstera",
+   "desktop": {
+    "x": 20,
+    "y": 60,
+    "w": 115,
+    "r": -4,
+    "z": 1,
+    "show": true
+   },
+   "mobile": {
+    "x": 7,
+    "y": 350,
+    "w": 66,
+    "r": -5,
+    "z": 1,
+    "show": true
+   }
+  },
+  {
+   "id": "shooting-star",
+   "type": "deco",
+   "asset": "shooting-star",
+   "desktop": {
+    "x": 170,
+    "y": 30,
+    "w": 125,
+    "r": -6,
+    "z": 2,
+    "show": true
+   },
+   "mobile": {
+    "x": 60,
+    "y": 200,
+    "w": 70,
+    "r": -8,
+    "z": 2,
+    "show": false
+   }
+  },
+  {
+   "id": "sparkles",
+   "type": "deco",
+   "asset": "sparkles",
+   "desktop": {
+    "x": 860,
+    "y": 0,
+    "w": 70,
+    "r": 8,
+    "z": 2,
+    "show": true
+   },
+   "mobile": {
+    "x": 20,
+    "y": 300,
+    "w": 50,
+    "r": 8,
+    "z": 2,
+    "show": false
+   }
+  },
+  {
+   "id": "tablet",
+   "type": "deco",
+   "asset": "tablet",
+   "desktop": {
+    "x": 400,
+    "y": 500,
+    "w": 130,
+    "r": 7,
+    "z": 1,
+    "show": false
+   },
+   "mobile": {
+    "x": 200,
+    "y": 600,
+    "w": 84,
+    "r": 7,
+    "z": 1,
+    "show": false
+   }
+  },
+  {
+   "id": "pothos",
+   "type": "deco",
+   "asset": "pothos",
+   "desktop": {
+    "x": 30,
+    "y": 520,
+    "w": 100,
+    "r": -6,
+    "z": 1,
+    "show": false
+   },
+   "mobile": {
+    "x": 20,
+    "y": 640,
+    "w": 60,
+    "r": -6,
+    "z": 1,
+    "show": false
+   }
+  },
+  {
+   "id": "loop-arrow",
+   "type": "deco",
+   "asset": "loop-arrow",
+   "desktop": {
+    "x": 300,
+    "y": 440,
+    "w": 100,
+    "r": 4,
+    "z": 1,
+    "show": false
+   },
+   "mobile": {
+    "x": 120,
+    "y": 640,
+    "w": 70,
+    "r": 4,
+    "z": 1,
+    "show": false
+   }
+  },
+  {
+   "id": "bread",
+   "type": "deco",
+   "asset": "bread",
+   "desktop": {
+    "x": 400,
+    "y": 545,
+    "w": 120,
+    "r": -6,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 250,
+    "y": 625,
+    "w": 95,
+    "r": -6,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "laptop",
+   "type": "deco",
+   "asset": "laptop",
+   "action": "terminal",
+   "desktop": {
+    "x": 565,
+    "y": 505,
+    "w": 165,
+    "r": -7,
+    "z": 4,
+    "show": true
+   },
+   "mobile": {
+    "x": 205,
+    "y": 352,
+    "w": 96,
+    "r": -6,
+    "z": 4,
+    "show": true
+   }
+  }
+ ]
+}

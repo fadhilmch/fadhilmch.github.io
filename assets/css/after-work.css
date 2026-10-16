@@ -9,14 +9,6 @@
 .spec { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 10px 0 0; padding: 0; list-style: none; color: var(--muted); font: 12px/1.6 'Geist Mono', monospace; }
 .spec li + li::before { padding: 0 8px; color: var(--l2); content: '·'; }
 
-/* menu cards */
-.menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-.menu-card { display: flex; flex-direction: column; gap: 4px; padding: 18px 18px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); text-decoration: none; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
-.menu-card:hover { transform: translateY(-2px); border-color: var(--l2); box-shadow: var(--shadow); color: inherit; }
-.menu-card h2 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
-.menu-card__go { margin-top: 10px; color: var(--l2); font: 11px 'Geist Mono', monospace; }
-@media (min-width: 560px) { .menu:has(.menu-card:only-child) { grid-template-columns: minmax(260px, 420px); } }
-
 /* recipe */
 .recipe { max-width: 720px; }
 .recipe__head { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
@@ -39,47 +31,6 @@
 .brew-timer__btn { min-height: 40px; padding: 0 16px; border: 1px solid var(--fg); border-radius: 999px; background: var(--fg); color: var(--bg); font-size: 13px; cursor: pointer; }
 .brew-timer__btn:hover { background: transparent; color: var(--fg); }
 
-/* desk scene */
-.desk-wrap { margin: 0; }
-.desk { display: block; width: 100%; height: auto; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); --aw-desk: #d9c3a0; --aw-desk-2: #c9b18b; --aw-lamp: #fff2cc; --aw-shadow: rgb(60 40 10 / 18%); --aw-line: rgb(60 40 10 / 22%); --aw-fg: #2b2b2b; --aw-accent: oklch(0.58 0.16 30); --aw-paper: #fbfaf7; --aw-leaf: #5f8f5a; --aw-leaf-2: #3f6c3d; --aw-metal: #c9cbcf; --aw-screen: #26282c; --aw-screen-line: #45484e; --aw-screen-text: #7dd87f; --aw-keys-bed: #aeb0b5; --aw-keys: #e7e8ea; --aw-saucer: #fbfaf7; --aw-cup: #fff; --aw-coffee: #7a4b2c; --aw-foam: #f4e4cc; --aw-steam: rgb(255 255 255 / 80%); --aw-plate: #fbfaf7; --aw-rice: #e8b85a; --aw-rice-2: #c98a2e; --aw-chili: #d6432a; --aw-white: #fff; --aw-yolk: #f2a81d; --aw-cuke: #a8c97f; --aw-krupuk: #f1d9a0; }
-[data-theme="dark"] .desk { --aw-desk: #2a2118; --aw-desk-2: #231b13; --aw-lamp: #ffb35a; --aw-shadow: rgb(0 0 0 / 40%); --aw-line: rgb(255 255 255 / 14%); --aw-fg: #cfcbc2; --aw-paper: #d8d4c8; --aw-leaf: #35603a; --aw-leaf-2: #264828; --aw-metal: #5a5c61; --aw-screen: #121416; --aw-keys-bed: #3b3d41; --aw-keys: #6a6c72; --aw-saucer: #cfcbc2; --aw-cup: #e8e4da; --aw-foam: #d9c3a3; --aw-steam: rgb(255 240 220 / 55%); --aw-plate: #cfcbc2; --aw-rice: #c99a45; --aw-rice-2: #a3731f; --aw-white: #e8e4da; --aw-krupuk: #c9ae77; --aw-cuke: #7f9c5e; }
-.desk .lamp { opacity: 0; pointer-events: none; }
-[data-theme="dark"] .desk .lamp { opacity: .9; }
-.desk .leaf, .desk .grain { pointer-events: none; }
-.desk a, .desk .laptop { outline: none; cursor: pointer; }
-.desk .lift { transform-box: view-box; transition: transform .25s ease, filter .25s ease; }
-.desk .shadow { opacity: 0; transition: opacity .25s ease; }
-.desk .obj:hover .lift, .desk .obj:focus-visible .lift { transform: scale(1.04); filter: drop-shadow(0 10px 14px rgb(0 0 0 / 28%)); }
-.desk .obj:hover .shadow, .desk .obj:focus-visible .shadow { opacity: 1; }
-.desk .obj:focus-visible .hit { stroke: var(--l2); stroke-width: 4; stroke-dasharray: 8 6; }
-.desk .laptop:focus-visible .hit { stroke: var(--l2); stroke-width: 4; stroke-dasharray: 8 6; }
-.desk .tag { opacity: 0; transition: opacity .2s ease; pointer-events: none; }
-.desk .tag rect { fill: var(--fg); }
-.desk .tag text { fill: var(--bg); font: 500 17px 'Geist Mono', monospace; }
-.desk .obj:hover .tag, .desk .obj:focus-visible .tag { opacity: 1; }
-.desk .steam path { opacity: 0; animation: aw-steam 4s ease-in-out infinite; }
-.desk .steam .w2 { animation-delay: 1.3s; }
-.desk .steam .w3 { animation-delay: 2.6s; }
-@keyframes aw-steam { 0% { opacity: 0; transform: translateY(8px); } 30% { opacity: .9; } 100% { opacity: 0; transform: translateY(-14px); } }
-.desk .type { font: 500 15px 'Geist Mono', monospace; }
-.desk .cursor { animation: aw-blink 1s steps(1) infinite; }
-@keyframes aw-blink { 50% { opacity: 0; } }
-.desk .screen { transition: fill .3s ease, filter .3s ease; }
-.desk .laptop.is-on .screen { fill: #16301d; filter: drop-shadow(0 0 14px rgb(125 216 127 / 70%)); }
-.desk .laptop:not(.is-on) .type { opacity: 0; }
-.desk-note { margin: 10px 2px 0; color: var(--muted); font: 11px 'Geist Mono', monospace; }
-.aw-links { margin-top: 24px; }
-.aw-links ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
-.aw-links a { display: flex; flex-direction: column; min-height: 44px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); text-decoration: none; }
-.aw-links a:hover { border-color: var(--l2); color: inherit; }
-.aw-links span { color: var(--muted); font: 11px 'Geist Mono', monospace; }
-@media (prefers-reduced-motion: reduce) {
-  .desk .steam path { animation: none; opacity: .6; }
-  .desk .lift, .desk .tag, .desk .screen, .menu-card, .steps li { transition: none; }
-  .desk .obj:hover .lift, .desk .obj:focus-visible .lift { transform: none; }
-  .desk .cursor { animation: none; }
-}
-@media (max-width: 680px) {
-  .aw-page, .recipe { padding: 20px 16px 40px; }
-  .desk { border-radius: 12px; }
-}
+
+@media(max-width:680px){.aw-page,.recipe{padding:20px 16px 40px}}
+@media(prefers-reduced-motion:reduce){.steps li{transition:none}}
