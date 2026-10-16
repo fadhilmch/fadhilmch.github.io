@@ -3,6 +3,17 @@
 .mode-toggle svg { overflow:visible; }
 .mode-toggle .mt-shut, .mode-toggle.is-closed .mt-open { display:none; }
 .mode-toggle.is-closed .mt-shut { display:inline; }
+.mode-toggle .mt-lid { transform-box:view-box; transform-origin:22px 22.5px; }
+.mode-toggle .mt-peek { transform-box:view-box; transform-origin:22px 14px; }
+.mode-toggle .mt-lid, .mode-toggle .mt-peek { transition:transform .22s ease, opacity .22s ease; }
+.mode-toggle .mt-peek { opacity:0; transform:scaleY(.15); }
+@media (hover:hover) {
+ .mode-toggle:not(.is-closed):hover .mt-lid { transform:scaleY(.82); }
+ .mode-toggle.is-closed:hover .mt-peek { opacity:1; transform:scaleY(1); }
+}
+.mode-toggle:not(.is-closed):focus-visible .mt-lid { transform:scaleY(.82); }
+.mode-toggle.is-closed:focus-visible .mt-peek { opacity:1; transform:scaleY(1); }
+@media (prefers-reduced-motion:reduce) { .mode-toggle .mt-lid, .mode-toggle .mt-peek { transition:none; } .mode-toggle:hover .mt-lid, .mode-toggle:focus-visible .mt-lid { transform:none; } .mode-toggle.is-closed:hover .mt-peek, .mode-toggle.is-closed:focus-visible .mt-peek { opacity:0; transform:scaleY(.15); } }
 .mode-toggle.is-closed { background:var(--fg); color:var(--bg); }
 .mode-toggle:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
 /* Page change: a plain quick cross-fade where the browser supports it. Nothing moves, nothing waits. */
