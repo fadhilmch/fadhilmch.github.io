@@ -248,6 +248,14 @@ img.aw-deco, .aw-avatar img, .aw-sticker > img { filter:drop-shadow(0 1px 0 #fff
 .aw-stickers.has-fx img.aw-deco { pointer-events:auto; }
 .aw-item { --dz:8; }
 
+/* Soft title entrance: words and arrow fade in one after another, once */
+@keyframes aw-title-in { from { opacity:0; transform:translateY(10px); filter:blur(3px); } to { opacity:1; transform:none; filter:none; } }
+@media (prefers-reduced-motion:no-preference) {
+  .aw-head h1 .aw-w1, .aw-head h1 .aw-w2, .aw-head h1 .aw-w3 { display:inline-block; animation:aw-title-in .7s cubic-bezier(.2,.7,.2,1) backwards; }
+  .aw-head h1 .aw-w2 { animation-delay:.14s; }
+  .aw-head h1 .aw-w3 { animation-delay:.28s; }
+}
+
 /* Loose stickers can be picked up and moved (after-work-play.js). Pushed ones glide, the held one follows the pointer. */
 .aw-deco, .aw-avatar { translate:calc(var(--ox,0)*var(--u)) calc(var(--oy,0)*var(--u)); }
 .aw-stickers.has-fx .aw-deco, .aw-stickers.has-fx .aw-avatar { cursor:grab; }

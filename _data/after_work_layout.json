@@ -19,7 +19,7 @@
   {
    "id": "coffee",
    "type": "link",
-   "asset": "coffee-cutout",
+   "asset": "coffee-pourover",
    "label": "Coffee ↗",
    "tag": "coffee recipes →",
    "href": "/after-work/coffee/",
@@ -417,6 +417,90 @@
     "y": 402,
     "w": 72,
     "r": 5,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "shoes",
+   "type": "deco",
+   "asset": "shoes",
+   "desktop": {
+    "x": 720,
+    "y": 438,
+    "w": 100,
+    "r": 8,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 288,
+    "y": 120,
+    "w": 52,
+    "r": 8,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "ticket",
+   "type": "deco",
+   "asset": "ticket",
+   "desktop": {
+    "x": 276,
+    "y": 156,
+    "w": 98,
+    "r": -9,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 72,
+    "y": 714,
+    "w": 52,
+    "r": -9,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "dumbbell",
+   "type": "deco",
+   "asset": "dumbbell",
+   "desktop": {
+    "x": 600,
+    "y": 246,
+    "w": 112,
+    "r": 10,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 288,
+    "y": 618,
+    "w": 54,
+    "r": 10,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "beans",
+   "type": "deco",
+   "asset": "beans",
+   "desktop": {
+    "x": 6,
+    "y": 196,
+    "w": 100,
+    "r": -8,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 210,
+    "y": 594,
+    "w": 50,
+    "r": -8,
     "z": 3,
     "show": true
    }
