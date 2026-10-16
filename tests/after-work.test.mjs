@@ -64,6 +64,9 @@ test('sticker effects: entrance, shake and tilt are off for reduced motion and i
  assert.match(f,/fx-ready/);
  assert.match(c,/\.aw-stickers\.has-fx \.aw-item\.is-shaking/);
 });
+test('the gateway shows no caption under the stickers',()=>{
+ assert.doesNotMatch(read('after-work/index.html'),/aw-art-note|Illustrative stickers/);
+});
 test('doodle shapes exist for every placed doodle asset',()=>{
  const shapes=JSON.parse(read('assets/data/after-work-shapes.json'));
  for(const i of layout().items)assert.ok(shapes[i.asset],i.asset);
@@ -75,8 +78,4 @@ test('header: lamp button is roomy with a hover state, laptop pictures share one
  assert.match(b,/\.theme-toggle:hover img \{ transform/);
  assert.match(m,/\.mt-img img \{[^}]*width:100%; height:auto/);
  assert.match(h,/theme-color" content="\{% if page\.nav == 'after-work' %\}#171e19/);
-});
-
-test('the gateway shows no caption under the stickers',()=>{
- assert.doesNotMatch(read('after-work/index.html'),/aw-art-note|Illustrative stickers/);
 });
