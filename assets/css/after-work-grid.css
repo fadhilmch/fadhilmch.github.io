@@ -4,7 +4,8 @@
 .aw-grid .back-link { color:var(--aw-muted); min-height:44px; display:inline-flex; align-items:center; }
 .aw-head { padding:30px 4px 14px; }
 .aw-head h1 { font-size:clamp(38px,6vw,64px); margin:0 0 16px; letter-spacing:-.04em; }
-.aw-head h1>span:first-child { color:#c5d788; }
+.aw-head h1 .aw-accent { color:#c5d788; }
+.aw-head h1 i { font-style:normal; display:inline-block; text-align:center; }
 .aw-head p,.aw-art-note { color:var(--aw-muted); font-size:13px; }
 .aw-art-note { margin:0; padding-top:16px; font-size:11px; }
 .aw-category-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin:0 0 28px; }
