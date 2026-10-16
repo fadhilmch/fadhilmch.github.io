@@ -14,7 +14,8 @@ test('gateway has exactly two links, Coffee and Cooking, first in the markup',()
 test('gateway uses the supplied stickers and a reduced set of doodles',()=>{
  const ids=layout().items.map(i=>i.asset);
  for(const n of ['camera','tennis-ball','headphones','laptop','tablet','monstera','pothos','sparkles','shooting-star','loop-arrow','avatar-cutout','coffee-cutout','cooking-cutout'])assert.ok(ids.includes(n),n);
- assert.equal(layout().items.filter(i=>i.type==='deco'&&/sparkles|loop-arrow|shooting-star/.test(i.asset)).length,3);
+ assert.equal(layout().items.filter(i=>i.type==='deco'&&/sparkles|loop-arrow|shooting-star/.test(i.asset)).length,4);
+ for(const n of ['heart','sparkle','squiggle'])assert.ok(ids.includes(n),n);
  assert.equal(existsSync(new URL('../_includes/after-work/doodle.html',import.meta.url)),false);
  for(const f of ['coffee','food'])assert.doesNotMatch(read('after-work/'+f+'.html'),/doodle=/);
 });
@@ -51,4 +52,18 @@ test('non-timed or empty recipes never expose a non-working timer',()=>{
 test('gateway title keeps a stable accent class and the header icon has open and closed shapes',()=>{
  assert.match(read('after-work/index.html'),/<span class="aw-accent">work<\/span>/);
  assert.match(read('_includes/header.html'),/class="mt-open"[\s\S]*class="mt-shut"/);
+});
+test('sticker effects: entrance, shake and tilt are off for reduced motion and in edit mode, and never block links',()=>{
+ const f=read('assets/js/after-work-fx.js'),g=read('assets/js/after-work-gateway.js');
+ assert.match(g,/initFx\(stickers\)/);
+ assert.match(f,/prefers-reduced-motion: reduce[\s\S]*aw-editing[\s\S]*return/);
+ assert.match(f,/a\.aw-sticker[\s\S]*shake/);assert.doesNotMatch(f,/preventDefault|stopPropagation/);
+ assert.match(f,/hover: hover/);
+ const c=read('assets/css/after-work-grid.css');
+ assert.match(c,/\.aw-stickers\.has-fx \.aw-item \{ animation:aw-pop/);
+ assert.match(c,/\.aw-stickers\.has-fx \.aw-item\.is-shaking/);
+});
+test('doodle shapes exist for every placed doodle asset',()=>{
+ const shapes=JSON.parse(read('assets/data/after-work-shapes.json'));
+ for(const i of layout().items)assert.ok(shapes[i.asset],i.asset);
 });
