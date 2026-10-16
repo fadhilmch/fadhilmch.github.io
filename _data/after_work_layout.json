@@ -336,6 +336,90 @@
     "z": 4,
     "show": true
    }
+  },
+  {
+   "id": "doodle-heart",
+   "type": "deco",
+   "asset": "heart",
+   "desktop": {
+    "x": 10,
+    "y": 546,
+    "w": 70,
+    "r": -10,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 10,
+    "y": 290,
+    "w": 46,
+    "r": -8,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "doodle-sparkle",
+   "type": "deco",
+   "asset": "sparkle",
+   "desktop": {
+    "x": 186,
+    "y": 10,
+    "w": 62,
+    "r": 8,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 10,
+    "y": 698,
+    "w": 40,
+    "r": 10,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "doodle-squiggle",
+   "type": "deco",
+   "asset": "squiggle",
+   "desktop": {
+    "x": 362,
+    "y": 10,
+    "w": 120,
+    "r": -6,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 210,
+    "y": 346,
+    "w": 78,
+    "r": -5,
+    "z": 3,
+    "show": true
+   }
+  },
+  {
+   "id": "doodle-loop",
+   "type": "deco",
+   "asset": "loop-arrow",
+   "desktop": {
+    "x": 586,
+    "y": 170,
+    "w": 110,
+    "r": 6,
+    "z": 3,
+    "show": true
+   },
+   "mobile": {
+    "x": 178,
+    "y": 402,
+    "w": 72,
+    "r": 5,
+    "z": 3,
+    "show": true
+   }
   }
  ]
 }
