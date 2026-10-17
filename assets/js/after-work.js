@@ -61,7 +61,7 @@
     var stepList = document.querySelector(sel);
     if (!stepList || !document.createElement) return;
     [].slice.call(stepList.children).forEach(function (li) {
-      var m = /^\s*(\d+:\d{2}|\d+ min)\s+/.exec(li.textContent);
+      var m = /^\s*(~?(?:\d+:\d{2}|\d+ min))\s+/.exec(li.textContent);
       if (!m || li.querySelector('.steps__t')) return;
       var chip = document.createElement('span');
       chip.className = 'steps__t';
@@ -74,7 +74,7 @@
   var list = document.querySelector('[data-steps]');
   if (!box || !list) return;
   var items = [].slice.call(list.children).map(function (li) {
-    var m = /^\s*(\d+):(\d{2})\b/.exec(li.textContent);
+    var m = /^\s*~?(\d+):(\d{2})\b/.exec(li.textContent);
     return m ? { li: li, t: +m[1] * 60 + +m[2] } : null;
   }).filter(Boolean);
   if (!items.length) return;
@@ -82,6 +82,10 @@
   var clock = box.querySelector('output'), go = box.querySelector('[data-timer-go]'), reset = box.querySelector('[data-timer-reset]');
   var bar = box.querySelector('.brew-timer__bar i');
   var end = items[items.length - 1].t, elapsed = 0, startedAt = 0, tick = null;
+  // A recipe can declare the full brew length (e.g. the press runs past the last
+  // timed step); the clock then runs to that total instead of the last step's start.
+  var declared = /^~?(\d+):(\d{2})$/.exec((box.getAttribute && box.getAttribute('data-brew-total')) || '');
+  if (declared) { var dt = +declared[1] * 60 + +declared[2]; if (dt > end) end = dt; }
   var fmt = function (s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); };
   var paint = function (s) {
     clock.textContent = fmt(s) + ' of ' + fmt(end);
