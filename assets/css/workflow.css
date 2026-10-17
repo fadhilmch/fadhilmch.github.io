@@ -161,6 +161,12 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
   .wf-toast.is-out { transition: none; }
 }
 
+/* Phones: glows stay static so the first screen settles. */
+@media (max-width: 759px) and (prefers-reduced-motion: no-preference) {
+  .wf-node.is-done .wf-node__box,
+  .wf-tool--run.is-attn { animation: none; }
+}
+
 /* Greeting: the word types in place; hidden sizers reserve the longest word's width */
 .wf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .greet { position: relative; display: inline-grid; vertical-align: baseline; }
