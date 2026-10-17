@@ -11,6 +11,8 @@ time: "6:00"
 brew_total: "6:00"
 beans: Gayo wine process, Indonesia (anaerobic natural)
 roastery: Semekar
+source_name: The Funky 5 by Purple Rain (aeroprecipe.com)
+source_url: https://aeroprecipe.com/recipes/the-funky-5
 photo: /assets/recipes/the-funky-5-gayo-wine-aeropress.webp
 photo_embed: the-funky-5-gayo-wine-aeropress
 photo_alt: Bag of Semekar Coffee & Roastery Gayo Wine beans
@@ -23,6 +25,5 @@ steps:
   - "4:30 Flip and press: flip onto your mug and press very slowly for a full 60 seconds. Stop at the first hiss, around 5:30 - do not press through."
   - "~5:30 Swirl and rest: give the cup a soft swirl and wait 30 seconds before drinking. Total brew time 6:00."
 notes: |
-  Adapted from The Funky 5 by Purple Rain: https://aeroprecipe.com/recipes/the-funky-5
   Silberthal level 2, one step finer than the Filter mark. If sour or thin, extend the steep to 5:00; if bitter, go to level 3.
 ---
