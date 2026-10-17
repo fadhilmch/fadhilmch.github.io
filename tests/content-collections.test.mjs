@@ -40,7 +40,7 @@ test('coffee and food editors expose every recipe template field', () => {
   assert.equal(coffee.delete, false);
   assert.equal(food.publish, false);
   assert.equal(food.delete, false);
-  for (const field of ['layout', 'title', 'kind', 'method', 'dose_g', 'water_g', 'grind', 'temp_c', 'time', 'beans', 'roastery', 'steps', 'notes', 'comments', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
+  for (const field of ['layout', 'title', 'kind', 'method', 'dose_g', 'water_g', 'grind', 'temp_c', 'time', 'beans', 'roastery', 'steps', 'notes', 'comments', 'source_name', 'source_url', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
     assert.ok(coffee.fields.some((item) => item.name === field), `missing coffee field ${field}`);
   }
   for (const field of ['layout', 'title', 'kind', 'cuisine', 'serves', 'time', 'ingredients', 'steps', 'notes', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
@@ -140,4 +140,26 @@ test('recipe photos upload only to assets/recipes, as WebP under 2 MB', () => {
   }
   const others = contentCollections.filter((item) => !['coffee', 'food'].includes(item.name));
   assert.doesNotMatch(JSON.stringify(others), /"widget":"image"|"media_folder"/);
+});
+
+test('recipe layout renders source_url as a real link and keeps notes escaped', () => {
+  const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
+  assert.match(layout, /<a href="\{\{ page\.source_url \| escape \}\}" rel="external">/);
+  assert.match(layout, /page\.source_name \| default: page\.source_url \| escape/);
+  assert.match(layout, /\{\{ page\.notes \| escape \}\}/);
+});
+
+test('recipe layout hides empty Notes and Result blocks but keeps the source link', () => {
+  const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
+  assert.match(layout, /assign notes_text = page\.notes \| strip/);
+  assert.match(layout, /if notes_text != "" or page\.source_url/);
+  assert.match(layout, /if notes_text != "" %\}<h2 id="notes-h">/);
+  assert.match(layout, /assign result_text = page\.comments \| strip/);
+});
+
+test('recipe layout renders the editable result note only when filled', () => {
+  const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
+  assert.match(layout, /if result_text != ""/);
+  assert.match(layout, /<h2 id="result-h">Result<\/h2>/);
+  assert.match(layout, /\{\{ page\.comments \| escape \| newline_to_br \}\}/);
 });

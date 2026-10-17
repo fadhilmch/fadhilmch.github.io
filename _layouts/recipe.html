@@ -58,16 +58,19 @@ layout: base
       <ol class="steps"{% if page.kind == 'coffee' %} data-steps{% else %} data-tick-steps{% endif %}>{% for s in page.steps %}<li>{{ s | escape }}</li>{% endfor %}</ol>
     </section>
   </div>
-  {%- if page.comments %}
-  <section class="recipe__block recipe__comments" aria-labelledby="comments-h">
-    <h2 id="comments-h">My comments</h2>
-    <p>{{ page.comments | escape | newline_to_br }}</p>
+  {%- assign notes_text = page.notes | strip -%}
+  {%- assign result_text = page.comments | strip -%}
+  {%- if notes_text != "" or page.source_url %}
+  <section class="recipe__block"{% if notes_text != "" %} aria-labelledby="notes-h"{% endif %}>
+    {%- if notes_text != "" %}<h2 id="notes-h">Notes</h2>
+    <p>{{ page.notes | escape }}</p>{% endif %}
+    {%- if page.source_url %}<p class="recipe__source">Source: <a href="{{ page.source_url | escape }}" rel="external">{{ page.source_name | default: page.source_url | escape }} <span aria-hidden="true">↗</span></a></p>{% endif %}
   </section>
   {%- endif %}
-  {%- if page.notes %}
-  <section class="recipe__block" aria-labelledby="notes-h">
-    <h2 id="notes-h">Notes</h2>
-    <p>{{ page.notes | escape }}</p>
+  {%- if result_text != "" %}
+  <section class="recipe__block recipe__comments" aria-labelledby="result-h">
+    <h2 id="result-h">Result</h2>
+    <p>{{ page.comments | escape | newline_to_br }}</p>
   </section>
   {%- endif %}
   {% if content != empty %}<div class="recipe__block">{{ content }}</div>{% endif %}

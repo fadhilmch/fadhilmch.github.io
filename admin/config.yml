@@ -868,10 +868,24 @@
         },
         {
           "name": "comments",
-          "label": "My comments",
+          "label": "Result note",
           "widget": "text",
           "required": false,
-          "hint": "Your own thoughts on this recipe. Shown under the method as \"My comments\"."
+          "hint": "How your latest cup turned out. One editable note per recipe, separate from the recipe instructions. Shown under Notes as \"Result\"."
+        },
+        {
+          "name": "source_name",
+          "label": "Source name",
+          "widget": "string",
+          "required": false,
+          "hint": "Where the recipe came from, e.g. The Funky 5 by Purple Rain (aeroprecipe.com)."
+        },
+        {
+          "name": "source_url",
+          "label": "Source URL",
+          "widget": "string",
+          "required": false,
+          "hint": "Link to the original recipe. Shown as a clickable source link under Notes."
         }
       ]
     },
