@@ -23,10 +23,5 @@ steps:
   - "~1:45 Stir and cap: one slow stir from bottom to top, attach the filter cap, then flip onto the cup carefully."
   - "~1:55 Press: press slowly and steadily over 30 to 35 seconds with light pressure. Stop at the first hiss of air; the last drops carry harsh, bitter notes that clash with the banana profile."
 notes: |
-  Grind coarser than a typical AeroPress recipe keeps extraction around 17-18%, the sweet spot for Halu-style West Java coffees: sweet and syrupy without going murky.
-  88°C is intentional; anaerobic and honey processed coffees can turn ferment-forward or harsh above 90°C.
-  At a 1:13 ratio this brews a full-flavored cup directly, no concentrate plus dilution needed.
-  If it tastes sour or thin, grind slightly finer or extend the steep by 10-15 seconds. If it tastes muddy or bitter, grind slightly coarser or drop the water to 86°C.
-  On the Silberthal PA1235, aim slightly coarser than the usual AeroPress position, around mid-range on the dial.
-  Step clock times are approximate, filled in around the original durations: a 40 second main pour, a 30-35 second press, and a 2:15-2:30 total.
+  Grind coarser than a typical AeroPress recipe; on the Silberthal, around mid-range. 88°C keeps the honey-process sugars sweet without turning harsh. Sour or thin: grind finer or steep 10-15s longer. Muddy or bitter: grind coarser or drop to 86°C.
 ---
