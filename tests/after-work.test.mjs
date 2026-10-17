@@ -27,6 +27,9 @@ test('category template is data-driven, with empty, missing-photo and draft stat
  const s=read('_includes/after-work/category.html');assert.match(s,/include.items \| sort/);assert.match(s,/Photo coming later/);assert.match(s,/Recipe coming later/);assert.match(s,/for r in items/);assert.match(s,/else %}<p class="aw-empty"/);assert.doesNotMatch(s,/coffee\.png|cooking\.png/);
  assert.match(read('after-work/food.html'),/permalink: \/after-work\/food\//);
 });
+test('landing empty state spans the full menu row and the header stack tightens on desktop',()=>{
+ const css=read('assets/css/after-work-grid.css');assert.match(css,/\.aw-empty[^{]+\{[^}]*grid-column:1\/-1/);assert.match(css,/\.aw-category-head[^{]+\{[^}]*margin:0 0 8px/);assert.match(css,/@media\(min-width:761px\)\{[^}]*\{[^}]*min-height:36px/);
+});
 test('image-led entries retain recipe/timer flow and hide unfinished recipes',()=>{
  const s=read('_layouts/recipe.html');assert.match(s,/page.photo/);assert.match(s,/page.photo_alt/);assert.match(s,/page.photo_credit/);assert.match(s,/page.status == 'draft'/);assert.match(s,/data-brew-timer/);assert.match(s,/page.steps/);assert.match(s,/page.ingredients/);assert.match(read('_includes/after-work/spec.html'),/r.dose_g > 0/);
 });
