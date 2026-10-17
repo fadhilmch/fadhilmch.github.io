@@ -242,7 +242,7 @@ photo: /assets/recipes/my-v60.webp # optional, your actual image
 photo_alt: V60 brewer on the kitchen counter
 photo_credit: Photo by Fadhil # optional
 status: published # use draft to show Recipe coming later
-notes: Anything worth remembering.
+notes: Anything worth remembering. # leave empty to hide the Notes section; the source link stays
 source_name: Where the recipe came from # optional
 source_url: Link to the original recipe # optional, shown as a clickable source link under Notes
 comments: How the latest cup turned out # optional "Result note" in the CMS, shown under Notes as Result; edit it each brew
