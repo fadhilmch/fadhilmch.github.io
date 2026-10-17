@@ -23,5 +23,5 @@ steps:
   - "~1:45 Stir and cap: one slow stir from bottom to top, attach the filter cap, then flip onto the cup carefully."
   - "~1:55 Press: press slowly and steadily over 30 to 35 seconds with light pressure. Stop at the first hiss of air; the last drops carry harsh, bitter notes that clash with the banana profile."
 notes: |
-  Grind coarser than a typical AeroPress recipe; on the Silberthal, around mid-range. 88°C keeps the honey-process sugars sweet without turning harsh. Sour or thin: grind finer or steep 10-15s longer. Muddy or bitter: grind coarser or drop to 86°C.
+  Grind coarser than a typical AeroPress recipe; on the Silberthal, around mid-range. Sour or thin: grind finer or steep 10-15s longer. Muddy or bitter: grind coarser or drop to 86°C.
 ---
