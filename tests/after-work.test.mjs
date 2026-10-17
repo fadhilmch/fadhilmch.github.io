@@ -45,6 +45,32 @@ test('brew stopwatch starts, pauses, resumes, completes and resets without dupli
  go.click();now=2000;callback();now=3000;callback();assert.equal(active,false);assert.equal(clock.textContent,'0:02 of 0:02');assert.equal(go.textContent,'Again');
  reset.click();assert.equal(clock.textContent,'0:00 of 0:02');assert.equal(go.textContent,'Start');
 });
+test('approximate step tokens keep their tilde in chips and still drive the clock',()=>{
+ const li={_t:'~0:30 Bloom',get textContent(){return this._t},set textContent(v){this._t=v},
+  classList:{toggle(){},contains:()=>false},querySelector:()=>null,insertBefore(c){this.chip=c;this._t=c.textContent+this._t}};
+ const stepList={children:[li]};
+ const box={hidden:true,classList:{toggle(){},add(){},remove(){}},
+  querySelector:()=>({textContent:'',addEventListener(){},setAttribute(){},style:{}})};
+ const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:null,
+  createElement:()=>({className:'',textContent:''}),createTextNode:t=>({t})};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
+ assert.match(li.chip.textContent,/^~0:30\s$/);
+ assert.equal(li.textContent,'~0:30 Bloom');
+});
+test('a declared brew total extends the clock past the last timed step',()=>{
+ let now=0,callback,active=false;
+ const items=['~0:00 Bloom','~1:55 Press'].map(text=>({textContent:text,classList:{values:new Set(),toggle(k,v){v?this.values.add(k):this.values.delete(k)},contains(k){return this.values.has(k)}}}));
+ const clock={textContent:''},go={textContent:'',attrs:{},addEventListener(e,fn){this.click=fn},setAttribute(k,v){this.attrs[k]=v}},reset={addEventListener(e,fn){this.click=fn}},bar={style:{}};
+ const box={hidden:true,classList:{toggle(){},add(){},remove(){}},getAttribute:k=>k==='data-brew-total'?'2:30':null,
+  querySelector:s=>s==='output'?clock:s==='[data-timer-go]'?go:s==='[data-timer-reset]'?reset:bar};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:items}:null},Date:{now:()=>now},setInterval:fn=>{callback=fn;active=true;return 1},clearInterval:()=>{active=false}});
+ assert.equal(box.hidden,false);
+ go.click();now=115000;callback();assert.equal(clock.textContent,'1:55 of 2:30');
+ assert.equal(items[1].classList.contains('is-now'),true);assert.equal(items[1].classList.contains('is-done'),false);
+ now=150000;callback();assert.equal(active,false);assert.equal(clock.textContent,'2:30 of 2:30');
+ assert.equal(items[1].classList.contains('is-done'),true);assert.equal(go.textContent,'Again');
+ reset.click();assert.equal(clock.textContent,'0:00 of 2:30');
+});
 test('non-timed or empty recipes never expose a non-working timer',()=>{
  const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:[]}:null}});assert.equal(box.hidden,true);
 });
