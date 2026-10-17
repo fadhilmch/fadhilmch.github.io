@@ -64,10 +64,11 @@ layout: base
     <p>{{ page.comments | escape | newline_to_br }}</p>
   </section>
   {%- endif %}
-  {%- if page.notes %}
+  {%- if page.notes or page.source_url %}
   <section class="recipe__block" aria-labelledby="notes-h">
     <h2 id="notes-h">Notes</h2>
-    <p>{{ page.notes | escape }}</p>
+    {%- if page.notes %}<p>{{ page.notes | escape }}</p>{% endif %}
+    {%- if page.source_url %}<p class="recipe__source">Source: <a href="{{ page.source_url | escape }}" rel="external">{{ page.source_name | default: page.source_url | escape }} <span aria-hidden="true">↗</span></a></p>{% endif %}
   </section>
   {%- endif %}
   {% if content != empty %}<div class="recipe__block">{{ content }}</div>{% endif %}
