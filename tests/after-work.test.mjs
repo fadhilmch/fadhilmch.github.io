@@ -192,7 +192,7 @@ test('recipe pages follow the lamp theme: charcoal dark, warm-paper light, Geist
  assert.match(c,/\.recipe__head h1 \{ font-family:'Geist',sans-serif/);
  assert.match(read('_layouts/base.html'),/page\.layout == 'recipe' %\} is-recipe-page/);
 });
-test('dose stepper scales water stat and pours cumulatively, keeping times and temps',()=>{
+test('dose stepper edits inside the Coffee stat cell, showing Reset only after a change',()=>{
  const mkBtn=()=>({type:'',className:'',_tc:'',innerHTML:'',hidden:false,attrs:{},children:[],
   get textContent(){return (this.innerHTML||this._tc||'').replace(/<[^>]+>/g,'')},
   set textContent(v){this._tc=v;this.innerHTML=''},
@@ -209,7 +209,7 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
  const lis=['0:00 Bloom: pour 60ml of 80°C water over the grounds, stir gently, then wait until 0:30.',
   '0:30 Main pour: slowly add 180ml of 80°C water in a gentle spiral to reach 240ml total.'].map(mkLi);
  const stepList={children:lis};
- const statsDl={nextSibling:null,parentNode:{insertBefore(c){this.row=c}}};
+ const statsDl={nextSibling:null,parentNode:{insertBefore(c){this.noteRow=c}}};
  const doseDd={attrs:{'data-dose':'12'},children:[],classList:{add(){}},innerHTML:'12<small>g</small>',
   getAttribute(k){return this.attrs[k]},setAttribute(){},
   appendChild(c){this.children.push(c)},
@@ -224,32 +224,41 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
  const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:s==='[data-dose]'?doseDd:s==='[data-water]'?waterDd:null,
   createElement:()=>mkBtn(),createTextNode:t=>mkText(t)};
  vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
- const row=statsDl.parentNode.row;
- assert.ok(row,'dose controls live in their own row after the stats list');
- const label=row.children[0],minus=row.children[1],out=row.children[2],plus=row.children[3],resetBtn=row.children[4];
- assert.equal(label.textContent,'Adjust dose');
- assert.equal(doseDd.children.length,0,'Coffee stat cell keeps plain text, no controls inside');
+ assert.ok(!statsDl.parentNode.row,'no separate controls row is added after the stats list');
+ const edit=doseDd.children[0];
+ assert.ok(edit,'dose controls live inside the Coffee stat cell');
+ assert.equal(edit.className,'dose-edit');
+ const minus=edit.children[0],out=edit.children[1],plus=edit.children[2];
+ assert.equal(out.attrs['aria-label'],'Adjust dose','the dose value is the labelled toggle');
+ const noteRow=statsDl.parentNode.noteRow;
+ assert.ok(noteRow,'a slim note row exists below the stats for Reset');
+ assert.equal(noteRow.hidden,true,'note row with Reset stays hidden before any change');
+ const noteText=noteRow.children[0],resetBtn=noteRow.children[1];
  const stepText=i=>lis[i].childNodes.filter(n=>n.nodeType===3).map(n=>n.data).join('');
  assert.match(out.textContent,/12/);
- assert.match(doseDd.innerHTML,/12<small>g<\/small>/);
- assert.equal(resetBtn.hidden,true);
+ // tap the dose value: - and + appear in place, tap again to put them away
+ out.onclick();
+ assert.match(edit.className,/is-editing/);
+ out.onclick();
+ assert.doesNotMatch(edit.className,/is-editing/);
+ out.onclick();
  // +3g to 15g: k=1.25, water 300, pours 75 + 225 -> 300 total, temps untouched
  plus.onclick();plus.onclick();plus.onclick();
  assert.match(out.textContent,/15/);
- assert.match(doseDd.innerHTML,/15<small>g<\/small>/);
  assert.match(waterDd.innerHTML,/300<small>g<\/small>/);
  assert.match(stepText(0),/pour 75ml of 80°C/);
  assert.match(stepText(1),/add 225ml of 80°C water/);
  assert.match(stepText(1),/reach 300ml total/);
- assert.equal(resetBtn.hidden,false);
- // reset returns every number to the recipe default
+ assert.equal(noteRow.hidden,false,'Reset appears after the dose changes');
+ assert.match(noteText.textContent,/over a standard AeroPress chamber/,'300 g of water triggers the capacity note');
+ // reset returns every number to the recipe default and hides itself again
  resetBtn.onclick();
- assert.match(doseDd.innerHTML,/12<small>g<\/small>/);
+ assert.match(out.textContent,/12/);
  assert.match(stepText(0),/pour 60ml of 80°C/);
  assert.match(stepText(1),/add 180ml of 80°C water/);
  assert.match(stepText(1),/reach 240ml total/);
  assert.match(waterDd.innerHTML,/240<small>g<\/small>/);
- assert.equal(resetBtn.hidden,true);
+ assert.equal(noteRow.hidden,true);
  // minus never drops the dose below 5g
  for(let i=0;i<20;i++)minus.onclick();
  assert.match(out.textContent,/5/);
