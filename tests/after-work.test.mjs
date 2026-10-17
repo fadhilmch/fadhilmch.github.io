@@ -40,10 +40,10 @@ test('brew stopwatch starts, pauses, resumes, completes and resets without dupli
  const box={hidden:true,classList:{toggle(){},add(){},remove(){}},querySelector:s=>s==='output'?clock:s==='[data-timer-go]'?go:s==='[data-timer-reset]'?reset:bar};
  vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:items}:null},Date:{now:()=>now},setInterval:fn=>{callback=fn;active=true;return 1},clearInterval:()=>{active=false}});
  assert.equal(box.hidden,false);assert.equal(go.textContent,'Start');
- go.click();assert.equal(go.textContent,'Pause');assert.equal(active,true);now=1000;callback();assert.equal(clock.textContent,'0:01');
+ go.click();assert.equal(go.textContent,'Pause');assert.equal(active,true);now=1000;callback();assert.equal(clock.textContent,'0:01 of 0:02');
  go.click();assert.equal(active,false);assert.equal(go.textContent,'Resume');
- go.click();now=2000;callback();now=3000;callback();assert.equal(active,false);assert.equal(clock.textContent,'0:02');assert.equal(go.textContent,'Again');
- reset.click();assert.equal(clock.textContent,'0:00');assert.equal(go.textContent,'Start');
+ go.click();now=2000;callback();now=3000;callback();assert.equal(active,false);assert.equal(clock.textContent,'0:02 of 0:02');assert.equal(go.textContent,'Again');
+ reset.click();assert.equal(clock.textContent,'0:00 of 0:02');assert.equal(go.textContent,'Start');
 });
 test('non-timed or empty recipes never expose a non-working timer',()=>{
  const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:[]}:null}});assert.equal(box.hidden,true);
