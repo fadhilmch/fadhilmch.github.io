@@ -12,8 +12,6 @@
 /* recipe */
 .recipe { max-width: 720px; }
 .recipe__head { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-.recipe__beans { margin: 16px 0 0; color: var(--muted); }
-.recipe__beans span { margin-right: 6px; font: 11px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .05em; }
 .recipe__block { margin-top: 28px; }
 .recipe__block h2 { margin: 0 0 10px; font: 500 12px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .recipe__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
