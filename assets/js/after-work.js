@@ -1,4 +1,47 @@
 (function () {
+  // Food recipe sections as tabs on small screens. The tab bar stays hidden without
+  // JS, leaving both sections visible and stacked; with JS it behaves as a tablist.
+  var tabbar = document.querySelector('[data-recipe-tabs]');
+  if (tabbar) {
+    var tabBtns = [].slice.call(tabbar.querySelectorAll('[role="tab"]'));
+    var selectTab = function (btn) {
+      tabBtns.forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-selected', String(on));
+        b.tabIndex = on ? 0 : -1;
+        var panel = document.getElementById(b.getAttribute('aria-controls'));
+        if (panel) panel.classList.toggle('is-panel-off', !on);
+      });
+    };
+    tabBtns.forEach(function (b, i) {
+      b.addEventListener('click', function () { selectTab(b); });
+      b.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (!d) return;
+        e.preventDefault();
+        var n = tabBtns[(i + d + tabBtns.length) % tabBtns.length];
+        n.focus();
+        selectTab(n);
+      });
+    });
+    var art = tabbar.closest && tabbar.closest('.recipe');
+    if (art) art.classList.add('has-tabs');
+    selectTab(tabBtns[0]);
+    tabbar.hidden = false;
+  }
+  // Ingredient checklist keeps a running count beside the section heading.
+  var checklist = document.querySelector('[data-checklist]'), ingCount = document.querySelector('[data-ing-count]');
+  if (checklist && ingCount) {
+    var boxes = [].slice.call(checklist.querySelectorAll('input[type="checkbox"]'));
+    var paintIngCount = function () {
+      var n = boxes.filter(function (b) { return b.checked; }).length;
+      ingCount.textContent = n + ' of ' + boxes.length;
+    };
+    boxes.forEach(function (b) { b.addEventListener('change', paintIngCount); });
+    paintIngCount();
+    ingCount.hidden = false;
+  }
   // Method steps on food pages: tap a step to tick it off, with a running count.
   var tick = document.querySelector('[data-tick-steps]'), prog = document.querySelector('[data-steps-progress]');
   if (tick && prog) {
@@ -12,6 +55,21 @@
   }
   // Brew stopwatch: start, pause and reset. Steps that begin with m:ss light up as the clock passes them,
   // and a thin bar shows progress to the last step. Without JS the steps still read as a plain list.
+  // Steps that open with a time token (coffee m:ss, food "N min") get the token as
+  // its own chip so the timing column is easy to scan. Text content is unchanged.
+  ['[data-steps]', '[data-tick-steps]'].forEach(function (sel) {
+    var stepList = document.querySelector(sel);
+    if (!stepList || !document.createElement) return;
+    [].slice.call(stepList.children).forEach(function (li) {
+      var m = /^\s*(\d+:\d{2}|\d+ min)\s+/.exec(li.textContent);
+      if (!m || li.querySelector('.steps__t')) return;
+      var chip = document.createElement('span');
+      chip.className = 'steps__t';
+      chip.textContent = m[1] + ' ';
+      li.textContent = li.textContent.slice(m[0].length);
+      li.insertBefore(chip, li.firstChild);
+    });
+  });
   var box = document.querySelector('[data-brew-timer]');
   var list = document.querySelector('[data-steps]');
   if (!box || !list) return;
