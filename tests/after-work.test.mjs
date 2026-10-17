@@ -192,3 +192,57 @@ test('recipe pages follow the lamp theme: charcoal dark, warm-paper light, Geist
  assert.match(c,/\.recipe__head h1 \{ font-family:'Geist',sans-serif/);
  assert.match(read('_layouts/base.html'),/page\.layout == 'recipe' %\} is-recipe-page/);
 });
+test('dose stepper scales water stat and pours cumulatively, keeping times and temps',()=>{
+ const mkBtn=()=>({type:'',className:'',_tc:'',innerHTML:'',hidden:false,attrs:{},children:[],
+  get textContent(){return (this.innerHTML||this._tc||'').replace(/<[^>]+>/g,'')},
+  set textContent(v){this._tc=v;this.innerHTML=''},
+  setAttribute(k,v){this.attrs[k]=v},addEventListener(e,fn){this['on'+e]=fn},appendChild(c){this.children.push(c)}});
+ const mkText=d=>({nodeType:3,data:d});
+ const mkLi=text=>{const li={childNodes:[mkText(text)],
+  get textContent(){return this.childNodes.map(n=>n.nodeType===3?n.data:n.textContent).join('')},
+  set textContent(v){this.childNodes=[mkText(v)]},
+  get firstChild(){return this.childNodes[0]},
+  insertBefore(c){this.childNodes.unshift(c)},
+  appendChild(c){this.childNodes.push(c)},
+  removeChild(c){this.childNodes=this.childNodes.filter(n=>n!==c)},
+  classList:{toggle(){},contains:()=>false},querySelector:()=>null,setAttribute(){},addEventListener(){}};return li;};
+ const lis=['0:00 Bloom: pour 60ml of 80°C water over the grounds, stir gently, then wait until 0:30.',
+  '0:30 Main pour: slowly add 180ml of 80°C water in a gentle spiral to reach 240ml total.'].map(mkLi);
+ const stepList={children:lis};
+ const doseDd={attrs:{'data-dose':'12'},children:[],classList:{add(){}},
+  getAttribute(k){return this.attrs[k]},setAttribute(){},
+  appendChild(c){this.children.push(c)},
+  set textContent(v){this.children=[]},get textContent(){return this.children.map(c=>c.textContent).join('')},
+  parentNode:{appendChild(c){this.note=c}}};
+ const waterDd={innerHTML:'240<small>g</small>',getAttribute(){return '240'}};
+ waterDd.getAttribute=k=>k==='data-water'?'240':null;
+ const box={hidden:true,classList:{toggle(){},add(){},remove(){}},
+  querySelector:()=>({textContent:'',addEventListener(){},setAttribute(){},style:{}}),
+  getAttribute:()=>null};
+ const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:s==='[data-dose]'?doseDd:s==='[data-water]'?waterDd:null,
+  createElement:()=>mkBtn(),createTextNode:t=>mkText(t)};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
+ const out=doseDd.children[1],minus=doseDd.children[0],plus=doseDd.children[2];
+ const resetBtn=doseDd.parentNode.note.children[1];
+ const stepText=i=>lis[i].childNodes.filter(n=>n.nodeType===3).map(n=>n.data).join('');
+ assert.match(out.textContent,/12/);
+ assert.equal(resetBtn.hidden,true);
+ // +3g to 15g: k=1.25, water 300, pours 75 + 225 -> 300 total, temps untouched
+ plus.onclick();plus.onclick();plus.onclick();
+ assert.match(out.textContent,/15/);
+ assert.match(waterDd.innerHTML,/300<small>g<\/small>/);
+ assert.match(stepText(0),/pour 75ml of 80°C/);
+ assert.match(stepText(1),/add 225ml of 80°C water/);
+ assert.match(stepText(1),/reach 300ml total/);
+ assert.equal(resetBtn.hidden,false);
+ // reset returns every number to the recipe default
+ resetBtn.onclick();
+ assert.match(stepText(0),/pour 60ml of 80°C/);
+ assert.match(stepText(1),/add 180ml of 80°C water/);
+ assert.match(stepText(1),/reach 240ml total/);
+ assert.match(waterDd.innerHTML,/240<small>g<\/small>/);
+ assert.equal(resetBtn.hidden,true);
+ // minus never drops the dose below 5g
+ for(let i=0;i<20;i++)minus.onclick();
+ assert.match(out.textContent,/5/);
+});
