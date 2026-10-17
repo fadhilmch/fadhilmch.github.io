@@ -121,7 +121,9 @@
       doseDd.textContent = '';
       doseDd.classList.add('dose-step');
       doseDd.appendChild(minus); doseDd.appendChild(out); doseDd.appendChild(plus);
-      if (doseDd.parentNode && doseDd.parentNode.appendChild) doseDd.parentNode.appendChild(note);
+      var statsEl = doseDd.closest ? doseDd.closest('dl.stats') : null;
+      if (statsEl && statsEl.parentNode && statsEl.parentNode.insertBefore) statsEl.parentNode.insertBefore(note, statsEl.nextSibling);
+      else if (doseDd.parentNode && doseDd.parentNode.appendChild) doseDd.parentNode.appendChild(note);
       var paintDose = function (dose) {
         var k = dose / dose0, water = Math.round(water0 * k);
         out.innerHTML = fmtN(dose) + '<small>g</small>';
@@ -146,8 +148,8 @@
         again.hidden = !changed;
         note.hidden = false;
         noteText.textContent = water > 295
-          ? 'About ' + fmtN(water) + ' g of water is more than a standard AeroPress chamber holds (10 oz, about 295 g).'
-          : (changed ? 'Scaled from the recipe\u2019s ' + fmtN(dose0) + ' g. Time, temperature and grind stay the same. ' : 'Tap + or \u2212 to brew a bigger or smaller cup; water and pours follow the ratio. ');
+          ? fmtN(water) + ' g of water is over a standard AeroPress chamber\u2019s 10 oz (about 295 g).'
+          : (changed ? 'Scaled from the recipe\u2019s ' + fmtN(dose0) + ' g; time, temperature and grind unchanged. ' : 'Tap + or \u2212 to adjust the dose; water and pours follow the ratio. ');
       };
       var cur = function () { return parseFloat(out.textContent); };
       minus.addEventListener('click', function () { var v = Math.round((cur() - 1) * 10) / 10; if (v >= 5) paintDose(v); });
