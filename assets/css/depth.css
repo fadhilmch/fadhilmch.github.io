@@ -257,3 +257,15 @@ html[data-depth="soft"] .wf-flow { display: none; }
     }
   }
 }
+
+/* 8. Phones: the first screen settles ------------------------------- */
+@media (max-width: 680px) {
+  html[data-depth="soft"] {
+    /* Headings and cards appear settled, without the staggered entrance rise. */
+    :is(.about-page, .posts-page, .projects-page, .notes-workspace) > * {
+      animation: none;
+    }
+    /* The travelling flow accent parks instead of looping. */
+    .wf-flow { animation: none; }
+  }
+}
