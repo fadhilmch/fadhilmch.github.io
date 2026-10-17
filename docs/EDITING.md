@@ -256,7 +256,7 @@ Before opening a PR, run `node --test tests/*.test.mjs`, `bundle exec jekyll bui
 
 ## GitHub contribution roll (About)
 
-The card under the About graph draws one note per day you made a public GitHub contribution, laid out like a piano roll: rows are weekdays, columns are weeks, and the colour runs teal, lilac, amber, coral from few to many that day (1-2, 3-4, 5-8, 9+, set in `LEVEL_BOUNDS` in `scripts/github-activity.mjs`). Colours are the site's `--l4`, `--l3`, `--l5`, `--l2` tokens, so light and dark follow the theme. Phones show the last 26 weeks. Tap or hover a note to read its date and count. When the card scrolls into view it plays one sweep, never a loop, and not at all with reduced motion.
+The card under the About graph draws one note per day you made a public GitHub contribution, laid out like a piano roll: rows are weekdays, columns are weeks, and the colour runs teal, lilac, amber, coral from few to many that day (1-2, 3-4, 5-8, 9+, set in `LEVEL_BOUNDS` in `scripts/github-activity.mjs`). Colours are the site's `--l4`, `--l3`, `--l5`, `--l2` tokens, so light and dark follow the theme. Phones show the last 26 weeks. Tap or hover a note to read its date and count. When the card scrolls into view the notes pop in once, scattered but drifting left to right, never a loop, and not at all with reduced motion.
 
 - **Data:** `_data/github_activity.json` is a snapshot of the public page `https://github.com/users/fadhilmch/contributions`. Only public activity counts; private repos never show.
 - **Freshness:** the deploy workflow refreshes the snapshot before every build and once a day (04:17 UTC). If GitHub cannot be reached or its markup changes, the step fails quietly and the last committed snapshot stays. The card prints the snapshot date.

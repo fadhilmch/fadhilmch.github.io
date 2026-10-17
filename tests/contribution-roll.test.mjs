@@ -29,6 +29,15 @@ test('motion plays once, only after JS arms it, and is switched off for reduced 
   assert.match(js, /watcher\.disconnect\(\)/);
 });
 
+test('the reveal is scattered dots drifting left to right, with no moving line', () => {
+  const css = read('assets/css/contribution-roll.css');
+  assert.doesNotMatch(css, /playhead/);
+  assert.match(css, /\.roll\.is-playing \.roll__note \{ animation: roll-note/);
+  const js = read('assets/js/contribution-roll.js');
+  assert.match(js, /animationDelay/);
+  assert.match(js, /Math\.random/);
+});
+
 test('the About page includes the roll and loads its style and script only there', () => {
   assert.match(read('index.html'), /\{% include about\/contribution-roll\.html %\}/);
   assert.match(read('_includes/head.html'), /page\.nav == 'about' %\}.*contribution-roll\.css/);
