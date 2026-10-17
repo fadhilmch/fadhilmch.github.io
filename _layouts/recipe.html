@@ -52,7 +52,7 @@ layout: base
     <section class="recipe__main"{% if page.kind == 'food' %} id="panel-method" role="tabpanel" aria-labelledby="tab-method"{% else %} aria-labelledby="steps-h"{% endif %}>
       <div class="recipe__row">
         <h2 id="steps-h">{% if page.kind == 'coffee' %}Brew{% else %}Method{% endif %}</h2>
-        {%- if page.kind == 'coffee' %}<div class="brew-timer" data-brew-timer{% if page.brew_total %} data-brew-total="{{ page.brew_total | escape }}"{% endif %} hidden><output class="brew-timer__clock" aria-live="off">0:00</output><button type="button" class="brew-timer__btn" data-timer-go>Start</button><button type="button" class="brew-timer__btn brew-timer__btn--ghost" data-timer-reset>Reset</button><span class="brew-timer__bar" aria-hidden="true"><i></i></span></div>
+        {%- if page.kind == 'coffee' %}<div class="brew-timer" data-brew-timer{% if page.brew_total %} data-brew-total="{{ page.brew_total | escape }}"{% endif %} hidden><output class="brew-timer__clock" aria-live="off">0:00</output><span class="brew-timer__step" data-timer-step></span><button type="button" class="brew-timer__btn" data-timer-go>Start</button><button type="button" class="brew-timer__btn brew-timer__btn--ghost" data-timer-reset>Reset</button><span class="brew-timer__bar" aria-hidden="true"><i></i></span></div>
         {%- else %}<p class="steps-progress" data-steps-progress hidden aria-live="polite"></p>{% endif %}
       </div>
       <ol class="steps"{% if page.kind == 'coffee' %} data-steps{% else %} data-tick-steps{% endif %}>{% for s in page.steps %}<li>{{ s | escape }}</li>{% endfor %}</ol>
