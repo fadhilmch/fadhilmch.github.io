@@ -84,7 +84,7 @@
   var end = items[items.length - 1].t, elapsed = 0, startedAt = 0, tick = null;
   var fmt = function (s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); };
   var paint = function (s) {
-    clock.textContent = fmt(s);
+    clock.textContent = fmt(s) + ' of ' + fmt(end);
     bar.style.transform = 'scaleX(' + Math.min(1, s / end) + ')';
     var now = -1;
     items.forEach(function (it, i) { if (it.t <= s) now = i; });
