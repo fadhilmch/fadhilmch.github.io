@@ -12,6 +12,7 @@ brew_total: "2:30"
 beans: Halu Honey, West Java (honey or anaerobic process)
 roastery: Semekar
 photo: /assets/recipes/aeropress-halu-banana.webp
+photo_embed: aeropress-halu-banana
 photo_alt: Bag of Semekar Coffee Halu Honey beans
 tags: [aeropress, indonesia, filter]
 steps:
