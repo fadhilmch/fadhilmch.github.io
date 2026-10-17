@@ -5,6 +5,7 @@ Personal site of Fadhil Mochammad, an ML engineer in Stockholm. Live at https://
 ## What's on the site
 
 - **About**: a hero with a circular avatar, then a node pipeline built from `_data/workflow.yml`. Click a node to inspect it. The soft-depth layer adds a circle-clipped avatar shadow and an always-visible workflow with a travelling flow accent (with reduced-motion support).
+- **GitHub activity**: under the About graph, a colour piano roll of public GitHub contributions over the past year, from a snapshot refreshed on every deploy ([guide](docs/EDITING.md#github-contribution-roll-about)).
 - **Posts**: dated essays, grouped by year and filterable by topic lane.
 - **Notes**: a linked vault with an explorer, backlinks and a force-directed graph.
 
@@ -33,7 +34,7 @@ _layouts/   base, page, post and note layouts
 _includes/  head, header, footer, and workflow / notes / posts partials
 assets/     hand-written CSS (depth.css is the opt-in soft-depth layer), vanilla JS, images, favicon
 docs/       editing guide and implementation plan (not published)
-scripts/    content validation and data migration helpers (not published)
+scripts/    content validation, data migration and GitHub activity snapshot helpers (not published)
 _archive/   design reference mockup and screenshots (not published)
 index.html  About page
 posts.html  Posts page
