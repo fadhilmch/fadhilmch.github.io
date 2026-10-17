@@ -800,6 +800,12 @@
           "required": false
         },
         {
+          "name": "roastery",
+          "label": "Roastery",
+          "widget": "string",
+          "required": false
+        },
+        {
           "name": "status",
           "label": "Status",
           "widget": "select",
