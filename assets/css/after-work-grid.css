@@ -161,12 +161,18 @@ body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 .stats>div.stats__beans { grid-column:1/-1; }
 .stats__beans dd { font-size:14px; font-weight:400; line-height:1.45; }
 .stats__beans dt.stats__roastery { margin-top:10px; }
-.dose-step { display:flex; align-items:center; gap:8px; }
+.dose-adjust { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px 0 0; padding:9px 12px; border:1px solid var(--aw-rule); border-radius:14px; background:#ffffff08; }
+.dose-label { font:500 10px 'Geist Mono',monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--aw-muted); margin-right:auto; }
+.dose-val { font:500 17px 'Geist Mono',monospace; font-variant-numeric:tabular-nums; }
+.dose-val small { font-size:11px; font-weight:400; color:var(--aw-muted); margin-left:2px; }
 .dose-btn { min-width:30px; min-height:30px; padding:0; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:inherit; font:600 15px 'Geist Mono',monospace; cursor:pointer; }
 .dose-btn:active { transform:scale(.92); }
 .dose-reset { min-height:30px; padding:0 10px; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:var(--aw-muted); font:500 11px 'Geist Mono',monospace; cursor:pointer; }
-.dose-note { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin:10px 2px 0; font-size:11px; line-height:1.4; color:var(--aw-muted); }
-.stats>div:has(.dose-step) { grid-column:span 2; }
+.dose-note { font-size:11px; line-height:1.4; color:var(--aw-muted); }
+.recipe__sheet .dose-adjust { background:#fffaf0; border-color:var(--aw-rule); }
+.recipe[data-sheet=taupe] .recipe__sheet .dose-adjust { background:#cdc4b2; }
+.recipe[data-sheet=charcoal] .recipe__sheet .dose-adjust { background:#2f352f; }
+[data-theme="light"] body.is-recipe-page .recipe[data-sheet=charcoal] .recipe__sheet .dose-adjust { background:#f5f2e6; }
 .recipe__body { display:block; margin-top:30px; }
 .recipe__body.has-aside { display:grid; grid-template-columns:minmax(220px,300px) 1fr; gap:36px; align-items:start; }
 .recipe__aside { position:sticky; top:16px; padding:18px; border:1px solid var(--aw-rule); border-radius:16px; background:#ffffff08; }
