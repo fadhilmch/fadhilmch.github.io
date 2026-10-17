@@ -6,7 +6,7 @@ method: AeroPress
 dose_g: 12
 water_g: 240
 temp_c: 80
-grind: Silberthal level 2 (fine to medium-fine)
+grind: Silberthal level 2
 time: "6:00"
 brew_total: "6:00"
 beans: Gayo wine process, Indonesia (anaerobic natural)
@@ -20,6 +20,6 @@ steps:
   - "~5:30 Swirl and rest: give the cup a soft swirl and wait 30 seconds before drinking. Total brew time 6:00."
 notes: |
   Source: The Funky 5 by Purple Rain on aeroprecipe.com, an inverted AeroPress recipe for anaerobic fermented beans, adapted here for Gayo wine process coffee and a Silberthal grinder.
-  Silberthal level 2 is one step finer than Filter; the low temperature and long steep need finer grounds for full extraction. If the cup tastes sour or thin, keep level 2 and extend the steep to 5 minutes; if bitter, go to level 3.
+  The original calls for a fine to medium-fine grind, 12 clicks on a Comandante C40; here that is Silberthal level 2, one step finer than Filter. The low temperature and long steep need finer grounds for full extraction. If the cup tastes sour or thin, keep level 2 and extend the steep to 5 minutes; if bitter, go to level 3.
   The 80°C water extracts the fruity, wine-like aromatics without the harsh fermentation bitterness hotter water can trigger in an anaerobic natural, and the long 4-minute steep makes up the extraction time.
 ---
