@@ -17,8 +17,8 @@ layout: base
   {%- if page.kind == 'coffee' and page.dose_g and page.water_g and page.dose_g > 0 %}
   {%- assign ratio = page.water_g | times: 1.0 | divided_by: page.dose_g | round: 1 %}
   <dl class="stats" aria-label="Recipe details">
-    <div><dt>Coffee</dt><dd>{{ page.dose_g }}<small>g</small></dd></div>
-    <div><dt>Water</dt><dd>{{ page.water_g }}<small>g</small></dd></div>
+    <div><dt>Coffee</dt><dd data-dose="{{ page.dose_g }}">{{ page.dose_g }}<small>g</small></dd></div>
+    <div><dt>Water</dt><dd data-water="{{ page.water_g }}">{{ page.water_g }}<small>g</small></dd></div>
     <div><dt>Ratio</dt><dd>1:{{ ratio }}</dd></div>
     <div><dt>Temp</dt><dd>{{ page.temp_c }}<small>°C</small></dd></div>
     <div><dt>Time</dt><dd>{{ page.time | escape }}</dd></div>
