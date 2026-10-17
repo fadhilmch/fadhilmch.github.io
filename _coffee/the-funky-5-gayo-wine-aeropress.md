@@ -23,7 +23,6 @@ steps:
   - "4:30 Flip and press: flip onto your mug and press very slowly for a full 60 seconds. Stop at the first hiss, around 5:30 - do not press through."
   - "~5:30 Swirl and rest: give the cup a soft swirl and wait 30 seconds before drinking. Total brew time 6:00."
 notes: |
-  Source: The Funky 5 by Purple Rain on aeroprecipe.com, an inverted AeroPress recipe for anaerobic fermented beans, adapted here for Gayo wine process coffee and a Silberthal grinder.
-  The original recipe uses a fine to medium-fine grind, 12 clicks on a Comandante C40. This version is set for a Silberthal at level 2, one step finer than its Filter mark. The low temperature and long steep need finer grounds for full extraction. If the cup tastes sour or thin, keep level 2 and extend the steep to 5 minutes; if bitter, go to level 3.
-  The 80°C water extracts the fruity, wine-like aromatics without the harsh fermentation bitterness hotter water can trigger in an anaerobic natural, and the long 4-minute steep makes up the extraction time.
+  Adapted from The Funky 5 by Purple Rain: https://aeroprecipe.com/recipes/the-funky-5
+  Silberthal level 2, one step finer than the Filter mark. If sour or thin, extend the steep to 5:00; if bitter, go to level 3.
 ---
