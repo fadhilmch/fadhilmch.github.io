@@ -868,6 +868,1021 @@
         },
         {
           "name": "comments",
+          "label": "Result note",
+          "widget": "text",
+          "required": false,
+          "hint": "How your latest cup turned out. One editable note per recipe, separate from the recipe instructions. Shown under Notes as \"Result\"."
+        },
+        {
+          "name": "source_name",
+          "label": "Source name",
+          "widget": "string",
+          "required": false,
+          "hint": "Where the recipe came from, e.g. The Funky 5 by Purple Rain (aeroprecipe.com)."
+        },
+        {
+          "name": "source_url",
+          "label": "Source URL",
+          "widget": "string",
+          "required": false,
+          "hint": "Link to the original recipe. Shown as a clickable source link under Notes."
+        }
+      ]
+    },
+    {
+      "name": "food",
+      "label": "Food",
+      "label_singular": "Food recipe",
+      "folder": "_food",
+      "path": "{{slug}}",
+      "extension": "md",
+      "format": "yaml-frontmatter",
+      "create": true,
+      "delete": false,
+      "publish": false,
+      "fields": [
+        {
+          "name": "layout",
+          "label": "Layout",
+          "widget": "hidden",
+          "default": "recipe"
+        },
+        {
+          "name": "title",
+          "label": "Title",
+          "widget": "string"
+        },
+        {
+          "name": "kind",
+          "label": "Recipe type",
+          "widget": "hidden",
+          "default": "food"
+        },
+        {
+          "name": "cuisine",
+          "label": "Cuisine",
+          "widget": "string"
+        },
+        {
+          "name": "serves",
+          "label": "Serves",
+          "widget": "number",
+          "value_type": "int",
+          "min": 1
+        },
+        {
+          "name": "time",
+          "label": "Time",
+          "widget": "string",
+          "hint": "Free text shown on the site, for example 35 min."
+        },
+        {
+          "name": "status",
+          "label": "Status",
+          "widget": "select",
+          "required": false,
+          "default": "published",
+          "options": [
+            {
+              "label": "Published",
+              "value": "published"
+            },
+            {
+              "label": "Draft (shows \"Recipe coming later\")",
+              "value": "draft"
+            }
+          ]
+        },
+        {
+          "name": "tags",
+          "label": "Tags",
+          "widget": "list",
+          "required": false,
+          "hint": "Short labels shown as filter chips on the list page, e.g. pour-over, weeknight."
+        },
+        {
+          "name": "photo",
+          "label": "Photo",
+          "widget": "image",
+          "required": false,
+          "media_folder": "/assets/recipes",
+          "public_folder": "/assets/recipes",
+          "choose_url": false,
+          "hint": "Choose or drop a photo. It is converted to WebP and saved in assets/recipes. Best as a landscape 3:2 photo, up to 2 MB. Leave empty to show \"Photo coming later\"."
+        },
+        {
+          "name": "photo_alt",
+          "label": "Photo description",
+          "widget": "string",
+          "required": false,
+          "hint": "Describe the photo for screen readers."
+        },
+        {
+          "name": "photo_credit",
+          "label": "Photo credit",
+          "widget": "string",
+          "required": false,
+          "hint": "Shown under the photo, for example Photo by Fadhil."
+        },
+        {
+          "name": "ingredients",
+          "label": "Ingredients",
+          "widget": "list",
+          "min": 1
+        },
+        {
+          "name": "steps",
+          "label": "Method steps",
+          "widget": "list",
+          "min": 1
+        },
+        {
+          "name": "notes",
+          "label": "Notes",
+          "widget": "text",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "after-work-layout",
+      "label": "After work layout",
+      "publish": false,
+      "files": [
+        {
+          "name": "gateway-layout",
+          "label": "Sticker layout",
+          "file": "_data/after_work_layout.json",
+          "format": "layout-raw",
+          "fields": [
+            {
+              "name": "layout",
+              "label": "Sticker layout",
+              "widget": "aw-layout"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "output": {
+    "omit_empty_optional_fields": true,
+    "yaml": {
+      "quote": "double",
+      "indent_sequences": false
+    }
+  },
+  "media_libraries": {
+    "default": {
+      "config": {
+        "max_file_size": 2097152,
+        "slugify_filename": true,
+        "transformations": {
+          "raster_image": {
+            "format": "webp",
+            "quality": 85,
+            "width": 1600,
+            "height": 1600
+          }
+        }
+      }
+    }
+  }
+}
+        {
+          "name": "body",
+          "label": "Full post source (YAML + Markdown + HTML)",
+          "widget": "post-source",
+          "hint": "Edit title, date and article content in this source. For a new post, open the Slug panel in the sidebar and set YYYY-MM-DD-slug. Save opens a review PR, never publishes."
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "label": "About",
+      "publish": false,
+      "files": [
+        {
+          "name": "profile",
+          "label": "Profile",
+          "file": "_data/profile.yml",
+          "fields": [
+            {
+              "name": "name",
+              "label": "Name",
+              "widget": "string"
+            },
+            {
+              "name": "short_role",
+              "label": "Short role",
+              "widget": "string"
+            },
+            {
+              "name": "city",
+              "label": "City",
+              "widget": "string"
+            },
+            {
+              "name": "role",
+              "label": "Role",
+              "widget": "string"
+            },
+            {
+              "name": "location",
+              "label": "Location",
+              "widget": "string"
+            },
+            {
+              "name": "headline",
+              "label": "Headline",
+              "widget": "string"
+            },
+            {
+              "name": "greetings",
+              "label": "Greetings",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "word",
+                  "label": "Word",
+                  "widget": "string"
+                },
+                {
+                  "name": "lang",
+                  "label": "Language",
+                  "widget": "string"
+                }
+              ],
+              "summary": "{{fields.word}} · {{fields.lang}}"
+            },
+            {
+              "name": "bio_links",
+              "label": "Interactive bio links",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "text",
+                  "label": "Text",
+                  "widget": "string"
+                },
+                {
+                  "name": "node",
+                  "label": "Graph node",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "href",
+                  "label": "Link URL",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "string",
+                  "required": false
+                }
+              ],
+              "summary": "{{fields.text}}"
+            },
+            {
+              "name": "bio",
+              "label": "Bio",
+              "widget": "text"
+            },
+            {
+              "name": "flag",
+              "label": "Flag",
+              "widget": "string"
+            },
+            {
+              "name": "now",
+              "label": "Now",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "k",
+                  "label": "Label",
+                  "widget": "string"
+                },
+                {
+                  "name": "v",
+                  "label": "Value",
+                  "widget": "string"
+                },
+                {
+                  "name": "href",
+                  "label": "Link URL",
+                  "widget": "string",
+                  "required": false
+                }
+              ],
+              "summary": "{{fields.k}}: {{fields.v}}"
+            },
+            {
+              "name": "off_hours",
+              "label": "Off hours",
+              "widget": "string"
+            }
+          ]
+        },
+        {
+          "name": "lanes",
+          "label": "Lanes",
+          "file": "_data/lanes.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Lanes",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "key",
+                  "label": "Key",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "branch",
+                  "label": "Branch visible",
+                  "widget": "boolean",
+                  "required": false,
+                  "default": true,
+                  "hint": "Set Product design to true when enabling the Product design skill group."
+                },
+                {
+                  "name": "title",
+                  "label": "Title",
+                  "widget": "string"
+                },
+                {
+                  "name": "label",
+                  "label": "Label",
+                  "widget": "string"
+                },
+                {
+                  "name": "long",
+                  "label": "Long label",
+                  "widget": "string"
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Blue",
+                      "value": "l0"
+                    },
+                    {
+                      "label": "Rose",
+                      "value": "l1"
+                    },
+                    {
+                      "label": "Orange",
+                      "value": "l2"
+                    },
+                    {
+                      "label": "Purple",
+                      "value": "l3"
+                    },
+                    {
+                      "label": "Teal",
+                      "value": "l4"
+                    },
+                    {
+                      "label": "Gold",
+                      "value": "l5"
+                    },
+                    {
+                      "label": "Neutral",
+                      "value": "fg"
+                    }
+                  ]
+                },
+                {
+                  "name": "tags",
+                  "label": "Tags",
+                  "widget": "list"
+                }
+              ],
+              "max": 7,
+              "summary": "{{fields.title}}",
+              "allow_add": false,
+              "allow_duplicate": false,
+              "allow_remove": false,
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "experience",
+      "label": "Experience",
+      "publish": false,
+      "files": [
+        {
+          "name": "experience",
+          "label": "Experience",
+          "file": "_data/experience.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Experience",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "years",
+                  "label": "Years",
+                  "widget": "string"
+                },
+                {
+                  "name": "role",
+                  "label": "Role",
+                  "widget": "string"
+                },
+                {
+                  "name": "org",
+                  "label": "Organization",
+                  "widget": "string"
+                },
+                {
+                  "name": "place",
+                  "label": "Location",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "note",
+                  "label": "Description",
+                  "widget": "text",
+                  "required": false
+                }
+              ],
+              "summary": "{{fields.years}} · {{fields.role}}, {{fields.org}}",
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "education",
+      "label": "Education",
+      "publish": false,
+      "files": [
+        {
+          "name": "education",
+          "label": "Education",
+          "file": "_data/education.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Education",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "years",
+                  "label": "Years",
+                  "widget": "string"
+                },
+                {
+                  "name": "role",
+                  "label": "Degree",
+                  "widget": "string"
+                },
+                {
+                  "name": "org",
+                  "label": "Institution",
+                  "widget": "string"
+                },
+                {
+                  "name": "country",
+                  "label": "Country",
+                  "widget": "string",
+                  "required": false
+                }
+              ],
+              "summary": "{{fields.years}} · {{fields.role}}",
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "skills",
+      "label": "Skills",
+      "publish": false,
+      "files": [
+        {
+          "name": "skills",
+          "label": "Skills",
+          "file": "_data/skills.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Skills",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "key",
+                  "label": "Key",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "lane",
+                  "label": "Lane key",
+                  "widget": "hidden"
+                },
+                {
+                  "name": "group",
+                  "label": "Group",
+                  "widget": "string"
+                },
+                {
+                  "name": "desc",
+                  "label": "Description",
+                  "widget": "text"
+                },
+                {
+                  "name": "spotlight",
+                  "label": "Spotlight",
+                  "widget": "text",
+                  "required": false
+                },
+                {
+                  "name": "glyph",
+                  "label": "Glyph",
+                  "widget": "string"
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Blue",
+                      "value": "l0"
+                    },
+                    {
+                      "label": "Rose",
+                      "value": "l1"
+                    },
+                    {
+                      "label": "Orange",
+                      "value": "l2"
+                    },
+                    {
+                      "label": "Purple",
+                      "value": "l3"
+                    },
+                    {
+                      "label": "Teal",
+                      "value": "l4"
+                    },
+                    {
+                      "label": "Gold",
+                      "value": "l5"
+                    },
+                    {
+                      "label": "Neutral",
+                      "value": "fg"
+                    }
+                  ]
+                },
+                {
+                  "name": "items",
+                  "label": "Skills",
+                  "widget": "list",
+                  "fields": [
+                    {
+                      "name": "name",
+                      "label": "Name",
+                      "widget": "string"
+                    },
+                    {
+                      "name": "where",
+                      "label": "Where",
+                      "widget": "string",
+                      "required": false
+                    }
+                  ],
+                  "summary": "{{fields.name}}"
+                },
+                {
+                  "name": "enabled",
+                  "label": "Enabled",
+                  "widget": "boolean",
+                  "required": false,
+                  "default": true,
+                  "hint": "For Product design, also set About → Lanes → Product design → Branch visible to true."
+                }
+              ],
+              "max": 5,
+              "summary": "{{fields.group}}",
+              "allow_add": false,
+              "allow_duplicate": false,
+              "allow_remove": false,
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "projects",
+      "label": "Projects",
+      "publish": false,
+      "files": [
+        {
+          "name": "portfolio-projects",
+          "label": "Portfolio projects",
+          "file": "_data/portfolio_projects.json",
+          "format": "json",
+          "fields": [
+            {
+              "name": "projects",
+              "label": "Projects",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "id",
+                  "label": "ID",
+                  "widget": "string"
+                },
+                {
+                  "name": "title",
+                  "label": "Title",
+                  "widget": "string"
+                },
+                {
+                  "name": "kind",
+                  "label": "Kind",
+                  "widget": "string"
+                },
+                {
+                  "name": "stack",
+                  "label": "Technology stack",
+                  "widget": "string"
+                },
+                {
+                  "name": "problem",
+                  "label": "Problem",
+                  "widget": "text"
+                },
+                {
+                  "name": "built",
+                  "label": "What I built",
+                  "widget": "text"
+                },
+                {
+                  "name": "decision",
+                  "label": "Decision and lessons",
+                  "widget": "text"
+                },
+                {
+                  "name": "result",
+                  "label": "Result",
+                  "widget": "text"
+                },
+                {
+                  "name": "repo",
+                  "label": "Repository URL",
+                  "widget": "string",
+                  "pattern": [
+                    "^https://",
+                    "Use an HTTPS repository URL"
+                  ]
+                },
+                {
+                  "name": "post",
+                  "label": "Related post URL",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "post_title",
+                  "label": "Related post title",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "image",
+                  "label": "Image path",
+                  "widget": "string",
+                  "hint": "Path to an existing image, for example /assets/images/projects/example.svg."
+                },
+                {
+                  "name": "topic",
+                  "label": "Topic",
+                  "widget": "string"
+                },
+                {
+                  "name": "color",
+                  "label": "Color",
+                  "widget": "select",
+                  "options": [
+                    {
+                      "label": "Blue",
+                      "value": "l0"
+                    },
+                    {
+                      "label": "Rose",
+                      "value": "l1"
+                    },
+                    {
+                      "label": "Orange",
+                      "value": "l2"
+                    },
+                    {
+                      "label": "Purple",
+                      "value": "l3"
+                    },
+                    {
+                      "label": "Teal",
+                      "value": "l4"
+                    },
+                    {
+                      "label": "Gold",
+                      "value": "l5"
+                    },
+                    {
+                      "label": "Neutral",
+                      "value": "fg"
+                    }
+                  ]
+                },
+                {
+                  "name": "image_caption",
+                  "label": "Image caption",
+                  "widget": "string",
+                  "required": false
+                },
+                {
+                  "name": "teaser",
+                  "label": "Teaser",
+                  "widget": "text"
+                }
+              ],
+              "root": true,
+              "summary": "{{fields.title}}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "publications",
+      "label": "Publications",
+      "publish": false,
+      "files": [
+        {
+          "name": "publications",
+          "label": "Publications",
+          "file": "_data/publications.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Publications",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "title",
+                  "label": "Title",
+                  "widget": "string"
+                },
+                {
+                  "name": "authors",
+                  "label": "Authors",
+                  "widget": "string"
+                },
+                {
+                  "name": "venue",
+                  "label": "Venue",
+                  "widget": "string"
+                },
+                {
+                  "name": "conference",
+                  "label": "Conference",
+                  "widget": "string"
+                },
+                {
+                  "name": "event",
+                  "label": "Event",
+                  "widget": "string"
+                },
+                {
+                  "name": "pages",
+                  "label": "Pages",
+                  "widget": "string"
+                },
+                {
+                  "name": "year",
+                  "label": "Year",
+                  "widget": "string"
+                },
+                {
+                  "name": "doi",
+                  "label": "DOI",
+                  "widget": "string"
+                },
+                {
+                  "name": "href",
+                  "label": "URL",
+                  "widget": "string"
+                }
+              ],
+              "summary": "{{fields.year}} · {{fields.title}}",
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact",
+      "label": "Contact",
+      "publish": false,
+      "files": [
+        {
+          "name": "contact",
+          "label": "Contact",
+          "file": "_data/contact.yml",
+          "fields": [
+            {
+              "name": "items",
+              "label": "Contact",
+              "widget": "list",
+              "fields": [
+                {
+                  "name": "label",
+                  "label": "Label",
+                  "widget": "string"
+                },
+                {
+                  "name": "value",
+                  "label": "Value",
+                  "widget": "string"
+                },
+                {
+                  "name": "href",
+                  "label": "Link URL",
+                  "widget": "string"
+                }
+              ],
+              "summary": "{{fields.label}}",
+              "root": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "coffee",
+      "label": "Coffee",
+      "label_singular": "Coffee recipe",
+      "folder": "_coffee",
+      "path": "{{slug}}",
+      "extension": "md",
+      "format": "yaml-frontmatter",
+      "create": true,
+      "delete": false,
+      "publish": false,
+      "fields": [
+        {
+          "name": "layout",
+          "label": "Layout",
+          "widget": "hidden",
+          "default": "recipe"
+        },
+        {
+          "name": "title",
+          "label": "Title",
+          "widget": "string"
+        },
+        {
+          "name": "kind",
+          "label": "Recipe type",
+          "widget": "hidden",
+          "default": "coffee"
+        },
+        {
+          "name": "method",
+          "label": "Brew method",
+          "widget": "string"
+        },
+        {
+          "name": "dose_g",
+          "label": "Coffee dose (g)",
+          "widget": "number",
+          "value_type": "float",
+          "min": 0.1,
+          "step": 0.1
+        },
+        {
+          "name": "water_g",
+          "label": "Water (g)",
+          "widget": "number",
+          "value_type": "float",
+          "min": 0.1,
+          "step": 0.1
+        },
+        {
+          "name": "grind",
+          "label": "Grind setting",
+          "widget": "string"
+        },
+        {
+          "name": "temp_c",
+          "label": "Water temperature (°C)",
+          "widget": "number",
+          "value_type": "float",
+          "min": 0.1,
+          "step": 0.1
+        },
+        {
+          "name": "time",
+          "label": "Time",
+          "widget": "string",
+          "hint": "Use the time format shown on the site, e.g. 2:30."
+        },
+        {
+          "name": "beans",
+          "label": "Beans",
+          "widget": "string",
+          "required": false
+        },
+        {
+          "name": "roastery",
+          "label": "Roastery",
+          "widget": "string",
+          "required": false
+        },
+        {
+          "name": "status",
+          "label": "Status",
+          "widget": "select",
+          "required": false,
+          "default": "published",
+          "options": [
+            {
+              "label": "Published",
+              "value": "published"
+            },
+            {
+              "label": "Draft (shows \"Recipe coming later\")",
+              "value": "draft"
+            }
+          ]
+        },
+        {
+          "name": "tags",
+          "label": "Tags",
+          "widget": "list",
+          "required": false,
+          "hint": "Short labels shown as filter chips on the list page, e.g. pour-over, weeknight."
+        },
+        {
+          "name": "photo",
+          "label": "Photo",
+          "widget": "image",
+          "required": false,
+          "media_folder": "/assets/recipes",
+          "public_folder": "/assets/recipes",
+          "choose_url": false,
+          "hint": "Choose or drop a photo. It is converted to WebP and saved in assets/recipes. Best as a landscape 3:2 photo, up to 2 MB. Leave empty to show \"Photo coming later\"."
+        },
+        {
+          "name": "photo_alt",
+          "label": "Photo description",
+          "widget": "string",
+          "required": false,
+          "hint": "Describe the photo for screen readers."
+        },
+        {
+          "name": "photo_credit",
+          "label": "Photo credit",
+          "widget": "string",
+          "required": false,
+          "hint": "Shown under the photo, for example Photo by Fadhil."
+        },
+        {
+          "name": "steps",
+          "label": "Brew steps",
+          "widget": "list",
+          "min": 1,
+          "hint": "Start a step with m:ss, e.g. 0:45 Pour to 150 g, so the brew timer highlights it."
+        },
+        {
+          "name": "notes",
+          "label": "Notes",
+          "widget": "text",
+          "required": false
+        },
+        {
+          "name": "comments",
           "label": "My comments",
           "widget": "text",
           "required": false,
