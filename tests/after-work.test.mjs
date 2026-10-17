@@ -209,10 +209,12 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
  const lis=['0:00 Bloom: pour 60ml of 80°C water over the grounds, stir gently, then wait until 0:30.',
   '0:30 Main pour: slowly add 180ml of 80°C water in a gentle spiral to reach 240ml total.'].map(mkLi);
  const stepList={children:lis};
+ const statsDl={nextSibling:null,parentNode:{insertBefore(c){this.note=c}}};
  const doseDd={attrs:{'data-dose':'12'},children:[],classList:{add(){}},
   getAttribute(k){return this.attrs[k]},setAttribute(){},
   appendChild(c){this.children.push(c)},
   set textContent(v){this.children=[]},get textContent(){return this.children.map(c=>c.textContent).join('')},
+  closest:s=>s==='dl.stats'?statsDl:null,
   parentNode:{appendChild(c){this.note=c}}};
  const waterDd={innerHTML:'240<small>g</small>',getAttribute(){return '240'}};
  waterDd.getAttribute=k=>k==='data-water'?'240':null;
@@ -223,7 +225,8 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
   createElement:()=>mkBtn(),createTextNode:t=>mkText(t)};
  vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
  const out=doseDd.children[1],minus=doseDd.children[0],plus=doseDd.children[2];
- const resetBtn=doseDd.parentNode.note.children[1];
+ const resetBtn=statsDl.parentNode.note.children[1];
+ assert.ok(statsDl.parentNode.note,'note moved out of the stat cell to after the stats list');
  const stepText=i=>lis[i].childNodes.filter(n=>n.nodeType===3).map(n=>n.data).join('');
  assert.match(out.textContent,/12/);
  assert.equal(resetBtn.hidden,true);
