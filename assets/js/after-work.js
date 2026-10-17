@@ -116,17 +116,17 @@
       var out = document.createElement('span'); out.className = 'dose-val';
       var plus = document.createElement('button'); plus.type = 'button'; plus.className = 'dose-btn'; plus.textContent = '+'; plus.setAttribute('aria-label', 'More coffee');
       var again = document.createElement('button'); again.type = 'button'; again.className = 'dose-reset'; again.textContent = 'Reset'; again.hidden = true;
-      var note = document.createElement('p'); note.className = 'dose-note'; note.hidden = true;
-      var noteText = document.createElement('span'); note.appendChild(noteText); note.appendChild(again);
-      doseDd.textContent = '';
-      doseDd.classList.add('dose-step');
-      doseDd.appendChild(minus); doseDd.appendChild(out); doseDd.appendChild(plus);
+      var row = document.createElement('div'); row.className = 'dose-adjust';
+      var label = document.createElement('span'); label.className = 'dose-label'; label.textContent = 'Adjust dose';
+      var note = document.createElement('span'); note.className = 'dose-note';
+      var noteText = document.createElement('span'); note.appendChild(noteText);
+      row.appendChild(label); row.appendChild(minus); row.appendChild(out); row.appendChild(plus); row.appendChild(again); row.appendChild(note);
       var statsEl = doseDd.closest ? doseDd.closest('dl.stats') : null;
-      if (statsEl && statsEl.parentNode && statsEl.parentNode.insertBefore) statsEl.parentNode.insertBefore(note, statsEl.nextSibling);
-      else if (doseDd.parentNode && doseDd.parentNode.appendChild) doseDd.parentNode.appendChild(note);
+      if (statsEl && statsEl.parentNode && statsEl.parentNode.insertBefore) statsEl.parentNode.insertBefore(row, statsEl.nextSibling);
       var paintDose = function (dose) {
         var k = dose / dose0, water = Math.round(water0 * k);
         out.innerHTML = fmtN(dose) + '<small>g</small>';
+        doseDd.innerHTML = fmtN(dose) + '<small>g</small>';
         waterDd.innerHTML = fmtN(water) + '<small>g</small>';
         var prev = 0, queue = tokens.map(function (tk, i) {
           if (tk.kind === 'dose') return fmtN(dose);
@@ -146,7 +146,6 @@
         });
         var changed = Math.abs(dose - dose0) > 1e-9;
         again.hidden = !changed;
-        note.hidden = false;
         noteText.textContent = water > 295
           ? fmtN(water) + ' g of water is over a standard AeroPress chamber\u2019s 10 oz (about 295 g).'
           : (changed ? 'Scaled from the recipe\u2019s ' + fmtN(dose0) + ' g; time, temperature and grind unchanged. ' : 'Tap + or \u2212 to adjust the dose; water and pours follow the ratio. ');
