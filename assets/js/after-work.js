@@ -70,6 +70,92 @@
       li.insertBefore(chip, li.firstChild);
     });
   });
+  // Dose stepper on coffee pages: change the coffee grams and the water stat and the
+  // pour amounts in the steps follow the recipe's ratio. Step times, temperature and
+  // grind stay as written, and every visit starts from the recipe's own dose.
+  var doseDd = document.querySelector('[data-dose]'), waterDd = document.querySelector('[data-water]');
+  var doseSteps = document.querySelector('[data-steps]');
+  if (doseDd && waterDd && doseSteps && document.createElement && document.createTextNode) {
+    var dose0 = parseFloat(doseDd.getAttribute('data-dose')), water0 = parseFloat(waterDd.getAttribute('data-water'));
+    if (dose0 > 0 && water0 > 0) {
+      var doseLis = [].slice.call(doseSteps.children);
+      // The trailing text node holds the step sentence; the time chip is a separate span.
+      var orig = doseLis.map(function (li) {
+        var t = '';
+        [].forEach.call(li.childNodes, function (n) { if (n.nodeType === 3) t += n.data; });
+        return t;
+      });
+      // Water tokens in document order. A token soon followed by "total" is a cumulative
+      // anchor; other ml/g amounts are incremental pours. "grind N g" is the dose itself.
+      // Cumulative values anchor the chain, so rounded increments always add up to the
+      // rounded totals; the last cumulative is pinned to the water stat.
+      var tokens = [], tokByPos = {};
+      doseLis.forEach(function (li, idx) {
+        var t = orig[idx], m, re = /(\d+(?:\.\d+)?)(\s*(?:ml|g)\b)/gi, j = 0, running = tokens._run || 0;
+        while ((m = re.exec(t))) {
+          var before = t.slice(Math.max(0, m.index - 14), m.index).toLowerCase();
+          var after = t.slice(m.index + m[0].length, m.index + m[0].length + 14).toLowerCase();
+          var kind = null;
+          if (/grind\s*$/.test(before)) kind = 'dose';
+          else if (/^[^.;]{0,12}\btotal\b/.test(after)) kind = 'cum';
+          else if (/ml/i.test(m[2]) || /water|pour|add|reach|fill/.test(before + ' ' + after)) kind = 'inc';
+          if (kind) {
+            if (kind === 'inc') running += parseFloat(m[1]);
+            else if (kind === 'cum') running = parseFloat(m[1]);
+            tokens.push({ li: idx, j: j, kind: kind, cum: running });
+            tokByPos[idx + ':' + j] = tokens.length - 1;
+          }
+          j++;
+        }
+        tokens._run = running;
+      });
+      var lastCum = -1;
+      tokens.forEach(function (tk, i) { if (tk.kind === 'cum') lastCum = i; });
+      var fmtN = function (n) { var r = Math.round(n * 10) / 10; return r % 1 === 0 ? String(Math.round(r)) : String(r); };
+      var minus = document.createElement('button'); minus.type = 'button'; minus.className = 'dose-btn'; minus.textContent = '\u2212'; minus.setAttribute('aria-label', 'Less coffee');
+      var out = document.createElement('span'); out.className = 'dose-val';
+      var plus = document.createElement('button'); plus.type = 'button'; plus.className = 'dose-btn'; plus.textContent = '+'; plus.setAttribute('aria-label', 'More coffee');
+      var again = document.createElement('button'); again.type = 'button'; again.className = 'dose-reset'; again.textContent = 'Reset'; again.hidden = true;
+      var note = document.createElement('p'); note.className = 'dose-note'; note.hidden = true;
+      var noteText = document.createElement('span'); note.appendChild(noteText); note.appendChild(again);
+      doseDd.textContent = '';
+      doseDd.classList.add('dose-step');
+      doseDd.appendChild(minus); doseDd.appendChild(out); doseDd.appendChild(plus);
+      if (doseDd.parentNode && doseDd.parentNode.appendChild) doseDd.parentNode.appendChild(note);
+      var paintDose = function (dose) {
+        var k = dose / dose0, water = Math.round(water0 * k);
+        out.innerHTML = fmtN(dose) + '<small>g</small>';
+        waterDd.innerHTML = fmtN(water) + '<small>g</small>';
+        var prev = 0, queue = tokens.map(function (tk, i) {
+          if (tk.kind === 'dose') return fmtN(dose);
+          var c = i === lastCum ? water : Math.round(tk.cum * k);
+          var shown = tk.kind === 'cum' ? c : c - prev;
+          prev = c;
+          return fmtN(shown);
+        });
+        doseLis.forEach(function (li, idx) {
+          var j = 0;
+          var t = orig[idx].replace(/(\d+(?:\.\d+)?)(\s*(?:ml|g)\b)/gi, function (m, num, unit) {
+            var ti = tokByPos[idx + ':' + j]; j++;
+            return ti === undefined ? m : queue[ti] + unit;
+          });
+          [].slice.call(li.childNodes).forEach(function (n) { if (n.nodeType === 3) li.removeChild(n); });
+          li.appendChild(document.createTextNode(t));
+        });
+        var changed = Math.abs(dose - dose0) > 1e-9;
+        again.hidden = !changed;
+        note.hidden = false;
+        noteText.textContent = water > 295
+          ? 'About ' + fmtN(water) + ' g of water is more than a standard AeroPress chamber holds (10 oz, about 295 g).'
+          : (changed ? 'Scaled from the recipe\u2019s ' + fmtN(dose0) + ' g. Time, temperature and grind stay the same. ' : 'Tap + or \u2212 to brew a bigger or smaller cup; water and pours follow the ratio. ');
+      };
+      var cur = function () { return parseFloat(out.textContent); };
+      minus.addEventListener('click', function () { var v = Math.round((cur() - 1) * 10) / 10; if (v >= 5) paintDose(v); });
+      plus.addEventListener('click', function () { paintDose(Math.round((cur() + 1) * 10) / 10); });
+      again.addEventListener('click', function () { paintDose(dose0); });
+      paintDose(dose0);
+    }
+  }
   var box = document.querySelector('[data-brew-timer]');
   var list = document.querySelector('[data-steps]');
   if (!box || !list) return;
