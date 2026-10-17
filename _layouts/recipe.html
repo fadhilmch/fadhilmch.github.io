@@ -23,6 +23,7 @@ layout: base
     <div><dt>Temp</dt><dd>{{ page.temp_c }}<small>°C</small></dd></div>
     <div><dt>Time</dt><dd>{{ page.time | escape }}</dd></div>
     <div><dt>Grind</dt><dd class="stats__text">{{ page.grind | escape }}</dd></div>
+    {%- if page.beans %}<div class="stats__beans"><dt>Beans</dt><dd class="stats__text">{{ page.beans | escape }}</dd></div>{% endif %}
   </dl>
   {%- elsif page.kind == 'food' %}
   <dl class="stats" aria-label="Recipe details">
@@ -31,7 +32,6 @@ layout: base
     {%- if page.cuisine %}<div><dt>Style</dt><dd class="stats__text">{{ page.cuisine | escape }}</dd></div>{% endif %}
   </dl>
   {%- endif %}
-  {%- if page.kind == 'coffee' and page.beans %}<p class="recipe__beans"><span>beans</span> {{ page.beans | escape }}</p>{% endif %}
   {%- endunless %}
   {% if is_draft %}
   <section class="recipe__block"><h2>Recipe coming later.</h2><p>Photos and recipe notes will go here.</p></section>
