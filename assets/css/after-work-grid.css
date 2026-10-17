@@ -165,7 +165,8 @@ body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 .dose-btn { min-width:30px; min-height:30px; padding:0; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:inherit; font:600 15px 'Geist Mono',monospace; cursor:pointer; }
 .dose-btn:active { transform:scale(.92); }
 .dose-reset { min-height:30px; padding:0 10px; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:var(--aw-muted); font:500 11px 'Geist Mono',monospace; cursor:pointer; }
-.dose-note { margin:8px 0 0; font-size:11px; line-height:1.4; color:var(--aw-muted); }
+.dose-note { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin:10px 2px 0; font-size:11px; line-height:1.4; color:var(--aw-muted); }
+.stats>div:has(.dose-step) { grid-column:span 2; }
 .recipe__body { display:block; margin-top:30px; }
 .recipe__body.has-aside { display:grid; grid-template-columns:minmax(220px,300px) 1fr; gap:36px; align-items:start; }
 .recipe__aside { position:sticky; top:16px; padding:18px; border:1px solid var(--aw-rule); border-radius:16px; background:#ffffff08; }
@@ -220,7 +221,7 @@ body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 .recipe__sheet .steps li.is-now { background:#e9f0d2 !important; border-color:var(--aw-accent) !important; }
 .recipe__sheet .steps li.is-now::before { background:var(--aw-accent); border-color:var(--aw-accent); color:#fff; }
 .recipe__sheet .recipe__image { margin:16px 0 0; }
-.recipe__sheet .recipe__image img { border-radius:16px; aspect-ratio:3/1; object-fit:cover; box-shadow:0 10px 24px -14px #0008; }
+.recipe__sheet .recipe__image img { border-radius:16px; aspect-ratio:3/2; object-fit:cover; box-shadow:0 10px 24px -14px #0008; }
 .recipe__sheet .recipe__image figcaption { font-size:12px; }
 /* local comparison: recipe panel colour options, set with data-sheet on .recipe (not a chosen design) */
 .recipe[data-sheet=taupe] .recipe__sheet { --aw-ink:#24211b; --aw-muted:#5b5547; --aw-rule:#24211b26; --aw-accent:#3f5a22; background:#bdb3a0; box-shadow:0 18px 40px -18px #000a; }
