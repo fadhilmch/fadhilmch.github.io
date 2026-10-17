@@ -4,12 +4,13 @@
 .aw-grid .back-link { color:var(--aw-muted); min-height:44px; display:inline-flex; align-items:center; }
 .aw-page.aw-grid:not(.aw-page--gateway) { padding-top:8px; }
 .aw-page .back-link { margin:-8px 0 -8px; }
+@media(min-width:761px){ .aw-grid .back-link { min-height:36px; } }
 .aw-category-title h1 { margin-block:0; }
 .aw-head { padding:8px 4px 14px; }
 .aw-head h1 { font-size:clamp(38px,6vw,64px); margin:0 0 16px; letter-spacing:-.04em; }
 .aw-head h1 .aw-accent { color:#c5d788; }
 .aw-head p { color:var(--aw-muted); font-size:13px; }
-.aw-category-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin:0 0 12px; }
+.aw-category-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px; margin:0 0 8px; }
 .aw-category-title { display:flex; align-items:center; gap:14px; }
 .aw-category-title h1 { font-size:clamp(34px,5vw,58px); margin:0; letter-spacing:-.035em; }
 .aw-category-title>img { width:70px; height:70px; object-fit:contain; }
@@ -24,7 +25,7 @@
 .aw-card__caption h2 { font-size:20px; margin:0; }
 .aw-card__details,.aw-card__caption .spec { grid-column:1/-1; color:var(--aw-muted); margin:0; font-size:12px; }
 .aw-card:hover h2 { text-decoration:underline; text-underline-offset:4px; }
-.aw-empty { color:var(--aw-muted); padding:24px 0; min-height:160px; }
+.aw-empty { grid-column:1/-1; margin:4px 0 0; color:var(--aw-muted); padding:8px 0 24px; min-height:120px; }
 .aw-grid :focus-visible { outline:3px solid #cfb8ee; outline-offset:5px; }
 .recipe.aw-grid .recipe__head { border-color:var(--aw-rule); }
 .recipe.aw-grid .spec,.recipe.aw-grid .recipe__block h2 { color:var(--aw-muted); }
