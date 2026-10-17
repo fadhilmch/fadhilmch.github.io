@@ -11,6 +11,8 @@ time: "6:00"
 brew_total: "6:00"
 beans: Gayo wine process, Indonesia (anaerobic natural)
 roastery: Semekar
+photo: /assets/recipes/the-funky-5-gayo-wine-aeropress.webp
+photo_alt: Bag of Semekar Coffee & Roastery Gayo Wine beans
 tags: [aeropress, indonesia, anaerobic]
 steps:
   - "0:00 Setup: grind 12g fine to medium-fine, invert the AeroPress, preheat with a splash of hot water and discard. Add the grounds and level the bed with a gentle tap."
