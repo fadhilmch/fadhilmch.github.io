@@ -4,7 +4,7 @@
     <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
     {% include head.html %}
   </head>
-  <body{% if page.nav == 'after-work' %} class="is-after-work"{% endif %}>
+  <body{% if page.nav == 'after-work' %} class="is-after-work{% if page.layout == 'recipe' %} is-recipe-page{% endif %}"{% endif %}>
     <a class="skip-link" href="#main">Skip to content</a>
     {% include header.html %}
     <main id="main">{{ content }}</main>

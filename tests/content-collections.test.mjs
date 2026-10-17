@@ -40,7 +40,7 @@ test('coffee and food editors expose every recipe template field', () => {
   assert.equal(coffee.delete, false);
   assert.equal(food.publish, false);
   assert.equal(food.delete, false);
-  for (const field of ['layout', 'title', 'kind', 'method', 'dose_g', 'water_g', 'grind', 'temp_c', 'time', 'beans', 'steps', 'notes', 'comments', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
+  for (const field of ['layout', 'title', 'kind', 'method', 'dose_g', 'water_g', 'grind', 'temp_c', 'time', 'beans', 'roastery', 'steps', 'notes', 'comments', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
     assert.ok(coffee.fields.some((item) => item.name === field), `missing coffee field ${field}`);
   }
   for (const field of ['layout', 'title', 'kind', 'cuisine', 'serves', 'time', 'ingredients', 'steps', 'notes', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
