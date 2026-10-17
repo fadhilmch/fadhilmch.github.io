@@ -195,6 +195,9 @@ test('recipe pages follow the lamp theme: charcoal dark, warm-paper light, Geist
  assert.match(c,/\.recipe__head h1 \{ font-family:'Geist',sans-serif/);
  assert.match(read('_layouts/base.html'),/page\.layout == 'recipe' %\} is-recipe-page/);
 });
+test('stats cards share the desktop row in six equal columns and keep the phone wrap',()=>{
+ const css=read('assets/css/after-work-grid.css');assert.match(css,/\.stats \{[^}]*repeat\(auto-fit,minmax\(96px,1fr\)\)/);assert.match(css,/@media\(min-width:761px\)\{ \.stats \{ grid-template-columns:repeat\(6,1fr\); \} \}/);assert.match(css,/\.stats>div\.stats__beans \{ grid-column:1\/-1; \}/);
+});
 test('dose stepper edits inside the Coffee stat cell, showing Reset only after a change',()=>{
  const mkBtn=()=>({type:'',className:'',_tc:'',innerHTML:'',hidden:false,attrs:{},children:[],
   get textContent(){return (this.innerHTML||this._tc||'').replace(/<[^>]+>/g,'')},
