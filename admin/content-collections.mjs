@@ -102,6 +102,7 @@ const coffeeFields = [
   field('temp_c', 'Water temperature (°C)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
   recipeCommonFields[3],
   field('beans', 'Beans', 'string', { required: false }),
+  field('roastery', 'Roastery', 'string', { required: false }),
   ...recipeExtraFields,
   list('steps', 'Brew steps', undefined, { min: 1, hint: 'Start a step with m:ss, e.g. 0:45 Pour to 150 g, so the brew timer highlights it.' }),
   text('notes', 'Notes', { required: false }),
