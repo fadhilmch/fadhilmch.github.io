@@ -243,6 +243,8 @@ photo_alt: V60 brewer on the kitchen counter
 photo_credit: Photo by Fadhil # optional
 status: published # use draft to show Recipe coming later
 notes: Anything worth remembering.
+source_name: Where the recipe came from # optional
+source_url: Link to the original recipe # optional, shown as a clickable source link under Notes
 ---
 ```
 
