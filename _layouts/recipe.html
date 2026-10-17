@@ -11,28 +11,28 @@ layout: base
     <h1>{{ page.title | escape }}</h1>
     {%- if page.tags and page.tags.size > 0 %}<ul class="aw-tags" aria-label="Tags">{% for t in page.tags %}<li>{{ t | escape }}</li>{% endfor %}</ul>{% endif %}
     {%- if page.sample %}<p class="aw-sample-note">Sample recipe, only here to preview the layout.</p>{% endif %}
-    {%- unless is_draft %}
-    {%- if page.kind == 'coffee' and page.dose_g and page.water_g and page.dose_g > 0 %}
-    {%- assign ratio = page.water_g | times: 1.0 | divided_by: page.dose_g | round: 1 %}
-    <dl class="stats" aria-label="Recipe details">
-      <div><dt>Coffee</dt><dd>{{ page.dose_g }}<small>g</small></dd></div>
-      <div><dt>Water</dt><dd>{{ page.water_g }}<small>g</small></dd></div>
-      <div><dt>Ratio</dt><dd>1:{{ ratio }}</dd></div>
-      <div><dt>Temp</dt><dd>{{ page.temp_c }}<small>°C</small></dd></div>
-      <div><dt>Time</dt><dd>{{ page.time | escape }}</dd></div>
-      <div><dt>Grind</dt><dd class="stats__text">{{ page.grind | escape }}</dd></div>
-    </dl>
-    {%- elsif page.kind == 'food' %}
-    <dl class="stats" aria-label="Recipe details">
-      {%- if page.serves %}<div><dt>Serves</dt><dd>{{ page.serves }}</dd></div>{% endif %}
-      {%- if page.time %}<div><dt>Time</dt><dd class="stats__text">{{ page.time | escape }}</dd></div>{% endif %}
-      {%- if page.cuisine %}<div><dt>Style</dt><dd class="stats__text">{{ page.cuisine | escape }}</dd></div>{% endif %}
-    </dl>
-    {%- endif %}
-    {%- if page.kind == 'coffee' and page.beans %}<p class="recipe__beans"><span>beans</span> {{ page.beans | escape }}</p>{% endif %}
-    {%- endunless %}
   </header>
   {% if page.photo %}<figure class="recipe__image"><img src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title | escape }}" width="720" height="480">{% if page.photo_credit %}<figcaption>{{ page.photo_credit | escape }}</figcaption>{% endif %}</figure>{% endif %}
+  {%- unless is_draft %}
+  {%- if page.kind == 'coffee' and page.dose_g and page.water_g and page.dose_g > 0 %}
+  {%- assign ratio = page.water_g | times: 1.0 | divided_by: page.dose_g | round: 1 %}
+  <dl class="stats" aria-label="Recipe details">
+    <div><dt>Coffee</dt><dd>{{ page.dose_g }}<small>g</small></dd></div>
+    <div><dt>Water</dt><dd>{{ page.water_g }}<small>g</small></dd></div>
+    <div><dt>Ratio</dt><dd>1:{{ ratio }}</dd></div>
+    <div><dt>Temp</dt><dd>{{ page.temp_c }}<small>°C</small></dd></div>
+    <div><dt>Time</dt><dd>{{ page.time | escape }}</dd></div>
+    <div><dt>Grind</dt><dd class="stats__text">{{ page.grind | escape }}</dd></div>
+  </dl>
+  {%- elsif page.kind == 'food' %}
+  <dl class="stats" aria-label="Recipe details">
+    {%- if page.serves %}<div><dt>Serves</dt><dd>{{ page.serves }}</dd></div>{% endif %}
+    {%- if page.time %}<div><dt>Time</dt><dd class="stats__text">{{ page.time | escape }}</dd></div>{% endif %}
+    {%- if page.cuisine %}<div><dt>Style</dt><dd class="stats__text">{{ page.cuisine | escape }}</dd></div>{% endif %}
+  </dl>
+  {%- endif %}
+  {%- if page.kind == 'coffee' and page.beans %}<p class="recipe__beans"><span>beans</span> {{ page.beans | escape }}</p>{% endif %}
+  {%- endunless %}
   {% if is_draft %}
   <section class="recipe__block"><h2>Recipe coming later.</h2><p>Photos and recipe notes will go here.</p></section>
   {% else %}
