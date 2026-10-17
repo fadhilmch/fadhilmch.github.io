@@ -53,7 +53,7 @@ function addForm(){if(!S.addOpen)return`<button class="btn primary wide" id="add
  const names=[...new Set(S.doc.sessions.flatMap(s=>s.players))];
  return`<div class="form"><h3>New session</h3><label>Date<input id="f_date" type="date" value="${todayIsoNow()}"></label>
  <div class="lbl">Venue</div><div class="venue">${venueSel('f_venue','')}</div>
- <div class="two"><label>Billed total (kr)<input id="f_billed" inputmode="decimal" placeholder="595"></label><label>Real booking (kr)<input id="f_real" inputmode="decimal" placeholder="455"></label></div>
+ <div class="two"><label>Billed total (kr)<input id="f_billed" inputmode="decimal" placeholder="595"></label><label>Real booking (kr)<input id="f_real" inputmode="decimal" value="475"></label></div>
  <div class="lbl">Players</div><div class="chips" id="f_chips">${names.map(n=>`<button class="chip open adm" data-pick="${H(n)}"><span class="mk">+</span> ${H(n)}</button>`).join('')}</div>
  <label>New players (separate with commas)<input id="f_new" placeholder="Name, Name"></label>
  <div class="actions"><button class="btn primary" id="f_add">Save session</button><button class="btn" id="f_cancel">Cancel</button></div></div>`}
