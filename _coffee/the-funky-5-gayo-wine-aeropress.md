@@ -6,13 +6,13 @@ method: AeroPress
 dose_g: 12
 water_g: 240
 temp_c: 80
-grind: Silberthal level 2
+grind: fine to medium-fine
 time: "6:00"
 brew_total: "6:00"
 beans: Gayo wine process, Indonesia (anaerobic natural)
 tags: [aeropress, indonesia, anaerobic]
 steps:
-  - "0:00 Setup: grind 12g on Silberthal level 2, invert the AeroPress, preheat with a splash of hot water and discard. Add the grounds and level the bed with a gentle tap."
+  - "0:00 Setup: grind 12g fine to medium-fine, invert the AeroPress, preheat with a splash of hot water and discard. Add the grounds and level the bed with a gentle tap."
   - "0:00 Bloom: pour 60ml of 80°C water over the grounds, stir gently 3-4 times, then wait until 0:30."
   - "0:30 Main pour: slowly add 180ml of 80°C water in a gentle spiral to reach 240ml total. Do not agitate. Steep undisturbed until 4:30."
   - "4:30 Cap: attach the pre-rinsed filter cap and press the plunger just enough to push out trapped air. Do not press into the cup yet."
