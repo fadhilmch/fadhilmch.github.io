@@ -26,7 +26,7 @@ test('lamp is lit in dark mode with a bulb-only glow, and the logo wave glows in
  assert.doesNotMatch(c,/theme-toggle__on[^}]*drop-shadow/);
  assert.match(read('_includes/logo.svg'),/class="brand__wave"/);
  assert.match(c,/\[data-theme="dark"\] \.brand__wave \{ stroke/);
- assert.match(c,/prefers-reduced-motion: no-preference\) \{\s*\[data-theme="dark"\] \.brand__wave \{ animation/);
+ assert.match(c,/prefers-reduced-motion: no-preference\) and \(min-width: 681px\) \{[^}]*\[data-theme="dark"\] \.brand__wave \{ animation/);
  assert.doesNotMatch(c,/brand-neon-on[^;]*infinite/);
 });
 
