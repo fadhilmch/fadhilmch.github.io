@@ -161,18 +161,19 @@ body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 .stats>div.stats__beans { grid-column:1/-1; }
 .stats__beans dd { font-size:14px; font-weight:400; line-height:1.45; }
 .stats__beans dt.stats__roastery { margin-top:10px; }
-.dose-adjust { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:10px 0 0; padding:9px 12px; border:1px solid var(--aw-rule); border-radius:14px; background:#ffffff08; }
-.dose-label { font:500 10px 'Geist Mono',monospace; text-transform:uppercase; letter-spacing:.08em; color:var(--aw-muted); margin-right:auto; }
+.dose-edit { display:inline-flex; align-items:center; gap:3px; }
 .dose-val { font:500 17px 'Geist Mono',monospace; font-variant-numeric:tabular-nums; }
 .dose-val small { font-size:11px; font-weight:400; color:var(--aw-muted); margin-left:2px; }
+.dose-val-toggle { padding:0; border:none; background-color:transparent; color:inherit; cursor:pointer; background-image:repeating-linear-gradient(90deg,var(--aw-muted) 0 3px,transparent 3px 6px); background-size:100% 1.5px; background-position:0 100%; background-repeat:no-repeat; }
+.dose-val-toggle:focus-visible { outline:2px solid #c5d788; outline-offset:2px; border-radius:3px; }
 .dose-btn { min-width:30px; min-height:30px; padding:0; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:inherit; font:600 15px 'Geist Mono',monospace; cursor:pointer; }
 .dose-btn:active { transform:scale(.92); }
-.dose-reset { min-height:30px; padding:0 10px; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:var(--aw-muted); font:500 11px 'Geist Mono',monospace; cursor:pointer; }
+.dose-edit .dose-btn { display:none; min-width:20px; min-height:20px; font-size:11px; }
+.dose-edit.is-editing .dose-btn { display:inline-block; }
+.dose-reset { min-height:26px; padding:0 10px; border-radius:999px; border:1px solid var(--aw-rule); background:transparent; color:var(--aw-muted); font:500 11px 'Geist Mono',monospace; cursor:pointer; }
+.dose-note-row { display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin:8px 2px 0; }
+.dose-note-row[hidden] { display:none; }
 .dose-note { font-size:11px; line-height:1.4; color:var(--aw-muted); }
-.recipe__sheet .dose-adjust { background:#fffaf0; border-color:var(--aw-rule); }
-.recipe[data-sheet=taupe] .recipe__sheet .dose-adjust { background:#cdc4b2; }
-.recipe[data-sheet=charcoal] .recipe__sheet .dose-adjust { background:#2f352f; }
-[data-theme="light"] body.is-recipe-page .recipe[data-sheet=charcoal] .recipe__sheet .dose-adjust { background:#f5f2e6; }
 .recipe__body { display:block; margin-top:30px; }
 .recipe__body.has-aside { display:grid; grid-template-columns:minmax(220px,300px) 1fr; gap:36px; align-items:start; }
 .recipe__aside { position:sticky; top:16px; padding:18px; border:1px solid var(--aw-rule); border-radius:16px; background:#ffffff08; }
