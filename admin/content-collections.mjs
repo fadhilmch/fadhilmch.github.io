@@ -107,6 +107,8 @@ const coffeeFields = [
   list('steps', 'Brew steps', undefined, { min: 1, hint: 'Start a step with m:ss, e.g. 0:45 Pour to 150 g, so the brew timer highlights it.' }),
   text('notes', 'Notes', { required: false }),
   text('comments', 'My comments', { required: false, hint: 'Your own thoughts on this recipe. Shown under the method as "My comments".' }),
+  field('source_name', 'Source name', 'string', { required: false, hint: 'Where the recipe came from, e.g. The Funky 5 by Purple Rain (aeroprecipe.com).' }),
+  field('source_url', 'Source URL', 'string', { required: false, hint: 'Link to the original recipe. Shown as a clickable source link under Notes.' }),
 ];
 
 const foodFields = [
