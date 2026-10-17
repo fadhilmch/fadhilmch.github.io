@@ -31,7 +31,7 @@
 .recipe__image { margin:24px 0 0; }
 .recipe__image img { display:block; width:100%; height:auto; }
 .recipe__image figcaption { color:var(--aw-muted); font-size:12px; margin-top:8px; overflow-wrap:anywhere; }
-.recipe__image--placeholder { display:grid; place-items:center; aspect-ratio:3/1; border-radius:16px; background:#252d27; color:var(--aw-muted); font-size:13px; }
+.recipe__image--placeholder { display:grid; place-items:center; aspect-ratio:3/1; border-radius:16px; border:1.5px dashed var(--aw-rule); color:var(--aw-muted); font-size:13px; }
 .recipe.aw-grid .ingredients li { border-color:var(--aw-rule); }
 @media(min-width:700px){.aw-menu:has(.aw-card:only-child){grid-template-columns:minmax(0,620px)}}
 @media(max-width:700px){
