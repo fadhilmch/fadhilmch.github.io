@@ -148,3 +148,124 @@ test('recipe layout renders source_url as a real link and keeps notes escaped', 
   assert.match(layout, /page\.source_name \| default: page\.source_url \| escape/);
   assert.match(layout, /\{\{ page\.notes \| escape \}\}/);
 });
+
+test('recipe layout renders the editable result note only when filled', () => {
+  const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
+  assert.match(layout, /if page\.comments/);
+  assert.match(layout, /<h2 id="result-h">Result<\/h2>/);
+  assert.match(layout, /\{\{ page\.comments \| escape \| newline_to_br \}\}/);
+});
+  const coffee = collection('coffee');
+  const food = collection('food');
+  assert.equal(coffee.publish, false);
+  assert.equal(coffee.delete, false);
+  assert.equal(food.publish, false);
+  assert.equal(food.delete, false);
+  for (const field of ['layout', 'title', 'kind', 'method', 'dose_g', 'water_g', 'grind', 'temp_c', 'time', 'beans', 'roastery', 'steps', 'notes', 'comments', 'source_name', 'source_url', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
+    assert.ok(coffee.fields.some((item) => item.name === field), `missing coffee field ${field}`);
+  }
+  for (const field of ['layout', 'title', 'kind', 'cuisine', 'serves', 'time', 'ingredients', 'steps', 'notes', 'status', 'tags', 'photo', 'photo_alt', 'photo_credit']) {
+    assert.ok(food.fields.some((item) => item.name === field), `missing food field ${field}`);
+  }
+});
+
+test('product design enabled state has a corresponding lane visibility control', () => {
+  const skills = file('skills').fields[0].fields;
+  const lanes = file('lanes');
+  assert.ok(collection('about').files.some(({ name }) => name === 'lanes'));
+  assert.ok(lanes.fields[0].fields.some((field) => field.name === 'branch'));
+  assert.ok(lanes.fields[0].fields.some((field) => field.name === 'key'));
+  assert.equal(skills.find((field) => field.name === 'enabled').default, true);
+  assert.equal(lanes.fields[0].fields.find((field) => field.name === 'branch').default, true);
+  assert.equal(skills.find((field) => field.name === 'key').widget, 'hidden');
+  assert.equal(skills.find((field) => field.name === 'lane').widget, 'hidden');
+  assert.equal(lanes.fields[0].fields.find((field) => field.name === 'key').widget, 'hidden');
+  assert.equal(file('skills').fields[0].max, 5);
+  assert.equal(lanes.fields[0].max, 7);
+});
+
+test('lists with hidden keys cannot create keyless items', () => {
+  for (const name of ['skills', 'lanes']) {
+    const list = file(name).fields[0];
+    for (const option of ['allow_add', 'allow_duplicate', 'allow_remove']) assert.equal(list[option], false, `${name}.${option}`);
+  }
+});
+
+test('root lists label collapsed items', () => {
+  for (const definition of contentCollections.flatMap((item) => item.files ?? [])) {
+    const [first] = definition.fields;
+    if (first.root) assert.match(first.summary ?? '', /\{\{fields\.\w+\}\}/, definition.name);
+  }
+});
+
+test('optional data fields stay optional and CMS colors use the site palette', () => {
+  const skills = file('skills').fields[0].fields;
+  const lanes = file('lanes').fields[0].fields;
+  const projects = file('portfolio-projects').fields[0].fields;
+  const experience = file('experience').fields[0].fields;
+  const education = file('education').fields[0].fields;
+  for (const [fields, name] of [[experience, 'place'], [experience, 'note'], [education, 'country'], [skills, 'spotlight'], [skills.find(({ name }) => name === 'items').fields, 'where']]) {
+    assert.equal(fields.find((field) => field.name === name).required, false, `${name} should be optional`);
+  }
+  const expectedColors = ['l0', 'l1', 'l2', 'l3', 'l4', 'l5', 'fg'];
+  for (const field of [skills.find(({ name }) => name === 'color'), lanes.find(({ name }) => name === 'color'), projects.find(({ name }) => name === 'color')]) {
+    assert.equal(field.widget, 'select');
+    assert.deepEqual(field.options.map(({ value }) => value), expectedColors);
+    assert.ok(field.options.every(({ label }) => label && !expectedColors.includes(label)));
+  }
+});
+
+test('recipe numeric fields prevent invalid ratios and serving counts', () => {
+  const coffee = collection('coffee').fields;
+  const food = collection('food').fields;
+  const dose = coffee.find(({ name }) => name === 'dose_g');
+  assert.equal(dose.widget, 'number');
+  assert.equal(dose.value_type, 'float');
+  assert.ok(dose.min > 0);
+  const water = coffee.find(({ name }) => name === 'water_g');
+  assert.equal(water.value_type, 'float');
+  assert.ok(water.min > 0);
+  const servings = food.find(({ name }) => name === 'serves');
+  assert.equal(servings.value_type, 'int');
+  assert.equal(servings.min, 1);
+});
+
+// Exercise the config that Sveltia actually fetches, rather than schemas alone.
+test('served config includes every schema and uses review PRs for every collection', () => {
+  const config = JSON.parse(readFileSync(new URL('../admin/config.yml', import.meta.url), 'utf8'));
+  assert.equal(config.publish_mode, 'editorial_workflow');
+  // Blank optional strings would be truthy in Liquid, e.g. an empty bio link href.
+  assert.equal(config.output?.omit_empty_optional_fields, true);
+  // A plain 2:30 parses as 9000 in Jekyll's YAML 1.1 reader.
+  assert.equal(config.output?.yaml?.quote, 'double');
+  assert.deepEqual(config.collections.filter(({ name }) => name !== 'posts'), contentCollections);
+  for (const collection of config.collections) {
+    assert.equal(collection.publish, false, collection.name);
+    assert.ok(!collection.publish_mode || collection.publish_mode === 'editorial_workflow', collection.name);
+    if (collection.folder) assert.equal(collection.delete, false, collection.name);
+  }
+});
+
+test('recipe photos upload only to assets/recipes, as WebP under 2 MB', () => {
+  const config = JSON.parse(readFileSync(new URL('../admin/config.yml', import.meta.url)));
+  assert.equal(config.media_folder, 'admin/media-readonly');
+  assert.equal(config.media_libraries.default.config.max_file_size, 2097152);
+  assert.equal(config.media_libraries.default.config.transformations.raster_image.format, 'webp');
+  for (const name of ['coffee', 'food']) {
+    const photo = collection(name).fields.find((item) => item.name === 'photo');
+    assert.equal(photo.widget, 'image');
+    assert.equal(photo.media_folder, '/assets/recipes');
+    assert.equal(photo.public_folder, '/assets/recipes');
+    assert.equal(photo.choose_url, false);
+    assert.equal(photo.required, false);
+  }
+  const others = contentCollections.filter((item) => !['coffee', 'food'].includes(item.name));
+  assert.doesNotMatch(JSON.stringify(others), /"widget":"image"|"media_folder"/);
+});
+
+test('recipe layout renders source_url as a real link and keeps notes escaped', () => {
+  const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
+  assert.match(layout, /<a href="\{\{ page\.source_url \| escape \}\}" rel="external">/);
+  assert.match(layout, /page\.source_name \| default: page\.source_url \| escape/);
+  assert.match(layout, /\{\{ page\.notes \| escape \}\}/);
+});
