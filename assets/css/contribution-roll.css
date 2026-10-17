@@ -16,7 +16,7 @@
 
 .roll__body { display: flex; gap: 8px; }
 .roll__keys { display: flex; flex-direction: column; gap: var(--gap); }
-.roll__keys span { height: var(--lane); display: flex; align-items: center; font-size: 9px; }
+.roll__keys span { flex: 1; display: flex; align-items: center; font-size: 9px; }
 
 .roll__grid {
   flex: 1;
@@ -28,12 +28,48 @@
   position: relative;
 }
 .roll__week { flex: 1; display: flex; flex-direction: column; align-items: center; gap: var(--gap); min-width: 0; padding: 0 .75px; }
-.roll__week i { display: block; width: var(--lane); max-width: 100%; height: var(--lane); border-radius: 50%; }
+.roll__week i { display: block; width: 100%; max-width: var(--lane); height: auto; aspect-ratio: 1; border-radius: 50%; }
 .roll__note { cursor: pointer; transition: transform .15s, outline-color .15s; outline: 2px solid transparent; outline-offset: 1px; }
 .roll__note:hover, .roll__note.is-picked { transform: scale(1.15); outline-color: var(--fg); }
 .roll :is(.roll__note, .roll__legend i)[data-l="1"] { background: var(--n1); }
 .roll :is(.roll__note, .roll__legend i)[data-l="2"] { background: var(--n2); }
 .roll :is(.roll__note, .roll__legend i)[data-l="3"] { background: var(--n3); }
+.roll :is(.roll__note, .roll__legend i)[data-l="4"] { background: var(--n4); }
+
+.roll__axis { display: flex; justify-content: space-between; padding-left: 20px; }
+.roll__from--narrow { display: none; }
+.roll__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.roll__link { color: var(--fg); text-decoration: none; }
+.roll__link:hover { text-decoration: underline; text-underline-offset: 3px; }
+.roll__link:focus-visible { outline: 3px solid var(--l2); outline-offset: 2px; border-radius: 3px; }
+.roll__legend { display: inline-flex; align-items: center; gap: 6px; }
+.roll__legend i { width: 10px; height: 10px; border-radius: 3px; }
+.roll__status { margin: 0; min-height: 1.4em; line-height: 1.4; }
+
+/* Mid widths: smaller dots so 53 weeks still fit as circles */
+@media (min-width: 641px) and (max-width: 1000px) {
+  .roll { --lane: 10px; }
+}
+
+/* Phones: the last 26 weeks, so notes stay tappable */
+@media (max-width: 640px) {
+  .roll { --lane: 12px; }
+  .roll__week--early { display: none; }
+  .roll__from--wide { display: none; }
+  .roll__from--narrow { display: inline; }
+  .roll__status { min-height: 2.8em; }
+}
+
+/* One reveal when the roll scrolls into view: notes pop in scattered, drifting
+   left to right. JS sets each note's delay; there is no moving line. */
+.roll.is-armed .roll__note { opacity: 0; }
+.roll.is-playing .roll__note { animation: roll-note .35s ease-out backwards; }
+@keyframes roll-note { from { opacity: 0; transform: scale(.4); } }
+@media (prefers-reduced-motion: reduce) {
+  .roll.is-armed .roll__note { opacity: 1; }
+  .roll.is-playing .roll__note { animation: none; }
+  .roll__note { transition: none; }
+}
 .roll :is(.roll__note, .roll__legend i)[data-l="4"] { background: var(--n4); }
 
 .roll__axis { display: flex; justify-content: space-between; padding-left: 20px; }
