@@ -122,6 +122,13 @@ optional `photo`, `photo_alt`, `photo_credit` and `status` to recipe front matte
 Missing photos show a neutral placeholder; draft recipes are labelled incomplete.
 The decorative cutouts are illustrations, not the owner's actual recipe photos.
 
+Recipe pages use a charcoal spec sheet in dark mode and a warm-paper sheet when
+the lamp theme is on, with Geist titles, compact stat cards (coffee shows dose,
+water, ratio, grind, temperature and method), a checklist ingredient list that
+keeps a running count, and timed steps laid out as a clock (`m:ss` or `n min`
+tokens become chips and drive the brew timer on coffee pages). On phones,
+Cooking pages switch between Ingredients and Method tabs.
+
 The gateway title ("After work" and the arrow) fades in word by word once, unless reduced motion is on. Stickers are base64 WebP includes in `_includes/after-work/images/`; after adding one, run `scripts/build-after-work-shapes.py` and keep the layout test passing. Loose stickers can be dragged (`assets/js/after-work-play.js`, `assets/js/after-work-physics.js`).
 Shared templates live in `_includes/after-work/`; the scoped grid/sticker layer is
 `assets/css/after-work-grid.css`. About, site navigation and the default branch
