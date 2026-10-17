@@ -149,9 +149,17 @@ test('recipe layout renders source_url as a real link and keeps notes escaped', 
   assert.match(layout, /\{\{ page\.notes \| escape \}\}/);
 });
 
+test('recipe layout hides empty Notes and Result blocks but keeps the source link', () => {
+  const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
+  assert.match(layout, /assign notes_text = page\.notes \| strip/);
+  assert.match(layout, /if notes_text != "" or page\.source_url/);
+  assert.match(layout, /if notes_text != "" %\}<h2 id="notes-h">/);
+  assert.match(layout, /assign result_text = page\.comments \| strip/);
+});
+
 test('recipe layout renders the editable result note only when filled', () => {
   const layout = readFileSync(new URL('../_layouts/recipe.html', import.meta.url), 'utf8');
-  assert.match(layout, /if page\.comments/);
+  assert.match(layout, /if result_text != ""/);
   assert.match(layout, /<h2 id="result-h">Result<\/h2>/);
   assert.match(layout, /\{\{ page\.comments \| escape \| newline_to_br \}\}/);
 });
