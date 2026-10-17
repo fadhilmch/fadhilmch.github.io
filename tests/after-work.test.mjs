@@ -86,3 +86,66 @@ test('title words and arrow fade in once, only when motion is allowed',()=>{
  assert.match(c,/@media \(prefers-reduced-motion:no-preference\) \{[^@]*aw-w3[^@]*animation:aw-title-in/);
  assert.doesNotMatch(c,/aw-title-in[^;]*infinite/);
 });
+test('food recipe pages get mobile-only tabs with plain labels and counts inside panels',()=>{
+ const s=read('_layouts/recipe.html');
+ assert.match(s,/data-recipe-tabs/);assert.match(s,/role="tablist"/);
+ assert.match(s,/>Ingredients</);assert.match(s,/>Method</);
+ assert.doesNotMatch(s,/recipe__tab[^>]*>[^<]*\d+ of \d+</);
+ assert.match(s,/data-ing-count/);
+ assert.match(s,/aria-controls="panel-ing"/);assert.match(s,/aria-controls="panel-method"/);
+ const c=read('assets/css/after-work-grid.css');
+ assert.match(c,/\.recipe--food \.recipe__tabs:not\(\[hidden\]\)/);
+ assert.match(c,/\.is-panel-off/);assert.match(c,/\.has-tabs \.recipe__panelhead h2/);
+});
+test('recipe tabs switch panels and rove with arrow keys',()=>{
+ const mkBtn=controls=>({controls,attrs:{},tabIndex:0,
+  classList:{v:new Set(),toggle(k,on){on?this.v.add(k):this.v.delete(k)},contains(k){return this.v.has(k)}},
+  setAttribute(k,val){this.attrs[k]=val},getAttribute(k){return k==='aria-controls'?this.controls:null},
+  addEventListener(e,fn){(this.ev=this.ev||{})[e]=fn},focus(){this.focused=true}});
+ const b1=mkBtn('panel-ing'),b2=mkBtn('panel-method');
+ const mkPanel=()=>({classList:{v:new Set(),toggle(k,on){on?this.v.add(k):this.v.delete(k)},contains(k){return this.v.has(k)}}});
+ const p1=mkPanel(),p2=mkPanel();
+ const tabbar={hidden:true,querySelectorAll:()=>[b1,b2],closest:()=>null};
+ const doc={querySelector:s=>s==='[data-recipe-tabs]'?tabbar:null,getElementById:id=>id==='panel-ing'?p1:p2};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:doc});
+ assert.equal(tabbar.hidden,false);
+ assert.equal(b1.attrs['aria-selected'],'true');
+ assert.equal(p2.classList.contains('is-panel-off'),true);
+ assert.equal(p1.classList.contains('is-panel-off'),false);
+ b2.ev.click();
+ assert.equal(b2.attrs['aria-selected'],'true');
+ assert.equal(p1.classList.contains('is-panel-off'),true);
+ b1.ev.keydown({key:'ArrowRight',preventDefault(){}});
+ assert.equal(b2.attrs['aria-selected'],'true');
+ assert.equal(b2.focused,true);
+});
+test('ingredient checklist keeps a running count',()=>{
+ const boxes=[{checked:true},{checked:false},{checked:false}].map(b=>({...b,addEventListener(e,fn){this.change=fn}}));
+ const ingCount={hidden:true,textContent:''};
+ const checklist={querySelectorAll:()=>boxes};
+ const doc={querySelector:s=>s==='[data-checklist]'?checklist:s==='[data-ing-count]'?ingCount:null};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:doc});
+ assert.equal(ingCount.hidden,false);
+ assert.equal(ingCount.textContent,'1 of 3');
+ boxes[1].checked=true;boxes[1].change();
+ assert.equal(ingCount.textContent,'2 of 3');
+});
+test('step time tokens become chips while the step text keeps its timing',()=>{
+ const li={_t:'0:00 Bloom',get textContent(){return this._t},set textContent(v){this._t=v},
+  classList:{toggle(){},contains:()=>false},querySelector:()=>null,insertBefore(c){this.chip=c;this._t=c.textContent+this._t}};
+ const stepList={children:[li]};
+ const box={hidden:true,classList:{toggle(){},add(){},remove(){}},
+  querySelector:()=>({textContent:'',addEventListener(){},setAttribute(){},style:{}})};
+ const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:null,
+  createElement:()=>({className:'',textContent:''}),createTextNode:t=>({t})};
+ vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
+ assert.equal(li.chip.className,'steps__t');
+ assert.match(li.chip.textContent,/^0:00\s$/);
+ assert.equal(li.textContent,'0:00 Bloom');
+});
+test('recipe pages follow the lamp theme: charcoal dark, warm-paper light, Geist titles',()=>{
+ const c=read('assets/css/after-work-grid.css');
+ assert.match(c,/\[data-theme="light"\] body\.is-recipe-page/);
+ assert.match(c,/\.recipe__head h1 \{ font-family:'Geist',sans-serif/);
+ assert.match(read('_layouts/base.html'),/page\.layout == 'recipe' %\} is-recipe-page/);
+});
