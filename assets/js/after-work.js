@@ -81,14 +81,29 @@
   box.hidden = false;
   var clock = box.querySelector('output'), go = box.querySelector('[data-timer-go]'), reset = box.querySelector('[data-timer-reset]');
   var bar = box.querySelector('.brew-timer__bar i');
+  var barWrap = box.querySelector('.brew-timer__bar'), stepEl = box.querySelector('[data-timer-step]');
+  var names = items.map(function (it) {
+    var m = /^\s*~?\d+:\d{2}\s+([^:]{1,32}?):/.exec(it.li.textContent);
+    return m ? m[1] : null;
+  });
   var end = items[items.length - 1].t, elapsed = 0, startedAt = 0, tick = null;
   // A recipe can declare the full brew length (e.g. the press runs past the last
   // timed step); the clock then runs to that total instead of the last step's start.
   var declared = /^~?(\d+):(\d{2})$/.exec((box.getAttribute && box.getAttribute('data-brew-total')) || '');
   if (declared) { var dt = +declared[1] * 60 + +declared[2]; if (dt > end) end = dt; }
+  // Tick marks on the progress bar at each step's start (skip 0:00 and the end).
+  if (barWrap && typeof barWrap.appendChild === 'function' && document.createElement) {
+    items.forEach(function (it) {
+      if (it.t > 0 && it.t < end) {
+        var tick = document.createElement('s');
+        tick.style.left = (it.t / end * 100) + '%';
+        barWrap.appendChild(tick);
+      }
+    });
+  }
   var fmt = function (s) { return Math.floor(s / 60) + ':' + ('0' + (s % 60)).slice(-2); };
   var paint = function (s) {
-    clock.textContent = fmt(s) + ' of ' + fmt(end);
+    clock.innerHTML = fmt(s) + ' <small>of ' + fmt(end) + '</small>';
     bar.style.transform = 'scaleX(' + Math.min(1, s / end) + ')';
     var now = -1;
     items.forEach(function (it, i) { if (it.t <= s) now = i; });
@@ -96,6 +111,7 @@
       it.li.classList.toggle('is-now', i === now && s < end);
       it.li.classList.toggle('is-done', i < now || s >= end);
     });
+    if (stepEl) stepEl.textContent = s >= end ? 'Done' : (now < 0 ? '' : 'Step ' + (now + 1) + (names[now] ? ' \u00b7 ' + names[now] : ''));
     box.classList.toggle('is-done', s >= end);
   };
   var pause = function () { clearInterval(tick); tick = null; elapsed += (Date.now() - startedAt) / 1000; box.classList.remove('is-running'); };
