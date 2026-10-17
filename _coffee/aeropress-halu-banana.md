@@ -23,5 +23,6 @@ notes: |
   88°C is intentional; anaerobic and honey processed coffees can turn ferment-forward or harsh above 90°C.
   At a 1:13 ratio this brews a full-flavored cup directly, no concentrate plus dilution needed.
   If it tastes sour or thin, grind slightly finer or extend the steep by 10-15 seconds. If it tastes muddy or bitter, grind slightly coarser or drop the water to 86°C.
+  On the Silberthal PA1235, aim slightly coarser than the usual AeroPress position, around mid-range on the dial.
   Step clock times are approximate, filled in around the original durations: a 40 second main pour, a 30-35 second press, and a 2:15-2:30 total.
 ---
