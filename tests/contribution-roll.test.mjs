@@ -15,6 +15,10 @@ test('the roll takes every colour from the site tokens, so light and dark both f
   for (const token of ['--l2', '--l3', '--l4', '--l5']) assert.ok(css.includes(`var(${token})`), token);
 });
 
+test('notes are circles at every width', () => {
+  assert.match(read('assets/css/contribution-roll.css'), /\.roll__week i \{[^}]*border-radius: 50%/);
+});
+
 test('motion plays once, only after JS arms it, and is switched off for reduced motion', () => {
   const css = read('assets/css/contribution-roll.css');
   assert.doesNotMatch(css, /infinite/);
