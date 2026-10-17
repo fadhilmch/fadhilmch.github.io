@@ -9,7 +9,7 @@ temp_c: 88
 grind: medium-coarse
 time: "2:15-2:30"
 brew_total: "2:30"
-beans: Halu Banana, West Java (honey or anaerobic process)
+beans: Halu Honey by Semekar, West Java (honey or anaerobic process)
 tags: [aeropress, indonesia, filter]
 steps:
   - "~0:00 Setup: invert the AeroPress, rinse the filter cap with hot water and preheat the cup. Grind 15g medium-coarse, slightly coarser than your usual AeroPress setting."
