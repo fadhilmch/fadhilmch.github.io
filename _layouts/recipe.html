@@ -23,7 +23,7 @@ layout: base
     <div><dt>Temp</dt><dd>{{ page.temp_c }}<small>°C</small></dd></div>
     <div><dt>Time</dt><dd>{{ page.time | escape }}</dd></div>
     <div><dt>Grind</dt><dd class="stats__text">{{ page.grind | escape }}</dd></div>
-    {%- if page.beans %}<div class="stats__beans"><dt>Beans</dt><dd class="stats__text">{{ page.beans | escape }}</dd></div>{% endif %}
+    {%- if page.beans %}<div class="stats__beans"><dt>Beans</dt><dd class="stats__text">{{ page.beans | escape }}</dd>{%- if page.roastery %}<dt class="stats__roastery">Roastery</dt><dd class="stats__text">{{ page.roastery | escape }}</dd>{% endif %}</div>{% endif %}
   </dl>
   {%- elsif page.kind == 'food' %}
   <dl class="stats" aria-label="Recipe details">
