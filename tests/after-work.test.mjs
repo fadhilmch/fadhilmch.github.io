@@ -209,8 +209,8 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
  const lis=['0:00 Bloom: pour 60ml of 80°C water over the grounds, stir gently, then wait until 0:30.',
   '0:30 Main pour: slowly add 180ml of 80°C water in a gentle spiral to reach 240ml total.'].map(mkLi);
  const stepList={children:lis};
- const statsDl={nextSibling:null,parentNode:{insertBefore(c){this.note=c}}};
- const doseDd={attrs:{'data-dose':'12'},children:[],classList:{add(){}},
+ const statsDl={nextSibling:null,parentNode:{insertBefore(c){this.row=c}}};
+ const doseDd={attrs:{'data-dose':'12'},children:[],classList:{add(){}},innerHTML:'12<small>g</small>',
   getAttribute(k){return this.attrs[k]},setAttribute(){},
   appendChild(c){this.children.push(c)},
   set textContent(v){this.children=[]},get textContent(){return this.children.map(c=>c.textContent).join('')},
@@ -224,15 +224,19 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
  const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:s==='[data-dose]'?doseDd:s==='[data-water]'?waterDd:null,
   createElement:()=>mkBtn(),createTextNode:t=>mkText(t)};
  vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
- const out=doseDd.children[1],minus=doseDd.children[0],plus=doseDd.children[2];
- const resetBtn=statsDl.parentNode.note.children[1];
- assert.ok(statsDl.parentNode.note,'note moved out of the stat cell to after the stats list');
+ const row=statsDl.parentNode.row;
+ assert.ok(row,'dose controls live in their own row after the stats list');
+ const label=row.children[0],minus=row.children[1],out=row.children[2],plus=row.children[3],resetBtn=row.children[4];
+ assert.equal(label.textContent,'Adjust dose');
+ assert.equal(doseDd.children.length,0,'Coffee stat cell keeps plain text, no controls inside');
  const stepText=i=>lis[i].childNodes.filter(n=>n.nodeType===3).map(n=>n.data).join('');
  assert.match(out.textContent,/12/);
+ assert.match(doseDd.innerHTML,/12<small>g<\/small>/);
  assert.equal(resetBtn.hidden,true);
  // +3g to 15g: k=1.25, water 300, pours 75 + 225 -> 300 total, temps untouched
  plus.onclick();plus.onclick();plus.onclick();
  assert.match(out.textContent,/15/);
+ assert.match(doseDd.innerHTML,/15<small>g<\/small>/);
  assert.match(waterDd.innerHTML,/300<small>g<\/small>/);
  assert.match(stepText(0),/pour 75ml of 80°C/);
  assert.match(stepText(1),/add 225ml of 80°C water/);
@@ -240,6 +244,7 @@ test('dose stepper scales water stat and pours cumulatively, keeping times and t
  assert.equal(resetBtn.hidden,false);
  // reset returns every number to the recipe default
  resetBtn.onclick();
+ assert.match(doseDd.innerHTML,/12<small>g<\/small>/);
  assert.match(stepText(0),/pour 60ml of 80°C/);
  assert.match(stepText(1),/add 180ml of 80°C water/);
  assert.match(stepText(1),/reach 240ml total/);
