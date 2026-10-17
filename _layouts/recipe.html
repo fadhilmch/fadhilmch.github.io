@@ -12,7 +12,7 @@ layout: base
     {%- if page.tags and page.tags.size > 0 %}<ul class="aw-tags" aria-label="Tags">{% for t in page.tags %}<li>{{ t | escape }}</li>{% endfor %}</ul>{% endif %}
     {%- if page.sample %}<p class="aw-sample-note">Sample recipe, only here to preview the layout.</p>{% endif %}
   </header>
-  {% if page.photo %}<figure class="recipe__image"><img src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title | escape }}" width="720" height="480">{% if page.photo_credit %}<figcaption>{{ page.photo_credit | escape }}</figcaption>{% endif %}</figure>{% endif %}
+  {% if page.photo %}<figure class="recipe__image"><img src="{{ page.photo | relative_url }}" alt="{{ page.photo_alt | default: page.title | escape }}" width="720" height="480">{% if page.photo_credit %}<figcaption>{{ page.photo_credit | escape }}</figcaption>{% endif %}</figure>{% else %}<div class="recipe__image recipe__image--placeholder"><span>Photo coming later</span></div>{% endif %}
   {%- unless is_draft %}
   {%- if page.kind == 'coffee' and page.dose_g and page.water_g and page.dose_g > 0 %}
   {%- assign ratio = page.water_g | times: 1.0 | divided_by: page.dose_g | round: 1 %}
