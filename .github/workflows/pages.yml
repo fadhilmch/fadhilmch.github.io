@@ -3,6 +3,8 @@ on:
   push:
     branches: [master]
   workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * *'
 permissions:
   contents: read
   pages: write
@@ -19,6 +21,12 @@ jobs:
         with:
           ruby-version: "3.3"
           bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Refresh GitHub activity snapshot
+        run: node scripts/update-github-activity.mjs
+        continue-on-error: true
       - uses: actions/configure-pages@v5
       - name: Build site
         run: bundle exec jekyll build --trace

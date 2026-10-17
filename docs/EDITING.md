@@ -254,6 +254,16 @@ The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooki
 
 Before opening a PR, run `node --test tests/*.test.mjs`, `bundle exec jekyll build` and HTML Proofer. Check gateway → both categories → a real recipe at 320, 390 and 1280px, plus empty categories, missing photos, keyboard focus, light/dark site chrome and reduced motion. No recipe content is shipped just for a screenshot.
 
+## GitHub contribution roll (About)
+
+The card under the About graph draws one note per day you made a public GitHub contribution, laid out like a piano roll: rows are weekdays, columns are weeks, and the colour runs teal, lilac, amber, coral from few to many that day (1-2, 3-4, 5-8, 9+, set in `LEVEL_BOUNDS` in `scripts/github-activity.mjs`). Colours are the site's `--l4`, `--l3`, `--l5`, `--l2` tokens, so light and dark follow the theme. Phones show the last 26 weeks. Tap or hover a note to read its date and count. When the card scrolls into view it plays one sweep, never a loop, and not at all with reduced motion.
+
+- **Data:** `_data/github_activity.json` is a snapshot of the public page `https://github.com/users/fadhilmch/contributions`. Only public activity counts; private repos never show.
+- **Freshness:** the deploy workflow refreshes the snapshot before every build and once a day (04:17 UTC). If GitHub cannot be reached or its markup changes, the step fails quietly and the last committed snapshot stays. The card prints the snapshot date.
+- **Refresh by hand:** `node scripts/update-github-activity.mjs [user]`, then commit the JSON.
+- **Files:** include `_includes/about/contribution-roll.html`, style `assets/css/contribution-roll.css`, behaviour `assets/js/contribution-roll.js`, parsing `scripts/github-activity.mjs`, tests `tests/github-activity.test.mjs` and `tests/contribution-roll.test.mjs`.
+- **Checks:** at 320, 390 and 1280px in light and dark, confirm the notes line up with the weekday letters, the status line is readable, and tapping a note shows its day.
+
 ## What not to edit
 
 Do not edit `_layouts/`, `_includes/`, or `assets/` for normal content changes. They contain the site structure, styling, and behavior.

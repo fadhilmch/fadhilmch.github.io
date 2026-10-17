@@ -1,7 +1,7 @@
 name: CMS source checks
 on:
   pull_request:
-    paths: ['_posts/**', '_data/**', '_coffee/**', '_food/**', '_includes/**', '_layouts/**', 'assets/**', 'admin/**', 'tests/**', '.github/workflows/cms-checks.yml']
+    paths: ['_posts/**', '_data/**', '_coffee/**', '_food/**', '_includes/**', '_layouts/**', 'assets/**', 'admin/**', 'tests/**', 'scripts/**', '.github/workflows/cms-checks.yml']
 permissions:
   contents: read
 jobs:
