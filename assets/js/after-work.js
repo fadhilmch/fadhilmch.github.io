@@ -113,20 +113,35 @@
       tokens.forEach(function (tk, i) { if (tk.kind === 'cum') lastCum = i; });
       var fmtN = function (n) { var r = Math.round(n * 10) / 10; return r % 1 === 0 ? String(Math.round(r)) : String(r); };
       var minus = document.createElement('button'); minus.type = 'button'; minus.className = 'dose-btn'; minus.textContent = '\u2212'; minus.setAttribute('aria-label', 'Less coffee');
-      var out = document.createElement('span'); out.className = 'dose-val';
+      var out = document.createElement('button'); out.type = 'button'; out.className = 'dose-val dose-val-toggle'; out.setAttribute('aria-label', 'Adjust dose');
       var plus = document.createElement('button'); plus.type = 'button'; plus.className = 'dose-btn'; plus.textContent = '+'; plus.setAttribute('aria-label', 'More coffee');
-      var again = document.createElement('button'); again.type = 'button'; again.className = 'dose-reset'; again.textContent = 'Reset'; again.hidden = true;
-      var row = document.createElement('div'); row.className = 'dose-adjust';
-      var label = document.createElement('span'); label.className = 'dose-label'; label.textContent = 'Adjust dose';
-      var note = document.createElement('span'); note.className = 'dose-note';
-      var noteText = document.createElement('span'); note.appendChild(noteText);
-      row.appendChild(label); row.appendChild(minus); row.appendChild(out); row.appendChild(plus); row.appendChild(again); row.appendChild(note);
+      var edit = document.createElement('span'); edit.className = 'dose-edit';
+      edit.appendChild(minus); edit.appendChild(out); edit.appendChild(plus);
+      // The stepper lives inside the Coffee stat cell: the dose value is the toggle, and
+      // tapping it reveals - and + in place, so the six stats stay equal-size.
+      doseDd.textContent = '';
+      doseDd.appendChild(edit);
+      var editing = false;
+      var setEditing = function (on) {
+        editing = on;
+        if (edit.classList && edit.classList.toggle) edit.classList.toggle('is-editing', on);
+        else edit.className = on ? 'dose-edit is-editing' : 'dose-edit';
+      };
+      out.addEventListener('click', function () { setEditing(!editing); });
+      if (document.addEventListener) {
+        document.addEventListener('click', function (ev) {
+          if (editing && edit.contains && !edit.contains(ev.target || null)) setEditing(false);
+        });
+      }
+      var again = document.createElement('button'); again.type = 'button'; again.className = 'dose-reset'; again.textContent = 'Reset';
+      var noteRow = document.createElement('div'); noteRow.className = 'dose-note-row'; noteRow.hidden = true;
+      var noteText = document.createElement('span'); noteText.className = 'dose-note';
+      noteRow.appendChild(noteText); noteRow.appendChild(again);
       var statsEl = doseDd.closest ? doseDd.closest('dl.stats') : null;
-      if (statsEl && statsEl.parentNode && statsEl.parentNode.insertBefore) statsEl.parentNode.insertBefore(row, statsEl.nextSibling);
+      if (statsEl && statsEl.parentNode && statsEl.parentNode.insertBefore) statsEl.parentNode.insertBefore(noteRow, statsEl.nextSibling);
       var paintDose = function (dose) {
         var k = dose / dose0, water = Math.round(water0 * k);
         out.innerHTML = fmtN(dose) + '<small>g</small>';
-        doseDd.innerHTML = fmtN(dose) + '<small>g</small>';
         waterDd.innerHTML = fmtN(water) + '<small>g</small>';
         var prev = 0, queue = tokens.map(function (tk, i) {
           if (tk.kind === 'dose') return fmtN(dose);
@@ -145,10 +160,10 @@
           li.appendChild(document.createTextNode(t));
         });
         var changed = Math.abs(dose - dose0) > 1e-9;
-        again.hidden = !changed;
-        noteText.textContent = water > 295
+        noteRow.hidden = !changed;
+        if (changed) noteText.textContent = water > 295
           ? fmtN(water) + ' g of water is over a standard AeroPress chamber\u2019s 10 oz (about 295 g).'
-          : (changed ? 'Scaled from the recipe\u2019s ' + fmtN(dose0) + ' g; time, temperature and grind unchanged. ' : 'Tap + or \u2212 to adjust the dose; water and pours follow the ratio. ');
+          : 'Scaled from the recipe\u2019s ' + fmtN(dose0) + ' g; time, temperature and grind unchanged.';
       };
       var cur = function () { return parseFloat(out.textContent); };
       minus.addEventListener('click', function () { var v = Math.round((cur() - 1) * 10) / 10; if (v >= 5) paintDose(v); });
