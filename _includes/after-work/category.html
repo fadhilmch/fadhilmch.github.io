@@ -1,9 +1,7 @@
 {%- assign items = include.items | sort: 'title' -%}
 <div class="aw-page aw-grid">
-  <a class="back-link" href="{{ '/after-work/' | relative_url }}">← After work</a>
   <header class="aw-category-head">
     <div class="aw-category-title"><h1>{{ page.title | escape }}</h1>{% assign sticker_path = include.sticker | prepend: 'after-work/images/' | append: '.html' %}<img src="{% include {{ sticker_path }} %}" alt="" width="60" height="60"></div>
-    <nav class="aw-switch" aria-label="Interests"><a href="{{ '/after-work/coffee/' | relative_url }}"{% if page.section == 'coffee' %} aria-current="page"{% endif %}>Coffee</a><a href="{{ '/after-work/food/' | relative_url }}"{% if page.section == 'food' %} aria-current="page"{% endif %}>Cooking</a></nav>
   </header>
   {%- assign all_tags = items | map: 'tags' | join: ',' | split: ',' | uniq | sort -%}
   {%- if all_tags.size > 0 %}
