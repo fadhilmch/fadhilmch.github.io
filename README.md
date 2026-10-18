@@ -5,9 +5,8 @@ Personal site of Fadhil Mochammad, an ML engineer in Stockholm. Live at https://
 ## What's on the site
 
 - **About**: a hero with a circular avatar, then a node pipeline built from `_data/workflow.yml`. Click a node to inspect it. The soft-depth layer adds a circle-clipped avatar shadow and an always-visible workflow with a travelling flow accent (with reduced-motion support).
-- **GitHub activity**: under the About graph, a colour piano roll of public GitHub contributions over the past year, from a snapshot refreshed on every deploy ([guide](docs/EDITING.md#github-contribution-roll-about)).
 - **Posts**: dated essays, grouped by year and filterable by topic lane.
-- **Notes**: a working reference of decision rules, gotchas and defaults, kept as a linked vault with an explorer, backlinks and a force-directed graph.
+- **Notes**: a linked vault with an explorer, backlinks and a force-directed graph.
 
 ## How it's organised
 
@@ -34,7 +33,7 @@ _layouts/   base, page, post and note layouts
 _includes/  head, header, footer, and workflow / notes / posts partials
 assets/     hand-written CSS (depth.css is the opt-in soft-depth layer), vanilla JS, images, favicon
 docs/       editing guide and implementation plan (not published)
-scripts/    content validation, data migration and GitHub activity snapshot helpers (not published)
+scripts/    content validation and data migration helpers (not published)
 _archive/   design reference mockup and screenshots (not published)
 index.html  About page
 posts.html  Posts page
@@ -118,17 +117,15 @@ After Work uses an illustrated sticker gateway, then Coffee/Cooking category lis
 and image-led recipe pages. Only those two interests are links. Cooking retains
 `/after-work/food/` and `_food/` for existing URLs and CMS compatibility.
 
+After Work follows the lamp. Dark mode keeps the deep-green theme on every page.
+In light mode the gateway and category lists switch to the same warm-paper light
+theme as the recipe detail pages (shared tokens in `assets/css/after-work-grid.css`),
+and the collage sticker shadows soften on the light ground.
+
 Content comes from `_coffee/` and `_food/`; empty collections stay empty. Add an
 optional `photo`, `photo_alt`, `photo_credit` and `status` to recipe front matter.
 Missing photos show a neutral placeholder; draft recipes are labelled incomplete.
 The decorative cutouts are illustrations, not the owner's actual recipe photos.
-
-Recipe pages use a charcoal spec sheet in dark mode and a warm-paper sheet when
-the lamp theme is on, with Geist titles, compact stat cards (coffee shows dose,
-water, ratio, grind, temperature and method), a checklist ingredient list that
-keeps a running count, and timed steps laid out as a clock (`m:ss` or `n min`
-tokens become chips and drive the brew timer on coffee pages). On phones,
-Cooking pages switch between Ingredients and Method tabs.
 
 The gateway title ("After work" and the arrow) fades in word by word once, unless reduced motion is on. Stickers are base64 WebP includes in `_includes/after-work/images/`; after adding one, run `scripts/build-after-work-shapes.py` and keep the layout test passing. Loose stickers can be dragged (`assets/js/after-work-play.js`, `assets/js/after-work-physics.js`).
 Shared templates live in `_includes/after-work/`; the scoped grid/sticker layer is
@@ -140,11 +137,9 @@ to support text-editor commits. Keep those bytes unchanged when editing template
 
 The gateway scene is driven by `_data/after_work_layout.json` and edited at `/after-work/?edit`
 (desktop and phone layouts, outline-based spacing checks, publish through a pull request).
-
-Inside After Work the primary About/Posts/Projects/Notes pill is replaced by a floating bottom dock (`_includes/after-work/dock.html`, rendered from `_layouts/base.html`; the pill is skipped in `_includes/header.html`): soft-3D icons for After work home, Coffee and Cooking (`assets/images/ui/aw-nav-*.svg`, the supplied PNG artwork embedded losslessly in SVG wrappers so the icons stay text-commitable) with a small rounded, softly raised underline centred under the current page's icon body (recipes count as their category; the icon artwork is optically centred so asymmetric shapes like the cup and pan handles sit balanced). The tray is frosted glass where `backdrop-filter` is supported and plain transparent floating icons where it is not. Desktop hover magnifies the icon and shows a label above it; a tap plays a quick squash-and-spring (transform only). The dock clears the phone home bar via safe-area inset, and page bottom padding lets the last content scroll fully clear of it. Reduced motion removes the magnification and the press animation. The tray stays dark on the always-dark list pages and follows the warm-paper light theme on recipe pages. Styles: `assets/css/aw-dock.css`.
 The header name reads "Fadhilmch." (18px, with "mch" in the muted color) on every page with no subtitle; the footer keeps the full name. Styles are `.brand__name` and `.brand__muted` in `assets/css/base.css`.
 The header has two framed tiles side by side, after the nav pill (`.header-tools` in `_includes/header.html`): a laptop switch and the lamp theme button. They share one frame (`.theme-toggle, .mode-toggle` in `assets/css/base.css`) with the same 1px outline as the nav pill. The laptop is an open picture on the main site and a closed one on After work; hover or keyboard focus shows a half-open laptop. The laptop picture is 28x24 inside the 44px tile so it has padding (`assets/css/mode-toggle.css`). The lamp is a recessed (pressed-in) tile (a pale, very soft inset on light pages; After work always keeps the dark version), unlit in light mode and lit in dark mode (the glow comes from the bulb only). On phones the tiles sit top right beside the brand and the nav pill is full width below. In dark mode the M (wave) in the logo glows and warms up once on load; reduced motion skips the warm-up. The pictures are in `assets/images/ui/`.
-Coffee and Cooking category pages sit tighter under the header: the page top padding is 8px (6px on phones), and the title block has 12px below it (`assets/css/after-work-grid.css`).
+Coffee and Cooking category pages sit tighter under the header: the page top padding is 8px (6px on phones), the back link keeps its 44px tap area with negative margins, and the title block has 12px below it (`assets/css/after-work-grid.css`).
 The After work gateway subtitle reads "Welcome to my life after work." and is typed once (reduced motion shows it at once). The space above the title is set by `.aw-page--gateway` and `.aw-head` in `assets/css/after-work-grid.css`.
 The Coffee and Cooking labels on the gateway are cream pills with an arrow ("coffee →", "cooking →"), always visible 12px below the art. They use the old hover-tag look (`.aw-label` in `assets/css/after-work-grid.css`) and the text lives in the `tag` field of `_data/after_work_layout.json`. `--aw-pill-shift` is a named optical offset per sticker (Coffee is -8% because its handle widens the image box). On hover and keyboard focus the sticker stays still and only the pill reacts: it lifts 3px, grows 10%, turns pink-cream (`#ffe1d6`) and its shadow deepens; a tap/press gives a smaller version. Reduced motion removes the transition. The `#aw-cut` filter in `after-work/index.html` and the Oswald load in `_includes/head.html` are no longer used by these labels.
 Header QA: run `node --test tests/*.test.mjs` (`header-icons`, `nav-lamp` and `after-work` cover the tiles), then look at the home page and After work in light and dark at desktop width and about 390px: both tiles the same size and outline, laptop picture not touching the frame, hover shows the half-open laptop. Details:
