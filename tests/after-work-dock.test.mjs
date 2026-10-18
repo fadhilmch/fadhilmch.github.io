@@ -45,5 +45,5 @@ test('head loads the dock stylesheet only on After Work pages',()=>{
 
 test('dock icon assets exist',()=>{
  for(const n of ['home','coffee','cooking'])
-   assert.ok(existsSync(new URL(`../assets/images/ui/aw-nav-${n}.png`,import.meta.url)),n);
+   assert.ok(existsSync(new URL(`../assets/images/ui/aw-nav-${n}.svg`,import.meta.url)),n);
 });
