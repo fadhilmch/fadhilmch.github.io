@@ -10,6 +10,7 @@ body.is-after-work { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px
 .aw-dock a {
   position: relative; display: flex; align-items: flex-end; justify-content: center;
   width: 52px; height: 52px; transform-origin: 50% 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 .aw-dock a img { width: 46px; height: 46px; display: block; object-fit: contain; filter: drop-shadow(0 5px 12px rgb(0 0 0 / .5)); }
 .aw-dock a[aria-current="page"]::after {
