@@ -1,14 +1,13 @@
 ---
 layout: note
-title: Evaluation-driven development
+title: Evaluating an agent
 tag: agents
 links:
-- retrieval-recall
-- groundedness
 - golden-dataset
-- online-eval
+- rag
+- observability
 ---
 
-Compare relevance, retrieval recall, groundedness and latency against a baseline. Inspect examples as well as scores. In my current workflow, evaluation produces a report for engineers rather than an automatic deployment gate. That is a description of this system, not a rule that every team should avoid gates.
+A fluent answer proves nothing, so evaluate the loop rather than the vibe. Compare relevance, retrieval recall, groundedness and latency against a baseline, and read examples next to the scores: grounded, useful and found-the-right-document are three different failures. Offline golden sets give controlled comparisons; production feedback shows what the set missed, and a thumbs-down needs investigation before it means anything. My workflow produces a report for engineers rather than an automatic gate - a choice, not a rule.
 
 Read the full example: [related post]({{ '/posts/evaluating-an-agent-honestly/' | relative_url }}).
