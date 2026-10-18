@@ -14,6 +14,14 @@
     document.documentElement.setAttribute('data-theme', theme);
   } catch (error) {}
 </script>
+<script>
+  try {
+    var nav = performance.getEntriesByType('navigation')[0];
+    if (document.referrer && new URL(document.referrer).origin === location.origin && !(nav && nav.type === 'reload')) {
+      document.documentElement.classList.add('nav-in');
+    }
+  } catch (error) {}
+</script>
 <link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/workflow.css' | relative_url }}">
