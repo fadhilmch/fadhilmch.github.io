@@ -191,6 +191,11 @@ a.wf-item__title:hover { text-decoration-color: currentColor; }
 .wf-latest__title:hover { text-decoration: underline; text-underline-offset: 3px; }
 .wf-aside .wf-more { margin-top: 14px; color: var(--fg); }
 @media (min-width: 1100px) {
-  .wf-below { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: start; }
+  .wf-below { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: stretch; }
   .wf-below .wf-inspector { max-width: none; }
+  /* Latest posts card matches the About panel height: the posts spread
+     out inside it and "all posts" stays pinned to the bottom edge. */
+  .wf-aside .wf-card { display: flex; flex: 1; flex-direction: column; }
+  .wf-aside .wf-latest { flex: 1; max-height: 340px; justify-content: space-between; }
+  .wf-aside .wf-more { align-self: flex-start; margin-top: auto; padding-top: 14px; }
 }
