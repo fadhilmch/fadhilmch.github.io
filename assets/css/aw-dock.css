@@ -13,14 +13,16 @@ body.is-after-work { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px
 }
 .aw-dock a img { width: 46px; height: 46px; display: block; object-fit: contain; filter: drop-shadow(0 5px 12px rgb(0 0 0 / .5)); }
 .aw-dock a[aria-current="page"]::after {
-  content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-  width: 4.5px; height: 4.5px; border-radius: 50%; background: #f2f1e8; opacity: .85;
+  content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 4.5px; border-radius: 2.5px;
+  background: linear-gradient(rgb(255 255 255 / .95), rgb(214 211 195 / .95));
+  box-shadow: 0 1px 2px rgb(0 0 0 / .4), inset 0 1px 0 rgb(255 255 255 / .8);
 }
 
 /* frosted glass tray, when supported */
 @supports ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
   .aw-dock {
-    background: rgb(31 42 35 / .55);
+    background: rgb(31 42 35 / .34);
     backdrop-filter: blur(18px) saturate(1.5);
     -webkit-backdrop-filter: blur(18px) saturate(1.5);
     border: 1px solid rgb(255 255 255 / .16);
@@ -60,9 +62,12 @@ body.is-after-work { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px
 /* light-mode recipe pages (the only After Work pages that follow the lamp) */
 @supports ((backdrop-filter: blur(2px)) or (-webkit-backdrop-filter: blur(2px))) {
   [data-theme="light"] body.is-recipe-page .aw-dock {
-    background: rgb(252 250 241 / .62);
+    background: rgb(252 250 241 / .42);
     border: 1px solid rgb(23 30 25 / .12);
     box-shadow: 0 14px 34px rgb(28 25 19 / .14), inset 0 1px 0 rgb(255 255 255 / .6);
   }
 }
-[data-theme="light"] body.is-recipe-page .aw-dock a[aria-current="page"]::after { background: #232820; }
+[data-theme="light"] body.is-recipe-page .aw-dock a[aria-current="page"]::after {
+  background: linear-gradient(rgb(64 70 60 / .95), rgb(35 40 32 / .95));
+  box-shadow: 0 1px 2px rgb(28 25 19 / .35), inset 0 1px 0 rgb(255 255 255 / .25);
+}
