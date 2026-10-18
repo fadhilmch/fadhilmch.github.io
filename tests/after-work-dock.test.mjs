@@ -29,7 +29,7 @@ test('dock styles: frosted with transparent fallback, raised underline, press, s
  assert.match(c,/@keyframes aw-dock-press/);
  assert.match(c,/\.aw-dock a:active \{ animation: aw-dock-press/);
  assert.match(c,/env\(safe-area-inset-bottom, 0px\)/);
- assert.match(c,/body\.is-after-work \{ padding-bottom/);
+ assert.match(c,/\.is-after-work \.site-footer \{ padding-bottom/);
  assert.match(c,/prefers-reduced-motion: reduce/);
 });
 
