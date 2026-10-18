@@ -253,7 +253,7 @@ comments: How the latest cup turned out # optional "Result note" in the CMS, sho
 ---
 ```
 
-Start each coffee step with `m:ss` to power the "Start brew timer" button, which highlights the current step. Food recipes use `title`, `cuisine`, `serves`, `time`, `ingredients` (list), `steps` (list) and `notes`. Missing photos show a neutral "Photo coming later" panel, never a sample presented as your photo. Draft entries suppress specs/ingredients/steps until ready. Real photos appear on both category cards and entry pages. A Markdown body is optional and appears after the structured recipe.
+Start each coffee step with `m:ss` to power the "Start brew timer" button, which highlights the current step. Food recipes use `title`, `cuisine`, `serves`, `time`, `ingredients` (list), `steps` (list) and `notes`. Missing photos show a neutral "Photo coming later" panel, never a sample presented as your photo. Draft entries suppress specs/ingredients/steps until ready. Real photos appear on both category cards and entry pages. A Markdown body is optional and appears after the structured recipe. Body content (headings, tables, lists) gets its spacing from the `.recipe__block` rules in `assets/css/after-work.css`; keep bodies to plain Markdown so those styles apply.
 
 ### After Work design
 
