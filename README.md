@@ -4,7 +4,7 @@ Personal site of Fadhil Mochammad, an ML engineer in Stockholm. Live at https://
 
 ## What's on the site
 
-- **About**: a hero with a circular avatar, then a node pipeline built from `_data/workflow.yml`. Click a node to inspect it. The soft-depth layer adds a circle-clipped avatar shadow and an always-visible workflow with a travelling flow accent (with reduced-motion support).
+- **About**: a hero with a circular avatar, then a node pipeline built from `_data/workflow.yml`. Click a node to inspect it. The soft-depth layer adds a circle-clipped avatar shadow and an always-visible workflow with a travelling flow accent (with reduced-motion support). On desktop (1100px and wider) the Latest posts card stretches to the height of the About panel beside it (`.wf-below` and `.wf-aside` in `assets/css/workflow.css`): the posts spread out inside it and "all posts" stays at the bottom edge. Below that width the layout is unchanged.
 - **GitHub activity**: under the About graph, a colour piano roll of public GitHub contributions over the past year, from a snapshot refreshed on every deploy ([guide](docs/EDITING.md#github-contribution-roll-about)).
 - **Posts**: dated essays, grouped by year and filterable by topic lane.
 - **Notes**: a working reference of decision rules, gotchas and defaults, kept as a linked vault with an explorer, backlinks and a force-directed graph.
