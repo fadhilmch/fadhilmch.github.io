@@ -20,6 +20,30 @@
 .recipe__block th { font: 500 11px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
 .recipe__block ul { margin: 0 0 16px; padding-left: 20px; }
 .recipe__block li { margin: 4px 0; }
+
+/* markdown body elements */
+.recipe__block p { margin: 0 0 14px; }
+.recipe__block h3 { margin: 22px 0 8px; font-size: 15px; font-weight: 600; }
+.recipe__block h4 { margin: 18px 0 6px; font-size: 14px; font-weight: 600; }
+.recipe__block h5, .recipe__block h6 { margin: 16px 0 6px; font-size: 13px; font-weight: 600; color: var(--muted); }
+.recipe__block ol { margin: 0 0 16px; padding-left: 22px; }
+.recipe__block blockquote { margin: 0 0 16px; padding: 2px 0 2px 14px; border-left: 2px solid var(--line); color: var(--muted); }
+.recipe__block blockquote p { margin: 0 0 8px; }
+.recipe__block blockquote p:last-child { margin-bottom: 0; }
+.recipe__block img { display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 12px; }
+.recipe__block hr { margin: 24px 0; border: 0; border-top: 1px solid var(--line); }
+.recipe__block code { padding: 1px 5px; border: 1px solid var(--line); border-radius: 5px; background: color-mix(in srgb, currentColor 7%, transparent); font-family: 'Geist Mono', monospace; font-size: .9em; }
+.recipe__block pre { margin: 0 0 16px; padding: 12px 14px; overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: color-mix(in srgb, currentColor 5%, transparent); font-size: 13px; line-height: 1.6; }
+.recipe__block pre code { padding: 0; border: 0; background: none; font-size: inherit; }
+.recipe__block div.highlighter-rouge { margin: 0 0 16px; }
+.recipe__block div.highlighter-rouge pre { margin: 0; }
+.recipe__block dl { margin: 0 0 16px; }
+.recipe__block dt { font-weight: 600; }
+.recipe__block dd { margin: 0 0 8px 20px; }
+.recipe__block sup { font-size: 11px; line-height: 0; }
+.recipe__block th, .recipe__block td { overflow-wrap: anywhere; }
+.recipe__block .footnotes { margin-top: 24px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+.recipe__block .footnotes ol { margin: 0; padding-left: 18px; }
 .recipe__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .recipe__row h2 { margin: 0; }
 .ingredients { margin: 0; padding: 0; list-style: none; }
