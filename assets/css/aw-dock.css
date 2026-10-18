@@ -1,7 +1,8 @@
 /* After Work floating dock nav (replaces the primary nav inside After Work).
    Frosted glass tray where backdrop-filter works; plain transparent floating
    icons where it does not (user-approved fallback). */
-body.is-after-work { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+/* The footer carries the dock clearance itself, so its background reaches the page bottom. */
+.is-after-work .site-footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
 
 .aw-dock {
   position: fixed; left: 50%; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
@@ -50,7 +51,7 @@ body.is-after-work { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px
 .aw-dock a:active { animation: aw-dock-press .38s cubic-bezier(.34, 1.56, .64, 1); }
 
 @media (max-width: 680px) {
-  body.is-after-work { padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  .is-after-work .site-footer { padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
   .aw-dock { gap: 16px; padding: 9px 18px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
   .aw-dock a { width: 44px; height: 44px; }
   .aw-dock a img { width: 40px; height: 40px; }
