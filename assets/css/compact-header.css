@@ -1,0 +1,26 @@
+/* Compact sticky nav: appears only after the full header scrolls out of view.
+   The full header stays in normal flow, so nothing resizes or shifts. */
+.compact-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; align-items: center; gap: 12px; padding: 8px 16px;
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  transform: translateY(-110%); opacity: 0; pointer-events: none; visibility: hidden;
+  transition: transform .22s ease, opacity .22s ease, visibility 0s linear .22s;
+}
+.compact-nav.is-on {
+  transform: none; opacity: 1; pointer-events: auto; visibility: visible;
+  transition: transform .22s ease, opacity .22s ease, visibility 0s;
+}
+.compact-nav .brand { flex: none; min-width: 44px; min-height: 44px; justify-content: center; }
+.compact-nav .brand__mark { width: 28px; height: 28px; }
+.compact-nav .primary-nav { order: 0; flex: 1; width: auto; max-width: 420px; margin-left: auto; }
+.compact-nav .primary-nav a { flex: 1; padding: 6px 8px; font-size: 14px; text-align: center; white-space: nowrap; }
+@media (min-width: 681px) {
+  .compact-nav { padding: 8px 36px; }
+  .compact-nav .primary-nav { flex: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .compact-nav, .compact-nav.is-on { transition: none; }
+}
