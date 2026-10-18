@@ -3,7 +3,7 @@ layout: note
 title: Golden datasets
 tag: agents
 links:
-- human-review
+- triage
 - evals
 ---
 

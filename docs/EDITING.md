@@ -41,18 +41,22 @@ Any Mermaid diagram type works (flowchart, sequence, state, and so on). The Merm
 
 ## Add a note
 
-The filename is the note id. Create `_notes/retrieval-recall.md` like this:
+A note is a working reference: the decision rules, gotchas and defaults you want to find again, written so others can use them too. Posts carry the stories and worked examples; a note keeps the short version and links back to the post when one exists. General knowledge beyond the posts gets a cited source, never invented experience.
+
+The filename is the note id. Create `_notes/mcp.md` like this:
 
 ```markdown
 ---
 layout: note
-title: Retrieval recall
+title: MCP
 tag: agents
-links: [rag, evals]
+links: [multi-agent]
 ---
 
-Did the right documents make it into context at all?
+A standard socket shape between a model host and its tools: when to reach for it, and the gotchas.
 ```
+
+Add `published: false` to keep a note out of the site while drafting.
 
 `links` creates graph edges and outgoing links. Backlinks are computed automatically. Inline `[[rag]]` links are cosmetic; add `rag` to `links` if the relationship should appear in the graph. A link to an unknown id is shown as a development warning.
 
