@@ -21,11 +21,11 @@ test('dock links home, coffee and cooking with per-page current state',()=>{
  for(const l of ['After work home','Coffee','Cooking'])assert.ok(d.includes(`aria-label="${l}"`),l);
 });
 
-test('dock styles: frosted with transparent fallback, dot, press, safe area, reduced motion',()=>{
+test('dock styles: frosted with transparent fallback, raised underline, press, safe area, reduced motion',()=>{
  const c=read('assets/css/aw-dock.css');
  assert.match(c,/@supports \(\(backdrop-filter: blur\(2px\)\) or \(-webkit-backdrop-filter: blur\(2px\)\)\)/);
  assert.match(c,/backdrop-filter: blur\(18px\) saturate\(1\.5\)/);
- assert.match(c,/\.aw-dock a\[aria-current="page"\]::after/);
+ assert.match(c,/\.aw-dock a\[aria-current="page"\]::after \{\n  content: ''; position: absolute; bottom: -6px[\s\S]*border-radius: 2\.5px/);
  assert.match(c,/@keyframes aw-dock-press/);
  assert.match(c,/\.aw-dock a:active \{ animation: aw-dock-press/);
  assert.match(c,/env\(safe-area-inset-bottom, 0px\)/);
