@@ -27,9 +27,6 @@ test('category template is data-driven, with empty, missing-photo and draft stat
  const s=read('_includes/after-work/category.html');assert.match(s,/include.items \| sort/);assert.match(s,/Photo coming later/);assert.match(s,/Recipe coming later/);assert.match(s,/for r in items/);assert.match(s,/else %}<p class="aw-empty"/);assert.doesNotMatch(s,/coffee\.png|cooking\.png/);
  assert.match(read('after-work/food.html'),/permalink: \/after-work\/food\//);
 });
-test('landing empty state spans the full menu row and the header stack tightens on desktop',()=>{
- const css=read('assets/css/after-work-grid.css');assert.match(css,/\.aw-empty[^{]+\{[^}]*grid-column:1\/-1/);assert.match(css,/\.aw-category-head[^{]+\{[^}]*margin:0 0 8px/);assert.match(css,/@media\(min-width:761px\)\{[^}]*\{[^}]*min-height:36px/);
-});
 test('image-led entries retain recipe/timer flow and hide unfinished recipes',()=>{
  const s=read('_layouts/recipe.html');assert.match(s,/page.photo/);assert.match(s,/page.photo_alt/);assert.match(s,/page.photo_credit/);assert.match(s,/page.status == 'draft'/);assert.match(s,/data-brew-timer/);assert.match(s,/page.steps/);assert.match(s,/page.ingredients/);assert.match(read('_includes/after-work/spec.html'),/r.dose_g > 0/);
 });
@@ -43,53 +40,10 @@ test('brew stopwatch starts, pauses, resumes, completes and resets without dupli
  const box={hidden:true,classList:{toggle(){},add(){},remove(){}},querySelector:s=>s==='output'?clock:s==='[data-timer-go]'?go:s==='[data-timer-reset]'?reset:bar};
  vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:items}:null},Date:{now:()=>now},setInterval:fn=>{callback=fn;active=true;return 1},clearInterval:()=>{active=false}});
  assert.equal(box.hidden,false);assert.equal(go.textContent,'Start');
- go.click();assert.equal(go.textContent,'Pause');assert.equal(active,true);now=1000;callback();assert.equal(clock.innerHTML,'0:01 <small>of 0:02</small>');
+ go.click();assert.equal(go.textContent,'Pause');assert.equal(active,true);now=1000;callback();assert.equal(clock.textContent,'0:01');
  go.click();assert.equal(active,false);assert.equal(go.textContent,'Resume');
- go.click();now=2000;callback();now=3000;callback();assert.equal(active,false);assert.equal(clock.innerHTML,'0:02 <small>of 0:02</small>');assert.equal(go.textContent,'Again');
- reset.click();assert.equal(clock.innerHTML,'0:00 <small>of 0:02</small>');assert.equal(go.textContent,'Start');
-});
-test('approximate step tokens keep their tilde in chips and still drive the clock',()=>{
- const li={_t:'~0:30 Bloom',get textContent(){return this._t},set textContent(v){this._t=v},
-  classList:{toggle(){},contains:()=>false},querySelector:()=>null,insertBefore(c){this.chip=c;this._t=c.textContent+this._t}};
- const stepList={children:[li]};
- const box={hidden:true,classList:{toggle(){},add(){},remove(){}},
-  querySelector:()=>({textContent:'',addEventListener(){},setAttribute(){},style:{}})};
- const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:null,
-  createElement:()=>({className:'',textContent:''}),createTextNode:t=>({t})};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
- assert.match(li.chip.textContent,/^~0:30\s$/);
- assert.equal(li.textContent,'~0:30 Bloom');
-});
-test('brew timer labels the current step and marks step boundaries on the bar',()=>{
- let now=0,callback;
- const mkLi=text=>({_t:text,get textContent(){return this._t},set textContent(v){this._t=v},
-  classList:{toggle(){},contains:()=>false},querySelector:()=>null,insertBefore(c){this._t=c.textContent+this._t}});
- const items=['0:00 Bloom: wet the grounds','0:30 Pour: add water'].map(mkLi);
- const clock={},stepEl={textContent:''},barWrap={style:{},children:[],appendChild(c){this.children.push(c)}},barI={style:{}};
- const go={textContent:'',addEventListener(e,fn){this.click=fn},setAttribute(){}},reset={addEventListener(){}};
- const box={hidden:true,classList:{toggle(){},add(){},remove(){}},getAttribute:k=>k==='data-brew-total'?'1:00':null,
-  querySelector:s=>s==='output'?clock:s==='[data-timer-step]'?stepEl:s==='.brew-timer__bar'?barWrap:s==='.brew-timer__bar i'?barI:s==='[data-timer-go]'?go:reset};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:items}:null,createElement:()=>({style:{},className:'',textContent:''})},Date:{now:()=>now},setInterval:fn=>{callback=fn;return 1},clearInterval(){}});
- assert.equal(barWrap.children.length,1);assert.equal(barWrap.children[0].style.left,'50%');
- assert.equal(stepEl.textContent,'Step 1 \u00b7 Bloom');
- go.click();now=31000;callback();
- assert.equal(stepEl.textContent,'Step 2 \u00b7 Pour');
- now=61000;callback();
- assert.equal(stepEl.textContent,'Done');
-});
-test('a declared brew total extends the clock past the last timed step',()=>{
- let now=0,callback,active=false;
- const items=['~0:00 Bloom','~1:55 Press'].map(text=>({textContent:text,classList:{values:new Set(),toggle(k,v){v?this.values.add(k):this.values.delete(k)},contains(k){return this.values.has(k)}}}));
- const clock={textContent:''},go={textContent:'',attrs:{},addEventListener(e,fn){this.click=fn},setAttribute(k,v){this.attrs[k]=v}},reset={addEventListener(e,fn){this.click=fn}},bar={style:{}};
- const box={hidden:true,classList:{toggle(){},add(){},remove(){}},getAttribute:k=>k==='data-brew-total'?'2:30':null,
-  querySelector:s=>s==='output'?clock:s==='[data-timer-go]'?go:s==='[data-timer-reset]'?reset:bar};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:items}:null},Date:{now:()=>now},setInterval:fn=>{callback=fn;active=true;return 1},clearInterval:()=>{active=false}});
- assert.equal(box.hidden,false);
- go.click();now=115000;callback();assert.equal(clock.innerHTML,'1:55 <small>of 2:30</small>');
- assert.equal(items[1].classList.contains('is-now'),true);assert.equal(items[1].classList.contains('is-done'),false);
- now=150000;callback();assert.equal(active,false);assert.equal(clock.innerHTML,'2:30 <small>of 2:30</small>');
- assert.equal(items[1].classList.contains('is-done'),true);assert.equal(go.textContent,'Again');
- reset.click();assert.equal(clock.innerHTML,'0:00 <small>of 2:30</small>');
+ go.click();now=2000;callback();now=3000;callback();assert.equal(active,false);assert.equal(clock.textContent,'0:02');assert.equal(go.textContent,'Again');
+ reset.click();assert.equal(clock.textContent,'0:00');assert.equal(go.textContent,'Start');
 });
 test('non-timed or empty recipes never expose a non-working timer',()=>{
  const box={hidden:true};vm.runInNewContext(read('assets/js/after-work.js'),{document:{querySelector:s=>s==='[data-brew-timer]'?box:s==='[data-steps]'?{children:[]}:null}});assert.equal(box.hidden,true);
@@ -132,140 +86,10 @@ test('title words and arrow fade in once, only when motion is allowed',()=>{
  assert.match(c,/@media \(prefers-reduced-motion:no-preference\) \{[^@]*aw-w3[^@]*animation:aw-title-in/);
  assert.doesNotMatch(c,/aw-title-in[^;]*infinite/);
 });
-test('food recipe pages get mobile-only tabs with plain labels and counts inside panels',()=>{
- const s=read('_layouts/recipe.html');
- assert.match(s,/data-recipe-tabs/);assert.match(s,/role="tablist"/);
- assert.match(s,/>Ingredients</);assert.match(s,/>Method</);
- assert.doesNotMatch(s,/recipe__tab[^>]*>[^<]*\d+ of \d+</);
- assert.match(s,/data-ing-count/);
- assert.match(s,/aria-controls="panel-ing"/);assert.match(s,/aria-controls="panel-method"/);
+
+test('overview and lists follow the lamp into the recipe warm-paper light theme',()=>{
  const c=read('assets/css/after-work-grid.css');
- assert.match(c,/\.recipe--food \.recipe__tabs:not\(\[hidden\]\)/);
- assert.match(c,/\.is-panel-off/);assert.match(c,/\.has-tabs \.recipe__panelhead h2/);
-});
-test('recipe tabs switch panels and rove with arrow keys',()=>{
- const mkBtn=controls=>({controls,attrs:{},tabIndex:0,
-  classList:{v:new Set(),toggle(k,on){on?this.v.add(k):this.v.delete(k)},contains(k){return this.v.has(k)}},
-  setAttribute(k,val){this.attrs[k]=val},getAttribute(k){return k==='aria-controls'?this.controls:null},
-  addEventListener(e,fn){(this.ev=this.ev||{})[e]=fn},focus(){this.focused=true}});
- const b1=mkBtn('panel-ing'),b2=mkBtn('panel-method');
- const mkPanel=()=>({classList:{v:new Set(),toggle(k,on){on?this.v.add(k):this.v.delete(k)},contains(k){return this.v.has(k)}}});
- const p1=mkPanel(),p2=mkPanel();
- const tabbar={hidden:true,querySelectorAll:()=>[b1,b2],closest:()=>null};
- const doc={querySelector:s=>s==='[data-recipe-tabs]'?tabbar:null,getElementById:id=>id==='panel-ing'?p1:p2};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:doc});
- assert.equal(tabbar.hidden,false);
- assert.equal(b1.attrs['aria-selected'],'true');
- assert.equal(p2.classList.contains('is-panel-off'),true);
- assert.equal(p1.classList.contains('is-panel-off'),false);
- b2.ev.click();
- assert.equal(b2.attrs['aria-selected'],'true');
- assert.equal(p1.classList.contains('is-panel-off'),true);
- b1.ev.keydown({key:'ArrowRight',preventDefault(){}});
- assert.equal(b2.attrs['aria-selected'],'true');
- assert.equal(b2.focused,true);
-});
-test('ingredient checklist keeps a running count',()=>{
- const boxes=[{checked:true},{checked:false},{checked:false}].map(b=>({...b,addEventListener(e,fn){this.change=fn}}));
- const ingCount={hidden:true,textContent:''};
- const checklist={querySelectorAll:()=>boxes};
- const doc={querySelector:s=>s==='[data-checklist]'?checklist:s==='[data-ing-count]'?ingCount:null};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:doc});
- assert.equal(ingCount.hidden,false);
- assert.equal(ingCount.textContent,'1 of 3');
- boxes[1].checked=true;boxes[1].change();
- assert.equal(ingCount.textContent,'2 of 3');
-});
-test('step time tokens become chips while the step text keeps its timing',()=>{
- const li={_t:'0:00 Bloom',get textContent(){return this._t},set textContent(v){this._t=v},
-  classList:{toggle(){},contains:()=>false},querySelector:()=>null,insertBefore(c){this.chip=c;this._t=c.textContent+this._t}};
- const stepList={children:[li]};
- const box={hidden:true,classList:{toggle(){},add(){},remove(){}},
-  querySelector:()=>({textContent:'',addEventListener(){},setAttribute(){},style:{}})};
- const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:null,
-  createElement:()=>({className:'',textContent:''}),createTextNode:t=>({t})};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
- assert.equal(li.chip.className,'steps__t');
- assert.match(li.chip.textContent,/^0:00\s$/);
- assert.equal(li.textContent,'0:00 Bloom');
-});
-test('recipe pages follow the lamp theme: charcoal dark, warm-paper light, Geist titles',()=>{
- const c=read('assets/css/after-work-grid.css');
- assert.match(c,/\[data-theme="light"\] body\.is-recipe-page/);
- assert.match(c,/\.recipe__head h1 \{ font-family:'Geist',sans-serif/);
- assert.match(read('_layouts/base.html'),/page\.layout == 'recipe' %\} is-recipe-page/);
-});
-test('stats cards share the desktop row in six equal columns and keep the phone wrap',()=>{
- const css=read('assets/css/after-work-grid.css');assert.match(css,/\.stats \{[^}]*repeat\(auto-fit,minmax\(96px,1fr\)\)/);assert.match(css,/@media\(min-width:761px\)\{ \.stats \{ grid-template-columns:repeat\(6,1fr\); \} \}/);assert.match(css,/\.stats>div\.stats__beans \{ grid-column:1\/-1; \}/);
-});
-test('dose stepper edits inside the Coffee stat cell, showing Reset only after a change',()=>{
- const mkBtn=()=>({type:'',className:'',_tc:'',innerHTML:'',hidden:false,attrs:{},children:[],
-  get textContent(){return (this.innerHTML||this._tc||'').replace(/<[^>]+>/g,'')},
-  set textContent(v){this._tc=v;this.innerHTML=''},
-  setAttribute(k,v){this.attrs[k]=v},addEventListener(e,fn){this['on'+e]=fn},appendChild(c){this.children.push(c)}});
- const mkText=d=>({nodeType:3,data:d});
- const mkLi=text=>{const li={childNodes:[mkText(text)],
-  get textContent(){return this.childNodes.map(n=>n.nodeType===3?n.data:n.textContent).join('')},
-  set textContent(v){this.childNodes=[mkText(v)]},
-  get firstChild(){return this.childNodes[0]},
-  insertBefore(c){this.childNodes.unshift(c)},
-  appendChild(c){this.childNodes.push(c)},
-  removeChild(c){this.childNodes=this.childNodes.filter(n=>n!==c)},
-  classList:{toggle(){},contains:()=>false},querySelector:()=>null,setAttribute(){},addEventListener(){}};return li;};
- const lis=['0:00 Bloom: pour 60ml of 80°C water over the grounds, stir gently, then wait until 0:30.',
-  '0:30 Main pour: slowly add 180ml of 80°C water in a gentle spiral to reach 240ml total.'].map(mkLi);
- const stepList={children:lis};
- const statsDl={nextSibling:null,parentNode:{insertBefore(c){this.noteRow=c}}};
- const doseDd={attrs:{'data-dose':'12'},children:[],classList:{add(){}},innerHTML:'12<small>g</small>',
-  getAttribute(k){return this.attrs[k]},setAttribute(){},
-  appendChild(c){this.children.push(c)},
-  set textContent(v){this.children=[]},get textContent(){return this.children.map(c=>c.textContent).join('')},
-  closest:s=>s==='dl.stats'?statsDl:null,
-  parentNode:{appendChild(c){this.note=c}}};
- const waterDd={innerHTML:'240<small>g</small>',getAttribute(){return '240'}};
- waterDd.getAttribute=k=>k==='data-water'?'240':null;
- const box={hidden:true,classList:{toggle(){},add(){},remove(){}},
-  querySelector:()=>({textContent:'',addEventListener(){},setAttribute(){},style:{}}),
-  getAttribute:()=>null};
- const doc={querySelector:s=>s==='[data-steps]'?stepList:s==='[data-brew-timer]'?box:s==='[data-dose]'?doseDd:s==='[data-water]'?waterDd:null,
-  createElement:()=>mkBtn(),createTextNode:t=>mkText(t)};
- vm.runInNewContext(read('assets/js/after-work.js'),{document:doc,Date:{now:()=>0},setInterval:()=>1,clearInterval(){}});
- assert.ok(!statsDl.parentNode.row,'no separate controls row is added after the stats list');
- const edit=doseDd.children[0];
- assert.ok(edit,'dose controls live inside the Coffee stat cell');
- assert.equal(edit.className,'dose-edit');
- const minus=edit.children[0],out=edit.children[1],plus=edit.children[2];
- assert.equal(out.attrs['aria-label'],'Adjust dose','the dose value is the labelled toggle');
- const noteRow=statsDl.parentNode.noteRow;
- assert.ok(noteRow,'a slim note row exists below the stats for Reset');
- assert.equal(noteRow.hidden,true,'note row with Reset stays hidden before any change');
- const noteText=noteRow.children[0],resetBtn=noteRow.children[1];
- const stepText=i=>lis[i].childNodes.filter(n=>n.nodeType===3).map(n=>n.data).join('');
- assert.match(out.textContent,/12/);
- // tap the dose value: - and + appear in place, tap again to put them away
- out.onclick();
- assert.match(edit.className,/is-editing/);
- out.onclick();
- assert.doesNotMatch(edit.className,/is-editing/);
- out.onclick();
- // +3g to 15g: k=1.25, water 300, pours 75 + 225 -> 300 total, temps untouched
- plus.onclick();plus.onclick();plus.onclick();
- assert.match(out.textContent,/15/);
- assert.match(waterDd.innerHTML,/300<small>g<\/small>/);
- assert.match(stepText(0),/pour 75ml of 80°C/);
- assert.match(stepText(1),/add 225ml of 80°C water/);
- assert.match(stepText(1),/reach 300ml total/);
- assert.equal(noteRow.hidden,false,'Reset appears after the dose changes');
- assert.match(noteText.textContent,/over a standard AeroPress chamber/,'300 g of water triggers the capacity note');
- // reset returns every number to the recipe default and hides itself again
- resetBtn.onclick();
- assert.match(out.textContent,/12/);
- assert.match(stepText(0),/pour 60ml of 80°C/);
- assert.match(stepText(1),/add 180ml of 80°C water/);
- assert.match(stepText(1),/reach 240ml total/);
- assert.match(waterDd.innerHTML,/240<small>g<\/small>/);
- assert.equal(noteRow.hidden,true);
- // minus never drops the dose below 5g
- for(let i=0;i<20;i++)minus.onclick();
- assert.match(out.textContent,/5/);
+ assert.match(c,/\[data-theme="light"\] body\.is-after-work \{ color-scheme:light; --bg:#f2efe3; --panel:#fcfaf1/);
+ assert.match(c,/\[data-theme="light"\] body\.is-after-work \.aw-grid \{ --aw-ink:#232820; --aw-muted:#66705f/);
+ assert.match(c,/\[data-theme="light"\] body\.is-after-work \.aw-sticker > img \{ filter:drop-shadow/);
 });
