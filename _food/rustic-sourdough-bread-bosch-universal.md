@@ -22,6 +22,8 @@ steps:
   - "Bake: 20 minutes covered at 250°C, then 20-25 minutes uncovered at 220°C."
   - "Cool on a rack at room temperature for 2 hours before slicing."
 notes: "73% hydration. Bulk fermentation begins when the starter is mixed into the dough. At a ~23.8°C room temperature, focus on the 40-60% rise rather than a fixed fermentation time."
+photo: /assets/recipes/rustic-sourdough-bread-bosch-universal.webp
+photo_alt: Two halves of a cut sourdough loaf stacked on a wooden board, showing an open, airy crumb
 ---
 
 ## Example schedule
