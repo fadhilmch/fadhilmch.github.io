@@ -269,3 +269,10 @@ test('dose stepper edits inside the Coffee stat cell, showing Reset only after a
  for(let i=0;i<20;i++)minus.onclick();
  assert.match(out.textContent,/5/);
 });
+
+test('overview and lists follow the lamp into the recipe warm-paper light theme',()=>{
+ const c=read('assets/css/after-work-grid.css');
+ assert.match(c,/\[data-theme="light"\] body\.is-after-work \{ color-scheme:light; --bg:#f2efe3; --panel:#fcfaf1/);
+ assert.match(c,/\[data-theme="light"\] body\.is-after-work \.aw-grid \{ --aw-ink:#232820; --aw-muted:#66705f/);
+ assert.match(c,/\[data-theme="light"\] body\.is-after-work \.aw-sticker > img \{ filter:drop-shadow/);
+});

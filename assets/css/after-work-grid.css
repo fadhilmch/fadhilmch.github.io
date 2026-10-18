@@ -149,6 +149,24 @@ html[data-depth="soft"] body.is-after-work .primary-nav { box-shadow:none; }
 body.is-after-work .primary-nav a[aria-current="page"] { background:#e8eddb; color:#252b23; }
 body.is-after-work .primary-nav a:hover { background:#ffffff14; }
 
+/* Warm-paper light mode: overview and lists follow the lamp, using the exact
+   recipe-detail light tokens so all After work pages share one light theme.
+   Sticker shadows soften on the light ground; dark mode is untouched. */
+[data-theme="light"] body.is-after-work { color-scheme:light; --bg:#f2efe3; --panel:#fcfaf1; --fg:#232820; --muted:#66705f; --line:rgba(23,30,25,.12); --dot:rgba(23,30,25,.12); --ghost:#d8d2c2;
+  background-color:#f2efe3; background-image:linear-gradient(rgba(23,30,25,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,30,25,.05) 1px,transparent 1px); color:var(--fg); }
+[data-theme="light"] body.is-after-work .site-header, [data-theme="light"] body.is-after-work .site-footer { background:#f2efe3cc; border-color:rgba(23,30,25,.12); }
+[data-theme="light"] body.is-after-work .primary-nav { background:#fcfaf1; border-color:rgba(23,30,25,.14); }
+[data-theme="light"] body.is-after-work .primary-nav a[aria-current="page"] { background:#252b23; color:#f5f1e4; }
+[data-theme="light"] body.is-after-work .primary-nav a:hover { background:rgba(23,30,25,.08); }
+[data-theme="light"] body.is-after-work .aw-grid { --aw-ink:#232820; --aw-muted:#66705f; --aw-rule:rgba(23,30,25,.18); color:var(--aw-ink); background:none; }
+[data-theme="light"] body.is-after-work .aw-grid :focus-visible { outline-color:#6f8347; }
+[data-theme="light"] body.is-after-work .aw-head h1 .aw-accent { color:#6f8347; }
+[data-theme="light"] body.is-after-work .aw-switch a[aria-current] { background:#252b23; color:#f5f1e4; }
+[data-theme="light"] body.is-after-work img.aw-deco, [data-theme="light"] body.is-after-work .aw-avatar img, [data-theme="light"] body.is-after-work .aw-sticker > img { filter:drop-shadow(0 1px 0 #fff3) drop-shadow(calc(var(--px)*-3px) calc(3px + var(--py)*-2px) 4px rgba(40,35,24,.24)) drop-shadow(calc(var(--px)*-7px) calc(9px + var(--py)*-4px) 13px rgba(40,35,24,.15)); }
+[data-theme="light"] body.is-after-work .aw-item img, [data-theme="light"] body.is-after-work img.aw-item { filter:drop-shadow(0 1px 1px rgba(40,35,24,.28)) drop-shadow(0 4px 6px rgba(40,35,24,.17)); }
+[data-theme="light"] body.is-after-work .aw-label { box-shadow:0 2px 4px rgba(40,35,24,.22); }
+[data-theme="light"] body.is-after-work .aw-sticker:hover .aw-label, [data-theme="light"] body.is-after-work .aw-sticker:focus-visible .aw-label { box-shadow:0 3px 7px rgba(40,35,24,.28); }
+
 /* recipe detail pages */
 .recipe.aw-grid { max-width:960px; }
 .recipe__head h1 { font-family:'Geist',sans-serif; font-weight:700; font-size:clamp(26px,4.2vw,34px); letter-spacing:-.02em; line-height:1.12; }
