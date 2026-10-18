@@ -92,6 +92,7 @@ hides it too.
 - `--depth-avatar-shadow` controls the cast shadow (lighter in dark mode). The avatar's
   CSS projection is clipped to the circle; the visible head has no shadow onto the panel.
   Keep its background sizing aligned with `.avatar__img` if you change the crop.
+- Page changes are instant. The browser cross-fade (`@view-transition` in `mode-toggle.css`) is off because it overlapped each page's own load entrance and made the whole page flash. `head.html` adds `html.nav-in` when you arrive from another page of this site (not on reload), and `depth.css` skips the load entrance then. First visits and reloads still animate in.
 - Raised panels share `--depth-shadow-rest`, `--depth-shadow-raised` and `--depth-shadow-hover`.
   Add a new raised element by adding its selector to the `:is(...)` list in "Surfaces".
 - The Posts and Projects page headings are intentionally flat. Do not add them to that list.
