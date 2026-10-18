@@ -3,7 +3,7 @@ layout: note
 title: Start here
 tag: meta
 links:
-- agents
+- evals
 - ab-testing
 - serving
 - kubernetes
@@ -11,4 +11,4 @@ links:
 - exposure
 ---
 
-These notes are short companions to the posts, not a separate set of claims. Start with a concept, follow its related notes, then open the article for the example and the limits. For code and worked projects, see [Projects]({{ '/projects/' | relative_url }}).
+These notes are my working reference - the decision rules, gotchas and defaults I want to find again - written so others can use them too. The posts carry the stories and worked examples; a note keeps the short version and links back. For code and worked projects, see [Projects]({{ '/projects/' | relative_url }}).
