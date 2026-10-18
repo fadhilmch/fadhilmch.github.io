@@ -13,7 +13,13 @@
 .recipe { max-width: 720px; }
 .recipe__head { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
 .recipe__block { margin-top: 28px; }
-.recipe__block h2 { margin: 0 0 10px; font: 500 12px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.recipe__block h2 { margin: 24px 0 10px; font: 500 12px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.recipe__block > h2:first-child { margin-top: 0; }
+.recipe__block table { margin: 4px 0 20px; border-collapse: collapse; }
+.recipe__block th, .recipe__block td { padding: 6px 24px 6px 0; text-align: left; }
+.recipe__block th { font: 500 11px 'Geist Mono', monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.recipe__block ul { margin: 0 0 16px; padding-left: 20px; }
+.recipe__block li { margin: 4px 0; }
 .recipe__row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .recipe__row h2 { margin: 0; }
 .ingredients { margin: 0; padding: 0; list-style: none; }
