@@ -5,12 +5,14 @@
       <span class="brand__name">Fadhil<span class="brand__muted">mch</span>.</span>
     </span>
   </a>
+  {%- unless page.nav == 'after-work' -%}
   <nav class="primary-nav" aria-label="Primary">
     <a href="{{ '/' | relative_url }}"{% if page.nav == 'about' %} aria-current="page"{% endif %}>About</a>
     <a href="{{ '/posts/' | relative_url }}"{% if page.nav == 'posts' %} aria-current="page"{% endif %}>Posts</a>
     <a href="{{ '/projects/' | relative_url }}"{% if page.nav == 'projects' %} aria-current="page"{% endif %}>Projects</a>
     <a href="{{ '/notes/' | relative_url }}"{% if page.nav == 'notes' %} aria-current="page"{% endif %}>Notes</a>
   </nav>
+  {%- endunless -%}
   <div class="header-tools">
     {%- assign aw_closed = false -%}{%- if page.nav == 'after-work' %}{% assign aw_closed = true %}{% endif -%}
     <a class="mode-toggle{% if aw_closed %} is-closed{% endif %}" href="{% if aw_closed %}{{ '/' | relative_url }}{% else %}{{ '/after-work/' | relative_url }}{% endif %}" data-mode-toggle="{% if aw_closed %}open{% else %}close{% endif %}" aria-label="{% if aw_closed %}Open the laptop and go to the main page{% else %}Close the laptop and go to After work{% endif %}">
