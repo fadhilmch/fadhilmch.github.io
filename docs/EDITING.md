@@ -41,22 +41,18 @@ Any Mermaid diagram type works (flowchart, sequence, state, and so on). The Merm
 
 ## Add a note
 
-A note is a working reference: the decision rules, gotchas and defaults you want to find again, written so others can use them too. Posts carry the stories and worked examples; a note keeps the short version and links back to the post when one exists. General knowledge beyond the posts gets a cited source, never invented experience.
-
-The filename is the note id. Create `_notes/mcp.md` like this:
+The filename is the note id. Create `_notes/retrieval-recall.md` like this:
 
 ```markdown
 ---
 layout: note
-title: MCP
+title: Retrieval recall
 tag: agents
-links: [multi-agent]
+links: [rag, evals]
 ---
 
-A standard socket shape between a model host and its tools: when to reach for it, and the gotchas.
+Did the right documents make it into context at all?
 ```
-
-Add `published: false` to keep a note out of the site while drafting.
 
 `links` creates graph edges and outgoing links. Backlinks are computed automatically. Inline `[[rag]]` links are cosmetic; add `rag` to `links` if the relationship should appear in the graph. A link to an unknown id is shown as a development warning.
 
@@ -246,10 +242,7 @@ photo: /assets/recipes/my-v60.webp # optional, your actual image
 photo_alt: V60 brewer on the kitchen counter
 photo_credit: Photo by Fadhil # optional
 status: published # use draft to show Recipe coming later
-notes: Anything worth remembering. # leave empty to hide the Notes section; the source link stays
-source_name: Where the recipe came from # optional
-source_url: Link to the original recipe # optional, shown as a clickable source link under Notes
-comments: How the latest cup turned out # optional "Result note" in the CMS, shown under Notes as Result; edit it each brew
+notes: Anything worth remembering.
 ---
 ```
 
@@ -257,19 +250,9 @@ Start each coffee step with `m:ss` to power the "Start brew timer" button, which
 
 ### After Work design
 
-The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. The bottom dock nav is `_includes/after-work/dock.html` (icons inline, current page from `page.url`/`section`/`kind`), styled by `assets/css/aw-dock.css` and included only on After Work pages from `_layouts/base.html`; `_includes/header.html` skips the primary nav there. Category markup is shared in `_includes/after-work/category.html`; its title sticker and doodle (`sticker=`, `doodle=`) are names of files in `_includes/after-work/images/`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` (camera, tennis ball, headphones, laptop, tablet, two plants and three crayon doodles on the gateway; the sparkle and squiggle on category headings; the Coffee, Cooking and avatar cutouts). `heart.html` is kept but not currently shown are illustrative stickers, not recipe photos. Sticker positions are data, not CSS: see the next section.
+The grid sticker gateway lives in `after-work/index.html`; only Coffee and Cooking are links. Cooking keeps `/after-work/food/` and `_food/` for URL/CMS compatibility. Category markup is shared in `_includes/after-work/category.html`; its title sticker and doodle (`sticker=`, `doodle=`) are names of files in `_includes/after-work/images/`. `assets/css/after-work-grid.css` is scoped to After Work and does not restyle About or site chrome. `after-work.css` holds recipe styles. Decorative WebP assets in `_includes/after-work/images/` (camera, tennis ball, headphones, laptop, tablet, two plants and three crayon doodles on the gateway; the sparkle and squiggle on category headings; the Coffee, Cooking and avatar cutouts). `heart.html` is kept but not currently shown are illustrative stickers, not recipe photos. Sticker positions are data, not CSS: see the next section. Theming follows the lamp: dark mode stays deep green everywhere; light mode gives the gateway and lists the recipe detail pages' warm-paper tokens, with softer sticker shadows. All of it lives in `assets/css/after-work-grid.css` (`body.is-after-work` blocks).
 
 Before opening a PR, run `node --test tests/*.test.mjs`, `bundle exec jekyll build` and HTML Proofer. Check gateway → both categories → a real recipe at 320, 390 and 1280px, plus empty categories, missing photos, keyboard focus, light/dark site chrome and reduced motion. No recipe content is shipped just for a screenshot.
-
-## GitHub contribution roll (About)
-
-The card under the About graph draws one note per day you made a public GitHub contribution, laid out like a piano roll: rows are weekdays, columns are weeks, and the colour runs teal, lilac, amber, coral from few to many that day (1-2, 3-4, 5-8, 9+, set in `LEVEL_BOUNDS` in `scripts/github-activity.mjs`). Colours are the site's `--l4`, `--l3`, `--l5`, `--l2` tokens, so light and dark follow the theme. Phones show the last 26 weeks. Tap or hover a note to read its date and count. When the card scrolls into view the notes pop in once, scattered but drifting left to right, never a loop, and not at all with reduced motion.
-
-- **Data:** `_data/github_activity.json` is a snapshot of the public page `https://github.com/users/fadhilmch/contributions`. Only public activity counts; private repos never show.
-- **Freshness:** the deploy workflow refreshes the snapshot before every build and once a day (04:17 UTC). If GitHub cannot be reached or its markup changes, the step fails quietly and the last committed snapshot stays. The card prints the snapshot date.
-- **Refresh by hand:** `node scripts/update-github-activity.mjs [user]`, then commit the JSON.
-- **Files:** include `_includes/about/contribution-roll.html`, style `assets/css/contribution-roll.css`, behaviour `assets/js/contribution-roll.js`, parsing `scripts/github-activity.mjs`, tests `tests/github-activity.test.mjs` and `tests/contribution-roll.test.mjs`.
-- **Checks:** at 320, 390 and 1280px in light and dark, confirm the notes line up with the weekday letters, the status line is readable, and tapping a note shows its day.
 
 ## What not to edit
 
