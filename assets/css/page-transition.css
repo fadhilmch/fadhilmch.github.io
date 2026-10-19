@@ -1,24 +1,78 @@
-/* Home <-> After Work: one short opacity-only cross-fade between the two documents.
-   head.html skips the transition for every other navigation and adds html.vt-cross
-   on the arriving page only when it crosses. The header stays in its own layer and
-   does not move. Skipped under reduced motion. */
+/* Home <-> After Work: a coral circle grows out of the clicked link until it
+   covers the screen, then fades to reveal After Work. Going back, the coral
+   covers the screen and shrinks into the link. head.html skips the transition
+   for every other navigation and sets html[data-route-portal] and html.vt-cross
+   on the arriving page only when it crosses. Browsers without cross-document
+   View Transitions and reduced motion get the instant switch. */
+:root {
+  --route-coral: #ff8a6d;
+  --route-portal: 720ms;
+}
+#route-coral {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  background: var(--route-coral);
+  pointer-events: none;
+  view-transition-name: route-coral;
+}
+@keyframes portal-in-coral {
+  0% { clip-path: circle(0 at var(--vt-x) var(--vt-y)); opacity: 1; }
+  55% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 1; }
+  100% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 0; }
+}
+@keyframes portal-in-page {
+  0%, 54% { opacity: 0; }
+  55%, 100% { opacity: 1; }
+}
+@keyframes portal-out-coral {
+  0% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 0; }
+  18% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 1; }
+  100% { clip-path: circle(0 at var(--vt-x) var(--vt-y)); opacity: 1; }
+}
+@keyframes portal-out-page {
+  0%, 17% { opacity: 0; }
+  18%, 100% { opacity: 1; }
+}
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
-  .site-header { view-transition-name: site-header; }
-  ::view-transition-group(root),
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
-    animation-duration: 160ms;
-    animation-timing-function: ease-out;
+  html[data-route-portal]::view-transition-group(root),
+  html[data-route-portal]::view-transition-old(root),
+  html[data-route-portal]::view-transition-new(root),
+  html[data-route-portal]::view-transition-group(route-coral),
+  html[data-route-portal]::view-transition-old(route-coral),
+  html[data-route-portal]::view-transition-new(route-coral) {
+    animation-duration: var(--route-portal);
+    animation-fill-mode: both;
+    animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
+    mix-blend-mode: normal;
   }
-  ::view-transition-group(site-header) { animation: none; }
-  ::view-transition-old(site-header),
-  ::view-transition-new(site-header) { animation-duration: 160ms; }
-  /* The arriving page is cross-faded as a whole, so its own load entrances are
-     fast-forwarded to their end state (a negative delay skips them; looping
-     ambient animations continue from an offset). Otherwise the new page would be
-     captured invisible and the fade would dip darker than both pages. */
+  html[data-route-portal]::view-transition-old(root) {
+    animation: none;
+    opacity: 1;
+  }
+  html[data-route-portal="in"]::view-transition-new(root) {
+    animation-name: portal-in-page;
+  }
+  html[data-route-portal="out"]::view-transition-new(root) {
+    animation-name: portal-out-page;
+  }
+  html[data-route-portal="in"]::view-transition-new(route-coral) {
+    animation-name: portal-in-coral;
+  }
+  html[data-route-portal="out"]::view-transition-new(route-coral) {
+    animation-name: portal-out-coral;
+  }
+  html[data-route-portal]::view-transition-group(route-coral),
+  html[data-route-portal]::view-transition-group(root) {
+    animation: none;
+  }
+  /* The page itself is revealed through the coral, so its own entrance
+     animations are fast-forwarded to their end state (a negative delay skips
+     them; looping ambient animations continue from a phase offset). */
   html.vt-cross body *,
   html.vt-cross body *::before,
-  html.vt-cross body *::after { animation-delay: -2s !important; }
+  html.vt-cross body *::after {
+    animation-delay: -2s !important;
+  }
 }
