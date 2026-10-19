@@ -23,10 +23,17 @@
   } catch (error) {}
 </script>
 <script>
-  /* Home <-> After Work only: let the browser cross-fade the two documents.
-     Every other navigation skips the transition and keeps its own behaviour. */
+  /* Home <-> After Work only: a coral circle grows out of (or shrinks into) the
+     clicked link while the browser switches documents. Every other navigation
+     skips the transition and keeps its own behaviour. */
   try {
     var awPath = function (p) { return p.indexOf('/after-work') === 0; };
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest && e.target.closest('a[href]');
+      if (!a) return;
+      var r = a.getBoundingClientRect();
+      sessionStorage.setItem('vt-origin', JSON.stringify({ x: Math.round(r.left + r.width / 2), y: Math.round(r.top + r.height / 2), t: Date.now() }));
+    }, true);
     addEventListener('pageswap', function (e) {
       if (!e.viewTransition) return;
       var to = e.activation && e.activation.entry && new URL(e.activation.entry.url);
@@ -35,11 +42,28 @@
     addEventListener('pagereveal', function (e) {
       if (!e.viewTransition) return;
       var from = window.navigation && navigation.activation && navigation.activation.from && new URL(navigation.activation.from.url);
-      if (from && from.origin === location.origin && awPath(from.pathname) !== awPath(location.pathname)) {
-        document.documentElement.classList.add('vt-cross');
-      } else {
+      if (!(from && from.origin === location.origin && awPath(from.pathname) !== awPath(location.pathname))) {
         e.viewTransition.skipTransition();
+        return;
       }
+      var root = document.documentElement;
+      var o = { x: innerWidth - 40, y: 36 };
+      try {
+        var saved = JSON.parse(sessionStorage.getItem('vt-origin'));
+        if (saved && Date.now() - saved.t < 5000) o = saved;
+      } catch (error) {}
+      var r = Math.ceil(Math.hypot(Math.max(o.x, innerWidth - o.x), Math.max(o.y, innerHeight - o.y)));
+      root.classList.add('vt-cross');
+      root.style.setProperty('--vt-x', o.x + 'px');
+      root.style.setProperty('--vt-y', o.y + 'px');
+      root.style.setProperty('--vt-r', r + 'px');
+      root.setAttribute('data-route-portal', awPath(location.pathname) ? 'in' : 'out');
+      var coral = document.createElement('div');
+      coral.id = 'route-coral';
+      coral.setAttribute('aria-hidden', 'true');
+      root.appendChild(coral);
+      var done = function () { coral.remove(); root.removeAttribute('data-route-portal'); };
+      e.viewTransition.finished.then(done, done);
     });
   } catch (error) {}
 </script>
