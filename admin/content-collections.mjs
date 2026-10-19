@@ -86,7 +86,7 @@ const recipeExtraFields = [
   field('status', 'Status', 'select', { required: false, default: 'published', options: [
     { label: 'Published', value: 'published' }, { label: 'Draft (shows "Recipe coming later")', value: 'draft' },
   ] }),
-  list('tags', 'Tags', undefined, { required: false, hint: 'Short labels shown as filter chips on the list page, e.g. pour-over, weeknight.' }),
+  list('tags', 'Tags', undefined, { required: false, hint: 'Shown on the recipe page. On the Cooking list each tag is a Category filter option, e.g. Bread, Dessert.' }),
   field('photo', 'Photo', 'image', { required: false, media_folder: '/assets/recipes', public_folder: '/assets/recipes', choose_url: false, hint: 'Choose or drop a photo. It is converted to WebP and saved in assets/recipes. Best as a landscape 3:2 photo, up to 2 MB. Leave empty to show "Photo coming later".' }),
   field('photo_alt', 'Photo description', 'string', { required: false, hint: 'Describe the photo for screen readers.' }),
   field('photo_credit', 'Photo credit', 'string', { required: false, hint: 'Shown under the photo, for example Photo by Fadhil.' }),
@@ -95,7 +95,9 @@ const recipeExtraFields = [
 const coffeeFields = [
   ...recipeCommonFields.slice(0, 2),
   field('kind', 'Recipe type', 'hidden', { default: 'coffee' }),
-  field('method', 'Brew method'),
+  field('method', 'Brew method', 'string', { hint: 'Also the Method filter on the Coffee list.' }),
+  field('origin', 'Origin', 'string', { required: false, hint: 'Origin filter on the Coffee list, e.g. Indonesia.' }),
+  field('process', 'Process', 'string', { required: false, hint: 'Process filter on the Coffee list, e.g. Washed, Natural.' }),
   field('dose_g', 'Coffee dose (g)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
   field('water_g', 'Water (g)', 'number', { value_type: 'float', min: 0.1, step: 0.1 }),
   field('grind', 'Grind setting'),
