@@ -22,6 +22,27 @@
     }
   } catch (error) {}
 </script>
+<script>
+  /* Home <-> After Work only: let the browser cross-fade the two documents.
+     Every other navigation skips the transition and keeps its own behaviour. */
+  try {
+    var awPath = function (p) { return p.indexOf('/after-work') === 0; };
+    addEventListener('pageswap', function (e) {
+      if (!e.viewTransition) return;
+      var to = e.activation && e.activation.entry && new URL(e.activation.entry.url);
+      if (!to || awPath(location.pathname) === awPath(to.pathname)) e.viewTransition.skipTransition();
+    });
+    addEventListener('pagereveal', function (e) {
+      if (!e.viewTransition) return;
+      var from = window.navigation && navigation.activation && navigation.activation.from && new URL(navigation.activation.from.url);
+      if (from && from.origin === location.origin && awPath(from.pathname) !== awPath(location.pathname)) {
+        document.documentElement.classList.add('vt-cross');
+      } else {
+        e.viewTransition.skipTransition();
+      }
+    });
+  } catch (error) {}
+</script>
 <link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/base.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/workflow.css' | relative_url }}">
@@ -32,5 +53,5 @@
 {% if page.nav == 'about' %}<link rel="stylesheet" href="{{ '/assets/css/avatar-images.css' | relative_url }}"><link rel="stylesheet" href="{{ '/assets/css/contribution-roll.css' | relative_url }}">{% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/mode-toggle.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/depth.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/page-transition.css' | relative_url }}">
 {% seo %}
-
