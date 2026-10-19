@@ -1,0 +1,24 @@
+/* Home <-> After Work: one short opacity-only cross-fade between the two documents.
+   head.html skips the transition for every other navigation and adds html.vt-cross
+   on the arriving page only when it crosses. The header stays in its own layer and
+   does not move. Skipped under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .site-header { view-transition-name: site-header; }
+  ::view-transition-group(root),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 160ms;
+    animation-timing-function: ease-out;
+  }
+  ::view-transition-group(site-header) { animation: none; }
+  ::view-transition-old(site-header),
+  ::view-transition-new(site-header) { animation-duration: 160ms; }
+  /* The arriving page is cross-faded as a whole, so its own load entrances are
+     fast-forwarded to their end state (a negative delay skips them; looping
+     ambient animations continue from an offset). Otherwise the new page would be
+     captured invisible and the fade would dip darker than both pages. */
+  html.vt-cross body *,
+  html.vt-cross body *::before,
+  html.vt-cross body *::after { animation-delay: -2s !important; }
+}
