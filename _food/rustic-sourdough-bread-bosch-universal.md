@@ -3,7 +3,7 @@ title: Rustic Sourdough Bread - Bosch Universal
 cuisine: Bread
 serves: 1 loaf (~1 kg)
 time: 2 days, overnight cold proof
-tags: [sourdough, bread]
+tags: [Bread]
 ingredients:
   - "450 g Vetemjöl Special"
   - "50 g rågsikt"
