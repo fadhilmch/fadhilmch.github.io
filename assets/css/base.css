@@ -1,5 +1,3 @@
-
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
@@ -96,7 +94,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, summary:focus-visibl
 body .primary-nav { position:relative; isolation:isolate; }
 body .primary-nav a { position:relative; z-index:1; }
 body:not(.is-after-work) .nav-motion-marker > span { background:var(--fg); border-radius:7px; }
-body .primary-nav[data-motion="ready"] a[aria-current="page"] { background:transparent; box-shadow:none; }
+body .primary-nav[data-motion="ready"] a[aria-current="page"] { background:transparent!important; box-shadow:none!important; }
 .nav-motion-marker { position:absolute; pointer-events:none; z-index:0; }
 .nav-motion-marker > span { display:block; width:100%; height:100%; border-radius:8px 7px 9px 6px; background:color-mix(in oklab, var(--fg) 10%, transparent); }
 .primary-nav a img { transform-origin:50% 90%; }
