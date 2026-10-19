@@ -15,5 +15,5 @@
 .mode-toggle:focus-visible .mt-open, .mode-toggle:focus-visible .mt-shut { opacity:0; }
 .mode-toggle:focus-visible { outline:2px solid currentColor; outline-offset:2px; }
 @media (prefers-reduced-motion:reduce) { .mode-toggle .mt-img img { transition:none; } }
-/* Page change: an instant switch. The browser cross-fade overlapped each page's own load entrance and made the whole page dip and flash, so cross-document transitions are off and same-site arrivals skip the entrance (html.nav-in, see head.html and depth.css). First visits and reloads still animate in. */
+/* Page change: instant switch by default (the browser cross-fade overlapped each page's own load entrance and made the page dip and flash). Only Home <-> After Work opts in, see page-transition.css and the pageswap/pagereveal script in head.html: it skips the transition for every other navigation and fast-forwards the new page's entrances so the cross-fade has nothing to dip into. First visits and reloads still animate in. */
 @view-transition { navigation: none; }
