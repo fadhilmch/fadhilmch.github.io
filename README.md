@@ -1,3 +1,5 @@
+
+
 # fadhilmch.github.io
 
 Personal site of Fadhil Mochammad, an ML engineer in Stockholm. Live at https://fadhilmch.github.io.
@@ -160,3 +162,15 @@ The After work gateway subtitle reads "Welcome to my life after work." and is ty
 The Coffee and Cooking labels on the gateway are cream pills with an arrow ("coffee →", "cooking →"), always visible 12px below the art. They use the old hover-tag look (`.aw-label` in `assets/css/after-work-grid.css`) and the text lives in the `tag` field of `_data/after_work_layout.json`. `--aw-pill-shift` is a named optical offset per sticker (Coffee is -8% because its handle widens the image box). On hover and keyboard focus the sticker stays still and only the pill reacts: it lifts 3px, grows 10%, turns pink-cream (`#ffe1d6`) and its shadow deepens; a tap/press gives a smaller version. Reduced motion removes the transition. The `#aw-cut` filter in `after-work/index.html` and the Oswald load in `_includes/head.html` are no longer used by these labels.
 Header QA: run `node --test tests/*.test.mjs` (`header-icons`, `nav-lamp` and `after-work` cover the tiles), then look at the home page and After work in light and dark at desktop width and about 390px: both tiles the same size and outline, laptop picture not touching the frame, hover shows the half-open laptop. Details:
 [layout editor](docs/EDITING.md#after-work-layout-editor).
+
+### Navbar motion
+
+The main navbar and three native After Work links use a 300ms soft sliding highlight and a small
+380ms icon hop, without an underline. Separate tab-local, one-use sessionStorage records for the two navbars
+carries the old selected position to the matching destination for up to 10 seconds.
+The destination animates after its header parses. This is an arrival bridge, not an
+SPA or a promise of animation while a new document is loading. Navigation is never
+delayed or intercepted. Direct visits, reloads, history restores and reduced-motion
+visits select instantly. JavaScript or storage failure leaves ordinary native links
+and the server-rendered selected background intact. Resize cancels the animation
+and measures the current selected link again. No personal data is stored.
