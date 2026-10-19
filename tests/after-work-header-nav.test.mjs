@@ -1,3 +1,5 @@
+
+
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
@@ -7,7 +9,7 @@ test('After Work pages render the contained header navbar with icons',()=>{
  const header=read('_includes/header.html');
  assert.match(header,/\{%- if page\.nav == 'after-work' -%\}[\s\S]*?primary-nav aw-nav[\s\S]*?\{%- endif -%\}/);
  for(const u of ["/after-work/","/after-work/coffee/","/after-work/food/"])assert.ok(header.includes(u),u);
- for(const ic of ['aw-icon-space.png','aw-icon-coffee.png','aw-icon-cooking.png'])assert.ok(header.includes(ic),ic);
+ for(const ic of ['aw-icon-space.svg','aw-icon-coffee.svg','aw-icon-cooking.svg'])assert.ok(header.includes(ic),ic);
  assert.match(header,/aw_nav_home[\s\S]*page\.url == '\/after-work\/'/);
  assert.match(header,/page\.section == 'coffee' or page\.kind == 'coffee'/);
  assert.match(header,/page\.section == 'food' or page\.kind == 'food'/);

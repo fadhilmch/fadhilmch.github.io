@@ -1,3 +1,5 @@
+
+
 <header class="site-header">
   <a class="brand" href="{{ '/' | relative_url }}">
     {% include logo.svg %}
@@ -18,9 +20,9 @@
   {%- assign aw_nav_coffee = false -%}{%- if page.section == 'coffee' or page.kind == 'coffee' %}{% assign aw_nav_coffee = true %}{% endif -%}
   {%- assign aw_nav_cooking = false -%}{%- if page.section == 'food' or page.kind == 'food' %}{% assign aw_nav_cooking = true %}{% endif -%}
   <nav class="primary-nav aw-nav" aria-label="After work">
-    <a href="{{ '/after-work/' | relative_url }}"{% if aw_nav_home %} aria-current="page"{% endif %}><img src="{{ '/assets/images/ui/aw-icon-space.png' | relative_url }}" alt="" width="19" height="19">space</a>
-    <a href="{{ '/after-work/coffee/' | relative_url }}"{% if aw_nav_coffee %} aria-current="page"{% endif %}><img src="{{ '/assets/images/ui/aw-icon-coffee.png' | relative_url }}" alt="" width="19" height="19">coffee</a>
-    <a href="{{ '/after-work/food/' | relative_url }}"{% if aw_nav_cooking %} aria-current="page"{% endif %}><img src="{{ '/assets/images/ui/aw-icon-cooking.png' | relative_url }}" alt="" width="19" height="19">cooking</a>
+    <a href="{{ '/after-work/' | relative_url }}"{% if aw_nav_home %} aria-current="page"{% endif %}><img src="{{ '/assets/images/ui/aw-icon-space.svg' | relative_url }}" alt="" width="19" height="19">space</a>
+    <a href="{{ '/after-work/coffee/' | relative_url }}"{% if aw_nav_coffee %} aria-current="page"{% endif %}><img src="{{ '/assets/images/ui/aw-icon-coffee.svg' | relative_url }}" alt="" width="19" height="19">coffee</a>
+    <a href="{{ '/after-work/food/' | relative_url }}"{% if aw_nav_cooking %} aria-current="page"{% endif %}><img src="{{ '/assets/images/ui/aw-icon-cooking.svg' | relative_url }}" alt="" width="19" height="19">cooking</a>
   </nav>
   {%- endif -%}
   <div class="header-tools">
