@@ -756,7 +756,22 @@
         {
           "name": "method",
           "label": "Brew method",
-          "widget": "string"
+          "widget": "string",
+          "hint": "Also the Method filter on the Coffee list."
+        },
+        {
+          "name": "origin",
+          "label": "Origin",
+          "widget": "string",
+          "required": false,
+          "hint": "Origin filter on the Coffee list, e.g. Indonesia."
+        },
+        {
+          "name": "process",
+          "label": "Process",
+          "widget": "string",
+          "required": false,
+          "hint": "Process filter on the Coffee list, e.g. Washed, Natural."
         },
         {
           "name": "dose_g",
@@ -827,7 +842,7 @@
           "label": "Tags",
           "widget": "list",
           "required": false,
-          "hint": "Short labels shown as filter chips on the list page, e.g. pour-over, weeknight."
+          "hint": "Shown on the recipe page. On the Cooking list each tag is a Category filter option, e.g. Bread, Dessert."
         },
         {
           "name": "photo",
@@ -958,7 +973,7 @@
           "label": "Tags",
           "widget": "list",
           "required": false,
-          "hint": "Short labels shown as filter chips on the list page, e.g. pour-over, weeknight."
+          "hint": "Shown on the recipe page. On the Cooking list each tag is a Category filter option, e.g. Bread, Dessert."
         },
         {
           "name": "photo",
