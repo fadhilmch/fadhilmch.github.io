@@ -1,8 +1,0 @@
-{%- assign aw_home = false -%}{%- if page.url == '/after-work/' %}{% assign aw_home = true %}{% endif -%}
-{%- assign aw_coffee = false -%}{%- if page.section == 'coffee' or page.kind == 'coffee' %}{% assign aw_coffee = true %}{% endif -%}
-{%- assign aw_cooking = false -%}{%- if page.section == 'food' or page.kind == 'food' %}{% assign aw_cooking = true %}{% endif -%}
-<nav class="aw-dock" aria-label="After work">
-  <a href="{{ '/after-work/' | relative_url }}"{% if aw_home %} aria-current="page"{% endif %} aria-label="After work home" data-tip="After work"><img src="{{ '/assets/images/ui/aw-nav-home.svg' | relative_url }}" alt="" width="46" height="46" draggable="false"></a>
-  <a href="{{ '/after-work/coffee/' | relative_url }}"{% if aw_coffee %} aria-current="page"{% endif %} aria-label="Coffee" data-tip="Coffee"><img src="{{ '/assets/images/ui/aw-nav-coffee.svg' | relative_url }}" alt="" width="46" height="46" draggable="false"></a>
-  <a href="{{ '/after-work/food/' | relative_url }}"{% if aw_cooking %} aria-current="page"{% endif %} aria-label="Cooking" data-tip="Cooking"><img src="{{ '/assets/images/ui/aw-nav-cooking.svg' | relative_url }}" alt="" width="46" height="46" draggable="false"></a>
-</nav>

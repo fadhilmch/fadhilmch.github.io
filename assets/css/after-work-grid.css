@@ -352,3 +352,13 @@ img.aw-deco, .aw-avatar img, .aw-sticker > img { filter:drop-shadow(0 1px 0 #fff
 .aw-stickers.has-fx .aw-item.is-held { transition:none; scale:1.05; z-index:60; }
 .aw-stickers.has-fx .aw-item.is-held img, .aw-stickers.has-fx img.aw-item.is-held { filter:drop-shadow(0 2px 2px #0006) drop-shadow(0 14px 14px #0005); }
 @media (prefers-reduced-motion:reduce) { .aw-deco, .aw-avatar { transition:none; } }
+
+/* After Work header navbar: contained pill (same as the main-page navbar) with
+   section icons and a soft transparent active highlight. Approved mock T10. */
+body.is-after-work .aw-nav a { display: flex; align-items: center; gap: 7px; }
+body.is-after-work .aw-nav a img { width: 19px; height: 19px; object-fit: contain; display: block; }
+body.is-after-work .aw-nav a[aria-current="page"],
+[data-theme="light"] body.is-after-work .aw-nav a[aria-current="page"] { background: color-mix(in oklab, var(--fg) 10%, transparent); color: var(--fg); }
+html[data-depth="soft"] body.is-after-work .aw-nav { box-shadow: inset 0 1px 0 rgb(255 255 255 / .86), 0 2px 5px rgb(0 0 0 / .04); }
+html[data-depth="soft"][data-theme="dark"] body.is-after-work .aw-nav { box-shadow: inset 0 1px 0 rgb(255 255 255 / .086), 0 2px 5px rgb(0 0 0 / .04); }
+@media (max-width: 680px) { body.is-after-work .aw-nav a { justify-content: center; } }
