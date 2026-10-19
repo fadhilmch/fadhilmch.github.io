@@ -174,3 +174,7 @@ delayed or intercepted. Direct visits, reloads, history restores and reduced-mot
 visits select instantly. JavaScript or storage failure leaves ordinary native links
 and the server-rendered selected background intact. Resize cancels the animation
 and measures the current selected link again. No personal data is stored.
+
+### Home <-> After Work transition
+
+Navigating between the main site and After Work cross-fades the two documents (160ms, opacity only) using cross-document View Transitions. `assets/css/page-transition.css` turns them on for users without reduced-motion; `_includes/head.html` has a `pageswap`/`pagereveal` script that skips the transition for every other navigation, so those keep the instant switch and the `html.nav-in` behaviour. On a crossing it adds `html.vt-cross`, which fast-forwards the arriving page's entrance animations so the fade has no dark dip. The header is a separate layer and does not move. Browsers without cross-document View Transitions, and reduced motion, get the instant switch.
