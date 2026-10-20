@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/32o-8z6ss0rvf.css","style"]
+:HL["/_next/static/chunks/2wcxxtj05foz2.css","style"]
 :HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
 :HL["/_next/static/chunks/3zbhe5craggao.css","style"]
 :HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
@@ -9,4 +9,4 @@
 3:[["children",{"s":{"n":"slug","t":"d","k":"gam","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"notes","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"ebDbA2_hmQvOzO3m5WAwz","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"RsvCzUapSvc-RLj6xf9DQ","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
