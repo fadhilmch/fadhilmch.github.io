@@ -97,6 +97,8 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 .aw-editor__warn { color:#ffb39f; } .aw-editor__hint { color:#b2b7aa; }
 @media(prefers-reduced-motion:reduce){ .aw-sticker, .aw-label { transition:none; } .aw-steam b { animation:none; } .aw-steam { display:none; } }
 .aw-head p { min-height:1.5em; }
+/* The typed subtitle starts hidden only when JS armed it before first paint (see after-work/index.html). */
+html.aw-js .aw-head p:not(.is-typed) { visibility:hidden; }
 .aw-typed { font-family:var(--mono, ui-monospace, monospace); }
 .aw-head p.is-typing .aw-typed::after { content:""; display:inline-block; width:.55em; height:1em; margin-left:2px; vertical-align:-.15em; background:#c5d788; animation:aw-caret 1s steps(1) infinite; }
 @keyframes aw-caret { 50% { opacity:0; } }
@@ -345,7 +347,7 @@ img.aw-deco, .aw-avatar img, .aw-sticker > img { filter:drop-shadow(0 1px 0 #fff
 .aw-stickers.is-dragging, .aw-stickers.is-dragging * { cursor:grabbing; }
 .aw-stickers.has-fx .aw-item.is-held { transition:none; scale:1.05; z-index:60; }
 .aw-stickers.has-fx .aw-item.is-held img, .aw-stickers.has-fx img.aw-item.is-held { filter:drop-shadow(0 2px 2px #0006) drop-shadow(0 14px 14px #0005); }
-@media (prefers-reduced-motion:reduce) { .aw-deco, .aw-avatar { transition:none; } }
+@media (prefers-reduced-motion:reduce) { .aw-deco, .aw-avatar { transition:none; } .aw-stickers.has-fx:not(.fx-ready) .aw-item { animation:none; } }
 
 /* After Work header navbar: contained pill (same as the main-page navbar) with
    section icons and a soft transparent active highlight. Approved mock T10. */
