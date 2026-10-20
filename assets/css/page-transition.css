@@ -1,81 +1,26 @@
-/* Home <-> After Work: a circular ripple reveals the arriving page, growing
-   out of the clicked link with a water-wave crest on its edge; the old page stays
-   put underneath. Both directions use the same reveal. head.html skips the
-   transition for every other navigation and sets html[data-route-portal] and
-   html.vt-cross on the arriving page only when it crosses. Browsers without
-   cross-document View Transitions and reduced motion get the instant switch. */
+/* Home <-> After Work: a square-pixel ripple reveals the arriving page,
+   blocks popping in outward from the clicked link; the old page stays put
+   underneath. Both directions use the same reveal. The per-click pixel grid
+   (route-pixel-reveal keyframes) is generated and injected by head.html; the
+   growing circle below is only the fallback if that injection fails.
+   head.html skips the transition for every other navigation and sets
+   html[data-route-portal] and html.vt-cross on the arriving page only when it
+   crosses. Browsers without cross-document View Transitions and reduced
+   motion get the instant switch. */
 :root {
   --route-portal: 720ms;
 }
-#route-ring {
-  position: fixed;
-  left: var(--vt-x);
-  top: var(--vt-y);
-  width: calc(var(--vt-r) * 2);
-  height: calc(var(--vt-r) * 2);
-  margin: calc(var(--vt-r) * -1) 0 0 calc(var(--vt-r) * -1);
-  border-radius: 50%;
-  pointer-events: none;
-  view-transition-name: route-ring;
-  /* #route-warp (injected next to the ring by the transition code) wobbles
-     the edge so it reads as water, not a compass-drawn circle; the
-     drop-shadows are the light bloom around the crest. */
-  filter: url(#route-warp) drop-shadow(0 0 18px rgba(255, 255, 255, 0.35))
-    drop-shadow(0 0 46px rgba(255, 255, 255, 0.16));
-}
-/* The wave body: a faint leading echo and a bright main crest riding the
-   reveal edge, like a ripple spreading on water. Percentage stops keep the band
-   proportional to the circle, so it reads as a wave at every moment. */
-#route-ring::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle closest-side,
-      transparent 66%,
-      rgba(0, 0, 0, 0.1) 69%,
-      rgba(255, 255, 255, 0.2) 74%,
-      rgba(255, 255, 255, 0.06) 79%,
-      transparent 83%),
-    radial-gradient(circle closest-side,
-      transparent 86%,
-      rgba(0, 0, 0, 0.22) 89.5%,
-      rgba(0, 0, 0, 0.34) 92.5%,
-      rgba(255, 255, 255, 0.85) 95%,
-      rgba(255, 255, 255, 0.4) 97.5%,
-      transparent 99.5%);
-}
-/* Depth cue: the surface dips just behind the crest, so the wave stands out
-   from the page instead of looking like a drawn outline. */
-#route-ring::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: radial-gradient(circle closest-side,
-    transparent 80%,
-    rgba(18, 9, 7, 0.26) 92%,
-    rgba(18, 9, 7, 0.08) 97.5%,
-    transparent 100%);
-}
+/* Fallback reveal: a plain growing circle, used until head.html injects the
+   pixel-grid keyframes for the click. */
 @keyframes ripple-reveal {
   from { clip-path: circle(0 at var(--vt-x) var(--vt-y)); }
   to { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); }
-}
-@keyframes ripple-ring {
-  0% { transform: scale(0); opacity: 1; }
-  75% { opacity: 1; }
-  100% { transform: scale(1); opacity: 0; }
 }
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
   html[data-route-portal]::view-transition-group(root),
   html[data-route-portal]::view-transition-old(root),
-  html[data-route-portal]::view-transition-new(root),
-  html[data-route-portal]::view-transition-group(route-ring),
-  html[data-route-portal]::view-transition-old(route-ring),
-  html[data-route-portal]::view-transition-new(route-ring) {
+  html[data-route-portal]::view-transition-new(root) {
     animation-duration: var(--route-portal);
     animation-fill-mode: both;
     animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
@@ -88,13 +33,6 @@
   html[data-route-portal]::view-transition-new(root) {
     animation-name: ripple-reveal;
   }
-  html[data-route-portal]::view-transition-new(route-ring) {
-    animation-name: ripple-ring;
-  }
-  html[data-route-portal]::view-transition-old(route-ring) {
-    display: none;
-  }
-  html[data-route-portal]::view-transition-group(route-ring),
   html[data-route-portal]::view-transition-group(root) {
     animation: none;
   }
