@@ -15,7 +15,7 @@ test('ripple reveals the arriving page through a growing circle, no page movemen
  assert.doesNotMatch(reveal,/transform|translate/);
  assert.match(c,/--route-portal: [0-9]{3}ms/);
 });
-test('a coral water wave rides the ripple edge on its own transition layer',()=>{
+test('a water wave rides the ripple edge on its own transition layer',()=>{
  const c=read('assets/css/page-transition.css');
  assert.match(c,/#route-ring \{[^}]*view-transition-name: route-ring/);
  assert.match(c,/filter: url\(#route-warp\)/);
