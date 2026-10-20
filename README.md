@@ -153,7 +153,7 @@ keeps a running count, and timed steps laid out as a clock (`m:ss` or `n min`
 tokens become chips and drive the brew timer on coffee pages). On phones,
 Cooking pages switch between Ingredients and Method tabs.
 
-The gateway title ("After work" and the arrow) fades in word by word once, unless reduced motion is on. Stickers are base64 WebP includes in `_includes/after-work/images/`; after adding one, run `scripts/build-after-work-shapes.py` and keep the layout test passing. Loose stickers can be dragged (`assets/js/after-work-play.js`, `assets/js/after-work-physics.js`).
+The gateway title ("After work" and the arrow) fades in word by word once, unless reduced motion is on. The sticker pop and the typed subtitle are armed before first paint (`has-fx` in the markup, an inline `aw-js` guard for the subtitle), so they never reveal and then re-animate; without JS, on reduced motion, or if the module fails to load, everything stays visible. Stickers are base64 WebP includes in `_includes/after-work/images/`; after adding one, run `scripts/build-after-work-shapes.py` and keep the layout test passing. Loose stickers can be dragged (`assets/js/after-work-play.js`, `assets/js/after-work-physics.js`).
 Shared templates live in `_includes/after-work/`; the scoped grid/sticker layer is
 `assets/css/after-work-grid.css`. About, site navigation and the default branch
 are not part of this design change. See [the editing guide](docs/EDITING.md#after-work-design).

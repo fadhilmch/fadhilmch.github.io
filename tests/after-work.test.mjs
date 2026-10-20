@@ -110,6 +110,22 @@ test('sticker effects: entrance, shake and tilt are off for reduced motion and i
  assert.match(f,/fx-ready/);
  assert.match(c,/\.aw-stickers\.has-fx \.aw-item\.is-shaking/);
 });
+test('gateway entrance is armed at first paint: no reveal-then-animate flash, content always survives',()=>{
+ const h=read('after-work/index.html'),c=read('assets/css/after-work-grid.css');
+ const f=read('assets/js/after-work-fx.js'),g=read('assets/js/after-work-gateway.js'),t=read('assets/js/after-work-terminal.js');
+ // Sticker pop is armed by the static has-fx class, not by the deferred module.
+ assert.match(h,/<div class="aw-stickers has-fx"/);
+ assert.match(f,/classList\.remove\('has-fx'\)/);
+ // Reduced motion kills the pop in CSS, so it cannot flash or hide content while the module loads.
+ const reduce=c.indexOf('@media (prefers-reduced-motion:reduce) { .aw-deco, .aw-avatar { transition:none; } .aw-stickers.has-fx:not(.fx-ready) .aw-item { animation:none; }');
+ assert.ok(reduce>-1);
+ // Subtitle: hidden only while the inline script's aw-js arm is live, revealed by is-typed.
+ assert.match(h,/classList\.add\('aw-js'\)/);
+ assert.match(h,/classList\.remove\('aw-js'\)\},2500\)/);
+ assert.match(c,/html\.aw-js \.aw-head p:not\(\.is-typed\) \{ visibility:hidden/);
+ assert.match(t,/classList\.add\('is-typed'\)/);
+ assert.match(g,/contains\('aw-js'\)\) initSubtitle\(sub\)/);
+});
 test('the gateway shows no caption under the stickers',()=>{
  assert.doesNotMatch(read('after-work/index.html'),/aw-art-note|Illustrative stickers/);
 });

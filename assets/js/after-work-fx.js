@@ -4,7 +4,8 @@ export function initFx(stickers) {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const items = [...stickers.querySelectorAll('.aw-item')];
   items.forEach((n, i) => n.style.setProperty('--i', i));
-  if (reduce || stickers.classList.contains('aw-editing')) return;
+  // has-fx is set in the HTML so the entrance is armed at first paint; drop it when effects are off.
+  if (reduce || stickers.classList.contains('aw-editing')) { stickers.classList.remove('has-fx'); return; }
   stickers.classList.add('has-fx');
   // The entrance only runs once. Without this, the pop animation restarts (from invisible) when a shake ends.
   setTimeout(() => stickers.classList.add('fx-ready'), 120 + items.length * 55 + 700);

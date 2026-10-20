@@ -8,7 +8,8 @@ const stickers = document.querySelector('.aw-stickers');
 if (stickers) {
   initFx(stickers);
   const sub = document.querySelector('.aw-head p');
-  if (sub) initSubtitle(sub);
+  // If the module took so long that the inline fallback already restored the static line, keep it.
+  if (sub && document.documentElement.classList.contains('aw-js')) initSubtitle(sub);
   const editing = new URLSearchParams(location.search).has('edit');
   if (!editing) initPlay(stickers).catch((e) => console.error('Sticker play failed to load', e));
   if (editing) {
