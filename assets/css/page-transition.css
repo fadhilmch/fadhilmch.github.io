@@ -1,47 +1,44 @@
-/* Home <-> After Work: a coral circle grows out of the clicked link until it
-   covers the screen, then fades to reveal After Work. Going back, the coral
-   covers the screen and shrinks into the link. head.html skips the transition
-   for every other navigation and sets html[data-route-portal] and html.vt-cross
-   on the arriving page only when it crosses. Browsers without cross-document
-   View Transitions and reduced motion get the instant switch. */
+/* Home <-> After Work: a circular ripple reveals the arriving page, growing
+   out of the clicked link with a coral ring on its edge; the old page stays
+   put underneath. Both directions use the same reveal. head.html skips the
+   transition for every other navigation and sets html[data-route-portal] and
+   html.vt-cross on the arriving page only when it crosses. Browsers without
+   cross-document View Transitions and reduced motion get the instant switch. */
 :root {
   --route-coral: #ff8a6d;
   --route-portal: 720ms;
 }
-#route-coral {
+#route-ring {
   position: fixed;
-  inset: 0;
-  z-index: 2147483000;
-  background: var(--route-coral);
+  left: var(--vt-x);
+  top: var(--vt-y);
+  width: calc(var(--vt-r) * 2);
+  height: calc(var(--vt-r) * 2);
+  margin: calc(var(--vt-r) * -1) 0 0 calc(var(--vt-r) * -1);
+  border-radius: 50%;
+  border: 3px solid var(--route-coral);
+  box-shadow: 0 0 28px 2px rgba(255, 138, 109, 0.45),
+    inset 0 0 28px 2px rgba(255, 138, 109, 0.22);
   pointer-events: none;
-  view-transition-name: route-coral;
+  view-transition-name: route-ring;
 }
-@keyframes portal-in-coral {
-  0% { clip-path: circle(0 at var(--vt-x) var(--vt-y)); opacity: 1; }
-  55% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 1; }
-  100% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 0; }
+@keyframes ripple-reveal {
+  from { clip-path: circle(0 at var(--vt-x) var(--vt-y)); }
+  to { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); }
 }
-@keyframes portal-in-page {
-  0%, 54% { opacity: 0; }
-  55%, 100% { opacity: 1; }
-}
-@keyframes portal-out-coral {
-  0% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 0; }
-  18% { clip-path: circle(var(--vt-r) at var(--vt-x) var(--vt-y)); opacity: 1; }
-  100% { clip-path: circle(0 at var(--vt-x) var(--vt-y)); opacity: 1; }
-}
-@keyframes portal-out-page {
-  0%, 17% { opacity: 0; }
-  18%, 100% { opacity: 1; }
+@keyframes ripple-ring {
+  0% { transform: scale(0); opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
 }
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
   html[data-route-portal]::view-transition-group(root),
   html[data-route-portal]::view-transition-old(root),
   html[data-route-portal]::view-transition-new(root),
-  html[data-route-portal]::view-transition-group(route-coral),
-  html[data-route-portal]::view-transition-old(route-coral),
-  html[data-route-portal]::view-transition-new(route-coral) {
+  html[data-route-portal]::view-transition-group(route-ring),
+  html[data-route-portal]::view-transition-old(route-ring),
+  html[data-route-portal]::view-transition-new(route-ring) {
     animation-duration: var(--route-portal);
     animation-fill-mode: both;
     animation-timing-function: cubic-bezier(0.45, 0, 0.2, 1);
@@ -51,23 +48,20 @@
     animation: none;
     opacity: 1;
   }
-  html[data-route-portal="in"]::view-transition-new(root) {
-    animation-name: portal-in-page;
+  html[data-route-portal]::view-transition-new(root) {
+    animation-name: ripple-reveal;
   }
-  html[data-route-portal="out"]::view-transition-new(root) {
-    animation-name: portal-out-page;
+  html[data-route-portal]::view-transition-new(route-ring) {
+    animation-name: ripple-ring;
   }
-  html[data-route-portal="in"]::view-transition-new(route-coral) {
-    animation-name: portal-in-coral;
+  html[data-route-portal]::view-transition-old(route-ring) {
+    display: none;
   }
-  html[data-route-portal="out"]::view-transition-new(route-coral) {
-    animation-name: portal-out-coral;
-  }
-  html[data-route-portal]::view-transition-group(route-coral),
+  html[data-route-portal]::view-transition-group(route-ring),
   html[data-route-portal]::view-transition-group(root) {
     animation: none;
   }
-  /* The page itself is revealed through the coral, so its own entrance
+  /* The page itself is revealed through the ripple, so its own entrance
      animations are fast-forwarded to their end state (a negative delay skips
      them; looping ambient animations continue from a phase offset). */
   html.vt-cross body *,
