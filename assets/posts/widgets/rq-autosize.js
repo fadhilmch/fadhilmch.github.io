@@ -5,4 +5,3 @@ window.addEventListener('message', function (event) {
     document.getElementById('rq-explainer').style.height = data.height + 'px';
   }
 });
-

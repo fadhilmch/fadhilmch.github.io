@@ -51,4 +51,3 @@
   input.addEventListener('input', update);
   update();
 })();
-

@@ -38,4 +38,3 @@ function show(i){blocks.forEach(function(b){var on=b.step===i;b.f.setAttribute('
 S.forEach(function(s,i){var b=document.createElement('button');b.type='button';b.textContent=String(i+1);b.setAttribute('aria-label',s.t);b.addEventListener('click',function(){show(i);});bw.appendChild(b);});
 show(0);}
 })();
-

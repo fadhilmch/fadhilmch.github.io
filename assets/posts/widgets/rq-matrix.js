@@ -87,4 +87,3 @@
   root.classList.add('is-live');
   show(step);
 })();
-
