@@ -23,9 +23,10 @@
   } catch (error) {}
 </script>
 <script>
-  /* Home <-> After Work only: a coral circle grows out of (or shrinks into) the
-     clicked link while the browser switches documents. Every other navigation
-     skips the transition and keeps its own behaviour. */
+  /* Home <-> After Work only: a circular ripple with a coral edge grows out of
+     the clicked link and reveals the arriving page while the browser switches
+     documents. Every other navigation skips the transition and keeps its own
+     behaviour. */
   try {
     var awPath = function (p) { return p.indexOf('/after-work') === 0; };
     document.addEventListener('click', function (e) {
@@ -57,12 +58,12 @@
       root.style.setProperty('--vt-x', o.x + 'px');
       root.style.setProperty('--vt-y', o.y + 'px');
       root.style.setProperty('--vt-r', r + 'px');
-      root.setAttribute('data-route-portal', awPath(location.pathname) ? 'in' : 'out');
-      var coral = document.createElement('div');
-      coral.id = 'route-coral';
-      coral.setAttribute('aria-hidden', 'true');
-      root.appendChild(coral);
-      var done = function () { coral.remove(); root.removeAttribute('data-route-portal'); };
+      root.setAttribute('data-route-portal', 'ripple');
+      var ring = document.createElement('div');
+      ring.id = 'route-ring';
+      ring.setAttribute('aria-hidden', 'true');
+      root.appendChild(ring);
+      var done = function () { ring.remove(); root.removeAttribute('data-route-portal'); };
       e.viewTransition.finished.then(done, done);
     });
   } catch (error) {}
