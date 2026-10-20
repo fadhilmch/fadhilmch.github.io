@@ -1,0 +1,146 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0-su8sk2o_bw1.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+7:"/_next/static/chunks/09tppxpuq4bp4.js"
+8:I[36852,["$2","$7"],"SiteHeader"]
+9:I[8745,["$2","$7"],"SiteFooter"]
+f:I[97367,["$2"],"OutletBoundary"]
+10:"$Sreact.suspense"
+12:"ViewportBoundary"
+13:I[97367,["$2"],"$12"]
+15:"MetadataBoundary"
+16:I[97367,["$2"],"$15"]
+18:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/2o7-03j2wf8wc.css","style"]
+:HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
+:HL["/_next/static/chunks/3zbhe5craggao.css","style"]
+:HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
+:HL["/_next/static/chunks/0hrpoomp7moyf.css","style"]
+:HL["/_next/static/media/geist_latin-s.p.20f3xrkj613ah.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/geist_mono_latin-s.p.1t7tphccnfzmb.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+b:X
+d:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$Le",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/15pqqz5ux6dor.js","async":true,"nonce":"$undefined"}]],["$","$Lf",null,{"children":["$","$10",null,{"name":"Next.MetadataOutlet","children":"$@11"}]}]]}],"p":false,"v":null}}]]
+c:[["children",{"s":{"n":"slug","t":"d","k":"golden-datasets-without-the-gold-rush","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$b"},"c":"$Qd"}]]
+a:[["children",{"s":"posts","h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$b"},"c":"$Qc"}]]
+6:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/09tppxpuq4bp4.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L9",null,{}]]]}],"p":false,"v":null},"c":"$Qa"}]]
+0:{"P":null,"c":["","posts","golden-datasets-without-the-gold-rush",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/0-su8sk2o_bw1.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}]}]}]]}],"p":false,"v":null},"c":"$Q6"},"h":{"r":["$","$1","h",{"children":[null,["$","$L13",null,{"children":"$L14"}],["$","$L16",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$10",null,{"name":"Next.Metadata","children":"$L17"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$18",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"mgCzyUysVRAtCddZDIXJb"}
+19:"/_next/static/chunks/15pqqz5ux6dor.js"
+1a:I[22016,["$2","$7","$19"],""]
+b:C
+1b:T360e,<p>A <strong>golden dataset</strong> is the set of questions, with known-good answers, that you run a system against to see whether a change made it better or worse. For a retrieval-augmented generation (RAG) assistant, meaning one that searches a body of documents and writes an answer from what it finds, the golden set is what turns “it feels better” into evidence.</p>
+<p>The usual advice for building one is to sit down and write fifty question and answer pairs by hand. That advice is fine for a prototype. It stops working when the assistant serves several markets, several languages and a knowledge base that keeps changing, because nobody has the time to write, and re-write, enough examples to cover all of that.</p>
+<p>I work on a production assistant of this kind, and I’m building a pipeline that generates the candidates instead. This post describes the design: simulated personas propose evaluation records, and a person approves each one before it counts. I’ll stick to the mechanism and leave out sizes and rates, which aren’t mine to share.</p>
+<h2>What a record contains</h2>
+<p>An evaluation record is more than a question and an answer. In the pipeline I’m describing, each one has:</p>
+<ul>
+<li><strong>A query</strong>, written the way a user would type it.</li>
+<li><strong>An expected answer</strong>, the reference the assistant’s answer is compared with.</li>
+<li><strong>A source document URL</strong>, the place in the knowledge base where the answer comes from.</li>
+<li><strong>Metadata</strong>: the language of the query, the geography it applies to, and the intent behind it.</li>
+</ul>
+<p>The source URL matters most. It <strong>anchors</strong> the record to something checkable. Without a source, an expected answer is just someone’s word. With one, you can check it by opening the document, and it gives you a second thing to measure: whether the assistant’s retrieval found that document at all. I’ll come back to that in the last section.</p>
+<p>The metadata is what lets you slice results later. An average score across everything hides a lot. If the same assistant does well in one language and badly in another, you want to see that, which means every record needs to say which language it belongs to.</p>
+<h2>Where personas come in</h2>
+<p>The obvious way to generate questions with a language model is to hand it a document and ask for questions about it. The result is predictable. The questions echo the document’s own vocabulary, they’re all polite and well-formed, and they all have a tidy answer in the text. Real users don’t ask like that.</p>
+<p>A <strong>persona</strong> is a short description of a kind of user: who they are, where they are, what they’re trying to get done, how they tend to phrase things. The generator is asked to write queries as that person would, about a document sampled from the knowledge index. Different personas produce different questions from the same source:</p>
+<ul>
+<li>someone who knows the topic well and asks a narrow, specific question;</li>
+<li>someone new who doesn’t know the right term and describes the situation instead;</li>
+<li>someone whose question only applies in their region;</li>
+<li>someone who writes in another language, or mixes two.</li>
+</ul>
+<figure class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-labelledby="gd1t gd1d">
+  <title id="gd1t">Generating a golden dataset with a human approval gate</title>
+  <desc id="gd1d">Source documents from the knowledge index and a simulated persona feed a generator that proposes records containing a query, an expected answer, a source URL and metadata. A human reviewer checks each proposal. Approved records join the golden set. Rejected or edited ones are dropped or fixed.</desc>
+  <defs><marker id="gd1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="10" y="16">GENERATE LIBERALLY</text>
+  <text class="h" x="520" y="16">APPROVE CONSERVATIVELY</text>
+  <rect class="box" x="10" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="22" y="52">Index</text><text class="m" x="22" y="69">source documents</text>
+  <rect class="box" x="180" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="192" y="52">Persona</text><text class="m" x="192" y="69">asks like a user</text>
+  <rect class="box" x="350" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="362" y="52">Proposed record</text><text class="m" x="362" y="69">query, answer, URL</text>
+  <rect class="box" x="520" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="532" y="52">Human review</text><text class="m" x="532" y="69">every record</text>
+  <path class="ln" d="M160,57 L178,57" marker-end="url(#gd1a)"></path>
+  <path class="ln" d="M330,57 L348,57" marker-end="url(#gd1a)"></path>
+  <path class="ln" d="M500,57 L518,57" marker-end="url(#gd1a)"></path>
+  <rect class="box" x="520" y="130" width="150" height="54" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="532" y="152">Golden set</text><text class="m" x="532" y="169">approved only</text>
+  <rect class="box" x="290" y="130" width="150" height="54" rx="6"></rect>
+  <text class="t" x="302" y="152">Edit or drop</text><text class="m" x="302" y="169">back to the pool</text>
+  <path class="sa" d="M620,84 L620,128" marker-end="url(#gd1a)"></path>
+  <text class="ta" x="628" y="110">approve</text>
+  <path class="sb" d="M560,84 C560,110 480,110 440,140" marker-end="url(#gd1a)"></path>
+  <text class="tb" x="470" y="104">reject</text>
+  <text class="m" x="10" y="214">Metadata (language, geography, intent) travels with every record.</text>
+</svg>
+<figcaption>Generation is cheap and wide. The gate is narrow and manual, and nothing reaches the golden set without passing through it.</figcaption>
+</figure>
+<p>Personas also give you a coverage lever. If a language or an intent is thin in the set, you ask for more of it by changing the persona mix, instead of asking a colleague to write more by hand. The pipeline is configurable, and the persona mix is the natural knob for that: you change the request, not the code.</p>
+<h2>Generate liberally, approve conservatively</h2>
+<p>The design decision I care most about is where the human sits. Generation is cheap, so I want it to over-produce and be varied. Approval is the expensive part, so it needs to be strict. Nothing a model generates becomes golden on its own, whatever score it gets from another model.</p>
+<p>The reason is simple. A golden set is the ruler you measure everything else with. If the ruler is wrong, every comparison you make with it is wrong in a way that’s hard to see, because the numbers still look like numbers. A model checking a model’s homework tends to agree with itself.</p>
+<p>What does the reviewer actually check? Three things, together, for each record:</p>
+<ol>
+<li><strong>The query.</strong> Would a real person plausibly ask this? Is it in the language and for the geography the metadata says?</li>
+<li><strong>The expected answer.</strong> Is it correct, and complete enough to compare against? Does it say more than the source does?</li>
+<li><strong>The source.</strong> Open the document. Does it support the answer? Is it current, and is it the right document for this user, or one that has been superseded?</li>
+</ol>
+<p>Checking all three at once is faster than it sounds, because the record puts the three side by side. The reviewer is reading, comparing and deciding, not researching from scratch. The model does the tedious drafting and the person keeps the judgement.</p>
+<h2>What goes wrong in generated data</h2>
+<p>Generated evaluation data fails in a handful of predictable ways, and it helps to know which check catches which.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 236" role="img" aria-labelledby="gd2t gd2d">
+  <title id="gd2t">Failure modes in generated records and the review check that catches each</title>
+  <desc id="gd2d">A matrix of five failure modes against four checks: query, answer, source and set. Nobody would ask this is caught by the query check. Answer says more than the source is caught by answer and source. Stale source is caught by source. Wrong language or intent tag is caught by query. Near-duplicate records are caught by looking at the set as a whole.</desc>
+  <text class="h" x="10" y="18">FAILURE IN A GENERATED RECORD</text>
+  <text class="h" x="410" y="18" text-anchor="middle">QUERY</text>
+  <text class="h" x="475" y="18" text-anchor="middle">ANSWER</text>
+  <text class="h" x="545" y="18" text-anchor="middle">SOURCE</text>
+  <text class="h" x="620" y="18" text-anchor="middle">SET</text>
+  <line class="grid" x1="10" x2="670" y1="28" y2="28"></line>
+  <text class="t" x="10" y="52">Nobody would ask this</text>
+  <text class="t" x="10" y="90">Answer says more than the source</text>
+  <text class="t" x="10" y="128">Source is stale or superseded</text>
+  <text class="t" x="10" y="166">Wrong language or intent tag</text>
+  <text class="t" x="10" y="204">Near-duplicate of another record</text>
+  <line class="grid" x1="10" x2="670" y1="66" y2="66"></line>
+  <line class="grid" x1="10" x2="670" y1="104" y2="104"></line>
+  <line class="grid" x1="10" x2="670" y1="142" y2="142"></line>
+  <line class="grid" x1="10" x2="670" y1="180" y2="180"></line>
+  <g tabindex="0"><title>Nobody would ask this: caught by reading the query</title><circle class="fa" cx="410" cy="48" r="6"></circle></g>
+  <g tabindex="0"><title>Answer says more than the source: caught by comparing the answer, and by opening the source</title><circle class="fa" cx="475" cy="86" r="6"></circle><circle class="fa" cx="545" cy="86" r="6"></circle></g>
+  <g tabindex="0"><title>Stale source: caught by opening the source</title><circle class="fa" cx="545" cy="124" r="6"></circle></g>
+  <g tabindex="0"><title>Wrong language or intent tag: caught by reading the query against its metadata</title><circle class="fa" cx="410" cy="162" r="6"></circle></g>
+  <g tabindex="0"><title>Near-duplicate: only visible when looking at the set as a whole</title><circle class="fa" cx="620" cy="200" r="6"></circle></g>
+</svg>
+<figcaption>A dot means that check catches the failure. No single check covers everything, and the last row shows why coverage has to be looked at across the set, not record by record.</figcaption>
+</figure>
+<p>The last row is the one people skip. Each record can be individually fine and the set can still be lopsided: twenty near-identical questions about the same document, and nothing about the one that users actually struggle with. Reviewing records one by one won’t show you that. You need to look at the distribution by document, language, geography and intent, and then adjust the personas or the sampling.</p>
+<h2>Measuring the set itself</h2>
+<p>It’s tempting to report the size of the golden set as an achievement. I’d avoid that. A set padded with near-duplicates is worse than a smaller one that covers the real spread of what people ask, because it gives you a confident number about a narrow slice. The measures I’d care about are coverage, how much reviewers agree with each other, and how many records they had to edit. A headline count tells you none of that.</p>
+<p>The same goes for keeping the set alive. The knowledge base changes, so a record that was correct last quarter can point at a document that has since been rewritten. Because each record carries its source URL, you can find those records mechanically and send them back for review, instead of discovering the problem when a score drops for no visible reason.</p>
+<h2>What the anchor buys you later</h2>
+<p>Because each record names its source, the evaluation can ask two separate questions. Did the assistant give a good answer? And did it retrieve the document that answer should come from? When the first is bad and the second is good, the fault is in how the answer was written. When both are bad, look at retrieval. That split is much harder to make when the golden set is only questions and answers, and it’s the main reason I insist on the URL.</p>
+<p>If I were starting over, I’d keep four things: anchor every record to a source, use personas to widen what gets asked, keep a person as the only route into the golden set, and review the set as a whole as well as record by record. Everything else is tooling, and that can change.</p>
+<h2>References</h2>
+<ol>
+<li>Lewis, P. et al. <em>Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks</em>. NeurIPS, 2020. <a href="https://arxiv.org/abs/2005.11401">https://arxiv.org/abs/2005.11401</a></li>
+<li>Es, S. et al. <em>Ragas: Automated Evaluation of Retrieval Augmented Generation</em>. arXiv, 2023. <a href="https://arxiv.org/abs/2309.15217">https://arxiv.org/abs/2309.15217</a></li>
+<li>Saad-Falcon, J. et al. <em>ARES: An Automated Evaluation Framework for Retrieval-Augmented Generation Systems</em>. NAACL, 2024. <a href="https://arxiv.org/abs/2311.09476">https://arxiv.org/abs/2311.09476</a>. Synthetic evaluation data plus human annotations.</li>
+<li>Ge, T. et al. <em>Scaling Synthetic Data Creation with 1,000,000,000 Personas</em>. arXiv, 2024. <a href="https://arxiv.org/abs/2406.20094">https://arxiv.org/abs/2406.20094</a></li>
+<li>Zheng, L. et al. <em>Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena</em>. NeurIPS Datasets and Benchmarks, 2023. <a href="https://arxiv.org/abs/2306.05685">https://arxiv.org/abs/2306.05685</a></li>
+<li>Panickssery, A., Bowman, S. R. and Feng, S. <em>LLM Evaluators Recognize and Favor Their Own Generations</em>. arXiv, 2024. <a href="https://arxiv.org/abs/2404.13076">https://arxiv.org/abs/2404.13076</a>. Why a model shouldn’t grade its own output.</li>
+</ol>e:["$","article",null,{"className":"article-shell","children":[["$","$L1a",null,{"className":"back-link","href":"/posts/","children":"← All posts"}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-06-20","children":"2026-06-20"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",6," min read"]}],["$","h1",null,{"children":"Golden datasets without the gold rush"}],["$","p",null,{"className":"standfirst","children":"Simulated personas propose evaluation queries anchored to real documents, and people approve every one. Generate liberally, approve conservatively."}],["$","div",null,{"className":"tag-list","children":[["$","$L1a","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1b"}}],"$L1c","$L1d",[]]}]
+1c:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$L1a","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}]]]}]]}]
+1d:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$L1a",null,{"className":"prev","href":"/posts/thompson-sampling-explained-with-coupons/","children":[["$","small",null,{"children":"← older"}],"Bandits in production: Thompson sampling, explained with coupons"]}],["$","$L1a",null,{"className":"next","href":"/posts/an-agent-that-triages-its-own-feedback/","children":[["$","small",null,{"children":"newer →"}],"An agent that triages its own feedback"]}]]}]
+14:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+1e:I[27201,["$2"],"IconMark"]
+11:null
+17:[["$","title","0",{"children":"Golden datasets without the gold rush · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Simulated personas propose evaluation queries anchored to real documents, and people approve every one. Generate liberally, approve conservatively."}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","3",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","4",{"property":"og:title","content":"Fadhil Mochammad"}],["$","meta","5",{"property":"og:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","6",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"Fadhil Mochammad"}],["$","meta","9",{"name":"twitter:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","10",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","link","11",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L1e","12",{}]]

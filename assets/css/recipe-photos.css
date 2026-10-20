@@ -1,5 +1,0 @@
-/* Recipe photos embedded as data URIs: commits through the text editor, no binary upload. One class per recipe; the photo slug lives in frontmatter as photo_embed. */
-.recipe-photo { background-size:cover; background-position:center; background-repeat:no-repeat; }
-.recipe__image .recipe-photo { display:block; width:100%; aspect-ratio:3/2; }
-.recipe__sheet .recipe__image .recipe-photo { border-radius:16px; box-shadow:0 10px 24px -14px #0008; }
-.recipe[data-sheet=charcoal] .recipe__sheet .recipe__image .recipe-photo { box-shadow:0 10px 24px -14px #000; }

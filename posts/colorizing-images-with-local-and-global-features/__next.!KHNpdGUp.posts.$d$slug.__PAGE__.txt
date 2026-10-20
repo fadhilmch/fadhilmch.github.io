@@ -1,0 +1,205 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0-su8sk2o_bw1.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/09tppxpuq4bp4.js"
+a:I[36852,["$2","$9"],"SiteHeader"]
+b:I[8745,["$2","$9"],"SiteFooter"]
+13:"/_next/static/chunks/15pqqz5ux6dor.js"
+14:I[22016,["$2","$9","$13"],""]
+1d:"ViewportBoundary"
+1e:I[97367,["$2"],"$1d"]
+1f:"MetadataBoundary"
+20:I[97367,["$2"],"$1f"]
+21:"$Sreact.suspense"
+22:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2o7-03j2wf8wc.css","style"]
+:HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
+:HL["/_next/static/chunks/3zbhe5craggao.css","style"]
+:HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
+:HL["/_next/static/chunks/0hrpoomp7moyf.css","style"]
+7:X
+f:X
+f:C
+15:T54ff,<p>A grayscale photograph still tells us a lot. We can see a person, a tree, a patch of sky. But a shirt that looks dark might have been blue, green or red. Removing colour throws away information. So putting colour back is a prediction. There’s nothing to undo.</p>
+<p>In 2019, I built an image colorization model for the DD2424 course at KTH. I used TensorFlow and Keras to reproduce the approach in <em>Deep Koalarization</em>, with some modifications. The model combined a convolutional encoder with a pretrained Inception-ResNet-v2 network, then decoded their combined features into colour.</p>
+<p>The interesting part is how those two paths help each other. One looks at local detail. The other provides context for the whole image. Neither can tell us the original colour of every object.</p>
+<figure class="fig color-fig">
+<img src="/assets/images/projects/colorization-example.svg" alt="A landscape example from my project: grayscale input on the left, predicted colour in the middle, original colour on the right. The sky becomes blue, while the tree and vegetation do not fully match the original.">
+<figcaption>Actual landscape output from my 2,000-image experiment. Left: grayscale. Middle: prediction. Right: original. The sky is blue, but the vegetation and tree do not fully match.</figcaption>
+</figure>
+<h2>1. Keep the lightness, predict the colour</h2>
+<p>Start with a pixel in the sky. Rather than ask the model to predict its red, green and blue values from scratch, I separate lightness from colour using the CIE L*a*b* colour space.</p>
+<p><strong>L*</strong> represents lightness. <strong>a*</strong> runs roughly from green to red, and <strong>b*</strong> from blue to yellow. My input is L*. The target is the pair (a*, b*). At the end, I combine the predicted pair with the original L*, then convert back to RGB for display.</p>
+<figure class="fig color-fig">
+<svg viewBox="0 0 520 184" role="img" aria-labelledby="lab-title">
+<title id="lab-title">Keep one channel and predict the other two</title>
+<rect class="box" x="8" y="22" width="140" height="118" rx="8"></rect>
+<text class="t" x="78" y="52" text-anchor="middle">Original image</text>
+<text class="m" x="78" y="78" text-anchor="middle">L* · a* · b*</text>
+<path class="ln" d="M148 57H206 M148 113H206"></path>
+<rect class="box" x="206" y="22" width="138" height="64" rx="8"></rect>
+<text class="t" x="275" y="48" text-anchor="middle">L* → input</text>
+<text class="m" x="275" y="68" text-anchor="middle">keep lightness</text>
+<rect class="box" x="206" y="98" width="138" height="64" rx="8"></rect>
+<text class="t" x="275" y="124" text-anchor="middle">a*, b* → target</text>
+<text class="m" x="275" y="144" text-anchor="middle">learn colour</text>
+<path class="ln" d="M344 54H376V90H390 M344 130H376V90"></path>
+<rect class="box" x="390" y="60" width="122" height="64" rx="8"></rect>
+<text class="t" x="451" y="85" text-anchor="middle">Prediction</text>
+<text class="m" x="451" y="107" text-anchor="middle">L* + â*, b̂*</text>
+</svg>
+<figcaption>The final image keeps the input's lightness channel. Only the two colour channels are learned.</figcaption>
+</figure>
+<figure class="fig color-viz" id="lab-explorer">
+<div class="viz-q"><strong>What does each channel contribute?</strong> Pick which channels to keep. Real photo from the project's ground truth, converted to L*a*b*.</div>
+<div class="viz-buttons" role="group" aria-label="Channels to keep">
+<button type="button" data-src="lab-L.png" aria-pressed="true">L* only</button>
+<button type="button" data-src="lab-La.png" aria-pressed="false">L* + a*</button>
+<button type="button" data-src="lab-Lb.png" aria-pressed="false">L* + b*</button>
+<button type="button" data-src="lab-Lab.png" aria-pressed="false">L* + a* + b*</button>
+</div>
+<div class="viz-stage"><img id="lab-explorer-img" src="/assets/images/projects/colorization/lab-L.png" alt="The same landscape photo showing only the channels selected"></div>
+<p class="viz-note" id="lab-explorer-note">L* alone is a complete grayscale photo. This is the model's input.</p>
+</figure>
+<p>The other two channels are what the model has to invent. Shown on their own at constant lightness, they look like this:</p>
+<figure class="fig color-viz">
+<div class="viz-row">
+<div><img src="/assets/images/projects/colorization/lab-a-only.png" alt="The a-star channel alone: faint pink on the rock, faint green in the shadows, grey elsewhere"><span>a*: green to red</span></div>
+<div><img src="/assets/images/projects/colorization/lab-b-only.png" alt="The b-star channel alone: yellow-brown on the rock and vegetation, blue in the sky"><span>b*: blue to yellow</span></div>
+</div>
+<figcaption>Both channels shown at one fixed lightness. In this photo most of the story is in b*: blue sky against yellow-brown rock and plants. a* stays close to zero everywhere. Values are recomputed from the figure's image pixels, so JPEG compression adds some noise.</figcaption>
+</figure>
+<p>The notebook also scales the values before training: L*/50 - 1 for the input, and a*/128 and b*/128 for the targets. Those are numerical conventions, not new colours. Reconstruction reverses the scaling before converting to RGB.</p>
+<p>This split gives the model a narrower job. The sky’s shape and lightness are already there; the model has to estimate its missing colour. But to do that, it first needs clues about what the pixel belongs to.</p>
+<h2>2. Detail is useful, but context changes its meaning</h2>
+<p>A convolution is a small filter moved across an image. It can respond to patterns such as edges and textures. Stacking these layers lets the encoder build a more useful representation than individual pixel values.</p>
+<figure class="fig color-viz">
+<div class="viz-row viz-row4">
+<div><img src="/assets/images/projects/colorization/ex1-gray.png" alt="Grayscale landscape input"><span>Input L*</span></div>
+<div><img src="/assets/images/projects/colorization/filter-vertical-edges.png" alt="Vertical edge response: bright along rock cracks and the cliff edge"><span>vertical edges</span></div>
+<div><img src="/assets/images/projects/colorization/filter-horizontal-edges.png" alt="Horizontal edge response: bright along the tree line and cloud bottoms"><span>horizontal edges</span></div>
+<div><img src="/assets/images/projects/colorization/filter-local-contrast.png" alt="Local contrast: texture on rock and trees, flat sky"><span>local contrast</span></div>
+</div>
+<figcaption><strong>Illustration, not the model's weights.</strong> I did not keep trained filters from the project, so these three maps come from hand-made Sobel and local-contrast filters applied to the real grayscale input. A trained first layer learns its own filters, but it responds to the same kind of thing: rock texture lights up, flat sky does not.</figcaption>
+</figure>
+<p>A smooth light patch, though, could be sky, a wall or fabric. Its nearby pixels help, but so does knowing whether the entire image looks like an outdoor landscape or an indoor room. That is why my model has a second path.</p>
+<p>I send a grayscale version of the image to Inception-ResNet-v2, pretrained on ImageNet. Its expected input is 299 × 299 × 3, so I resize and repeat grayscale across three channels. <strong>Repeating grayscale does not restore colour.</strong> It only makes the input compatible with the pretrained network.</p>
+<figure class="fig color-fig">
+<svg viewBox="0 0 520 222" role="img" aria-labelledby="paths-title">
+<title id="paths-title">Local detail and whole-image context meet before decoding</title>
+<rect class="box" x="8" y="76" width="102" height="62" rx="8"></rect>
+<text class="t" x="59" y="101" text-anchor="middle">Grayscale</text><text class="m" x="59" y="122" text-anchor="middle">same scene</text>
+<path class="ln" d="M110 107H130V42H150 M130 107V173H150"></path>
+<rect class="box" x="150" y="10" width="194" height="66" rx="8"></rect>
+<text class="t" x="247" y="37" text-anchor="middle">Convolutional encoder</text><text class="m" x="247" y="59" text-anchor="middle">spatial detail · learned</text>
+<rect class="box" x="150" y="140" width="194" height="66" rx="8"></rect>
+<text class="t" x="247" y="166" text-anchor="middle">Inception-ResNet-v2</text><text class="m" x="247" y="188" text-anchor="middle">whole-image features</text>
+<path class="ln" d="M344 43H369V107H394 M344 173H369V107"></path>
+<rect class="box" x="394" y="76" width="118" height="62" rx="8"></rect>
+<text class="t" x="453" y="102" text-anchor="middle">Fusion</text><text class="m" x="453" y="123" text-anchor="middle">then decoder</text>
+</svg>
+<figcaption>The encoder keeps spatial information. The pretrained path gives the decoder another source of evidence about the scene.</figcaption>
+</figure>
+<p>The project report calls the pretrained representation high-level features. There is a useful implementation detail here: the v2 notebook creates Inception-ResNet-v2 with <code>include_top=True</code> and uses <code>inception.predict</code>. That gives the 1,000 class outputs. The report describes a vector before softmax, so its wording and this notebook are not identical. So in this post I just call it a <strong>1,000-value pretrained representation</strong>.</p>
+<h2>3. Put the scene context at every location</h2>
+<p>Now there are two things of different shapes. The encoder produces a grid of local features. The pretrained network produces one vector for the image. Fusion repeats that vector at every position in the grid and concatenates it with the local features.</p>
+<p>In the v2 notebook the input is 256 × 256. Three stride-2 convolutions reduce height and width by a factor of eight, so the encoder output is 32 × 32 × 256. Repeating the 1,000-value context vector over that grid produces 32 × 32 × 1,000. Concatenating them gives 32 × 32 × 1,256. (The report used a 128 × 128 input, which gives a 16 × 16 grid with the same channel counts.)</p>
+<figure class="fig color-fig">
+<svg viewBox="0 0 520 168" role="img" aria-labelledby="fusion-title">
+<title id="fusion-title">The channel counts in the fusion layer</title>
+<rect class="box" x="8" y="18" width="154" height="62" rx="8"></rect>
+<text class="t" x="85" y="43" text-anchor="middle">Local grid</text><text class="m" x="85" y="64" text-anchor="middle">32 × 32 × 256</text>
+<rect class="box" x="8" y="94" width="154" height="62" rx="8"></rect>
+<text class="t" x="85" y="119" text-anchor="middle">Repeated context</text><text class="m" x="85" y="140" text-anchor="middle">32 × 32 × 1,000</text>
+<path class="ln" d="M162 49H188V87H214 M162 125H188V87"></path>
+<rect class="box" x="214" y="55" width="128" height="64" rx="8"></rect>
+<text class="t" x="278" y="80" text-anchor="middle">Concatenate</text><text class="m" x="278" y="101" text-anchor="middle">1,256 channels</text>
+<path class="ln" d="M342 87H370"></path>
+<rect class="box" x="370" y="55" width="142" height="64" rx="8"></rect>
+<text class="t" x="441" y="80" text-anchor="middle">1 × 1 convolution</text><text class="m" x="441" y="101" text-anchor="middle">256 channels</text>
+</svg>
+<figcaption>Each location receives its own local features plus the same scene vector. A 1 × 1 convolution mixes those channels before decoding.</figcaption>
+</figure>
+<p>A 1 × 1 convolution does not look across neighbouring positions. It learns how to combine channels at the current position. After that, the decoder uses convolutions and upsampling to produce two colour values at each output pixel.</p>
+<p>For my sky pixel, the path is now complete: local features describe its region, scene features provide context, and the decoder predicts (a*, b*). Training tells the model how close that guess came to the original.</p>
+<p>Here is the whole path, using the layer sizes from the v2 notebook. Step through it. Block height shows height and width of the tensor, block thickness shows the number of channels.</p>
+<figure class="fig color-viz" id="net-stepper">
+<div class="viz-q"><strong>What shape is the data at each stage, and what is each stage for?</strong></div>
+<svg id="net-svg" viewBox="0 0 700 250" role="img" aria-label="Tensor shapes through the colorization network, from a 256 by 256 grayscale input to a 256 by 256 by 2 colour output"></svg>
+<div class="viz-buttons" id="net-buttons" role="group" aria-label="Network stage"></div>
+<div class="viz-panel" aria-live="polite"><div id="net-text"></div><div id="net-images"></div></div>
+<figcaption>Tensor sizes and layer order are read from the v2 notebook. The blocks are a drawing of those sizes, not captured activations.</figcaption>
+</figure>
+<h2>4. Looking at what it predicted</h2>
+<p>With the architecture in place, the next question is what its predictions look like. The output examples are from the 2,000-image run. First, the three examples side by side. These are the figure from the project, cropped into separate images.</p>
+<figure class="fig color-viz">
+<div class="viz-grid3">
+<div><img src="/assets/images/projects/colorization/ex1-gray.png" alt="Example 1 grayscale"><span>Input</span></div><div><img src="/assets/images/projects/colorization/ex1-pred.png" alt="Example 1 predicted colour"><span>Prediction</span></div><div><img src="/assets/images/projects/colorization/ex1-truth.png" alt="Example 1 ground truth"><span>Ground truth</span></div>
+<div><img src="/assets/images/projects/colorization/ex2-gray.png" alt="Example 2 grayscale"></div><div><img src="/assets/images/projects/colorization/ex2-pred.png" alt="Example 2 predicted colour"></div><div><img src="/assets/images/projects/colorization/ex2-truth.png" alt="Example 2 ground truth"></div>
+<div><img src="/assets/images/projects/colorization/ex3-gray.png" alt="Example 3 grayscale"></div><div><img src="/assets/images/projects/colorization/ex3-pred.png" alt="Example 3 predicted colour"></div><div><img src="/assets/images/projects/colorization/ex3-truth.png" alt="Example 3 ground truth"></div>
+</div>
+<figcaption>Sky is blue and grass is green, but the red crowd in the second row comes out dark and the blue jersey in the third row comes out brown. The ground-truth crops in rows 2 and 3 are framed slightly differently from the other two columns in the original figure, so only row 1 lines up pixel by pixel.</figcaption>
+</figure>
+<p>Row 1 lines up exactly, so I can ask where its colour is wrong. Drag the handle to compare the prediction with the original.</p>
+<figure class="fig color-viz" id="compare">
+<div class="viz-q"><strong>Where does the prediction differ from the original?</strong> Prediction on the left of the handle, ground truth on the right.</div>
+<div class="cmp-box"><img src="/assets/images/projects/colorization/ex1-truth.png" alt="Ground truth, example 1"><div class="cmp-top" id="cmp-top"><img src="/assets/images/projects/colorization/ex1-pred.png" alt="Prediction, example 1"></div><div class="cmp-handle" id="cmp-handle"></div></div>
+<input id="cmp-range" type="range" min="0" max="100" value="50" aria-label="Comparison position">
+</figure>
+<p>The map below measures that difference as distance in the (a*, b*) plane at each pixel: lighter is closer, darker is further from the original. The darkest area is the rock face, where the prediction is grey instead of orange and brown. Sky is the lightest.</p>
+<figure class="fig color-viz">
+<div class="viz-row viz-row3">
+<div><img src="/assets/images/projects/colorization/ex1-pred.png" alt="Prediction"><span>Prediction</span></div>
+<div><img src="/assets/images/projects/colorization/ex1-truth.png" alt="Ground truth"><span>Ground truth</span></div>
+<div><img src="/assets/images/projects/colorization/ex1-err.png" alt="Colour error map: dark on the cliff, light on the sky"><span>Colour error</span></div>
+</div>
+<div class="viz-legend"><span>0</span><i></i><span>60+ (a*, b* units)</span></div>
+<figcaption>Mean colour error for this crop is about 11 units; the 95th percentile is about 25.</figcaption>
+</figure>
+<p>The most useful picture is of the colours themselves. Each plot below places every pixel at its (a*, b*) position. Top row: the original colours. Bottom row: what the model predicted.</p>
+<figure class="fig color-viz">
+<img src="/assets/images/projects/colorization/chroma-spread.png" alt="Two-dimensional histograms of a-star and b-star for three examples, ground truth on the top row, prediction on the bottom row. The predictions cluster tightly near the centre, the originals spread much further out.">
+<figcaption>The predictions sit close to the neutral centre while the originals spread outward. Average chroma, measured as distance from the centre, is about 11 against 21 in example 1, 14 against 23 in example 2 and 13 against 21 in example 3. These numbers come from the 150-pixel image crops in the project's figure, so treat them as approximate.</figcaption>
+</figure>
+<p>These plots show how muted the predictions are, but not why. It could be genuine colour ambiguity or a bug in my implementation, and I can’t tell which from the outputs alone.</p>
+<h2>What the model can and can’t do</h2>
+<p>The output examples are a fair place to end. The model can put blue into sky and green into grass, while missing a shirt’s actual colour. Local detail and scene context help make a guess; they do not turn that guess into a record of what was there.</p>
+<p>I reproduced an approach and got a small model working. I didn’t show that it generalises well, and I never compared it against a baseline. What I took away is to keep milestones apart when describing a project like this: fitting one image, producing one plausible example and handling unseen images reliably are three very different claims.</p>
+<h2>Code and references</h2>
+<ul>
+<li><a href="https://github.com/fadhilmch/image_colorization">My repository</a>: notebooks, architecture and output examples.</li>
+<li><a href="https://github.com/fadhilmch/image_colorization/blob/master/documents/DD2424_Project_Report.pdf">Project report</a>: experiment sizes, training setup, results and the unresolved TFRecords issue.</li>
+<li><a href="https://github.com/fadhilmch/image_colorization/blob/master/dd2424_colorization_v2.ipynb">The v2 notebook</a>: input normalization, pretrained representation and model implementation.</li>
+<li><a href="https://arxiv.org/abs/1712.03400">Deep Koalarization</a>, Baldassarre, González Morín and Rodés-Guirao (2017): the main architecture I reproduced.</li>
+<li><a href="https://iizuka.cs.tsukuba.ac.jp/projects/colorization/en/">Let there be Color!</a>, Iizuka, Simo-Serra and Ishikawa (2016): combining local image features with global context.</li>
+</ul>
+<style>
+.color-fig svg{min-width:0;max-width:520px}.color-equation{border:1px solid var(--line);border-radius:8px;padding:16px;font:14px/1.8 'Geist Mono',monospace;margin:24px 0;overflow-wrap:anywhere}.color-experiments{display:grid;gap:12px;margin:24px 0}.color-experiments>div{border-left:3px solid var(--fig-a);padding:12px 16px;background:var(--panel)}.color-experiments strong,.color-experiments span{display:block}.color-experiments span{font-size:14px;color:var(--muted)}.color-experiments p{font-size:14px;margin:6px 0 0}@media(max-width:640px){.color-fig svg .t{font-size:15px}.color-fig svg .m{font-size:14px}}
+.color-viz{overflow-x:visible}.color-viz img{display:block;width:100%;height:auto;border-radius:6px}.viz-q{margin:0 0 12px}.viz-buttons{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}.viz-buttons button{font:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);border-radius:999px;padding:4px 12px;background:var(--panel);color:var(--fg)}.viz-buttons button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}.viz-stage{max-width:340px;margin:0 auto}.viz-note{font-size:13px;color:var(--muted);text-align:center;margin:10px 0 0}.viz-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:520px;margin:0 auto}.viz-row4{grid-template-columns:repeat(4,minmax(0,1fr));max-width:680px}.viz-row3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:620px}.viz-row span,.viz-grid3 span{display:block;font:12px/1.4 'Geist Mono',monospace;color:var(--muted);margin-top:4px;text-align:center}.viz-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;max-width:520px;margin:0 auto}.viz-legend{display:flex;align-items:center;gap:8px;max-width:620px;margin:10px auto 0;font:12px 'Geist Mono',monospace;color:var(--muted)}.viz-legend i{flex:1;height:8px;border-radius:4px;background:linear-gradient(90deg,#fcfdbf,#fc8961,#b73779,#000004)}.viz-panel{display:flex;gap:16px;align-items:flex-start;min-height:120px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:14px 16px}.viz-panel #net-text{flex:1;font-size:14px}.viz-panel #net-text strong{display:block;margin-bottom:4px}.viz-panel #net-text code{font-size:12px}#net-images{display:flex;gap:8px;flex:none}#net-images img{width:96px}#net-svg{min-width:0;max-width:700px}#net-svg .blk{fill:var(--line);stroke:var(--muted);stroke-width:1}#net-svg .blk.on{fill:var(--fig-a);stroke:var(--fg)}#net-svg .top{fill:var(--ghost)}#net-svg .on-top{fill:var(--fig-a);opacity:.6}#net-svg text{fill:var(--fg);font-size:12px}.cmp-box{position:relative;max-width:340px;margin:0 auto;overflow:hidden;border-radius:6px}.cmp-top{position:absolute;inset:0;overflow:hidden;width:50%}.cmp-top img{width:auto;max-width:none;height:100%;aspect-ratio:1}.cmp-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:#fff;box-shadow:0 0 0 1px rgb(0 0 0 / 35%)}#cmp-range{display:block;width:100%;max-width:340px;margin:12px auto 0;accent-color:var(--fig-a)}@media(max-width:640px){.viz-row4{grid-template-columns:repeat(2,minmax(0,1fr))}.viz-panel{flex-direction:column}#net-svg text{font-size:21px}}
+</style>12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","$L14",null,{"className":"back-link","href":"/posts/","children":"← All posts"}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2021-05-15","children":"2021-05-15"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",5," min read"]}],["$","h1",null,{"children":"Image colorization: learning what grayscale leaves out"}],["$","p",null,{"className":"standfirst","children":"How local detail and scene context help a neural network predict colour, and why plausible is not the same as correct."}],["$","div",null,{"className":"tag-list","children":[["$","$L14","models",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Modelling"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$15"}}],"$L16","$L17",["$L18"]]}],["$L19","$L1a"],"$L1b"]}],"p":"$@1c","v":null,"s":"$7"}}]]
+10:[["children",{"s":{"n":"slug","t":"d","k":"colorizing-images-with-local-and-global-features","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@11","v":"$f","s":"$7"},"c":"$Q12"}]]
+d:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@e","v":"$f","s":"$7"},"c":"$Q10"}]]
+8:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/09tppxpuq4bp4.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$La",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Lb",null,{}]]]}],"p":"$@c","v":null,"s":"$7"},"c":"$Qd"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0-su8sk2o_bw1.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}],"p":"$@6","v":null,"s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1e",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L20",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$21",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Image colorization: learning what grayscale leaves out · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"How local detail and scene context help a neural network predict colour, and why plausible is not the same as correct."}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","3",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","4",{"property":"og:title","content":"Fadhil Mochammad"}],["$","meta","5",{"property":"og:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","6",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"Fadhil Mochammad"}],["$","meta","9",{"name":"twitter:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","10",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","link","11",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L22","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@23","v":null,"s":"$7"}},"a":"$@24","u":"$@25","b":"mgCzyUysVRAtCddZDIXJb"}
+26:I[79520,["$2","$9","$13"],""]
+27:I[97367,["$2"],"OutletBoundary"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+16:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$L14","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Data science"}]]]}]]}]
+17:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$L14",null,{"className":"prev","href":"/posts/building-a-streaming-pipeline/","children":[["$","small",null,{"children":"← older"}],"Learning data streaming by building one"]}],["$","$L14",null,{"className":"next","href":"/posts/probability-and-distributions/","children":[["$","small",null,{"children":"newer →"}],"Probability and distributions, one step at a time"]}]]}]
+18:["$","$L26","/assets/posts/widgets/ci-lab-explorer.js",{"src":"/assets/posts/widgets/ci-lab-explorer.js","strategy":"afterInteractive"}]
+19:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+1a:["$","script","script-0",{"src":"/_next/static/chunks/15pqqz5ux6dor.js","async":true}]
+1b:["$","$L27",null,{"children":["$","$21",null,{"name":"Next.MetadataOutlet","children":"$@28"}]}]
+7:300
+28:null
+25:true
+7:C
+24:0
+11:"$undefined"
+e:"$undefined"
+c:"$undefined"
+6:"$undefined"
+23:"$undefined"
+1c:"$undefined"

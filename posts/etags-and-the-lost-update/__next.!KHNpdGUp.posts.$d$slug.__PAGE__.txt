@@ -1,0 +1,143 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0-su8sk2o_bw1.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/09tppxpuq4bp4.js"
+a:I[36852,["$2","$9"],"SiteHeader"]
+b:I[8745,["$2","$9"],"SiteFooter"]
+13:"/_next/static/chunks/15pqqz5ux6dor.js"
+14:I[22016,["$2","$9","$13"],""]
+1c:"ViewportBoundary"
+1d:I[97367,["$2"],"$1c"]
+1e:"MetadataBoundary"
+1f:I[97367,["$2"],"$1e"]
+20:"$Sreact.suspense"
+21:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2o7-03j2wf8wc.css","style"]
+:HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
+:HL["/_next/static/chunks/3zbhe5craggao.css","style"]
+:HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
+:HL["/_next/static/chunks/0hrpoomp7moyf.css","style"]
+7:X
+f:X
+f:C
+12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","$L14",null,{"className":"back-link","href":"/posts/","children":"← All posts"}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-16","children":"2026-10-16"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",5," min read"]}],["$","h1",null,{"children":"ETags: how an API tells you the data changed under you"}],["$","p",null,{"className":"standfirst","children":"What an ETag is, how it skips a download when nothing changed, how it stops two people from overwriting each other's edits, and where the same trick shows up in ML systems."}],["$","div",null,{"className":"tag-list","children":[["$","$L14","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"System design"}],["$","$L14","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]}]]}],"$L15","$L16","$L17",[]]}],["$L18","$L19"],"$L1a"]}],"p":"$@1b","v":null,"s":"$7"}}]]
+10:[["children",{"s":{"n":"slug","t":"d","k":"etags-and-the-lost-update","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@11","v":"$f","s":"$7"},"c":"$Q12"}]]
+d:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@e","v":"$f","s":"$7"},"c":"$Q10"}]]
+8:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/09tppxpuq4bp4.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$La",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Lb",null,{}]]]}],"p":"$@c","v":null,"s":"$7"},"c":"$Qd"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0-su8sk2o_bw1.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}],"p":"$@6","v":null,"s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$20",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"ETags: how an API tells you the data changed under you · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"What an ETag is, how it skips a download when nothing changed, how it stops two people from overwriting each other's edits, and where the same trick shows up in ML systems."}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","3",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","4",{"property":"og:title","content":"Fadhil Mochammad"}],["$","meta","5",{"property":"og:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","6",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"Fadhil Mochammad"}],["$","meta","9",{"name":"twitter:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","10",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","link","11",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L21","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@22","v":null,"s":"$7"}},"a":"$@23","u":"$@24","b":"mgCzyUysVRAtCddZDIXJb"}
+26:I[97367,["$2"],"OutletBoundary"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+25:T2871,<p>A café has a small admin page for its online menu. Rina opens the iced latte and changes the price from 30 to 32. Budi opened the same item a minute earlier. He marks it as sold out and saves. His form sends the whole item back, including the price it showed him: 30.</p>
+<p>Both saves succeed. The latte is now sold out at 30, and Rina’s price change is gone. Nobody saw an error.</p>
+<p>This is called a <em>lost update</em>. HTTP has a fix for it built in, using a header most people only know from caching: the ETag. Rina and Budi are made up.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 240" role="img" aria-labelledby="et-lost-t et-lost-d">
+  <title id="et-lost-t">A lost update</title>
+  <desc id="et-lost-d">Rina and Budi both load version 1 of the iced latte: price 30, available. Rina saves price 32, creating version 2. Budi then saves sold out, but his form still holds price 30 from version 1. The server stores version 3, price 30 and sold out, and Rina's price change is lost without any error.</desc>
+  <text class="t" x="10" y="60">Rina</text>
+  <text class="t" x="10" y="128">server</text>
+  <text class="t" x="10" y="196">Budi</text>
+  <line class="grid" x1="100" x2="660" y1="56" y2="56"></line>
+  <line class="grid" x1="100" x2="660" y1="124" y2="124"></line>
+  <line class="grid" x1="100" x2="660" y1="192" y2="192"></line>
+  <line class="ln" x1="150" x2="150" y1="118" y2="64"></line><polygon class="arrow" points="146,69 154,69 150,62"></polygon>
+  <line class="ln" x1="150" x2="150" y1="130" y2="184"></line><polygon class="arrow" points="146,179 154,179 150,186"></polygon>
+  <circle cx="150" cy="124" r="4" fill="var(--muted)"></circle>
+  <text class="m" x="158" y="44">GET → v1</text>
+  <text class="m" x="158" y="214">GET → v1</text>
+  <text class="t" x="158" y="146">v1  30, available</text>
+  <line class="sa" x1="330" x2="330" y1="58" y2="112"></line><polygon class="fa" points="326,111 334,111 330,118"></polygon>
+  <circle class="fa" cx="330" cy="124" r="4"></circle>
+  <text class="ta" x="338" y="44">PUT 32, available</text>
+  <text class="t" x="338" y="146">v2  32, available</text>
+  <line class="sb" x1="510" x2="510" y1="190" y2="136"></line><polygon class="fb" points="506,137 514,137 510,130"></polygon>
+  <circle class="fb" cx="510" cy="124" r="4"></circle>
+  <text class="tb" x="518" y="214">PUT 30, sold out</text>
+  <text class="m" x="518" y="230">built on v1</text>
+  <text class="t" x="518" y="146">v3  30, sold out</text>
+  <text class="tb" x="518" y="162">Rina's 32 is gone</text>
+</svg>
+<figcaption>Both writes succeed. Budi's was built on a version that no longer existed, and nothing told him.</figcaption>
+</figure>
+<h2>What an ETag is</h2>
+<p>An ETag is a short string the server attaches to a response to name that version of the resource:</p>
+<pre><code class="hljs language-http">HTTP/1.1 200 OK
+ETag: "v2"
+
+{"name": "Iced latte", "price": 32, "available": true}
+</code></pre>
+<p>What goes inside the quotes is up to the server: a version number, a hash of the content, a revision ID. The only rule is that when the data changes, the ETag changes. The client doesn’t need to understand it. It keeps the value and sends it back later, in one of two headers:</p>
+<ul>
+<li><code>If-None-Match: "v2"</code> on a read: “only send it if it’s no longer v2.”</li>
+<li><code>If-Match: "v2"</code> on a write: “only save this if it’s still v2.”</li>
+</ul>
+<h2>Reads: don’t send me what I already have</h2>
+<p>The customer-facing menu app asks for the menu every time someone opens it. Most of the time the menu hasn’t changed. With an ETag, the app sends back the one it got last time:</p>
+<pre><code class="hljs language-http">GET /menu
+If-None-Match: "v2"
+</code></pre>
+<p>If the menu is still at <code>v2</code>, the server answers <code>304 Not Modified</code> with no body, and the app uses its cached copy. If it changed, the app gets a normal <code>200</code> with the new menu and a new ETag. You still make the request, but most of the time almost nothing comes back.</p>
+<h2>Writes: don’t overwrite what I haven’t seen</h2>
+<p>Back to Budi. His page loaded the latte at <code>v1</code>, so his save says so:</p>
+<pre><code class="hljs language-http">PUT /menu/iced-latte
+If-Match: "v1"
+
+{"name": "Iced latte", "price": 30, "available": false}
+</code></pre>
+<p>The server is at <code>v2</code> now, because Rina saved first. The ETags don’t match, so it refuses:</p>
+<pre><code class="hljs language-http">HTTP/1.1 412 Precondition Failed
+</code></pre>
+<p>Nothing is written. Budi’s page can tell him someone else changed the item, reload it, show him the new price and let him mark it sold out again. This time his save is built on <code>v2</code>.</p>
+<p>This pattern is called <em>optimistic concurrency control</em>. Nobody locks the item while editing. You assume conflicts are rare and check at the moment you write. Locking an edit page doesn’t work well on the web anyway: people open a tab and go for lunch.</p>
+<h2>The check and the write must be one step</h2>
+<p>The obvious server code still has a race:</p>
+<pre><code class="hljs language-python">item = db.get(item_id)
+<span class="hljs-keyword">if</span> request.headers[<span class="hljs-string">"If-Match"</span>] != item.etag:
+    <span class="hljs-keyword">return</span> <span class="hljs-number">412</span>
+db.save(item_id, new_data)  <span class="hljs-comment"># another save can sneak in between get and save</span>
+</code></pre>
+<p>Two requests with the same ETag can both pass the check before either one saves. The fix is to let the database compare and write in one statement:</p>
+<pre><code class="hljs language-sql"><span class="hljs-keyword">UPDATE</span> menu_items
+<span class="hljs-keyword">SET</span> price <span class="hljs-operator">=</span> <span class="hljs-number">30</span>, available <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>, version <span class="hljs-operator">=</span> version <span class="hljs-operator">+</span> <span class="hljs-number">1</span>
+<span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-string">'iced-latte'</span> <span class="hljs-keyword">AND</span> version <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;
+</code></pre>
+<p>If it updates zero rows, the version moved, so you return 412. If it updates one row, return 200 and the new ETag, <code>"v3"</code>, so the client’s next save doesn’t fail against its own change.</p>
+<h2>Where this shows up in ML systems</h2>
+<p>ML systems move around large files and small pointers to them. ETags help with both.</p>
+<p><strong>Caching model weights.</strong> Model files can be gigabytes, and you don’t want to download them again every time a job starts. The Hugging Face Hub client checks the file’s ETag before downloading. If it matches the copy already in the local cache, it skips the download. It’s the same <code>304</code> idea applied to model weights. Object stores like S3 and Google Cloud Storage return ETags on objects too, so a model server that polls for a new model can compare ETags and only reload when the file has changed.</p>
+<p><strong>Promoting a model.</strong> Many setups have a small pointer that serving reads to find the current model, for example a <code>production.json</code> file in a bucket that says <code>{"model": "v41"}</code>. Now two training pipelines finish around the same time. Pipeline A trained on newer data and writes <code>v42</code>. Pipeline B started earlier, is slower and writes <code>v41</code> a few seconds later. B wins, and production quietly goes back to the older model. That’s the menu problem again.</p>
+<p>Conditional writes fix it the same way. Each pipeline reads the pointer, decides whether its model is better, and writes back only if the pointer hasn’t moved since it read it. S3 supports <code>If-Match</code> on writes, and Google Cloud Storage has the same check through generation numbers (<code>ifGenerationMatch</code>). If the write fails, the pipeline reads the pointer again and compares itself with the model that’s there now, instead of blindly replacing it.</p>
+<p>The same applies to anything several jobs update: a shared eval leaderboard, a “best checkpoint so far” file, or a feature definition two teams edit.</p>
+<h2>A few things to watch</h2>
+<ul>
+<li><strong>Make <code>If-Match</code> required.</strong> A client that leaves it out still gets last-write-wins. A server can reject unconditional writes with <code>428 Precondition Required</code>.</li>
+<li><strong>Don’t retry a 412 automatically.</strong> Sending the same data again with the new ETag just overwrites the other change with extra steps. A 412 means someone, a person or some code, has to look at the new version first.</li>
+<li><strong>Watch for weak ETags.</strong> An ETag like <code>W/"v2"</code> is <em>weak</em>, and <code>If-Match</code> never matches a weak one. Some servers turn strong ETags into weak ones, for example nginx when it compresses a response. If every save fails with 412, check for the <code>W/</code> first.</li>
+<li><strong>Some data doesn’t need it.</strong> A view counter should be <code>SET views = views + 1</code> in the database. Two increments can’t conflict. Data with a single writer doesn’t need it either.</li>
+</ul>
+<p>For anything that two people or two jobs can edit, a version column, one header and a 412 handler are enough to stop lost updates.</p>
+<h2>References</h2>
+<ul>
+<li>RFC 9110, <em>HTTP Semantics</em>: <a href="https://www.rfc-editor.org/rfc/rfc9110#section-8.8.3">ETag</a>, <a href="https://www.rfc-editor.org/rfc/rfc9110#section-13">conditional requests</a>, <a href="https://www.rfc-editor.org/rfc/rfc9110#section-15.5.13">412 Precondition Failed</a>.</li>
+<li>MDN, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests">conditional requests</a>.</li>
+<li>Amazon S3, <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/conditional-writes.html">conditional writes</a>. Google Cloud Storage, <a href="https://cloud.google.com/storage/docs/request-preconditions">request preconditions</a>.</li>
+<li>Hugging Face, <a href="https://huggingface.co/docs/huggingface_hub/guides/manage-cache">cache management</a>.</li>
+</ul>15:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$25"}}]
+16:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$L14","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$L14","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"Systems"}]]]}]]}]
+17:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$L14",null,{"className":"prev","href":"/posts/tuning-retrieval-for-multilingual-rag/","children":[["$","small",null,{"children":"← older"}],"What I learned tuning retrieval for a multilingual RAG chatbot"]}],"$undefined"]}]
+18:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/15pqqz5ux6dor.js","async":true}]
+1a:["$","$L26",null,{"children":["$","$20",null,{"name":"Next.MetadataOutlet","children":"$@27"}]}]
+7:300
+27:null
+24:true
+7:C
+23:0
+11:"$undefined"
+e:"$undefined"
+c:"$undefined"
+6:"$undefined"
+22:"$undefined"
+1b:"$undefined"
