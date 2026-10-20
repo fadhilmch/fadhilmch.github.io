@@ -17,6 +17,8 @@ export function typeLine(line, setText, { reduce = false, delay = 70, schedule =
 export function initSubtitle(p) {
   const text = p.textContent.trim();
   p.setAttribute('aria-label', text);
+  // Reveal the line (CSS hides it only until the module arms it; see html.aw-js in after-work-grid.css).
+  p.classList.add('is-typed');
   const out = document.createElement('span');
   out.setAttribute('aria-hidden', 'true');
   out.className = 'aw-typed';
