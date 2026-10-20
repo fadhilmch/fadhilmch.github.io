@@ -14,6 +14,7 @@ roastery: Semekar
 photo: /assets/recipes/aeropress-halu-banana.webp
 photo_embed: aeropress-halu-banana
 photo_alt: Bag of Semekar Coffee Halu Honey beans
+origin: Indonesia
 tags: [aeropress, indonesia, filter]
 steps:
   - "~0:00 Setup: invert the AeroPress, rinse the filter cap with hot water and preheat the cup. Grind 15g medium-coarse, slightly coarser than your usual AeroPress setting."

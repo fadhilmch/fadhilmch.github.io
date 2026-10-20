@@ -114,6 +114,16 @@ links and overflow. Local browser screenshots use a Liquid-rendered About
 harness; they are not a deployed Jekyll build. Jekyll/html-proofer still need
 the Ruby build environment before merge.
 
+## Recipe filters
+
+The After Work category pages (coffee, cooking) share one grouped filter: a Filter button that opens a popover on desktop and a bottom sheet on phones, with the selection shown as compact chips in a single scrolling row.
+
+- **Rules**: options within one group are OR, groups combine with AND. The logic lives in `assets/js/recipe-filter-core.js` (pure, tested in `tests/recipe-filter-core.test.mjs`); `assets/js/after-work-filter.js` is only the UI.
+- **Groups** are declared in `_data/recipe_filters.yml`. Coffee: Origin (`origin`), Method (`method`), Process (`process`). Food: one group, Category (`tags`). Options are built from the values recipes actually carry, so nothing is listed that has no recipe.
+- **Food tags are categories.** Use one broad category per recipe (for example `Bread`; sourdough is part of Bread). Do not add descriptive tags.
+- **Adding a group**: add it to `_data/recipe_filters.yml`, add the front matter field in `admin/content-collections.mjs`, then run `node scripts/sync-cms-config.mjs`.
+- Markup is `_includes/after-work/category.html`, styles are `assets/css/after-work-filter.css`.
+
 ## After Work grid gateway
 
 After Work uses an illustrated sticker gateway, then Coffee/Cooking category lists

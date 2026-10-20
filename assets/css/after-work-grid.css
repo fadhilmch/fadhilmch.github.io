@@ -103,12 +103,6 @@ img.aw-deco { filter:drop-shadow(0 1px 1px #0005) drop-shadow(0 5px 7px #0003); 
 @media(prefers-reduced-motion:reduce){ .aw-head p.is-typing .aw-typed::after { animation:none; } }
 
 /* tags, filter and timer (preview) */
-.aw-filter { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0 0 20px; }
-.aw-filter[hidden] { display:none; }
-.aw-chip { min-height:36px; padding:0 14px; border:1px solid var(--aw-rule); border-radius:20px; background:transparent; color:inherit; font:inherit; font-size:13px; cursor:pointer; transition:background .15s, transform .15s, color .15s; }
-.aw-chip:hover { transform:translateY(-1px); }
-.aw-chip[aria-pressed="true"] { background:#e8eddb; color:#252b23; font-weight:600; }
-.aw-filter__count { font-size:12px; color:var(--aw-muted); margin-left:4px; }
 .aw-card { transition:opacity .18s, transform .18s; animation:aw-card-in .45s cubic-bezier(.2,.8,.3,1) both; animation-delay:calc(var(--i,0)*60ms); }
 .aw-card[hidden] { display:none; }
 .aw-card.is-out { opacity:0; transform:scale(.97); }

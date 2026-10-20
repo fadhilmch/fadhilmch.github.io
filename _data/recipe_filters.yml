@@ -1,0 +1,9 @@
+# Filter groups for the After Work recipe lists, keyed by collection (page.section).
+# `field` is the recipe front matter key. It can hold one value or a list.
+# Recipes that leave a field empty simply never match that group.
+coffee:
+  - { id: origin, label: Origin, field: origin }
+  - { id: method, label: Method, field: method }
+  - { id: process, label: Process, field: process }
+food:
+  - { id: category, label: Category, field: tags }
