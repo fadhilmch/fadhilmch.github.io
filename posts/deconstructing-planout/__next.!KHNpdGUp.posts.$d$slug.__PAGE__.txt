@@ -1,0 +1,289 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0-su8sk2o_bw1.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/09tppxpuq4bp4.js"
+a:I[36852,["$2","$9"],"SiteHeader"]
+b:I[8745,["$2","$9"],"SiteFooter"]
+13:"/_next/static/chunks/15pqqz5ux6dor.js"
+14:I[22016,["$2","$9","$13"],""]
+1e:"ViewportBoundary"
+1f:I[97367,["$2"],"$1e"]
+20:"MetadataBoundary"
+21:I[97367,["$2"],"$20"]
+22:"$Sreact.suspense"
+23:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2o7-03j2wf8wc.css","style"]
+:HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
+:HL["/_next/static/chunks/3zbhe5craggao.css","style"]
+:HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
+:HL["/_next/static/chunks/0hrpoomp7moyf.css","style"]
+7:X
+f:X
+f:C
+12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","$L14",null,{"className":"back-link","href":"/posts/","children":"← All posts"}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-09-30","children":"2026-09-30"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",11," min read"]}],["$","h1",null,{"children":"Deconstructing PlanOut: a coin toss you can repeat"}],["$","p",null,{"className":"standfirst","children":"Follow one shopper from a button experiment to the actual SHA-1 bytes, then look at salts, namespaces and the gap between assignment and exposure."}],["$","div",null,{"className":"tag-list","children":[["$","$L14","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Experimentation"}],["$","$L14","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"System design"}]]}]]}],"$L15","$L16","$L17",["$L18","$L19"]]}],["$L1a","$L1b"],"$L1c"]}],"p":"$@1d","v":null,"s":"$7"}}]]
+10:[["children",{"s":{"n":"slug","t":"d","k":"deconstructing-planout","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@11","v":"$f","s":"$7"},"c":"$Q12"}]]
+d:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@e","v":"$f","s":"$7"},"c":"$Q10"}]]
+8:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/09tppxpuq4bp4.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$La",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Lb",null,{}]]]}],"p":"$@c","v":null,"s":"$7"},"c":"$Qd"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0-su8sk2o_bw1.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}],"p":"$@6","v":null,"s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1f",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L21",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$22",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Deconstructing PlanOut: a coin toss you can repeat · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Follow one shopper from a button experiment to the actual SHA-1 bytes, then look at salts, namespaces and the gap between assignment and exposure."}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","3",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","4",{"property":"og:title","content":"Fadhil Mochammad"}],["$","meta","5",{"property":"og:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","6",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"Fadhil Mochammad"}],["$","meta","9",{"name":"twitter:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","10",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","link","11",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L23","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@24","v":null,"s":"$7"}},"a":"$@25","u":"$@26","b":"mgCzyUysVRAtCddZDIXJb"}
+28:I[79520,["$2","$9","$13"],""]
+29:I[97367,["$2"],"OutletBoundary"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+27:T8017,<p>Andi opens a checkout page. We want to test two buttons: A is blue, B is pink. He gets blue today. Tomorrow, he opens the page on another server. He should still get blue.</p>
+<p>That sounds like a small requirement. It rules out the most obvious implementation: toss a fresh coin on every request. You could save every user’s choice in a database, but then every server needs access to that record. PlanOut offers another way: make the coin toss repeatable from the inputs.</p>
+<p>This post takes that idea apart with one shopper, one button and the actual numbers from PlanOut’s archived Python implementation. The user IDs are made up.</p>
+<style>
+.prose .fig.planout-fig { max-width: 540px; }
+.fig.planout-fig svg { min-width: 340px; max-width: 540px; }
+.planout-fig .t { font-size: 14px; }
+.planout-fig .m, .planout-fig .ta, .planout-fig .tb { font-size: 12px; }
+.planout-fig .h { font-size: 12px; }
+</style>
+<h2>What PlanOut was trying to separate</h2>
+<p>The product owns the checkout page. The experiment owns the rule for choosing the button. Those should not become one tangled piece of code.</p>
+<p>PlanOut was developed at Facebook as a language and framework for defining online experiments. Its 2014 paper describes how an experiment maps a unit, such as a user ID, to parameter values. A parameter might be a button colour, a piece of text, or a discount. Product code asks for that value and uses it.</p>
+<p>So the experiment’s whole job is to say “blue”. Drawing the button, counting purchases and working out whether blue is better all happen somewhere else.</p>
+<figure class="fig planout-fig">
+<svg viewBox="0 0 420 324" role="img" aria-labelledby="po-flow-t po-flow-d">
+<title id="po-flow-t">Flow</title>
+<desc id="po-flow-d">Andi enters the checkout. The experiment chooses blue. The product renders the button. The outcome pipeline counts purchases separately.</desc>
+<rect class="box" x="12" y="12" width="396" height="60" rx="6"></rect><text class="t" x="24" y="36">Andi opens checkout</text><text class="m" x="24" y="55">unit: user-42</text><path class="ln" d="M210,72 v20"></path><rect class="box" x="12" y="92" width="396" height="60" rx="6"></rect><text class="t" x="24" y="116">Experiment definition</text><text class="m" x="24" y="135">choose button = blue</text><path class="ln" d="M210,152 v20"></path><rect class="box" x="12" y="172" width="396" height="60" rx="6"></rect><text class="t" x="24" y="196">Product code</text><text class="m" x="24" y="215">use blue when rendering checkout</text><path class="ln dash" d="M210,232 v20"></path><rect class="box" x="12" y="252" width="396" height="60" rx="6"></rect><text class="t" x="24" y="276">Outcome pipeline</text><text class="m" x="24" y="295">record purchases; analyse later</text>
+</svg>
+<figcaption>PlanOut returns parameter values. Rendering and measuring the result live outside that decision.</figcaption>
+</figure>
+<p>Here is a small definition using PlanOut’s Python API:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> planout.experiment <span class="hljs-keyword">import</span> SimpleExperiment
+<span class="hljs-keyword">from</span> planout.ops.random <span class="hljs-keyword">import</span> UniformChoice
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">CheckoutButton</span>(<span class="hljs-title class_ inherited__">SimpleExperiment</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">setup</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-variable language_">self</span>.salt = <span class="hljs-string">"checkout-v1"</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">assign</span>(<span class="hljs-params">self, params, userid</span>):
+        params.button = UniformChoice(
+            choices=[<span class="hljs-string">"blue"</span>, <span class="hljs-string">"pink"</span>], unit=userid
+        )
+
+experiment = CheckoutButton(userid=<span class="hljs-string">"user-42"</span>)
+colour = experiment.get(<span class="hljs-string">"button"</span>)  <span class="hljs-comment"># "blue"</span>
+</code></pre>
+<p>Andi’s invented ID is <code>user-42</code>. It is the <em>unit</em>: the thing we randomise. If we used a session ID instead, we’d be randomising sessions, and Andi could get a different button on his next visit. Picking the unit is a design decision, and I wouldn’t leave it to whatever the SDK defaults to.</p>
+<h2>A coin toss without a coin</h2>
+<p>A hash function turns an input string into a fixed-length output. The same input always gives the same output. Small changes to the input usually produce very different outputs.</p>
+<p>PlanOut uses SHA-1 as a mixing function for assignment. None of this is about security or hiding which group someone is in. SHA-1 is just a convenient way to get values that repeat exactly and spread evenly.</p>
+<p>For this example, PlanOut joins three pieces with dots:</p>
+<ol>
+<li>The experiment salt: <code>checkout-v1</code>.</li>
+<li>The parameter salt: <code>button</code>, supplied from the assigned variable name.</li>
+<li>The unit: <code>user-42</code>.</li>
+</ol>
+<p>The complete key is <code>checkout-v1.button.user-42</code>. The default separator is a dot; explicit salt overrides and multi-part units have their own paths in the source.</p>
+<figure class="fig planout-fig">
+<svg viewBox="0 0 420 324" role="img" aria-labelledby="po-hash-t po-hash-d">
+<title id="po-hash-t">Hash</title>
+<desc id="po-hash-d">The exact key checkout-v1.button.user-42 is hashed. Its first 15 hex digits become integer 235347851596851754. Remainder modulo two is zero, selecting blue.</desc>
+<g><rect class="box" x="12" y="12" width="396" height="60" rx="6"></rect><text class="t" x="24" y="36">checkout-v1.button.user-42</text><text class="m" x="24" y="55">salt + parameter + unit</text></g><g><path class="ln" d="M210,72 v20"></path></g><g><rect class="box" x="12" y="92" width="396" height="60" rx="6"></rect><text class="t" x="24" y="116">SHA-1 → keep first 15 hex digits</text><text class="m" x="24" y="135">3441f9fc514ea2a</text></g><g><path class="ln" d="M210,152 v20"></path></g><g><rect class="box" x="12" y="172" width="396" height="60" rx="6"></rect><text class="t" x="24" y="196">Convert hex to integer</text><text class="m" x="24" y="215">235347851596851754</text></g><g><path class="ln" d="M210,232 v20"></path></g><g><rect class="box" x="12" y="252" width="396" height="60" rx="6"></rect><text class="t" x="24" y="276">h % 2 = 0 → choices[0] → blue</text><text class="m" x="24" y="295">same key, same answer</text></g>
+</svg>
+<figcaption>The computed path for Andi. Nothing is freshly drawn on the second request.</figcaption>
+</figure>
+<style>
+.po-playground { margin: 32px 0; padding: 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.po-playground[hidden], .po-playground [hidden] { display: none; }
+.prose .po-playground h3 { margin: 0 0 8px; }
+.prose .po-playground p { margin: 0 0 16px; font-size: 14px; color: var(--muted); }
+.po-playground label { display: block; margin-bottom: 6px; font-size: 14px; }
+.po-playground input { box-sizing: border-box; width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--fg); font: 14px 'Geist Mono', monospace; }
+.po-playground input:focus-visible { outline: 2px solid var(--l0); outline-offset: 3px; }
+.prose .po-playground .po-status { margin: 12px 0 0; }
+.po-playground dl { margin: 20px 0 0; }
+.po-playground .po-row { border-top: 1px solid var(--line); padding: 10px 0; }
+.po-playground dt { color: var(--muted); font-size: 12px; }
+.po-playground dd { margin: 4px 0 0; overflow-wrap: anywhere; font: 13px/1.6 'Geist Mono', monospace; }
+.po-playground dd code { padding: 0; border: 0; background: none; font: inherit; }
+.po-playground .po-choice { display: inline-block; margin-top: 8px; padding: 4px 10px; border: 1px solid currentColor; border-radius: 4px; font-weight: 600; }
+.po-playground .po-choice[data-choice="blue"] { color: var(--l0); }
+.po-playground .po-choice[data-choice="pink"] { color: var(--l3); }
+</style>
+<section class="po-playground" id="po-playground" aria-labelledby="po-playground-title" hidden>
+<h3 id="po-playground-title">Try the coin toss</h3>
+<p>Change the user ID and follow the actual calculation. The salt stays <code>checkout-v1</code>, the parameter stays <code>button</code>. Nothing is sent to a server.</p>
+<label for="po-user-id">User ID</label>
+<input id="po-user-id" type="text" value="user-42" placeholder="e.g. user-42" autocomplete="off" spellcheck="false" aria-describedby="po-status">
+<p class="po-status" id="po-status" role="status" aria-live="polite" aria-atomic="true">Computing the assignment...</p>
+<dl id="po-results" hidden>
+<div class="po-row"><dt>1. Full key: salt.parameter.unit</dt><dd><code id="po-key"></code></dd></div>
+<div class="po-row"><dt>2. SHA-1 of the UTF-8 key</dt><dd><code id="po-hash"></code></dd></div>
+<div class="po-row"><dt>3. Keep the first 15 hex digits (60 bits)</dt><dd><code id="po-prefix"></code></dd></div>
+<div class="po-row"><dt>4. Convert hex to an integer</dt><dd><code id="po-integer"></code></dd></div>
+<div class="po-row"><dt>5. Remainder selects a choice</dt><dd><code id="po-modulo"></code><br><span class="po-choice" id="po-choice"></span></dd></div>
+</dl>
+</section>
+<noscript><p>The example above works without JavaScript. Enable JavaScript to try other user IDs.</p></noscript>
+<p>SHA-1 produces 40 hexadecimal digits. The Python implementation keeps the first 15. Each hex digit holds four bits, so that prefix gives a 60-bit integer. For Andi:</p>
+<pre><code class="hljs language-text">key:          checkout-v1.button.user-42
+SHA-1:        3441f9fc514ea2ac8f04b1c44a64d90aa350f4fb
+first 15:     3441f9fc514ea2a
+integer h:    235347851596851754
+h % 2:        0
+choices[0]:   blue
+</code></pre>
+<p><code>%</code> means remainder. Dividing an even number by 2 leaves remainder 0; an odd number leaves 1. With two choices, that is the whole <code>UniformChoice</code> decision: <code>choices[h % 2]</code>.</p>
+<p>A thousand servers can repeat it. None needs a stored row saying “Andi got blue”, as long as they agree on the input and implementation.</p>
+<h2>The bucket picture, with one important distinction</h2>
+<p>It is tempting to explain every assignment as “put the hash on a line from zero to one, then split the line in half”. That is a useful picture for weighted choices. It is not the exact code path for <code>UniformChoice</code>.</p>
+<p>The archived Python implementation has two different operations:</p>
+<ul>
+<li><code>UniformChoice</code>: use the integer’s remainder to select a list position.</li>
+<li><code>WeightedChoice</code>: divide the integer by a scale, then compare it with cumulative weights.</li>
+</ul>
+<p>For the second operation, the scale is <code>2**60 - 1</code>, or <code>1,152,921,504,606,846,975</code>. Andi’s normalized value is about <code>0.2041317216</code>. With weights <code>[0.5, 0.5]</code>, it lands in blue’s half of the line.</p>
+<figure class="fig planout-fig">
+<svg viewBox="0 0 420 296" role="img" aria-labelledby="po-bucket-t po-bucket-d">
+<title id="po-bucket-t">Bucket</title>
+<desc id="po-bucket-d">UniformChoice selects blue using remainder zero. WeightedChoice instead places normalized value 0.2041 in the first half of a line from zero to one.</desc>
+<text class="h" x="12" y="22">UNIFORMCHOICE: LIST INDEX</text><rect class="box" x="12" y="38" width="190" height="60" rx="6"></rect><text class="t" x="24" y="62">0 → blue</text><text class="m" x="24" y="81">even hash</text><rect class="box" x="218" y="38" width="190" height="60" rx="6"></rect><text class="t" x="230" y="62">1 → pink</text><text class="m" x="230" y="81">odd hash</text><circle class="fa" cx="107" cy="118" r="6"></circle><text class="ta" x="107" y="145" text-anchor="middle">Andi: remainder 0</text><text class="h" x="12" y="188">WEIGHTEDCHOICE: CUMULATIVE WEIGHTS</text><rect class="fa" x="12" y="205" width="198" height="32" opacity=".5"></rect><rect class="fb" x="210" y="205" width="198" height="32" opacity=".5"></rect><text class="t" x="111" y="226" text-anchor="middle">blue</text><text class="t" x="309" y="226" text-anchor="middle">pink</text><text class="m" x="12" y="258">0</text><text class="m" x="210" y="258" text-anchor="middle">0.5</text><text class="m" x="408" y="258" text-anchor="end">1</text><path class="sa" d="M93,200 v44"></path><text class="ta" x="93" y="280" text-anchor="middle">Andi: 0.2041</text>
+</svg>
+<figcaption>Two different operators. The example uses the same blue/pink order and equal weights, but matching probabilities do not guarantee matching users.</figcaption>
+</figure>
+<p>Both operations happen to give Andi blue, but they won’t agree for every user. Swap one for the other and some users change groups, even though both are a 50/50 split.</p>
+<p>A small source-level detail matters if you want compatibility: PlanOut converts that scale to a floating-point value, and uses <code>&#x3C;=</code> at the weighted boundaries. The mathematical normalization includes 1 at the maximum hash. Replacing the denominator with <code>2**60</code>, changing the comparison, or switching to another port without checking its hash behaviour can quietly move users.</p>
+<h2>Salts: same label, same shuffle</h2>
+<p>Think of the salt as the label on a shuffled deck. With the same deck label and the same user ID, draw the same card again. Change the label and you get a new shuffle.</p>
+<p>Here are computed results for 10,000 invented users, <code>user-0</code> through <code>user-9999</code>, using the same key construction and <code>UniformChoice</code> modulo rule:</p>
+<p>| Change | Users whose button changed |
+| — | —: |
+| Repeat <code>checkout-v1</code>, same choices | 0 / 10,000 |
+| Change salt to <code>checkout-v2</code> | 4,984 / 10,000 |
+| Keep salt, reverse <code>[blue, pink]</code> | 10,000 / 10,000 |</p>
+<p>The original split was 5,004 blue and 4,996 pink. Those exact counts belong to this made-up population. Another set of IDs would land slightly differently.</p>
+<figure class="fig planout-fig">
+<svg viewBox="0 0 420 306" role="img" aria-labelledby="po-salt-t po-salt-d">
+<title id="po-salt-t">Salt</title>
+<desc id="po-salt-d">Among ten thousand users, repeating the definition changes zero assignments, changing the experiment salt changes 4984, and reversing the choices changes all ten thousand.</desc>
+<text class="h" x="12" y="20">USERS CHANGED / 10,000</text><text class="t" x="12" y="52">Same salt, same choices</text><rect class="box" x="12" y="64" width="396" height="20" rx="4"></rect><text class="m" x="408" y="104" text-anchor="end">0 / 10,000</text><text class="t" x="12" y="142">New salt</text><rect class="box" x="12" y="154" width="396" height="20" rx="4"></rect><rect class="fa" x="12" y="154" width="197.3664" height="20" rx="4"></rect><text class="m" x="408" y="194" text-anchor="end">4,984 / 10,000</text><text class="t" x="12" y="232">Reversed choices</text><rect class="box" x="12" y="244" width="396" height="20" rx="4"></rect><rect class="fb" x="12" y="244" width="396.0" height="20" rx="4"></rect><text class="m" x="408" y="284" text-anchor="end">10,000 / 10,000</text>
+</svg>
+<figcaption>Computed on invented user-0 through user-9999. Bars share the same scale; the input change, not new coin tosses, moves users.</figcaption>
+</figure>
+<style>
+.po-lab { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.po-lab[hidden] { display:none; }
+.prose .po-lab h3 { margin:0 0 8px; }
+.prose .po-lab p { margin:0 0 12px; font-size:14px; color:var(--muted); }
+.po-lab button { padding:10px 14px; border:1px solid var(--line); border-radius:4px; background:var(--bg); color:var(--fg); font:inherit; cursor:pointer; min-height:44px; }
+.po-lab button:focus-visible { outline:2px solid var(--l0); outline-offset:3px; }
+.po-lab button:disabled { opacity:.6; cursor:wait; }
+.po-lab code { overflow-wrap:anywhere; }
+.po-lab .po-tally { display:flex; justify-content:space-between; gap:12px; margin:16px 0 8px; font:13px/1.5 'Geist Mono',monospace; }
+.po-blue { color:var(--l0); }
+.po-pink { color:var(--l3); }
+.po-dot-field { position:relative; height:204px; border:1px solid var(--line); border-radius:4px; background:linear-gradient(to right,transparent calc(50% - 1px),var(--line) 50%,transparent calc(50% + 1px)); overflow:hidden; }
+.po-dot { position:absolute; left:0; top:0; width:6px; height:6px; border-radius:50%; transition:transform .55s ease,background-color .55s ease; }
+.po-dot[data-choice="0"] { background:var(--l0); }
+.po-dot[data-choice="1"] { background:var(--l3); }
+.po-split-track { height:24px; display:flex; border:1px solid var(--line); border-radius:4px; overflow:hidden; background:var(--bg); }
+.po-split-track span { display:block; }
+.po-split-track .po-blue-fill { background:var(--l0); }
+.po-split-track .po-pink-fill { background:var(--l3); }
+.po-lab progress { width:100%; height:8px; accent-color:var(--l0); }
+.prose .po-lab .po-lab-status { margin-top:12px; margin-bottom:0; }
+@media(prefers-reduced-motion:reduce) { .po-dot { transition:none; } }
+@media(max-width:420px) { .po-lab { padding:14px; } }
+</style>
+<section class="po-lab" id="po-salt-shifter" aria-labelledby="po-salt-title" hidden>
+<h3 id="po-salt-title">Change the shuffle, not the users</h3>
+<p>These are the same 200 IDs, <code>user-0</code> through <code>user-199</code>. Each dot uses SHA-1 and the first 15 hex digits, then <code>h % 2</code>. Change only the salt and see which users cross over.</p>
+<p>Salt: <code id="po-current-salt">checkout-v1</code> · parameter: <code>button</code></p>
+<button type="button" id="po-change-salt">Change salt</button>
+<div class="po-tally"><span class="po-blue" id="po-salt-blue">Blue: 0</span><span class="po-pink" id="po-salt-pink">Pink: 0</span></div>
+<div class="po-dot-field" id="po-dot-field" aria-hidden="true"></div>
+<p class="po-lab-status" id="po-salt-status" role="status" aria-live="polite">Computing 200 assignments...</p>
+</section>
+<noscript><p>The static salt comparison above shows the same principle. Enable JavaScript to reshuffle 200 users yourself.</p></noscript>
+<p>For Andi, the new salt produces prefix <code>5c87192d9dc8829</code>, integer <code>416707841066043433</code>, and remainder 1. He moves to pink. Reversing the original choices also gives him pink, but for a different reason: his original index is still 0; index 0 now means pink.</p>
+<p>That last row is the trap. The hash didn’t change at all, but what its output points to did, and every single user moved.</p>
+<p>A new experiment can use a new salt deliberately. A live experiment should not casually rename its salt, change ID formatting, reorder choices, edit weights, or switch hashing algorithms. Any of those can change the experience for people already enrolled. Hashing only repeats the same answer while the definition stays the same. If assignments have to survive a definition change, you need to store them.</p>
+<p>The parameter name acts as a salt too. <code>button</code> and <code>hint</code> get different hash keys for the same user, unless you intentionally share an explicit salt. This keeps two parameters from being perfectly tied to each other by accident.</p>
+<h2>Namespaces: pick the experiment before the button</h2>
+<p>Now suppose two teams both want to test the checkout page. One tests the button; the other tests the layout. We do not want Andi in both at the same time.</p>
+<p>A namespace is a shared allocation space. In the Python implementation, a user hashes into an integer segment. Experiments reserve disjoint sets of segment IDs. The user’s segment decides which experiment, if any, runs. Only then does that experiment choose its parameter values.</p>
+<figure class="fig planout-fig">
+<svg viewBox="0 0 420 326" role="img" aria-labelledby="po-namespace-t po-namespace-d">
+<title id="po-namespace-t">Namespace</title>
+<desc id="po-namespace-d">Illustrative noncontiguous slots: button experiment owns 0, 3, 7; layout owns 1, 5. Other slots give defaults. A user first routes to one experiment, then gets its parameters.</desc>
+<text class="h" x="12" y="20">ONE NAMESPACE · 10 ILLUSTRATIVE SLOTS</text><rect class="fa" x="12" y="36" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="48" y="64" text-anchor="middle">0</text><rect class="fb" x="92" y="36" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="128" y="64" text-anchor="middle">1</text><rect class="box" x="172" y="36" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="208" y="64" text-anchor="middle">2</text><rect class="fa" x="252" y="36" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="288" y="64" text-anchor="middle">3</text><rect class="box" x="332" y="36" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="368" y="64" text-anchor="middle">4</text><rect class="fb" x="12" y="100" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="48" y="128" text-anchor="middle">5</text><rect class="box" x="92" y="100" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="128" y="128" text-anchor="middle">6</text><rect class="fa" x="172" y="100" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="208" y="128" text-anchor="middle">7</text><rect class="box" x="252" y="100" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="288" y="128" text-anchor="middle">8</text><rect class="box" x="332" y="100" width="72" height="48" rx="5" opacity=".65"></rect><text class="t" x="368" y="128" text-anchor="middle">9</text><text class="ta" x="12" y="186">Button: slots 0, 3, 7</text><text class="tb" x="12" y="208">Layout: slots 1, 5</text><text class="m" x="12" y="230">Other slots: default experience</text><rect class="box" x="12" y="250" width="396" height="64" rx="6"></rect><text class="t" x="24" y="274">User → segment → one experiment</text><text class="m" x="24" y="293">then: experiment → button value</text>
+</svg>
+<figcaption>Two decisions: namespace routing, then treatment assignment. Separate namespaces can still overlap in people.</figcaption>
+</figure>
+<p>The numbered tiles above are only a sketch. I didn’t compute Andi’s real segment. The real <code>add_experiment()</code> samples from the available segments, so an experiment’s allocation need not be a neat contiguous range.</p>
+<p>Mutual exclusion applies inside that namespace: a segment cannot belong to both checkout experiments at once. A separate namespace for the homepage can also enrol Andi. Namespaces do not automatically prevent interactions between experiments on different surfaces.</p>
+<p>The namespace name, unit, segment count and allocation history are part of the routing contract. Preserving only the button’s salt will not preserve routing if those change.</p>
+<h2>Exposure logging</h2>
+<p>We have computed a button colour. Has Andi seen the button? Not necessarily. The page might fail before rendering it. The application might ask for the colour on a route where checkout is never shown.</p>
+<p>PlanOut gives you a logging hook. In the default Python experiment behaviour, the first eligible <code>get()</code> on an instance triggers exposure logging before returning the parameter. The instance remembers that it logged, so repeated <code>get()</code> calls on that same instance do not each emit a new automatic exposure. A new instance starts over, and nothing deduplicates across instances for the same user.</p>
+<figure class="fig planout-fig">
+<svg viewBox="0 0 420 324" role="img" aria-labelledby="po-logging-t po-logging-d">
+<title id="po-logging-t">Logging</title>
+<desc id="po-logging-d">Computing assignment is followed by first eligible get, which triggers a log hook. Rendering comes later and can fail. A purchase is another event.</desc>
+<rect class="box" x="12" y="12" width="396" height="60" rx="6"></rect><text class="t" x="24" y="36">Compute assignment</text><text class="m" x="24" y="55">blue is the intended value</text><path class="ln" d="M210,72 v20"></path><rect class="box" x="12" y="92" width="396" height="60" rx="6"></rect><text class="t" x="24" y="116">First eligible get("button")</text><text class="m" x="24" y="135">automatic log hook on this instance</text><path class="ln dash" d="M210,152 v20"></path><rect class="box" x="12" y="172" width="396" height="60" rx="6"></rect><text class="t" x="24" y="196">Render button</text><text class="m" x="24" y="215">may fail; get() is not viewability</text><path class="ln dash" d="M210,232 v20"></path><rect class="box" x="12" y="252" width="396" height="60" rx="6"></rect><text class="t" x="24" y="276">Purchase event</text><text class="m" x="24" y="295">outcome, not assignment</text>
+</svg>
+<figcaption>A parameter-access log is useful evidence, but it is not proof that a person saw the pixels.</figcaption>
+</figure>
+<p>What the hook records is that the code asked for the parameter. Whether a person actually saw the button is a separate question. Automatic logging can be disabled, and an experiment marked out of experiment does not log an exposure. The base experiment delegates the log to your implementation; <code>SimpleExperiment</code> writes JSON to a file. Getting a production event pipeline right is still your job.</p>
+<p>A useful record connects the unit, experiment, parameter values and time to the definition that produced them. Upstream also records a checksum when available. In a production system I would make the definition version, override, surface and event ID explicit, then decide where the application should emit the event that analysis treats as exposure.</p>
+<p>If you still have the inputs and the definition, you can recompute which button someone was meant to get. You can’t recompute a render that never got logged, or a fallback nobody recorded.</p>
+<h2>What the hash cannot tell you</h2>
+<section class="po-lab" id="po-split-simulator" aria-labelledby="po-split-title" hidden>
+<h3 id="po-split-title">Run 10,000 repeatable coin tosses</h3>
+<p>Assign <code>user-0</code> through <code>user-9999</code> with <code>checkout-v1.button</code> and <code>h % 2</code>. A 50/50 rule does not promise exactly 5,000 in each group. Run it again: the same inputs give the same counts.</p>
+<button type="button" id="po-run-split">Run 10,000 users</button>
+<div class="po-tally"><span class="po-blue" id="po-split-blue">Blue: 0</span><span class="po-pink" id="po-split-pink">Pink: 0</span></div>
+<div class="po-split-track" aria-hidden="true"><span class="po-blue-fill" id="po-blue-fill" style="width:0%"></span><span class="po-pink-fill" id="po-pink-fill" style="width:0%"></span></div>
+<label for="po-split-progress">Users assigned</label>
+<progress id="po-split-progress" max="10000" value="0">0 / 10000</progress>
+<p class="po-lab-status" id="po-split-status" role="status" aria-live="polite">Ready. All computation stays in your browser.</p>
+</section>
+<noscript><p>Enable JavaScript to run the 10,000-user assignment example. The SRM explanation below works without it.</p></noscript>
+<p>Suppose the button experiment expects an even split, but the logged population contains 700 blue and 300 pink users. That is a sample ratio mismatch, or SRM: the observed group counts are unexpectedly far from the planned allocation.</p>
+<p>It tells you to go and look at the experiment. It says nothing yet about whether pink loses. Maybe assignment changed. Maybe one group has missing events. Maybe the eligibility filter is different on the two paths. Check the population you count, the planned allocation, and the logging before reading an effect estimate. A fixed 50/50 check also does not fit a bandit that intentionally moves traffic.</p>
+<p>PlanOut won’t do that investigation for you, and it doesn’t estimate lift either. It handles repeatable assignment. Exposure data, outcome definitions and the statistics are left to you.</p>
+<h2>The archive badge</h2>
+<p>The public repository was archived on June 1, 2021 and is now read-only. I couldn’t find the maintainers saying why.</p>
+<p>So I wouldn’t read much into it. It’s tempting to turn it into a story about Facebook giving up on experimentation, or a successor replacing PlanOut, but I haven’t seen evidence for either. Its own documentation described the interpreter as one way to define experiments at Facebook, running on top of QuickExperiment. The public library was never the whole internal platform.</p>
+<p>What has changed for someone choosing a tool today is the available scope. A language gives you definitions and operators. Modern experimentation products can also provide configuration delivery, allocation controls, exposure handling, metric definitions and analysis. That’s a good reason to look at a broader platform today, whatever the reason for the archive was.</p>
+<h2>What I would use instead today</h2>
+<p>PlanOut doesn’t name an official successor, and the right replacement depends on which part of its job you need.</p>
+<ul>
+<li>For owning the assignment implementation, a small SDK can work, but stable identity, versioned definitions and compatibility tests become your responsibility. GrowthBook’s <a href="https://docs.growthbook.io/lib/build-your-own">build-your-own guide</a> is a useful current example of an SDK contract.</li>
+<li>For an experimentation platform, <a href="https://docs.growthbook.io/app/sticky-bucketing">GrowthBook</a> and <a href="https://docs.statsig.com/experiments-plus">Statsig</a> are examples worth evaluating. Compare their allocation, logging, warehouse and analysis paths against your requirements. Neither hashes the way PlanOut does, so a running experiment won’t keep its groups if you switch.</li>
+<li>For adaptive allocation, the policy is another layer. A bandit updates traffic based on rewards; a deterministic hash does not learn which button sells more. I covered that distinction in <a href="/posts/thompson-sampling-explained-with-coupons/">Thompson sampling, explained with coupons</a>.</li>
+</ul>
+<p>If I were moving an existing experiment, I would first make a test set of IDs, salts, definitions, overrides and expected outputs. Run old and new systems against it. Explain every disagreement before moving live traffic. A new SDK producing “roughly half in each group” is not enough if it puts different people in those groups.</p>
+<p>What I keep from PlanOut is smaller than a platform: separate the experiment definition from product code, make assignment repeatable, and be explicit about where deciding stops and observing starts. Getting Andi blue twice turned out to be the easy part. Finding out whether blue helped him takes a lot more machinery.</p>
+<h2>References</h2>
+<ul>
+<li>Bakshy, Eckles and Bernstein, <a href="https://hci.stanford.edu/publications/2014/planout/planout-www2014.pdf">Designing and Deploying Online Field Experiments</a>, WWW 2014. The design motivation and system boundaries.</li>
+<li><a href="https://github.com/facebookarchive/planout">PlanOut repository</a> and <a href="https://github.com/facebookarchive/planout/releases">release page</a>. Public archival status and date.</li>
+<li>Python source: <a href="https://github.com/facebookarchive/planout/blob/master/python/planout/ops/random.py">random operators</a>, <a href="https://github.com/facebookarchive/planout/blob/master/python/planout/assignment.py">assignment</a>, <a href="https://github.com/facebookarchive/planout/blob/master/python/planout/namespace.py">namespaces</a>, and <a href="https://github.com/facebookarchive/planout/blob/master/python/planout/experiment.py">experiment logging</a>. The mechanics here refer to this implementation, not every language port.</li>
+<li>Fabijan et al., <a href="https://www.microsoft.com/en-us/research/publication/diagnosing-sample-ratio-mismatch-in-online-controlled-experiments-a-taxonomy-and-rules-of-thumb-for-practitioners/">Diagnosing Sample Ratio Mismatch</a>, KDD 2019. Why a count mismatch should send you looking for a bug before you read the result.</li>
+<li><a href="https://github.com/facebook/planout/blob/master/python/docs/08-about-planout.md">About PlanOut</a>. Its relationship to QuickExperiment.</li>
+<li><a href="https://docs.growthbook.io/lib/build-your-own">GrowthBook SDK guide</a>, <a href="https://docs.growthbook.io/app/sticky-bucketing">sticky bucketing</a>, and <a href="https://docs.statsig.com/experiments-plus">Statsig Experiments</a>. Examples of current alternatives.</li>
+</ul>15:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$27"}}]
+16:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$L14","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Data science"}],["$","$L14","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"Systems"}]]]}]]}]
+17:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$L14",null,{"className":"prev","href":"/posts/evaluating-an-agent-honestly/","children":[["$","small",null,{"children":"← older"}],"Evaluating an agent honestly"]}],["$","$L14",null,{"className":"next","href":"/posts/tuning-retrieval-for-multilingual-rag/","children":[["$","small",null,{"children":"newer →"}],"What I learned tuning retrieval for a multilingual RAG chatbot"]}]]}]
+18:["$","$L28","/assets/posts/widgets/po-playground.js",{"src":"/assets/posts/widgets/po-playground.js","strategy":"afterInteractive"}]
+19:["$","$L28","/assets/posts/widgets/po-split-simulator.js",{"src":"/assets/posts/widgets/po-split-simulator.js","strategy":"afterInteractive"}]
+1a:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+1b:["$","script","script-0",{"src":"/_next/static/chunks/15pqqz5ux6dor.js","async":true}]
+1c:["$","$L29",null,{"children":["$","$22",null,{"name":"Next.MetadataOutlet","children":"$@2a"}]}]
+7:300
+2a:null
+26:true
+7:C
+25:0
+11:"$undefined"
+e:"$undefined"
+c:"$undefined"
+6:"$undefined"
+24:"$undefined"
+1d:"$undefined"

@@ -1,0 +1,192 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0-su8sk2o_bw1.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/09tppxpuq4bp4.js"
+a:I[36852,["$2","$9"],"SiteHeader"]
+b:I[8745,["$2","$9"],"SiteFooter"]
+13:"/_next/static/chunks/15pqqz5ux6dor.js"
+14:I[22016,["$2","$9","$13"],""]
+1c:"ViewportBoundary"
+1d:I[97367,["$2"],"$1c"]
+1e:"MetadataBoundary"
+1f:I[97367,["$2"],"$1e"]
+20:"$Sreact.suspense"
+21:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2o7-03j2wf8wc.css","style"]
+:HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
+:HL["/_next/static/chunks/3zbhe5craggao.css","style"]
+:HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
+:HL["/_next/static/chunks/0hrpoomp7moyf.css","style"]
+7:X
+f:X
+f:C
+12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","$L14",null,{"className":"back-link","href":"/posts/","children":"← All posts"}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-02-28","children":"2026-02-28"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",7," min read"]}],["$","h1",null,{"children":"One definition of conversion"}],["$","p",null,{"className":"standfirst","children":"What building a metric semantic layer taught me about teams. The schema was the easy part. Ownership, and making the shared definition easier than a copy, decided whether it got used."}],["$","div",null,{"className":"tag-list","children":[["$","$L14","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Experimentation"}],["$","$L14","data",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Data & exploration"}]]}]]}],"$L15","$L16","$L17",[]]}],["$L18","$L19"],"$L1a"]}],"p":"$@1b","v":null,"s":"$7"}}]]
+10:[["children",{"s":{"n":"slug","t":"d","k":"one-definition-of-conversion","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@11","v":"$f","s":"$7"},"c":"$Q12"}]]
+d:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@e","v":"$f","s":"$7"},"c":"$Q10"}]]
+8:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/09tppxpuq4bp4.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$La",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Lb",null,{}]]]}],"p":"$@c","v":null,"s":"$7"},"c":"$Qd"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0-su8sk2o_bw1.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}],"p":"$@6","v":null,"s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$20",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"One definition of conversion · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"What building a metric semantic layer taught me about teams. The schema was the easy part. Ownership, and making the shared definition easier than a copy, decided whether it got used."}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","3",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","4",{"property":"og:title","content":"Fadhil Mochammad"}],["$","meta","5",{"property":"og:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","6",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"Fadhil Mochammad"}],["$","meta","9",{"name":"twitter:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","10",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","link","11",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L21","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@22","v":null,"s":"$7"}},"a":"$@23","u":"$@24","b":"mgCzyUysVRAtCddZDIXJb"}
+26:I[97367,["$2"],"OutletBoundary"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+25:T418d,<p>Two dashboards show a metric called “conversion” for the same week. The numbers differ. Someone asks which one is right, and the next hour goes on reading two pieces of SQL side by side. By the end nobody has learned anything about the product, because the meeting turned into a debate about queries.</p>
+<p>I designed a metric semantic layer for an experimentation platform that served dozens of product teams: a centralised metadata schema, plus a query engine on BigQuery that computed metrics from it. The catalogue held more than 100 reusable metrics, and every product team’s experiments used them. This post is about what that work taught me, and most of the lessons were about people. The schema was the easier part.</p>
+<h2>What a semantic layer is</h2>
+<p>A <strong>semantic layer</strong> is a place where the meaning of a metric is written down once, in a form that both people and programs can read. Instead of each dashboard or experiment analysis carrying its own SQL for “conversion”, they all refer to one definition, and a query engine turns that definition into the query that runs against the warehouse.</p>
+<p>Vendors have written plenty about the theory, so I’ll stick to the problem it solves.</p>
+<h2>How drift happens</h2>
+<p>Nobody sets out to define a metric wrongly. Drift happens because every team has a reasonable local reason:</p>
+<ul>
+<li>One team counts a conversion when an order is created. Another counts it when the order is paid.</li>
+<li>One divides by all sessions. Another divides by sessions from logged-in users.</li>
+<li>One excludes internal test traffic. Another never got round to it.</li>
+<li>One counts per user per day. Another counts per session.</li>
+</ul>
+<p>Each of these is defensible on its own. They just all go by the same name, and people compare numbers by name.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 346" role="img" aria-labelledby="odc1t odc1d">
+  <title id="odc1t">Four local definitions of conversion versus one governed definition</title>
+  <desc id="odc1d">Illustrative. Four dashboards each compute conversion with their own SQL and show four different numbers: 3.1, 4.8, 2.2 and 5.6 percent. In the governed version, one definition feeds both experiment analysis and reports, which show the same number.</desc>
+  <defs><marker id="odc1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="6" y="16">BEFORE · EACH DASHBOARD OWNS A COPY</text>
+  <rect class="box" x="6" y="28" width="155" height="76" rx="6" style="stroke:var(--fig-b);stroke-width:2"></rect>
+  <text class="t" x="16" y="48">Dashboard A</text><text class="m" x="16" y="66">orders / sessions</text><text class="tb" x="16" y="90">3.1%</text>
+  <rect class="box" x="175" y="28" width="155" height="76" rx="6" style="stroke:var(--fig-b);stroke-width:2"></rect>
+  <text class="t" x="185" y="48">Dashboard B</text><text class="m" x="185" y="66">paid / visitors</text><text class="tb" x="185" y="90">4.8%</text>
+  <rect class="box" x="344" y="28" width="155" height="76" rx="6" style="stroke:var(--fig-b);stroke-width:2"></rect>
+  <text class="t" x="354" y="48">Experiment X</text><text class="m" x="354" y="66">orders / logged-in</text><text class="tb" x="354" y="90">2.2%</text>
+  <rect class="box" x="513" y="28" width="161" height="76" rx="6" style="stroke:var(--fig-b);stroke-width:2"></rect>
+  <text class="t" x="523" y="48">Weekly report</text><text class="m" x="523" y="66">orders / searches</text><text class="tb" x="523" y="90">5.6%</text>
+  <text class="tb" x="340" y="128" text-anchor="middle">same name, four queries, four numbers</text>
+  <line class="grid" x1="6" x2="674" y1="146" y2="146"></line>
+  <text class="h" x="6" y="170">AFTER · ONE DEFINITION, MANY CONSUMERS</text>
+  <rect class="box" x="220" y="184" width="240" height="60" rx="6" style="stroke:var(--fig-a);stroke-width:2"></rect>
+  <text class="t" x="234" y="208">conversion, v3</text><text class="m" x="234" y="226">one owner, one definition</text>
+  <rect class="box" x="60" y="278" width="200" height="50" rx="6"></rect>
+  <text class="t" x="72" y="299">Experiment analysis</text><text class="ta" x="72" y="317">3.4%</text>
+  <rect class="box" x="420" y="278" width="200" height="50" rx="6"></rect>
+  <text class="t" x="432" y="299">Dashboards and reports</text><text class="ta" x="432" y="317">3.4%</text>
+  <path class="sa" d="M290,244 L190,276" marker-end="url(#odc1a)"></path>
+  <path class="sa" d="M390,244 L490,276" marker-end="url(#odc1a)"></path>
+  <text class="m" x="340" y="272" text-anchor="middle">same number</text>
+</svg>
+<figcaption>Illustrative numbers, not real data. The four figures above differ only because the queries differ. Once every consumer reads the same definition, the argument about the number disappears and the argument about the product can start.</figcaption>
+</figure>
+<p>For an experimentation platform this costs more than for a dashboard. An experiment reports the effect of a change on a metric. If the metric can mean different things in different teams, results are not comparable, and a headline like “this change lifted conversion” cannot be checked against the last one.</p>
+<h2>What a definition has to say</h2>
+<p>A definition that both a person and a program can rely on has to answer a few questions explicitly. This is the anatomy I’d expect from any semantic layer:</p>
+<figure class="fig">
+<svg viewBox="0 0 680 306" role="img" aria-labelledby="odc2t odc2d">
+  <title id="odc2t">Anatomy of a metric definition</title>
+  <desc id="odc2d">Illustrative example of a metric definition with a name, owner, description, grain, numerator, denominator, filters, and version, each with a note on why the field exists.</desc>
+  <rect class="box" x="6" y="8" width="420" height="290" rx="6"></rect>
+  <text class="m" x="20" y="38">name</text><text class="t" x="110" y="38">checkout_conversion</text>
+  <text class="m" x="20" y="72">owner</text><text class="t" x="110" y="72">a named team</text>
+  <text class="m" x="20" y="106">description</text><text class="t" x="110" y="106">users who complete an order</text>
+  <text class="m" x="20" y="140">grain</text><text class="t" x="110" y="140">per user, per day</text>
+  <text class="m" x="20" y="174">numerator</text><text class="t" x="110" y="174">users with a paid order</text>
+  <text class="m" x="20" y="208">denominator</text><text class="t" x="110" y="208">users with a session</text>
+  <text class="m" x="20" y="242">filters</text><text class="t" x="110" y="242">exclude internal traffic</text>
+  <text class="m" x="20" y="276">version</text><text class="t" x="110" y="276">3</text>
+  <path class="ln" d="M426,72 L448,72"></path><text class="ta" x="454" y="76">who answers questions</text>
+  <path class="ln" d="M426,140 L448,140"></path><text class="ta" x="454" y="144">what one row means</text>
+  <path class="ln" d="M426,191 L448,191"></path><text class="ta" x="454" y="195">the arithmetic, exactly</text>
+  <path class="ln" d="M426,242 L448,242"></path><text class="ta" x="454" y="246">what is left out</text>
+  <path class="ln" d="M426,276 L448,276"></path><text class="ta" x="454" y="280">what changed, and when</text>
+</svg>
+<figcaption>An illustrative definition, not a real one. Each field exists because leaving it out is how two teams end up with two numbers.</figcaption>
+</figure>
+<ul>
+<li><strong>Name and description</strong> in plain language, so a product manager can tell whether it is the metric they want.</li>
+<li><strong>Owner</strong>, a person or a team that answers questions and approves changes.</li>
+<li><strong>Grain</strong>: what one unit of the metric is. Per user, per session and per order give different answers to the same question.</li>
+<li><strong>Numerator, denominator and filters</strong>: the exact arithmetic, including what is excluded.</li>
+<li><strong>Version</strong>, so a change is visible and old results stay interpretable.</li>
+</ul>
+<p>The schema had to be precise enough for a program to compute from it. That was the job of the query engine: it took a definition and produced the BigQuery query for it, so the same definition gave the same number wherever it was used.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-labelledby="odc3t odc3d">
+  <title id="odc3t">From definition to number</title>
+  <desc id="odc3d">Metric definitions are read by a query engine, which generates BigQuery queries. Experiment analysis, dashboards and ad hoc analysis all get their numbers from that one path.</desc>
+  <defs><marker id="odc3a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="6" y="62" width="150" height="64" rx="6" style="stroke:var(--fig-a);stroke-width:2"></rect>
+  <text class="t" x="18" y="88">Definitions</text><text class="m" x="18" y="108">the catalogue</text>
+  <rect class="box" x="216" y="62" width="150" height="64" rx="6"></rect>
+  <text class="t" x="228" y="88">Query engine</text><text class="m" x="228" y="108">definition to SQL</text>
+  <rect class="box" x="426" y="62" width="110" height="64" rx="6"></rect>
+  <text class="t" x="438" y="88">BigQuery</text><text class="m" x="438" y="108">runs it</text>
+  <path class="sa" d="M156,94 L214,94" marker-end="url(#odc3a)"></path>
+  <path class="sa" d="M366,94 L424,94" marker-end="url(#odc3a)"></path>
+  <path class="ln" d="M536,84 L582,44" marker-end="url(#odc3a)"></path>
+  <path class="ln" d="M536,94 L582,94" marker-end="url(#odc3a)"></path>
+  <path class="ln" d="M536,104 L582,144" marker-end="url(#odc3a)"></path>
+  <text class="t" x="590" y="48">Experiments</text>
+  <text class="t" x="590" y="98">Dashboards</text>
+  <text class="t" x="590" y="148">Ad hoc work</text>
+</svg>
+<figcaption>Every consumer gets its number through the same path, so there is no second place for a definition to live.</figcaption>
+</figure>
+<h2>Who owns a definition</h2>
+<p>You can build the schema and engine and still end up with two versions of conversion, one governed and one not. The technical work leaves open the harder question: who decides what “conversion” means?</p>
+<p>In my experience the answer has to be a named owner for each metric: a specific person or team, rather than a committee or “the data team” in general. The person who owns a definition can decide when a request to change it is right, and can say no when a team wants a local variant that would fragment the meaning. Without one, the catalogue slowly fills up with competing versions.</p>
+<p>A few practices follow from that:</p>
+<ol>
+<li><strong>Every metric has an owner in the definition itself.</strong> If you can’t say who owns it, don’t publish it.</li>
+<li><strong>Changes are reviewed and versioned.</strong> A change to a definition changes past comparisons, so it should be visible and deliberate. Old versions stay readable.</li>
+<li><strong>Disagreements get resolved in the definition.</strong> If two teams need different things, that usually means two metrics with two names, rather than one name quietly covering both.</li>
+<li><strong>Deprecation is explicit.</strong> A metric nobody owns any more should be marked so, rather than lingering.</li>
+</ol>
+<h2>Getting teams to use it</h2>
+<p>A catalogue only helps if teams actually pick their metrics from it. What I learned was that the governed definition had to be the <em>easiest</em> option for a team. Being correct wasn’t enough. If a team can write its own SQL in ten minutes but must file a request and wait a week to use a shared metric, the local copy wins every time, and it wins for good reasons.</p>
+<p>That shaped a few design choices. Some of these I did, and some I’d push harder on now:</p>
+<ul>
+<li><strong>Meet people where they already work.</strong> The natural home for a governed metric was the experimentation workflow, because that is where teams pick the metrics an experiment is judged on. If choosing a shared metric is a step in a task people already do, it costs less than writing a query.</li>
+<li><strong>Cover the metrics people argue about first.</strong> A catalogue with the thirty metrics that cause the most disagreement is worth more than one with three hundred that nobody trusts. The catalogue grew past 100 reusable metrics, and the growth mattered less than whether it contained the ones teams actually reached for.</li>
+<li><strong>Make search and description good.</strong> People pick the metric they can find and understand. A clear name and a plain description save a lot of local reinvention.</li>
+<li><strong>Treat requests as a signal.</strong> When a team wants something the catalogue doesn’t have, either the catalogue has a gap or an existing metric is described badly. Both are fixable, and both are better than letting the team quietly go its own way.</li>
+<li><strong>Make the first use painless.</strong> The moment someone tries a governed metric and gets a number they trust is the moment they stop writing their own. Anything that makes that first attempt fail, such as a confusing name or a missing filter, sends them back to local SQL.</li>
+</ul>
+<p>Every product team ended up using the catalogue in its experiments. I’d credit that to the definitions being useful and easy to reach. I doubt a mandate would have got the same result: a rule can make people register a metric, but they only keep using one that saves them work.</p>
+<h2>A process for changing a definition</h2>
+<p>An owner field is a start. Behind it you need a way to change a definition that people can follow without heroics. A common shape looks like this:</p>
+<ol>
+<li>Someone proposes a change to a definition, with the reason and an example of the difference in the number.</li>
+<li>The owner reviews it, and any team that depends on the metric is told.</li>
+<li>The new version is published alongside the old one for a while, so results can be compared across the change.</li>
+<li>The old version is retired on a date everyone knows.</li>
+</ol>
+<p>It’s a simple process. It exists because changing what “conversion” means changes other people’s results, and they should see it happen. Otherwise the definition changes silently, and the next dashboard comparison is a debate again.</p>
+<h2>What I’d watch for</h2>
+<p>If I were starting again, I’d check for these early:</p>
+<ul>
+<li><strong>Over-modelling.</strong> It is easy to design a schema that can express everything, and then nobody can fill it in. Start with what the common metrics need.</li>
+<li><strong>Definitions without tests.</strong> A definition should be checkable against a known result, so a change to the engine can’t silently change a number.</li>
+<li><strong>Local variants hiding in plain sight.</strong> Watch what people compute outside the layer. It shows you the gaps.</li>
+<li><strong>Ownership drifting.</strong> People move teams. An owner field that is out of date is worse than none, because it looks like governance.</li>
+</ul>
+<h2>The short version</h2>
+<p>The schema and the engine mattered, but people only reuse a shared definition if someone owns it, changes to it are visible, and it’s easier to reach than writing a copy. When those held, the meeting about two dashboards went back to being about the product.</p>
+<h2>References</h2>
+<ol>
+<li>Chang, R. <em>How Airbnb Achieved Metric Consistency at Scale</em>. The Airbnb Tech Blog. <a href="https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70">https://medium.com/airbnb-engineering/how-airbnb-achieved-metric-consistency-at-scale-f23cc53dea70</a>. Minerva, a metric platform with one definition per metric.</li>
+<li>dbt Labs. <em>dbt Semantic Layer</em>. dbt documentation. <a href="https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl">https://docs.getdbt.com/docs/use-dbt-semantic-layer/dbt-sl</a>. Centralised metric definitions, reused across tools.</li>
+<li>dbt Labs. <em>About MetricFlow</em>. dbt documentation. <a href="https://docs.getdbt.com/docs/build/about-metricflow">https://docs.getdbt.com/docs/build/about-metricflow</a>. Generating SQL from metric definitions.</li>
+<li>Kohavi, R., Tang, D., and Xu, Y. <em>Trustworthy Online Controlled Experiments: A Practical Guide to A/B Testing</em>. Cambridge University Press, 2020. <a href="https://experimentguide.com/">https://experimentguide.com/</a></li>
+<li>Google Cloud. <em>BigQuery overview</em>. Google Cloud documentation. <a href="https://docs.cloud.google.com/bigquery/docs/introduction">https://docs.cloud.google.com/bigquery/docs/introduction</a></li>
+</ol>15:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$25"}}]
+16:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$L14","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Data science"}]]]}]]}]
+17:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$L14",null,{"className":"prev","href":"/posts/a-serving-sdk-data-scientists-actually-use/","children":[["$","small",null,{"children":"← older"}],"A serving SDK data scientists actually use"]}],["$","$L14",null,{"className":"next","href":"/posts/thompson-sampling-explained-with-coupons/","children":[["$","small",null,{"children":"newer →"}],"Bandits in production: Thompson sampling, explained with coupons"]}]]}]
+18:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/15pqqz5ux6dor.js","async":true}]
+1a:["$","$L26",null,{"children":["$","$20",null,{"name":"Next.MetadataOutlet","children":"$@27"}]}]
+7:300
+27:null
+24:true
+7:C
+23:0
+11:"$undefined"
+e:"$undefined"
+c:"$undefined"
+6:"$undefined"
+22:"$undefined"
+1b:"$undefined"

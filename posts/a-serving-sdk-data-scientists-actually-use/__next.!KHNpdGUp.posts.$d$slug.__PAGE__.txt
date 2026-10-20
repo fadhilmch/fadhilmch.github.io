@@ -1,0 +1,187 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/0-su8sk2o_bw1.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+9:"/_next/static/chunks/09tppxpuq4bp4.js"
+a:I[36852,["$2","$9"],"SiteHeader"]
+b:I[8745,["$2","$9"],"SiteFooter"]
+13:"/_next/static/chunks/15pqqz5ux6dor.js"
+14:I[22016,["$2","$9","$13"],""]
+1c:"ViewportBoundary"
+1d:I[97367,["$2"],"$1c"]
+1e:"MetadataBoundary"
+1f:I[97367,["$2"],"$1e"]
+20:"$Sreact.suspense"
+21:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/2o7-03j2wf8wc.css","style"]
+:HL["/_next/static/chunks/3exmn6eooc_59.css","style"]
+:HL["/_next/static/chunks/3zbhe5craggao.css","style"]
+:HL["/_next/static/chunks/1y6vl_31lleh6.css","style"]
+:HL["/_next/static/chunks/0hrpoomp7moyf.css","style"]
+7:X
+f:X
+f:C
+15:T4113,<p>An SDK is an interface. The people calling it are data scientists instead of other engineers, but the same rules apply: a small surface, sensible defaults, and errors that say what to do next. If every model author has to learn cluster setup, authentication, tracing and deployment conventions before shipping a model, the platform is exposing its machinery instead of helping with the task.</p>
+<p>I built a serving engine and SDK for an ML platform. It supported approximately 40 model deployments, and the teams behind them did not have to configure the underlying infrastructure. This post covers how I thought about the design: what the interface looks like and which decisions I’d make again. Some of it is general practice rather than what I built, and I’ll flag which is which.</p>
+<h2>From notebook function to production service</h2>
+<p>A trained model in a notebook is a function: features in, prediction out. A model in production is a service, and most of what separates the two has little to do with machine learning. Someone has to:</p>
+<ul>
+<li>put the model behind an HTTP or gRPC endpoint</li>
+<li>authenticate callers</li>
+<li>emit traces and metrics so the model can be debugged when it misbehaves</li>
+<li>package it and run it on Kubernetes with sensible resource settings</li>
+<li>handle concurrent requests, including any parallel execution the model needs</li>
+<li>keep the same conventions as every other service in the company</li>
+</ul>
+<p>Each of these is learnable. All of them together is a lot of unfamiliar ground for someone whose expertise is modelling. A data scientist can learn them, but each one who does spends days on work that isn’t their job, and each ends up with slightly different choices. When ten teams each ship a model by hand, you end up with ten ways of doing authentication and ten sets of dashboards.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-labelledby="sdk1t sdk1d">
+  <title id="sdk1t">Path from notebook to endpoint, before and after an SDK</title>
+  <desc id="sdk1d">Illustrative. Without a shared serving path, the model author handles six steps: the model, a web app, authentication, tracing, Kubernetes deployment, and metrics and alerts. With the SDK, the author does two things, wrap the model and deploy, and the platform provides the rest.</desc>
+  <defs><marker id="sdk1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="6" y="16">WITHOUT A SHARED PATH · THE AUTHOR OWNS EVERY STEP</text>
+  <rect class="box" x="6" y="30" width="90" height="52" rx="6"></rect>
+  <text class="t" x="16" y="52">Notebook</text><text class="m" x="16" y="69">the model</text>
+  <rect class="box" x="121" y="30" width="90" height="52" rx="6"></rect>
+  <text class="t" x="131" y="52">Web app</text><text class="m" x="131" y="69">a server</text>
+  <rect class="box" x="236" y="30" width="90" height="52" rx="6"></rect>
+  <text class="t" x="246" y="52">Auth</text><text class="m" x="246" y="69">who calls</text>
+  <rect class="box" x="351" y="30" width="90" height="52" rx="6"></rect>
+  <text class="t" x="361" y="52">Tracing</text><text class="m" x="361" y="69">requests</text>
+  <rect class="box" x="466" y="30" width="90" height="52" rx="6"></rect>
+  <text class="t" x="476" y="52">Deploy</text><text class="m" x="476" y="69">Kubernetes</text>
+  <rect class="box" x="581" y="30" width="90" height="52" rx="6"></rect>
+  <text class="t" x="591" y="52">Metrics</text><text class="m" x="591" y="69">and alerts</text>
+  <path class="sb" d="M97,56 L119,56" marker-end="url(#sdk1a)"></path>
+  <path class="sb" d="M212,56 L234,56" marker-end="url(#sdk1a)"></path>
+  <path class="sb" d="M327,56 L349,56" marker-end="url(#sdk1a)"></path>
+  <path class="sb" d="M442,56 L464,56" marker-end="url(#sdk1a)"></path>
+  <path class="sb" d="M557,56 L579,56" marker-end="url(#sdk1a)"></path>
+  <text class="tb" x="340" y="104" text-anchor="middle">five steps that are not modelling, each a chance to diverge from the last team</text>
+  <line class="grid" x1="6" x2="674" y1="126" y2="126"></line>
+  <text class="h" x="6" y="152">WITH THE SDK · THE AUTHOR OWNS THE MODEL, THE PLATFORM OWNS THE REST</text>
+  <rect class="box" x="6" y="166" width="150" height="52" rx="6"></rect>
+  <text class="t" x="16" y="188">Notebook</text><text class="m" x="16" y="205">the model</text>
+  <rect class="box" x="216" y="166" width="170" height="52" rx="6" style="stroke:var(--fig-a);stroke-width:2"></rect>
+  <text class="t" x="226" y="188">Wrap with SDK</text><text class="m" x="226" y="205">a class and a config</text>
+  <rect class="box" x="446" y="166" width="228" height="52" rx="6" style="stroke:var(--fig-a);stroke-width:2"></rect>
+  <text class="t" x="456" y="188">Deployed endpoint</text><text class="m" x="456" y="205">auth, traces, metrics included</text>
+  <path class="sa" d="M156,192 L214,192" marker-end="url(#sdk1a)"></path>
+  <path class="sa" d="M386,192 L444,192" marker-end="url(#sdk1a)"></path>
+  <text class="ta" x="340" y="248" text-anchor="middle">two steps for the author, and the same steps for every model</text>
+  <text class="m" x="340" y="280" text-anchor="middle">Illustrative: the steps a typical hand-rolled deployment needs, not a measured timeline.</text>
+</svg>
+<figcaption>The point of a serving SDK is to shrink the author's path to the parts that are about the model. The steps still happen. They just happen once, in the platform.</figcaption>
+</figure>
+<h2>What I put behind the interface</h2>
+<p>The engine took over the parts that are the same for every model. It checked callers the same way on every endpoint, handled tracing, ran the model on the cluster, took care of parallel execution, and emitted metrics and logs in one format. Model authors didn’t write auth code, add instrumentation calls or touch Kubernetes config.</p>
+<p>The design test I used for each item was simple: would two different data scientists ever have a good reason to make a different choice here? For authentication and tracing the answer is almost always no, so they belong in the platform. For anything where the answer is yes, they belong in the interface, as an option with a default.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-labelledby="sdk2t sdk2d">
+  <title id="sdk2t">What the author writes and what the platform handles</title>
+  <desc id="sdk2d">The model author writes model loading, a predict function, input and output schemas, and a small config. The SDK sits between, and the platform provides authentication, tracing, Kubernetes orchestration, parallel execution and observability.</desc>
+  <defs><marker id="sdk2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="6" y="16">THE AUTHOR WRITES</text>
+  <text class="h" x="674" y="16" text-anchor="end">THE PLATFORM HANDLES</text>
+  <rect class="box" x="6" y="30" width="230" height="200" rx="6" style="stroke:var(--fig-a);stroke-width:2"></rect>
+  <text class="t" x="20" y="60">load the model</text>
+  <text class="t" x="20" y="92">predict()</text>
+  <text class="t" x="20" y="124">input and output schema</text>
+  <text class="t" x="20" y="156">resources and options</text>
+  <text class="m" x="20" y="206">Python, in the tools they know</text>
+  <rect class="box" x="264" y="30" width="152" height="200" rx="6"></rect>
+  <text class="h" x="340" y="64" text-anchor="middle">SDK</text>
+  <text class="m" x="340" y="98" text-anchor="middle">one contract</text>
+  <text class="m" x="340" y="118" text-anchor="middle">defaults</text>
+  <text class="m" x="340" y="138" text-anchor="middle">clear errors</text>
+  <text class="m" x="340" y="158" text-anchor="middle">any framework</text>
+  <rect class="box" x="444" y="30" width="230" height="200" rx="6"></rect>
+  <text class="t" x="458" y="60">authentication</text>
+  <text class="t" x="458" y="92">tracing</text>
+  <text class="t" x="458" y="124">Kubernetes orchestration</text>
+  <text class="t" x="458" y="156">parallel execution</text>
+  <text class="t" x="458" y="188">observability</text>
+  <path class="sa" d="M236,130 L262,130" marker-end="url(#sdk2a)"></path>
+  <path class="sa" d="M416,130 L442,130" marker-end="url(#sdk2a)"></path>
+  <text class="m" x="340" y="252" text-anchor="middle">Illustrative split, following the design described in the text.</text>
+</svg>
+<figcaption>The author's side is small and stays in Python. The right-hand column is the same for every deployment, which is exactly why it belongs in one place.</figcaption>
+</figure>
+<h2>What the author still writes</h2>
+<p>An SDK is easy to get wrong by hiding too much. If the only way to use it is a magic decorator that reads the notebook’s global state, nobody can reason about what it does. I wanted the author’s side to be a few explicit things:</p>
+<ol>
+<li>How to load the model (files, weights, whatever the framework needs).</li>
+<li>What “predict” does for one request.</li>
+<li>What goes in and what comes out, as a schema.</li>
+<li>A short config for the things that do vary, such as resource requests.</li>
+</ol>
+<p>Here is the shape of that, as a sketch rather than the real API:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> serving_sdk <span class="hljs-keyword">import</span> Model, Schema, Config
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">ChurnModel</span>(<span class="hljs-title class_ inherited__">Model</span>):
+    <span class="hljs-built_in">input</span> = Schema(user_id=<span class="hljs-built_in">str</span>, features=<span class="hljs-built_in">list</span>[<span class="hljs-built_in">float</span>])
+    output = Schema(score=<span class="hljs-built_in">float</span>)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">load</span>(<span class="hljs-params">self, path</span>):
+        <span class="hljs-variable language_">self</span>.model = load_my_model(path)   <span class="hljs-comment"># any framework</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">predict</span>(<span class="hljs-params">self, request</span>):
+        <span class="hljs-keyword">return</span> {<span class="hljs-string">"score"</span>: <span class="hljs-variable language_">self</span>.model.score(request.features)}
+
+config = Config(cpu=<span class="hljs-string">"1"</span>, memory=<span class="hljs-string">"2Gi"</span>, replicas=<span class="hljs-number">2</span>)
+</code></pre>
+<p>Two things about this interface matter more than its length. First, the class has exactly the three methods and attributes a model needs, so there is little to misuse. Second, nothing in it refers to the framework. The engine calls <code>load</code> and <code>predict</code>, and what happens inside is the author’s business. That’s what keeps the engine framework-agnostic. The contract only talks about requests and responses, so it doesn’t care whether the model is scikit-learn, PyTorch or something else.</p>
+<h2>Design choices I’d defend</h2>
+<p><strong>Make the right thing the default.</strong> Settings that matter for safety or operability, like authentication and tracing, should need no configuration to be on. Turning something off should be deliberate. A default the author must remember to enable will be missed by some teams.</p>
+<p><strong>Keep it narrow.</strong> It is tempting to offer hooks for every possible need. Each hook is a promise you have to keep as the platform changes, and each one lets teams drift back into bespoke setups. I would rather have a smaller interface that covers most models cleanly, and add an option only when several teams have asked for the same thing.</p>
+<p><strong>Write good error messages.</strong> A stack trace from deep inside the engine tells a data scientist nothing. Validation before deployment, with messages such as “the output schema says <code>score</code> is a float but <code>predict</code> returned a string”, turns a support conversation into a fix the author makes alone. When people say a platform is “easy to use”, a lot of that is error messages.</p>
+<p><strong>Ship working examples.</strong> A working example for each common model type does more than a reference page. Most people will copy the closest example and edit it, so in practice the examples are the interface people learn.</p>
+<p><strong>Document the way out.</strong> Some models will not fit. The choice is between a documented way out and a quiet fork of the platform. A documented way out, even a clumsy one, keeps those teams visible and lets you learn from them.</p>
+<h2>Where abstractions leak</h2>
+<p>The abstraction will leak somewhere, so it’s worth choosing where. A common place is performance: a model that needs a lot of memory or a slow start-up behaves differently under the platform’s scheduling from how it did in a notebook. When the layer hides Kubernetes completely, the author has no vocabulary for the problem.</p>
+<p>The general fix I prefer is to expose the <em>effects</em> rather than the machinery. Let the author declare what the model needs (memory, warm-up time, concurrency) in the config, and surface what happened (a start-up that took too long, a request that timed out) in terms of those settings. They shouldn’t need to know what a pod is to fix it.</p>
+<h2>A shared path also standardises operations</h2>
+<p>Building one serving path had a second benefit that I underrated at the start. When every deployment is produced the same way, the platform can also say something consistent about all of them. Authentication, tracing and metrics come out in one form, so a single set of dashboards and alerts can cover every model. Governance questions, such as which models are running and who owns them, have one place to be answered.</p>
+<p>We never had to ask anyone to follow a standard. Teams got it by taking the easiest route to deployment.</p>
+<h2>Build or adopt</h2>
+<p>Existing tools cover a lot of this, so it’s fair to ask whether to build anything at all. If an existing serving framework already matches your company’s authentication, tracing and deployment conventions, adopt it and spend the time elsewhere. If most of the work is fitting those conventions, then what you’re really building is the thin layer that connects a model to them, and that layer is worth owning. Either way, you still decide what your data scientists see, and the questions above still apply.</p>
+<h2>If you’re building one</h2>
+<ul>
+<li>Treat data scientists as users of an interface, and design that interface the way you would a public API.</li>
+<li>Decide what belongs to the platform by asking whether any two authors would legitimately choose differently.</li>
+<li>Keep the author’s side explicit and small, and keep the contract independent of any modelling framework.</li>
+<li>Invest in defaults, examples and error messages. They are most of what people experience.</li>
+<li>Expect leaks, and choose in advance where they show up.</li>
+</ul>
+<p>The part I was happiest with was that teams could take a model from a notebook to a running endpoint without becoming infrastructure engineers, and that we only had one path to keep secure and observable.</p>
+<h2>References</h2>
+<ol>
+<li>Sculley, D. et al. <em>Hidden Technical Debt in Machine Learning Systems</em>. NeurIPS, 2015. <a href="https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html">https://papers.nips.cc/paper_files/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html</a></li>
+<li>OpenTelemetry. <em>Traces</em>. <a href="https://opentelemetry.io/docs/concepts/signals/traces/">https://opentelemetry.io/docs/concepts/signals/traces/</a>. Spans, trace IDs and context propagation.</li>
+<li>Kubernetes. <em>Resource Management for Pods and Containers</em>. <a href="https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/">https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/</a>. CPU and memory requests and limits.</li>
+<li>KServe. <em>KServe documentation</em>. <a href="https://kserve.github.io/website/">https://kserve.github.io/website/</a>. An open-source model serving platform on Kubernetes.</li>
+<li>BentoML. <em>BentoML documentation</em>. <a href="https://docs.bentoml.com/en/latest/">https://docs.bentoml.com/en/latest/</a>. A Python framework for packaging and serving models.</li>
+</ol>12:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","$L14",null,{"className":"back-link","href":"/posts/","children":"← All posts"}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2025-06-14","children":"2025-06-14"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",7," min read"]}],["$","h1",null,{"children":"A serving SDK data scientists actually use"}],["$","p",null,{"className":"standfirst","children":"An SDK is an interface, so design it like one. What we hid, what we kept visible, and why a narrow path to production gets used."}],["$","div",null,{"className":"tag-list","children":[["$","$L14","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$L14","design",{"className":"tag-chip","href":"/posts/","style":{"--lane":"var(--l5)"},"children":"Product design"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$15"}}],"$L16","$L17",[]]}],["$L18","$L19"],"$L1a"]}],"p":"$@1b","v":null,"s":"$7"}}]]
+10:[["children",{"s":{"n":"slug","t":"d","k":"a-serving-sdk-data-scientists-actually-use","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@11","v":"$f","s":"$7"},"c":"$Q12"}]]
+d:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@e","v":"$f","s":"$7"},"c":"$Q10"}]]
+8:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/09tppxpuq4bp4.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$La",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:style","children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:1:props:style","children":404}],["$","div",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:style","children":["$","h2",null,{"style":"$0:t:t:d:r:props:children:1:props:children:props:children:props:children:props:notFound:0:1:props:children:props:children:2:props:children:props:style","children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$Lb",null,{}]]]}],"p":"$@c","v":null,"s":"$7"},"c":"$Qd"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2o7-03j2wf8wc.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/3exmn6eooc_59.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/3zbhe5craggao.css","precedence":"next"}],["$","link","3",{"rel":"stylesheet","href":"/_next/static/chunks/1y6vl_31lleh6.css","precedence":"next"}],["$","link","4",{"rel":"stylesheet","href":"/_next/static/chunks/0hrpoomp7moyf.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/0-su8sk2o_bw1.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}]}]}]]}],"p":"$@6","v":null,"s":"$7"},"c":"$Q8"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L1f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$20",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"A serving SDK data scientists actually use · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"An SDK is an interface, so design it like one. What we hid, what we kept visible, and why a narrow path to production gets used."}],["$","link","2",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","3",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","4",{"property":"og:title","content":"Fadhil Mochammad"}],["$","meta","5",{"property":"og:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","6",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","7",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","8",{"name":"twitter:title","content":"Fadhil Mochammad"}],["$","meta","9",{"name":"twitter:description","content":"Machine learning platforms, experimentation, and agent systems in production."}],["$","meta","10",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","link","11",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L21","12",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@22","v":null,"s":"$7"}},"a":"$@23","u":"$@24","b":"mgCzyUysVRAtCddZDIXJb"}
+25:I[97367,["$2"],"OutletBoundary"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+16:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$L14","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]]}]]}]
+17:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$L14",null,{"className":"prev","href":"/posts/sse-through-a-service-mesh/","children":[["$","small",null,{"children":"← older"}],"SSE on Kubernetes: what a service mesh fixes, and what it doesn't"]}],["$","$L14",null,{"className":"next","href":"/posts/one-definition-of-conversion/","children":[["$","small",null,{"children":"newer →"}],"One definition of conversion"]}]]}]
+18:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+19:["$","script","script-0",{"src":"/_next/static/chunks/15pqqz5ux6dor.js","async":true}]
+1a:["$","$L25",null,{"children":["$","$20",null,{"name":"Next.MetadataOutlet","children":"$@26"}]}]
+7:300
+26:null
+24:true
+7:C
+23:0
+11:"$undefined"
+e:"$undefined"
+c:"$undefined"
+6:"$undefined"
+22:"$undefined"
+1b:"$undefined"
