@@ -15,10 +15,12 @@ test('ripple reveals the arriving page through a growing circle, no page movemen
  assert.doesNotMatch(reveal,/transform|translate/);
  assert.match(c,/--route-portal: [0-9]{3}ms/);
 });
-test('a coral ring rides the ripple edge on its own transition layer',()=>{
+test('a coral water wave rides the ripple edge on its own transition layer',()=>{
  const c=read('assets/css/page-transition.css');
  assert.match(c,/#route-ring \{[^}]*view-transition-name: route-ring/);
- assert.match(c,/border: 3px solid var\(--route-coral\)/);
+ assert.match(c,/filter: url\(#route-warp\)/);
+ assert.match(c,/radial-gradient\(circle closest-side/);
+ assert.match(c,/#route-ring::after \{[^}]*radial-gradient\(circle closest-side/);
  assert.match(c,/::view-transition-new\(route-ring\) \{\s*animation-name: ripple-ring/);
  assert.match(c,/::view-transition-old\(route-ring\) \{\s*display: none/);
 });
@@ -35,6 +37,8 @@ test('only Home <-> After Work crossings keep the transition',()=>{
  assert.match(h,/skipTransition\(\)/);
  assert.match(h,/awPath\(from\.pathname\) !== awPath\(location\.pathname\)/);
  assert.match(h,/sessionStorage\.setItem\('vt-origin'/);
+ assert.match(h,/route-warp/);
+ assert.match(h,/feTurbulence/);
 });
 test('entrances are fast-forwarded only on crossings',()=>{
  const c=read('assets/css/page-transition.css');
