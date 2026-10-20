@@ -34,7 +34,7 @@
 .recipe__image figcaption { color:var(--aw-muted); font-size:12px; margin-top:8px; overflow-wrap:anywhere; }
 .recipe__image--placeholder { display:grid; place-items:center; aspect-ratio:3/1; border-radius:16px; border:1.5px dashed var(--aw-rule); color:var(--aw-muted); font-size:13px; }
 .recipe.aw-grid .ingredients li { border-color:var(--aw-rule); }
-@media(min-width:700px){.aw-menu:has(.aw-card:only-child){grid-template-columns:minmax(0,620px)}}
+@media(min-width:700px){.aw-menu:has(.aw-card:only-child){grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){
  .aw-page.aw-grid:not(.aw-page--gateway) { padding-top:6px; }
  .aw-category-title { gap:8px; }
@@ -362,3 +362,13 @@ body.is-after-work .aw-nav a[aria-current="page"],
 html[data-depth="soft"] body.is-after-work .aw-nav { box-shadow: inset 0 1px 0 rgb(255 255 255 / .86), 0 2px 5px rgb(0 0 0 / .04); }
 html[data-depth="soft"][data-theme="dark"] body.is-after-work .aw-nav { box-shadow: inset 0 1px 0 rgb(255 255 255 / .086), 0 2px 5px rgb(0 0 0 / .04); }
 @media (max-width: 680px) { body.is-after-work .aw-nav a { justify-content: center; } }
+
+/* Recipe list cards: solid card backgrounds that match the recipe detail sheet
+   (#252a26 charcoal, #fcfaf1 warm paper). Photo, title and details are unchanged. */
+.aw-menu .aw-card { background:#252a26; border:1px solid #45433e; border-radius:16px; padding:10px 10px 14px; box-sizing:border-box; box-shadow:0 1px 2px rgba(0,0,0,.5), 0 10px 24px -10px rgba(0,0,0,.7); }
+[data-theme="light"] body.is-after-work .aw-menu .aw-card { background:#fcfaf1; border-color:#cfc9ba; box-shadow:0 1px 2px rgba(60,50,30,.08), 0 8px 22px -8px rgba(60,50,30,.22); }
+.aw-menu .aw-card__photo, .aw-menu .aw-card__placeholder { border-radius:10px; border-width:0; }
+.aw-menu .aw-card__caption { padding:14px 6px 2px; border-bottom:0; }
+.aw-menu .aw-card__caption .spec { gap:6px; margin-top:10px; }
+.aw-menu .aw-card__caption .spec li { color:color-mix(in srgb, var(--aw-ink, var(--fg)) 78%, transparent); padding:2px 9px; border:1px solid color-mix(in srgb, var(--aw-ink, var(--fg)) 22%, transparent); border-radius:999px; font-size:11.5px; line-height:1.5; }
+.aw-menu .aw-card__caption .spec li + li::before { content:none; }
