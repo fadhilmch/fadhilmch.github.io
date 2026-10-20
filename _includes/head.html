@@ -59,11 +59,17 @@
       root.style.setProperty('--vt-y', o.y + 'px');
       root.style.setProperty('--vt-r', r + 'px');
       root.setAttribute('data-route-portal', 'ripple');
+      var warp = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      warp.id = 'route-warp-defs';
+      warp.setAttribute('aria-hidden', 'true');
+      warp.setAttribute('style', 'position:absolute;width:0;height:0;overflow:hidden');
+      warp.innerHTML = '<filter id="route-warp" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="40" xChannelSelector="R" yChannelSelector="G"/></filter>';
+      root.appendChild(warp);
       var ring = document.createElement('div');
       ring.id = 'route-ring';
       ring.setAttribute('aria-hidden', 'true');
       root.appendChild(ring);
-      var done = function () { ring.remove(); root.removeAttribute('data-route-portal'); };
+      var done = function () { ring.remove(); warp.remove(); root.removeAttribute('data-route-portal'); };
       e.viewTransition.finished.then(done, done);
     });
   } catch (error) {}
