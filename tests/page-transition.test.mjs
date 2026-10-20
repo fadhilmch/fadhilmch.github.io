@@ -7,17 +7,26 @@ test('cross-document transition is off globally and opt-in only for no-preferenc
  const c=read('assets/css/page-transition.css');
  assert.match(c,/prefers-reduced-motion: no-preference\) \{\s*@view-transition \{ navigation: auto; \}/);
 });
-test('coral is its own transition layer, clipped to a circle, no page movement',()=>{
+test('ripple reveals the arriving page through a growing circle, no page movement',()=>{
  const c=read('assets/css/page-transition.css');
- assert.match(c,/#route-coral \{[^}]*view-transition-name: route-coral/);
  assert.match(c,/circle\(0 at var\(--vt-x\) var\(--vt-y\)\)/);
- assert.doesNotMatch(c,/transform|translate/);
+ assert.match(c,/circle\(var\(--vt-r\) at var\(--vt-x\) var\(--vt-y\)\)/);
+ const reveal=c.match(/@keyframes ripple-reveal \{[\s\S]*?\n\}/)[0];
+ assert.doesNotMatch(reveal,/transform|translate/);
  assert.match(c,/--route-portal: [0-9]{3}ms/);
 });
-test('grows out going to After Work and shrinks back going home',()=>{
+test('a coral ring rides the ripple edge on its own transition layer',()=>{
  const c=read('assets/css/page-transition.css');
- assert.match(c,/data-route-portal="in"\]::view-transition-new\(route-coral\)/);
- assert.match(c,/data-route-portal="out"\]::view-transition-new\(route-coral\)/);
+ assert.match(c,/#route-ring \{[^}]*view-transition-name: route-ring/);
+ assert.match(c,/border: 3px solid var\(--route-coral\)/);
+ assert.match(c,/::view-transition-new\(route-ring\) \{\s*animation-name: ripple-ring/);
+ assert.match(c,/::view-transition-old\(route-ring\) \{\s*display: none/);
+});
+test('the same ripple plays in both directions',()=>{
+ const c=read('assets/css/page-transition.css');
+ assert.doesNotMatch(c,/data-route-portal="(in|out)"/);
+ assert.doesNotMatch(c,/portal-in|portal-out/);
+ assert.match(c,/html\[data-route-portal\]::view-transition-new\(root\) \{\s*animation-name: ripple-reveal/);
 });
 test('only Home <-> After Work crossings keep the transition',()=>{
  const h=read('_includes/head.html');
