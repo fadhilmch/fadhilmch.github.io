@@ -1,11 +1,10 @@
 /* Home <-> After Work: a circular ripple reveals the arriving page, growing
-   out of the clicked link with a coral water-wave crest on its edge; the old page stays
+   out of the clicked link with a water-wave crest on its edge; the old page stays
    put underneath. Both directions use the same reveal. head.html skips the
    transition for every other navigation and sets html[data-route-portal] and
    html.vt-cross on the arriving page only when it crosses. Browsers without
    cross-document View Transitions and reduced motion get the instant switch. */
 :root {
-  --route-coral: #ff8a6d;
   --route-portal: 720ms;
 }
 #route-ring {
@@ -20,9 +19,9 @@
   view-transition-name: route-ring;
   /* #route-warp (injected next to the ring by the transition code) wobbles
      the edge so it reads as water, not a compass-drawn circle; the
-     drop-shadows are the coral bloom around the crest. */
-  filter: url(#route-warp) drop-shadow(0 0 18px rgba(255, 138, 109, 0.55))
-    drop-shadow(0 0 46px rgba(255, 138, 109, 0.28));
+     drop-shadows are the light bloom around the crest. */
+  filter: url(#route-warp) drop-shadow(0 0 18px rgba(255, 255, 255, 0.35))
+    drop-shadow(0 0 46px rgba(255, 255, 255, 0.16));
 }
 /* The wave body: a faint leading echo and a bright main crest riding the
    reveal edge, like a ripple spreading on water. Percentage stops keep the band
@@ -35,16 +34,16 @@
   background:
     radial-gradient(circle closest-side,
       transparent 66%,
-      rgba(255, 138, 109, 0.08) 70%,
-      rgba(255, 138, 109, 0.26) 75%,
-      rgba(255, 138, 109, 0.07) 80%,
+      rgba(0, 0, 0, 0.1) 69%,
+      rgba(255, 255, 255, 0.2) 74%,
+      rgba(255, 255, 255, 0.06) 79%,
       transparent 83%),
     radial-gradient(circle closest-side,
       transparent 86%,
-      rgba(255, 138, 109, 0.22) 90%,
-      rgba(255, 138, 109, 0.65) 93.5%,
-      rgba(255, 158, 133, 1) 95.5%,
-      rgba(255, 138, 109, 0.5) 97.5%,
+      rgba(0, 0, 0, 0.22) 89.5%,
+      rgba(0, 0, 0, 0.34) 92.5%,
+      rgba(255, 255, 255, 0.85) 95%,
+      rgba(255, 255, 255, 0.4) 97.5%,
       transparent 99.5%);
 }
 /* Depth cue: the surface dips just behind the crest, so the wave stands out
