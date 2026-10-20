@@ -23,10 +23,41 @@
   } catch (error) {}
 </script>
 <script>
-  /* Home <-> After Work only: a circular ripple with a water-wave edge grows out of
-     the clicked link and reveals the arriving page while the browser switches
-     documents. Every other navigation skips the transition and keeps its own
-     behaviour. */
+  /* Home <-> After Work only: a square-pixel ripple of blocks pops outward
+     from the clicked link and reveals the arriving page while the browser
+     switches documents. The per-click keyframes come from pixelRevealCss; the
+     plain circle in page-transition.css is the fallback. Every other
+     navigation skips the transition and keeps its own behaviour. */
+  /* pixel-keyframes:start */
+  function pixelCell(w, h) { return Math.max(36, Math.round(Math.min(w, h) / 14)); }
+  function pixelRevealCss(x, y, w, h) {
+    x = Math.round(x); y = Math.round(y);
+    var cell = pixelCell(w, h);
+    var maxD = Math.ceil(Math.hypot(Math.max(x, w - x), Math.max(y, h - y))) + cell;
+    var cols = Math.ceil(w / cell), rows = Math.ceil(h / cell);
+    var squares = [], r, c;
+    for (r = 0; r < rows; r++) for (c = 0; c < cols; c++) {
+      squares.push({ x: c * cell, y: r * cell, d: Math.hypot(c * cell + cell / 2 - x, r * cell + cell / 2 - y) });
+    }
+    squares.sort(function (a, b) { return a.d - b.d; });
+    var out = '@keyframes route-pixel-reveal {\n';
+    out += '0% { clip-path: circle(0 at ' + x + 'px ' + y + 'px); }\n';
+    var steps = 12, k, i, pct, limit, d;
+    for (k = 1; k < steps; k++) {
+      pct = parseFloat((k / steps * 100).toFixed(4)) + '%';
+      limit = maxD * k / (steps - 1);
+      d = '';
+      for (i = 0; i < squares.length; i++) {
+        if (squares[i].d > limit) break;
+        d += 'M' + squares[i].x + ' ' + squares[i].y + 'h' + cell + 'v' + cell + 'h-' + cell + 'Z';
+      }
+      out += pct + ' { clip-path: path("' + d + '"); animation-timing-function: step-end; }\n';
+    }
+    out += '100% { clip-path: none; }\n}\n';
+    out += 'html[data-route-portal]::view-transition-new(root) { animation-name: route-pixel-reveal; animation-timing-function: linear; }\n';
+    return out;
+  }
+  /* pixel-keyframes:end */
   try {
     var awPath = function (p) { return p.indexOf('/after-work') === 0; };
     document.addEventListener('click', function (e) {
@@ -58,18 +89,12 @@
       root.style.setProperty('--vt-x', o.x + 'px');
       root.style.setProperty('--vt-y', o.y + 'px');
       root.style.setProperty('--vt-r', r + 'px');
-      root.setAttribute('data-route-portal', 'ripple');
-      var warp = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      warp.id = 'route-warp-defs';
-      warp.setAttribute('aria-hidden', 'true');
-      warp.setAttribute('style', 'position:absolute;width:0;height:0;overflow:hidden');
-      warp.innerHTML = '<filter id="route-warp" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency="0.006" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="40" xChannelSelector="R" yChannelSelector="G"/></filter>';
-      root.appendChild(warp);
-      var ring = document.createElement('div');
-      ring.id = 'route-ring';
-      ring.setAttribute('aria-hidden', 'true');
-      root.appendChild(ring);
-      var done = function () { ring.remove(); warp.remove(); root.removeAttribute('data-route-portal'); };
+      root.setAttribute('data-route-portal', 'pixel');
+      var style = document.createElement('style');
+      style.id = 'route-pixel-frames';
+      style.textContent = pixelRevealCss(o.x, o.y, innerWidth, innerHeight);
+      document.head.appendChild(style);
+      var done = function () { style.remove(); root.removeAttribute('data-route-portal'); };
       e.viewTransition.finished.then(done, done);
     });
   } catch (error) {}
