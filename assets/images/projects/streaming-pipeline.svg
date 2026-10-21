@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-label="Illustrative diagram of the pipeline: Twitter stream, Kafka, Spark Streaming with Spotify lookup, Cassandra, Dash chart">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="16" y="70" width="104" height="60" rx="8"/>
+    <rect x="152" y="70" width="88" height="60" rx="8"/>
+    <rect x="272" y="70" width="112" height="60" rx="8"/>
+    <rect x="416" y="70" width="96" height="60" rx="8"/>
+    <rect x="544" y="70" width="80" height="60" rx="8"/>
+    <path d="M120 100h32M136 92l8 8-8 8M240 100h32M256 92l8 8-8 8M384 100h32M400 92l8 8-8 8M512 100h32M528 92l8 8-8 8"/>
+    <path d="M300 62q30-30 56 0M306 70q20-20 40 0" stroke="#e8765a"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="68" y="96">Twitter API</text><text x="68" y="112" fill="#e8765a">Tweepy filter</text>
+    <text x="196" y="104">Kafka topic</text>
+    <text x="328" y="96">Spark Stream</text><text x="328" y="112" fill="#e8765a">Spotipy lookup</text>
+    <text x="464" y="104">Cassandra</text>
+    <text x="584" y="96">Dash chart</text><text x="584" y="112">5s refresh</text>
+    <text x="320" y="176" font-size="12">One copy of each stage on a laptop - illustrative, from the repo README</text>
+  </g>
+</svg>
