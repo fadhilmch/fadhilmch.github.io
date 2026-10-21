@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Concept illustration: a street photo matched to the same top in an online shop">
+  <rect width="640" height="360" fill="#f4efe6"/>
+  <g fill="none" stroke="#2b2b2b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="50" y="60" width="200" height="240" rx="10" fill="#e9dfd0"/>
+    <circle cx="150" cy="112" r="20" fill="#f4efe6"/>
+    <path d="M122 140l16-6c6 8 18 8 24 0l16 6 14 24-14 8-6-10v52h-64v-52l-6 10-14-8z" fill="#e8765a"/>
+    <path d="M118 224l-4 62M182 224l4 62" />
+    <rect x="114" y="128" width="72" height="92" rx="4" stroke-dasharray="7 6"/>
+    <rect x="390" y="60" width="200" height="240" rx="10" fill="#fff"/>
+    <path d="M440 120l30-12c8 14 32 14 40 0l30 12 28 44-30 16-12-18v102H454V162l-12 18-30-16z" fill="#e8765a"/>
+    <path d="M272 180h96M352 164l16 16-16 16"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="16" fill="#2b2b2b" text-anchor="middle">
+    <text x="150" y="330">Street photo</text>
+    <text x="490" y="330">Same top in a shop</text>
+  </g>
+</svg>
