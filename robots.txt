@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /tennisyuk/
+Disallow: /tenisyuk/
+
+Sitemap: https://fadhilmch.github.io/sitemap.xml
