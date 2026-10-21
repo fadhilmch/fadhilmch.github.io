@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,31338,t=>{"use strict";t.s(["f",0,function(t="/"){return`https://fadhilmch.github.io${t.startsWith("/")?t:`/${t}`}`}])}]);
