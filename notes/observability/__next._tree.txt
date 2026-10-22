@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/2c8uj3c0nprjm.css","style"]
+:HL["/_next/static/chunks/11-k-nx95gyb_.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
 :HL["/_next/static/chunks/0ta3yd473p7ed.css","style"]
@@ -10,4 +10,4 @@
 3:[["children",{"s":{"n":"slug","t":"d","k":"observability","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"notes","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"B3v3silkW6QGdW26eV5rg","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"B7mxv0rlAyQrWja0qInmr","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
