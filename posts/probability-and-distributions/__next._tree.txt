@@ -9,4 +9,4 @@
 3:[["children",{"s":{"n":"slug","t":"d","k":"probability-and-distributions","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"posts","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"pFp0lWmUsK3OUg9qk6lZi","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"92rkfa-s4DR8i6VbdvWRA","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
