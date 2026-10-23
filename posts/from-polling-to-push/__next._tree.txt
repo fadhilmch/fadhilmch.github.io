@@ -1,7 +1,8 @@
 :HL["/_next/static/chunks/2al9sr4v19b91.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
-:HL["/_next/static/chunks/1kqysrh20suf_.css","style"]
+:HL["/_next/static/chunks/0swmxlhiqvt7u.css","style"]
+:HL["/_next/static/chunks/4426k6oaxrhwy.css","style"]
 :HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
@@ -9,4 +10,4 @@
 3:[["children",{"s":{"n":"slug","t":"d","k":"from-polling-to-push","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"posts","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"92rkfa-s4DR8i6VbdvWRA","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"tzeZuuXKqgie3TCgEeyUt","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
