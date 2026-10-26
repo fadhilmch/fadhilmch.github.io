@@ -1,4 +1,4 @@
-:HL["/_next/static/chunks/2al9sr4v19b91.css","style"]
+:HL["/_next/static/chunks/34i3bf_cwjbjl.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
 :HL["/_next/static/chunks/0swmxlhiqvt7u.css","style"]
@@ -10,4 +10,4 @@
 3:[["children",{"s":{"n":"slug","t":"d","k":"golden-datasets-without-the-gold-rush","s":[]},"h":96,"c":"$Q4"}]]
 2:[["children",{"s":"posts","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"F8HIxtC6UNlqElNLsoyQ0","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"Yv7kj0bYR70f_2iuI7wtc","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

@@ -1,12 +1,12 @@
-:HL["/_next/static/chunks/2al9sr4v19b91.css","style"]
+:HL["/_next/static/chunks/34i3bf_cwjbjl.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
 :HL["/_next/static/chunks/0kztt0qcstw0h.css","style"]
 :HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
-:HL["/_next/static/chunks/0e1j42m0r30au.css","style"]
+:HL["/_next/static/chunks/0-ygon4hvymnh.css","style"]
 :HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/chunks/001s2miv9-cu9.css","style"]
+:HL["/_next/static/chunks/2zermt-e4ruw4.css","style"]
 :HL["/_next/static/chunks/0swmxlhiqvt7u.css","style"]
 :HL["/assets/aw/design-ipad.webp","image"]
 :HL["/assets/design/ppi-swedia/badge-dark.webp","image"]
@@ -17,4 +17,4 @@
 3:[["children",{"s":"design","h":96,"c":"$Q4"}]]
 2:[["children",{"s":"after-work","h":96,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":96,"c":"$Q2"}]]
-0:{"b":"F8HIxtC6UNlqElNLsoyQ0","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
+0:{"b":"Yv7kj0bYR70f_2iuI7wtc","t":{"t":{"s":"","h":80,"c":"$Q1"}}}
