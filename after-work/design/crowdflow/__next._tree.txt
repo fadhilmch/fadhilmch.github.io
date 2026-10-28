@@ -1,13 +1,13 @@
-:HL["/_next/static/chunks/3jty0dz7x5ygs.css","style"]
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
 :HL["/_next/static/chunks/0kztt0qcstw0h.css","style"]
 :HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
-:HL["/_next/static/chunks/0-ygon4hvymnh.css","style"]
+:HL["/_next/static/chunks/2e9xaj9832u4n.css","style"]
 :HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/chunks/17b1t_cd28gd6.css","style"]
-:HL["/_next/static/chunks/0swmxlhiqvt7u.css","style"]
+:HL["/_next/static/chunks/2mwfgg4va9mhl.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
 :HL["/assets/design/crowdflow/logo.png","image"]
 :HL["/assets/design/crowdflow/apart.svg","image"]
 :HL["/assets/design/crowdflow/mark.svg","image"]
@@ -20,4 +20,4 @@
 3:[["children",{"s":"design","h":131168,"c":"$Q4"}]]
 2:[["children",{"s":"after-work","h":131168,"c":"$Q3"}]]
 1:[["children",{"s":"(site)","h":131168,"c":"$Q2"}]]
-0:{"b":"R4rpBf7G8yxVe839bIrG8","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}
+0:{"b":"0CHQxpLJbOXbXjHr0Bgdq","t":{"t":{"s":"","h":131152,"c":"$Q1"}}}

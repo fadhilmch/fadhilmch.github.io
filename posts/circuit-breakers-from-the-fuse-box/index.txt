@@ -1,0 +1,238 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+13:I[97367,["$2"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:"ViewportBoundary"
+17:I[97367,["$2"],"$16"]
+19:"MetadataBoundary"
+1a:I[97367,["$2"],"$19"]
+1c:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+:HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+10:X
+11:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$L12",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":false,"v":null}}]]
+f:[["children",{"s":{"n":"slug","t":"d","k":"circuit-breakers-from-the-fuse-box","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$10"},"c":"$Q11"}]]
+e:[["children",{"s":"posts","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":null},"c":"$Qf"}]]
+d:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]]}],"p":false,"v":null},"c":"$Qe"}]]
+0:{"P":null,"c":["","posts","circuit-breakers-from-the-fuse-box",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lc",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L17",null,{"children":"$L18"}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":"$L1b"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$1c",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+1d:I[78881,["$2","$6","$7","$9"],"default"]
+10:C
+1e:T606f,<p>A kitchen has one electrical circuit for the sockets on the counter. Someone switches on the kettle, the microwave and a heater at the same time. The wire in the wall now carries more current than it was made for, and it starts to get hot. A few seconds later, the breaker in the fuse box trips and the kitchen goes dark.</p>
+<p>Nothing is wrong with the kettle. The breaker didn’t trip to protect it. It tripped to protect the wire in the wall, which would otherwise overheat behind the plaster where nobody can see it.</p>
+<p>I studied electrical engineering before I moved to software. When I later worked on an experimentation service in Go, a <strong>circuit breaker</strong> in code was one of the patterns that felt familiar right away. It is a small piece of state in front of a call to another service. When that service keeps failing, the breaker stops calling it for a while and uses a fallback instead. This post explains why a busy service needs one, using the electrical version, and then walks through the code we used.</p>
+<h2>What goes wrong without one</h2>
+<p>The service answered one question per request: which variant of an experiment should this user see? It ran at around 5,000 requests per second on an average day, with a P95 latency under 100 ms. Each pod kept the experiment configuration in memory, with Redis shared between pods and the main config store behind it [8]. The breaker sat in front of the reads from that shared config layer.</p>
+<p>Now picture the config layer having a bad minute. It doesn’t return errors. It just gets slow.</p>
+<p>This is the dangerous case, and <strong>Little’s law</strong> shows why. The number of requests in flight equals the arrival rate times the time each one takes:</p>
+<pre><code>in flight = arrival rate × time per request
+</code></pre>
+<p>If a read normally takes 5 ms, then 5,000 requests per second keep about 25 reads in flight. If the same read now waits for a 1-second timeout, the same traffic keeps 5,000 reads in flight. The 5 ms and the 1-second timeout are only for illustration, not measurements. But the ratio is the point: the traffic didn’t change, the dependency only got slower, and the service is now holding 200 times more work.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-labelledby="hx1t hx1d">
+  <title id="hx1t">Requests in flight when a dependency gets slow</title>
+  <desc id="hx1d">At 5,000 requests per second, a dependency that answers in 5 milliseconds keeps 25 requests in flight. If it waits for a 1-second timeout instead, 5,000 requests are in flight. With a circuit breaker open, calls skip the dependency and the number in flight stays near zero.</desc>
+  <line class="grid" x1="40" x2="660" y1="190" y2="190"></line>
+  <rect class="fa" x="70" y="186" width="120" height="4"></rect>
+  <text class="t" x="70" y="176">25 in flight</text>
+  <text class="m" x="70" y="210">5 ms per read</text>
+  <rect class="fb" x="270" y="40" width="120" height="150"></rect>
+  <text class="tb" x="270" y="30">5,000 in flight</text>
+  <text class="m" x="270" y="210">1 s timeout per read</text>
+  <rect class="fa" x="470" y="188" width="120" height="2"></rect>
+  <text class="t" x="470" y="176">about 0 to the dependency</text>
+  <text class="m" x="470" y="210">circuit open, cache used</text>
+</svg>
+<figcaption>Same traffic, three situations. The middle bar is what kills a busy service: nothing failed yet, everything is just waiting.</figcaption>
+</figure>
+<p>Each request in flight holds a goroutine, some memory and often a connection from a pool. When the pool runs out, requests that don’t even need the slow dependency start to wait for a connection. Latency rises for everyone. Upstream services that call this one now wait too, and the slowness spreads. This is a <strong>cascading failure</strong>, and it is the reason Michael Nygard named the circuit breaker a stability pattern in <em>Release It!</em> [1].</p>
+<p>A timeout alone doesn’t solve it. It limits how long one request waits, but every request still waits that long. The breaker is what stops paying that cost again and again.</p>
+<h2>The breaker protects the wire</h2>
+<p>Back to the kitchen. A breaker protects the circuit, not the device plugged into it [3]. The software version has the same split. It protects the caller: its goroutines, its connection pool and its latency budget. It also gives the struggling dependency room to recover, because the caller stops adding load to it.</p>
+<p>That changes how you think about the fallback. While the breaker is open, the caller still has to answer the user. For us, the answer was the last configuration that worked. The previous post on this service describes the same rule: if the config store has a bad minute, assignment keeps working with the last known config [8]. For experiment assignment, a few minutes of old config is a fair price. A paused experiment may keep running a little longer, but no user gets an error.</p>
+<p>Not every service can do that. A payment service can’t approve a payment from a cache. So the first question for any breaker is not the threshold. It is: what do we answer while it’s open?</p>
+<h2>Two ways to trip</h2>
+<p>A household breaker usually has two trip mechanisms in one box [3]:</p>
+<ul>
+<li>A <strong>bimetallic strip</strong> handles overload. Current heats the strip and it bends slowly. A small overload trips the breaker after a delay. A short surge, such as a motor starting up, passes without a trip.</li>
+<li>An <strong>electromagnet</strong> handles a short circuit. A very large current pulls it at once, with no delay.</li>
+</ul>
+<p>The software breaker in hystrix-go has the same two kinds of protection, though the library doesn’t describe them this way.</p>
+<p>The slow one is the error rate over a rolling window. hystrix-go keeps one-second buckets for the last 10 seconds [5]. It opens the circuit only when the window has at least 20 requests and at least 50% of them are errors [4]. One bad second doesn’t trip it, the same way a motor’s start-up surge doesn’t trip the bimetallic strip.</p>
+<p>The fast ones work per call. A call that takes longer than the timeout fails at once. A call that arrives when too many calls are already running is rejected at once, without waiting. That limit is a <strong>bulkhead</strong>: it caps how much of the service one dependency can hold.</p>
+<h2>The recloser is the half-open state</h2>
+<p>A breaker in a house stays off until somebody walks to the fuse box. Power lines outdoors have something smarter: a <strong>recloser</strong>. On overhead lines, most faults are short. Lightning or a branch touching a wire causes a fault that is gone a second later. Of all faults on overhead distribution lines, 80 to 87% are transient like this [2]. So a recloser opens, waits a moment, and closes again by itself. If the fault is still there, it opens again. After a few tries, it stays open and waits for a crew. The standards allow at most four tries [2].</p>
+<p>This is exactly the <strong>half-open</strong> state of a software breaker. After a cooldown, let a test request through. If it succeeds, close the circuit. If it fails, stay open and wait again.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 210" role="img" aria-labelledby="hx2t hx2d">
+  <title id="hx2t">The recloser and the software breaker side by side</title>
+  <desc id="hx2d">Top row, a recloser on a power line: fault, open, wait, reclose. If the fault cleared, power stays on. If not, it opens again, and after up to four attempts it locks out. Bottom row, hystrix-go: errors trip the circuit open, it waits for the sleep window, then lets one probe request through. If the probe succeeds the circuit closes. If it fails it stays open for another sleep window, with no lockout.</desc>
+  <defs><marker id="hx2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="10" y="22">POWER LINE RECLOSER</text>
+  <rect class="box" x="10" y="34" width="120" height="46" rx="6"></rect><text class="t" x="22" y="54">Fault</text><text class="m" x="22" y="70">lightning, branch</text>
+  <rect class="box" x="170" y="34" width="120" height="46" rx="6" style="stroke:var(--fig-b)"></rect><text class="t" x="182" y="54">Open</text><text class="m" x="182" y="70">wait a moment</text>
+  <rect class="box" x="330" y="34" width="120" height="46" rx="6"></rect><text class="t" x="342" y="54">Reclose</text><text class="m" x="342" y="70">try again</text>
+  <rect class="box" x="510" y="34" width="160" height="46" rx="6"></rect><text class="t" x="522" y="54">Lockout</text><text class="m" x="522" y="70">after up to 4 tries</text>
+  <path class="ln" d="M130,57 L168,57" marker-end="url(#hx2a)"></path>
+  <path class="ln" d="M290,57 L328,57" marker-end="url(#hx2a)"></path>
+  <path class="ln dash" d="M450,57 L508,57" marker-end="url(#hx2a)"></path>
+  <text class="h" x="10" y="124">HYSTRIX-GO</text>
+  <rect class="box" x="10" y="136" width="120" height="46" rx="6"></rect><text class="t" x="22" y="156">Errors</text><text class="m" x="22" y="172">50% of 20+ calls</text>
+  <rect class="box" x="170" y="136" width="120" height="46" rx="6" style="stroke:var(--fig-b)"></rect><text class="t" x="182" y="156">Open</text><text class="m" x="182" y="172">sleep window</text>
+  <rect class="box" x="330" y="136" width="120" height="46" rx="6"></rect><text class="t" x="342" y="156">One probe</text><text class="m" x="342" y="172">a real request</text>
+  <rect class="box" x="510" y="136" width="160" height="46" rx="6" style="stroke:var(--fig-a)"></rect><text class="t" x="522" y="156">Closed</text><text class="m" x="522" y="172">metrics reset</text>
+  <path class="ln" d="M130,159 L168,159" marker-end="url(#hx2a)"></path>
+  <path class="ln" d="M290,159 L328,159" marker-end="url(#hx2a)"></path>
+  <path class="sa" d="M450,159 L508,159" marker-end="url(#hx2a)"></path>
+  <text class="ta" x="462" y="150">success</text>
+  <path class="sb" d="M390,182 C390,204 230,204 230,184" marker-end="url(#hx2a)"></path>
+  <text class="tb" x="282" y="202">failure, wait again</text>
+</svg>
+<figcaption>Same idea, one difference: the recloser gives up after a few tries and waits for a person. hystrix-go keeps probing forever.</figcaption>
+</figure>
+<p>The difference at the end is worth a thought. A recloser locks out because a fault that survives several reclosures is probably permanent, and closing again into a permanent fault does damage. hystrix-go never locks out. It sends one probe every sleep window for as long as the dependency is down. For a read from a config store, one probe every 5 seconds is harmless. For something expensive, a limit on retries or an alert after many failed probes would be the recloser’s lesson.</p>
+<h2>Selectivity: one breaker per circuit</h2>
+<p>A building doesn’t have one breaker for everything. Each circuit has its own, and the main breaker sits above them. They are chosen so that a fault in the kitchen trips the kitchen breaker and leaves the rest of the building on. Electrical engineers call this <strong>selectivity</strong>.</p>
+<p>In hystrix-go, every breaker has a name, the <em>command</em>. Use one command per dependency, and sometimes per kind of call. If one breaker wraps both Redis and the main store, a problem in one cuts traffic to both. The Azure pattern page warns about the same thing: one breaker for several independent resources blocks the healthy ones too [7].</p>
+<h2>The code</h2>
+<p>Here is the shape of what we ran. This is a sketch with simpler names, not the original code. The numbers are the library defaults, not necessarily the values we ran with.</p>
+<pre><code class="hljs language-go"><span class="hljs-keyword">const</span> cmdConfigRead = <span class="hljs-string">"config_read"</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> {
+    hystrix.ConfigureCommand(cmdConfigRead, hystrix.CommandConfig{
+        Timeout:                <span class="hljs-number">1000</span>, <span class="hljs-comment">// ms per call</span>
+        MaxConcurrentRequests:  <span class="hljs-number">10</span>,   <span class="hljs-comment">// calls running at once</span>
+        RequestVolumeThreshold: <span class="hljs-number">20</span>,   <span class="hljs-comment">// calls in the window before it may trip</span>
+        ErrorPercentThreshold:  <span class="hljs-number">50</span>,   <span class="hljs-comment">// % errors that trips it</span>
+        SleepWindow:            <span class="hljs-number">5000</span>, <span class="hljs-comment">// ms open before one probe</span>
+    })
+}
+</code></pre>
+<p>Each field maps to one part of the electrical picture:</p>
+<ul>
+<li><code>Timeout</code> and <code>MaxConcurrentRequests</code> are the fast protection. A slow call fails after the timeout. A call over the concurrency limit is rejected at once with <code>hystrix: max concurrency</code> [6].</li>
+<li><code>RequestVolumeThreshold</code> and <code>ErrorPercentThreshold</code> are the slow one. Together they say: “trip only if there is enough traffic to judge, and enough of it is failing”.</li>
+<li><code>SleepWindow</code> is the recloser’s wait before it tries again.</li>
+</ul>
+<p>The call itself:</p>
+<pre><code class="hljs language-go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(s *Service)</span></span> experimentConfig(ctx context.Context, id <span class="hljs-type">string</span>) (Config, <span class="hljs-type">error</span>) {
+    <span class="hljs-comment">// The run callback can outlive DoC's timeout. It owns its result and</span>
+    <span class="hljs-comment">// sends it to a buffered channel, never to a shared return variable.</span>
+    result := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> Config, <span class="hljs-number">1</span>)
+    err := hystrix.DoC(ctx, cmdConfigRead,
+        <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(ctx context.Context)</span></span> <span class="hljs-type">error</span> {
+            c, err := s.store.Get(ctx, id)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                <span class="hljs-keyword">return</span> err
+            }
+            s.lastGood.Store(id, c)
+            result &#x3C;- c
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+        },
+        <span class="hljs-literal">nil</span>, <span class="hljs-comment">// handle the fallback below, on the calling goroutine</span>
+    )
+    <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> &#x3C;-result, <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">if</span> c, ok := s.lastGood.Load(id); ok {
+        <span class="hljs-keyword">return</span> c.(Config), <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">return</span> Config{}, err <span class="hljs-comment">// nothing cached yet: surface the error</span>
+}
+</code></pre>
+<p>The callback is the normal path. It reads the config and, on success, saves a copy as the last good value. The caller handles the fallback after <code>DoC</code> returns an error: a failed read, a timeout, a full concurrency limit or an open circuit [6]. The error keeps the reason, so you can log <code>hystrix: circuit open</code> differently from a real store error.</p>
+<p>The result channel has room for one value. On a timeout, the original callback can still finish and send without blocking, but it cannot overwrite the value returned by the fallback. Do not let the callback and fallback assign to the same captured variable: they can run concurrently. The store and the last-good cache must also be safe for concurrent access.</p>
+<p>Two details in this code are easy to get wrong.</p>
+<p>The fallback must be cheap and must not call the same dependency. Reading from memory is fine. Calling the store again “just once” from the fallback defeats the breaker.</p>
+<p>The fallback needs a value to return. Right after a pod starts, there is no last good config yet. Then the only correct answer is the error. In practice the pod should load the config before it reports ready, so this case is rare.</p>
+<h2>Try it</h2>
+<p>The simulation below follows hystrix-go’s rules with the default settings: a 10-second window, 20 requests to judge, 50% errors to trip, and one probe every 5 seconds. Raise the failure rate and watch it trip. Then lower the traffic below 2 requests per second. The window never reaches 20 requests, so the circuit can’t trip at all, even if every call fails.</p>
+<style>
+.hx-lab { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.hx-lab[hidden] { display:none; }
+.prose .hx-lab h3 { margin:0 0 8px; }
+.prose .hx-lab p { margin:0 0 12px; font-size:14px; color:var(--muted); }
+.hx-controls { display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; margin-bottom:12px; }
+.hx-lab button { padding:10px 14px; border:1px solid var(--line); border-radius:4px; background:var(--bg); color:var(--fg); font:inherit; font-size:14px; cursor:pointer; min-height:44px; }
+.hx-lab button:focus-visible, .hx-lab input:focus-visible { outline:2px solid var(--fig-a); outline-offset:3px; }
+.hx-lab label { display:inline-flex; gap:8px; align-items:center; font-size:14px; min-height:44px; }
+.hx-lab output { font:13px var(--font-geist-mono),monospace; min-width:4.5em; }
+.prose .hx-lab .fig { width:auto; margin:8px 0; }
+.hx-lab .fig svg { min-width:0; }
+.hx-lab .hx-slot { fill:none; stroke:var(--line); }
+.hx-lab .hx-short { fill:var(--muted); opacity:.35; }
+.hx-stats { display:flex; flex-wrap:wrap; gap:8px 24px; margin:8px 0 0; font:13px/1.5 var(--font-geist-mono),monospace; }
+.hx-stats span b { font-weight:normal; color:var(--fg); }
+.hx-state[data-open="true"] { color:var(--fig-b); }
+.hx-state[data-open="false"] { color:var(--fig-a); }
+.hx-key { display:inline-block; width:10px; height:10px; margin-right:6px; vertical-align:middle; }
+.prose .hx-lab .hx-status { margin:12px 0 0; color:var(--fg); }
+@media(max-width:420px) { .hx-lab { padding:14px; } }
+</style>
+<section class="hx-lab" id="hx-lab" aria-labelledby="hx-lab-title" hidden>
+<h3 id="hx-lab-title">hystrix-go in slow motion</h3>
+<p>Each bar is one second: <span class="hx-key" style="background:var(--fig-a)"></span>success, <span class="hx-key" style="background:var(--fig-b)"></span>failure, <span class="hx-key" style="background:var(--muted);opacity:.35"></span>short-circuited to the cache. Short-circuits count as errors in hystrix-go, and the window resets when the circuit closes.</p>
+<div class="hx-controls">
+<button type="button" id="hx-play" aria-pressed="false">Play</button>
+<button type="button" id="hx-step">Step 1 s</button>
+<button type="button" id="hx-reset">Reset</button>
+<label for="hx-rps">Traffic <input type="range" id="hx-rps" min="1" max="20" value="8"> <output id="hx-rps-out" for="hx-rps">8 / s</output></label>
+<label for="hx-fail">Dependency failures <input type="range" id="hx-fail" min="0" max="100" step="5" value="10"> <output id="hx-fail-out" for="hx-fail">10%</output></label>
+</div>
+<div class="fig"><svg id="hx-chart" viewBox="0 0 650 180" role="img"></svg></div>
+<div class="hx-stats">
+<span>circuit: <b class="hx-state" id="hx-state" data-open="false">closed</b></span>
+<span>answered by dependency: <b id="hx-served">0</b></span>
+<span>answered from cache: <b id="hx-cached">0</b></span>
+</div>
+<p class="hx-status" id="hx-status" role="status" aria-live="polite">Closed: calls go to the dependency.</p>
+</section>
+<noscript><p>Enable JavaScript to run the hystrix-go simulation. The text above describes the same rules.</p></noscript>
+<h2>Things to watch</h2>
+<ul>
+<li><strong>Low traffic never trips.</strong> With a volume threshold of 20 in a 10-second window, a command that gets one call per second can fail completely and stay closed. Set the threshold from the real traffic of each command, not from the defaults.</li>
+<li><strong>A timeout doesn’t stop the work.</strong> When hystrix-go’s timeout fires, it calls the fallback and frees the concurrency slot. The run function keeps running in its goroutine, and its result is thrown away [6]. Pass a context with a deadline to the store client too, so the slow call really ends.</li>
+<li><strong>Short-circuits count as errors.</strong> While the circuit is open, the rejected calls are counted as errors in the window [5]. This doesn’t keep it open, because a successful probe closes it and resets the window. But it makes the error rate on a dashboard look worse than the dependency really is.</li>
+<li><strong>Every pod has its own breaker.</strong> The state lives in memory. With 20 pods, each one has to see its own 20 requests before it trips. That’s usually fine and much cheaper than sharing state.</li>
+<li><strong>hystrix-go is old.</strong> Netflix’s Java Hystrix has been in maintenance mode for years and recommends resilience4j instead [9]. For new Go code, sony/gobreaker is a maintained option with the same three states and a configurable trip rule [10]. If you run a service mesh, Envoy’s outlier detection gives similar protection without code, by removing failing hosts from the pool for a while [11].</li>
+</ul>
+<h2>What carries over</h2>
+<p>I used the same pattern again recently, in front of LLM calls instead of a config store. The details changed: there, the fallback is a second model deployment instead of a cache, and there is no half-open state. I wrote that up in <a href="/posts/llm-quota-fallback-circuit-breaker/">a separate post</a>.</p>
+<p>The questions to answer stay the same as for the breaker in a fuse box. What are you protecting? What happens to the user while it’s open? Can it tell a short surge from a real overload? And who closes it again, a person or a recloser? Once you can answer those four, the thresholds are the easy part.</p>
+<h2>References</h2>
+<ol>
+<li>Michael T. Nygard, <em>Release It! Design and Deploy Production-Ready Software</em>, Pragmatic Bookshelf. The book that named the circuit breaker as a stability pattern.</li>
+<li>Wikipedia, <a href="https://en.wikipedia.org/wiki/Recloser">“Recloser”</a>. Up to 80 to 87% of overhead line faults are transient; reclose attempts are limited to four before lockout.</li>
+<li>Wikipedia, <a href="https://en.wikipedia.org/wiki/Circuit_breaker">“Circuit breaker”</a>. Thermal-magnetic trip units, and the difference between a breaker and a fuse.</li>
+<li>afex/hystrix-go, <a href="https://github.com/afex/hystrix-go/blob/master/hystrix/settings.go"><code>settings.go</code></a>. Default timeout, concurrency, volume threshold, sleep window and error threshold.</li>
+<li>afex/hystrix-go, <a href="https://github.com/afex/hystrix-go/blob/master/hystrix/metrics.go"><code>metrics.go</code></a> and <a href="https://github.com/afex/hystrix-go/blob/master/hystrix/rolling/rolling.go"><code>rolling.go</code></a>. The 10-second rolling window, and which events count as errors.</li>
+<li>afex/hystrix-go, <a href="https://github.com/afex/hystrix-go/blob/master/hystrix/hystrix.go"><code>hystrix.go</code></a> and <a href="https://github.com/afex/hystrix-go/blob/master/hystrix/circuit.go"><code>circuit.go</code></a>. Fallback errors, the concurrency ticket pool, the timeout that doesn’t cancel the run function, and one probe per sleep window.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker">“Circuit Breaker pattern”</a>, Azure Architecture Center. States, half-open, and one breaker for several resources.</li>
+<li><a href="/posts/from-polling-to-push/">From polling to push: getting experiment config to every service</a>. The caching layers of the same experimentation service.</li>
+<li>Netflix, <a href="https://github.com/Netflix/Hystrix">Hystrix README</a>. Hystrix is in maintenance mode, with resilience4j recommended for new projects.</li>
+<li>Sony, <a href="https://github.com/sony/gobreaker">gobreaker</a>. A maintained Go circuit breaker with closed, open and half-open states.</li>
+<li>Envoy, <a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/outlier">“Outlier detection”</a>. Removing failing hosts from a load-balancing pool for a growing time.</li>
+</ol>12:["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Circuit breakers, from the fuse box to a Go service\",\"description\":\"Why a busy service needs a circuit breaker, explained from the electrical one: what it protects, its two ways of tripping, and how a recloser maps to half-open. Then the hystrix-go code we ran in an experimentation service, line by line.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"systems, mlops\",\"url\":\"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",11," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L1d",null,{"title":"Circuit breakers, from the fuse box to a Go service","url":"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/"}]]}],["$","h1",null,{"children":"Circuit breakers, from the fuse box to a Go service"}],["$","p",null,{"className":"standfirst","children":"Why a busy service needs a circuit breaker, explained from the electrical one: what it protects, its two ways of tripping, and how a recloser maps to half-open. Then the hystrix-go code we ran in an experimentation service, line by line."}],["$","div",null,{"className":"tag-list","children":[["$","$La","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"System design"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1e"}}],"$L1f","$L20",["$L21"]]}]
+22:I[79520,["$2","$6","$7","$9"],""]
+1f:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$La","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"Systems"}]]]}]]}]
+20:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/contextualizing-follow-up-questions/","children":[["$","small",null,{"children":"← older"}],"Follow-up questions in a RAG chatbot: from the last message to a search query"]}],["$","$La",null,{"className":"next","href":"/posts/build-once-promote-everywhere/","children":[["$","small",null,{"children":"newer →"}],"Ship the image you tested: build once, promote, roll back"]}]]}]
+21:["$","$L22","/assets/posts/widgets/hx-playground.js",{"src":"/assets/posts/widgets/hx-playground.js","strategy":"afterInteractive"}]
+18:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+23:I[27201,["$2"],"IconMark"]
+15:null
+1b:[["$","title","0",{"children":"Circuit breakers, from the fuse box to a Go service · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Why a busy service needs a circuit breaker, explained from the electrical one: what it protects, its two ways of tripping, and how a recloser maps to half-open. Then the hystrix-go code we ran in an experimentation service, line by line."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Circuit breakers, from the fuse box to a Go service"}],["$","meta","10",{"property":"og:description","content":"Why a busy service needs a circuit breaker, explained from the electrical one: what it protects, its two ways of tripping, and how a recloser maps to half-open. Then the hystrix-go code we ran in an experimentation service, line by line."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],["$","meta","18",{"property":"og:type","content":"article"}],["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}],["$","meta","20",{"property":"article:tag","content":"systems"}],["$","meta","21",{"property":"article:tag","content":"mlops"}],["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","23",{"name":"twitter:title","content":"Circuit breakers, from the fuse box to a Go service"}],["$","meta","24",{"name":"twitter:description","content":"Why a busy service needs a circuit breaker, explained from the electrical one: what it protects, its two ways of tripping, and how a recloser maps to half-open. Then the hystrix-go code we ran in an experimentation service, line by line."}],["$","meta","25",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/circuit-breakers-from-the-fuse-box/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","26",{"name":"twitter:image:type","content":"image/png"}],["$","meta","27",{"name":"twitter:image:width","content":"1200"}],["$","meta","28",{"name":"twitter:image:height","content":"630"}],["$","link","29",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L23","30",{}]]

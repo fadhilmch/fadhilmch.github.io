@@ -68,7 +68,7 @@
         byId("po-current-salt").textContent = salt;
         drawDots();
         saltStatus.textContent = initial ? "200 users assigned. Change salt to reshuffle them." : changed + " of 200 users changed sides. Same users; new salt.";
-      } catch (error) {
+      } catch {
         saltStatus.textContent = "SHA-1 could not be computed. The static salt comparison is still available.";
       } finally {
         saltButton.disabled = false;
@@ -107,7 +107,7 @@
           await new Promise((resolve) => requestAnimationFrame(resolve));
         }
         splitStatus.textContent = "10,000 assigned: " + (counts[0] / 100).toFixed(2) + "% blue, " + (counts[1] / 100).toFixed(2) + "% pink. Repeat to get exactly the same counts. This is assignment, not exposure data or an SRM test.";
-      } catch (error) {
+      } catch {
         splitStatus.textContent = "The computation stopped before finishing. Try again; the static explanation remains available.";
       } finally {
         runButton.disabled = false;

@@ -1,0 +1,327 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+21:"ViewportBoundary"
+22:I[97367,["$2"],"$21"]
+23:"MetadataBoundary"
+24:I[97367,["$2"],"$23"]
+25:"$Sreact.suspense"
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+e:X
+15:X
+15:C
+16:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Keeping a chatbot answering when the model runs out of quota\",\"description\":\"A chatbot answer needs about 15 model calls, and one 429 can lose the whole answer. Which errors should fall back to a second deployment, how a small circuit breaker stops paying for a primary that keeps failing, and what I would add next.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"agents, mlops\",\"url\":\"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],"$L17","$L18","$L19","$L1a","$L1b",["$L1c"]]}],["$L1d","$L1e"],"$L1f"]}],"p":"$@20","v":null,"s":"$e"}}]]
+13:[["children",{"s":{"n":"slug","t":"d","k":"llm-quota-fallback-circuit-breaker","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@14","v":"$15","s":"$e"},"c":"$Q16"}]]
+11:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next"}]],["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@12","v":null,"s":"$e"},"c":"$Q13"}]]
+f:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}]]]}]}],["$","$Lb",null,{}]]]}],"p":"$@10","v":null,"s":"$e"},"c":"$Q11"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}]]]}]}],["$","$Lc",null,{}]]}]}]]}],"p":"$@d","v":null,"s":"$e"},"c":"$Qf"},"h":{"r":["$","$1","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$25",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Keeping a chatbot answering when the model runs out of quota · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"A chatbot answer needs about 15 model calls, and one 429 can lose the whole answer. Which errors should fall back to a second deployment, how a small circuit breaker stops paying for a primary that keeps failing, and what I would add next."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Keeping a chatbot answering when the model runs out of quota"}],["$","meta","10",{"property":"og:description","content":"A chatbot answer needs about 15 model calls, and one 429 can lose the whole answer. Which errors should fall back to a second deployment, how a small circuit breaker stops paying for a primary that keeps failing, and what I would add next."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],"$L26","$L27","$L28","$L29","$L2a","$L2b","$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33"]}]}],null]}],"$L34"]}],"p":"$@35","v":null,"s":"$e"}},"a":"$@36","u":"$@37","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+38:I[78881,["$2","$6","$7","$9"],"default"]
+3a:I[79520,["$2","$6","$7","$9"],""]
+3b:I[97367,["$2"],"OutletBoundary"]
+3d:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+17:["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}]
+18:["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",14," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L38",null,{"title":"Keeping a chatbot answering when the model runs out of quota","url":"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/"}]]}],["$","h1",null,{"children":"Keeping a chatbot answering when the model runs out of quota"}],["$","p",null,{"className":"standfirst","children":"A chatbot answer needs about 15 model calls, and one 429 can lose the whole answer. Which errors should fall back to a second deployment, how a small circuit breaker stops paying for a primary that keeps failing, and what I would add next."}],["$","div",null,{"className":"tag-list","children":[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]}]]}]
+39:T7320,<p>A user asks our chatbot a question. Before the answer appears, the backend makes about 15 model calls. It detects the language, classifies the question, rewrites it for search, filters what the search returned, and finally writes the answer. Most of these calls run one after another, and the chat window gives up after 60 seconds.</p>
+<p>After launch, some of those calls started to fail with HTTP 429, <em>Too Many Requests</em>. Our own traffic was lower than we had planned for. However, the quota for a model is shared by every deployment of that model in the same subscription and region, and other deployments were using it too. When one of the 15 calls fails, the user gets no answer at all.</p>
+<p>Two things helped. The first is a second deployment to fall back to. The second is a <strong>circuit breaker</strong>: a small piece of state that stops calling a deployment for a while when it keeps failing. This post goes through both, with the choices I made and the ones I would change. I’ll leave out quota sizes and traffic numbers, which aren’t mine to share.</p>
+<h2>Why a 429 is not always your fault</h2>
+<p>On Azure OpenAI, quota is counted in tokens per minute (TPM). It is given to a subscription per region, per model and per deployment type. Every deployment you create takes a part of that quota. So two teams that deploy the same model in the same subscription and region share one budget, even if their apps have nothing to do with each other.</p>
+<p>The rate limit is also stricter than “tokens per minute” sounds. The quota documentation has two details that matter here [6]:</p>
+<ul>
+<li>The token count is an estimate made when the request arrives. It includes <code>max_tokens</code>, so a request that asks for a large <code>max_tokens</code> uses budget even if the reply is short.</li>
+<li>The requests-per-minute limit is checked over short windows, typically 1 or 10 seconds. A burst inside one second can get a 429 even if the minute as a whole is under the limit.</li>
+</ul>
+<p>There are also two kinds of 429. One says <em>rate limit exceeded</em>: your deployment used its allocation. The other says the service is <em>temporarily unable to process your request</em>: the shared backend is short on capacity, and your quota did not change. The documentation says many people request more quota for the second kind, which doesn’t help. We log the two kinds separately for this reason.</p>
+<h2>Retrying the same deployment was not enough</h2>
+<p>The usual first answer to a 429 is to retry with exponential backoff and jitter. Backoff waits longer after each failure. <strong>Jitter</strong> adds a random part to the wait, so that many clients that failed at the same moment don’t all retry at the same moment too. Marc Brooker’s post explains why with a simulation [4]. The OpenAI Python SDK already does it: it retries twice by default and respects the <code>retry-after</code> header.</p>
+<p>For us, retrying alone had two problems.</p>
+<p>The first is time. A 429 often comes with a <code>retry-after</code> value of several seconds. The API Management documentation warns that it can be as large as a day [7]. With 15 calls in 60 seconds, each call has a few seconds to spare at most. Waiting for the same deployment to recover uses up the time the rest of the answer needs.</p>
+<p>The second is that retries multiply. If the SDK retries twice and your own code retries twice around it, one failing call becomes nine requests. Google’s SRE book recommends retrying at one layer only, and keeping a retry budget per client [5]. A deployment that is out of quota also counts the rejected requests against its limit [6], so more retries make the throttling worse.</p>
+<p>So I stopped retrying the primary. Its SDK retries are set to zero, and a different deployment takes the retry instead. A comment in the code says it in one line: <em>the fallback is the retry</em>.</p>
+<h2>A second deployment to fall back to</h2>
+<p>The fallback is a deployment of an older model that we already had quota for. Because quota is counted per model, it does not share a budget with the primary. Each kind of call has a primary and an optional fallback, set in configuration. If the fallback is empty, the primary runs alone with a longer timeout.</p>
+<p>Not every error should fall back. The question to ask is: would another deployment probably succeed where this one failed?</p>
+<figure class="fig">
+<svg viewBox="0 0 680 260" role="img" aria-labelledby="cb1t cb1d">
+  <title id="cb1t">How one model call chooses a deployment</title>
+  <desc id="cb1d">A call first checks the circuit for its primary deployment. If the circuit is open, it goes straight to the fallback. If it is closed, it calls the primary. A success returns the answer. A timeout, connection error, 404, 408, 409, 429 or 5xx counts a failure and goes to the fallback. A 400, such as a content filter rejection, is raised without a fallback.</desc>
+  <defs><marker id="cb1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="10" y="100" width="100" height="54" rx="6"></rect>
+  <text class="t" x="22" y="122">Model call</text><text class="m" x="22" y="139">from an agent</text>
+  <rect class="box" x="150" y="100" width="120" height="54" rx="6"></rect>
+  <text class="t" x="162" y="122">Circuit open?</text><text class="m" x="162" y="139">per deployment</text>
+  <rect class="box" x="320" y="160" width="120" height="54" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="332" y="182">Primary</text><text class="m" x="332" y="199">no SDK retry</text>
+  <rect class="box" x="320" y="30" width="120" height="54" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="332" y="52">Fallback</text><text class="m" x="332" y="69">other quota</text>
+  <rect class="box" x="520" y="160" width="150" height="54" rx="6"></rect>
+  <text class="t" x="532" y="182">Answer</text><text class="m" x="532" y="199">success</text>
+  <rect class="box" x="520" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="532" y="52">Raise the error</text><text class="m" x="532" y="69">400, content filter</text>
+  <path class="ln" d="M110,127 L148,127" marker-end="url(#cb1a)"></path>
+  <path class="ln" d="M270,118 L318,62" marker-end="url(#cb1a)"></path>
+  <text class="ta" x="252" y="80">open</text>
+  <path class="ln" d="M270,138 L318,182" marker-end="url(#cb1a)"></path>
+  <text class="m" x="250" y="178">closed</text>
+  <path class="ln" d="M440,187 L518,187" marker-end="url(#cb1a)"></path>
+  <text class="m" x="456" y="180">2xx</text>
+  <path class="sb" d="M380,160 L380,86" marker-end="url(#cb1a)"></path>
+  <text class="tb" x="388" y="118">timeout, 404, 408,</text>
+  <text class="tb" x="388" y="132">409, 429, 5xx</text>
+  <path class="ln dash" d="M440,168 C520,160 595,140 595,88" marker-end="url(#cb1a)"></path>
+  <text class="m" x="603" y="130">400</text>
+</svg>
+<figcaption>Only errors that another deployment could fix go to the fallback. A 400 is about the request, so the fallback would reject it too.</figcaption>
+</figure>
+<p>These errors fall back:</p>
+<ul>
+<li>connection errors and timeouts, including our own timeout per attempt</li>
+<li>404, which here usually means the deployment name is wrong or the deployment was removed</li>
+<li>408 and 409</li>
+<li>429, both kinds</li>
+<li>any 5xx</li>
+</ul>
+<p>A 400 does not fall back. A content filter rejection, for example, is about the input. The fallback would see the same input and reject it too, and we would have spent time for nothing. A bad output from the model does not fall back either, because the call succeeded. That is a quality problem, and it belongs to evaluation, not to this layer.</p>
+<p>Here is the shape of it. This is a simplified sketch, not our exact code:</p>
+<pre><code class="hljs language-python">FALLBACK_STATUS = {<span class="hljs-number">404</span>, <span class="hljs-number">408</span>, <span class="hljs-number">409</span>, <span class="hljs-number">429</span>}
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">should_fall_back</span>(<span class="hljs-params">exc: Exception</span>) -> <span class="hljs-built_in">bool</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(exc, (APIConnectionError, TimeoutError)):
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(exc, APIStatusError):
+        <span class="hljs-keyword">return</span> exc.status_code <span class="hljs-keyword">in</span> FALLBACK_STATUS <span class="hljs-keyword">or</span> exc.status_code >= <span class="hljs-number">500</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">call_with_fallback</span>(<span class="hljs-params">route, call</span>):
+    breaker = breakers[(route.primary.deployment, route.name)]
+    <span class="hljs-keyword">if</span> route.fallback <span class="hljs-keyword">and</span> breaker.is_open():
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> call(route.fallback)
+    started = time.monotonic()
+    <span class="hljs-keyword">try</span>:
+        result = <span class="hljs-keyword">await</span> call(route.primary)
+    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> exc:
+        <span class="hljs-keyword">if</span> route.fallback <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">not</span> should_fall_back(exc):
+            <span class="hljs-keyword">raise</span>
+        breaker.record_failure()
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> call(route.fallback)
+    breaker.record_success(started)
+    <span class="hljs-keyword">return</span> result
+</code></pre>
+<p><code>call</code> is a function that makes the request against one deployment. The same wrapper is used by the plain OpenAI calls and by the agent framework’s chat client, so there is one place where the rule lives.</p>
+<h3>A fallback has to fit in the time budget</h3>
+<p>A fallback only helps if it finishes before the user gives up. So every attempt has a hard timeout. The call that writes the answer gets 20 seconds on the primary and 30 on the fallback. The quicker calls get less.</p>
+<p>Our first fallback for the answer ran at the same reasoning effort as the primary. In a test with the primary switched off, it took 42.6 seconds for one answer. Together with the other calls, that was over the 60-second limit. The fallback now runs at a lower reasoning effort. The answer is a little less careful, but it arrives.</p>
+<p>These timeouts are per attempt, not for the whole request. A slow primary followed by a slow fallback can still go over 60 seconds. A deadline for the whole request, which every call checks before it starts, would be the cleaner fix. I haven’t built that yet.</p>
+<h2>The circuit breaker</h2>
+<p>The fallback fixed lost answers, but it left a cost. When the primary is out of quota, every call still tries it first. For a 429 that is a fast failure. For a timeout it is up to 20 seconds per call, spent waiting for something we already know is broken.</p>
+<p>A circuit breaker removes that cost. The idea comes from Michael Nygard’s book <em>Release It!</em>, and Martin Fowler’s short article is a good introduction [1, 2]. It works like the breaker in a fuse box. While it is <strong>closed</strong>, calls go through and failures are counted. When failures reach a limit, it <strong>opens</strong>, and calls skip the failing deployment and go straight to the fallback. After a cooldown, calls try the primary again.</p>
+<p>Ours is small:</p>
+<pre><code class="hljs language-python">TRIP_FAILURES, WINDOW_S, COOLDOWN_S = <span class="hljs-number">2</span>, <span class="hljs-number">30.0</span>, <span class="hljs-number">60.0</span>
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Breaker</span>:
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-variable language_">self</span>.failures: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">float</span>] = []
+        <span class="hljs-variable language_">self</span>.opened_at = <span class="hljs-built_in">float</span>(<span class="hljs-string">"-inf"</span>)
+        <span class="hljs-variable language_">self</span>.open_until = <span class="hljs-number">0.0</span>
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">is_open</span>(<span class="hljs-params">self</span>) -> <span class="hljs-built_in">bool</span>:
+        <span class="hljs-keyword">return</span> time.monotonic() &#x3C; <span class="hljs-variable language_">self</span>.open_until
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">record_failure</span>(<span class="hljs-params">self</span>) -> <span class="hljs-literal">None</span>:
+        now = time.monotonic()
+        <span class="hljs-variable language_">self</span>.failures = [t <span class="hljs-keyword">for</span> t <span class="hljs-keyword">in</span> <span class="hljs-variable language_">self</span>.failures <span class="hljs-keyword">if</span> now - t &#x3C; WINDOW_S] + [now]
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(<span class="hljs-variable language_">self</span>.failures) >= TRIP_FAILURES:
+            <span class="hljs-variable language_">self</span>.failures = []
+            <span class="hljs-variable language_">self</span>.opened_at, <span class="hljs-variable language_">self</span>.open_until = now, now + COOLDOWN_S
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">record_success</span>(<span class="hljs-params">self, started: <span class="hljs-built_in">float</span></span>) -> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">if</span> started > <span class="hljs-variable language_">self</span>.opened_at:
+            <span class="hljs-variable language_">self</span>.failures, <span class="hljs-variable language_">self</span>.open_until = [], <span class="hljs-number">0.0</span>
+</code></pre>
+<p>Two failures within 30 seconds open it for 60 seconds. One failure only sends that one call to the fallback. So a single slow answer that times out on a healthy deployment does not move all the traffic away.</p>
+<p>There is one breaker for each primary deployment and each kind of call. A slow answer-writing call should not divert the quick classification calls, even when they use the same deployment.</p>
+<p>The check in <code>record_success</code> is easy to miss. Calls overlap. A call can start on the primary, take 15 seconds, and succeed after the breaker has already opened because of other calls. Without the check, that late success would close the breaker right after it opened. So only a call that started after the trip can close it.</p>
+<p>Try it below. Make the primary run out of quota, then switch the breaker off and compare how much time goes to failed attempts. Each dot is one call, one per simulated second. In this simulation the calls run one after another. Real calls overlap, so a slow failure would also hold up the calls behind it.</p>
+<style>
+.cb-lab { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+.cb-lab[hidden] { display:none; }
+.prose .cb-lab h3 { margin:0 0 8px; }
+.prose .cb-lab p { margin:0 0 12px; font-size:14px; color:var(--muted); }
+.cb-controls { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px; }
+.cb-lab button, .cb-lab select { padding:10px 14px; border:1px solid var(--line); border-radius:4px; background:var(--bg); color:var(--fg); font:inherit; font-size:14px; cursor:pointer; min-height:44px; }
+.cb-lab button[aria-pressed="true"]#cb-quota { border-color:var(--fig-b); color:var(--fig-b); }
+.cb-lab button:focus-visible, .cb-lab select:focus-visible, .cb-lab input:focus-visible { outline:2px solid var(--fig-a); outline-offset:3px; }
+.cb-lab label { display:inline-flex; gap:6px; align-items:center; font-size:14px; min-height:44px; }
+.cb-lab .fig { margin:8px 0; }
+.prose .cb-lab .fig { width:auto; }
+.cb-lab .fig svg { min-width:0; }
+.cb-lab .cb-open { fill:var(--fig-a); opacity:.12; }
+.cb-lab .cb-down { fill:var(--fig-b); }
+.cb-lab .cb-skip { fill:none; stroke:var(--fig-b); stroke-width:1.5; }
+.cb-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:8px 16px; margin:12px 0 0; font:13px/1.5 var(--font-geist-mono),monospace; }
+.cb-stats dt { color:var(--muted); }
+.cb-stats dd { margin:0; color:var(--fg); }
+.cb-key { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+.cb-key-a { background:var(--fig-a); }
+.cb-key-b { background:var(--fig-b); }
+.cb-key-s { border:1.5px solid var(--fig-b); box-sizing:border-box; }
+.prose .cb-lab .cb-status { margin:12px 0 0; color:var(--fg); }
+@media(max-width:420px) { .cb-lab { padding:14px; } }
+</style>
+<section class="cb-lab" id="cb-lab" aria-labelledby="cb-lab-title" hidden>
+<h3 id="cb-lab-title">Break the primary and watch the breaker</h3>
+<p>Two failures within 30 seconds open the circuit for 60 seconds. A failed 429 costs about 0.3 seconds before the fallback starts. A timeout costs the full 20-second limit.</p>
+<div class="cb-controls">
+<button type="button" id="cb-play" aria-pressed="false">Play</button>
+<button type="button" id="cb-step">Step 10 s</button>
+<button type="button" id="cb-quota" aria-pressed="false">Primary runs out of quota</button>
+<label for="cb-kind">Failure <select id="cb-kind"><option value="429">429, fast</option><option value="timeout">timeout, 20 s</option></select></label>
+<label><input type="checkbox" id="cb-breaker" checked> Circuit breaker</label>
+<button type="button" id="cb-reset">Reset</button>
+</div>
+<div class="fig"><svg id="cb-chart" viewBox="0 0 680 150" role="img"></svg></div>
+<dl class="cb-stats">
+<div><dt><span class="cb-key cb-key-a"></span>primary answered</dt><dd id="cb-n-primary">0</dd></div>
+<div><dt><span class="cb-key cb-key-b"></span>failed, then fallback</dt><dd id="cb-n-failed">0</dd></div>
+<div><dt><span class="cb-key cb-key-s"></span>skipped, circuit open</dt><dd id="cb-n-skipped">0</dd></div>
+<div><dt>time lost on failed primary</dt><dd id="cb-lost">0.0 s</dd></div>
+</dl>
+<p class="cb-status" id="cb-status" role="status" aria-live="polite">Circuit closed: calls try the primary first.</p>
+</section>
+<noscript><p>Enable JavaScript to run the circuit breaker simulation. The diagram below shows the same states.</p></noscript>
+<p>With a 429 the breaker saves little time, because the failure is fast. With timeouts the difference is large: without the breaker, every call pays the full timeout before the fallback starts.</p>
+<h3>Where ours differs from the textbook</h3>
+<p>The usual circuit breaker has a third state. After the cooldown it goes <strong>half-open</strong>: it lets one or a few trial calls through, and only closes if they succeed [3]. Ours has no half-open state. When the 60 seconds are over, every call that arrives tries the primary again.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 200" role="img" aria-labelledby="cb2t cb2d">
+  <title id="cb2t">Circuit breaker states</title>
+  <desc id="cb2d">Closed moves to open after two primary failures within 30 seconds. Open moves back to closed after 60 seconds. The textbook version adds a half-open state between open and closed, drawn dashed: after the cooldown, a few trial calls go to the primary; success closes the circuit and failure opens it again. Our breaker skips the half-open state.</desc>
+  <defs><marker id="cb2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="30" y="70" width="150" height="58" rx="29" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="80" y="96">Closed</text><text class="m" x="52" y="113">try primary first</text>
+  <rect class="box" x="500" y="70" width="150" height="58" rx="29" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="558" y="96">Open</text><text class="m" x="522" y="113">go to fallback</text>
+  <rect class="box dash" x="265" y="140" width="150" height="50" rx="25"></rect>
+  <text class="m" x="302" y="161">Half-open</text><text class="m" x="290" y="177">a few trial calls</text>
+  <path class="sb" d="M180,88 L498,88" marker-end="url(#cb2a)"></path>
+  <text class="tb" x="250" y="80">2 failures within 30 s</text>
+  <path class="sa" d="M575,70 C540,12 150,12 105,68" marker-end="url(#cb2a)"></path>
+  <text class="ta" x="290" y="22">after 60 s (ours)</text>
+  <path class="ln dash" d="M520,128 C500,160 450,165 417,165" marker-end="url(#cb2a)"></path>
+  <path class="ln dash" d="M265,165 C220,165 170,155 150,130" marker-end="url(#cb2a)"></path>
+  <text class="m" x="440" y="190">textbook: cooldown</text>
+  <text class="m" x="150" y="190">success</text>
+</svg>
+<figcaption>Ours goes from open straight back to closed. The dashed half-open state is the textbook version, which tests the primary with a few calls before trusting it again.</figcaption>
+</figure>
+<p>This works for us because the fallback still catches every failure. If the primary is still out of quota, a few calls fail and the breaker opens again after two of them. Those calls still get an answer from the fallback. The cost is a short burst of failed attempts every minute. For a deployment that is overloaded rather than out of quota, that burst could slow its recovery, and half-open would be the better choice.</p>
+<p>The breaker state also lives in memory, one copy per pod. With several pods, each one trips on its own, so a broken primary costs two failures per pod instead of two in total. That is a known trade-off. Sharing the state, in Redis for example, would add a network call to every model call. API Management’s built-in breaker makes the same trade: its gateway instances don’t share breaker state either [7].</p>
+<h2>Prompts follow the model</h2>
+<p>A fallback is a different model, and a prompt tuned for one model is not always right for another. So each model has its own prompt file, picked by model name. There is a limit here. When a call falls back, it reuses the messages it already built from the primary’s prompt, so the older model runs on the newer model’s prompt. I would not assume that works for every pair of models. Test it with the primary switched off. The <a href="/posts/running-several-models-in-one-llm-app/">post on running several models</a> covers the prompt files in detail.</p>
+<h2>Seeing fallbacks in traces</h2>
+<p>A fallback hides the failure from the user, and so it also hides it from you. If the primary has been failing all week, nobody notices unless the traces show it.</p>
+<p>So every model call’s span records which deployment answered, and whether a fallback happened:</p>
+
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>llm.model_name</code></td>
+<td>the deployment that answered</td>
+</tr>
+<tr>
+<td><code>llm.fallback.used</code></td>
+<td><code>true</code> or <code>false</code>, always set</td>
+</tr>
+<tr>
+<td><code>llm.fallback.reason</code></td>
+<td><code>RateLimitError (429)</code>, or <code>CircuitOpen (...)</code> when the breaker skipped the primary</td>
+</tr>
+<tr>
+<td><code>llm.fallback.primary_latency_ms</code></td>
+<td>time spent on the primary before it failed</td>
+</tr>
+</tbody></table>
+<p>When the primary fails, the span also gets one <code>llm.primary_failed</code> event with the error. The span status stays OK, because the call recovered.</p>
+<p>My first version did more. It added a child span for every attempt, so a healthy call had two spans instead of one. That added a cost to every healthy call, to show something that only matters when things go wrong. Attributes and one event on the existing span were enough. Now a healthy call adds nothing.</p>
+<p>Grouping by <code>llm.fallback.reason</code> tells you what kind of problem you have. Timeouts and 5xx point to an outage, 429 to quota, and 404 to a wrong configuration. An alert on the fallback share, for example more than 5% of model calls in 15 minutes, tells you when the fallback is doing too much work.</p>
+<h2>Things to watch</h2>
+<ul>
+<li><strong>Retries at two layers.</strong> The SDK retries by default. If you add your own retry or a fallback, set the SDK’s retries for the primary to zero, or one failure turns into many requests.</li>
+<li><strong>Same region, same problem.</strong> A capacity 429 is about the region, not your quota. A fallback in the same region can be throttled at the same moment. A second region or a global deployment type helps here, but data residency may decide whether you can use it.</li>
+<li><strong>A fallback that doesn’t fit.</strong> Measure the fallback with the primary switched off, end to end. Ours was too slow at first.</li>
+<li><strong>Falling back on the wrong errors.</strong> A 400 or a content filter error will fail on the fallback too.</li>
+<li><strong>A quiet fallback.</strong> Without an alert, a broken primary can stay broken for weeks.</li>
+</ul>
+<h2>What I would try next</h2>
+<p>Reading about how others do this showed me a few things ours doesn’t do yet.</p>
+<ul>
+<li><strong>Use <code>retry-after</code> for the cooldown.</strong> Our cooldown is always 60 seconds. A 429 tells you how long to wait. API Management’s breaker can take that value as its trip duration [7].</li>
+<li><strong>Different limits for different errors.</strong> The Azure pattern page suggests that timeouts may need more failures to trip than a clear “unavailable” [3]. LiteLLM’s router, for example, cools a deployment down on the first 429 and allows a few other failures before it does [8].</li>
+<li><strong>A half-open state</strong> with one trial call, if the primary is ever overloaded rather than simply out of quota.</li>
+<li><strong>Slow down before the 429.</strong> Azure returns <code>x-ratelimit-remaining-tokens</code> on every response [6]. A client could lower its pace when that gets small instead of waiting to be rejected.</li>
+<li><strong>A gateway instead of code.</strong> If several services share the same quota, a gateway puts the routing in one place for all of them. API Management with a priority pool and the LiteLLM proxy both do this [7, 8]. Doing it in the app has one advantage for us. The app also picks the prompt file and the reasoning effort for the fallback, and a gateway does not know about those.</li>
+</ul>
+<p>If you call a hosted model from a service with a time limit, start with a short list of errors that may fall back and one retry layer. Give each attempt a timeout that fits the budget, and add a breaker that stops paying for a deployment that keeps failing. Then put the fallback in your traces, so you can see when it is doing the work.</p>
+<h2>References</h2>
+<ol>
+<li>Martin Fowler, <a href="https://martinfowler.com/bliki/CircuitBreaker.html">“CircuitBreaker”</a>, 2014. The closed, open and half-open states, and credit to Michael Nygard’s <em>Release It!</em> for the pattern.</li>
+<li>Michael T. Nygard, <em>Release It! Design and Deploy Production-Ready Software</em>, Pragmatic Bookshelf. The book that made the circuit breaker known as a stability pattern.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker">“Circuit Breaker pattern”</a>, Azure Architecture Center. Half-open behaviour, different thresholds per error type, and per-instance state.</li>
+<li>Marc Brooker, <a href="https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/">“Exponential Backoff And Jitter”</a>, AWS Architecture Blog, 2015. Why retries without jitter still arrive in clusters.</li>
+<li>Alejandro Forero Cuervo, <a href="https://sre.google/sre-book/handling-overload/">“Handling Overload”</a>, in <em>Site Reliability Engineering</em>, Google, 2016. Retry budgets, and retrying at one layer only.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/quota">“Manage Azure OpenAI quota”</a>, Microsoft Learn. Quota per subscription, region and model; how the rate limit is estimated; the different kinds of 429; rate-limit headers; the SDK’s default retries.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/api-management/backends">“Backends in API Management”</a>, Microsoft Learn. Backend circuit breaker with <code>acceptRetryAfter</code>, priority pools, and breaker state that is not shared between gateway instances.</li>
+<li>LiteLLM, <a href="https://docs.litellm.ai/docs/routing">“Router: load balancing, fallbacks and cooldowns”</a>. <code>allowed_fails</code>, <code>cooldown_time</code>, and an immediate cooldown on 429.</li>
+</ol>19:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$39"}}]
+1a:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]]}]]}]
+1b:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/running-several-models-in-one-llm-app/","children":[["$","small",null,{"children":"← older"}],"Running several models in one LLM app, each with its own prompt"]}],["$","$La",null,{"className":"next","href":"/posts/hybrid-search-for-rag/","children":[["$","small",null,{"children":"newer →"}],"Keyword search, vector search, and the filter that runs first"]}]]}]
+1c:["$","$L3a","/assets/posts/widgets/cb-playground.js",{"src":"/assets/posts/widgets/cb-playground.js","strategy":"afterInteractive"}]
+1d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true}]
+1f:["$","$L3b",null,{"children":["$","$25",null,{"name":"Next.MetadataOutlet","children":"$@3c"}]}]
+26:["$","meta","17",{"property":"og:image:height","content":"630"}]
+27:["$","meta","18",{"property":"og:type","content":"article"}]
+28:["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}]
+29:["$","meta","20",{"property":"article:tag","content":"agents"}]
+2a:["$","meta","21",{"property":"article:tag","content":"mlops"}]
+2b:["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}]
+2c:["$","meta","23",{"name":"twitter:title","content":"Keeping a chatbot answering when the model runs out of quota"}]
+2d:["$","meta","24",{"name":"twitter:description","content":"A chatbot answer needs about 15 model calls, and one 429 can lose the whole answer. Which errors should fall back to a second deployment, how a small circuit breaker stops paying for a primary that keeps failing, and what I would add next."}]
+2e:["$","meta","25",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/llm-quota-fallback-circuit-breaker/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}]
+2f:["$","meta","26",{"name":"twitter:image:type","content":"image/png"}]
+30:["$","meta","27",{"name":"twitter:image:width","content":"1200"}]
+31:["$","meta","28",{"name":"twitter:image:height","content":"630"}]
+32:["$","link","29",{"rel":"icon","href":"/assets/favicon.svg"}]
+33:["$","$L3d","30",{}]
+34:["$","meta",null,{"name":"next-size-adjust","content":""}]
+e:300
+3c:null
+37:true
+e:C
+36:0
+14:"$undefined"
+12:"$undefined"
+10:"$undefined"
+d:"$undefined"
+35:"$undefined"
+20:"$undefined"

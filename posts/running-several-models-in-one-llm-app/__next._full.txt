@@ -1,0 +1,330 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+13:I[97367,["$2"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:"ViewportBoundary"
+17:I[97367,["$2"],"$16"]
+19:"MetadataBoundary"
+1a:I[97367,["$2"],"$19"]
+1c:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+:HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+10:X
+11:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$L12",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":false,"v":null}}]]
+f:[["children",{"s":{"n":"slug","t":"d","k":"running-several-models-in-one-llm-app","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$10"},"c":"$Q11"}]]
+e:[["children",{"s":"posts","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":null},"c":"$Qf"}]]
+d:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]]}],"p":false,"v":null},"c":"$Qe"}]]
+0:{"P":null,"c":["","posts","running-several-models-in-one-llm-app",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lc",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L17",null,{"children":"$L18"}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":"$L1b"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$1c",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+1d:I[78881,["$2","$6","$7","$9"],"default"]
+10:C
+1e:T6fe8,<p>In June we moved an internal chatbot to a newer model. The chatbot is a multi-agent RAG app, and one of its agents is a guardrail evaluator. Some replies, such as a clarifying question or a polite refusal, go through it before the user sees them. It checks each one against three rules. If a reply breaks a rule, the evaluator names the rule and the reply is rewritten.</p>
+<p>In October I found that since the June change, it had flagged every reply it checked. The new prompt told the model to answer <code>"none"</code> when no rule was broken. The response schema did not allow <code>"none"</code>. It listed only the three rules. With a strict schema, the model can only produce values the schema allows, so it had to pick a rule every time. Nothing raised an error, and no test failed.</p>
+<p>The fix was one value in the schema. I replayed 14 captured replies and 6 synthetic unsafe ones, three times each. The false-positive rate went from 1.00 to 0.00 with the schema fix. Adding an example with <code>"none"</code> to the prompt, without the schema fix, changed nothing.</p>
+<p>A model is more than a name in a config file. It comes with its own prompt, its own request parameters and its own way of following an output schema. When one app runs several models, each of these has to follow the model. This post is about the operations side of that: routing, prompt files, parameters, upgrades and traces. I’ll leave out sizes and numbers that aren’t mine to share.</p>
+<h2>Why one app ends up with several models</h2>
+<p>A <strong>deployment</strong> is a named instance of a model in your cloud account. You choose the name. On Azure OpenAI, quota is counted per model and region, so deployments of different models don’t share a budget.</p>
+<p>One answer from our chatbot needs about 15 model calls. Most are short and structured: detect the language, classify the question, plan the search, filter the results. A few write longer text: the answer, the evaluators, and the step that turns a follow-up into a standalone question. These two kinds of call need different things. The short calls must be quick, so they run with reasoning switched off and a 10-second timeout. The writing calls need more care, so they run at medium reasoning effort with 20 seconds.</p>
+<p>Each kind of call also has a fallback deployment of an older model, with its own quota. The fallback and the circuit breaker around it are covered in <a href="/posts/llm-quota-fallback-circuit-breaker/">another post</a>. Here the fallback matters for a simpler reason. It is a second model, and the app has to call it correctly too.</p>
+<p>So the app has two routes, each with a primary and a fallback. Both primaries use the same newer model. What differs between the routes is the reasoning effort, the timeout and the fallback. In production that is three models behind four slots, where a <strong>slot</strong> is one primary or one fallback.</p>
+<h2>Routing per workload, set in configuration</h2>
+<p><strong>Model routing</strong> is the choice of which deployment serves a call. In our app each call names a route, and the route comes from configuration. Each slot has three settings:</p>
+<pre><code class="hljs language-bash"><span class="hljs-comment"># names simplified</span>
+WRITING_DEPLOYMENT_NAME=chat-new-model
+WRITING_MODEL_NAME=new-model
+WRITING_REASONING_EFFORT=medium
+WRITING_FALLBACK_DEPLOYMENT_NAME=chat-old-model
+WRITING_FALLBACK_MODEL_NAME=old-model
+WRITING_FALLBACK_REASONING_EFFORT=low
+<span class="hljs-comment"># and the same six for the short calls</span>
+</code></pre>
+<p>An empty fallback deployment switches the fallback off for that route. Timeouts and retries stay in code. Deployments differ between environments, so they belong in configuration. The timeouts follow the 60-second limit of the chat window, which is the same everywhere.</p>
+<p>The model name is set next to the deployment name on purpose. The deployment says where the request goes. The model name says what will answer, and the app uses it for two other choices.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="rsm1t rsm1d">
+  <title id="rsm1t">One model call, three choices</title>
+  <desc id="rsm1d">A model call names a route. The route configuration holds a deployment name, a model name and a reasoning effort. The deployment name decides where the request goes. The model name picks the prompt file. The model family decides which request parameters are sent. All three meet in one request, which is recorded on the call's span.</desc>
+  <defs><marker id="rsm1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="10" y="98" width="110" height="54" rx="6"></rect>
+  <text class="t" x="22" y="120">Model call</text><text class="m" x="22" y="137">names a route</text>
+  <rect class="box" x="160" y="84" width="140" height="82" rx="6"></rect>
+  <text class="t" x="172" y="106">Route config</text>
+  <text class="m" x="172" y="124">deployment name</text>
+  <text class="m" x="172" y="140">model name</text>
+  <text class="m" x="172" y="156">reasoning effort</text>
+  <rect class="box" x="350" y="20" width="150" height="50" rx="6"></rect>
+  <text class="t" x="362" y="41">Deployment</text><text class="m" x="362" y="58">where it goes</text>
+  <rect class="box" x="350" y="100" width="150" height="50" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="ta" x="362" y="121">Prompt file</text><text class="m" x="362" y="138">by model name</text>
+  <rect class="box" x="350" y="180" width="150" height="50" rx="6"></rect>
+  <text class="t" x="362" y="201">Parameters</text><text class="m" x="362" y="218">by model family</text>
+  <rect class="box" x="540" y="98" width="130" height="54" rx="6"></rect>
+  <text class="t" x="552" y="120">One request</text><text class="m" x="552" y="137">traced on its span</text>
+  <path class="ln" d="M120,125 L158,125" marker-end="url(#rsm1a)"></path>
+  <path class="ln" d="M300,105 L348,50" marker-end="url(#rsm1a)"></path>
+  <path class="sa" d="M300,125 L348,125" marker-end="url(#rsm1a)"></path>
+  <path class="ln" d="M300,145 L348,200" marker-end="url(#rsm1a)"></path>
+  <path class="ln" d="M500,50 L538,112" marker-end="url(#rsm1a)"></path>
+  <path class="sa" d="M500,125 L538,125" marker-end="url(#rsm1a)"></path>
+  <path class="ln" d="M500,200 L538,138" marker-end="url(#rsm1a)"></path>
+</svg>
+<figcaption>The deployment name only says where the request goes. The prompt and the parameters follow the model behind it.</figcaption>
+</figure>
+<h2>One prompt file per model</h2>
+<p>Every prompt in our app lives in a TOML file, one section per agent. There is one file for each model:</p>
+
+
+<table><thead>
+<tr>
+<th>Model</th>
+<th>Prompt file</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the newer model</td>
+<td>its own file</td>
+</tr>
+<tr>
+<td>the older fallback models</td>
+<td>one file each</td>
+</tr>
+<tr>
+<td>any reasoning model without its own file</td>
+<td>a shared reasoning file</td>
+</tr>
+<tr>
+<td>anything else</td>
+<td>the legacy file</td>
+</tr>
+</tbody></table>
+<p>The legacy file was written for the older, non-reasoning models. The reasoning file is about half its size: 497 lines against 951. Both cover the same agents.</p>
+<p>Why not one prompt for all? Because models read the same prompt differently. OpenAI’s GPT-4.1 guide says that model follows instructions “more closely and more literally than its predecessors”, and that prompts written for other models “may not immediately work” [1]. The GPT-5 guide says that “contradictory or vague instructions can be more damaging” to the newer model than to older ones [2]. A fix that helps one model can hurt another. With one file per model, I can change the prompt for one model and know the others did not move.</p>
+<h3>Pick the file by model name, not deployment name</h3>
+<p>A deployment name can be anything. Our CI deployment once had a <code>-cicd</code> suffix, and a deployment could just as well be called <code>prod-default</code>. If the app picked the prompt from the deployment name, a rename in one environment would quietly load a different prompt. So the app picks by model name, and the model name is a required setting for every slot.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-labelledby="rsm2t rsm2d">
+  <title id="rsm2t">Choosing the prompt file by model name</title>
+  <desc id="rsm2d">Three environments use different deployment names: chat-dev-2 in dev, test-chat in CI and chat-prod-eu in production. All three are configured with the same model name, new-model. The model name is matched against an ordered list of patterns. The first match, new-model, selects its own prompt file. Later rows are the older mini model, other reasoning models and a legacy file for everything else.</desc>
+  <defs><marker id="rsm2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="10" y="20" width="150" height="46" rx="6"></rect>
+  <text class="t" x="22" y="40">dev</text><text class="m" x="22" y="56">chat-dev-2</text>
+  <rect class="box" x="10" y="92" width="150" height="46" rx="6"></rect>
+  <text class="t" x="22" y="112">CI</text><text class="m" x="22" y="128">test-chat</text>
+  <rect class="box" x="10" y="164" width="150" height="46" rx="6"></rect>
+  <text class="t" x="22" y="184">production</text><text class="m" x="22" y="200">chat-prod-eu</text>
+  <rect class="box" x="220" y="83" width="140" height="64" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="232" y="105">Model name</text><text class="ta" x="232" y="122">new-model</text><text class="m" x="232" y="138">same everywhere</text>
+  <path class="ln" d="M160,43 L218,100" marker-end="url(#rsm2a)"></path>
+  <path class="ln" d="M160,115 L218,115" marker-end="url(#rsm2a)"></path>
+  <path class="ln" d="M160,187 L218,130" marker-end="url(#rsm2a)"></path>
+  <rect class="box" x="420" y="10" width="250" height="210" rx="6"></rect>
+  <text class="t" x="434" y="34">First match wins</text>
+  <text class="ta" x="434" y="68">new-model*  →  its own file</text>
+  <text class="m" x="434" y="104">old-model-mini*  →  its own file</text>
+  <text class="m" x="434" y="140">other reasoning  →  shared file</text>
+  <text class="m" x="434" y="176">anything else  →  legacy file</text>
+  <path class="sa" d="M360,108 L428,72" marker-end="url(#rsm2a)"></path>
+</svg>
+<figcaption>Deployment names change between environments. The model name does not, so it picks the prompt. The deployment names here are made up.</figcaption>
+</figure>
+<p>Here is the shape of it, simplified:</p>
+<pre><code class="hljs language-python">PER_MODEL = [
+    (re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r"new-model"</span>), <span class="hljs-string">"prompts_new_model.toml"</span>),
+    (re.<span class="hljs-built_in">compile</span>(<span class="hljs-string">r"old-model-mini"</span>), <span class="hljs-string">"prompts_old_model_mini.toml"</span>),
+]
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">prompt_file</span>(<span class="hljs-params">model_name: <span class="hljs-built_in">str</span></span>) -> <span class="hljs-built_in">str</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> is_reasoning_model(model_name):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"prompts_legacy.toml"</span>
+    <span class="hljs-keyword">for</span> pattern, path <span class="hljs-keyword">in</span> PER_MODEL:
+        <span class="hljs-keyword">if</span> pattern.search(model_name):
+            <span class="hljs-keyword">return</span> path
+    <span class="hljs-keyword">return</span> <span class="hljs-string">"prompts_reasoning.toml"</span>
+</code></pre>
+<p>Two details are easy to miss. First, a prompt loaded without a model name gets the default file, which belongs to the primary of the writing route. Two short-call agents loaded their prompt this way. They ran on one model and read the prompt meant for another, until a fix passed the model name explicitly. Second, when a call falls back, it reuses the messages it already built from the primary’s file. So during a fallback, the older model reads the newer model’s prompt. We accept that, and we have run the app with the primary switched off to check it.</p>
+<p>A new model’s file starts as a copy of the closest one. The file for our newest model is still that copy, with a comment at the top saying so. That is fine for a start. The point of the separate file is that it can now change without touching the others.</p>
+<h2>Keeping the prompt files in step</h2>
+<p>Several files that should define the same prompts will drift. One file gets a new section, the others don’t, and the code loads a section that is missing for one model. A short test stops that:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">sections</span>(<span class="hljs-params">path</span>):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">walk</span>(<span class="hljs-params">node, prefix</span>):
+        keys = <span class="hljs-built_in">set</span>()
+        <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> node.items():
+            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(value, <span class="hljs-built_in">dict</span>):
+                keys.add(<span class="hljs-string">f"<span class="hljs-subst">{prefix}</span>.<span class="hljs-subst">{key}</span>"</span>)
+                keys |= walk(value, <span class="hljs-string">f"<span class="hljs-subst">{prefix}</span>.<span class="hljs-subst">{key}</span>"</span>)
+        <span class="hljs-keyword">return</span> keys
+    <span class="hljs-keyword">return</span> walk(tomllib.load(<span class="hljs-built_in">open</span>(path, <span class="hljs-string">"rb"</span>)), <span class="hljs-string">""</span>)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">test_per_model_prompt_files_define_the_same_sections</span>():
+    reference = sections(REASONING_FILE)
+    <span class="hljs-keyword">for</span> path <span class="hljs-keyword">in</span> PER_MODEL_FILES:
+        <span class="hljs-keyword">assert</span> sections(path) == reference, path.name
+</code></pre>
+<p>The test checks structure, not wording. Two other kinds of test check that the files agree with the code:</p>
+<ul>
+<li>Examples in a prompt must parse into the response schema. Our intent classifier’s examples were missing a field the schema had gained, so a test now loads every example line from the prompt and validates it. It runs on both the legacy and the reasoning file.</li>
+<li>Some rules must hold for every model. One example is “state the limitation first when the sources don’t answer the question”. A test asserts it in both the legacy and the reasoning file.</li>
+</ul>
+<p>The test we didn’t have in June was the one from the opening story: every value the prompt tells the model to output must be allowed by the schema. That is a cheap test, and it would have caught three months of false flags.</p>
+<h2>Parameters that differ between model families</h2>
+<p>The same request can be valid for one model and rejected by another. Azure’s reasoning-model page lists the parameters that reasoning models don’t support: <code>temperature</code>, <code>top_p</code>, <code>presence_penalty</code>, <code>frequency_penalty</code>, <code>logprobs</code>, <code>top_logprobs</code>, <code>logit_bias</code> and <code>max_tokens</code> [3]. So one module builds the request arguments for every call, and it changes them by model family:</p>
+
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Older models</th>
+<th>Reasoning models</th>
+<th>What our code does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>temperature</code>, <code>top_p</code>, penalties</td>
+<td>accepted</td>
+<td>rejected</td>
+<td>dropped for reasoning models, with a debug log</td>
+</tr>
+<tr>
+<td>output limit</td>
+<td><code>max_tokens</code></td>
+<td><code>max_completion_tokens</code></td>
+<td>renamed, and scaled up</td>
+</tr>
+<tr>
+<td><code>reasoning_effort</code></td>
+<td>rejected</td>
+<td>accepted</td>
+<td>sent only to reasoning models</td>
+</tr>
+<tr>
+<td><code>verbosity</code></td>
+<td>not available</td>
+<td>accepted</td>
+<td>sent through <code>extra_body</code>, because our SDK version had no argument for it</td>
+</tr>
+<tr>
+<td>system message</td>
+<td><code>system</code></td>
+<td><code>system</code> or <code>developer</code></td>
+<td><code>system</code> unless a setting opts in</td>
+</tr>
+</tbody></table>
+<p>The output limit is scaled because the limit for reasoning models covers reasoning tokens as well as the visible answer [3]. A limit that was right for an older model can cut a reasoning model’s answer short. Our code multiplies it by 2.5, with a floor of 4,096 tokens.</p>
+<h3>Sending a parameter or omitting it</h3>
+<p>An empty reasoning effort in our configuration means the app does not send the parameter at all. Omitting a parameter is a real choice. It means “use this model’s default”, and the default changes between models. Azure’s page notes that one model version changed its default effort to <code>none</code>. Code that relied on the old default would get no reasoning after that upgrade [3]. The span records <code>not-sent</code> in that case, so a trace never shows a default that we did not choose.</p>
+<p>A wrong value is worse than a missing one. Azure answers an unknown effort with a 400. A 400 does not trigger our fallback, because it is about the request. So a typo in the effort setting would break every call on that route. The settings now reject an unknown effort when the app starts.</p>
+<h3>When the app can’t tell the family</h3>
+<p>The family comes from the model name, matched against patterns. If the name doesn’t match, the code assumes the older family. A comment in the code explains why:</p>
+<blockquote>
+<p>Misclassifying a reasoning deployment as legacy fails fast with a clear “Unsupported parameter” 400; the reverse silently drops parameters the caller expected.</p>
+</blockquote>
+<p>I like this rule. An error you see on the first request is better than a wrong answer you find a month later. There is also a setting to force the family, for a deployment whose name says nothing about the model.</p>
+<p>The patterns are not a permanent truth. The same Azure page now lists a newer model family that supports <code>temperature</code> again [3]. A rule like “reasoning models reject temperature” is true for a set of models, not forever.</p>
+<p>Try it below. Pick an environment and a slot, and see what the app would send. Then switch the prompt key to the deployment name, or pick an empty or misspelled effort.</p>
+<section class="lab" id="rm-lab" aria-labelledby="rm-lab-title" hidden>
+<h3 id="rm-lab-title">Build one model call</h3>
+<p>The settings are a simplified version of the configuration above. All names are made up.</p>
+<div class="lab-controls" id="rm-envs"><span class="lab-label">ENVIRONMENT</span></div>
+<div class="lab-controls" id="rm-slots"><span class="lab-label">SLOT</span></div>
+<div class="lab-controls" id="rm-keys"><span class="lab-label">PICK PROMPT BY</span></div>
+<div class="lab-controls"><label for="rm-effort">Reasoning effort <select id="rm-effort"></select></label></div>
+<div class="lab-panel"><span class="lab-k">DEPLOYMENT</span><span id="rm-deployment"></span></div>
+<div class="lab-panel"><span class="lab-k">PROMPT FILE</span><span id="rm-prompt"></span></div>
+<div class="lab-panel"><span class="lab-k">REQUEST ARGUMENTS</span><code id="rm-request"></code></div>
+<div class="lab-panel"><span class="lab-k">LLM SPAN</span><code id="rm-span"></code></div>
+<div class="lab-panel"><span class="lab-k">RESULT</span><span id="rm-result" role="status" aria-live="polite"></span></div>
+</section>
+<noscript><p>Enable JavaScript to build a model call. The tables above list the same rules.</p></noscript>
+<h3>Structured output</h3>
+<p>Every model we use supports structured output, so the schema is the same for all of them. The agent framework still asks the app to declare what a model supports, such as JSON and structured output. We declare it once for all deployments. The opening story is the other half of this. A strict schema always wins over the prompt. If the prompt and the schema disagree, the model follows the schema, and nothing tells you.</p>
+<h2>Keeping the old model working</h2>
+<p>When we first moved to a reasoning model, a teammate’s change kept the older models working beside it. The compatibility module and the first reasoning prompt file came from that change. Because of it, moving back is a configuration change. Every slot can point at an older model, and the request and the prompt follow.</p>
+<p>Backward compatibility also has a cost. Until October, the default in our CI workflow still pointed the model tests at an older model, while production had used the newer one since June. Unless a repository setting overrode that default, those tests checked a different prompt file from the one users got. Keeping the old path working made that easy to miss.</p>
+<h2>An upgrade is a prompt change and an eval</h2>
+<p>In production, our June move to the newer model was a four-line configuration change. The prompt file for that model already existed. However, nothing in our tests compared that prompt with the response schemas, and nothing ran the model tests on the new model. That is how the evaluator bug lasted three months.</p>
+<p>So now I treat an upgrade as three steps:</p>
+<ol>
+<li>Give the new model its own prompt file, copied from the closest one, and tune it there.</li>
+<li>Run the eval set with the new model as the primary, and compare it with the current model on the same questions. Run the contract tests on the new file too.</li>
+<li>Switch the configuration, and keep the current model as the fallback for a while. Rolling back is then a configuration change.</li>
+</ol>
+<p>Azure’s model lifecycle page gives the same advice for a retiring model. Evaluate candidates “against your own application, prompts, and representative data”, and compare quality, latency and cost together [4]. The same page has a warning for anyone who thinks of a deployment name as fixed. Standard deployments are upgraded automatically when a model version retires, and the deployment’s <code>versionUpgradeOption</code> decides when, or whether, that happens [4]. An upgrade like that changes the model without any change in your repository.</p>
+<h2>Seeing which model answered</h2>
+<p>With several models and a fallback, “which model answered this?” is a question you will ask often. In June a teammate fixed two agents’ spans that showed no useful model name. Now every routed call writes these on its existing LLM span:</p>
+
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>llm.model_name</code></td>
+<td>the deployment that answered</td>
+</tr>
+<tr>
+<td><code>llm.route</code></td>
+<td>the route the call used</td>
+</tr>
+<tr>
+<td><code>llm.reasoning_effort</code></td>
+<td><code>none</code>, <code>medium</code>, or <code>not-sent</code></td>
+</tr>
+</tbody></table>
+<p>With these, you can compare p95 latency by model and by route. The same span also records whether a fallback answered, which the <a href="/posts/llm-quota-fallback-circuit-breaker/">post on quota and fallbacks</a> covers. OpenTelemetry’s GenAI conventions make a distinction that I find useful here. <code>gen_ai.request.model</code> is the model you asked for, and <code>gen_ai.response.model</code> is “the name of the model that generated the response” [5]. Our <code>llm.model_name</code> holds a deployment name, so it can’t show an automatic version upgrade.</p>
+<h2>Things to watch</h2>
+<ul>
+<li><strong>Prompt and schema disagree.</strong> Test that every value the prompt asks for is allowed by the schema. A strict schema overrides the prompt without an error.</li>
+<li><strong>The wrong key for the prompt.</strong> Pick the prompt file by model name. Make the model name a required setting, even when it equals the deployment name today.</li>
+<li><strong>A call site with no model.</strong> A default prompt file is convenient, and it is wrong for every agent on a different model.</li>
+<li><strong>Omitted parameters.</strong> An omitted parameter takes the model’s default, and defaults change between versions. Record what you sent.</li>
+<li><strong>Bad values that don’t fall back.</strong> A 400 from a typo in a setting breaks the whole route. Validate settings when the app starts.</li>
+<li><strong>Tests on a different model.</strong> If CI runs another model, it also loads another prompt file.</li>
+</ul>
+<h2>What others do</h2>
+<p>A few ideas from outside that I haven’t built:</p>
+<ul>
+<li><strong>A router library or gateway.</strong> LiteLLM can drop the parameters a model does not support. By default it raises an error instead, and you opt in to dropping with <code>drop_params</code> [6]. Our code drops sampling parameters for reasoning models with only a debug log. One option is to raise in tests and drop in production, so a parameter that someone expects to work fails early.</li>
+<li><strong>Model settings stored with the prompt.</strong> Langfuse lets each prompt version carry a config object with the model name and parameters, “versioned together with the prompt” [7]. In our app the prompt is in a TOML file and the effort is in environment settings, so a change can touch one and forget the other.</li>
+<li><strong>Evals on every change.</strong> OpenAI’s evaluation guide suggests continuous evaluation, which runs evals on every change [8]. A model upgrade is one of those changes, and a prompt edit for one model is another.</li>
+<li><strong>The model that answered, from the response.</strong> Record the response model next to the requested one, as the OpenTelemetry conventions suggest [5]. An automatic upgrade would then show up in traces.</li>
+</ul>
+<p>If your app calls more than one model, give each model its own prompt file and pick it by model name. Test that the files agree with each other and with your schemas. Then treat the next model upgrade as a prompt change with an eval, and keep the old model ready as a fallback until the new one has proven itself.</p>
+<h2>References</h2>
+<ol>
+<li>OpenAI, <a href="https://developers.openai.com/cookbook/examples/gpt4-1_prompting_guide">“GPT-4.1 Prompting Guide”</a>, OpenAI Cookbook. More literal instruction following, and why existing prompts may need migration.</li>
+<li>OpenAI, <a href="https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_prompting_guide">“GPT-5 prompting guide”</a>, OpenAI Cookbook. Why contradictory or vague instructions hurt the newer models more; <code>reasoning_effort</code> and <code>verbosity</code>.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/openai/how-to/reasoning">“Azure OpenAI reasoning models”</a>, Microsoft Learn. Unsupported parameters, <code>max_completion_tokens</code> covering reasoning tokens, developer messages, and default reasoning effort per model.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/model-retirements">“Foundry Models lifecycle and support policy”</a>, Microsoft Learn. Retirement, automatic upgrades, <code>versionUpgradeOption</code>, and evaluating a replacement on your own data.</li>
+<li>OpenTelemetry, <a href="https://github.com/open-telemetry/semantic-conventions-genai/blob/main/docs/gen-ai/gen-ai-spans.md">“Semantic conventions for generative client AI spans”</a>. <code>gen_ai.request.model</code> and <code>gen_ai.response.model</code>.</li>
+<li>LiteLLM, <a href="https://docs.litellm.ai/docs/completion/drop_params">“Drop Unsupported Params”</a>. Raising by default, and <code>drop_params</code> to drop instead.</li>
+<li>Langfuse, <a href="https://langfuse.com/docs/prompt-management/features/config">“Prompt Config”</a>. Model name and parameters versioned with the prompt.</li>
+<li>OpenAI, <a href="https://developers.openai.com/api/docs/guides/evaluation-best-practices">“Evaluation best practices”</a>. Continuous evaluation on every change.</li>
+</ol>12:["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Running several models in one LLM app, each with its own prompt\",\"description\":\"An evaluator in our chatbot flagged every reply for three months after a model upgrade, and nothing failed. How we route calls to several models, why each model gets its own prompt file picked by model name, which request parameters change between model families, and why an upgrade is a prompt change plus an eval.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"agents, mlops, models\",\"url\":\"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",14," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L1d",null,{"title":"Running several models in one LLM app, each with its own prompt","url":"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/"}]]}],["$","h1",null,{"children":"Running several models in one LLM app, each with its own prompt"}],["$","p",null,{"className":"standfirst","children":"An evaluator in our chatbot flagged every reply for three months after a model upgrade, and nothing failed. How we route calls to several models, why each model gets its own prompt file picked by model name, which request parameters change between model families, and why an upgrade is a prompt change plus an eval."}],["$","div",null,{"className":"tag-list","children":[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$La","models",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Modelling"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1e"}}],"$L1f","$L20",["$L21"]]}]
+22:I[79520,["$2","$6","$7","$9"],""]
+1f:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}],["$","$La","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Data science"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]]}]]}]
+20:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/start-with-one-agent/","children":[["$","small",null,{"children":"← older"}],"From a multi-agent group chat to one agent with fixed steps"]}],["$","$La",null,{"className":"next","href":"/posts/llm-quota-fallback-circuit-breaker/","children":[["$","small",null,{"children":"newer →"}],"Keeping a chatbot answering when the model runs out of quota"]}]]}]
+21:["$","$L22","/assets/posts/widgets/rm-route.js",{"src":"/assets/posts/widgets/rm-route.js","strategy":"afterInteractive"}]
+18:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+23:I[27201,["$2"],"IconMark"]
+15:null
+1b:[["$","title","0",{"children":"Running several models in one LLM app, each with its own prompt · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"An evaluator in our chatbot flagged every reply for three months after a model upgrade, and nothing failed. How we route calls to several models, why each model gets its own prompt file picked by model name, which request parameters change between model families, and why an upgrade is a prompt change plus an eval."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Running several models in one LLM app, each with its own prompt"}],["$","meta","10",{"property":"og:description","content":"An evaluator in our chatbot flagged every reply for three months after a model upgrade, and nothing failed. How we route calls to several models, why each model gets its own prompt file picked by model name, which request parameters change between model families, and why an upgrade is a prompt change plus an eval."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],["$","meta","18",{"property":"og:type","content":"article"}],["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}],["$","meta","20",{"property":"article:tag","content":"agents"}],["$","meta","21",{"property":"article:tag","content":"mlops"}],["$","meta","22",{"property":"article:tag","content":"models"}],["$","meta","23",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","24",{"name":"twitter:title","content":"Running several models in one LLM app, each with its own prompt"}],["$","meta","25",{"name":"twitter:description","content":"An evaluator in our chatbot flagged every reply for three months after a model upgrade, and nothing failed. How we route calls to several models, why each model gets its own prompt file picked by model name, which request parameters change between model families, and why an upgrade is a prompt change plus an eval."}],["$","meta","26",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/running-several-models-in-one-llm-app/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","27",{"name":"twitter:image:type","content":"image/png"}],["$","meta","28",{"name":"twitter:image:width","content":"1200"}],["$","meta","29",{"name":"twitter:image:height","content":"630"}],["$","link","30",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L23","31",{}]]

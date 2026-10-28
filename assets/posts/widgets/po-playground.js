@@ -52,7 +52,7 @@
         badge.dataset.choice = choice;
         results.hidden = false;
         status.textContent = "Assigned to " + choice + ". Same ID, same answer.";
-      } catch (error) {
+      } catch {
         if (current !== revision)
           return;
         status.textContent = "This browser could not compute SHA-1. The static example above is still available.";

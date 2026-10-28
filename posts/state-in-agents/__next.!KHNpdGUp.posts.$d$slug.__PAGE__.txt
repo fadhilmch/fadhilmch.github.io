@@ -1,0 +1,314 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+21:"ViewportBoundary"
+22:I[97367,["$2"],"$21"]
+23:"MetadataBoundary"
+24:I[97367,["$2"],"$23"]
+25:"$Sreact.suspense"
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+e:X
+15:X
+15:C
+16:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Where an agentic chatbot keeps its state\",\"description\":\"A follow-up question only works if the bot remembers the last turn. What state a multi-agent chatbot needs, why I stopped saving the framework's own state, how a version field and a few counters keep sessions safe, and what happens when the session store goes down.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"agents, systems\",\"url\":\"https://fadhilmch.github.io/posts/state-in-agents/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/state-in-agents/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],"$L17","$L18","$L19","$L1a","$L1b",["$L1c"]]}],["$L1d","$L1e"],"$L1f"]}],"p":"$@20","v":null,"s":"$e"}}]]
+13:[["children",{"s":{"n":"slug","t":"d","k":"state-in-agents","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@14","v":"$15","s":"$e"},"c":"$Q16"}]]
+11:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next"}]],["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@12","v":null,"s":"$e"},"c":"$Q13"}]]
+f:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}]]]}]}],["$","$Lb",null,{}]]]}],"p":"$@10","v":null,"s":"$e"},"c":"$Q11"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}]]]}]}],["$","$Lc",null,{}]]}]}]]}],"p":"$@d","v":null,"s":"$e"},"c":"$Qf"},"h":{"r":["$","$1","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$25",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Where an agentic chatbot keeps its state · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"A follow-up question only works if the bot remembers the last turn. What state a multi-agent chatbot needs, why I stopped saving the framework's own state, how a version field and a few counters keep sessions safe, and what happens when the session store goes down."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/state-in-agents/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Where an agentic chatbot keeps its state"}],["$","meta","10",{"property":"og:description","content":"A follow-up question only works if the bot remembers the last turn. What state a multi-agent chatbot needs, why I stopped saving the framework's own state, how a version field and a few counters keep sessions safe, and what happens when the session store goes down."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/state-in-agents/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/state-in-agents/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],"$L26","$L27","$L28","$L29","$L2a","$L2b","$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32"]}]}],null]}],"$L33"]}],"p":"$@34","v":null,"s":"$e"}},"a":"$@35","u":"$@36","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+37:I[78881,["$2","$6","$7","$9"],"default"]
+39:I[79520,["$2","$6","$7","$9"],""]
+3a:I[97367,["$2"],"OutletBoundary"]
+3c:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+17:["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}]
+18:["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",12," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L37",null,{"title":"Where an agentic chatbot keeps its state","url":"https://fadhilmch.github.io/posts/state-in-agents/"}]]}],["$","h1",null,{"children":"Where an agentic chatbot keeps its state"}],["$","p",null,{"className":"standfirst","children":"A follow-up question only works if the bot remembers the last turn. What state a multi-agent chatbot needs, why I stopped saving the framework's own state, how a version field and a few counters keep sessions safe, and what happens when the session store goes down."}],["$","div",null,{"className":"tag-list","children":[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}],["$","$La","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"System design"}]]}]]}]
+38:T7683,<p>Say a user asks an internal chatbot how to book a meeting room. The bot explains the steps. The user then types “and for ten people?”. On its own, that question means nothing. The bot needs the previous turn to understand it.</p>
+<p>Our chatbot is a team of agents that pass messages to each other in a group chat. I rewrote how it saves a conversation between turns. The first version of that change saved the history after every turn, and the history was always empty. Every follow-up was handled as if it were the first question of the conversation. Nothing crashed. The counters were saved, the session was written to the store, and only the turns were missing.</p>
+<p>That bug made me think more carefully about what an agent should remember, where it should keep it, and what should never be remembered at all. This post goes through the choices we made and what other frameworks recommend. I’ll leave out sizes and numbers that aren’t mine to share.</p>
+<h2>Three places state can live</h2>
+<p><strong>State</strong> is anything the bot must remember to handle the next step correctly. In an agentic chatbot it lives in three places, and each one has a different lifetime.</p>
+<ul>
+<li><strong>Turn state</strong> is the messages the agents pass to each other while they answer one question. In our system the team of agents is built fresh for every turn, and these messages are dropped when the turn ends.</li>
+<li><strong>Session state</strong> is what the next turn needs: the last few question and answer pairs, a few counters and a short summary of the previous question.</li>
+<li><strong>Persisted state</strong> is the session state written to a store between turns. The next request can land on a different pod, so the session can’t live in memory.</li>
+<li>Everything else is not state. Configuration, the user’s location from the request, and anything you can compute again belong somewhere else.</li>
+</ul>
+<figure class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="sia-layers-t sia-layers-d">
+  <title id="sia-layers-t">Where state lives in one chatbot turn</title>
+  <desc id="sia-layers-d">A request with the query, location and language starts a turn. Configuration such as limits, prompts and model routes is read into the turn but never stored. Inside the turn, agents pass messages in a group chat; the team is built fresh and its messages are dropped at the end. The session state, with a version, counters and the last 8 turns, is restored at the start of the turn and committed only when the turn succeeds. The session state is saved to and loaded from a session store, which is Redis with an expiry time and an in-memory fallback.</desc>
+  <defs><marker id="sia-layers-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="10" y="40" width="150" height="66" rx="6"></rect>
+  <text class="t" x="22" y="63">Request</text>
+  <text class="m" x="22" y="81">query, location,</text>
+  <text class="m" x="22" y="96">language</text>
+  <rect class="box dash" x="10" y="150" width="150" height="70" rx="6"></rect>
+  <text class="t" x="22" y="173">Config</text>
+  <text class="m" x="22" y="191">limits, prompts,</text>
+  <text class="m" x="22" y="206">model routes</text>
+  <rect class="box" x="210" y="30" width="200" height="190" rx="6"></rect>
+  <text class="t" x="224" y="54">One turn</text>
+  <text class="m" x="224" y="80">agents pass messages</text>
+  <text class="m" x="224" y="95">in a group chat</text>
+  <text class="m" x="224" y="128">team built fresh,</text>
+  <text class="m" x="224" y="143">messages dropped</text>
+  <text class="m" x="224" y="158">at the end</text>
+  <rect class="box" x="480" y="30" width="190" height="80" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="494" y="54">Session state</text>
+  <text class="m" x="494" y="74">version, counters,</text>
+  <text class="m" x="494" y="89">last 8 turns</text>
+  <rect class="box" x="480" y="150" width="190" height="70" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="494" y="173">Session store</text>
+  <text class="m" x="494" y="191">Redis with expiry,</text>
+  <text class="m" x="494" y="206">memory fallback</text>
+  <path class="ln" d="M160,73 L208,73" marker-end="url(#sia-layers-a)"></path>
+  <path class="ln dash" d="M160,185 L208,185" marker-end="url(#sia-layers-a)"></path>
+  <path class="sa" d="M478,52 L412,52" marker-end="url(#sia-layers-a)"></path>
+  <text class="ta" x="420" y="44">restore</text>
+  <path class="sa" d="M412,92 L478,92" marker-end="url(#sia-layers-a)"></path>
+  <text class="ta" x="418" y="108">commit</text>
+  <path class="sb" d="M575,112 L575,148" marker-start="url(#sia-layers-a)" marker-end="url(#sia-layers-a)"></path>
+  <text class="tb" x="583" y="134">save, load</text>
+</svg>
+<figcaption>Turn state is thrown away at the end of each turn. Only the small session state crosses turns, and only after the turn succeeded. Config is read every turn but never saved with the session.</figcaption>
+</figure>
+<p>Both history bugs below came from mixing these layers up.</p>
+<h2>Persist a schema you own</h2>
+<p>Our first session store saved the agent framework’s own state. The framework, AutoGen, can serialize a whole team with <code>save_state()</code> and load it again with <code>load_state()</code>. That is convenient. It is also the full message history of every agent in the team, and it grows with every turn.</p>
+<p>My first fix was to trim it. The code walked the nested dictionary that <code>save_state()</code> returned and cut every list named <code>messages</code> or <code>message_thread</code> to its last 10 items. It also had to take care not to keep a tool result without the tool call that asked for it. It worked. However, it depended on how the framework laid out its internal state, and that layout can change with any upgrade.</p>
+<p>So I replaced it with a small schema of our own. The session is now one JSON object with eight fields:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"session_replies"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"reformulations"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"fallbacks"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">0</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"clarifications"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"prev_intent_topic"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"prev_user_query_summary"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"..."</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"turns"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">{</span><span class="hljs-attr">"user"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"..."</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"assistant"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"..."</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
+<p>The first version of this schema is the one with the empty history. It filled <code>turns</code> from the model context of the reception agent, the agent that reads the user’s question first. That looked like the right place, because that agent needs the history. But the group chat ends on the reply agent’s message. AutoGen buffers that reply for the other agents, and it only reaches the reception agent’s model context on that agent’s next call. That call never happens in the same turn. So the context held the user’s message with no answer, and the list of finished turns was always empty.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 245" role="img" aria-labelledby="st9t st9d">
+  <title id="st9t">Why the saved history was always empty</title>
+  <desc id="st9d">Step 1: the user asks, and the reception agent's context holds the user message. Step 2: the reply agent writes the answer, which the framework buffers until the reception agent's next call. Step 3: the turn ends with no next call, so the context has no answer and the saved turns are an empty list. Step 4: on the next message the reception agent gets no history, so "and for ten people?" is handled as a first question. The fix: build each turn from the user's query and the final answer the orchestrator returns, and pass the saved turns to the agent directly.</desc>
+  <defs><marker id="st9a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="10" y="20" width="150" height="120" rx="6"></rect>
+  <text class="t" x="20" y="44">1. user asks</text>
+  <text class="m" x="20" y="68">agent context:</text><text class="m" x="20" y="86">[user message]</text>
+  <rect class="box" x="180" y="20" width="150" height="120" rx="6"></rect>
+  <text class="t" x="190" y="44">2. answer written</text>
+  <text class="m" x="190" y="68">by the reply agent,</text><text class="m" x="190" y="86">buffered until the</text><text class="m" x="190" y="104">reception agent's</text><text class="m" x="190" y="122">next call</text>
+  <rect class="box" x="350" y="20" width="150" height="120" rx="6"></rect>
+  <text class="t" x="360" y="44">3. turn ends</text>
+  <text class="m" x="360" y="68">no next call, so</text><text class="m" x="360" y="86">the context has</text><text class="m" x="360" y="104">no answer:</text><text class="tb" x="360" y="122">turns = []</text>
+  <rect class="box" x="520" y="20" width="150" height="120" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="530" y="44">4. next message</text>
+  <text class="m" x="530" y="68">no history, so this</text><text class="m" x="530" y="86">is a first question:</text><text class="tb" x="530" y="104">and for ten people?</text>
+  <path class="ln" d="M160,80 L178,80" marker-end="url(#st9a)"></path>
+  <path class="ln" d="M330,80 L348,80" marker-end="url(#st9a)"></path>
+  <path class="ln" d="M500,80 L518,80" marker-end="url(#st9a)"></path>
+  <rect class="box" x="10" y="170" width="660" height="60" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="ta" x="24" y="195">Fix: build each turn from the user's query and the final answer the</text>
+  <text class="ta" x="24" y="214">orchestrator returns, and pass the saved turns to the agent directly.</text>
+</svg>
+<figcaption>The history depended on when the framework moved a message between agents. The fix builds it from values the orchestrator already has.</figcaption>
+</figure>
+<p>The fix was to stop reading from the framework. The orchestrator already has the user’s query and the final answer, so it builds the turn from those two strings. It also keeps only the last 8 turns:</p>
+<pre><code class="hljs language-python">MAX_PERSISTED_TURNS = <span class="hljs-number">8</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">append_turn</span>(<span class="hljs-params">state: <span class="hljs-built_in">dict</span>, user: <span class="hljs-built_in">str</span>, assistant: <span class="hljs-built_in">str</span></span>) -> <span class="hljs-literal">None</span>:
+    state[<span class="hljs-string">"version"</span>] = SESSION_SCHEMA_VERSION
+    turns = [*state.get(<span class="hljs-string">"turns"</span>, []), {<span class="hljs-string">"user"</span>: user, <span class="hljs-string">"assistant"</span>: assistant}]
+    state[<span class="hljs-string">"turns"</span>] = turns[-MAX_PERSISTED_TURNS:]
+</code></pre>
+<p>On the next turn the orchestrator passes the turns to the reception agent through its constructor, like the counters. Nothing writes into the agent’s private context anymore.</p>
+<p>Microsoft Agent Framework, which we are moving to, has its own session object that serializes to a dictionary [1]. Its documentation carries a warning that matches what I learned: “Sessions are agent/service-specific. Reusing a session with a different agent configuration or provider can lead to invalid context.” Framework state is shaped for the framework. If you want state that survives a change of agent setup, or of framework, keep a copy in a shape you own.</p>
+<h2>Put a version on it</h2>
+<p>A session written by last week’s code will be read by this week’s code. So every change to the schema needs an answer to one question: what happens to the sessions already in the store?</p>
+<p>Our answer grew in three steps. First we wrapped the framework state with the framework version it came from. Then we added a check that resets a session with missing or unknown fields instead of loading it. With the new schema, the check is one function:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">session_reset_reason</span>(<span class="hljs-params">state: <span class="hljs-built_in">dict</span></span>) -> <span class="hljs-built_in">str</span> | <span class="hljs-literal">None</span>:
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> state:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>  <span class="hljs-comment"># a new session</span>
+    <span class="hljs-keyword">if</span> state.get(<span class="hljs-string">"version"</span>) != SESSION_SCHEMA_VERSION:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"unknown_session_version"</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> SESSION_FIELDS.issubset(state):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"missing_session_fields"</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> all_turns_are_strings(state[<span class="hljs-string">"turns"</span>]):
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"invalid_turns"</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>
+</code></pre>
+<p>If it returns a reason, the turn starts with an empty session. The reason goes to a warning log and to the trace as <code>session.reset</code> and <code>session.reset_reason</code>. We never restore part of a session.</p>
+<p>A reset costs the user their last few turns, and they may need to repeat a question. A crash costs every request in that session until it expires. For a chatbot with short sessions, that is the trade we chose. The framework migration plan also keeps a one-time reset at cutover, instead of converting old sessions.</p>
+<p>The opposite approach is the <strong>tolerant reader</strong>. Martin Fowler describes it for messages between services: read only the fields you need and ignore the rest, so the other side can change without breaking you [7]. It suits data that many teams produce. Session state has one writer, which is us, and a wrongly restored counter is hard to see. So a strict check and a reset fit better here.</p>
+<h2>Counters are loop budgets</h2>
+<p>Three of the eight fields are counters, and each one stops a loop that could otherwise go on forever.</p>
+<ul>
+<li><code>clarifications</code> counts consecutive unclear questions that the bot answered with a question of its own. At 2, the next unclear turn goes to a fallback agent instead of asking again. A clear question resets it.</li>
+<li><code>fallbacks</code> counts out-of-scope questions. At 3, the fallback agent takes over. Small talk does not count, and this counter never resets.</li>
+<li><code>session_replies</code> counts every reply in the session. Past a fixed limit, every turn goes to the fallback agent.</li>
+</ul>
+<p>Inside a turn there is a second kind of budget. The inner group chats stop after 25 agent turns, whatever the agents decide. Anthropic’s guide to agents calls these stopping conditions and recommends them “to maintain control” [5]. LangGraph has the same thing as a recursion limit, and its error page says that hitting it usually means a loop in your graph [4].</p>
+<p>A counter is only a budget if it survives the turn. So it must be in the persisted state, not in an agent object that is rebuilt every turn. It also matters when you write it. Our orchestrator commits the session only after a turn succeeds. If the turn fails, nothing is saved, and the failed attempt does not use up the user’s budget.</p>
+<h2>When the session store is down</h2>
+<p>The pods themselves keep no session. The Twelve-Factor App states the rule plainly. Processes are stateless, and “session state data is a good candidate for a datastore that offers time-expiration, such as Memcached or Redis” [8]. Ours is a Redis cluster, and each session expires after a fixed time.</p>
+<p>So what happens when Redis is unreachable? My first plan, in June, said: treat the session as empty and keep answering. A pod-local fallback was rejected, because with several pods a local copy can go stale.</p>
+<p>In October I changed my mind. With no fallback, a Redis outage dropped the context of every conversation for as long as it lasted. Now each pod has a small in-memory cache, bounded by size and by time. A write that can’t reach Redis goes to this cache. A read checks the cache first and then Redis. A successful Redis write removes the cached copy.</p>
+<p>A circuit breaker sits in front of Redis. After 5 failures in a row it opens, and calls go straight to the memory cache for 30 seconds. Then the next call probes Redis again. Without it, every request would wait out the Redis timeouts and retries first. It logs only when its state changes, and every session span carries <code>session.circuit_state</code> and <code>session.fallback</code>, so a degraded hour is visible in the traces.</p>
+<p>Two things went wrong on the way.</p>
+<p>The first is an exception that didn’t look like a Redis error. When no node of the cluster is reachable, redis-py raises <code>RedisClusterException</code>. That class derives from plain <code>Exception</code>, not from <code>RedisError</code> [10]. Our code caught <code>RedisError</code>, so a Redis that was down when the pod started escaped the fallback on every call. The fix is one more entry in the tuple:</p>
+<pre><code class="hljs language-python"><span class="hljs-comment"># RedisClusterException is not a RedisError.</span>
+REDIS_UNAVAILABLE = (
+    redis_exc.RedisError,
+    redis_exc.RedisClusterException,
+    asyncio.TimeoutError,
+)
+</code></pre>
+<p>The second is the stale copy we worried about in June. It is still there, and it is documented. Here is how it happens:</p>
+<figure class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="sia-stale-t sia-stale-d">
+  <title id="sia-stale-t">How a pod-local fallback can lose a turn</title>
+  <desc id="sia-stale-d">Three lanes: pod A, Redis and pod B. While Redis is unreachable, turn 3 runs on pod A and its write fails, so pod A keeps the session in memory. Redis recovers. Turn 4 runs on pod B, reads Redis, which does not have turn 3, and saves turns 1, 2 and 4. Turn 5 runs on pod A, which reads its memory copy first, and saves turns 1, 2, 3 and 5. Turn 4 is lost.</desc>
+  <text class="t" x="10" y="74">pod A</text>
+  <text class="t" x="10" y="139">Redis</text>
+  <text class="t" x="10" y="204">pod B</text>
+  <line class="grid" x1="90" x2="660" y1="70" y2="70"></line>
+  <line class="grid dash" x1="90" x2="260" y1="135" y2="135"></line>
+  <line class="grid" x1="260" x2="660" y1="135" y2="135"></line>
+  <line class="grid" x1="90" x2="660" y1="200" y2="200"></line>
+  <text class="m" x="100" y="153">unreachable</text>
+  <text class="m" x="266" y="127">recovers</text>
+  <circle class="fb" cx="170" cy="70" r="4"></circle>
+  <text class="tb" x="178" y="40">turn 3: write fails,</text>
+  <text class="m" x="178" y="54">kept in pod A memory</text>
+  <line class="sa" x1="360" x2="360" y1="192" y2="143"></line><polygon class="fa" points="356,145 364,145 360,138"></polygon>
+  <circle class="fa" cx="360" cy="135" r="4"></circle>
+  <text class="m" x="368" y="153">saves 1, 2, 4</text>
+  <text class="ta" x="368" y="222">turn 4 on pod B</text>
+  <text class="m" x="368" y="236">reads Redis, no turn 3</text>
+  <line class="sb" x1="530" x2="530" y1="78" y2="127"></line><polygon class="fb" points="526,125 534,125 530,132"></polygon>
+  <circle class="fb" cx="530" cy="135" r="4"></circle>
+  <text class="tb" x="538" y="40">turn 5 on pod A</text>
+  <text class="m" x="538" y="54">reads memory first</text>
+  <text class="tb" x="538" y="153">saves 1, 2, 3, 5</text>
+  <text class="m" x="538" y="167">turn 4 is lost</text>
+</svg>
+<figcaption>A pod-local copy is private. After Redis recovers, a pod can write back a session that is older than what another pod saved in the meantime.</figcaption>
+</figure>
+<p>Try it below. Play the outage to replay the figure, or turn Redis off yourself before any turn. Turns alternate between pod A and pod B.</p>
+<section class="lab" id="sa-lab" aria-labelledby="sa-lab-title" hidden>
+<h3 id="sa-lab-title">Lose Redis for a turn</h3>
+<p>A read checks the pod's own memory first, then Redis. A failed Redis write goes to the pod's memory. A successful Redis write removes the pod's copy.</p>
+<div class="lab-controls">
+<button type="button" id="sa-play" aria-pressed="false">Play the outage</button>
+<button type="button" id="sa-next">Next turn</button>
+<button type="button" id="sa-reset">Reset</button>
+</div>
+<div class="lab-controls">
+<label><input type="checkbox" id="sa-redis" checked> Redis is up</label>
+<label><input type="checkbox" id="sa-cache" checked> Pod-local fallback cache</label>
+</div>
+<div class="lab-panel" id="sa-redis-panel"><span class="lab-k">REDIS, SHARED</span><ul class="lab-chips" id="sa-redis-turns"></ul></div>
+<div class="lab-grid">
+<div class="lab-panel" id="sa-a-panel"><span class="lab-k">POD A MEMORY</span><ul class="lab-chips" id="sa-a-turns"></ul></div>
+<div class="lab-panel" id="sa-b-panel"><span class="lab-k">POD B MEMORY</span><ul class="lab-chips" id="sa-b-turns"></ul></div>
+</div>
+<dl class="lab-stats">
+<div><dt>turns so far</dt><dd id="sa-turn">0</dd></div>
+<div><dt>lost for good</dt><dd id="sa-lost">none</dd></div>
+</dl>
+<p class="lab-status" id="sa-status" role="status" aria-live="polite"></p>
+<ol class="lab-log" id="sa-log"></ol>
+</section>
+<noscript><p>Enable JavaScript to run the outage. The figure above shows the same sequence.</p></noscript>
+<p>Microsoft’s cache-aside pattern page describes the same risk for any local cache: each instance has its own copy, and the copies “can quickly become inconsistent” [9]. We accepted it. The stale copy can only appear after an outage, and the alternative was losing the context of every conversation during it.</p>
+<h2>What should not be state</h2>
+<p>Some things look like state but are better kept out of the session.</p>
+<ul>
+<li>The user’s location arrives with every request, so it is not in the session. If it were stored too, you would need a rule for which copy wins when the two differ.</li>
+<li>The limits above are constants in the code. Prompts and model routes come from configuration. If a session carried them, a deploy would not change sessions that were already open.</li>
+<li>Retrieved documents and the messages between agents are dropped at the end of the turn. The next turn searches again.</li>
+<li>Store a derived value only when computing it again is expensive. A summary that needs a model call can be worth storing. A flag you can derive from the stored turns is not.</li>
+</ul>
+<p>One way to decide: if this field had the wrong value, would anything correct it? Data from the request and from config is read fresh every turn, so it corrects itself. A stored copy does not.</p>
+<h2>What others do</h2>
+<p>Other frameworks make different choices about the same layers.</p>
+<p>LangGraph saves the graph’s state as checkpoints with a <strong>checkpointer</strong> [3]. Checkpoints are scoped to a thread, and you pass a <code>thread_id</code> with each call. Data that should outlive one thread goes into a separate store. The documentation also warns that the in-memory checkpointer loses everything when the process restarts, and that checkpoints pile up in long conversations unless you prune them. That is the same split as ours: a session store for one conversation, and nothing that outlives it.</p>
+<p>Microsoft Agent Framework keeps a session with an id and a state dictionary, and can serialize it with <code>to_dict()</code> [1]. For history growth it offers compaction strategies [2]. A sliding window keeps the most recent messages. Truncation drops the oldest ones once a token budget is passed. Summarization asks a smaller model to replace older messages with a summary. Our 8-turn cap is a sliding window counted in turns.</p>
+<p><strong>Event sourcing</strong> stores every change as an event and rebuilds the current state by replaying them. Snapshots make the rebuild fast [6]. Our session is a single snapshot that is overwritten every turn, and the list of turns is a short event log with the old events cut off. We don’t keep a full log. It would let you replay a conversation after a bug fix, at the cost of more storage for data that expires soon anyway.</p>
+<h2>Things to watch</h2>
+<ul>
+<li>Reading state from the framework. Agent frameworks buffer and route messages in ways that are easy to miss. Build the persisted turn from values your own code returned.</li>
+<li>Unbounded history. Cap the number of turns. A count cap does not bound size, so one very long message can still make the session large.</li>
+<li>No version field. Without one, you can’t tell an old session from a broken one. Add it before the first schema change, not after.</li>
+<li>Counters outside the persisted state. A budget that lives in an object rebuilt every turn resets every turn.</li>
+<li>Saving a failed turn. Commit only after the turn succeeds, or a failure uses up the user’s budget.</li>
+<li>Exception hierarchies. Check what your client raises when the server is completely down. It may not be its usual base class.</li>
+<li>A quiet fallback. Tag degraded reads and writes in traces and metrics. Otherwise a Redis outage only shows up as users repeating themselves.</li>
+</ul>
+<h2>What I would try next</h2>
+<p>The first two are in the framework migration I’m working on, which isn’t merged yet. The third is only an idea.</p>
+<ul>
+<li>A revision number on every write. Each write says which revision it was built on. The store rejects it if the session has moved since. That is the same idea as an ETag (<a href="/posts/etags-and-the-lost-update/">an earlier post</a>), and it is meant to close the stale-copy gap above.</li>
+<li>A byte bound as well as a turn bound. Old turns are dropped until the session fits a size limit, and each message is cut to a maximum length.</li>
+<li>Fixtures of old sessions in the tests. Each schema version would keep a few stored sessions as test data. The tests would check that the reset logic still handles them.</li>
+</ul>
+<p>If you build a multi-agent chatbot, start by writing down the session schema. Keep it to a short list of fields you own, with a version number and a cap on history. Then decide what each counter protects against, and what the bot should do when the store is not there.</p>
+<h2>References</h2>
+<ol>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/agent-framework/agents/conversations/session">“Session”</a>, Agent Framework documentation. <code>AgentSession</code> fields, <code>to_dict()</code> and <code>from_dict()</code>, and the warning that sessions are agent and service specific.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/agent-framework/agents/conversations/compaction">“Compaction”</a>, Agent Framework documentation. Sliding window, truncation and summarization strategies for conversation history.</li>
+<li>LangChain, <a href="https://docs.langchain.com/oss/python/langgraph/persistence">“Persistence”</a>, LangGraph documentation. Checkpointers, threads, and stores for data shared across threads.</li>
+<li>LangChain, <a href="https://docs.langchain.com/oss/python/langgraph/errors/GRAPH_RECURSION_LIMIT">“GRAPH_RECURSION_LIMIT”</a>, LangGraph documentation. The step limit and why hitting it usually means a loop.</li>
+<li>Erik Schluntz and Barry Zhang, <a href="https://www.anthropic.com/engineering/building-effective-agents">“Building effective agents”</a>, Anthropic, 2024. Stopping conditions such as a maximum number of iterations.</li>
+<li>Martin Fowler, <a href="https://martinfowler.com/eaaDev/EventSourcing.html">“Event Sourcing”</a>, 2005. Storing changes as events, rebuilding state, and snapshots.</li>
+<li>Martin Fowler, <a href="https://martinfowler.com/bliki/TolerantReader.html">“Tolerant Reader”</a>, 2011. Reading only what you need from a payload.</li>
+<li>Adam Wiggins, <a href="https://12factor.net/processes">“VI. Processes”</a>, <em>The Twelve-Factor App</em>. Stateless processes and session state in a store with expiry.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside">“Cache-Aside pattern”</a>, Azure Architecture Center. Why private local caches drift apart.</li>
+<li>redis-py, <a href="https://github.com/redis/redis-py/blob/master/redis/exceptions.py"><code>redis/exceptions.py</code></a>. <code>RedisClusterException</code> and <code>RedisError</code> both derive directly from <code>Exception</code>.</li>
+</ol>19:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$38"}}]
+1a:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}],["$","$La","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"Systems"}]]]}]]}]
+1b:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/writing-prompts-for-agentic-workflows/","children":[["$","small",null,{"children":"← older"}],"Writing prompts for a multi-step chatbot, from basic to advanced"]}],["$","$La",null,{"className":"next","href":"/posts/start-with-one-agent/","children":[["$","small",null,{"children":"newer →"}],"From a multi-agent group chat to one agent with fixed steps"]}]]}]
+1c:["$","$L39","/assets/posts/widgets/sa-store.js",{"src":"/assets/posts/widgets/sa-store.js","strategy":"afterInteractive"}]
+1d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true}]
+1f:["$","$L3a",null,{"children":["$","$25",null,{"name":"Next.MetadataOutlet","children":"$@3b"}]}]
+26:["$","meta","18",{"property":"og:type","content":"article"}]
+27:["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}]
+28:["$","meta","20",{"property":"article:tag","content":"agents"}]
+29:["$","meta","21",{"property":"article:tag","content":"systems"}]
+2a:["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}]
+2b:["$","meta","23",{"name":"twitter:title","content":"Where an agentic chatbot keeps its state"}]
+2c:["$","meta","24",{"name":"twitter:description","content":"A follow-up question only works if the bot remembers the last turn. What state a multi-agent chatbot needs, why I stopped saving the framework's own state, how a version field and a few counters keep sessions safe, and what happens when the session store goes down."}]
+2d:["$","meta","25",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/state-in-agents/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}]
+2e:["$","meta","26",{"name":"twitter:image:type","content":"image/png"}]
+2f:["$","meta","27",{"name":"twitter:image:width","content":"1200"}]
+30:["$","meta","28",{"name":"twitter:image:height","content":"630"}]
+31:["$","link","29",{"rel":"icon","href":"/assets/favicon.svg"}]
+32:["$","$L3c","30",{}]
+33:["$","meta",null,{"name":"next-size-adjust","content":""}]
+e:300
+3b:null
+36:true
+e:C
+35:0
+14:"$undefined"
+12:"$undefined"
+10:"$undefined"
+d:"$undefined"
+34:"$undefined"
+20:"$undefined"

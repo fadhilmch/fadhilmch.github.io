@@ -1,0 +1,237 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+13:I[97367,["$2"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:"ViewportBoundary"
+17:I[97367,["$2"],"$16"]
+19:"MetadataBoundary"
+1a:I[97367,["$2"],"$19"]
+1c:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+:HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+10:X
+11:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$L12",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":false,"v":null}}]]
+f:[["children",{"s":{"n":"slug","t":"d","k":"build-once-promote-everywhere","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$10"},"c":"$Q11"}]]
+e:[["children",{"s":"posts","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":null},"c":"$Qf"}]]
+d:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]]}],"p":false,"v":null},"c":"$Qe"}]]
+0:{"P":null,"c":["","posts","build-once-promote-everywhere",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lc",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L17",null,{"children":"$L18"}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":"$L1b"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$1c",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+1d:I[78881,["$2","$6","$7","$9"],"default"]
+10:C
+1e:T6b74,<p>In June we moved our chatbot’s production environment to a newer model. The pull request changed two lines in each of two config files: the model deployment name and the model name, for UAT and for production. No Python file changed.</p>
+<p>It still went to production the same way a code change does. It merged, deployed to UAT, got a version tag and waited for an approval. Then the production deploy copied an image that UAT had already run, and pointed the cluster at it together with the new config. Nothing was built for production.</p>
+<p>This post is about that release model. You build the container image once, name it after the commit, and move that exact image from one environment to the next. Everything that differs between environments stays outside the image. This is usually called <strong>image promotion</strong>, or “build once, deploy many”. To roll back, you point back at an older image. I’ll go through how our pipeline does it, where it still falls short, and what an LLM service adds. I’ll leave out the names of registries, repositories and models, which aren’t mine to share.</p>
+<h2>A build, a release and a run</h2>
+<p>The Twelve-Factor App splits shipping into three stages [1]. The build turns code into an executable bundle. The release combines that build with the config of one deploy. The run starts the release in its environment. Every release has a unique ID and is never changed after it is created. If you need a change, you make a new release.</p>
+<p>For a container service, the build is the image. The release is the image plus one environment’s config. In our setup, a release is one commit in a Git repo that Argo CD watches. More on that below.</p>
+<p>Why not build again for each environment? Humble and Farley answer it in <em>Continuous Delivery</em>: “Every time you compile the code, you run the risk of introducing some difference” [2]. A rebuild can pick up a newer base image, a newer system package or a different tool version. Then production runs an image nobody tested. They call binaries built for one environment “a very bad practice” [2].</p>
+<h2>What our pipeline does</h2>
+<p>We have three environments: dev, UAT and production. A deploy goes through three repos. The app repo has small workflows that run tests and start a deploy. A shared repo holds the reusable workflows that do the dispatch. A separate infra repo builds the image, pushes it to the registry and updates the Kubernetes manifests. Argo CD watches the infra repo and applies it to the cluster.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 290" role="img" aria-labelledby="bope1t bope1d">
+  <title id="bope1t">Three triggers, two builds, one promotion</title>
+  <desc id="bope1d">A merge into development builds image a1b2c3d and deploys it to dev. A merge into main builds a fresh image e4f5a6b and deploys it to UAT. A version tag with an approval has no build step: it copies the same e4f5a6b image to the production registry and deploys it to production.</desc>
+  <defs><marker id="bope1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="m" x="10" y="18">trigger</text><text class="m" x="200" y="18">build</text><text class="m" x="350" y="18">image</text><text class="m" x="540" y="18">environment</text>
+  <rect class="box" x="10" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="22" y="52">merge into</text><text class="m" x="22" y="70">development</text>
+  <rect class="box" x="200" y="30" width="110" height="54" rx="6"></rect>
+  <text class="t" x="212" y="52">build</text><text class="m" x="212" y="70">from dev</text>
+  <rect class="box" x="350" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="362" y="52">app:a1b2c3d</text><text class="m" x="362" y="70">not promoted</text>
+  <rect class="box" x="540" y="30" width="130" height="54" rx="6"></rect>
+  <text class="t" x="552" y="62">dev</text>
+  <rect class="box" x="10" y="120" width="150" height="54" rx="6"></rect>
+  <text class="t" x="22" y="142">merge into main</text><text class="m" x="22" y="160">promotion PR</text>
+  <rect class="box" x="200" y="120" width="110" height="54" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="212" y="142">build again</text><text class="tb" x="212" y="160">new SHA</text>
+  <rect class="box" x="350" y="120" width="150" height="54" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="362" y="142">app:e4f5a6b</text><text class="m" x="362" y="160">tested in UAT</text>
+  <rect class="box" x="540" y="120" width="130" height="54" rx="6"></rect>
+  <text class="t" x="552" y="152">UAT</text>
+  <rect class="box" x="10" y="210" width="150" height="54" rx="6"></rect>
+  <text class="t" x="22" y="232">tag v1.4.0</text><text class="m" x="22" y="250">plus approval</text>
+  <rect class="box dash" x="200" y="210" width="110" height="54" rx="6"></rect>
+  <text class="t" x="212" y="232">no build</text><text class="m" x="212" y="250">copy only</text>
+  <rect class="box" x="350" y="210" width="150" height="54" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="362" y="232">app:e4f5a6b</text><text class="ta" x="362" y="250">same image</text>
+  <rect class="box" x="540" y="210" width="130" height="54" rx="6"></rect>
+  <text class="t" x="552" y="242">production</text>
+  <path class="ln" d="M160,57 L198,57" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M310,57 L348,57" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M500,57 L538,57" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M160,147 L198,147" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M310,147 L348,147" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M500,147 L538,147" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M160,237 L198,237" marker-end="url(#bope1a)"></path>
+  <path class="sa" d="M425,174 L425,208" marker-end="url(#bope1a)"></path>
+  <path class="ln" d="M500,237 L538,237" marker-end="url(#bope1a)"></path>
+  <text class="m" x="10" y="284">SHAs and version are examples</text>
+</svg>
+<figcaption>Production never builds. It copies the image UAT ran. The step from dev to UAT still builds again, because the merge into main makes a new commit.</figcaption>
+</figure>
+<p>Each environment has its own trigger:</p>
+<ul>
+<li>A merge into <code>development</code> runs smoke tests, then builds an image and deploys it to dev.</li>
+<li>A promotion PR from <code>development</code> into <code>main</code> builds a fresh image from <code>main</code> and deploys it to UAT. A small workflow fills the PR body with the list of commits it carries.</li>
+<li>A version tag such as <code>v1.4.0</code> on <code>main</code> deploys to production. A person must approve it in a GitHub environment first. Then the infra repo copies the UAT image into the production registry with <code>az acr import</code> and pins the manifest to it.</li>
+</ul>
+<p>Before it asks for approval, the production workflow checks that the tagged commit is on <code>main</code> and has an exact version tag.</p>
+<p>Try it below. Step one change through the three environments, then roll it back. Then tick the rebuild box and run it again. The SHAs and digests are made up.</p>
+<section class="lab" id="bo-lab" aria-labelledby="bo-lab-title" hidden>
+<h3 id="bo-lab-title">One change, from merge to rollback</h3>
+<p>Each panel shows the image an environment runs: its tag, the digest of its bytes, and where it came from.</p>
+<div class="lab-controls">
+<button type="button" id="bo-play" aria-pressed="false">Play</button>
+<button type="button" id="bo-step">Next</button>
+<button type="button" id="bo-reset">Reset</button>
+<label><input type="checkbox" id="bo-rebuild"> Rebuild for production instead of copying</label>
+</div>
+<div class="lab-grid">
+<div class="lab-panel" id="bo-dev"><span class="lab-k">DEV</span><code id="bo-dev-tag"></code><span class="lab-k" id="bo-dev-digest"></span><span class="lab-sm" id="bo-dev-how"></span></div>
+<div class="lab-panel" id="bo-uat"><span class="lab-k">UAT</span><code id="bo-uat-tag"></code><span class="lab-k" id="bo-uat-digest"></span><span class="lab-sm" id="bo-uat-how"></span></div>
+<div class="lab-panel" id="bo-prod"><span class="lab-k">PRODUCTION</span><code id="bo-prod-tag"></code><span class="lab-k" id="bo-prod-digest"></span><span class="lab-sm" id="bo-prod-how"></span></div>
+</div>
+<div class="lab-panel"><span class="lab-k">INFRA REPO, DEPLOY COMMITS</span><ol class="lab-log" id="bo-log"></ol></div>
+<p class="lab-status" id="bo-status" role="status" aria-live="polite"></p>
+</section>
+<noscript><p>Enable JavaScript to step through a release. The diagram above shows the same flow.</p></noscript>
+<h3>Where we stopped short</h3>
+<p>Our design record for this, ADR-002, describes a stricter version. It builds once, when code merges into <code>development</code>, and promotes that one image to UAT and then to production. The record still has the status “Proposed”. The workflows went a different way, and UAT gets its own build.</p>
+<p>The merge commit is one reason this is hard. A promotion PR into <code>main</code> creates a new commit with a new SHA. The code is the same, but the name is not. So the dev image and the UAT image are two builds with two names.</p>
+<p>So in our pipeline, “build once” holds from UAT to production and not from dev to UAT. UAT to production is the step that matters most, because production must run what the testers saw. Two things in our Dockerfile make the second build less risky. The Python base image is pinned by digest, and dependencies come from a lock file with <code>uv sync --frozen</code>. One step still installs system packages without a version, so two builds of the same code can still differ a little.</p>
+<p>Microsoft’s guide to image tags makes the same point about git SHAs. It calls a git commit tag “semi-stable”, because a rebuild of the same commit can pick up a new base image [5].</p>
+<h2>Name the image after the commit</h2>
+<p>Every image is tagged with the 7-character git SHA of the commit it was built from. ADR-001 compared this with semantic versions, build numbers and timestamps. The SHA won because any workflow can compute it from its own checkout. The build and deploy workflows don’t need to pass a version between them. And <code>git show a1b2c3d</code> shows exactly what is running.</p>
+<p>Each build also gets a second tag with the environment name, such as <code>:uat</code>. That tag moves on every deploy. It is only there for people browsing the registry. The manifests always pin the SHA tag.</p>
+<p>The running app also needs to say what it is. The deploy step writes an <code>APP_VERSION</code> variable into the manifest: the short SHA on dev and UAT, the release tag on production. The app reports it on a <code>/version</code> endpoint and in a response header. We dropped our release tool in June. The version in <code>pyproject.toml</code> is now a fixed <code>0.0.0</code>, and the deploy is the only source of the version.</p>
+<p>A tag is still only a name. The Kubernetes documentation says: “Tags can be moved to point to different images, but digests are fixed” [4]. A <strong>digest</strong> is the SHA-256 hash of the image manifest. If a manifest pins <code>app@sha256:...</code>, the cluster runs the same bytes even if someone pushes a new image under the old tag. We pin tags, and they stay fixed by convention. Nothing in the workflows I read locks them.</p>
+<h2>Config stays outside the image</h2>
+<p>If one image runs everywhere, everything that differs must come from outside: endpoints, model deployment names, index names, log levels and secrets. Twelve-Factor defines config as “everything that is likely to vary between deploys” [1].</p>
+<p>Ours lives in the app repo, in one plain YAML file per environment:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-comment"># config/uat.yaml (values are placeholders)</span>
+<span class="hljs-attr">ENVIRONMENT:</span> <span class="hljs-string">"uat"</span>
+<span class="hljs-attr">LOG_LEVEL:</span> <span class="hljs-string">"INFO"</span>
+<span class="hljs-attr">MODEL_DEPLOYMENT_NAME:</span> <span class="hljs-string">"chat-primary"</span>
+<span class="hljs-attr">MODEL_FALLBACK_DEPLOYMENT_NAME:</span> <span class="hljs-string">"chat-fallback"</span>
+<span class="hljs-attr">AI_SEARCH_INDEX_NAME:</span> <span class="hljs-string">"docs-live"</span>
+<span class="hljs-attr">AI_SEARCH_EVAL_INDEX_NAME:</span> <span class="hljs-string">"docs-eval-frozen"</span>
+</code></pre>
+<p>Secrets never go in this file. They live in a key vault, and an <code>ExternalSecret</code> resource in the infra repo pulls them into the cluster.</p>
+<p>At deploy time, the infra workflow copies these values into the environment’s ConfigMap. Here is a simplified sketch of one production deploy, not the exact workflow:</p>
+<pre><code class="hljs language-bash">SHA=e4f5a6b
+yq -i <span class="hljs-string">".spec.template.spec.containers[0].image = \"registry.example.com/app:<span class="hljs-variable">$SHA</span>\""</span> \
+  k8s/prod/deployment.yaml
+<span class="hljs-comment"># also set APP_VERSION=v1.4.0 in the same manifest</span>
+yq -i <span class="hljs-string">'.data = load("source/config/prod.yaml")'</span> k8s/prod/configmap.yaml
+<span class="hljs-comment"># if the ConfigMap changed, bump an annotation on the pod template</span>
+git commit -am <span class="hljs-string">"deploy(prod): app:<span class="hljs-variable">$SHA</span>"</span> &#x26;&#x26; git push   <span class="hljs-comment"># Argo CD syncs from here</span>
+</code></pre>
+<p>The annotation is needed because a Deployment doesn’t restart its pods when a ConfigMap changes. Helm’s docs show the usual fix: put a checksum of the ConfigMap in the pod template, so a config change also changes the template [6]. Ours writes a timestamp instead, and only when the config changed.</p>
+<p>Two of our choices differ from the textbook. First, Twelve-Factor says not to group config into named environments, because that “does not scale cleanly” [1]. We do group it, in three files. With three fixed environments, that has been fine so far.</p>
+<p>Second, the config file comes from the same commit as the image. So the image and its config go through review and promotion together. Google’s SRE book describes this option: teams “snapshot and release configuration files alongside their binaries”. It also warns that config read from the head of the main branch “often leads to skew” with what is running [3].</p>
+<p>The cost is that every config change needs a commit, a new SHA and a new release. The model change at the top of this post went through UAT and a version tag like any code change. I think that is right for an LLM service. One config line can change the model, and that changes behaviour as much as code does.</p>
+<h2>What a version means for an LLM service</h2>
+<p>For a plain web service, the image SHA and the config describe most of what runs. An LLM service has more parts that change.</p>
+<p>Prompts are code. Ours are TOML files in the image, one per model, picked by the model name in config. So a config change that switches the model needs the prompt file for that model to be in the image already. The image has to ship first, or in the same release.</p>
+<p>Deployment names differ between environments. The same model can have one deployment name in dev and another in production. That is why the name is config, and the prompt is picked by model name instead of deployment name.</p>
+<p>The knowledge base changes without a deploy. The search index is refreshed on its own schedule, so the same image and config can give a different answer next week. Our <code>/version</code> endpoint returns three fields for this reason:</p>
+<pre><code class="hljs language-json"><span class="hljs-punctuation">{</span> <span class="hljs-attr">"version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"v1.4.0"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"kb_index"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"docs-live"</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">"kb_version"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2026-10-20T03:00:12Z"</span> <span class="hljs-punctuation">}</span>
+</code></pre>
+<p><code>kb_version</code> is the end time of the indexer’s last run. For evaluation, a request header switches retrieval to a frozen copy of the index, made by a manual workflow. Then <code>/version</code> reports the frozen index and the <code>kb_version</code> it was copied from. An eval score can be tied to one image, one config and one corpus.</p>
+<h3>Gates between environments</h3>
+<p>Promotion only helps if something checks the image before the next step. Ours, in order:</p>
+<ul>
+<li>A pull request into <code>development</code> runs unit tests, with no model calls.</li>
+<li>A pull request into <code>main</code> runs the full suite, including all the tests that call the model.</li>
+<li>Every dev and UAT deploy runs smoke tests first, which include a few real model calls. If they fail, the deploy is skipped.</li>
+<li>After a deploy, someone can run a deployment verification test by hand against dev or UAT. It checks health, asks a question, sends feedback, asks a follow-up that depends on the first answer, and sends a malformed request. A model then judges whether the follow-up used the first turn.</li>
+<li>Production needs a person to approve it.</li>
+</ul>
+<p>There is no automated quality score between UAT and production yet. The approval is where a person looks at the evidence.</p>
+<h2>Rollback is a git revert</h2>
+<p>Every deploy is one commit in the infra repo. That commit changes the image pin, <code>APP_VERSION</code> and the ConfigMap together. So rollback is a <code>git revert</code> of that commit, and Argo CD syncs the cluster back. Our rollback workflow asks for the environment, an optional infra commit, and the word <code>YES</code>.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 230" role="img" aria-labelledby="bope2t bope2d">
+  <title id="bope2t">Rollback as a revert in the infra repo</title>
+  <desc id="bope2d">The production folder of the infra repo has a deploy commit for image 9d8e7f6 with version v1.3.0, then a deploy commit for image e4f5a6b with version v1.4.0, which is bad. A revert commit puts back image 9d8e7f6, its config and v1.3.0. Argo CD sees the new commit and syncs the production cluster to it.</desc>
+  <defs><marker id="bope2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="m" x="10" y="18">infra repo, k8s/prod/</text>
+  <rect class="box" x="10" y="30" width="190" height="70" rx="6"></rect>
+  <text class="t" x="22" y="52">deploy</text><text class="m" x="22" y="70">image :9d8e7f6</text><text class="m" x="22" y="87">config, v1.3.0</text>
+  <rect class="box" x="245" y="30" width="190" height="70" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="257" y="52">deploy</text><text class="tb" x="257" y="70">image :e4f5a6b</text><text class="tb" x="257" y="87">config, v1.4.0 (bad)</text>
+  <rect class="box" x="480" y="30" width="190" height="70" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="492" y="52">git revert</text><text class="ta" x="492" y="70">image :9d8e7f6</text><text class="ta" x="492" y="87">config, v1.3.0</text>
+  <path class="ln" d="M200,65 L243,65" marker-end="url(#bope2a)"></path>
+  <path class="ln" d="M435,65 L478,65" marker-end="url(#bope2a)"></path>
+  <rect class="box" x="480" y="150" width="190" height="54" rx="6"></rect>
+  <text class="t" x="492" y="172">Argo CD</text><text class="m" x="492" y="190">auto-sync</text>
+  <rect class="box" x="245" y="150" width="190" height="54" rx="6"></rect>
+  <text class="t" x="257" y="172">prod cluster</text><text class="m" x="257" y="190">back on :9d8e7f6</text>
+  <path class="sa" d="M575,100 L575,148" marker-end="url(#bope2a)"></path>
+  <path class="sa" d="M480,177 L437,177" marker-end="url(#bope2a)"></path>
+  <text class="m" x="10" y="222">SHAs and versions are examples</text>
+</svg>
+<figcaption>A deploy commit changes the image and its config together, so one revert takes both back. The revert is a new commit, so the history keeps the bad release too.</figcaption>
+</figure>
+<p>This is also what Argo CD expects. Its docs say “Rollback cannot be performed against an application with automated sync enabled” [7]. Git is the source of truth, so the undo happens in Git. A side effect is a free deploy log: <code>git log -- k8s/prod/deployment.yaml</code> lists every production release.</p>
+<p>A revert only undoes what is in that commit. It doesn’t undo a refreshed knowledge base, or data that the new release wrote in a new shape. If a release changes what the app stores between turns, the older image must still be able to read it, or the rollback breaks open conversations.</p>
+<h2>An LLM step in CI should fail soft</h2>
+<p>One small story. Our promotion PRs used to start with a generated summary. A workflow step sent the commit list to a hosted model and wrote a short summary into the PR body. At some point the model API began to answer with HTTP 410, <em>Gone</em>.</p>
+<p>The step had been written to degrade. On any status other than 200, it wrote one line instead: “AI summary unavailable (HTTP 410). See raw commits below.” So the promotion PRs still opened and deploys were never blocked. However, that line sat at the top of every promotion PR from late August until 22 October. Then we removed the step and kept the plain commit list.</p>
+<p>A model call in CI is a call to a service you don’t control. Make it optional, as this one was. But a soft failure is also a quiet one. If nothing reports it, it can stay broken for weeks.</p>
+<h2>Things to watch</h2>
+<ul>
+<li><strong>Environment tags move.</strong> Tags like <code>:uat</code> point somewhere new on every deploy. Never deploy from them.</li>
+<li><strong>Short SHAs can clash.</strong> Our infra build named the tag with <code>git rev-parse --short=7</code>, which adds characters when 7 are ambiguous. The promotion cut the full SHA to exactly 7. In the rare case of a clash, the two would disagree.</li>
+<li><strong>Tagging a commit UAT never built.</strong> Production copies an existing image. On purpose, a merge into <code>main</code> builds nothing unless it comes from <code>development</code> or a hotfix branch. If you tag one of those, there is nothing to copy, and the promotion fails.</li>
+<li><strong>A break-glass path.</strong> We keep a manual workflow that deploys to dev with Helm directly, for when the infra repo or Argo CD is down. That deploy is not in Git. Redeploy through the normal path once it is back.</li>
+<li><strong>Moving workflow references.</strong> Our callers use the shared workflows at <code>@v1</code>, a tag that moves with each release of the shared repo. Until July they used <code>@main</code>. GitHub’s hardening guide recommends a full commit SHA, because “a tag can be moved or deleted” [8]. <code>@v1</code> trades some of that safety for getting fixes without editing every caller.</li>
+<li><strong>Config ahead of the image.</strong> A config value that needs code the image doesn’t have yet fails at runtime, not at build time. Ship the code first.</li>
+</ul>
+<h2>What I would try next</h2>
+<p>Reading how others do this showed me a few things our pipeline doesn’t do yet.</p>
+<ul>
+<li><strong>Promote the dev image to UAT.</strong> If <code>main</code> took the exact commit from <code>development</code> instead of a new merge commit, the SHA would stay the same. Then UAT could copy the dev image. Today the promotion PR is merged with a merge commit, so this needs a change in how we merge.</li>
+<li><strong>Pin by digest.</strong> Record the digest at build time and pin <code>app@sha256:...</code> in the manifests. The SHA tag can stay for people [4].</li>
+<li><strong>Lock deployed tags.</strong> Microsoft’s guide recommends locking every deployed tag, by setting <code>write-enabled</code> to <code>false</code>, as a step in the release pipeline [5].</li>
+<li><strong>Build provenance.</strong> SLSA provenance is a record of how an artifact was built: which builder, which inputs and which dependencies [9]. With it, production could check that an image came from our pipeline before it runs.</li>
+<li><strong>An eval gate before the tag.</strong> Run the golden set against the frozen index on UAT, and put the scores next to the approval. I wrote about <a href="/posts/golden-datasets-without-the-gold-rush/">golden datasets</a> before.</li>
+</ul>
+<p>If you run an LLM service on Kubernetes, start with two rules. Tag each image with its commit and never build for production. Then make each deploy one commit that pins the image and its config together, so a rollback is one revert.</p>
+<h2>References</h2>
+<ol>
+<li><a href="https://12factor.net/">The Twelve-Factor App</a>, sections <a href="https://12factor.net/build-release-run">“Build, release, run”</a> and <a href="https://12factor.net/config">“Config”</a>. The three stages, release IDs, and config as everything that varies between deploys.</li>
+<li>Jez Humble and David Farley, <a href="https://www.informit.com/articles/article.aspx?p=1621865&#x26;seqNum=3">“Continuous Delivery: Anatomy of the Deployment Pipeline”</a>, excerpt from <em>Continuous Delivery</em>, Addison-Wesley, 2010. “Only build your binaries once”, and why binaries should not be environment-specific.</li>
+<li>Dinah McNutt, <a href="https://sre.google/sre-book/release-engineering/">“Release Engineering”</a>, in <em>Site Reliability Engineering</em>, Google, 2016. Hermetic builds, build IDs, and the ways to ship configuration with or apart from binaries.</li>
+<li>Kubernetes, <a href="https://kubernetes.io/docs/concepts/containers/images/">“Images”</a>. Tags against digests, pinning an image by digest, and avoiding <code>:latest</code>.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/container-registry/container-registry-image-tag-version">“Image tag best practices”</a>, Azure Container Registry. Stable against unique tags, git commits as “semi-stable” tags, and locking deployed tags.</li>
+<li>Helm, <a href="https://helm.sh/docs/howto/charts_tips_and_tricks/">“Chart development tips and tricks”</a>, section “Automatically Roll Deployments”. The checksum annotation that restarts pods when a ConfigMap changes.</li>
+<li>Argo CD, <a href="https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/">“Automated sync policy”</a>. Self-heal and prune are off by default, and rollback is not possible with automated sync on.</li>
+<li>GitHub, <a href="https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions">“Security hardening for GitHub Actions”</a>. Pinning actions to a full commit SHA instead of a tag.</li>
+<li>SLSA, <a href="https://slsa.dev/spec/v1.0/provenance">“Provenance”</a>, specification v1.0. What a build provenance records: builder, external parameters and resolved dependencies.</li>
+</ol>12:["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Ship the image you tested: build once, promote, roll back\",\"description\":\"How we release an LLM chatbot: one image per commit, named after the git SHA, copied to production without a rebuild, with each environment's config kept outside the image. Where our pipeline still rebuilds, what an LLM service adds to a version, and why rollback is a git revert.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"mlops, agents\",\"url\":\"https://fadhilmch.github.io/posts/build-once-promote-everywhere/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/build-once-promote-everywhere/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",13," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L1d",null,{"title":"Ship the image you tested: build once, promote, roll back","url":"https://fadhilmch.github.io/posts/build-once-promote-everywhere/"}]]}],["$","h1",null,{"children":"Ship the image you tested: build once, promote, roll back"}],["$","p",null,{"className":"standfirst","children":"How we release an LLM chatbot: one image per commit, named after the git SHA, copied to production without a rebuild, with each environment's config kept outside the image. Where our pipeline still rebuilds, what an LLM service adds to a version, and why rollback is a git revert."}],["$","div",null,{"className":"tag-list","children":[["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1e"}}],"$L1f","$L20",["$L21"]]}]
+22:I[79520,["$2","$6","$7","$9"],""]
+1f:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}]]]}]]}]
+20:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/circuit-breakers-from-the-fuse-box/","children":[["$","small",null,{"children":"← older"}],"Circuit breakers, from the fuse box to a Go service"]}],"$undefined"]}]
+21:["$","$L22","/assets/posts/widgets/bo-pipeline.js",{"src":"/assets/posts/widgets/bo-pipeline.js","strategy":"afterInteractive"}]
+18:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+23:I[27201,["$2"],"IconMark"]
+15:null
+1b:[["$","title","0",{"children":"Ship the image you tested: build once, promote, roll back · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"How we release an LLM chatbot: one image per commit, named after the git SHA, copied to production without a rebuild, with each environment's config kept outside the image. Where our pipeline still rebuilds, what an LLM service adds to a version, and why rollback is a git revert."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/build-once-promote-everywhere/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Ship the image you tested: build once, promote, roll back"}],["$","meta","10",{"property":"og:description","content":"How we release an LLM chatbot: one image per commit, named after the git SHA, copied to production without a rebuild, with each environment's config kept outside the image. Where our pipeline still rebuilds, what an LLM service adds to a version, and why rollback is a git revert."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/build-once-promote-everywhere/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/build-once-promote-everywhere/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],["$","meta","18",{"property":"og:type","content":"article"}],["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}],["$","meta","20",{"property":"article:tag","content":"mlops"}],["$","meta","21",{"property":"article:tag","content":"agents"}],["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","23",{"name":"twitter:title","content":"Ship the image you tested: build once, promote, roll back"}],["$","meta","24",{"name":"twitter:description","content":"How we release an LLM chatbot: one image per commit, named after the git SHA, copied to production without a rebuild, with each environment's config kept outside the image. Where our pipeline still rebuilds, what an LLM service adds to a version, and why rollback is a git revert."}],["$","meta","25",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/build-once-promote-everywhere/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","26",{"name":"twitter:image:type","content":"image/png"}],["$","meta","27",{"name":"twitter:image:width","content":"1200"}],["$","meta","28",{"name":"twitter:image:height","content":"630"}],["$","link","29",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L23","30",{}]]

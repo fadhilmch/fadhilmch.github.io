@@ -1,0 +1,233 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+13:I[97367,["$2"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:"ViewportBoundary"
+17:I[97367,["$2"],"$16"]
+19:"MetadataBoundary"
+1a:I[97367,["$2"],"$19"]
+1c:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+:HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+10:X
+11:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$L12",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":false,"v":null}}]]
+f:[["children",{"s":{"n":"slug","t":"d","k":"start-with-one-agent","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$10"},"c":"$Q11"}]]
+e:[["children",{"s":"posts","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":null},"c":"$Qf"}]]
+d:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]]}],"p":false,"v":null},"c":"$Qe"}]]
+0:{"P":null,"c":["","posts","start-with-one-agent",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lc",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L17",null,{"children":"$L18"}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":"$L1b"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$1c",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+1d:I[78881,["$2","$6","$7","$9"],"default"]
+10:C
+1e:T6322,<p>Our chatbot has an agent called the Orchestration Agent. It reads the JSON that the reception agent wrote and copies five fields into a new JSON. Then it adds one more field: the name of the agent that should speak next. That name is always the same. The Orchestration Agent never calls a model.</p>
+<p>It is one of about a dozen agents in three nested group chats. In each group chat, a selector function decides who speaks next. Two of those functions carry the same comment: the selection is deterministic, to avoid LLM calls.</p>
+<p>So we had built a multi-agent system, and then written a lot of code to make sure the agents did not decide anything. This post goes through that gap. It covers the difference between a workflow and an agent, what the group chat cost us, and how we are moving to one agent whose steps are fixed in code. I’ll leave out sizes and numbers that aren’t mine to share.</p>
+<h2>Workflows and agents</h2>
+<p>Anthropic’s post on building effective agents gives each side one sentence [1]. <strong>Workflows</strong> are “systems where LLMs and tools are orchestrated through predefined code paths.” <strong>Agents</strong> are “systems where LLMs dynamically direct their own processes and tool usage.”</p>
+<p>I reduce that to one question: who decides the next step? If your code decides, it is a workflow, even when every step calls a model. If the model decides, it is an agent.</p>
+<p>So a step that asks a model “is this question in scope?” and then routes on the answer in code is still a workflow. Anthropic calls this pattern <em>routing</em>: it “classifies an input and directs it to a specialized followup task” [1]. The model classifies. The code owns the edge.</p>
+<p>Microsoft’s Agent Framework documentation puts the choice in a table [3]. Use an agent when the task is open-ended or conversational, or needs autonomous tool use and planning. Use a workflow when the process has well-defined steps and you need explicit control over the order. Below the table is one line I like: “If you can write a function to handle the task, do that instead of using an AI agent.”</p>
+<p>OpenAI’s guide is even stricter [2]. Apps that use LLMs but don’t let them control the workflow are not agents in its definition. Its examples are “simple chatbots, single-turn LLMs, or sentiment classifiers”.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-labelledby="sw-ladder-t sw-ladder-d">
+  <title id="sw-ladder-t">How much the model decides</title>
+  <desc id="sw-ladder-d">Five options from left to right: a plain function with no model; one LLM call; a workflow where code picks the path and some steps call a model; one agent that picks its own tools and when to stop; and several agents that hand work to each other. Further right, the model decides more, and the system is harder to test and uses more tokens. The chatbot was drawn as the rightmost option, but what it did was the workflow option.</desc>
+  <defs><marker id="sw-ladder-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="4" y="30" width="116" height="56" rx="6"></rect>
+  <text class="t" x="14" y="53">Function</text><text class="m" x="14" y="72">no model</text>
+  <rect class="box" x="144" y="30" width="116" height="56" rx="6"></rect>
+  <text class="t" x="154" y="53">One LLM call</text><text class="m" x="154" y="72">model answers</text>
+  <rect class="box" x="284" y="30" width="116" height="56" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="294" y="53">Workflow</text><text class="m" x="294" y="72">code picks path</text>
+  <rect class="box" x="424" y="30" width="116" height="56" rx="6"></rect>
+  <text class="t" x="434" y="53">One agent</text><text class="m" x="434" y="72">picks own tools</text>
+  <rect class="box" x="564" y="30" width="116" height="56" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="574" y="53">Many agents</text><text class="m" x="574" y="72">models hand off</text>
+  <path class="ln" d="M10,116 L674,116" marker-end="url(#sw-ladder-a)"></path>
+  <text class="m" x="10" y="136">the model decides more; harder to test; more tokens</text>
+  <path class="sa" d="M342,88 L342,156"></path>
+  <text class="ta" x="276" y="174">what the chatbot did</text>
+  <path class="sb" d="M622,88 L622,156"></path>
+  <text class="tb" x="569" y="174">how it was drawn</text>
+</svg>
+<figcaption>Each step to the right gives the model more control. Our chatbot was drawn as a team of agents, but its path was decided by code.</figcaption>
+</figure>
+<h2>How the chatbot was built</h2>
+<p>The chatbot answers questions from internal documents. It was built in 2025 on AutoGen, as three nested group chats. A reception chat works out what the user is asking. If the question is clear, it passes it to a RAG chat that searches and filters documents. The RAG chat passes the documents to a response chat that writes the answer and checks it. Each inner chat is wrapped as a single agent inside the chat above it.</p>
+<p>Each group chat is an AutoGen <code>SelectorGroupChat</code>. By default it asks a model to pick the next speaker. The model reads the conversation and the agents’ descriptions, then names an agent [4]. You can also pass your own <code>selector_func</code>. If it returns a name, that agent speaks. If it returns <code>None</code>, AutoGen falls back to the model [4].</p>
+<p>Here is the shape of our RAG chat’s selector. This is a simplified sketch, not our exact code:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">select_next</span>(<span class="hljs-params">messages</span>):
+    last = messages[-<span class="hljs-number">1</span>]
+    <span class="hljs-keyword">if</span> last.source == <span class="hljs-string">"Filter_Agent"</span>:
+        sources = json.loads(last.content)[<span class="hljs-string">"sources"</span>]
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> sources:
+            <span class="hljs-keyword">return</span> <span class="hljs-string">"Retrieval_Agent"</span> <span class="hljs-keyword">if</span> retries_left() <span class="hljs-keyword">else</span> <span class="hljs-string">"Reply_Agent"</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Response_Agent"</span>
+    <span class="hljs-keyword">if</span> last.source <span class="hljs-keyword">in</span> ONLY_NEXT:  <span class="hljs-comment"># exactly one allowed next speaker</span>
+        <span class="hljs-keyword">return</span> ONLY_NEXT[last.source]
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>                   <span class="hljs-comment"># AutoGen asks the model</span>
+</code></pre>
+<p>Every path we know about returns a name. The model is only there for a case nobody planned. So the flow was a fixed graph all along. We had written it by hand, inside a callback whose job was to name the next speaker.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 300" role="img" aria-labelledby="sw-pair-t sw-pair-d">
+  <title id="sw-pair-t">The same pipeline as a group chat and as a workflow</title>
+  <desc id="sw-pair-d">Left: a group chat. Four agents, Retrieval, Filter, Response and Reply, each send their message back to a selector in the middle. The selector names the next speaker, using a function first and a model if the function returns nothing. Right: a workflow with three steps in a fixed order, receive, retrieve and respond. Receive can end early with a direct reply, retrieve can end early when no sources are found, and respond ends with the answer. All three paths end in one result.</desc>
+  <defs><marker id="sw-pair-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="10" y="18">GROUP CHAT</text>
+  <rect class="box" x="10" y="40" width="110" height="44" rx="6"></rect>
+  <text class="t" x="22" y="66">Retrieval</text>
+  <rect class="box" x="220" y="40" width="110" height="44" rx="6"></rect>
+  <text class="t" x="232" y="66">Filter</text>
+  <rect class="box" x="10" y="220" width="110" height="44" rx="6"></rect>
+  <text class="t" x="22" y="246">Response</text>
+  <rect class="box" x="220" y="220" width="110" height="44" rx="6"></rect>
+  <text class="t" x="232" y="246">Reply</text>
+  <rect class="box" x="95" y="126" width="150" height="54" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="107" y="148">Selector</text><text class="m" x="107" y="167">function, else LLM</text>
+  <path class="sb" d="M80,86 L120,124" marker-start="url(#sw-pair-a)" marker-end="url(#sw-pair-a)"></path>
+  <path class="sb" d="M260,86 L220,124" marker-start="url(#sw-pair-a)" marker-end="url(#sw-pair-a)"></path>
+  <path class="sb" d="M80,218 L120,182" marker-start="url(#sw-pair-a)" marker-end="url(#sw-pair-a)"></path>
+  <path class="sb" d="M260,218 L220,182" marker-start="url(#sw-pair-a)" marker-end="url(#sw-pair-a)"></path>
+  <text class="tb" x="10" y="290">after every message: who speaks next?</text>
+  <line class="grid" x1="350" x2="350" y1="10" y2="290"></line>
+  <text class="h" x="372" y="18">WORKFLOW</text>
+  <rect class="box" x="372" y="36" width="140" height="48" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="384" y="57">receive</text><text class="m" x="384" y="74">understand, scope</text>
+  <rect class="box" x="372" y="126" width="140" height="48" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="384" y="147">retrieve</text><text class="m" x="384" y="164">search, filter</text>
+  <rect class="box" x="372" y="216" width="140" height="48" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="384" y="237">respond</text><text class="m" x="384" y="254">write, check</text>
+  <rect class="box" x="570" y="126" width="100" height="48" rx="6"></rect>
+  <text class="t" x="582" y="147">One result</text><text class="m" x="582" y="164">per turn</text>
+  <path class="sa" d="M442,84 L442,124" marker-end="url(#sw-pair-a)"></path>
+  <path class="sa" d="M442,174 L442,214" marker-end="url(#sw-pair-a)"></path>
+  <path class="ln dash" d="M512,60 C548,60 560,96 600,124" marker-end="url(#sw-pair-a)"></path>
+  <text class="m" x="528" y="54">reply now</text>
+  <path class="ln dash" d="M512,150 L568,150" marker-end="url(#sw-pair-a)"></path>
+  <text class="m" x="520" y="142">empty</text>
+  <path class="ln" d="M512,240 C548,240 560,206 600,176" marker-end="url(#sw-pair-a)"></path>
+  <text class="m" x="560" y="250">answer</text>
+  <text class="ta" x="372" y="290">code decides every edge</text>
+</svg>
+<figcaption>Left: after each message, a selector names the next speaker. Right: three steps in a fixed order, with two early exits. Both do the same work.</figcaption>
+</figure>
+<p>Try it below. Pick a question and step through one turn in both designs. The paths are a simplified sketch of our chatbot, not its exact agents.</p>
+<section class="lab" id="aw-lab" aria-labelledby="aw-lab-title" hidden>
+<h3 id="aw-lab-title">One turn, two designs</h3>
+<p>Top: the group chat, where a selector names the next speaker after every message. Bottom: one agent with fixed steps, where code calls the next function.</p>
+<div class="lab-controls" id="aw-cases"><span class="lab-label">QUESTION</span></div>
+<div class="lab-controls">
+<button type="button" id="aw-play" aria-pressed="false">Play</button>
+<button type="button" id="aw-step">Step</button>
+<button type="button" id="aw-reset">Reset</button>
+</div>
+<div class="lab-panel"><span class="lab-k">USER</span><span id="aw-question"></span></div>
+<div class="lab-panel"><span class="lab-k">GROUP CHAT</span><ol class="lab-chips" id="aw-chat" aria-live="polite"></ol></div>
+<div class="lab-panel"><span class="lab-k">ONE AGENT, FIXED STEPS</span><ol class="lab-chips" id="aw-steps" aria-live="polite"></ol></div>
+<dl class="lab-stats">
+<div><dt>next-speaker decisions</dt><dd id="aw-n-chat">0</dd></div>
+<div><dt>hidden model picks</dt><dd id="aw-n-model">0</dd></div>
+<div><dt>fixed steps run</dt><dd id="aw-n-steps">0</dd></div>
+</dl>
+<p class="lab-status" id="aw-status" role="status" aria-live="polite"></p>
+</section>
+<noscript><p>Enable JavaScript to step through a turn. The figure above shows the same two designs.</p></noscript>
+<h2>What the group chat cost us</h2>
+<p>The group chat worked, and it answered users for a long time. But it made a fixed flow hard to read and hard to change. Here is where that showed.</p>
+<p>The routing was spread out. Each selector also updates counters, such as how many clarifying questions the bot has asked in a row. To answer “why did this user get a fallback?”, you follow the messages through three selectors and the counters they change.</p>
+<p>The limits were easy to get wrong. Each group chat has <code>max_turns=25</code>, but the limits that matter are the counters. One clarifier ran after the answer was written, when the answer scored low on relevance. In one dev session it asked four clarifying questions in a row. The reception chat reset its counter on every reply from the RAG chat, so nothing capped the loop. We removed that clarifier. A low-relevance turn now returns the answer, its source links, and a line that tells the user where to get help from a person.</p>
+<p>The fallback to a model was invisible. All three selectors are given a small model, and their calls are made outside our LLM spans. Our model router does not trace them, to avoid orphan traces. So if a selector ever fell through to the model, we would pay for a call we could not see.</p>
+<p>Agents passed data as text. Each agent writes JSON into a chat message, and the next agent parses it with <code>json.loads</code>. The Orchestration Agent reads the last message, and if that one is not from reception, it reads the one before. The shape of the data between steps lived in prompts and parsing code, not in a type.</p>
+<p>The framework’s state leaked into ours. At first, the session store kept the raw output of the team’s <code>save_state()</code>. A change of framework would have broken every live conversation.</p>
+<h2>Moving to a workflow, one seam at a time</h2>
+<p>We didn’t start with a rewrite. The first step was a <strong>seam</strong>: an interface the rest of the code depends on, so the implementation behind it can change. A decision record we wrote in July 2026 says it directly: decouple the code from AutoGen now, and decide about a migration later, with its own evidence.</p>
+<p>A handful of small pull requests did this. They removed dead code and replaced AutoGen’s token-usage types with our own. They also wrapped the session state in a versioned envelope, and put an interface between the API route and the group chats:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ConversationOrchestrator</span>(<span class="hljs-title class_ inherited__">Protocol</span>):
+    <span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">run</span>(<span class="hljs-params">
+        self,
+        query: <span class="hljs-built_in">str</span>,
+        session_state: <span class="hljs-built_in">dict</span>[<span class="hljs-built_in">str</span>, <span class="hljs-built_in">object</span>],
+        *,
+        context: OrchestrationContext,
+    </span>) -> OrchestrationResult: ...
+</code></pre>
+<p>The route now depends on this protocol only. Its tests use a fake orchestrator and don’t start any agents. A later change replaced the framework’s state with our own small schema: a few counters and the last eight turns. This work is merged. It was useful whether or not we ever changed frameworks.</p>
+<h3>The first port did too much</h3>
+<p>The first port to Microsoft Agent Framework (MAF) came the same month, on a branch. It replaced the three group chats with one flat graph. In MAF, the nodes of a graph are <strong>executors</strong> and the connections are edges [7]. Reception became the start executor, routing decisions moved to switch-case edges, and every path ended in one terminal executor.</p>
+<p>The shape was right. However, the same branch also changed prompts, merged four reception calls into one, and changed how clarification worked. It added an adapter, a runner and a message type for each stage. In an offline eval, answer quality was about the same as before, and latency did not go down.</p>
+<p>When a port changes the framework and the behavior together, an eval cannot tell you which change moved a result. Meanwhile the main branch moved on. The pull request was closed in October without merging. The new plan builds from the current code and uses the old branch only as a source of ideas and test cases. It also tags every eval case as either preserved or intentionally changed.</p>
+<h3>The current plan is smaller</h3>
+<p>The plan from October 2026 has three executors: <code>receive</code>, <code>retrieve</code> and <code>respond</code>. Each one calls ordinary Python functions, and the business rules live in those functions. No model picks the next step. In MAF the workflow is wrapped as a single agent, so the rest of the app talks to one agent instead of a team.</p>
+<p>Its first draft didn’t use a graph at all. It recommended a plain Python coordinator, something like this sketch:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">run_turn</span>(<span class="hljs-params">query, state</span>):
+    request = <span class="hljs-keyword">await</span> receive(query, state)   <span class="hljs-comment"># understand, check scope</span>
+    <span class="hljs-keyword">if</span> request.reply:                       <span class="hljs-comment"># greeting, clarification, refusal</span>
+        <span class="hljs-keyword">return</span> request.reply
+    sources = <span class="hljs-keyword">await</span> retrieve(request)       <span class="hljs-comment"># plan, search, filter</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> sources:
+        <span class="hljs-keyword">return</span> no_answer(request)
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> respond(request, sources)  <span class="hljs-comment"># write, check, cite</span>
+</code></pre>
+<p>The graph won in the end, for reasons the plan writes down. MAF gives each executor its own span in our traces, and a graph follows the framework’s own guidance. The plan also names the cost. Each executor must either send one input to the next step or yield one final result, never both. A guard then checks that exactly one result came out. A plain chain of functions needs neither rule.</p>
+<p>This work is still on a branch as I write this.</p>
+<h2>What a new orchestrator does not fix</h2>
+<p>We expected the first port to make answers faster. It didn’t. When I broke turn latency down by what each turn did, most of the time went to the model writing the answer. Most of the rest grew with the number of documents retrieved. The orchestration itself was a small fixed part.</p>
+<p>So change the orchestration to make the flow readable and testable, and to stop paying for routing calls. Don’t change it to make the model write faster. For that, the length of the answer matters much more.</p>
+<h2>Where an agent fits</h2>
+<p>None of this means agents are a mistake. Anthropic’s post says agents fit “open-ended problems where it’s difficult or impossible to predict the required number of steps, and where you can’t hardcode a fixed path” [1]. The same post warns that agentic systems “often trade latency and cost for better task performance”.</p>
+<p>OpenAI’s guide lists where agents earn their place [2]. One case is decisions that need judgment and have many exceptions. Another is rule sets that have become too hard to maintain. A third is work that depends heavily on unstructured data. Then it says: “Otherwise, a deterministic solution may suffice.”</p>
+<p>In our chatbot, the model has real freedom in one place: the text of the answer. The other model calls classify, rewrite queries or filter documents, and code acts on what they return.</p>
+<p>If you do need an agent, start with one. OpenAI’s guide recommends that you “maximize a single agent’s capabilities first” [2]. It suggests splitting only when prompts fill up with if-then-else branches, or when the agent keeps choosing the wrong tool among overlapping ones.</p>
+<h3>Two sides of the multi-agent debate</h3>
+<p>Two posts from June 2025 are worth reading together. Cognition’s “Don’t Build Multi-Agents” argues from two principles [5]. Share full context between agents, and remember that “actions carry implicit decisions”. In their example, two subagents each build part of a Flappy Bird clone. One builds a background that looks like Super Mario Bros., and the other builds a bird that doesn’t match it. Their advice is a single-threaded linear agent.</p>
+<p>A day later, Anthropic described its multi-agent research system [6]. Parallel subagents search different directions at once, which helps on broad research questions. The post is also clear about where this does not fit: tasks where all agents need the same context, or with many dependencies between agents. I summarized its checklist in a <a href="/notes/multi-agent/">note on multi-agent systems</a>.</p>
+<p>The two posts agree more than their titles suggest. Split work across agents only when the parts are independent. A chatbot turn is the opposite case, because each step needs what the step before it produced.</p>
+<h2>Questions before you add an agent</h2>
+<ul>
+<li>Can you draw the flow before you see the input? Write it as code.</li>
+<li>Is the decision a choice from a fixed list? Use one model call with structured output, and route on the answer in code.</li>
+<li>Does the next step depend on results you can’t predict, like a search that may need several tries? Use one agent with tools and a turn limit.</li>
+<li>Do the parts run in parallel, need separate context, and rarely depend on each other? Then consider several agents, and measure the extra tokens against an eval.</li>
+</ul>
+<h2>Things to watch</h2>
+<ul>
+<li>A class called an agent that never calls a model is a function. Call it one, so readers don’t look for a prompt.</li>
+<li>If a selector can return <code>None</code>, a missing case quietly becomes a model call. In a fixed flow, raise an error instead.</li>
+<li>A turn limit per group chat does not stop a loop that spans several user turns. Count the thing you want to cap, and reset the count only where that thing really ends.</li>
+<li>Don’t store a framework’s internal state in your session store. Store your own schema, with a version number.</li>
+<li>Porting to a new framework and changing behavior in one release makes the eval hard to read. Keep them apart, or label each eval case.</li>
+<li>Measure where the time goes before you rewrite the orchestrator for speed.</li>
+</ul>
+<p>If the flow of your chatbot fits on a whiteboard before any user types a question, write it as a workflow. Use the model for the steps that need language, and keep the decision about what happens next in code you can test.</p>
+<h2>References</h2>
+<ol>
+<li>Erik Schluntz and Barry Zhang, <a href="https://www.anthropic.com/engineering/building-effective-agents">“Building effective agents”</a>, Anthropic, 2024. The workflow and agent definitions, the routing pattern, when agents fit, and the advice to start with the simplest solution.</li>
+<li>OpenAI, <a href="https://cdn.openai.com/business-guides-and-resources/a-practical-guide-to-building-agents.pdf">“A practical guide to building agents”</a>. What counts as an agent, when to build one, and maximizing a single agent before splitting.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/agent-framework/overview/">“Microsoft Agent Framework overview”</a>, Microsoft Learn. The table of when to use agents and when to use workflows.</li>
+<li>Microsoft, <a href="https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/selector-group-chat.html">“Selector Group Chat”</a>, AutoGen documentation. Model-based speaker selection, and the fallback to it when <code>selector_func</code> returns <code>None</code>.</li>
+<li>Walden Yan, <a href="https://cognition.com/blog/dont-build-multi-agents">“Don’t Build Multi-Agents”</a>, Cognition, 2025. Sharing context, implicit decisions in actions, and the single-threaded linear agent.</li>
+<li>Anthropic, <a href="https://www.anthropic.com/engineering/multi-agent-research-system">“How we built our multi-agent research system”</a>, 2025. Where parallel subagents help, and where shared context and dependencies make them a poor fit.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/agent-framework/workflows/workflows">“Workflow builder and execution”</a>, Microsoft Learn. Executors, edges and the superstep model in MAF workflows.</li>
+</ol>12:["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"From a multi-agent group chat to one agent with fixed steps\",\"description\":\"Our chatbot began as three nested group chats of agents. Most of those agents turned out to be fixed steps in a known order. What separates a workflow from an agent, what the group chat cost us, and how we are moving to one agent with fixed steps.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"agents, design\",\"url\":\"https://fadhilmch.github.io/posts/start-with-one-agent/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/start-with-one-agent/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",11," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L1d",null,{"title":"From a multi-agent group chat to one agent with fixed steps","url":"https://fadhilmch.github.io/posts/start-with-one-agent/"}]]}],["$","h1",null,{"children":"From a multi-agent group chat to one agent with fixed steps"}],["$","p",null,{"className":"standfirst","children":"Our chatbot began as three nested group chats of agents. Most of those agents turned out to be fixed steps in a known order. What separates a workflow from an agent, what the group chat cost us, and how we are moving to one agent with fixed steps."}],["$","div",null,{"className":"tag-list","children":[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}],["$","$La","design",{"className":"tag-chip","href":"/posts/","style":{"--lane":"var(--l5)"},"children":"Product design"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1e"}}],"$L1f","$L20",["$L21"]]}]
+22:I[79520,["$2","$6","$7","$9"],""]
+1f:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}]]]}]]}]
+20:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/state-in-agents/","children":[["$","small",null,{"children":"← older"}],"Where an agentic chatbot keeps its state"]}],["$","$La",null,{"className":"next","href":"/posts/running-several-models-in-one-llm-app/","children":[["$","small",null,{"children":"newer →"}],"Running several models in one LLM app, each with its own prompt"]}]]}]
+21:["$","$L22","/assets/posts/widgets/aw-turn.js",{"src":"/assets/posts/widgets/aw-turn.js","strategy":"afterInteractive"}]
+18:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+23:I[27201,["$2"],"IconMark"]
+15:null
+1b:[["$","title","0",{"children":"From a multi-agent group chat to one agent with fixed steps · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Our chatbot began as three nested group chats of agents. Most of those agents turned out to be fixed steps in a known order. What separates a workflow from an agent, what the group chat cost us, and how we are moving to one agent with fixed steps."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/start-with-one-agent/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"From a multi-agent group chat to one agent with fixed steps"}],["$","meta","10",{"property":"og:description","content":"Our chatbot began as three nested group chats of agents. Most of those agents turned out to be fixed steps in a known order. What separates a workflow from an agent, what the group chat cost us, and how we are moving to one agent with fixed steps."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/start-with-one-agent/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/start-with-one-agent/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],["$","meta","18",{"property":"og:type","content":"article"}],["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}],["$","meta","20",{"property":"article:tag","content":"agents"}],["$","meta","21",{"property":"article:tag","content":"design"}],["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","23",{"name":"twitter:title","content":"From a multi-agent group chat to one agent with fixed steps"}],["$","meta","24",{"name":"twitter:description","content":"Our chatbot began as three nested group chats of agents. Most of those agents turned out to be fixed steps in a known order. What separates a workflow from an agent, what the group chat cost us, and how we are moving to one agent with fixed steps."}],["$","meta","25",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/start-with-one-agent/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","26",{"name":"twitter:image:type","content":"image/png"}],["$","meta","27",{"name":"twitter:image:width","content":"1200"}],["$","meta","28",{"name":"twitter:image:height","content":"630"}],["$","link","29",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L23","30",{}]]

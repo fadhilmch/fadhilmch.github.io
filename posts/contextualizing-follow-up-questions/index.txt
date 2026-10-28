@@ -1,0 +1,263 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+13:I[97367,["$2"],"OutletBoundary"]
+14:"$Sreact.suspense"
+16:"ViewportBoundary"
+17:I[97367,["$2"],"$16"]
+19:"MetadataBoundary"
+1a:I[97367,["$2"],"$19"]
+1c:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+:HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+10:X
+11:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":["$L12",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true,"nonce":"$undefined"}]],["$","$L13",null,{"children":["$","$14",null,{"name":"Next.MetadataOutlet","children":"$@15"}]}]]}],"p":false,"v":null}}]]
+f:[["children",{"s":{"n":"slug","t":"d","k":"contextualizing-follow-up-questions","s":[]},"h":512,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":"$10"},"c":"$Q11"}]]
+e:[["children",{"s":"posts","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":null},"c":"$Qf"}]]
+d:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]]}],"p":false,"v":null},"c":"$Qe"}]]
+0:{"P":null,"c":["","posts","contextualizing-follow-up-questions",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lc",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qd"},"h":{"r":["$","$1","h",{"children":[null,["$","$L17",null,{"children":"$L18"}],["$","$L1a",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$14",null,{"name":"Next.Metadata","children":"$L1b"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$1c",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+1d:I[78881,["$2","$6","$7","$9"],"default"]
+10:C
+1e:T5fac,<p>An employee asks an internal chatbot: “How do I request a new laptop in Sweden?” The bot searches the company documents and answers. Then the employee types: “And in Poland?”</p>
+<p>A person reads this as “How do I request a new laptop in Poland?”. A search index reads three words. It does not know the subject is a laptop, so it returns the pages that mention Poland the most. The answer is then written from those pages.</p>
+<p>For a few weeks, a branch of our chatbot did exactly this. It already had a step that rewrites a follow-up into a full question before search. That step had a prompt, and the prompt had rules for follow-ups. However, after I changed how the conversation history was saved, the history it received was always empty. So every message was treated as the first message of a conversation. Nothing failed, and no error was logged. We found it before the change was merged.</p>
+<p>Turning the latest message into something search can use is called <strong>query contextualization</strong>. Papers call it question-in-context rewriting [1]. This post goes through five levels of it, from no context at all to a rewrite that first decides what kind of follow-up it is. I moved the examples to an IT helpdesk, and I’ll leave out sizes and numbers that aren’t mine to share.</p>
+<h2>Level 1: search the last message</h2>
+<p>The simplest RAG chatbot sends each message to search as typed. For the first message of a conversation, that works. “How do I request a new laptop in Sweden?” has everything search needs.</p>
+<p>It breaks on follow-ups, because people leave out what was already said:</p>
+<ul>
+<li>“And in Poland?” keeps the subject and changes the location.</li>
+<li>“Who qualifies for it?” points back with a pronoun.</li>
+<li>“setting it up on my phone” answers a question the bot asked.</li>
+</ul>
+<p>None of these can be searched alone.</p>
+<h2>Level 2: give the history to the answer model</h2>
+<p>The next idea is to send the earlier messages to the model that writes the answer. Chat APIs make this easy. Each request is stateless, so you pass the prior user and assistant messages yourself [7].</p>
+<p>This helps the answer, and it does nothing for search. The model now knows the user means laptops. But the documents in front of it were found with “And in Poland?”. So it can refuse, or it can answer from the wrong pages. In a RAG chatbot the answer can only be as good as what search found. Therefore the history has to reach search.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 285" role="img" aria-labelledby="fq1t fq1d">
+  <title id="fq1t">Where the history goes at levels 1 to 3</title>
+  <desc id="fq1d">Level 1: the last message goes to search, then to the answer model, and search uses "And in Poland?". Level 2: same path, but the history also goes to the answer model; search still uses "And in Poland?". Level 3: a rewrite step reads the history and the last message before search, and search uses "How do I request a new laptop in Poland?".</desc>
+  <defs><marker id="fq1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="t" x="10" y="59">Level 1</text>
+  <rect class="box" x="80" y="37" width="110" height="36" rx="6"></rect><text class="t" x="92" y="59">last message</text>
+  <rect class="box" x="360" y="37" width="100" height="36" rx="6"></rect><text class="t" x="388" y="59">search</text>
+  <rect class="box" x="500" y="37" width="170" height="36" rx="6"></rect><text class="t" x="520" y="59">answer model</text>
+  <path class="ln" d="M190,55 L358,55" marker-end="url(#fq1a)"></path>
+  <path class="ln" d="M460,55 L498,55" marker-end="url(#fq1a)"></path>
+  <text class="tb" x="225" y="91">searches: And in Poland?</text>
+  <text class="t" x="10" y="149">Level 2</text>
+  <rect class="box" x="80" y="127" width="110" height="36" rx="6"></rect><text class="t" x="92" y="149">last message</text>
+  <rect class="box" x="360" y="127" width="100" height="36" rx="6"></rect><text class="t" x="388" y="149">search</text>
+  <rect class="box" x="500" y="127" width="170" height="36" rx="6" style="stroke:var(--fig-a)"></rect><text class="t" x="520" y="149">answer model</text>
+  <path class="ln" d="M190,145 L358,145" marker-end="url(#fq1a)"></path>
+  <path class="ln" d="M460,145 L498,145" marker-end="url(#fq1a)"></path>
+  <text class="ta" x="536" y="117">history</text>
+  <path class="sa" d="M592,108 L592,125" marker-end="url(#fq1a)"></path>
+  <text class="tb" x="225" y="181">searches: And in Poland?  (the history arrives after search)</text>
+  <text class="t" x="10" y="239">Level 3</text>
+  <rect class="box" x="80" y="217" width="110" height="36" rx="6"></rect><text class="t" x="92" y="239">last message</text>
+  <rect class="box" x="225" y="217" width="100" height="36" rx="6" style="stroke:var(--fig-a)"></rect><text class="t" x="247" y="239">rewrite</text>
+  <rect class="box" x="360" y="217" width="100" height="36" rx="6"></rect><text class="t" x="388" y="239">search</text>
+  <rect class="box" x="500" y="217" width="170" height="36" rx="6"></rect><text class="t" x="520" y="239">answer model</text>
+  <path class="ln" d="M190,235 L223,235" marker-end="url(#fq1a)"></path>
+  <path class="ln" d="M325,235 L358,235" marker-end="url(#fq1a)"></path>
+  <path class="ln" d="M460,235 L498,235" marker-end="url(#fq1a)"></path>
+  <text class="ta" x="232" y="207">history</text>
+  <path class="sa" d="M290,198 L290,215" marker-end="url(#fq1a)"></path>
+  <text class="ta" x="225" y="271">searches: How do I request a new laptop in Poland?</text>
+</svg>
+<figcaption>At level 2 the history reaches the model that writes the answer, but search already ran on the bare follow-up. At level 3 it is used before search.</figcaption>
+</figure>
+<p>In our chatbot, only the rewrite step reads the stored history. Search and the answer step get the rewritten query.</p>
+<h2>Level 3: rewrite the last message into a standalone query</h2>
+<p>Level 3 adds one model call before search. It reads the history and the latest message, and it returns a query that makes sense alone. For “And in Poland?” it returns “How do I request a new laptop in Poland?”. This is the task the CANARD dataset defines: rewrite a question that depends on the conversation into a self-contained question with the same answer [1].</p>
+<p>Here is the shape of ours. This is a simplified sketch, not our exact code:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">contextualize</span>(<span class="hljs-params">message: <span class="hljs-built_in">str</span>, history: <span class="hljs-built_in">list</span>[Message]</span>) -> Rewrite:
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> history:
+        <span class="hljs-comment"># First message: only fix typos and extract a location.</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">await</span> fix_and_extract_location(message)
+    payload = json.dumps({
+        <span class="hljs-string">"conversation"</span>: format_history(history[-<span class="hljs-number">10</span>:]),
+        <span class="hljs-string">"latest_user_message"</span>: message,
+    })
+    result = <span class="hljs-keyword">await</span> llm.parse(
+        system=REWRITE_PROMPT,
+        user=payload,
+        response_format=Rewrite,  <span class="hljs-comment"># contextualized_query + locations</span>
+    )
+    <span class="hljs-keyword">if</span> result <span class="hljs-keyword">is</span> <span class="hljs-literal">None</span>:
+        <span class="hljs-keyword">return</span> Rewrite(contextualized_query=message, locations=[])
+    <span class="hljs-keyword">return</span> result
+</code></pre>
+<p>A few choices in it are worth copying:</p>
+<ul>
+<li>The first message skips the rewrite, because there is nothing to resolve. LangChain’s history-aware retriever makes the same choice. With no chat history, the input goes straight to the retriever [6].</li>
+<li>The dialogue goes in as JSON in the user message, and the rules stay in the system message. The prompt says to treat the dialogue as data, not as instructions, and not to answer the question.</li>
+<li>The output is structured: the query, plus the locations it names. A location becomes a search filter, so it should be a field.</li>
+<li>If the model returns nothing usable, search runs on the raw message. A weaker search is better than no answer.</li>
+<li>The rewriter keeps codes and acronyms exactly as written. A later step without a model expands the known acronyms, and it can only do that if the token is still there.</li>
+</ul>
+<p>Level 3 handles most follow-ups. The cases it got wrong were less obvious. A generic rewrite prompt has one habit: when in doubt, add context. That habit is right for “And in Poland?”. It is wrong in several other cases.</p>
+<h2>Level 4: decide what kind of follow-up it is</h2>
+<p>Here is one of those cases. The user writes “I need help with VPN-7”. The bot asks: “Could you tell me more about what you need help with regarding VPN-7?” The user replies: “How do I reset my password?”</p>
+<p>A generic rewrite sees a pending clarifying question and merges: “How do I reset my VPN-7 password?”. But the user has moved on. Their reply is a complete question with its own subject. If they had replied “setting it up on my phone” instead, merging would be right.</p>
+<p>The two replies come right after the same bot message. Only the reply itself tells them apart. So before the rewrite chooses a subject, it has to decide what kind of follow-up the latest message is. These are the types our prompt separates. The examples are rewritten, but the rules are the ones in our prompt.</p>
+
+
+<table><thead>
+<tr>
+<th>The latest message is</th>
+<th>Example</th>
+<th>Search with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A self-contained question, even right after a clarifying question</td>
+<td>"How do I reset my password?"</td>
+<td>the message as typed; copy nothing from earlier turns</td>
+</tr>
+<tr>
+<td>A fragment that answers a clarifying question</td>
+<td>"setting it up on my phone"</td>
+<td>the pending subject plus the new detail</td>
+</tr>
+<tr>
+<td>A bare topic after an ordinary answer</td>
+<td>"printer drivers"</td>
+<td>the topic alone, as a new query</td>
+</tr>
+<tr>
+<td>A neutral follow-up with a pronoun</td>
+<td>"How long does it take?"</td>
+<td>the item the bot just explained</td>
+</tr>
+<tr>
+<td>A complaint that the answer missed the request</td>
+<td>"Really nothing on it? Who qualifies for it?"</td>
+<td>the user's original subject</td>
+</tr>
+<tr>
+<td>"Yes" or "no" to an option the bot offered</td>
+<td>"yes"</td>
+<td>the subject with the option applied, or dropped</td>
+</tr>
+<tr>
+<td>A greeting, thanks or goodbye</td>
+<td>"thanks!"</td>
+<td>unchanged</td>
+</tr>
+</tbody></table>
+<p>A full question is not always standalone. “How do I apply?” is a complete sentence with no object. After an answer about the laptop loan program, it still needs that subject. Our tests have a case for exactly this.</p>
+<h3>Recency is not intent</h3>
+<p>The complaint type took the most attempts. Here is the shape of it. The user asks “Can I get a company phone?”. The bot answers: “I couldn’t find a company phone policy. I found the laptop loan program, which lends a laptop for up to two weeks.” The user writes: “Really nothing on it? Who qualifies for it?”</p>
+<p>The nearest item to “it” is the laptop loan program. A rewrite that resolves pronouns by recency returns “Who qualifies for the laptop loan program?”. But the user is complaining that their own question had no answer. So “it” is the company phone, and the search should be “Who qualifies for a company phone?”.</p>
+<p>The rule that fixed it says to resolve references using the whole latest message, not recency alone. If the user challenges the missing answer, every pronoun in that same message stays on the user’s original subject. The bot’s alternative is used only when the user names it or accepts it, as in “Who qualifies for the laptop loan you mentioned?”.</p>
+<p>A neutral follow-up works the other way. After a normal answer, “How long does it take?” refers to the item the bot explained. An item the bot only mentioned in passing does not count.</p>
+<h3>Location is part of the follow-up</h3>
+<p>Location needs its own rules, because it often becomes a filter on search. An earlier location is inherited only by a related follow-up. If the user asked about laptops in Sweden and then asks “How do I book a meeting room?”, the new query gets no location. Our older prompt added an earlier location whenever the new query had none and the earlier one was clear. That narrowed unrelated questions to a country the user did not ask about.</p>
+<p>The other rules are short. An explicit location in the latest message replaces the earlier one. A comparison keeps both locations. A location the user refused is never added back.</p>
+<p>One bug here is easy to miss. The model mapped the language of a question to a country. A question written in Indonesian came back with Indonesia as its location, though no country was named. Our location prompt now says plainly that the language of a query is not a location.</p>
+<h3>Writing the rules as a decision list</h3>
+<p>Our first prompt for this step grew one fix at a time, and many lines had an exception such as “UNLESS it answers a clarifying question”. I rewrote it as one ordered list under the heading “Choosing the subject”. The order is the priority: when two rules seem to fit, the earlier one decides. The table above is that list, in the same order. The <a href="/posts/writing-prompts-for-agentic-workflows/">prompts post</a> shows the prompt before and after the change, and how I tested it with repeated runs.</p>
+<p>The prompt has only two examples, and both are analogous to the hard cases, not copies of test cases. At one point I added two more that matched the clarification tests almost word for word. I removed them in the next change. I prefer one general rule over a rule for each case, because case rules pile up and need changing later.</p>
+<p>Try it below. Pick a conversation and step through the levels. Then switch off the history and look at levels 3 and 4 again.</p>
+<style>
+.fq-lab { margin:32px 0; padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); box-sizing:border-box; }
+.fq-lab[hidden] { display:none; }
+.prose .fq-lab h3 { margin:0 0 8px; }
+.prose .fq-lab p { margin:0 0 12px; font-size:14px; color:var(--muted); }
+.prose .fq-lab .fig { width:auto; }
+.fq-lab .fig svg { min-width:0; }
+.fq-bar { display:flex; flex-wrap:wrap; gap:6px; align-items:center; margin:0 0 10px; }
+.fq-bar .fq-label { font:11px var(--font-geist-mono),monospace; color:var(--muted); letter-spacing:.04em; margin-right:4px; }
+.fq-lab button { font:12px var(--font-geist-mono),monospace; padding:6px 10px; min-height:44px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); cursor:pointer; }
+.fq-lab button[aria-pressed="true"] { border-color:var(--fig-a); background:color-mix(in oklch, var(--fig-a) 16%, var(--bg)); }
+.fq-lab button:focus-visible, .fq-lab input:focus-visible { outline:2px solid var(--fig-a); outline-offset:2px; }
+.fq-check { display:inline-flex; gap:6px; align-items:center; font-size:14px; min-height:44px; margin:0 0 8px; }
+.prose .fq-lab ol.fq-chat { list-style:none; margin:4px 0 12px; padding:0; }
+.prose .fq-lab .fq-chat li { margin:0 0 6px; padding:8px 10px; border-radius:6px; background:var(--bg); font-size:14px; line-height:1.45; }
+.fq-chat .fq-who { display:block; font:11px var(--font-geist-mono),monospace; color:var(--muted); letter-spacing:.04em; }
+.prose .fq-lab .fq-chat li.fq-last { box-shadow:inset 3px 0 0 var(--fig-a); }
+.fq-out { padding:10px 12px; border:1.5px solid var(--line); border-radius:6px; background:var(--bg); }
+.fq-out.fq-ok { border-color:var(--fig-a); }
+.fq-out.fq-bad { border-color:var(--fig-b); }
+.fq-out .fq-k { display:block; font:11px var(--font-geist-mono),monospace; color:var(--muted); letter-spacing:.04em; }
+.fq-out .fq-q { display:block; margin:4px 0; font:14px/1.45 var(--font-geist-mono),monospace; color:var(--fg); overflow-wrap:anywhere; }
+.fq-out .fq-verdict { font-size:13px; }
+.fq-out.fq-ok .fq-verdict { color:var(--fig-a); }
+.fq-out.fq-bad .fq-verdict { color:var(--fig-b); }
+.prose .fq-lab .fq-note { min-height:4.4em; margin:12px 0 0; color:var(--fg); }
+@media(max-width:420px) { .fq-lab { padding:14px; } }
+</style>
+<section class="fq-lab" id="fq-lab" aria-labelledby="fq-lab-title" hidden>
+<h3 id="fq-lab-title">One conversation, four levels</h3>
+<p>The queries are written by hand to show the typical behaviour at each level. They are not recorded model output.</p>
+<div class="fq-bar" role="group" aria-label="Conversation" id="fq-scenarios"><span class="fq-label">CHAT</span></div>
+<div class="fq-bar" role="group" aria-label="Level" id="fq-levels"><span class="fq-label">LEVEL</span></div>
+<label class="fq-check"><input type="checkbox" id="fq-history" checked> History reaches the rewriter</label>
+<ol class="fq-chat" id="fq-chat"></ol>
+<div class="fq-out" id="fq-out"><span class="fq-k">SEARCH QUERY</span><span class="fq-q" id="fq-query"></span><span class="fq-verdict" id="fq-verdict"></span></div>
+<p class="fq-note" id="fq-note" role="status" aria-live="polite"></p>
+</section>
+<noscript><p>Enable JavaScript to step through the levels. The table above has the same cases.</p></noscript>
+<h2>Level 5: keep the state outside the prompt</h2>
+<p>Now the bug from the start. The rewrite step and its prompt were fine. The history it received was empty.</p>
+<p>We read the saved history from the agent framework’s context for the first agent, the one that runs the rewrite. The framework added the bot’s answer to that context only on the agent’s next call, and that call never came in the same turn. So every saved turn had a question and no answer, and the list of turns stayed empty. The fix builds each turn from the user’s message and the final answer that our own code already has, and passes the saved turns to the rewrite step as an argument. The <a href="/posts/state-in-agents/">post on state</a> tells the full story, with a figure of the timing and the session schema.</p>
+<p>Two details matter for the rewrite step itself. It reads only the last 10 messages of the stored history, so each request stays at a known size. Every message you send counts against the model’s context window [7]. The number of restored turns also goes on the trace. A trace that says 0 restored turns on the third message of a conversation would have shown our bug much earlier.</p>
+<p>The general lesson: own the conversation state. Store it in your own schema, from values you control, and pass it in where it is needed. The framework’s internal context is a detail of how the framework calls the model. Its timing can change, and it is not a record of the conversation.</p>
+<h2>Things to watch</h2>
+<ul>
+<li><strong>An empty history looks like success.</strong> Without history, a follow-up still gets an answer, only a worse one. Put the number of restored turns on the trace.</li>
+<li><strong>Context added by default.</strong> A rewrite that always merges breaks new questions that follow a clarifying question. Test that case on purpose.</li>
+<li><strong>Recency resolving pronouns.</strong> A complaint refers to the user’s subject, even when the bot’s last answer named something else.</li>
+<li><strong>Location inferred from language.</strong> Say in the prompt that the language of a question is not a location.</li>
+<li><strong>Acronyms changed by the rewriter.</strong> Keep the token exact, and expand it in code. We also had to tell the answer step to keep an expansion like “ACRONYM (Full Form)” in its first mention, instead of shortening it back.</li>
+<li><strong>One more model call.</strong> The rewrite runs on the critical path of every follow-up. On the first message there is nothing to resolve, so we use a smaller call that only fixes typos and extracts a location.</li>
+<li><strong>Flaky prompt tests.</strong> Run each real-model case more than once, and decide in advance how many passes count.</li>
+</ul>
+<h2>What others do</h2>
+<p>The research on this is older than LLM chatbots. CANARD has about 40,000 conversational questions, each paired with a standalone rewrite [1]. In the TREC CAsT 2019 track, leading systems rewrote conversational queries with GPT-2. Queries resolved by hand still beat the best automatic system by about 35%, relative [2]. So the rewrite is a real source of lost quality, and it is worth measuring on its own.</p>
+<p>Rewrite-Retrieve-Read goes a step further and trains the rewriter [3]. A small model writes the query, and it is trained with reinforcement learning on feedback from the model that reads the results. Ours is a prompted model. Training one would need a set of follow-ups with good rewrites first.</p>
+<p>HyDE asks a model to write a hypothetical answer and searches with its embedding [4]. I tried it as a third search path in <a href="/posts/tuning-retrieval-for-multilingual-rag/">an earlier post</a>: 0.6 points more recall for 2.4 times the retrieval latency. It solves a different problem. HyDE bridges the words of a question and the words of a document. Contextualization fills in what the user left out. A HyDE passage written from “And in Poland?” is still about Poland, so the rewrite has to come first.</p>
+<p>Multi-query retrieval asks a model for several versions of the question, searches with each, and keeps the unique union of the results [5]. LangChain’s default prompt asks for three versions.</p>
+<h2>What I would try next</h2>
+<ul>
+<li><strong>Search both readings when the type is unclear.</strong> For a complaint that might accept the alternative, search the original subject and the alternative, like multi-query, and let the reranker decide.</li>
+<li><strong>A golden set of follow-ups by type</strong>, taken from real traces and scored on the rewritten query alone. A wrong rewrite is cheaper to catch there than in the final answer.</li>
+</ul>
+<p>If your RAG chatbot answers follow-ups badly, check that the history really reaches the rewrite step before you touch the prompt. Then test a new question right after a clarifying question, and a complaint after a substitute answer. Those were the two cases our generic prompt got wrong.</p>
+<h2>References</h2>
+<ol>
+<li>Ahmed Elgohary, Denis Peskov, Jordan Boyd-Graber, <a href="https://aclanthology.org/D19-1605/">“Can You Unpack That? Learning to Rewrite Questions-in-Context”</a>, EMNLP-IJCNLP 2019. The CANARD dataset and the question-in-context rewriting task.</li>
+<li>Jeffrey Dalton, Chenyan Xiong, Jamie Callan, <a href="https://arxiv.org/abs/2003.13624">“TREC CAsT 2019: The Conversational Assistance Track Overview”</a>, 2020. GPT-2 query rewriting in the top systems, and the gap to manually resolved queries.</li>
+<li>Xinbei Ma, Yeyun Gong, Pengcheng He, Hai Zhao, Nan Duan, <a href="https://arxiv.org/abs/2305.14283">“Query Rewriting for Retrieval-Augmented Large Language Models”</a>, EMNLP 2023. Rewrite-Retrieve-Read with a trainable rewriter.</li>
+<li>Luyu Gao, Xueguang Ma, Jimmy Lin, Jamie Callan, <a href="https://arxiv.org/abs/2212.10496">“Precise Zero-Shot Dense Retrieval without Relevance Labels”</a>, 2022. HyDE.</li>
+<li>LangChain, <a href="https://github.com/langchain-ai/langchain/blob/master/libs/langchain/langchain_classic/retrievers/multi_query.py"><code>MultiQueryRetriever</code> source</a>. Several generated queries, and the unique union of their results.</li>
+<li>LangChain, <a href="https://github.com/langchain-ai/langchain/blob/master/libs/langchain/langchain_classic/chains/history_aware_retriever.py"><code>create_history_aware_retriever</code> source</a>. Raw input to the retriever when there is no history, a generated search query when there is.</li>
+<li>OpenAI, <a href="https://developers.openai.com/api/docs/guides/conversation-state">“Conversation state”</a>. Requests are stateless, you pass prior messages yourself, and long histories count against the context window.</li>
+</ol>12:["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Follow-up questions in a RAG chatbot: from the last message to a search query\",\"description\":\"A follow-up like \\\"and in Poland?\\\" means nothing to a search index. Five levels of handling it, from searching the message as typed to a rewrite step that first decides what kind of follow-up it is, and the bug that kept our history empty.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"agents, models\",\"url\":\"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}],["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",13," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L1d",null,{"title":"Follow-up questions in a RAG chatbot: from the last message to a search query","url":"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/"}]]}],["$","h1",null,{"children":"Follow-up questions in a RAG chatbot: from the last message to a search query"}],["$","p",null,{"className":"standfirst","children":"A follow-up like \"and in Poland?\" means nothing to a search index. Five levels of handling it, from searching the message as typed to a rewrite step that first decides what kind of follow-up it is, and the bug that kept our history empty."}],["$","div",null,{"className":"tag-list","children":[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}],["$","$La","models",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Modelling"}]]}]]}],["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$1e"}}],"$L1f","$L20",["$L21"]]}]
+22:I[79520,["$2","$6","$7","$9"],""]
+1f:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}],["$","$La","exp",{"className":"tag-chip","href":"/posts/?lane=exp","style":{"--lane":"var(--l1)"},"children":"Data science"}]]]}]]}]
+20:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/deploying-agents-on-kubernetes/","children":[["$","small",null,{"children":"← older"}],"Running an agentic chatbot on Kubernetes when a request takes a minute"]}],["$","$La",null,{"className":"next","href":"/posts/circuit-breakers-from-the-fuse-box/","children":[["$","small",null,{"children":"newer →"}],"Circuit breakers, from the fuse box to a Go service"]}]]}]
+21:["$","$L22","/assets/posts/widgets/fq-levels.js",{"src":"/assets/posts/widgets/fq-levels.js","strategy":"afterInteractive"}]
+18:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+23:I[27201,["$2"],"IconMark"]
+15:null
+1b:[["$","title","0",{"children":"Follow-up questions in a RAG chatbot: from the last message to a search query · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"A follow-up like \"and in Poland?\" means nothing to a search index. Five levels of handling it, from searching the message as typed to a rewrite step that first decides what kind of follow-up it is, and the bug that kept our history empty."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Follow-up questions in a RAG chatbot: from the last message to a search query"}],["$","meta","10",{"property":"og:description","content":"A follow-up like \"and in Poland?\" means nothing to a search index. Five levels of handling it, from searching the message as typed to a rewrite step that first decides what kind of follow-up it is, and the bug that kept our history empty."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],["$","meta","16",{"property":"og:image:width","content":"1200"}],["$","meta","17",{"property":"og:image:height","content":"630"}],["$","meta","18",{"property":"og:type","content":"article"}],["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}],["$","meta","20",{"property":"article:tag","content":"agents"}],["$","meta","21",{"property":"article:tag","content":"models"}],["$","meta","22",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","23",{"name":"twitter:title","content":"Follow-up questions in a RAG chatbot: from the last message to a search query"}],["$","meta","24",{"name":"twitter:description","content":"A follow-up like \"and in Poland?\" means nothing to a search index. Five levels of handling it, from searching the message as typed to a rewrite step that first decides what kind of follow-up it is, and the bug that kept our history empty."}],["$","meta","25",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/contextualizing-follow-up-questions/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","26",{"name":"twitter:image:type","content":"image/png"}],["$","meta","27",{"name":"twitter:image:width","content":"1200"}],["$","meta","28",{"name":"twitter:image:height","content":"630"}],["$","link","29",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L23","30",{}]]

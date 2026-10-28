@@ -1,0 +1,318 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/1ka4euz_woo03.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/3hvp7qaeiywi4.js"
+7:"/_next/static/chunks/0d7sjusiro2wr.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/2kagsvljmpygq.js"
+a:I[22016,["$2","$6","$7","$9"],""]
+b:I[8745,["$2","$6","$7"],"SiteFooter"]
+c:I[68872,["$2"],"UmamiTracker"]
+21:"ViewportBoundary"
+22:I[97367,["$2"],"$21"]
+23:"MetadataBoundary"
+24:I[97367,["$2"],"$23"]
+25:"$Sreact.suspense"
+:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
+:HL["/_next/static/chunks/34g-1oag_kv5y.css","style"]
+e:X
+15:X
+15:C
+16:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","article",null,{"className":"article-shell","children":[["$","script",null,{"type":"application/ld+json","dangerouslySetInnerHTML":{"__html":"{\"@context\":\"https://schema.org\",\"@type\":\"BlogPosting\",\"headline\":\"Running an agentic chatbot on Kubernetes when a request takes a minute\",\"description\":\"In a load test, our chatbot's pods restarted under load while CPU stayed low and the autoscaler did nothing. What changes on Kubernetes when every request is slow and waits on the network: probes, autoscaling, shutdown, client lifecycle and how to run the load test itself.\",\"datePublished\":\"2026-10-27\",\"keywords\":\"agents, mlops, systems\",\"url\":\"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/\",\"mainEntityOfPage\":\"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/\",\"image\":\"https://fadhilmch.github.io/assets/og-default.png\",\"author\":{\"@type\":\"Person\",\"name\":\"Fadhil Mochammad\",\"url\":\"https://fadhilmch.github.io/\"}}"}}],"$L17","$L18","$L19","$L1a","$L1b",["$L1c"]]}],["$L1d","$L1e"],"$L1f"]}],"p":"$@20","v":null,"s":"$e"}}]]
+13:[["children",{"s":{"n":"slug","t":"d","k":"deploying-agents-on-kubernetes","s":[]},"h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@14","v":"$15","s":"$e"},"c":"$Q16"}]]
+11:[["children",{"s":"posts","h":96,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/34g-1oag_kv5y.css","precedence":"next"}]],["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@12","v":null,"s":"$e"},"c":"$Q13"}]]
+f:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}]]]}]}],["$","$Lb",null,{}]]]}],"p":"$@10","v":null,"s":"$e"},"c":"$Q11"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$La",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$La",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$La",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lb",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next"}]]]}]}],["$","$Lc",null,{}]]}]}]]}],"p":"$@d","v":null,"s":"$e"},"c":"$Qf"},"h":{"r":["$","$1","h",{"children":[null,["$","$L22",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L24",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$25",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Running an agentic chatbot on Kubernetes when a request takes a minute · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"In a load test, our chatbot's pods restarted under load while CPU stayed low and the autoscaler did nothing. What changes on Kubernetes when every request is slow and waits on the network: probes, autoscaling, shutdown, client lifecycle and how to run the load test itself."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Running an agentic chatbot on Kubernetes when a request takes a minute"}],["$","meta","10",{"property":"og:description","content":"In a load test, our chatbot's pods restarted under load while CPU stayed low and the autoscaler did nothing. What changes on Kubernetes when every request is slow and waits on the network: probes, autoscaling, shutdown, client lifecycle and how to run the load test itself."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}],["$","meta","15",{"property":"og:image:type","content":"image/png"}],"$L26","$L27","$L28","$L29","$L2a","$L2b","$L2c","$L2d","$L2e","$L2f","$L30","$L31","$L32","$L33","$L34","$L35"]}]}],null]}],"$L36"]}],"p":"$@37","v":null,"s":"$e"}},"a":"$@38","u":"$@39","b":"0CHQxpLJbOXbXjHr0Bgdq"}
+3a:I[78881,["$2","$6","$7","$9"],"default"]
+3c:I[79520,["$2","$6","$7","$9"],""]
+3d:I[97367,["$2"],"OutletBoundary"]
+3f:I[27201,["$2"],"IconMark"]
+:HL["/_next/static/chunks/06q8lm6y95ac4.css","style"]
+17:["$","nav",null,{"className":"breadcrumb","aria-label":"Breadcrumb","children":["$","ol",null,{"children":[["$","li","/posts/",{"children":["$","$La",null,{"href":"/posts/","children":"Posts"}]}]]}]}]
+18:["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":[["$","time",null,{"dateTime":"2026-10-27","children":"2026-10-27"}]," ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",14," min read ",["$","span",null,{"aria-hidden":"true","children":"·"}]," ",["$","$L3a",null,{"title":"Running an agentic chatbot on Kubernetes when a request takes a minute","url":"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/"}]]}],["$","h1",null,{"children":"Running an agentic chatbot on Kubernetes when a request takes a minute"}],["$","p",null,{"className":"standfirst","children":"In a load test, our chatbot's pods restarted under load while CPU stayed low and the autoscaler did nothing. What changes on Kubernetes when every request is slow and waits on the network: probes, autoscaling, shutdown, client lifecycle and how to run the load test itself."}],["$","div",null,{"className":"tag-list","children":[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents & LLMs"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$La","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"System design"}]]}]]}]
+3b:T7790,<p>Before launch, we ran a load test on our chatbot. It is a multi-agent RAG service: one question goes through several agents, a search index and many model calls before an answer comes back. Under load, a single request took from half a minute to well over a minute. That is slow, but we expected it.</p>
+<p>What we did not expect was the shape of the failure. Partway through the test, many requests failed with HTTP 503 in bursts. The pods were being restarted by Kubernetes. CPU and memory stayed low the whole time, so the autoscaler never added a pod. I’ll leave out the user counts and latency numbers, which aren’t mine to share.</p>
+<p>The cause was a set of defaults that are fine for a normal web API. A normal API answers in milliseconds and burns CPU while it works. Our service answers in tens of seconds and spends almost all of that time waiting on the network. This kind of work is called <strong>I/O-bound</strong>: the limit is how many slow calls you can keep open, not how fast the processor is. This post goes through what that changed for us on Kubernetes.</p>
+<h2>How a probe restarted a healthy pod</h2>
+<p>Kubernetes checks each container with probes. A <strong>liveness probe</strong> asks “is this process stuck?” If it fails too many times in a row, the kubelet (the agent on each node) restarts the container. A <strong>readiness probe</strong> asks “should this pod get traffic right now?” If it fails, the pod is taken out of the Service, but it is not restarted.</p>
+<p>Our liveness probe called <code>GET /health</code> every 15 seconds, with a 2-second timeout and 3 allowed failures. The endpoint itself is cheap. It returns 200 and checks nothing outside the process.</p>
+<p>However, the pod ran one uvicorn worker, so one Python process with one event loop. That loop was handling many concurrent requests, each with long model and search calls. Waiting on the network does not block an event loop. Everything between the waits does: parsing responses, building prompts, framework bookkeeping, and any call that is synchronous by accident. With enough requests in flight, the loop could not get to the probe within 2 seconds.</p>
+<p>Three failed probes, 15 seconds apart, is about 45 seconds. Then the kubelet restarted the container. Every request in flight on that pod died with it, and each of them had already used up to a minute of model calls.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 250" role="img" aria-labelledby="dak1t dak1d">
+  <title id="dak1t">How a busy event loop turned into a burst of 503s</title>
+  <desc id="dak1d">A timeline from 0 to 90 seconds. The event loop becomes busy at about 10 seconds. The liveness probe passes at 0 seconds, then times out at 15, 30 and 45 seconds. At 45 seconds the kubelet restarts the container. Five long requests that started between 2 and 28 seconds are cut at 45 seconds and return 503, although each would have finished between 60 and 90 seconds.</desc>
+  <line class="grid" x1="120" y1="40" x2="120" y2="215"></line>
+  <line class="grid" x1="210" y1="40" x2="210" y2="215"></line>
+  <line class="grid" x1="300" y1="40" x2="300" y2="215"></line>
+  <line class="grid" x1="480" y1="40" x2="480" y2="215"></line>
+  <line class="grid" x1="570" y1="40" x2="570" y2="215"></line>
+  <line class="grid" x1="660" y1="40" x2="660" y2="215"></line>
+  <text class="h" x="10" y="54">PROBE</text>
+  <text class="h" x="10" y="94">EVENT LOOP</text>
+  <text class="h" x="10" y="134">REQUESTS</text>
+  <circle class="fa" cx="120" cy="50" r="6"></circle>
+  <text class="ta" x="130" y="40">ok</text>
+  <path class="sb" d="M204,44 L216,56 M216,44 L204,56"></path>
+  <path class="sb" d="M294,44 L306,56 M306,44 L294,56"></path>
+  <path class="sb" d="M384,44 L396,56 M396,44 L384,56"></path>
+  <text class="tb" x="222" y="40">timeout</text>
+  <text class="tb" x="312" y="40">timeout</text>
+  <rect class="box" x="180" y="82" width="210" height="18" rx="3"></rect>
+  <text class="m" x="188" y="95">busy with many slow requests</text>
+  <path class="sa" d="M132,130 L390,130"></path><path class="ln dash" d="M390,130 L540,130"></path>
+  <path class="sa" d="M168,147 L390,147"></path><path class="ln dash" d="M390,147 L600,147"></path>
+  <path class="sa" d="M204,164 L390,164"></path><path class="ln dash" d="M390,164 L480,164"></path>
+  <path class="sa" d="M240,181 L390,181"></path><path class="ln dash" d="M390,181 L660,181"></path>
+  <path class="sa" d="M288,198 L390,198"></path><path class="ln dash" d="M390,198 L630,198"></path>
+  <line class="sb" x1="390" y1="30" x2="390" y2="215"></line>
+  <text class="tb" x="398" y="74">kubelet restarts</text>
+  <text class="tb" x="398" y="88">the container</text>
+  <text class="tb" x="548" y="134">503</text>
+  <text class="m" x="120" y="235" text-anchor="middle">0 s</text>
+  <text class="m" x="210" y="235" text-anchor="middle">15 s</text>
+  <text class="m" x="300" y="235" text-anchor="middle">30 s</text>
+  <text class="m" x="390" y="235" text-anchor="middle">45 s</text>
+  <text class="m" x="480" y="235" text-anchor="middle">60 s</text>
+  <text class="m" x="570" y="235" text-anchor="middle">75 s</text>
+  <text class="m" x="660" y="235" text-anchor="middle">90 s</text>
+</svg>
+<figcaption>Illustration, not measured data. Three probe timeouts restart the container. The dashed part of each request is the work it never got to finish.</figcaption>
+</figure>
+<p>The restart made things worse, not better. The new container needs time to start, and while it starts, its share of traffic goes to the other pods. Those pods get busier, their probes start to fail, and the same thing happens to them. The Kubernetes documentation warns about exactly this: a wrong liveness probe can restart containers under high load and cause cascading failures [1].</p>
+<p>One limit to state here. At that time we had no metric for event loop lag, so I can’t say which piece of work kept the loop busy. We fixed the conditions around it, which I describe next.</p>
+<h2>Probes for a slow service</h2>
+<p>The first fix was to give each probe one job, and to make the liveness probe forgiving. This is close to what we run now:</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">startupProbe:</span>
+  <span class="hljs-attr">httpGet:</span> { <span class="hljs-attr">path:</span> <span class="hljs-string">/health</span>, <span class="hljs-attr">port:</span> <span class="hljs-number">8000</span> }
+  <span class="hljs-attr">periodSeconds:</span> <span class="hljs-number">5</span>
+  <span class="hljs-attr">failureThreshold:</span> <span class="hljs-number">24</span>     <span class="hljs-comment"># up to 2 minutes to start</span>
+<span class="hljs-attr">livenessProbe:</span>
+  <span class="hljs-attr">httpGet:</span> { <span class="hljs-attr">path:</span> <span class="hljs-string">/health</span>, <span class="hljs-attr">port:</span> <span class="hljs-number">8000</span> }
+  <span class="hljs-attr">periodSeconds:</span> <span class="hljs-number">30</span>
+  <span class="hljs-attr">timeoutSeconds:</span> <span class="hljs-number">5</span>
+  <span class="hljs-attr">failureThreshold:</span> <span class="hljs-number">5</span>      <span class="hljs-comment"># about 2.5 minutes of failures before a restart</span>
+<span class="hljs-attr">readinessProbe:</span>
+  <span class="hljs-attr">httpGet:</span> { <span class="hljs-attr">path:</span> <span class="hljs-string">/ready</span>, <span class="hljs-attr">port:</span> <span class="hljs-number">8000</span> }
+  <span class="hljs-attr">periodSeconds:</span> <span class="hljs-number">10</span>
+  <span class="hljs-attr">timeoutSeconds:</span> <span class="hljs-number">5</span>
+  <span class="hljs-attr">failureThreshold:</span> <span class="hljs-number">5</span>
+</code></pre>
+<p>The <strong>startup probe</strong> runs only while the container starts. Liveness and readiness wait until it has passed once [1]. So the slow start no longer needs a long <code>initialDelaySeconds</code> on the liveness probe, and the liveness probe can stay focused on one question: is the process stuck?</p>
+<p>The liveness probe now allows about two and a half minutes of failures. That is longer than our slowest request. A loop that is busy for a minute is not stuck. It is working.</p>
+<p>Colin Breck’s post on probes gives the same advice in more detail [2]. Keep liveness cheap and local, never check dependencies in it, and set its timeout close to your client timeout. He also points out that every restart puts more load on the other pods.</p>
+<p>We also changed the pod to run more than one uvicorn worker. Each worker is a separate process with its own event loop, so one busy loop no longer means a silent pod. There is a trade-off here. It comes from my own reasoning, not from a measurement. A probe now reaches whichever worker accepts the connection. If one worker is truly stuck, the probe can still pass through another one, and liveness will not catch it. More workers also means more memory, and Prometheus metrics need multiprocess mode so the workers’ counters are added up correctly.</p>
+<h2>Shutting down without dropping answers</h2>
+<p>Probes are not the only thing that stops a pod. A rollout, a scale-down and a node drain all do too. When Kubernetes stops a pod, it runs the <code>preStop</code> hook, sends SIGTERM, and waits for the grace period. The default grace period is 30 seconds. After that, any process still running gets SIGKILL [3].</p>
+<p>For an API that answers in 100 milliseconds, 30 seconds is plenty. For us it is shorter than one request. So we set a longer <code>terminationGracePeriodSeconds</code> and a short <code>preStop</code> sleep, which gives the gateway time to stop sending new requests before the process gets SIGTERM. On shutdown, the app drains its pending background writes with a bounded timeout, then flushes buffered trace spans before it exits. Without the flush, the last traces of a pod are lost, and those are often the ones you want to read.</p>
+<p>Check the arithmetic for your own service. The grace period includes the <code>preStop</code> hook [3]. If your slowest request is longer than the grace period minus the hook, a scale-down can still cut an answer in half. When I last checked, ours was not fully covered.</p>
+<h2>Why the autoscaler did nothing</h2>
+<p>The Horizontal Pod Autoscaler (HPA) works from a ratio. It computes <code>desired = ceil(current × currentMetric / targetMetric)</code> [4]. For CPU, the metric is a percentage of the pod’s CPU request. With CPU as the only signal, the HPA can only react to work that uses CPU.</p>
+<p>Our pods were full and idle at the same time. They had as many slow requests open as they could handle, and the processor was mostly waiting. From the HPA’s point of view, nothing was happening.</p>
+<p>Our quick fix was to lower the CPU and memory targets, add a faster scale-up policy, and allow more replicas. It passed the retest, and production still runs on it. However, it is a stopgap. It scales on a side effect of load, not on load.</p>
+<p>The signal that matches an I/O-bound service is the number of <strong>in-flight requests</strong>: requests that have started and not yet finished. It grows with both traffic and latency. If ten questions arrive each minute and each takes a minute, about ten are open at any moment. If the model gets slower, that number rises even when traffic does not, and that is exactly when you need more pods.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 190" role="img" aria-labelledby="dak2t dak2d">
+  <title id="dak2t">Two ways to feed the autoscaler</title>
+  <desc id="dak2d">Top row, today: the pod reports CPU to the metrics server, which feeds the HPA. CPU stays low for an I/O-bound pod, so the HPA does not scale. Bottom row, what I would build next: the pod exports an in-flight request gauge on its metrics endpoint. Prometheus scrapes it, KEDA queries Prometheus, and KEDA feeds the HPA, which scales on in-flight requests per pod.</desc>
+  <defs><marker id="dak2a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="10" y="20">TODAY</text>
+  <rect class="box" x="10" y="30" width="120" height="50" rx="6"></rect>
+  <text class="t" x="22" y="51">Pod</text><text class="m" x="22" y="68">CPU usage</text>
+  <rect class="box" x="200" y="30" width="150" height="50" rx="6"></rect>
+  <text class="t" x="212" y="51">Metrics server</text><text class="m" x="212" y="68">resource metrics</text>
+  <rect class="box" x="520" y="30" width="150" height="50" rx="6" style="stroke:var(--fig-b)"></rect>
+  <text class="t" x="532" y="51">HPA</text><text class="tb" x="532" y="68">sees low CPU, waits</text>
+  <path class="ln" d="M130,55 L198,55" marker-end="url(#dak2a)"></path>
+  <path class="ln" d="M350,55 L518,55" marker-end="url(#dak2a)"></path>
+  <text class="h" x="10" y="115">WHAT I WOULD BUILD NEXT</text>
+  <rect class="box" x="10" y="125" width="120" height="50" rx="6"></rect>
+  <text class="t" x="22" y="146">Pod</text><text class="m" x="22" y="163">in-flight gauge</text>
+  <rect class="box" x="175" y="125" width="110" height="50" rx="6"></rect>
+  <text class="t" x="187" y="146">Prometheus</text><text class="m" x="187" y="163">scrapes /metrics</text>
+  <rect class="box" x="335" y="125" width="130" height="50" rx="6"></rect>
+  <text class="t" x="347" y="146">KEDA</text><text class="m" x="347" y="163">runs a query</text>
+  <rect class="box" x="520" y="125" width="150" height="50" rx="6" style="stroke:var(--fig-a)"></rect>
+  <text class="t" x="532" y="146">HPA</text><text class="ta" x="532" y="163">scales on open work</text>
+  <path class="ln" d="M130,150 L173,150" marker-end="url(#dak2a)"></path>
+  <path class="ln" d="M285,150 L333,150" marker-end="url(#dak2a)"></path>
+  <path class="ln" d="M465,150 L518,150" marker-end="url(#dak2a)"></path>
+</svg>
+<figcaption>CPU is a side effect of load. For a service that mostly waits, the count of open requests is the load.</figcaption>
+</figure>
+<p>Try it below. Keep the traffic the same and make the model slower, then watch which signal moves. The numbers are an illustration, not our measurements: each answer uses 0.6 CPU seconds, and the target is 8 open requests per pod.</p>
+<section class="lab" id="k8-lab" aria-labelledby="k8-lab-title" hidden>
+<h3 id="k8-lab-title">Same traffic, slower model</h3>
+<p>Open requests follow traffic times answer time. CPU follows only the work done, so it does not see a slower model.</p>
+<div class="lab-controls">
+<button type="button" id="k8-play" aria-pressed="false">Play: the model slows down</button>
+</div>
+<div class="lab-controls">
+<label for="k8-rate">Traffic <input type="range" id="k8-rate" min="6" max="120" step="6" value="30"> <span id="k8-rate-v"></span></label>
+<label for="k8-lat">Answer time <input type="range" id="k8-lat" min="5" max="90" step="1" value="15"> <span id="k8-lat-v"></span></label>
+</div>
+<div class="fig"><svg id="k8-chart" viewBox="0 0 680 232" role="img"></svg></div>
+<dl class="lab-stats">
+<div><dt>open requests</dt><dd id="k8-inflight"></dd></div>
+<div><dt>CPU autoscaler wants</dt><dd id="k8-cpu-wants"></dd></div>
+<div><dt>in-flight autoscaler wants</dt><dd id="k8-if-wants"></dd></div>
+</dl>
+<p class="lab-status" id="k8-status" role="status" aria-live="polite"></p>
+</section>
+<noscript><p>Enable JavaScript to try the traffic and latency sliders.</p></noscript>
+<p>We haven’t built this yet. Here is the plan. The app already exposes Prometheus metrics, and the instrumentation library we use has an opt-in gauge for requests in progress [5]. KEDA is an operator that feeds external metrics to a normal HPA, so the HPA controller still does the scaling [6]. Its Prometheus scaler runs a query and compares the result with a threshold [7]. It also works with Azure’s managed Prometheus through workload identity [7].</p>
+<pre><code class="hljs language-yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">keda.sh/v1alpha1</span>
+<span class="hljs-attr">kind:</span> <span class="hljs-string">ScaledObject</span>
+<span class="hljs-attr">metadata:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">chatbot-api</span>
+<span class="hljs-attr">spec:</span>
+  <span class="hljs-attr">scaleTargetRef:</span>
+    <span class="hljs-attr">name:</span> <span class="hljs-string">chatbot-api</span>
+  <span class="hljs-attr">minReplicaCount:</span> <span class="hljs-number">2</span>
+  <span class="hljs-attr">triggers:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">type:</span> <span class="hljs-string">prometheus</span>
+      <span class="hljs-attr">metadata:</span>
+        <span class="hljs-attr">serverAddress:</span> <span class="hljs-string">http://prometheus:9090</span>
+        <span class="hljs-attr">query:</span> <span class="hljs-string">sum(http_requests_inprogress{handler="/query"})</span>
+        <span class="hljs-attr">threshold:</span> <span class="hljs-string">"8"</span>   <span class="hljs-comment"># in-flight requests per pod; pick yours from a load test</span>
+</code></pre>
+<p>The threshold is the number of open requests one pod should hold. A load test is the way to find it: raise the load on a single pod until latency or errors climb, then stay well below that point. There is also a KEDA HTTP add-on that scales on HTTP traffic directly, through its own interceptor. It is still marked beta [8], so I would start with the Prometheus scaler.</p>
+<h2>Two leaks that only showed up under load</h2>
+<p>Neither of these is visible with one request at a time. Both appeared with many slow requests at once.</p>
+<h3>Model clients that were never closed</h3>
+<p>Each request built a fresh tree of agents, and each agent created its own model clients. Every one of those clients wraps an <code>httpx</code> connection pool. The agent runtime stopped at the end of a request, but stopping it did not close the clients. So every request left several connection pools open for the life of the process. Over time, that means more open sockets and more memory.</p>
+<p>The fix closes them in a <code>finally</code> block, even when the request fails:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">try</span>:
+    answer = <span class="hljs-keyword">await</span> run_agents(question)
+<span class="hljs-keyword">finally</span>:
+    <span class="hljs-keyword">for</span> client <span class="hljs-keyword">in</span> model_clients:
+        <span class="hljs-keyword">try</span>:
+            <span class="hljs-keyword">await</span> client.close()
+        <span class="hljs-keyword">except</span> Exception:
+            logger.warning(<span class="hljs-string">"failed to close model client"</span>, exc_info=<span class="hljs-literal">True</span>)
+    <span class="hljs-keyword">await</span> runtime.stop()
+</code></pre>
+<p>Each closing step has its own <code>try</code>, so a failure while cleaning up never hides the real error of the request. We also keep the clients in a list built at construction, so a renamed or newly added client can’t be forgotten in the cleanup.</p>
+<p>The httpx documentation goes one step further [9]. To get the benefit of connection pooling, don’t create many client instances. Create one, share it, and close it when the app stops. A process-wide client per model deployment, closed in the app’s shutdown hook, would remove the problem instead of cleaning up after it.</p>
+<h3>A thread pool with six threads</h3>
+<p>Under burst load, reads and writes of conversation history to blob storage started to time out after 20 seconds. The traceback showed something odd. The time was spent before any network call had started.</p>
+<p>The storage client uses aiohttp. With proxy settings taken from the environment, which the Azure SDK turns on by default, aiohttp looks up the proxy for every request in a thread through <code>asyncio.to_thread</code>. Token fetches from <code>DefaultAzureCredential</code> also run in threads. Both go to the event loop’s default thread pool. Its default size is <code>min(32, os.cpu_count() + 4)</code> [10]. On a pod with one or two CPUs, that is five or six threads.</p>
+<p>So under burst, these small lookups queued behind each other, and the 20-second timeout ran out while they waited for a thread. The fix sets a larger default pool at startup [11]:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> concurrent.futures <span class="hljs-keyword">import</span> ThreadPoolExecutor
+
+<span class="hljs-meta">@asynccontextmanager</span>
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">lifespan</span>(<span class="hljs-params">app</span>):
+    loop = asyncio.get_running_loop()
+    loop.set_default_executor(
+        ThreadPoolExecutor(max_workers=settings.async_executor_max_workers)
+    )
+    <span class="hljs-keyword">yield</span>
+</code></pre>
+<p>The size is a setting, so it can change without a code change. An async service still has threads in it. Libraries move small blocking calls onto the default pool, and you don’t see it until that pool is full.</p>
+<h2>Running the load test</h2>
+<p>Two things made the load tests useful, and both happen before the first request is sent.</p>
+<h3>Keep test traffic out of production data</h3>
+<p>The load test runs the full pipeline with the same models and prompts. Without care, it would also fill the trace store with thousands of fake conversations, and the online evaluators would score them as if they were real users.</p>
+<p>So the API accepts a test header, <code>X-Test-Mode: true</code>. With it, the request gets a no-op tracer, so no spans are exported. Everything else still runs. The session store works as normal, because the test simulates multi-turn conversations. Conversation history is still written, because we wanted to load that path too. Each record is tagged <code>is_load_test: true</code>, so it can be filtered out or deleted later. The response also returns its own duration in a header.</p>
+<p>A header that turns off tracing is also a way to hide traffic. Accept it only from inside your network, or require a secret with it.</p>
+<h3>Write the pass rule first</h3>
+<p>Before the retest, we wrote down what “pass” meant:</p>
+<ul>
+<li>an error rate under an agreed limit</li>
+<li>p95 and p99 latency under the gateway timeout</li>
+<li>zero pod restarts during the run</li>
+<li>the autoscaler adds pods within 2 minutes after the ramp ends</li>
+<li>the first 2 minutes are ignored, because a burst start is meant to be rough</li>
+</ul>
+<p>Writing it first stops you from reading a result as “good enough” after you see it. The latency rule is tied to the gateway. Our gateway route has a total request timeout, and a slightly shorter timeout for each call to the backend. The total must be at least as long as the backend timeout [12]. Any answer slower than that is a failure to the user, even if the pod finished it.</p>
+<p>Locust can turn part of this rule into an exit code [13]. A listener on the <code>quitting</code> event reads the final stats and sets <code>environment.process_exit_code</code>, so a pipeline can fail on it:</p>
+<pre><code class="hljs language-python"><span class="hljs-keyword">from</span> locust <span class="hljs-keyword">import</span> events
+
+<span class="hljs-meta">@events.quitting.add_listener</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">check_pass_rule</span>(<span class="hljs-params">environment, **kw</span>):
+    total = environment.stats.total
+    failed = (
+        total.fail_ratio > MAX_ERROR_RATE
+        <span class="hljs-keyword">or</span> total.get_response_time_percentile(<span class="hljs-number">0.95</span>) > GATEWAY_TIMEOUT_MS
+    )
+    environment.process_exit_code = <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> failed <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+</code></pre>
+<p>Locust can’t see pod restarts or the autoscaler. Check those from the cluster: the restart count in <code>kubectl get pods</code>, and the HPA’s events in <code>kubectl describe hpa</code>. Also give your simulated users a think time between turns. People read a long answer before they ask the next question, and a test without that pause measures a different service.</p>
+<h2>Identity, briefly</h2>
+<p>Most of our pods’ calls to the model service, the search index and storage still use keys from Kubernetes Secrets. We have a written plan to move to workload identity on AKS. The pod’s service account token is exchanged for a short-lived Entra token, and each service grants roles instead of keys [14]. I described the same idea on GKE and Azure in <a href="/posts/managed-identity-on-gcp/">an earlier post</a>, so I won’t repeat it. One detail matters for this post: token fetches also run on that default thread pool. Size the pool before you add more of them.</p>
+<h2>Things to watch</h2>
+<ul>
+<li><strong>A liveness probe stricter than your slowest request.</strong> A busy pod is not a dead pod. Restarting it throws away all the work in flight.</li>
+<li><strong>Dependencies in the liveness probe.</strong> If the model service is down, restarting every pod will not bring it back.</li>
+<li><strong>Readiness under load.</strong> Failing readiness when busy moves traffic to the other pods. That is fine if they have room, and a cascade if they don’t.</li>
+<li><strong>CPU as the only scaling signal.</strong> For a service that mostly waits, it measures the wrong thing.</li>
+<li><strong>A grace period shorter than a request.</strong> Every rollout and scale-down then cuts some answers.</li>
+<li><strong>Per-request clients.</strong> Anything that holds a connection pool should live as long as the process, or be closed in a <code>finally</code>.</li>
+<li><strong>The default thread pool.</strong> It is small on small pods, and libraries use it without telling you.</li>
+<li><strong>Histogram buckets.</strong> Default latency buckets often stop at 1 second. Make sure the top bucket is above your gateway timeout, or every slow request lands in <code>+Inf</code>.</li>
+</ul>
+<h2>What I would try next</h2>
+<ul>
+<li><strong>Scale on in-flight requests</strong> with KEDA and a Prometheus query, as above, and remove CPU from the HPA.</li>
+<li><strong>Measure event loop lag.</strong> A small task that sleeps for a fixed time and records how late it wakes up shows how busy the loop is. asyncio’s debug mode can also log any callback that runs longer than <code>slow_callback_duration</code>, 100 milliseconds by default [15]. That would answer the question I couldn’t answer above.</li>
+<li><strong>Shared model clients</strong> per process, as the httpx docs recommend [9].</li>
+<li><strong>Workload identity</strong>, following the plan.</li>
+</ul>
+<p>If you move an LLM service onto Kubernetes, start from the length of your slowest request. Set the liveness probe, the grace period and the gateway timeout around it. Then scale on open requests instead of CPU, and write the load test’s pass rule before you run it.</p>
+<h2>References</h2>
+<ol>
+<li>Kubernetes, <a href="https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/">“Liveness, Readiness, and Startup Probes”</a>. What each probe does, startup probes holding back the others, and the warning that a wrong liveness probe causes cascading failures under load.</li>
+<li>Colin Breck, <a href="https://blog.colinbreck.com/kubernetes-liveness-and-readiness-probes-how-to-avoid-shooting-yourself-in-the-foot/">“Kubernetes Liveness and Readiness Probes: How to Avoid Shooting Yourself in the Foot”</a>. No dependencies in liveness, conservative timeouts, and restarts that add load to other pods.</li>
+<li>Kubernetes, <a href="https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-termination">“Pod Lifecycle: Termination of Pods”</a>. The <code>preStop</code> hook, SIGTERM, the 30-second default grace period and SIGKILL.</li>
+<li>Kubernetes, <a href="https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/">“Horizontal Pod Autoscaling”</a>. The scaling ratio, utilization as a share of the request, and custom and external metrics.</li>
+<li>prometheus-fastapi-instrumentator, <a href="https://github.com/trallnag/prometheus-fastapi-instrumentator">README</a>. The opt-in metric for requests in progress.</li>
+<li>KEDA, <a href="https://keda.sh/docs/2.18/concepts/scaling-deployments/">“Scaling Deployments, StatefulSets &#x26; Custom Resources”</a>. How KEDA feeds metrics to the HPA.</li>
+<li>KEDA, <a href="https://keda.sh/docs/2.18/scalers/prometheus/">“Prometheus scaler”</a>. Query, threshold, and authentication to Azure Monitor managed Prometheus with workload identity.</li>
+<li>KEDA, <a href="https://github.com/kedacore/http-add-on">HTTP Add-on</a>. Scaling on HTTP traffic; project status beta.</li>
+<li>HTTPX, <a href="https://www.python-httpx.org/async/">“Async Support”</a>. Don’t create many client instances; close a client with <code>async with</code> or <code>aclose()</code>.</li>
+<li>Python, <a href="https://docs.python.org/3/library/concurrent.futures.html">“concurrent.futures: ThreadPoolExecutor”</a>. The default <code>max_workers</code> and why it was chosen.</li>
+<li>Python, <a href="https://docs.python.org/3/library/asyncio-eventloop.html">“Event Loop: run_in_executor and set_default_executor”</a>. The default executor used when no executor is given.</li>
+<li>Envoy Gateway, <a href="https://gateway.envoyproxy.io/latest/tasks/traffic/http-timeouts/">“HTTP Timeouts”</a>. The <code>request</code> and <code>backendRequest</code> timeouts on an HTTPRoute, and the rule that the request timeout is at least the backend one.</li>
+<li>Locust, <a href="https://docs.locust.io/en/stable/running-without-web-ui.html">“Running without the web UI”</a>. Setting the process exit code from a <code>quitting</code> listener.</li>
+<li>Microsoft, <a href="https://learn.microsoft.com/en-us/azure/aks/workload-identity-overview">“Use Microsoft Entra Workload ID with AKS”</a>. Service account token projection, the OIDC issuer, and the token exchange.</li>
+<li>Python, <a href="https://docs.python.org/3/library/asyncio-eventloop.html">“Event Loop: slow_callback_duration”</a>. Debug mode and the 100-millisecond default for slow callbacks.</li>
+</ol>19:["$","div",null,{"className":"prose","dangerouslySetInnerHTML":{"__html":"$3b"}}]
+1a:["$","aside",null,{"className":"keep-exploring","aria-labelledby":"keep-exploring-h","children":[["$","h2",null,{"id":"keep-exploring-h","children":"Keep exploring"}],["$","div",null,{"className":"keep-exploring__row","children":[["$","span",null,{"children":"more in"}],[["$","$La","agents",{"className":"tag-chip","href":"/posts/?lane=agents","style":{"--lane":"var(--l0)"},"children":"Agents"}],["$","$La","mlops",{"className":"tag-chip","href":"/posts/?lane=mlops","style":{"--lane":"var(--l3)"},"children":"ML platform"}],["$","$La","systems",{"className":"tag-chip","href":"/posts/?lane=systems","style":{"--lane":"var(--l4)"},"children":"Systems"}]]]}]]}]
+1b:["$","nav",null,{"className":"post-pagination","aria-label":"Post navigation","children":[["$","$La",null,{"className":"prev","href":"/posts/hybrid-search-for-rag/","children":[["$","small",null,{"children":"← older"}],"Keyword search, vector search, and the filter that runs first"]}],["$","$La",null,{"className":"next","href":"/posts/contextualizing-follow-up-questions/","children":[["$","small",null,{"children":"newer →"}],"Follow-up questions in a RAG chatbot: from the last message to a search query"]}]]}]
+1c:["$","$L3c","/assets/posts/widgets/k8-inflight.js",{"src":"/assets/posts/widgets/k8-inflight.js","strategy":"afterInteractive"}]
+1d:["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/06q8lm6y95ac4.css","precedence":"next"}]
+1e:["$","script","script-0",{"src":"/_next/static/chunks/2kagsvljmpygq.js","async":true}]
+1f:["$","$L3d",null,{"children":["$","$25",null,{"name":"Next.MetadataOutlet","children":"$@3e"}]}]
+26:["$","meta","16",{"property":"og:image:width","content":"1200"}]
+27:["$","meta","17",{"property":"og:image:height","content":"630"}]
+28:["$","meta","18",{"property":"og:type","content":"article"}]
+29:["$","meta","19",{"property":"article:published_time","content":"2026-10-27"}]
+2a:["$","meta","20",{"property":"article:tag","content":"agents"}]
+2b:["$","meta","21",{"property":"article:tag","content":"mlops"}]
+2c:["$","meta","22",{"property":"article:tag","content":"systems"}]
+2d:["$","meta","23",{"name":"twitter:card","content":"summary_large_image"}]
+2e:["$","meta","24",{"name":"twitter:title","content":"Running an agentic chatbot on Kubernetes when a request takes a minute"}]
+2f:["$","meta","25",{"name":"twitter:description","content":"In a load test, our chatbot's pods restarted under load while CPU stayed low and the autoscaler did nothing. What changes on Kubernetes when every request is slow and waits on the network: probes, autoscaling, shutdown, client lifecycle and how to run the load test itself."}]
+30:["$","meta","26",{"name":"twitter:image","content":"https://fadhilmch.github.io/posts/deploying-agents-on-kubernetes/opengraph-image-1tl6ux?2c4648a4fb9dacc8"}]
+31:["$","meta","27",{"name":"twitter:image:type","content":"image/png"}]
+32:["$","meta","28",{"name":"twitter:image:width","content":"1200"}]
+33:["$","meta","29",{"name":"twitter:image:height","content":"630"}]
+34:["$","link","30",{"rel":"icon","href":"/assets/favicon.svg"}]
+35:["$","$L3f","31",{}]
+36:["$","meta",null,{"name":"next-size-adjust","content":""}]
+e:300
+3e:null
+39:true
+e:C
+38:0
+14:"$undefined"
+12:"$undefined"
+10:"$undefined"
+d:"$undefined"
+37:"$undefined"
+20:"$undefined"
