@@ -1,0 +1,5 @@
+City-centre data: GeoNames (https://www.geonames.org/).
+Source: https://download.geonames.org/export/dump/ (cities15000.zip, admin1CodesASCII.txt, countryInfo.txt), downloaded 2026-10-28.
+Licensed Creative Commons Attribution 4.0: https://creativecommons.org/licenses/by/4.0/ . Commercial use is permitted. No warranty of accuracy, timeliness or completeness.
+Changes: selected id, local/ascii name, country name, first-level region, latitude, longitude, IANA timezone and population; kept the 1,800 most populous entries and all Swedish/Norwegian and Paris/Springfield entries (1,958 total); sorted by population; omitted rows without a timezone; converted to JSON tuple arrays. No endorsement by GeoNames is implied.
+Schema: [id, name, asciiName, country, region, latitude, longitude, timezone, population].

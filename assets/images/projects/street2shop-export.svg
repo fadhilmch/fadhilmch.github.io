@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 160" role="img" aria-label="The exporter: it reads the community copy of Street2Shop on Hugging Face, skips images already on disk and can crop street photos to their bounding boxes, then writes the original per-category folder layout, so training code written for the 2015 files still runs.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="10" y="36" width="135" height="72" rx="8"/>
+    <rect x="175" y="36" width="135" height="72" rx="8" stroke="#2a8f9c"/>
+    <rect x="340" y="36" width="135" height="72" rx="8"/>
+    <rect x="505" y="36" width="135" height="72" rx="8"/>
+    <path d="M145 72H173M165 64l8 8-8 8M310 72H338M330 64l8 8-8 8M475 72H503M495 64l8 8-8 8"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="77" y="66">Hugging Face</text><text x="77" y="84" font-size="11">community copy</text>
+    <text x="242" y="62" fill="#2a8f9c">Exporter</text><text x="242" y="80" font-size="11">skips files on disk,</text><text x="242" y="95" font-size="11">optional crop</text>
+    <text x="407" y="66">Original layout</text><text x="407" y="84" font-size="11">folders per category</text>
+    <text x="572" y="66">Training code</text><text x="572" y="84" font-size="11">written for 2015 files</text>
+    <text x="325" y="144" font-size="12">Reads the Hugging Face copy and writes the original per-category folder layout.</text>
+  </g>
+</svg>

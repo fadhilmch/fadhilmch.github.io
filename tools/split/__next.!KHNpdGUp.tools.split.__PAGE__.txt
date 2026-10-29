@@ -1,0 +1,51 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/3m_arazuqkl24.js"
+3:I[30824,["$2"],"Providers"]
+4:I[39756,["$2"],"default"]
+5:I[37457,["$2"],"default"]
+6:"/_next/static/chunks/0bgigsb2ujwag.js"
+7:"/_next/static/chunks/1-wy-e43sc8fp.js"
+8:I[36852,["$2","$6","$7"],"SiteHeader"]
+9:"/_next/static/chunks/32uu6v87l5n3f.js"
+a:"/_next/static/chunks/0f-nd6ps0mk0-.js"
+b:I[22016,["$2","$6","$7","$9","$a"],""]
+c:I[8745,["$2","$6","$7"],"SiteFooter"]
+d:I[68872,["$2"],"UmamiTracker"]
+18:I[73708,["$2","$6","$7","$9","$a"],"SplitTool"]
+19:I[97367,["$2"],"OutletBoundary"]
+1a:"$Sreact.suspense"
+1d:"ViewportBoundary"
+1e:I[97367,["$2"],"$1d"]
+1f:"MetadataBoundary"
+20:I[97367,["$2"],"$1f"]
+:HL["/_next/static/chunks/3_8ddb6i2t6s1.css","style"]
+:HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
+:HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0eykxqz7e_k3b.css","style"]
+:HL["/_next/static/chunks/3xgifj-8p64f_.css","style"]
+f:X
+16:X
+16:C
+17:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","div",null,{"className":"tools-page","children":[["$","header",null,{"className":"tools-page__head","children":[["$","p",null,{"className":"tools-page__crumb","children":["$","$Lb",null,{"href":"/tools/","children":"Toolbox"}]}],["$","h1",null,{"children":"Bill split"}],["$","p",null,{"className":"tools-page__lede","children":"Add the people, enter who paid what, and choose how each cost is shared (equal, or by weight). You get each person's balance and the shortest list of transfers that settles everything - copy it straight into your group chat. Calculation only; no money moves here."}]]}],["$","$L18",null,{}]]}],[["$","script","script-0",{"src":"/_next/static/chunks/32uu6v87l5n3f.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/0f-nd6ps0mk0-.js","async":true}]],["$","$L19",null,{"children":["$","$1a",null,{"name":"Next.MetadataOutlet","children":"$@1b"}]}]]}],"p":"$@1c","v":null,"s":"$f"}}]]
+14:[["children",{"s":"split","h":96,"d":{"r":["$","$1","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@15","v":"$16","s":"$f"},"c":"$Q17"}]]
+12:[["children",{"s":"tools","h":96,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3xgifj-8p64f_.css","precedence":"next"}]],["$","div",null,{"className":"tools-shell","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]}]]}],"p":"$@13","v":null,"s":"$f"},"c":"$Q14"}]]
+10:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0bgigsb2ujwag.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/1-wy-e43sc8fp.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$Lb",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$Lb",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$Lb",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eykxqz7e_k3b.css","precedence":"next"}]]]}]}],["$","$Lc",null,{}]]]}],"p":"$@11","v":null,"s":"$f"},"c":"$Q12"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3_8ddb6i2t6s1.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3m_arazuqkl24.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$Lb",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$Lb",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$Lb",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$Lc",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eykxqz7e_k3b.css","precedence":"next"}]]]}]}],["$","$Ld",null,{}]]}]}]]}],"p":"$@e","v":null,"s":"$f"},"c":"$Q10"},"h":{"r":["$","$1","h",{"children":[null,["$","$L1e",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L20",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1a",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Bill split · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Shared expenses, split equally, by shares or by percent: who paid, whose share is what, and who pays whom to settle up."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/tools/split/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Bill split"}],["$","meta","10",{"property":"og:description","content":"Shared expenses, split equally, by shares or by percent: who paid, whose share is what, and who pays whom to settle up."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/tools/split/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","15",{"property":"og:image:width","content":"1200"}],["$","meta","16",{"property":"og:image:height","content":"630"}],["$","meta","17",{"property":"og:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","18",{"property":"og:type","content":"website"}],["$","meta","19",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","20",{"name":"twitter:title","content":"Bill split"}],["$","meta","21",{"name":"twitter:description","content":"Shared expenses, split equally, by shares or by percent: who paid, whose share is what, and who pays whom to settle up."}],["$","meta","22",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],"$L21","$L22","$L23","$L24","$L25"]}]}],null]}],"$L26"]}],"p":"$@27","v":null,"s":"$f"}},"a":"$@28","u":"$@29","b":"PN_Mo5P9TtpqvVAuxxQh1"}
+2a:I[27201,["$2"],"IconMark"]
+1b:null
+21:["$","meta","23",{"name":"twitter:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}]
+22:["$","meta","24",{"name":"twitter:image:width","content":"1200"}]
+23:["$","meta","25",{"name":"twitter:image:height","content":"630"}]
+24:["$","link","26",{"rel":"icon","href":"/assets/favicon.svg"}]
+25:["$","$L2a","27",{}]
+26:["$","meta",null,{"name":"next-size-adjust","content":""}]
+f:300
+29:true
+f:C
+28:0
+15:"$undefined"
+13:"$undefined"
+11:"$undefined"
+e:"$undefined"
+27:"$undefined"
+1c:"$undefined"

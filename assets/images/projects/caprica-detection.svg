@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 220" role="img" aria-label="Caprica detection on the helmet device: from speed, acceleration and GPS readings, speed above the maximum raises a speeding alert, and acceleration over a threshold or an abrupt change in deceleration is treated as an accident, which raises an alert and sends a report with the location.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="10" y="70" width="150" height="60" rx="8"/>
+    <rect x="220" y="16" width="200" height="52" rx="8"/>
+    <rect x="220" y="112" width="200" height="72" rx="8" stroke="#2a8f9c"/>
+    <rect x="480" y="16" width="170" height="52" rx="8"/>
+    <rect x="480" y="122" width="170" height="52" rx="8" stroke="#2a8f9c"/>
+    <path d="M160 100H190V42H218M210 34l8 8-8 8M190 100V148H218M210 140l8 8-8 8"/>
+    <path d="M420 42H478M470 34l8 8-8 8M420 148H478M470 140l8 8-8 8"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="85" y="96">Readings</text><text x="85" y="114" font-size="11">speed, acceleration, GPS</text>
+    <text x="320" y="38">Speeding?</text><text x="320" y="56" font-size="11">speed above the set maximum</text>
+    <text x="320" y="134" fill="#2a8f9c">Impact or fall?</text>
+    <text x="320" y="152" font-size="11">acceleration over a threshold,</text>
+    <text x="320" y="168" font-size="11">or an abrupt change in deceleration</text>
+    <text x="565" y="38">Speeding alert</text><text x="565" y="56" font-size="11">on the rider's phone</text>
+    <text x="565" y="144" fill="#2a8f9c">Accident</text><text x="565" y="162" font-size="11">alert and report with location</text>
+    <text x="449" y="34" font-size="11">yes</text><text x="449" y="140" font-size="11">yes</text>
+    <text x="330" y="208" font-size="12">Both checks run on the helmet device. The phone shows the result.</text>
+  </g>
+</svg>

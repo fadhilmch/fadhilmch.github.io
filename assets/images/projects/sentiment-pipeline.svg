@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 230" role="img" aria-label="The comparison: tweets from Sentiment140 are cleaned once, then labelled by four approaches (a TextBlob lexicon baseline, Naive Bayes and a linear SVM on TF-IDF trigrams, and a small CNN in Keras), and all are scored on the same test set. The linear SVM scored best.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="10" y="80" width="120" height="60" rx="8"/>
+    <rect x="160" y="80" width="130" height="60" rx="8"/>
+    <rect x="340" y="14" width="150" height="52" rx="8"/>
+    <rect x="340" y="84" width="150" height="52" rx="8" stroke="#2a8f9c"/>
+    <rect x="340" y="154" width="150" height="52" rx="8"/>
+    <rect x="530" y="80" width="120" height="60" rx="8"/>
+    <path d="M130 110H158M150 102l8 8-8 8"/>
+    <path d="M290 110H315M315 40V180M315 40H338M330 32l8 8-8 8M315 110H338M330 102l8 8-8 8M315 180H338M330 172l8 8-8 8"/>
+    <path d="M490 40H510V180H490M490 110H528M520 102l8 8-8 8"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="70" y="106">Tweets</text><text x="70" y="124" font-size="11">Sentiment140, 1.6M</text>
+    <text x="225" y="106">Cleaning</text><text x="225" y="124" font-size="11">once, for every model</text>
+    <text x="415" y="36">TextBlob</text><text x="415" y="54" font-size="11">lexicon baseline</text>
+    <text x="415" y="106" fill="#2a8f9c">Naive Bayes, SVM</text><text x="415" y="124" font-size="11">on TF-IDF trigrams</text>
+    <text x="415" y="176">Small CNN</text><text x="415" y="194" font-size="11">Keras</text>
+    <text x="590" y="106">Same test set</text><text x="590" y="124" font-size="11">accuracy, AUC</text>
+    <text x="330" y="224" font-size="12">The linear SVM scored best: 82% accuracy on the Twitter test set.</text>
+  </g>
+</svg>

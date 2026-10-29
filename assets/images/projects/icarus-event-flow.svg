@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 150" role="img" aria-label="Life of an Icarus event: a community asks for an event, we set it up from a template such as running only or multisport with its own scoring rules, we review and approve it, participants join and connect Strava, and their activities sync through a Strava webhook.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="8" y="36" width="112" height="64" rx="8"/>
+    <rect x="140" y="36" width="112" height="64" rx="8"/>
+    <rect x="272" y="36" width="112" height="64" rx="8" stroke="#2a8f9c"/>
+    <rect x="404" y="36" width="112" height="64" rx="8"/>
+    <rect x="536" y="36" width="112" height="64" rx="8"/>
+    <path d="M120 68H138M132 62l6 6-6 6M252 68H270M264 62l6 6-6 6M384 68H402M396 62l6 6-6 6M516 68H534M528 62l6 6-6 6"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="64" y="64">Request</text><text x="64" y="82" font-size="12">a community asks</text>
+    <text x="196" y="64">Template</text><text x="196" y="82" font-size="12">run or multisport</text>
+    <text x="328" y="64" fill="#2a8f9c">Approval</text><text x="328" y="82" font-size="12">we review it</text>
+    <text x="460" y="64">Sign-up</text><text x="460" y="82" font-size="12">join, link Strava</text>
+    <text x="592" y="64">Sync</text><text x="592" y="82" font-size="12">Strava webhook</text>
+    <text x="330" y="136" font-size="12">Every event goes through our review before people can join.</text>
+  </g>
+</svg>

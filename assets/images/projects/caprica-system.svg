@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 200" role="img" aria-label="Caprica system: the helmet device (ESP32, motion sensor, GPS) sends events over Bluetooth serial to the rider's React Native app, which shows alerts and sends accident reports to the cloud. The monitoring dashboard shows recent accidents on Google Maps.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="10" y="60" width="150" height="64" rx="8" stroke="#2a8f9c"/>
+    <rect x="220" y="60" width="140" height="64" rx="8"/>
+    <rect x="420" y="60" width="100" height="64" rx="8"/>
+    <rect x="560" y="60" width="92" height="64" rx="8"/>
+    <path d="M160 92H218M210 84l8 8-8 8M360 92H418M410 84l8 8-8 8M520 92H558M550 84l8 8-8 8"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="85" y="48" font-size="11">on the helmet</text>
+    <text x="290" y="48" font-size="11">on the rider's phone</text>
+    <text x="536" y="48" font-size="11">for the monitoring team</text>
+    <text x="85" y="88" fill="#2a8f9c">Helmet device</text><text x="85" y="106" font-size="11">ESP32, motion sensor, GPS</text>
+    <text x="290" y="88">Rider app</text><text x="290" y="106" font-size="11">React Native, alerts</text>
+    <text x="470" y="88">Cloud</text><text x="470" y="106" font-size="11">accident reports</text>
+    <text x="606" y="88">Dashboard</text><text x="606" y="106" font-size="11">Google Maps</text>
+    <text x="190" y="82" font-size="11">Bluetooth</text>
+    <text x="390" y="82" font-size="11">report</text>
+    <text x="330" y="176" font-size="12">Speeding alerts stay on the phone. Accident reports go on to the dashboard.</text>
+  </g>
+</svg>

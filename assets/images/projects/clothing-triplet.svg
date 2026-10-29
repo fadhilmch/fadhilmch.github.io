@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 250" role="img" aria-label="Triplet training: a query image, a matching item and a non-matching item pass through the same embedding network, made of a pretrained VGG path and two shallow convolutional paths that are merged. In the embedding space the loss pulls the match closer to the query than the non-match.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="10" y="20" width="100" height="50" rx="8" stroke="#2a8f9c"/>
+    <rect x="10" y="90" width="100" height="50" rx="8"/>
+    <rect x="10" y="160" width="100" height="50" rx="8"/>
+    <rect x="160" y="20" width="230" height="190" rx="12" stroke-dasharray="6 6"/>
+    <rect x="176" y="52" width="140" height="40" rx="6"/>
+    <rect x="176" y="104" width="140" height="40" rx="6"/>
+    <rect x="176" y="156" width="140" height="40" rx="6"/>
+    <rect x="420" y="40" width="110" height="170" rx="10"/>
+    <rect x="560" y="100" width="90" height="64" rx="8"/>
+    <path d="M110 45H158M150 37l8 8-8 8M110 115H158M150 107l8 8-8 8M110 185H158M150 177l8 8-8 8"/>
+    <path d="M316 72L356 124M316 124H356M316 176L356 124M356 124H418M410 116l8 8-8 8"/>
+    <path d="M530 132H558M550 124l8 8-8 8"/>
+    <path d="M444 104L448 134" stroke="#2a8f9c" stroke-dasharray="3 4"/>
+  </g>
+  <g fill="#7a7873">
+    <circle cx="442" cy="100" r="5" fill="#2a8f9c"/>
+    <circle cx="448" cy="138" r="5"/>
+    <circle cx="460" cy="186" r="5"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="60" y="50" fill="#2a8f9c">Query</text>
+    <text x="60" y="120">Match</text>
+    <text x="60" y="190">Non-match</text>
+    <text x="275" y="40" font-size="12">Same network for all three</text>
+    <text x="246" y="70" font-size="12">VGG, pretrained</text><text x="246" y="85" font-size="11">what the item is</text>
+    <text x="246" y="122" font-size="12">Shallow CNN</text><text x="246" y="137" font-size="11">simple appearance</text>
+    <text x="246" y="174" font-size="12">Shallow CNN</text><text x="246" y="189" font-size="11">simple appearance</text>
+    <text x="475" y="60" font-size="12">Embedding space</text>
+    <text x="452" y="104" font-size="11" text-anchor="start" fill="#2a8f9c">query</text>
+    <text x="458" y="142" font-size="11" text-anchor="start">match</text>
+    <text x="470" y="190" font-size="11" text-anchor="start">non-match</text>
+    <text x="605" y="122">Loss</text><text x="605" y="138" font-size="11">match closer,</text><text x="605" y="152" font-size="11">non-match away</text>
+    <text x="330" y="238" font-size="12">At search time, Annoy returns the catalogue items nearest to the query.</text>
+  </g>
+</svg>

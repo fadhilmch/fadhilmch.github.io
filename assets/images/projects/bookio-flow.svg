@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 150" role="img" aria-label="The Bookio flow: an owner posts a book with a pick-up time and place, another user requests it from the shelf, they meet at the pick-up point, and the exchange is kept in each account's history.">
+  <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="10" y="36" width="130" height="64" rx="8"/>
+    <rect x="180" y="36" width="130" height="64" rx="8"/>
+    <rect x="350" y="36" width="130" height="64" rx="8" stroke="#2a8f9c"/>
+    <rect x="520" y="36" width="130" height="64" rx="8"/>
+    <path d="M140 68H178M170 60l8 8-8 8M310 68H348M340 60l8 8-8 8M480 68H518M510 60l8 8-8 8"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
+    <text x="75" y="64">Post</text><text x="75" y="82" font-size="12">book, time, place</text>
+    <text x="245" y="64">Request</text><text x="245" y="82" font-size="12">from the shelf</text>
+    <text x="415" y="64" fill="#2a8f9c">Meet</text><text x="415" y="82" font-size="12">at the pick-up point</text>
+    <text x="585" y="64">History</text><text x="585" y="82" font-size="12">in both accounts</text>
+    <text x="330" y="136" font-size="12">Everyone signs in first, so people know who they are meeting.</text>
+  </g>
+</svg>

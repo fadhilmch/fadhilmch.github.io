@@ -1,89 +1,404 @@
 1:"$Sreact.fragment"
-2:"/_next/static/chunks/1ka4euz_woo03.js"
+2:"/_next/static/chunks/3m_arazuqkl24.js"
 3:I[30824,["$2"],"Providers"]
 4:I[39756,["$2"],"default"]
 5:I[37457,["$2"],"default"]
-6:"/_next/static/chunks/3hvp7qaeiywi4.js"
-7:"/_next/static/chunks/0d7sjusiro2wr.js"
+6:"/_next/static/chunks/0bgigsb2ujwag.js"
+7:"/_next/static/chunks/1-wy-e43sc8fp.js"
 8:I[36852,["$2","$6","$7"],"SiteHeader"]
 9:I[22016,["$2","$6","$7"],""]
 a:I[8745,["$2","$6","$7"],"SiteFooter"]
 b:I[68872,["$2"],"UmamiTracker"]
-f:"/_next/static/chunks/0ctf2xo_74kqr.js"
-10:I[79535,["$2","$6","$7","$f"],"ProjectsPage"]
-24:"ViewportBoundary"
-25:I[97367,["$2"],"$24"]
-27:"MetadataBoundary"
+e:"/_next/static/chunks/1e28nzlggtwea.js"
+f:I[65773,["$2","$6","$7","$e"],"default"]
+11:"/_next/static/chunks/0ctf2xo_74kqr.js"
+12:I[79535,["$2","$6","$7","$e","$11"],"ProjectsPage"]
+27:"ViewportBoundary"
 28:I[97367,["$2"],"$27"]
-29:"$Sreact.suspense"
-2b:I[68027,["$2"],"default",1]
-:HL["/_next/static/chunks/2g-27y0b7nxhn.css","style"]
+2a:"MetadataBoundary"
+2b:I[97367,["$2"],"$2a"]
+2c:"$Sreact.suspense"
+2e:I[68027,["$2"],"default",1]
+:HL["/_next/static/chunks/3_8ddb6i2t6s1.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
+:HL["/_next/static/chunks/0jw0zpt0wwmkr.css","style"]
 :HL["/_next/static/chunks/03ntvs3khe75e.css","style"]
 :HL["/_next/static/media/geist_latin-s.p.0wgildi0cnwt9.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
 :HL["/_next/static/media/geist_mono_latin-s.p.0r6juujl39pe6.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-:HL["/_next/static/chunks/0e8bzul-ry3sp.css","style"]
-11:T418,<h2>Why it exists</h2>
+:HL["/_next/static/chunks/0eykxqz7e_k3b.css","style"]
+13:T1979,## Why it exists
+
+Race platforms asked for a large minimum number of participants. That shut out smaller communities that wanted to run their own event. Icarus lets any community create a virtual run, walk or ride and invite people to join.
+
+## How an event works
+
+A community asks us for an event. We set it up from one of our event templates, so each event can have its own format: running only or multisport, with its own scoring rules for how the winners are decided. Each event also has a distance, a date and a price. We review and approve every event before it goes live.
+
+Participants sign up, join the event and connect their Strava account. After that they do not upload anything. When someone saves a run or a ride on Strava, Strava calls our webhook, and the API fetches the activity and counts it toward the event.
+
+<figure class="fig">
+<svg viewBox="0 0 680 104" role="img" aria-labelledby="icft icfd">
+  <title id="icft">The life of an Icarus event</title>
+  <desc id="icfd">Five steps: a community asks for an event, we set it up from a template that sets the format and scoring rules, we review and approve it, participants join and connect Strava, and their activities sync through a Strava webhook.</desc>
+  <defs><marker id="icfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="icfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <text class="h" x="2" y="14">LIFE OF AN EVENT</text>
+  <rect class="box" x="2" y="28" width="122" height="70" rx="6"/>
+  <text class="m" x="14" y="51">01</text>
+  <text class="t" x="14" y="67">Request</text>
+  <text class="m" x="14" y="83">community asks</text>
+  <rect class="box" x="141" y="28" width="122" height="70" rx="6"/>
+  <text class="m" x="153" y="51">02</text>
+  <text class="t" x="153" y="67">Template</text>
+  <text class="m" x="153" y="83">sets the rules</text>
+  <path class="ln" d="M125,63 L139,63" marker-end="url(#icfa)"/>
+  <rect class="box" x="280" y="28" width="122" height="70" rx="6"/>
+  <rect class="fa" x="280" y="28" width="122" height="70" rx="6" opacity=".14"/>
+  <rect class="sa" x="280" y="28" width="122" height="70" rx="6"/>
+  <text class="ta" x="292" y="51">03</text>
+  <text class="t" x="292" y="67">Approval</text>
+  <text class="m" x="292" y="83">we review it</text>
+  <path class="ln" d="M264,63 L278,63" marker-end="url(#icfa)"/>
+  <rect class="box" x="419" y="28" width="122" height="70" rx="6"/>
+  <text class="m" x="431" y="51">04</text>
+  <text class="t" x="431" y="67">Sign-up</text>
+  <text class="m" x="431" y="83">join, Strava</text>
+  <path class="ln" d="M403,63 L417,63" marker-end="url(#icfa)"/>
+  <rect class="box" x="558" y="28" width="122" height="70" rx="6"/>
+  <text class="m" x="570" y="51">05</text>
+  <text class="t" x="570" y="67">Sync</text>
+  <text class="m" x="570" y="83">via webhook</text>
+  <path class="ln" d="M542,63 L556,63" marker-end="url(#icfa)"/>
+</svg>
+<figcaption>Every event goes through our review before people can join. After sign-up, nobody uploads anything by hand.</figcaption>
+</figure>
+
+## How it is built
+
+In a small team, I worked on the full stack and the cloud architecture. The web app is Next.js, and the API is a separate Express service on Node.js. Because they are separate, we can deploy each one on its own. Both run on AWS EC2. Firebase Authentication handles sign-in. The Strava webhook is the core of the system, because it turns each participant's normal training into event progress without any manual step.
+
+<figure class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-labelledby="icat icad">
+  <title id="icat">Icarus architecture</title>
+  <desc id="icad">Participants and organisers use the Next.js web app, which calls a separate Express API. Both run on AWS EC2. Firebase Authentication handles sign-in. Strava calls the API through a webhook when a participant saves an activity, and the API then fetches that activity.</desc>
+  <defs><marker id="icaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="icab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="260" y="2" width="136" height="46" rx="6"/>
+  <text class="t" x="272" y="21">Firebase Auth</text>
+  <text class="m" x="272" y="37">sign-in</text>
+  <rect class="ln dash" x="246" y="70" width="338" height="100" rx="10"/>
+  <text class="h" x="258" y="88">AWS EC2</text>
+  <rect class="box" x="96" y="104" width="124" height="52" rx="6"/>
+  <text class="t" x="108" y="126">Participants</text>
+  <text class="m" x="108" y="142">and organisers</text>
+  <rect class="box" x="260" y="104" width="136" height="52" rx="6"/>
+  <text class="t" x="272" y="126">Next.js web app</text>
+  <text class="m" x="272" y="142">pages, sign-up</text>
+  <rect class="box" x="422" y="104" width="148" height="52" rx="6"/>
+  <rect class="fa" x="422" y="104" width="148" height="52" rx="6" opacity=".14"/>
+  <rect class="sa" x="422" y="104" width="148" height="52" rx="6"/>
+  <text class="t" x="434" y="126">Express API</text>
+  <text class="m" x="434" y="142">events, activities</text>
+  <path class="ln" d="M220,130 L258,130" marker-end="url(#icaa)"/>
+  <path class="ln" d="M396,130 L420,130" marker-end="url(#icaa)"/>
+  <path class="ln dash" d="M328,50 L328,102"/>
+  <rect class="box" x="422" y="212" width="148" height="46" rx="6"/>
+  <text class="t" x="434" y="231">Strava</text>
+  <text class="m" x="434" y="247">runs and rides</text>
+  <path class="sa" d="M466,210 L466,158" marker-end="url(#icab)"/>
+  <path class="ln" d="M526,158 L526,210" marker-end="url(#icaa)"/>
+  <text class="ta" x="458" y="192" text-anchor="end">webhook</text>
+  <text class="m" x="534" y="192">fetch activity</text>
+</svg>
+<figcaption>The web app and the API deploy separately on EC2. Strava tells the API about each new activity, so event progress updates on its own.</figcaption>
+</figure>
+
+## Results
+
+Real communities ran their events on it, and we served several clients, including Pharmarun 2022 and the IAE Virtual Run series. It grew to more than 3,000 registered users across 10 events. In a single event month, more than 500 participants logged their activities.
+14:T1a53,<h2>Why it exists</h2>
 <p>Race platforms asked for a large minimum number of participants. That shut out smaller communities that wanted to run their own event. Icarus lets any community create a virtual run, walk or ride and invite people to join.</p>
-<h2>Results</h2>
-<p>Real communities ran their events on it, and we served several clients. It grew to more than 3,000 registered users across 10 events. In a single event month, more than 500 participants logged their activities.</p>
+<h2>How an event works</h2>
+<p>A community asks us for an event. We set it up from one of our event templates, so each event can have its own format: running only or multisport, with its own scoring rules for how the winners are decided. Each event also has a distance, a date and a price. We review and approve every event before it goes live.</p>
+<p>Participants sign up, join the event and connect their Strava account. After that they do not upload anything. When someone saves a run or a ride on Strava, Strava calls our webhook, and the API fetches the activity and counts it toward the event.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 104" role="img" aria-labelledby="icft icfd">
+  <title id="icft">The life of an Icarus event</title>
+  <desc id="icfd">Five steps: a community asks for an event, we set it up from a template that sets the format and scoring rules, we review and approve it, participants join and connect Strava, and their activities sync through a Strava webhook.</desc>
+  <defs><marker id="icfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="icfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="2" y="14">LIFE OF AN EVENT</text>
+  <rect class="box" x="2" y="28" width="122" height="70" rx="6"></rect>
+  <text class="m" x="14" y="51">01</text>
+  <text class="t" x="14" y="67">Request</text>
+  <text class="m" x="14" y="83">community asks</text>
+  <rect class="box" x="141" y="28" width="122" height="70" rx="6"></rect>
+  <text class="m" x="153" y="51">02</text>
+  <text class="t" x="153" y="67">Template</text>
+  <text class="m" x="153" y="83">sets the rules</text>
+  <path class="ln" d="M125,63 L139,63" marker-end="url(#icfa)"></path>
+  <rect class="box" x="280" y="28" width="122" height="70" rx="6"></rect>
+  <rect class="fa" x="280" y="28" width="122" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="280" y="28" width="122" height="70" rx="6"></rect>
+  <text class="ta" x="292" y="51">03</text>
+  <text class="t" x="292" y="67">Approval</text>
+  <text class="m" x="292" y="83">we review it</text>
+  <path class="ln" d="M264,63 L278,63" marker-end="url(#icfa)"></path>
+  <rect class="box" x="419" y="28" width="122" height="70" rx="6"></rect>
+  <text class="m" x="431" y="51">04</text>
+  <text class="t" x="431" y="67">Sign-up</text>
+  <text class="m" x="431" y="83">join, Strava</text>
+  <path class="ln" d="M403,63 L417,63" marker-end="url(#icfa)"></path>
+  <rect class="box" x="558" y="28" width="122" height="70" rx="6"></rect>
+  <text class="m" x="570" y="51">05</text>
+  <text class="t" x="570" y="67">Sync</text>
+  <text class="m" x="570" y="83">via webhook</text>
+  <path class="ln" d="M542,63 L556,63" marker-end="url(#icfa)"></path>
+</svg>
+<figcaption>Every event goes through our review before people can join. After sign-up, nobody uploads anything by hand.</figcaption>
+</figure>
 <h2>How it is built</h2>
-<p>In a small team, I worked on the full stack and the cloud architecture. A Next.js front end talks to a separate Express API on Node.js. In development, Next rewrites <code>/apps/*</code> to the local API on port 8000, so the web app and the API can be deployed separately. The front end uses Chakra UI and Material-UI components, forms use react-hook-form with yup validation, and sign-in uses Firebase Authentication. Each event has a distance, a date and a price. Events included Pharmarun 2022 and the IAE Virtual Run series.</p>12:Tc40,## The task
+<p>In a small team, I worked on the full stack and the cloud architecture. The web app is Next.js, and the API is a separate Express service on Node.js. Because they are separate, we can deploy each one on its own. Both run on AWS EC2. Firebase Authentication handles sign-in. The Strava webhook is the core of the system, because it turns each participant’s normal training into event progress without any manual step.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 262" role="img" aria-labelledby="icat icad">
+  <title id="icat">Icarus architecture</title>
+  <desc id="icad">Participants and organisers use the Next.js web app, which calls a separate Express API. Both run on AWS EC2. Firebase Authentication handles sign-in. Strava calls the API through a webhook when a participant saves an activity, and the API then fetches that activity.</desc>
+  <defs><marker id="icaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="icab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="260" y="2" width="136" height="46" rx="6"></rect>
+  <text class="t" x="272" y="21">Firebase Auth</text>
+  <text class="m" x="272" y="37">sign-in</text>
+  <rect class="ln dash" x="246" y="70" width="338" height="100" rx="10"></rect>
+  <text class="h" x="258" y="88">AWS EC2</text>
+  <rect class="box" x="96" y="104" width="124" height="52" rx="6"></rect>
+  <text class="t" x="108" y="126">Participants</text>
+  <text class="m" x="108" y="142">and organisers</text>
+  <rect class="box" x="260" y="104" width="136" height="52" rx="6"></rect>
+  <text class="t" x="272" y="126">Next.js web app</text>
+  <text class="m" x="272" y="142">pages, sign-up</text>
+  <rect class="box" x="422" y="104" width="148" height="52" rx="6"></rect>
+  <rect class="fa" x="422" y="104" width="148" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="422" y="104" width="148" height="52" rx="6"></rect>
+  <text class="t" x="434" y="126">Express API</text>
+  <text class="m" x="434" y="142">events, activities</text>
+  <path class="ln" d="M220,130 L258,130" marker-end="url(#icaa)"></path>
+  <path class="ln" d="M396,130 L420,130" marker-end="url(#icaa)"></path>
+  <path class="ln dash" d="M328,50 L328,102"></path>
+  <rect class="box" x="422" y="212" width="148" height="46" rx="6"></rect>
+  <text class="t" x="434" y="231">Strava</text>
+  <text class="m" x="434" y="247">runs and rides</text>
+  <path class="sa" d="M466,210 L466,158" marker-end="url(#icab)"></path>
+  <path class="ln" d="M526,158 L526,210" marker-end="url(#icaa)"></path>
+  <text class="ta" x="458" y="192" text-anchor="end">webhook</text>
+  <text class="m" x="534" y="192">fetch activity</text>
+</svg>
+<figcaption>The web app and the API deploy separately on EC2. Strava tells the API about each new activity, so event progress updates on its own.</figcaption>
+</figure>
+<h2>Results</h2>
+<p>Real communities ran their events on it, and we served several clients, including Pharmarun 2022 and the IAE Virtual Run series. It grew to more than 3,000 registered users across 10 events. In a single event month, more than 500 participants logged their activities.</p>15:T167a,## The task
 
-Learn what "similar clothes" means, so that a query photo can be matched to visually similar items, the kind of feature a webshop uses for "similar items". The model maps each image to a point in an embedding space, and the images closest to the query are ranked as the most similar. The project compared two Siamese ranking networks, RankNet and a simplified Deep Ranking network.
+A webshop shows "similar items" next to a product. This project taught a neural network what similar clothes means, so a photo can be matched to visually similar items. The model maps each image to a point in an embedding space, and the items closest to the query are ranked as the most similar. We compared two Siamese ranking networks, RankNet and a simplified Deep Ranking network. A Siamese network passes several images through the same weights, so their embeddings can be compared.
 
-## Architecture
+## How it works
 
-Each image in a triplet (the query, a matching item and a non-matching item) is passed through the embedding network. Inside that network, both models run the image through three parallel paths that are merged at the end.
+Training uses triplets: a query image, an item that matches it and one that does not. All three go through the same embedding network. The loss pulls the match closer to the query than the non-match. Inside the network, three paths look at the image at different levels. A VGG network pretrained on ImageNet captures what the item is. Two shallow convolutional networks capture simpler appearance. The three paths are merged into one embedding.
 
-In RankNet the paths are a VGG19 pretrained on ImageNet, which captures semantics, and two shallow convolutional networks that capture simpler visual appearance. Each of the shallow networks has one convolutional layer and two pooling layers. Each path is L2-normalised, the three are merged in a final embedding layer of 4096 dimensions, and that layer is normalised too. Dropout is applied to the VGG19 path. RankNet trains with a contrastive loss and a momentum optimizer.
+RankNet uses VGG19 and a contrastive loss. The Deep Ranking network uses VGG16 and a hinge loss. We simplified it from the original design with three VGG16 networks, because that one had too many parameters to train. For search, every catalogue image is embedded once, and Annoy, an approximate nearest-neighbour index, returns the items closest to the query.
 
-The Deep Ranking network is a simplified version of the original design. It uses one VGG16 and two small convolutional networks, because the three-VGG16 version had too many parameters to train, and it trains with a hinge loss.
+<figure class="fig">
+<svg viewBox="0 0 680 244" role="img" aria-labelledby="cltt cltd">
+  <title id="cltt">Triplet training for clothing similarity</title>
+  <desc id="cltd">A query image, a matching item and a non-matching item go through the same embedding network. Inside it, a pretrained VGG path captures what the item is and two shallow convolutional paths capture simpler appearance; the three are merged into one embedding. In the embedding space, the loss pulls the match closer to the query and pushes the non-match away.</desc>
+  <defs><marker id="clta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cltb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="2" y="34" width="104" height="44" rx="6"/>
+  <rect class="fa" x="2" y="34" width="104" height="44" rx="6" opacity=".14"/>
+  <rect class="sa" x="2" y="34" width="104" height="44" rx="6"/>
+  <text class="t" x="14" y="60">Query</text>
+  <rect class="box" x="2" y="104" width="104" height="44" rx="6"/>
+  <text class="t" x="14" y="130">Match</text>
+  <rect class="box" x="2" y="174" width="104" height="44" rx="6"/>
+  <text class="t" x="14" y="200">Non-match</text>
+  <rect class="ln dash" x="138" y="2" width="262" height="240" rx="10"/>
+  <text class="h" x="150" y="20">SAME NETWORK, ALL THREE</text>
+  <rect class="box" x="154" y="30" width="150" height="54" rx="6"/>
+  <text class="t" x="166" y="53">VGG, pretrained</text>
+  <text class="m" x="166" y="69">what the item is</text>
+  <rect class="box" x="154" y="98" width="150" height="54" rx="6"/>
+  <text class="t" x="166" y="121">Shallow CNN</text>
+  <text class="m" x="166" y="137">simple appearance</text>
+  <rect class="box" x="154" y="166" width="150" height="54" rx="6"/>
+  <text class="t" x="166" y="189">Shallow CNN</text>
+  <text class="m" x="166" y="205">simple appearance</text>
+  <path class="ln" d="M106,56 L136,56" marker-end="url(#clta)"/>
+  <path class="ln" d="M106,126 L136,126" marker-end="url(#clta)"/>
+  <path class="ln" d="M106,196 L136,196" marker-end="url(#clta)"/>
+  <path class="ln" d="M304,57 L346,125"/>
+  <path class="ln" d="M304,125 L346,125"/>
+  <path class="ln" d="M304,193 L346,125"/>
+  <circle class="arrow" cx="350" cy="125" r="5"/>
+  <text class="m" x="350" y="148" text-anchor="middle">merge</text>
+  <path class="ln" d="M356,125 L428,125" marker-end="url(#clta)"/>
+  <rect class="ln dash" x="430" y="2" width="248" height="240" rx="10"/>
+  <text class="h" x="442" y="20">EMBEDDING SPACE</text>
+  <circle class="fa" cx="492" cy="96" r="5"/>
+  <text class="ta" x="504" y="92">query</text>
+  <circle class="arrow" cx="520" cy="150" r="5"/>
+  <text class="m" x="532" y="154">match</text>
+  <circle class="arrow" cx="640" cy="206" r="5"/>
+  <text class="m" x="628" y="226" text-anchor="end">non-match</text>
+  <path class="sa" d="M497,103 L515,141" marker-end="url(#cltb)"/>
+  <text class="ta" x="470" y="128" text-anchor="end">closer</text>
+  <path class="ln dash" d="M500,100 L632,200" marker-end="url(#clta)"/>
+  <text class="m" x="596" y="130">further</text>
+</svg>
+<figcaption>All three images go through the same network. The loss pulls the match closer to the query than the non-match. At search time, Annoy returns the catalogue items nearest to the query.</figcaption>
+</figure>
 
-## Data and triplet sampling
+## Data
 
-Both networks learn from triplets: a query image, an item that matches it and one that does not. Street2Shop was used because its product IDs define which items are the same, which avoided hand-labelling. Fashion-MNIST and DeepFashion were considered and rejected. The triplet sampler pairs every query with its positives, and each pair gets one in-class negative and one out-of-class negative. The data came from four classes: tops, dresses, skirts and pants. Early models mostly matched backgrounds, people and text, so the images were cropped to the garment with the dataset's bounding boxes.
+We used Street2Shop, which pairs street photos with the same product in an online shop. Its product IDs say which items are the same, so we did not need to label anything by hand. I wrote a [downloader](/projects/#case-street2shop-downloader) for it, because the dataset was published as image URLs. We used four classes: tops, dresses, skirts and pants. Early models mostly matched backgrounds, people and text instead of the clothes. Cropping each image to the garment with the dataset's bounding boxes fixed that.
 
-## Training and evaluation
+## What we found
 
-The data was about 170,000 training and 30,000 validation triplets. The RankNet run used 20,898 training and 6,718 validation triplets for 25 epochs, about 10 hours, and ended at a validation loss of 0.1594. For retrieval, the images are embedded and ranked with Annoy approximate nearest neighbours. The quantitative measure is the rank of the first image with the same product ID as the query, on 10 sampled validation queries. A second check on 10 validation triplets had the positive closer than the negative in 9 of them.
-
-## What the research found
-
-After cropping, colour still dominated style. Grayscale was mixed, and helped somewhat with more data. RankNet gave better results than the Deep Ranking model, both by eye and on the rank measure. Some of the 10 queries had no rank and some ranks were large, so the result is mixed, and it is an indication, not a broad benchmark. The loss and the network depth differ between the two models, so their effects are not separated, and the report suggests an ablation study. Named future work is t-SNE visualisation of the embedding space and using the same loss for both architectures.13:Tc8e,<h2>The task</h2>
-<p>Learn what “similar clothes” means, so that a query photo can be matched to visually similar items, the kind of feature a webshop uses for “similar items”. The model maps each image to a point in an embedding space, and the images closest to the query are ranked as the most similar. The project compared two Siamese ranking networks, RankNet and a simplified Deep Ranking network.</p>
-<h2>Architecture</h2>
-<p>Each image in a triplet (the query, a matching item and a non-matching item) is passed through the embedding network. Inside that network, both models run the image through three parallel paths that are merged at the end.</p>
-<p>In RankNet the paths are a VGG19 pretrained on ImageNet, which captures semantics, and two shallow convolutional networks that capture simpler visual appearance. Each of the shallow networks has one convolutional layer and two pooling layers. Each path is L2-normalised, the three are merged in a final embedding layer of 4096 dimensions, and that layer is normalised too. Dropout is applied to the VGG19 path. RankNet trains with a contrastive loss and a momentum optimizer.</p>
-<p>The Deep Ranking network is a simplified version of the original design. It uses one VGG16 and two small convolutional networks, because the three-VGG16 version had too many parameters to train, and it trains with a hinge loss.</p>
-<h2>Data and triplet sampling</h2>
-<p>Both networks learn from triplets: a query image, an item that matches it and one that does not. Street2Shop was used because its product IDs define which items are the same, which avoided hand-labelling. Fashion-MNIST and DeepFashion were considered and rejected. The triplet sampler pairs every query with its positives, and each pair gets one in-class negative and one out-of-class negative. The data came from four classes: tops, dresses, skirts and pants. Early models mostly matched backgrounds, people and text, so the images were cropped to the garment with the dataset’s bounding boxes.</p>
-<h2>Training and evaluation</h2>
-<p>The data was about 170,000 training and 30,000 validation triplets. The RankNet run used 20,898 training and 6,718 validation triplets for 25 epochs, about 10 hours, and ended at a validation loss of 0.1594. For retrieval, the images are embedded and ranked with Annoy approximate nearest neighbours. The quantitative measure is the rank of the first image with the same product ID as the query, on 10 sampled validation queries. A second check on 10 validation triplets had the positive closer than the negative in 9 of them.</p>
-<h2>What the research found</h2>
-<p>After cropping, colour still dominated style. Grayscale was mixed, and helped somewhat with more data. RankNet gave better results than the Deep Ranking model, both by eye and on the rank measure. Some of the 10 queries had no rank and some ranks were large, so the result is mixed, and it is an indication, not a broad benchmark. The loss and the network depth differ between the two models, so their effects are not separated, and the report suggests an ablation study. Named future work is t-SNE visualisation of the embedding space and using the same loss for both architectures.</p>14:T727,## What it does
+After cropping, colour still mattered more than style. RankNet did better than the Deep Ranking network, both by eye and on our rank measure: the position of the first result with the same product ID, on 10 validation queries. The two models differ in both the loss and the depth, so the result does not show which change helped. The next step in the report was to train both with the same loss.
+16:T175a,<h2>The task</h2>
+<p>A webshop shows “similar items” next to a product. This project taught a neural network what similar clothes means, so a photo can be matched to visually similar items. The model maps each image to a point in an embedding space, and the items closest to the query are ranked as the most similar. We compared two Siamese ranking networks, RankNet and a simplified Deep Ranking network. A Siamese network passes several images through the same weights, so their embeddings can be compared.</p>
+<h2>How it works</h2>
+<p>Training uses triplets: a query image, an item that matches it and one that does not. All three go through the same embedding network. The loss pulls the match closer to the query than the non-match. Inside the network, three paths look at the image at different levels. A VGG network pretrained on ImageNet captures what the item is. Two shallow convolutional networks capture simpler appearance. The three paths are merged into one embedding.</p>
+<p>RankNet uses VGG19 and a contrastive loss. The Deep Ranking network uses VGG16 and a hinge loss. We simplified it from the original design with three VGG16 networks, because that one had too many parameters to train. For search, every catalogue image is embedded once, and Annoy, an approximate nearest-neighbour index, returns the items closest to the query.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 244" role="img" aria-labelledby="cltt cltd">
+  <title id="cltt">Triplet training for clothing similarity</title>
+  <desc id="cltd">A query image, a matching item and a non-matching item go through the same embedding network. Inside it, a pretrained VGG path captures what the item is and two shallow convolutional paths capture simpler appearance; the three are merged into one embedding. In the embedding space, the loss pulls the match closer to the query and pushes the non-match away.</desc>
+  <defs><marker id="clta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cltb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="2" y="34" width="104" height="44" rx="6"></rect>
+  <rect class="fa" x="2" y="34" width="104" height="44" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="2" y="34" width="104" height="44" rx="6"></rect>
+  <text class="t" x="14" y="60">Query</text>
+  <rect class="box" x="2" y="104" width="104" height="44" rx="6"></rect>
+  <text class="t" x="14" y="130">Match</text>
+  <rect class="box" x="2" y="174" width="104" height="44" rx="6"></rect>
+  <text class="t" x="14" y="200">Non-match</text>
+  <rect class="ln dash" x="138" y="2" width="262" height="240" rx="10"></rect>
+  <text class="h" x="150" y="20">SAME NETWORK, ALL THREE</text>
+  <rect class="box" x="154" y="30" width="150" height="54" rx="6"></rect>
+  <text class="t" x="166" y="53">VGG, pretrained</text>
+  <text class="m" x="166" y="69">what the item is</text>
+  <rect class="box" x="154" y="98" width="150" height="54" rx="6"></rect>
+  <text class="t" x="166" y="121">Shallow CNN</text>
+  <text class="m" x="166" y="137">simple appearance</text>
+  <rect class="box" x="154" y="166" width="150" height="54" rx="6"></rect>
+  <text class="t" x="166" y="189">Shallow CNN</text>
+  <text class="m" x="166" y="205">simple appearance</text>
+  <path class="ln" d="M106,56 L136,56" marker-end="url(#clta)"></path>
+  <path class="ln" d="M106,126 L136,126" marker-end="url(#clta)"></path>
+  <path class="ln" d="M106,196 L136,196" marker-end="url(#clta)"></path>
+  <path class="ln" d="M304,57 L346,125"></path>
+  <path class="ln" d="M304,125 L346,125"></path>
+  <path class="ln" d="M304,193 L346,125"></path>
+  <circle class="arrow" cx="350" cy="125" r="5"></circle>
+  <text class="m" x="350" y="148" text-anchor="middle">merge</text>
+  <path class="ln" d="M356,125 L428,125" marker-end="url(#clta)"></path>
+  <rect class="ln dash" x="430" y="2" width="248" height="240" rx="10"></rect>
+  <text class="h" x="442" y="20">EMBEDDING SPACE</text>
+  <circle class="fa" cx="492" cy="96" r="5"></circle>
+  <text class="ta" x="504" y="92">query</text>
+  <circle class="arrow" cx="520" cy="150" r="5"></circle>
+  <text class="m" x="532" y="154">match</text>
+  <circle class="arrow" cx="640" cy="206" r="5"></circle>
+  <text class="m" x="628" y="226" text-anchor="end">non-match</text>
+  <path class="sa" d="M497,103 L515,141" marker-end="url(#cltb)"></path>
+  <text class="ta" x="470" y="128" text-anchor="end">closer</text>
+  <path class="ln dash" d="M500,100 L632,200" marker-end="url(#clta)"></path>
+  <text class="m" x="596" y="130">further</text>
+</svg>
+<figcaption>All three images go through the same network. The loss pulls the match closer to the query than the non-match. At search time, Annoy returns the catalogue items nearest to the query.</figcaption>
+</figure>
+<h2>Data</h2>
+<p>We used Street2Shop, which pairs street photos with the same product in an online shop. Its product IDs say which items are the same, so we did not need to label anything by hand. I wrote a <a href="/projects/#case-street2shop-downloader">downloader</a> for it, because the dataset was published as image URLs. We used four classes: tops, dresses, skirts and pants. Early models mostly matched backgrounds, people and text instead of the clothes. Cropping each image to the garment with the dataset’s bounding boxes fixed that.</p>
+<h2>What we found</h2>
+<p>After cropping, colour still mattered more than style. RankNet did better than the Deep Ranking network, both by eye and on our rank measure: the position of the first result with the same product ID, on 10 validation queries. The two models differ in both the loss and the depth, so the result does not show which change helped. The next step in the report was to train both with the same loss.</p>17:Tf95,## What it does
 
 A classmate and I wanted to see which artists people were sharing on Twitter at that moment. The pipeline reads the live Twitter stream, keeps the tweets that carry a Spotify link, and counts the shares per artist. A chart shows the top 20 artists of the last 60 minutes and redraws every five seconds.
 
 ## The pipeline
 
-A Tweepy listener filters the stream in two steps. The Twitter API filter keeps tweets that match the keyword "spotify com". A JSON check then keeps only tweets with a URL and saves just the timestamp and the expanded link. Each record goes to a Kafka topic as a small JSON message.
+Each part has one job. A Tweepy listener keeps only tweets with a Spotify link and sends the time and the link to Kafka as a small message. Kafka sits between the Twitter stream and the processing, so the listener can keep reading while Spark catches up. A Spark Streaming job reads the topic, asks the Spotify Web API for the artist of each track and counts the shares per artist. Cassandra stores the counts as time-stamped rows, which fits a stream that writes all the time and is read by time. A Dash app adds up the last hour every five seconds and redraws the chart. The demo ran on one laptop with one copy of every component.
 
-A PySpark consumer reads that topic. It uses the receiver-less (direct) approach, so it asks Kafka for the latest offsets itself instead of running a separate receiver. For each record it takes the track id from the URL and asks the Spotify Web API for the artist. Records with no match are dropped. The counts go to Cassandra as (artist, timestamp, count) rows. A Dash app queries the table every five seconds, adds up the last hour and redraws the chart.
-
-![Illustrative pipeline diagram: tweets filtered by Tweepy into Kafka, Spark Streaming resolves artists through the Spotify API, counts land in Cassandra, and a Dash chart refreshes every five seconds](/assets/images/projects/streaming-pipeline.svg)
+<figure class="fig">
+<svg viewBox="0 0 680 168" role="img" aria-labelledby="stpt stpd">
+  <title id="stpt">The trending-artists pipeline</title>
+  <desc id="stpd">A Tweepy listener keeps tweets with a Spotify link and sends them to a Kafka topic. A Spark Streaming job reads the topic, asks the Spotify Web API for each track's artist and counts shares. Cassandra stores the counts by time, and a Dash chart sums the last hour every five seconds.</desc>
+  <defs><marker id="stpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="stpb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <text class="h" x="2" y="14">ONE LAPTOP, ONE COPY OF EACH STAGE</text>
+  <rect class="box" x="2" y="28" width="116" height="52" rx="6"/>
+  <text class="t" x="14" y="50">Twitter API</text>
+  <text class="m" x="14" y="66">Spotify links</text>
+  <rect class="box" x="142" y="28" width="116" height="52" rx="6"/>
+  <text class="t" x="154" y="50">Kafka</text>
+  <text class="m" x="154" y="66">buffer</text>
+  <path class="ln" d="M121,54 L140,54" marker-end="url(#stpa)"/>
+  <rect class="box" x="282" y="28" width="116" height="52" rx="6"/>
+  <rect class="fa" x="282" y="28" width="116" height="52" rx="6" opacity=".14"/>
+  <rect class="sa" x="282" y="28" width="116" height="52" rx="6"/>
+  <text class="t" x="294" y="50">Spark job</text>
+  <text class="m" x="294" y="66">counts artists</text>
+  <path class="ln" d="M261,54 L280,54" marker-end="url(#stpa)"/>
+  <rect class="box" x="422" y="28" width="116" height="52" rx="6"/>
+  <text class="t" x="434" y="50">Cassandra</text>
+  <text class="m" x="434" y="66">counts by time</text>
+  <path class="ln" d="M401,54 L420,54" marker-end="url(#stpa)"/>
+  <rect class="box" x="562" y="28" width="116" height="52" rx="6"/>
+  <text class="t" x="574" y="50">Dash chart</text>
+  <text class="m" x="574" y="66">5 s refresh</text>
+  <path class="ln" d="M541,54 L560,54" marker-end="url(#stpa)"/>
+  <rect class="box" x="282" y="118" width="116" height="46" rx="6"/>
+  <text class="t" x="294" y="137">Spotify API</text>
+  <text class="m" x="294" y="153">track → artist</text>
+  <path class="ln" d="M330,80 L330,116" marker-start="url(#stpa)" marker-end="url(#stpa)"/>
+</svg>
+<figcaption>Kafka buffers the stream, Spark turns each track into an artist and counts shares, Cassandra keeps the counts by time, and Dash redraws the top 20.</figcaption>
+</figure>
 
 ## What I found when I reread it
 
-Years later I reread the code and found two failures that the demo never showed. First, the consumer did not save its offsets, so after a crash it read the whole topic again. Second, the rows were keyed by artist and second, so two shares in the same second could overwrite each other. The [write-up](/posts/building-a-streaming-pipeline/) goes through both. The demo ran on one laptop with one copy of every component. It worked, but it was not a production system.15:T772,<h2>What it does</h2>
+Years later I reread the code and found two failures that the demo never showed. First, the consumer did not save its offsets, so after a crash it read the whole topic again. Second, the rows were keyed by artist and second, so two shares in the same second could overwrite each other. The [write-up](/posts/building-a-streaming-pipeline/) goes through both and how I would fix them.18:T101b,<h2>What it does</h2>
 <p>A classmate and I wanted to see which artists people were sharing on Twitter at that moment. The pipeline reads the live Twitter stream, keeps the tweets that carry a Spotify link, and counts the shares per artist. A chart shows the top 20 artists of the last 60 minutes and redraws every five seconds.</p>
 <h2>The pipeline</h2>
-<p>A Tweepy listener filters the stream in two steps. The Twitter API filter keeps tweets that match the keyword “spotify com”. A JSON check then keeps only tweets with a URL and saves just the timestamp and the expanded link. Each record goes to a Kafka topic as a small JSON message.</p>
-<p>A PySpark consumer reads that topic. It uses the receiver-less (direct) approach, so it asks Kafka for the latest offsets itself instead of running a separate receiver. For each record it takes the track id from the URL and asks the Spotify Web API for the artist. Records with no match are dropped. The counts go to Cassandra as (artist, timestamp, count) rows. A Dash app queries the table every five seconds, adds up the last hour and redraws the chart.</p>
-<p><img src="/assets/images/projects/streaming-pipeline.svg" alt="Illustrative pipeline diagram: tweets filtered by Tweepy into Kafka, Spark Streaming resolves artists through the Spotify API, counts land in Cassandra, and a Dash chart refreshes every five seconds"></p>
+<p>Each part has one job. A Tweepy listener keeps only tweets with a Spotify link and sends the time and the link to Kafka as a small message. Kafka sits between the Twitter stream and the processing, so the listener can keep reading while Spark catches up. A Spark Streaming job reads the topic, asks the Spotify Web API for the artist of each track and counts the shares per artist. Cassandra stores the counts as time-stamped rows, which fits a stream that writes all the time and is read by time. A Dash app adds up the last hour every five seconds and redraws the chart. The demo ran on one laptop with one copy of every component.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 168" role="img" aria-labelledby="stpt stpd">
+  <title id="stpt">The trending-artists pipeline</title>
+  <desc id="stpd">A Tweepy listener keeps tweets with a Spotify link and sends them to a Kafka topic. A Spark Streaming job reads the topic, asks the Spotify Web API for each track's artist and counts shares. Cassandra stores the counts by time, and a Dash chart sums the last hour every five seconds.</desc>
+  <defs><marker id="stpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="stpb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="2" y="14">ONE LAPTOP, ONE COPY OF EACH STAGE</text>
+  <rect class="box" x="2" y="28" width="116" height="52" rx="6"></rect>
+  <text class="t" x="14" y="50">Twitter API</text>
+  <text class="m" x="14" y="66">Spotify links</text>
+  <rect class="box" x="142" y="28" width="116" height="52" rx="6"></rect>
+  <text class="t" x="154" y="50">Kafka</text>
+  <text class="m" x="154" y="66">buffer</text>
+  <path class="ln" d="M121,54 L140,54" marker-end="url(#stpa)"></path>
+  <rect class="box" x="282" y="28" width="116" height="52" rx="6"></rect>
+  <rect class="fa" x="282" y="28" width="116" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="282" y="28" width="116" height="52" rx="6"></rect>
+  <text class="t" x="294" y="50">Spark job</text>
+  <text class="m" x="294" y="66">counts artists</text>
+  <path class="ln" d="M261,54 L280,54" marker-end="url(#stpa)"></path>
+  <rect class="box" x="422" y="28" width="116" height="52" rx="6"></rect>
+  <text class="t" x="434" y="50">Cassandra</text>
+  <text class="m" x="434" y="66">counts by time</text>
+  <path class="ln" d="M401,54 L420,54" marker-end="url(#stpa)"></path>
+  <rect class="box" x="562" y="28" width="116" height="52" rx="6"></rect>
+  <text class="t" x="574" y="50">Dash chart</text>
+  <text class="m" x="574" y="66">5 s refresh</text>
+  <path class="ln" d="M541,54 L560,54" marker-end="url(#stpa)"></path>
+  <rect class="box" x="282" y="118" width="116" height="46" rx="6"></rect>
+  <text class="t" x="294" y="137">Spotify API</text>
+  <text class="m" x="294" y="153">track → artist</text>
+  <path class="ln" d="M330,80 L330,116" marker-start="url(#stpa)" marker-end="url(#stpa)"></path>
+</svg>
+<figcaption>Kafka buffers the stream, Spark turns each track into an artist and counts shares, Cassandra keeps the counts by time, and Dash redraws the top 20.</figcaption>
+</figure>
 <h2>What I found when I reread it</h2>
-<p>Years later I reread the code and found two failures that the demo never showed. First, the consumer did not save its offsets, so after a crash it read the whole topic again. Second, the rows were keyed by artist and second, so two shares in the same second could overwrite each other. The <a href="/posts/building-a-streaming-pipeline/">write-up</a> goes through both. The demo ran on one laptop with one copy of every component. It worked, but it was not a production system.</p>16:T633,## The task
+<p>Years later I reread the code and found two failures that the demo never showed. First, the consumer did not save its offsets, so after a crash it read the whole topic again. Second, the rows were keyed by artist and second, so two shares in the same second could overwrite each other. The <a href="/posts/building-a-streaming-pipeline/">write-up</a> goes through both and how I would fix them.</p>19:Tf99,## The task
 
 The task was to label each tweet as positive or negative. With two classmates I compared four approaches on the same cleaned data. The baseline was TextBlob, a lexicon that scores the polarity of each word. The other three were Multinomial Naive Bayes, a linear SVM and a small CNN in Keras.
 
@@ -95,13 +410,88 @@ We used two public datasets. The main one was Sentiment140, with 1.6 million twe
 
 ## What the numbers said
 
-The linear SVM did best, with 82% accuracy and 86% AUC on the Twitter test set. The CNN reached 77.7% accuracy. However, the comparison is weaker than it looks. Removing the standard stopword list also removed "not". The CNN was overfitting, so it was not a fair test of a CNN against an SVM. AUC was reported differently across models, and some experiments in the report were never run. The [review](/posts/rereading-a-2019-sentiment-model/) goes through each of these. On the Amazon reviews the same pipeline scored above 90%, which says more about longer texts than about the models. These are course results from 2019, not a benchmark.17:T678,<h2>The task</h2>
+<figure class="fig">
+<svg viewBox="0 0 680 214" role="img" aria-labelledby="sept sepd">
+  <title id="sept">The sentiment comparison</title>
+  <desc id="sepd">Tweets from Sentiment140 are cleaned once. Four approaches label them: a TextBlob lexicon baseline, Naive Bayes and a linear SVM on TF-IDF trigrams, and a small CNN in Keras. All are scored on the same test set, and the linear SVM scored best with 82% accuracy.</desc>
+  <defs><marker id="sepa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="sepb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="2" y="76" width="118" height="66" rx="6"/>
+  <text class="t" x="14" y="97">Tweets</text>
+  <text class="m" x="14" y="113">Sentiment140</text>
+  <text class="m" x="14" y="129">1.6M tweets</text>
+  <rect class="box" x="150" y="83" width="120" height="52" rx="6"/>
+  <text class="t" x="162" y="105">Cleaning</text>
+  <text class="m" x="162" y="121">once, for all</text>
+  <rect class="box" x="318" y="12" width="150" height="52" rx="6"/>
+  <text class="t" x="330" y="34">TextBlob</text>
+  <text class="m" x="330" y="50">lexicon baseline</text>
+  <rect class="box" x="318" y="83" width="150" height="52" rx="6"/>
+  <rect class="fa" x="318" y="83" width="150" height="52" rx="6" opacity=".14"/>
+  <rect class="sa" x="318" y="83" width="150" height="52" rx="6"/>
+  <text class="t" x="330" y="105">Naive Bayes, SVM</text>
+  <text class="m" x="330" y="121">TF-IDF trigrams</text>
+  <rect class="box" x="318" y="154" width="150" height="52" rx="6"/>
+  <text class="t" x="330" y="176">Small CNN</text>
+  <text class="m" x="330" y="192">Keras</text>
+  <rect class="box" x="558" y="83" width="120" height="52" rx="6"/>
+  <text class="t" x="570" y="105">Same test set</text>
+  <text class="m" x="570" y="121">accuracy, AUC</text>
+  <path class="ln" d="M120,109 L148,109" marker-end="url(#sepa)"/>
+  <path class="ln" d="M270,109 L292,109 L292,38 L316,38" marker-end="url(#sepa)"/>
+  <path class="ln" d="M292,109 L316,109" marker-end="url(#sepa)"/>
+  <path class="ln" d="M292,109 L292,180 L316,180" marker-end="url(#sepa)"/>
+  <path class="ln" d="M468,38 L512,38 L512,180 L468,180"/>
+  <path class="sa" d="M468,109 L556,109" marker-end="url(#sepb)"/>
+  <text class="ta" x="558" y="160">linear SVM best:</text>
+  <text class="ta" x="558" y="176">82% accuracy</text>
+</svg>
+<figcaption>One cleaning step and one test set, so the four approaches see the same data.</figcaption>
+</figure>
+
+The linear SVM did best, with 82% accuracy on the Twitter test set. The CNN reached 77.7% accuracy, but it was overfitting, so the comparison is weaker than it looks. The [review](/posts/rereading-a-2019-sentiment-model/) goes through what I would change. On the Amazon reviews the same pipeline scored above 90%, which says more about longer texts than about the models.1a:T1039,<h2>The task</h2>
 <p>The task was to label each tweet as positive or negative. With two classmates I compared four approaches on the same cleaned data. The baseline was TextBlob, a lexicon that scores the polarity of each word. The other three were Multinomial Naive Bayes, a linear SVM and a small CNN in Keras.</p>
 <h2>Data and cleaning</h2>
 <p>We used two public datasets. The main one was Sentiment140, with 1.6 million tweets. For contrast we also used Amazon product reviews, which are longer. Cleaning became its own experiment, because the text representation mattered as much as the classifier. We removed usernames, URLs and noise, expanded contractions, corrected spelling, removed stopwords and lemmatized with NLTK. Trigram TF-IDF features did better than plain word counts. The cleaned datasets are on Kaggle.</p>
 <p><img src="/assets/images/projects/sentiment-cnn-architecture.png" alt="The CNN architecture figure from the project repository"></p>
 <h2>What the numbers said</h2>
-<p>The linear SVM did best, with 82% accuracy and 86% AUC on the Twitter test set. The CNN reached 77.7% accuracy. However, the comparison is weaker than it looks. Removing the standard stopword list also removed “not”. The CNN was overfitting, so it was not a fair test of a CNN against an SVM. AUC was reported differently across models, and some experiments in the report were never run. The <a href="/posts/rereading-a-2019-sentiment-model/">review</a> goes through each of these. On the Amazon reviews the same pipeline scored above 90%, which says more about longer texts than about the models. These are course results from 2019, not a benchmark.</p>18:T5d7,## What it does
+<figure class="fig">
+<svg viewBox="0 0 680 214" role="img" aria-labelledby="sept sepd">
+  <title id="sept">The sentiment comparison</title>
+  <desc id="sepd">Tweets from Sentiment140 are cleaned once. Four approaches label them: a TextBlob lexicon baseline, Naive Bayes and a linear SVM on TF-IDF trigrams, and a small CNN in Keras. All are scored on the same test set, and the linear SVM scored best with 82% accuracy.</desc>
+  <defs><marker id="sepa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="sepb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="2" y="76" width="118" height="66" rx="6"></rect>
+  <text class="t" x="14" y="97">Tweets</text>
+  <text class="m" x="14" y="113">Sentiment140</text>
+  <text class="m" x="14" y="129">1.6M tweets</text>
+  <rect class="box" x="150" y="83" width="120" height="52" rx="6"></rect>
+  <text class="t" x="162" y="105">Cleaning</text>
+  <text class="m" x="162" y="121">once, for all</text>
+  <rect class="box" x="318" y="12" width="150" height="52" rx="6"></rect>
+  <text class="t" x="330" y="34">TextBlob</text>
+  <text class="m" x="330" y="50">lexicon baseline</text>
+  <rect class="box" x="318" y="83" width="150" height="52" rx="6"></rect>
+  <rect class="fa" x="318" y="83" width="150" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="318" y="83" width="150" height="52" rx="6"></rect>
+  <text class="t" x="330" y="105">Naive Bayes, SVM</text>
+  <text class="m" x="330" y="121">TF-IDF trigrams</text>
+  <rect class="box" x="318" y="154" width="150" height="52" rx="6"></rect>
+  <text class="t" x="330" y="176">Small CNN</text>
+  <text class="m" x="330" y="192">Keras</text>
+  <rect class="box" x="558" y="83" width="120" height="52" rx="6"></rect>
+  <text class="t" x="570" y="105">Same test set</text>
+  <text class="m" x="570" y="121">accuracy, AUC</text>
+  <path class="ln" d="M120,109 L148,109" marker-end="url(#sepa)"></path>
+  <path class="ln" d="M270,109 L292,109 L292,38 L316,38" marker-end="url(#sepa)"></path>
+  <path class="ln" d="M292,109 L316,109" marker-end="url(#sepa)"></path>
+  <path class="ln" d="M292,109 L292,180 L316,180" marker-end="url(#sepa)"></path>
+  <path class="ln" d="M468,38 L512,38 L512,180 L468,180"></path>
+  <path class="sa" d="M468,109 L556,109" marker-end="url(#sepb)"></path>
+  <text class="ta" x="558" y="160">linear SVM best:</text>
+  <text class="ta" x="558" y="176">82% accuracy</text>
+</svg>
+<figcaption>One cleaning step and one test set, so the four approaches see the same data.</figcaption>
+</figure>
+<p>The linear SVM did best, with 82% accuracy on the Twitter test set. The CNN reached 77.7% accuracy, but it was overfitting, so the comparison is weaker than it looks. The <a href="/posts/rereading-a-2019-sentiment-model/">review</a> goes through what I would change. On the Amazon reviews the same pipeline scored above 90%, which says more about longer texts than about the models.</p>1b:T5bd,## What it does
 
 The network takes a grayscale photo and predicts its colours. Our team of three reimplemented the approach of Iizuka et al. (2016) and Baldassarre et al. (2017) in TensorFlow and Keras, with some changes.
 
@@ -113,43 +503,249 @@ It has four parts, as in the papers. An encoder takes mid-level features from th
 
 ## How far it got
 
-First we trained the network on one image on purpose until it overfit. If it can recover a single training image, the wiring is correct. Then we trained on a small part of ImageNet, limited to 2,000 images by the project time. When we scaled up with precomputed features stored in TFRecords, the model produced brownish images. We suspected a bug in our TFRecords code but did not confirm the cause. The smaller model coloured grass and sky better than clothing. The repository has the training notebooks, the architecture figure, example outputs and the full report. It is a small reproduction, and it does not show an improvement over a baseline.19:T60d,<h2>What it does</h2>
+First we trained the network on one image on purpose until it overfit. If it can recover a single training image, the wiring is correct. Then we trained on a small part of ImageNet, limited to 2,000 images by the project time. When we scaled up with precomputed features stored in TFRecords, the model produced brownish images. We suspected a bug in our TFRecords code but did not confirm the cause. The smaller model coloured grass and sky better than clothing. The repository has the training notebooks, the architecture figure, example outputs and the full report. The goal was to reproduce the papers at a small scale.1c:T5f3,<h2>What it does</h2>
 <p>The network takes a grayscale photo and predicts its colours. Our team of three reimplemented the approach of Iizuka et al. (2016) and Baldassarre et al. (2017) in TensorFlow and Keras, with some changes.</p>
 <h2>The network</h2>
 <p>It has four parts, as in the papers. An encoder takes mid-level features from the grayscale input. A pretrained Inception-ResNet-v2 gives high-level features about the whole scene. A fusion layer adds those scene features to the middle of the network. Then a decoder predicts the a* and b* channels of the Lab colour space. These are combined with the lightness of the input to give the colour image.</p>
 <p><img src="/assets/images/projects/colorization-architecture.png" alt="The network architecture figure from the project repository: encoder, Inception-ResNet-v2 feature extractor, fusion and decoder"></p>
 <h2>How far it got</h2>
-<p>First we trained the network on one image on purpose until it overfit. If it can recover a single training image, the wiring is correct. Then we trained on a small part of ImageNet, limited to 2,000 images by the project time. When we scaled up with precomputed features stored in TFRecords, the model produced brownish images. We suspected a bug in our TFRecords code but did not confirm the cause. The smaller model coloured grass and sky better than clothing. The repository has the training notebooks, the architecture figure, example outputs and the full report. It is a small reproduction, and it does not show an improvement over a baseline.</p>1a:T532,## The problem
+<p>First we trained the network on one image on purpose until it overfit. If it can recover a single training image, the wiring is correct. Then we trained on a small part of ImageNet, limited to 2,000 images by the project time. When we scaled up with precomputed features stored in TFRecords, the model produced brownish images. We suspected a bug in our TFRecords code but did not confirm the cause. The smaller model coloured grass and sky better than clothing. The repository has the training notebooks, the architecture figure, example outputs and the full report. The goal was to reproduce the papers at a small scale.</p>1d:Tcf5,## The problem
 
 Street2Shop pairs photos of people wearing clothes with the same product in an online shop. It has eleven clothing categories and comes from an ICCV 2015 paper. The dataset was published as lists of image URLs plus JSON metadata. The metadata has the train and test pairs, the links from photos to products, and the bounding box of the worn item in each street photo. So to use it, you had to download every image yourself.
 
 ## The tool
 
-In 2019 I wrote a small Python command-line tool for that. It read the URL lists and metadata, downloaded the images per category with threads, and could crop street photos to their bounding boxes.
+In 2019 I wrote a small Python command-line tool for that, for the [clothing similarity project](/projects/#case-clothing-similarity). It read the URL lists and metadata, downloaded the images per category with threads, and could crop street photos to their bounding boxes.
 
-Since then the original hosts and many image URLs have gone offline. In 2026 I rebuilt the exporter on a community copy of the dataset on Hugging Face. It keeps the old folder layout and options, so code written for the 2015 files still works. Running an export again skips images already on disk, so an interrupted run can continue.
+Since then the original hosts and many image URLs have gone offline. The exporter reads a community copy of the dataset on Hugging Face. It keeps the old folder layout and options, so code written for the 2015 files still works. Running an export again skips images already on disk, so an interrupted run can continue.
+
+<figure class="fig">
+<svg viewBox="0 0 680 112" role="img" aria-labelledby="s2et s2ed">
+  <title id="s2et">The Street2Shop export</title>
+  <desc id="s2ed">The exporter reads the community copy of Street2Shop on Hugging Face, skips images already on disk and can crop street photos to their bounding boxes. It writes the original per-category folder layout, so training code written for the 2015 files runs unchanged.</desc>
+  <defs><marker id="s2ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="s2eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <text class="h" x="2" y="14">THE EXPORT WORKFLOW</text>
+  <rect class="box" x="2" y="28" width="153" height="78" rx="6"/>
+  <text class="t" x="14" y="63">Hugging Face</text>
+  <text class="m" x="14" y="79">community copy</text>
+  <rect class="box" x="177" y="28" width="153" height="78" rx="6"/>
+  <rect class="fa" x="177" y="28" width="153" height="78" rx="6" opacity=".14"/>
+  <rect class="sa" x="177" y="28" width="153" height="78" rx="6"/>
+  <text class="t" x="189" y="55">Exporter</text>
+  <text class="m" x="189" y="71">skips files on disk</text>
+  <text class="m" x="189" y="87">optional crop</text>
+  <path class="ln" d="M158,67 L175,67" marker-end="url(#s2ea)"/>
+  <rect class="box" x="352" y="28" width="153" height="78" rx="6"/>
+  <text class="t" x="364" y="63">Original layout</text>
+  <text class="m" x="364" y="79">folder per category</text>
+  <path class="ln" d="M333,67 L350,67" marker-end="url(#s2ea)"/>
+  <rect class="box" x="527" y="28" width="153" height="78" rx="6"/>
+  <text class="t" x="539" y="63">Training code</text>
+  <text class="m" x="539" y="79">runs unchanged</text>
+  <path class="ln" d="M508,67 L525,67" marker-end="url(#s2ea)"/>
+</svg>
+<figcaption>The exporter reads the Hugging Face copy and writes the original per-category folder layout.</figcaption>
+</figure>
 
 ## Limits
 
-The Hugging Face copy is not an official release. Spot checks against the archived original metadata matched, but that is a sample, not a full check. The copy also lacks the original retrieval gallery of about 205k products. The unit tests pass, but I have only run a live export on a few pairs because of Hugging Face rate limits.1b:T55a,<h2>The problem</h2>
+The Hugging Face copy is not an official release, and it lacks the original retrieval gallery of about 205k products. Spot checks against the archived original metadata matched.
+1e:Td68,<h2>The problem</h2>
 <p>Street2Shop pairs photos of people wearing clothes with the same product in an online shop. It has eleven clothing categories and comes from an ICCV 2015 paper. The dataset was published as lists of image URLs plus JSON metadata. The metadata has the train and test pairs, the links from photos to products, and the bounding box of the worn item in each street photo. So to use it, you had to download every image yourself.</p>
 <h2>The tool</h2>
-<p>In 2019 I wrote a small Python command-line tool for that. It read the URL lists and metadata, downloaded the images per category with threads, and could crop street photos to their bounding boxes.</p>
-<p>Since then the original hosts and many image URLs have gone offline. In 2026 I rebuilt the exporter on a community copy of the dataset on Hugging Face. It keeps the old folder layout and options, so code written for the 2015 files still works. Running an export again skips images already on disk, so an interrupted run can continue.</p>
+<p>In 2019 I wrote a small Python command-line tool for that, for the <a href="/projects/#case-clothing-similarity">clothing similarity project</a>. It read the URL lists and metadata, downloaded the images per category with threads, and could crop street photos to their bounding boxes.</p>
+<p>Since then the original hosts and many image URLs have gone offline. The exporter reads a community copy of the dataset on Hugging Face. It keeps the old folder layout and options, so code written for the 2015 files still works. Running an export again skips images already on disk, so an interrupted run can continue.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 112" role="img" aria-labelledby="s2et s2ed">
+  <title id="s2et">The Street2Shop export</title>
+  <desc id="s2ed">The exporter reads the community copy of Street2Shop on Hugging Face, skips images already on disk and can crop street photos to their bounding boxes. It writes the original per-category folder layout, so training code written for the 2015 files runs unchanged.</desc>
+  <defs><marker id="s2ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="s2eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="2" y="14">THE EXPORT WORKFLOW</text>
+  <rect class="box" x="2" y="28" width="153" height="78" rx="6"></rect>
+  <text class="t" x="14" y="63">Hugging Face</text>
+  <text class="m" x="14" y="79">community copy</text>
+  <rect class="box" x="177" y="28" width="153" height="78" rx="6"></rect>
+  <rect class="fa" x="177" y="28" width="153" height="78" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="177" y="28" width="153" height="78" rx="6"></rect>
+  <text class="t" x="189" y="55">Exporter</text>
+  <text class="m" x="189" y="71">skips files on disk</text>
+  <text class="m" x="189" y="87">optional crop</text>
+  <path class="ln" d="M158,67 L175,67" marker-end="url(#s2ea)"></path>
+  <rect class="box" x="352" y="28" width="153" height="78" rx="6"></rect>
+  <text class="t" x="364" y="63">Original layout</text>
+  <text class="m" x="364" y="79">folder per category</text>
+  <path class="ln" d="M333,67 L350,67" marker-end="url(#s2ea)"></path>
+  <rect class="box" x="527" y="28" width="153" height="78" rx="6"></rect>
+  <text class="t" x="539" y="63">Training code</text>
+  <text class="m" x="539" y="79">runs unchanged</text>
+  <path class="ln" d="M508,67 L525,67" marker-end="url(#s2ea)"></path>
+</svg>
+<figcaption>The exporter reads the Hugging Face copy and writes the original per-category folder layout.</figcaption>
+</figure>
 <h2>Limits</h2>
-<p>The Hugging Face copy is not an official release. Spot checks against the archived original metadata matched, but that is a sample, not a full check. The copy also lacks the original retrieval gallery of about 205k products. The unit tests pass, but I have only run a live export on a few pairs because of Hugging Face rate limits.</p>1c:T471,## What it does
+<p>The Hugging Face copy is not an official release, and it lacks the original retrieval gallery of about 205k products. Spot checks against the archived original metadata matched.</p>1f:T17fa,## What it does
 
-People post books they want to lend or give away, with a pick-up time and place. Others browse a searchable shelf and request a book. Everyone needs an account, so people know who they are meeting. When someone adds a book, the Goodreads API fills in the author and the rating.
+People post books they want to lend or give away, with a pick-up time and place. Others browse a searchable shelf and request a book. Then they meet at the pick-up point, and the exchange stays in both accounts' history. Everyone needs an account, so people know who they are meeting. When someone adds a book, the Goodreads API fills in the author and the rating.
 
-## How it fits together
+<figure class="fig">
+<svg viewBox="0 0 680 104" role="img" aria-labelledby="bkft bkfd">
+  <title id="bkft">The Bookio flow</title>
+  <desc id="bkfd">Four steps: an owner posts a book with a pick-up time and place, another user requests it from the shelf, they meet at the pick-up point, and the exchange stays in both accounts' history.</desc>
+  <defs><marker id="bkfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="bkfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <text class="h" x="2" y="14">LENDING A BOOK</text>
+  <rect class="box" x="2" y="28" width="153" height="70" rx="6"/>
+  <text class="m" x="14" y="51">01</text>
+  <text class="t" x="14" y="67">Post</text>
+  <text class="m" x="14" y="83">book, time, place</text>
+  <rect class="box" x="177" y="28" width="153" height="70" rx="6"/>
+  <text class="m" x="189" y="51">02</text>
+  <text class="t" x="189" y="67">Request</text>
+  <text class="m" x="189" y="83">from the shelf</text>
+  <path class="ln" d="M158,63 L175,63" marker-end="url(#bkfa)"/>
+  <rect class="box" x="352" y="28" width="153" height="70" rx="6"/>
+  <rect class="fa" x="352" y="28" width="153" height="70" rx="6" opacity=".14"/>
+  <rect class="sa" x="352" y="28" width="153" height="70" rx="6"/>
+  <text class="ta" x="364" y="51">03</text>
+  <text class="t" x="364" y="67">Meet</text>
+  <text class="m" x="364" y="83">at pick-up point</text>
+  <path class="ln" d="M333,63 L350,63" marker-end="url(#bkfa)"/>
+  <rect class="box" x="527" y="28" width="153" height="70" rx="6"/>
+  <text class="m" x="539" y="51">04</text>
+  <text class="t" x="539" y="67">History</text>
+  <text class="m" x="539" y="83">in both accounts</text>
+  <path class="ln" d="M508,63 L525,63" marker-end="url(#bkfa)"/>
+</svg>
+<figcaption>Everyone signs in first, so people know who they are meeting.</figcaption>
+</figure>
 
-We built it as a team for the Interaction Programming and Dynamic Web course at KTH. I proposed the core idea, worked across the full stack, built the accounts and designed the UI and UX. The front end is Create React App with Redux, styled in SCSS. Firebase is the whole backend: Authentication for sign-in with a verified email or Facebook, Cloud Firestore for books and requests, and Storage for cover photos. Algolia syncs with Firestore, so full-text search and type filters stay fast. Google Maps shows the pick-up locations. The app has pages for sign-in, the shelf, book details, adding a book, requests and history, and the account.
+## How it works
 
-![Illustrative map of the build: the React and Redux app talks to Firebase services, Algolia, Google Maps and the Goodreads API](/assets/images/projects/bookio-services.svg)1d:T49c,<h2>What it does</h2>
-<p>People post books they want to lend or give away, with a pick-up time and place. Others browse a searchable shelf and request a book. Everyone needs an account, so people know who they are meeting. When someone adds a book, the Goodreads API fills in the author and the rating.</p>
-<h2>How it fits together</h2>
-<p>We built it as a team for the Interaction Programming and Dynamic Web course at KTH. I proposed the core idea, worked across the full stack, built the accounts and designed the UI and UX. The front end is Create React App with Redux, styled in SCSS. Firebase is the whole backend: Authentication for sign-in with a verified email or Facebook, Cloud Firestore for books and requests, and Storage for cover photos. Algolia syncs with Firestore, so full-text search and type filters stay fast. Google Maps shows the pick-up locations. The app has pages for sign-in, the shelf, book details, adding a book, requests and history, and the account.</p>
-<p><img src="/assets/images/projects/bookio-services.svg" alt="Illustrative map of the build: the React and Redux app talks to Firebase services, Algolia, Google Maps and the Goodreads API"></p>1e:T77d,## What it does
+We wanted a serverless app, so Firebase is the whole backend. Authentication handles sign-in with a verified email or Facebook. Cloud Firestore holds the books and requests, and Storage keeps the cover photos. Firestore pushes every change to all open apps, so a new book or a new request shows up for other users in real time. Firestore has no full-text search, so Algolia keeps a synced index of the books for search and type filters. Google Maps shows the pick-up locations.
+
+<figure class="fig">
+<svg viewBox="0 0 680 252" role="img" aria-labelledby="bkat bkad">
+  <title id="bkat">Bookio architecture</title>
+  <desc id="bkad">The React and Redux app in the browser talks to Firebase as its whole backend: Authentication, Storage and Cloud Firestore, which pushes changes in real time. Firestore syncs the books to an Algolia search index. Google Maps shows pick-up points and the Goodreads API fills in book details.</desc>
+  <defs><marker id="bkaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="bkab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="ln dash" x="2" y="2" width="206" height="246" rx="10"/>
+  <text class="h" x="14" y="20">FIREBASE, THE BACKEND</text>
+  <rect class="box" x="16" y="30" width="178" height="52" rx="6"/>
+  <text class="t" x="28" y="52">Auth</text>
+  <text class="m" x="28" y="68">email, Facebook</text>
+  <rect class="box" x="16" y="104" width="178" height="52" rx="6"/>
+  <text class="t" x="28" y="126">Storage</text>
+  <text class="m" x="28" y="142">cover photos</text>
+  <rect class="box" x="16" y="178" width="178" height="52" rx="6"/>
+  <rect class="fa" x="16" y="178" width="178" height="52" rx="6" opacity=".14"/>
+  <rect class="sa" x="16" y="178" width="178" height="52" rx="6"/>
+  <text class="t" x="28" y="200">Firestore</text>
+  <text class="m" x="28" y="216">books, requests</text>
+  <rect class="box" x="250" y="104" width="180" height="52" rx="6"/>
+  <text class="t" x="262" y="126">React + Redux app</text>
+  <text class="m" x="262" y="142">in the browser</text>
+  <rect class="box" x="500" y="30" width="178" height="52" rx="6"/>
+  <text class="t" x="512" y="52">Goodreads</text>
+  <text class="m" x="512" y="68">book details</text>
+  <rect class="box" x="500" y="104" width="178" height="52" rx="6"/>
+  <text class="t" x="512" y="126">Google Maps</text>
+  <text class="m" x="512" y="142">pick-up points</text>
+  <rect class="box" x="500" y="178" width="178" height="52" rx="6"/>
+  <text class="t" x="512" y="200">Algolia</text>
+  <text class="m" x="512" y="216">search index</text>
+  <path class="ln" d="M250,118 L196,58"/>
+  <path class="ln" d="M250,130 L196,130"/>
+  <path class="sa" d="M250,142 L196,202" marker-start="url(#bkab)" marker-end="url(#bkab)"/>
+  <text class="ta" x="232" y="186" text-anchor="end">real-time</text>
+  <path class="ln" d="M430,118 L498,58"/>
+  <path class="ln" d="M430,130 L498,130"/>
+  <path class="ln" d="M430,142 L498,196"/>
+  <path class="sa" d="M194,216 L498,216" marker-end="url(#bkab)"/>
+  <text class="ta" x="346" y="210" text-anchor="middle">sync for full-text search</text>
+</svg>
+<figcaption>Firebase is the whole backend, so there are no servers of our own. Firestore has no full-text search, so Algolia keeps a synced index.</figcaption>
+</figure>
+
+## My part
+
+We built it as a team for the Interaction Programming and Dynamic Web course at KTH. I proposed the core idea, worked across the full stack, built the accounts and designed the UI and UX.
+20:T18cf,<h2>What it does</h2>
+<p>People post books they want to lend or give away, with a pick-up time and place. Others browse a searchable shelf and request a book. Then they meet at the pick-up point, and the exchange stays in both accounts’ history. Everyone needs an account, so people know who they are meeting. When someone adds a book, the Goodreads API fills in the author and the rating.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 104" role="img" aria-labelledby="bkft bkfd">
+  <title id="bkft">The Bookio flow</title>
+  <desc id="bkfd">Four steps: an owner posts a book with a pick-up time and place, another user requests it from the shelf, they meet at the pick-up point, and the exchange stays in both accounts' history.</desc>
+  <defs><marker id="bkfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="bkfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="2" y="14">LENDING A BOOK</text>
+  <rect class="box" x="2" y="28" width="153" height="70" rx="6"></rect>
+  <text class="m" x="14" y="51">01</text>
+  <text class="t" x="14" y="67">Post</text>
+  <text class="m" x="14" y="83">book, time, place</text>
+  <rect class="box" x="177" y="28" width="153" height="70" rx="6"></rect>
+  <text class="m" x="189" y="51">02</text>
+  <text class="t" x="189" y="67">Request</text>
+  <text class="m" x="189" y="83">from the shelf</text>
+  <path class="ln" d="M158,63 L175,63" marker-end="url(#bkfa)"></path>
+  <rect class="box" x="352" y="28" width="153" height="70" rx="6"></rect>
+  <rect class="fa" x="352" y="28" width="153" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="352" y="28" width="153" height="70" rx="6"></rect>
+  <text class="ta" x="364" y="51">03</text>
+  <text class="t" x="364" y="67">Meet</text>
+  <text class="m" x="364" y="83">at pick-up point</text>
+  <path class="ln" d="M333,63 L350,63" marker-end="url(#bkfa)"></path>
+  <rect class="box" x="527" y="28" width="153" height="70" rx="6"></rect>
+  <text class="m" x="539" y="51">04</text>
+  <text class="t" x="539" y="67">History</text>
+  <text class="m" x="539" y="83">in both accounts</text>
+  <path class="ln" d="M508,63 L525,63" marker-end="url(#bkfa)"></path>
+</svg>
+<figcaption>Everyone signs in first, so people know who they are meeting.</figcaption>
+</figure>
+<h2>How it works</h2>
+<p>We wanted a serverless app, so Firebase is the whole backend. Authentication handles sign-in with a verified email or Facebook. Cloud Firestore holds the books and requests, and Storage keeps the cover photos. Firestore pushes every change to all open apps, so a new book or a new request shows up for other users in real time. Firestore has no full-text search, so Algolia keeps a synced index of the books for search and type filters. Google Maps shows the pick-up locations.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 252" role="img" aria-labelledby="bkat bkad">
+  <title id="bkat">Bookio architecture</title>
+  <desc id="bkad">The React and Redux app in the browser talks to Firebase as its whole backend: Authentication, Storage and Cloud Firestore, which pushes changes in real time. Firestore syncs the books to an Algolia search index. Google Maps shows pick-up points and the Goodreads API fills in book details.</desc>
+  <defs><marker id="bkaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="bkab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="ln dash" x="2" y="2" width="206" height="246" rx="10"></rect>
+  <text class="h" x="14" y="20">FIREBASE, THE BACKEND</text>
+  <rect class="box" x="16" y="30" width="178" height="52" rx="6"></rect>
+  <text class="t" x="28" y="52">Auth</text>
+  <text class="m" x="28" y="68">email, Facebook</text>
+  <rect class="box" x="16" y="104" width="178" height="52" rx="6"></rect>
+  <text class="t" x="28" y="126">Storage</text>
+  <text class="m" x="28" y="142">cover photos</text>
+  <rect class="box" x="16" y="178" width="178" height="52" rx="6"></rect>
+  <rect class="fa" x="16" y="178" width="178" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="16" y="178" width="178" height="52" rx="6"></rect>
+  <text class="t" x="28" y="200">Firestore</text>
+  <text class="m" x="28" y="216">books, requests</text>
+  <rect class="box" x="250" y="104" width="180" height="52" rx="6"></rect>
+  <text class="t" x="262" y="126">React + Redux app</text>
+  <text class="m" x="262" y="142">in the browser</text>
+  <rect class="box" x="500" y="30" width="178" height="52" rx="6"></rect>
+  <text class="t" x="512" y="52">Goodreads</text>
+  <text class="m" x="512" y="68">book details</text>
+  <rect class="box" x="500" y="104" width="178" height="52" rx="6"></rect>
+  <text class="t" x="512" y="126">Google Maps</text>
+  <text class="m" x="512" y="142">pick-up points</text>
+  <rect class="box" x="500" y="178" width="178" height="52" rx="6"></rect>
+  <text class="t" x="512" y="200">Algolia</text>
+  <text class="m" x="512" y="216">search index</text>
+  <path class="ln" d="M250,118 L196,58"></path>
+  <path class="ln" d="M250,130 L196,130"></path>
+  <path class="sa" d="M250,142 L196,202" marker-start="url(#bkab)" marker-end="url(#bkab)"></path>
+  <text class="ta" x="232" y="186" text-anchor="end">real-time</text>
+  <path class="ln" d="M430,118 L498,58"></path>
+  <path class="ln" d="M430,130 L498,130"></path>
+  <path class="ln" d="M430,142 L498,196"></path>
+  <path class="sa" d="M194,216 L498,216" marker-end="url(#bkab)"></path>
+  <text class="ta" x="346" y="210" text-anchor="middle">sync for full-text search</text>
+</svg>
+<figcaption>Firebase is the whole backend, so there are no servers of our own. Firestore has no full-text search, so Algolia keeps a synced index.</figcaption>
+</figure>
+<h2>My part</h2>
+<p>We built it as a team for the Interaction Programming and Dynamic Web course at KTH. I proposed the core idea, worked across the full stack, built the accounts and designed the UI and UX.</p>21:T715,## What it does
 
 You attach a small Bluetooth Low Energy (BLE) device to something you do not want to lose, like your keys or wallet, and register it in the app. When the item is close, the near-finder screen reads the device's signal strength (RSSI) and tells you whether you are getting closer. You can also add photos and mark an item as lost.
 
@@ -157,7 +753,7 @@ You attach a small Bluetooth Low Energy (BLE) device to something you do not wan
 
 The Treki device only broadcasts its ID and signal strength. Any phone with the app that comes near it, yours or another user's, sends the device ID and the phone's location to the Treki server. The server stores the update in Firebase and sends a push notification to the owner. So a lost item gets its last-known location from other users' phones, because the device itself has no internet connection.
 
-The app is React Native. It talks to the device with react-native-ble-plx, uses Redux with thunks for state and NativeBase for the UI. A thin Node.js API and Firebase hold the users, devices and sightings.
+The app is React Native, and a thin Node.js API with Firebase holds the users, devices and sightings.
 
 ## The hard part
 
@@ -171,46 +767,184 @@ I proposed the idea, led the team of four and was the main developer. Treki won 
 
 ![Adding a new Treki device in the app](/assets/images/projects/treki-add-device.gif)
 
-![The My Devices screen showing a registered tag](/assets/images/projects/treki-my-device.gif)1f:T7f6,<h2>What it does</h2>
+![The My Devices screen showing a registered tag](/assets/images/projects/treki-my-device.gif)22:T78e,<h2>What it does</h2>
 <p>You attach a small Bluetooth Low Energy (BLE) device to something you do not want to lose, like your keys or wallet, and register it in the app. When the item is close, the near-finder screen reads the device’s signal strength (RSSI) and tells you whether you are getting closer. You can also add photos and mark an item as lost.</p>
 <h2>How it works</h2>
 <p>The Treki device only broadcasts its ID and signal strength. Any phone with the app that comes near it, yours or another user’s, sends the device ID and the phone’s location to the Treki server. The server stores the update in Firebase and sends a push notification to the owner. So a lost item gets its last-known location from other users’ phones, because the device itself has no internet connection.</p>
-<p>The app is React Native. It talks to the device with react-native-ble-plx, uses Redux with thunks for state and NativeBase for the UI. A thin Node.js API and Firebase hold the users, devices and sightings.</p>
+<p>The app is React Native, and a thin Node.js API with Firebase holds the users, devices and sightings.</p>
 <h2>The hard part</h2>
 <p>Crowd-sourced location only works if phones keep scanning for devices while the app is in the background. Keeping Bluetooth on in the background was the hardest part. Making it power efficient needs work on the hardware side too, not only in the app.</p>
 <h2>My role and the result</h2>
 <p>I proposed the idea, led the team of four and was the main developer. Treki won the best presentation award at the end of the bootcamp, and I received the Teacher’s Award for the best student.</p>
 <p><img src="/assets/images/projects/treki-system.png" alt="System diagram from the project README: the Treki device broadcasts its ID and signal strength, nearby phones send the ID and their location to the Treki server, and the server stores it in Firebase and notifies the owner"></p>
 <p><img src="/assets/images/projects/treki-add-device.gif" alt="Adding a new Treki device in the app"></p>
-<p><img src="/assets/images/projects/treki-my-device.gif" alt="The My Devices screen showing a registered tag"></p>20:T54f,## What it does
+<p><img src="/assets/images/projects/treki-my-device.gif" alt="The My Devices screen showing a registered tag"></p>23:T1961,## What it does
 
 A device on a motorcycle helmet watches for two things: an accident, and the rider going faster than the maximum speed. When either happens, the rider's phone shows an alert. After an accident, the app also sends the rider, time and location to a monitoring dashboard, which shows recent accidents on Google Maps.
 
-## The device
+## How it works
 
-My part was the IoT side. The device is an ESP32 board with motion sensors and a GPS module. It measures speed and acceleration, detects accidents and tracks the location. It pairs with the rider's phone over Bluetooth serial, and the phone sends the data on to the cloud.
+The system has three parts: the helmet device, the rider app and the dashboard. The device is an ESP32 board with motion sensors and a GPS module. It pairs with the rider's phone over Bluetooth serial. The React Native app shows the alerts and forwards accident reports to the cloud. The dashboard reads those reports and puts them on a map. So the app on the phone stays thin, and the monitoring happens in the dashboard.
 
-## The two-day build
+<figure class="fig">
+<svg viewBox="0 0 680 128" role="img" aria-labelledby="cpst cpsd">
+  <title id="cpst">Caprica system</title>
+  <desc id="cpsd">The helmet device, an ESP32 with motion sensors and GPS, sends events over Bluetooth serial to the rider's React Native app. The app shows alerts and sends accident reports to the cloud. The monitoring dashboard shows recent accidents on Google Maps.</desc>
+  <defs><marker id="cpsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cpsb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <text class="h" x="2" y="14">ON THE HELMET</text>
+  <rect class="box" x="2" y="28" width="150" height="52" rx="6"/>
+  <text class="t" x="14" y="50">Helmet device</text>
+  <text class="m" x="14" y="66">ESP32, sensors, GPS</text>
+  <text class="h" x="202" y="14">ON THE PHONE</text>
+  <rect class="box" x="202" y="28" width="124" height="52" rx="6"/>
+  <text class="t" x="214" y="50">Rider app</text>
+  <text class="m" x="214" y="66">React Native</text>
+  <text class="h" x="382" y="14">CLOUD</text>
+  <rect class="box" x="382" y="28" width="136" height="52" rx="6"/>
+  <text class="t" x="394" y="50">Backend</text>
+  <text class="m" x="394" y="66">accident reports</text>
+  <text class="h" x="568" y="14">MONITORING</text>
+  <rect class="box" x="568" y="28" width="112" height="52" rx="6"/>
+  <text class="t" x="580" y="50">Dashboard</text>
+  <text class="m" x="580" y="66">Google Maps</text>
+  <path class="ln" d="M152,54 L200,54" marker-end="url(#cpsa)"/>
+  <path class="sa" d="M326,54 L380,54" marker-end="url(#cpsb)"/>
+  <path class="sa" d="M518,54 L566,54" marker-end="url(#cpsb)"/>
+  <text class="m" x="176" y="100" text-anchor="middle">Bluetooth</text>
+  <text class="ta" x="353" y="100" text-anchor="middle">accident</text>
+  <text class="ta" x="353" y="114" text-anchor="middle">report</text>
+  <text class="ta" x="542" y="100" text-anchor="middle">map</text>
+</svg>
+<figcaption>Speeding alerts stay on the phone. Accident reports go on to the dashboard.</figcaption>
+</figure>
 
-We built it as the SSX_Ceria team at a Gojek hackathon, and it won 2nd place. Besides the device, my teammates built a React Native client and a separate dashboard. The client uses a patched copy of the react-native-android-btserial module, which the repository ships in `lib/` to replace the one in `node_modules/`. The app stays thin: it receives events, shows them and forwards accident reports. Monitoring lives in the dashboard, not on the phone.
+## Detecting an accident
+
+The device measures speed, acceleration and location. Speeding is the simple check: the speed goes above the set maximum. For an accident, the device looks for two signals. The first is acceleration over a threshold, which means a hard impact. The second is an abrupt change in deceleration, which is what a fall looks like.
+
+<figure class="fig">
+<svg viewBox="0 0 680 196" role="img" aria-labelledby="cpdt cpdd">
+  <title id="cpdt">Accident and speeding detection</title>
+  <desc id="cpdd">On the helmet device, readings of speed, acceleration and GPS feed two checks. Speed above the set maximum gives a speeding alert on the rider's phone. Acceleration over a threshold, which means an impact, or an abrupt change in deceleration, which means a fall, is treated as an accident: the phone shows an alert and sends a report with the location to the dashboard.</desc>
+  <defs><marker id="cpda" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cpdb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="2" y="70" width="136" height="52" rx="6"/>
+  <text class="t" x="14" y="92">Readings</text>
+  <text class="m" x="14" y="108">speed, accel, GPS</text>
+  <rect class="box" x="184" y="16" width="216" height="52" rx="6"/>
+  <text class="t" x="196" y="38">Speeding?</text>
+  <text class="m" x="196" y="54">speed > set maximum</text>
+  <rect class="box" x="184" y="112" width="216" height="70" rx="6"/>
+  <rect class="fa" x="184" y="112" width="216" height="70" rx="6" opacity=".14"/>
+  <rect class="sa" x="184" y="112" width="216" height="70" rx="6"/>
+  <text class="t" x="196" y="135">Impact or fall?</text>
+  <text class="m" x="196" y="151">acceleration > threshold</text>
+  <text class="m" x="196" y="167">or abrupt deceleration</text>
+  <rect class="box" x="500" y="16" width="178" height="52" rx="6"/>
+  <text class="t" x="512" y="38">Speeding alert</text>
+  <text class="m" x="512" y="54">on the rider's phone</text>
+  <rect class="box" x="500" y="112" width="178" height="70" rx="6"/>
+  <rect class="fa" x="500" y="112" width="178" height="70" rx="6" opacity=".14"/>
+  <rect class="sa" x="500" y="112" width="178" height="70" rx="6"/>
+  <text class="t" x="512" y="135">Accident</text>
+  <text class="m" x="512" y="151">alert on the phone,</text>
+  <text class="m" x="512" y="167">report to dashboard</text>
+  <path class="ln" d="M138,96 L160,96 L160,42 L182,42" marker-end="url(#cpda)"/>
+  <path class="ln" d="M160,96 L160,147 L182,147" marker-end="url(#cpda)"/>
+  <path class="ln" d="M400,42 L498,42" marker-end="url(#cpda)"/>
+  <path class="sa" d="M400,147 L498,147" marker-end="url(#cpdb)"/>
+  <text class="m" x="449" y="36" text-anchor="middle">yes</text>
+  <text class="ta" x="449" y="141" text-anchor="middle">yes</text>
+</svg>
+<figcaption>Both checks run on the helmet device. The phone only shows the result and forwards accident reports.</figcaption>
+</figure>
 
 ![Screen recording of the rider's Android app from the original repository](/assets/images/projects/caprica-client-demo.gif)
 
-Every commit in both repositories is from 25 and 26 March 2017. It was a two-day prototype, and nobody maintained it after the hackathon.21:T5aa,<h2>What it does</h2>
+## The team and the result
+
+We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2nd place. I built the IoT device, and my teammates built the React Native client and the dashboard.
+24:T1a38,<h2>What it does</h2>
 <p>A device on a motorcycle helmet watches for two things: an accident, and the rider going faster than the maximum speed. When either happens, the rider’s phone shows an alert. After an accident, the app also sends the rider, time and location to a monitoring dashboard, which shows recent accidents on Google Maps.</p>
-<h2>The device</h2>
-<p>My part was the IoT side. The device is an ESP32 board with motion sensors and a GPS module. It measures speed and acceleration, detects accidents and tracks the location. It pairs with the rider’s phone over Bluetooth serial, and the phone sends the data on to the cloud.</p>
-<h2>The two-day build</h2>
-<p>We built it as the SSX_Ceria team at a Gojek hackathon, and it won 2nd place. Besides the device, my teammates built a React Native client and a separate dashboard. The client uses a patched copy of the react-native-android-btserial module, which the repository ships in <code>lib/</code> to replace the one in <code>node_modules/</code>. The app stays thin: it receives events, shows them and forwards accident reports. Monitoring lives in the dashboard, not on the phone.</p>
+<h2>How it works</h2>
+<p>The system has three parts: the helmet device, the rider app and the dashboard. The device is an ESP32 board with motion sensors and a GPS module. It pairs with the rider’s phone over Bluetooth serial. The React Native app shows the alerts and forwards accident reports to the cloud. The dashboard reads those reports and puts them on a map. So the app on the phone stays thin, and the monitoring happens in the dashboard.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 128" role="img" aria-labelledby="cpst cpsd">
+  <title id="cpst">Caprica system</title>
+  <desc id="cpsd">The helmet device, an ESP32 with motion sensors and GPS, sends events over Bluetooth serial to the rider's React Native app. The app shows alerts and sends accident reports to the cloud. The monitoring dashboard shows recent accidents on Google Maps.</desc>
+  <defs><marker id="cpsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cpsb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <text class="h" x="2" y="14">ON THE HELMET</text>
+  <rect class="box" x="2" y="28" width="150" height="52" rx="6"></rect>
+  <text class="t" x="14" y="50">Helmet device</text>
+  <text class="m" x="14" y="66">ESP32, sensors, GPS</text>
+  <text class="h" x="202" y="14">ON THE PHONE</text>
+  <rect class="box" x="202" y="28" width="124" height="52" rx="6"></rect>
+  <text class="t" x="214" y="50">Rider app</text>
+  <text class="m" x="214" y="66">React Native</text>
+  <text class="h" x="382" y="14">CLOUD</text>
+  <rect class="box" x="382" y="28" width="136" height="52" rx="6"></rect>
+  <text class="t" x="394" y="50">Backend</text>
+  <text class="m" x="394" y="66">accident reports</text>
+  <text class="h" x="568" y="14">MONITORING</text>
+  <rect class="box" x="568" y="28" width="112" height="52" rx="6"></rect>
+  <text class="t" x="580" y="50">Dashboard</text>
+  <text class="m" x="580" y="66">Google Maps</text>
+  <path class="ln" d="M152,54 L200,54" marker-end="url(#cpsa)"></path>
+  <path class="sa" d="M326,54 L380,54" marker-end="url(#cpsb)"></path>
+  <path class="sa" d="M518,54 L566,54" marker-end="url(#cpsb)"></path>
+  <text class="m" x="176" y="100" text-anchor="middle">Bluetooth</text>
+  <text class="ta" x="353" y="100" text-anchor="middle">accident</text>
+  <text class="ta" x="353" y="114" text-anchor="middle">report</text>
+  <text class="ta" x="542" y="100" text-anchor="middle">map</text>
+</svg>
+<figcaption>Speeding alerts stay on the phone. Accident reports go on to the dashboard.</figcaption>
+</figure>
+<h2>Detecting an accident</h2>
+<p>The device measures speed, acceleration and location. Speeding is the simple check: the speed goes above the set maximum. For an accident, the device looks for two signals. The first is acceleration over a threshold, which means a hard impact. The second is an abrupt change in deceleration, which is what a fall looks like.</p>
+<figure class="fig">
+<svg viewBox="0 0 680 196" role="img" aria-labelledby="cpdt cpdd">
+  <title id="cpdt">Accident and speeding detection</title>
+  <desc id="cpdd">On the helmet device, readings of speed, acceleration and GPS feed two checks. Speed above the set maximum gives a speeding alert on the rider's phone. Acceleration over a threshold, which means an impact, or an abrupt change in deceleration, which means a fall, is treated as an accident: the phone shows an alert and sends a report with the location to the dashboard.</desc>
+  <defs><marker id="cpda" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cpdb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <rect class="box" x="2" y="70" width="136" height="52" rx="6"></rect>
+  <text class="t" x="14" y="92">Readings</text>
+  <text class="m" x="14" y="108">speed, accel, GPS</text>
+  <rect class="box" x="184" y="16" width="216" height="52" rx="6"></rect>
+  <text class="t" x="196" y="38">Speeding?</text>
+  <text class="m" x="196" y="54">speed > set maximum</text>
+  <rect class="box" x="184" y="112" width="216" height="70" rx="6"></rect>
+  <rect class="fa" x="184" y="112" width="216" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="184" y="112" width="216" height="70" rx="6"></rect>
+  <text class="t" x="196" y="135">Impact or fall?</text>
+  <text class="m" x="196" y="151">acceleration > threshold</text>
+  <text class="m" x="196" y="167">or abrupt deceleration</text>
+  <rect class="box" x="500" y="16" width="178" height="52" rx="6"></rect>
+  <text class="t" x="512" y="38">Speeding alert</text>
+  <text class="m" x="512" y="54">on the rider's phone</text>
+  <rect class="box" x="500" y="112" width="178" height="70" rx="6"></rect>
+  <rect class="fa" x="500" y="112" width="178" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sa" x="500" y="112" width="178" height="70" rx="6"></rect>
+  <text class="t" x="512" y="135">Accident</text>
+  <text class="m" x="512" y="151">alert on the phone,</text>
+  <text class="m" x="512" y="167">report to dashboard</text>
+  <path class="ln" d="M138,96 L160,96 L160,42 L182,42" marker-end="url(#cpda)"></path>
+  <path class="ln" d="M160,96 L160,147 L182,147" marker-end="url(#cpda)"></path>
+  <path class="ln" d="M400,42 L498,42" marker-end="url(#cpda)"></path>
+  <path class="sa" d="M400,147 L498,147" marker-end="url(#cpdb)"></path>
+  <text class="m" x="449" y="36" text-anchor="middle">yes</text>
+  <text class="ta" x="449" y="141" text-anchor="middle">yes</text>
+</svg>
+<figcaption>Both checks run on the helmet device. The phone only shows the result and forwards accident reports.</figcaption>
+</figure>
 <p><img src="/assets/images/projects/caprica-client-demo.gif" alt="Screen recording of the rider&#x27;s Android app from the original repository"></p>
-<p>Every commit in both repositories is from 25 and 26 March 2017. It was a two-day prototype, and nobody maintained it after the hackathon.</p>e:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":[["$","$L10",null,{"projects":[{"id":"icarus","title":"Icarus: a virtual run platform","kind":"Full-stack project · 2021","stack":"Next.js · Express · Node.js","image":"/assets/images/projects/icarus-card.png","detail_image":"/assets/images/projects/icarus-events.png","detail_image_alt":"The Icarus events page, captured from the app running locally","video":"/assets/videos/projects/icarus-showreel.mp4","video_poster":"/assets/videos/projects/icarus-showreel-poster.jpg","topic":"Web","color":"l1","image_caption":"The Icarus homepage, captured from the app running locally.","teaser":"A virtual run platform for communities that are too small for the big race platforms. I worked on the full stack and the cloud architecture. It grew to more than 3,000 registered users across 10 events.","body":"## Why it exists\n\nRace platforms asked for a large minimum number of participants. That shut out smaller communities that wanted to run their own event. Icarus lets any community create a virtual run, walk or ride and invite people to join.\n\n## Results\n\nReal communities ran their events on it, and we served several clients. It grew to more than 3,000 registered users across 10 events. In a single event month, more than 500 participants logged their activities.\n\n## How it is built\n\nIn a small team, I worked on the full stack and the cloud architecture. A Next.js front end talks to a separate Express API on Node.js. In development, Next rewrites `/apps/*` to the local API on port 8000, so the web app and the API can be deployed separately. The front end uses Chakra UI and Material-UI components, forms use react-hook-form with yup validation, and sign-in uses Firebase Authentication. Each event has a distance, a date and a price. Events included Pharmarun 2022 and the IAE Virtual Run series.","body_html":"$11"},{"id":"clothing-similarity","title":"Learning Image Similarities on Clothing Images","kind":"KTH DD2430 course project · 2019","stack":"Deep learning · Computer vision · Siamese networks · Metric learning","image":"/assets/images/projects/clothing-illustration.png","image_caption":"AI-generated concept illustration of the clothing-similarity workflow","detail_image":"/assets/images/projects/clothing-card.png","detail_image_alt":"Architecture diagram based on the project report","topic":"Data science","color":"l3","teaser":"Teaching a neural network what 'similar clothes' means, so a photo can be matched to visually similar items.","body":"$12","body_html":"$13"},{"id":"streaming-artists","title":"A live chart of trending artists","kind":"Student team project · 2019","stack":"Kafka · Spark Streaming · Cassandra · Dash","repo":"https://github.com/fadhilmch/streaming-twitter-spotify-trending-artists","post":"/posts/building-a-streaming-pipeline/","post_title":"Learning data streaming by building one","image":"/assets/images/projects/streaming-illustration.png","topic":"Systems","color":"l0","image_caption":"AI-generated concept illustration · not a dashboard","detail_image":"/assets/images/projects/streaming-trending-artists.gif","detail_image_alt":"Screen recording of the live trending-artists dashboard","teaser":"Tweets that shared Spotify tracks, turned into a live top-20 chart of artists. Kafka takes the tweets in, Spark Streaming counts them, Cassandra stores the counts and Dash draws the chart.","body":"$14","body_html":"$15"},{"id":"sentiment-classifier","title":"Comparing tweet sentiment classifiers","kind":"KTH DM2583 course team project · 2019","stack":"Python · scikit-learn · Keras · NLP","repo":"https://github.com/fadhilmch/big-data-project","post":"/posts/rereading-a-2019-sentiment-model/","post_title":"My first text classifier for sentiment analysis","image":"/assets/images/projects/sentiment-illustration.png","image_caption":"AI-generated concept illustration of the comparison workflow","topic":"Data science","color":"l3","teaser":"Four ways to label tweet sentiment, trained and compared on the same cleaned Twitter data: a TextBlob lexicon baseline, Naive Bayes, a linear SVM and a small CNN.","body":"$16","body_html":"$17"},{"id":"image-colorization","title":"Adding colour to grayscale images","kind":"KTH DD2424 course team project · 2019","stack":"TensorFlow · Keras · Inception-ResNet-v2","repo":"https://github.com/fadhilmch/image_colorization","image":"/assets/images/projects/colorization-card.png","detail_image":"/assets/images/projects/colorization-example.svg","detail_image_alt":"Repo output: grayscale input, the network prediction and the original photo","topic":"Data science","color":"l3","image_caption":"Repo output · grayscale / prediction / original, two examples","teaser":"A small reproduction of a deep colorization paper. An encoder and decoder predict local colour, and pretrained Inception-ResNet features add context about the whole scene.","body":"$18","body_html":"$19"},{"id":"street2shop-downloader","title":"Downloading the Street2Shop dataset","kind":"Personal project · 2019, rebuilt 2026","stack":"Python · Hugging Face datasets · Pillow","repo":"https://github.com/fadhilmch/street2shop-download","image":"/assets/images/projects/street2shop-illustration.png","topic":"Data science","color":"l3","image_caption":"AI-generated concept illustration of the download and crop workflow, not dataset images","teaser":"The Street2Shop clothing dataset was published as lists of image URLs, and the original hosts are now offline. This tool exports the images from a community copy on Hugging Face, in the original folder layout.","body":"$1a","body_html":"$1b"},{"id":"bookio","title":"Bookio: a community bookshelf","kind":"KTH Interaction Programming course team project · 2019","stack":"React · Redux · Firebase · Algolia · Google Maps","repo":"https://github.com/fadhilmch/ipdw-project","links":[{"href":"https://github.com/bt-s/BOOKIO","label":"Original team repo ↗"},{"href":"https://bookio-5c798.firebaseapp.com/","label":"Live demo (older build) ↗"}],"image":"https://github.com/user-attachments/assets/a0954b53-b72c-49f6-b232-fcb5a73601be","image_auto_height":true,"video":"/assets/videos/projects/bookio-showreel.mp4","video_poster":"/assets/videos/projects/bookio-showreel-poster.jpg","topic":"Web","color":"l1","image_caption":"App demo","teaser":"A shared bookshelf for people nearby: post a book to lend or give away, search the shelf and meet the owner. I worked across the full stack, including accounts and the UI and UX design.","body":"$1c","body_html":"$1d"},{"id":"treki","title":"Treki, a Bluetooth tracker for belongings","kind":"Bootcamp final project · Hacktiv8 batch 16 · 2018","stack":"React Native · Node.js · Bluetooth Low Energy","repo":"https://github.com/fadhilmch/treki-client","links":[{"href":"https://www.youtube.com/watch?v=each00lmwpk","label":"Demo video ↗"}],"image":"/assets/images/projects/treki-title.jpg","topic":"Mobile","color":"l4","image_caption":"The Treki app with two finished tags (treki-client repository)","teaser":"A Bluetooth tracker for keys and wallets that finds lost items through other users' phones. I led a team of four and was the main developer. It won best presentation at the Hacktiv8 bootcamp.","body":"$1e","body_html":"$1f"},{"id":"caprica","title":"Caprica: a connected-helmet safety system","kind":"Hackathon project · 2017","stack":"React Native · Bluetooth serial · Google Maps","repo":"https://github.com/fadhilmch/caprica-client","links":[{"href":"https://github.com/fadhilmch/caprica-dashboard","label":"Dashboard on GitHub ↗"}],"image":"/assets/images/projects/caprica-illustration.png","topic":"Hardware","color":"l2","image_caption":"AI-generated concept illustration of the helmet-to-dashboard alert flow","detail_image":"/assets/images/projects/caprica-demo-frame.png","detail_image_alt":"Frame from the client demo recording (caprica-client repository)","teaser":"A helmet safety system that won 2nd place at a Gojek hackathon. I built the IoT device: an ESP32 with motion sensors and GPS that detects accidents and speeding, and reports them through the rider's phone.","body":"$20","body_html":"$21"}]}],["$L22"],"$L23"]}],"p":false,"v":null}}]]
-d:[["children",{"s":"projects","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/03ntvs3khe75e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],"p":false,"v":null},"c":"$Qe"}]]
-c:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/3hvp7qaeiywi4.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/0d7sjusiro2wr.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$La",null,{}]]]}],"p":false,"v":null},"c":"$Qd"}]]
-0:{"P":null,"c":["","projects",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1ka4euz_woo03.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$La",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0e8bzul-ry3sp.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qc"},"h":{"r":["$","$1","h",{"children":[null,["$","$L25",null,{"children":"$L26"}],["$","$L28",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$29",null,{"name":"Next.Metadata","children":"$L2a"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$2b",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2g-27y0b7nxhn.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"0CHQxpLJbOXbXjHr0Bgdq"}
-2c:I[97367,["$2"],"OutletBoundary"]
-22:["$","script","script-0",{"src":"/_next/static/chunks/0ctf2xo_74kqr.js","async":true,"nonce":"$undefined"}]
-23:["$","$L2c",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@2d"}]}]
-26:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
-2e:I[27201,["$2"],"IconMark"]
-2a:[["$","title","0",{"children":"Projects · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/projects/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Projects"}],["$","meta","10",{"property":"og:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/projects/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","15",{"property":"og:image:width","content":"1200"}],["$","meta","16",{"property":"og:image:height","content":"630"}],["$","meta","17",{"property":"og:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","18",{"property":"og:type","content":"website"}],["$","meta","19",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","20",{"name":"twitter:title","content":"Projects"}],["$","meta","21",{"name":"twitter:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","22",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","23",{"name":"twitter:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","24",{"name":"twitter:image:width","content":"1200"}],["$","meta","25",{"name":"twitter:image:height","content":"630"}],["$","link","26",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L2e","27",{}]]
-2d:null
+<h2>The team and the result</h2>
+<p>We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2nd place. I built the IoT device, and my teammates built the React Native client and the dashboard.</p>10:[["children",{"s":"__PAGE__","h":512,"d":{"r":["$","$1","c",{"children":[["$","$L12",null,{"projects":[{"id":"icarus","title":"Icarus: a virtual run platform","kind":"Full-stack project · 2021","stack":"Next.js · Express · Strava API · AWS","image":"/assets/images/projects/icarus-card.png","detail_image":"/assets/images/projects/icarus-events.png","detail_image_alt":"The Icarus events page, captured from the app running locally","video":"/assets/videos/projects/icarus-showreel.mp4","video_poster":"/assets/videos/projects/icarus-showreel-poster.jpg","topic":"Web","color":"l1","image_caption":"The Icarus homepage, captured from the app running locally.","teaser":"A virtual run platform for communities that are too small for the big race platforms. I worked on the full stack and the cloud architecture. It grew to more than 3,000 registered users across 10 events.","body":"$13","body_html":"$14"},{"id":"clothing-similarity","title":"Learning Image Similarities on Clothing Images","kind":"KTH DD2430 course project · 2019","stack":"Deep learning · Computer vision · Siamese networks · Metric learning","image":"/assets/images/projects/clothing-illustration.png","image_caption":"AI-generated concept illustration of the clothing-similarity workflow","detail_image":"/assets/images/projects/clothing-card.png","detail_image_alt":"Architecture diagram based on the project report","topic":"Data science","color":"l3","teaser":"Teaching a neural network what 'similar clothes' means, so a photo can be matched to visually similar items.","body":"$15","body_html":"$16"},{"id":"streaming-artists","title":"A live chart of trending artists","kind":"Student team project · 2019","stack":"Kafka · Spark Streaming · Cassandra · Dash","repo":"https://github.com/fadhilmch/streaming-twitter-spotify-trending-artists","post":"/posts/building-a-streaming-pipeline/","post_title":"Learning data streaming by building one","image":"/assets/images/projects/streaming-illustration.png","topic":"Systems","color":"l0","image_caption":"AI-generated concept illustration · not a dashboard","detail_image":"/assets/images/projects/streaming-trending-artists.gif","detail_image_alt":"Screen recording of the live trending-artists dashboard","teaser":"Tweets that shared Spotify tracks, turned into a live top-20 chart of artists. Kafka takes the tweets in, Spark Streaming counts them, Cassandra stores the counts and Dash draws the chart.","body":"$17","body_html":"$18"},{"id":"sentiment-classifier","title":"Comparing tweet sentiment classifiers","kind":"KTH DM2583 course team project · 2019","stack":"Python · scikit-learn · Keras · NLP","repo":"https://github.com/fadhilmch/big-data-project","post":"/posts/rereading-a-2019-sentiment-model/","post_title":"My first text classifier for sentiment analysis","image":"/assets/images/projects/sentiment-illustration.png","image_caption":"AI-generated concept illustration of the comparison workflow","topic":"Data science","color":"l3","teaser":"Four ways to label tweet sentiment, trained and compared on the same cleaned Twitter data: a TextBlob lexicon baseline, Naive Bayes, a linear SVM and a small CNN.","body":"$19","body_html":"$1a"},{"id":"image-colorization","title":"Adding colour to grayscale images","kind":"KTH DD2424 course team project · 2019","stack":"TensorFlow · Keras · Inception-ResNet-v2","repo":"https://github.com/fadhilmch/image_colorization","post":"/posts/colorizing-images-with-local-and-global-features/","post_title":"Image colorization: learning what grayscale leaves out","image":"/assets/images/projects/colorization-card.png","detail_image":"/assets/images/projects/colorization-example.svg","detail_image_alt":"Repo output: grayscale input, the network prediction and the original photo","topic":"Data science","color":"l3","image_caption":"Repo output · grayscale / prediction / original, two examples","teaser":"A small reproduction of a deep colorization paper. An encoder and decoder predict local colour, and pretrained Inception-ResNet features add context about the whole scene.","body":"$1b","body_html":"$1c"},{"id":"street2shop-downloader","title":"Downloading the Street2Shop dataset","kind":"Personal project · 2019","stack":"Python · Hugging Face datasets · Pillow","repo":"https://github.com/fadhilmch/street2shop-download","image":"/assets/images/projects/street2shop-illustration.png","topic":"Data science","color":"l3","image_caption":"AI-generated concept illustration of the download and crop workflow, not dataset images","teaser":"The Street2Shop clothing dataset was published as lists of image URLs, and the original hosts are now offline. This tool exports the images from a community copy on Hugging Face, in the original folder layout.","body":"$1d","body_html":"$1e"},{"id":"bookio","title":"Bookio: a community bookshelf","kind":"KTH Interaction Programming course team project · 2019","stack":"React · Redux · Firebase · Algolia · Google Maps","repo":"https://github.com/fadhilmch/ipdw-project","links":[{"href":"https://github.com/bt-s/BOOKIO","label":"Original team repo ↗"},{"href":"https://bookio-5c798.firebaseapp.com/","label":"Live demo (older build) ↗"}],"image":"https://github.com/user-attachments/assets/a0954b53-b72c-49f6-b232-fcb5a73601be","image_auto_height":true,"video":"/assets/videos/projects/bookio-showreel.mp4","video_poster":"/assets/videos/projects/bookio-showreel-poster.jpg","topic":"Web","color":"l1","image_caption":"App demo","teaser":"A shared bookshelf for people nearby: post a book to lend or give away, search the shelf and meet the owner. I worked across the full stack, including accounts and the UI and UX design.","body":"$1f","body_html":"$20"},{"id":"treki","title":"Treki, a Bluetooth tracker for belongings","kind":"Bootcamp final project · Hacktiv8 batch 16 · 2018","stack":"React Native · Node.js · Bluetooth Low Energy","repo":"https://github.com/fadhilmch/treki-client","links":[{"href":"https://www.youtube.com/watch?v=each00lmwpk","label":"Demo video ↗"}],"image":"/assets/images/projects/treki-title.jpg","topic":"Mobile","color":"l4","image_caption":"The Treki app with two finished tags (treki-client repository)","video":"/assets/videos/projects/treki-showreel.mp4","video_poster":"/assets/videos/projects/treki-showreel-poster.jpg","teaser":"A Bluetooth tracker for keys and wallets that finds lost items through other users' phones. I led a team of four and was the main developer. It won best presentation at the Hacktiv8 bootcamp.","body":"$21","body_html":"$22"},{"id":"caprica","title":"Caprica: a connected-helmet safety system","kind":"Hackathon project · 2017","stack":"React Native · Bluetooth serial · Google Maps","repo":"https://github.com/fadhilmch/caprica-client","links":[{"href":"https://github.com/fadhilmch/caprica-dashboard","label":"Dashboard on GitHub ↗"}],"image":"/assets/images/projects/caprica-illustration.png","topic":"Hardware","color":"l2","image_caption":"AI-generated concept illustration of the helmet-to-dashboard alert flow","detail_image":"/assets/images/projects/caprica-demo-frame.png","detail_image_alt":"Frame from the client demo recording (caprica-client repository)","teaser":"A helmet safety system that won 2nd place at a Gojek hackathon. A device on the helmet detects accidents and speeding, the rider's app shows the alert, and a dashboard maps recent accidents. I built the IoT device.","body":"$23","body_html":"$24"}]}],["$L25"],"$L26"]}],"p":false,"v":null}}]]
+d:[["children",{"s":"projects","h":512,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0jw0zpt0wwmkr.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/03ntvs3khe75e.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/1e28nzlggtwea.js","async":true,"nonce":"$undefined"}]],[["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}],["$","$Lf",null,{}]]]}],"p":false,"v":null},"c":"$Q10"}]]
+c:[["children",{"s":"(site)","h":512,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0bgigsb2ujwag.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/1-wy-e43sc8fp.js","async":true,"nonce":"$undefined"}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eykxqz7e_k3b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$La",null,{}]]]}],"p":false,"v":null},"c":"$Qd"}]]
+0:{"P":null,"c":["","projects",""],"q":"","i":false,"t":{"t":{"s":"","h":528,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3_8ddb6i2t6s1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/3m_arazuqkl24.js","async":true,"nonce":"$undefined"}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$La",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eykxqz7e_k3b.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$Lb",null,{}]]}]}]]}],"p":false,"v":null},"c":"$Qc"},"h":{"r":["$","$1","h",{"children":[null,["$","$L28",null,{"children":"$L29"}],["$","$L2b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$2c",null,{"name":"Next.Metadata","children":"$L2d"}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":false,"v":null}},"m":"$undefined","G":["$2e",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3_8ddb6i2t6s1.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]]],"S":true,"r":"$undefined","s":"$undefined","a":"$undefined","l":"$undefined","p":"$undefined","d":"$undefined","b":"PN_Mo5P9TtpqvVAuxxQh1"}
+2f:I[97367,["$2"],"OutletBoundary"]
+25:["$","script","script-0",{"src":"/_next/static/chunks/0ctf2xo_74kqr.js","async":true,"nonce":"$undefined"}]
+26:["$","$L2f",null,{"children":["$","$2c",null,{"name":"Next.MetadataOutlet","children":"$@30"}]}]
+29:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]
+31:I[27201,["$2"],"IconMark"]
+2d:[["$","title","0",{"children":"Projects · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/projects/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Projects"}],["$","meta","10",{"property":"og:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/projects/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","15",{"property":"og:image:width","content":"1200"}],["$","meta","16",{"property":"og:image:height","content":"630"}],["$","meta","17",{"property":"og:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","18",{"property":"og:type","content":"website"}],["$","meta","19",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","20",{"name":"twitter:title","content":"Projects"}],["$","meta","21",{"name":"twitter:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","22",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","23",{"name":"twitter:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","24",{"name":"twitter:image:width","content":"1200"}],["$","meta","25",{"name":"twitter:image:height","content":"630"}],["$","link","26",{"rel":"icon","href":"/assets/favicon.svg"}],["$","$L31","27",{}]]
+30:null

@@ -1,21 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-label="Illustrative map of the Bookio build: React and Redux front end connected to Firebase, Algolia, Google Maps and the Goodreads API">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 238" role="img" aria-label="Bookio architecture: the React and Redux app talks to Firebase as its whole backend (Authentication, Storage and Cloud Firestore with real-time updates). Firestore syncs books to Algolia for search. Google Maps shows pick-up points and the Goodreads API fills in book details.">
   <g fill="none" stroke="#7a7873" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
-    <rect x="240" y="14" width="160" height="56" rx="10"/>
-    <rect x="20" y="120" width="120" height="52" rx="8"/>
-    <rect x="170" y="120" width="110" height="52" rx="8"/>
-    <rect x="310" y="120" width="120" height="52" rx="8"/>
-    <rect x="460" y="120" width="130" height="52" rx="8"/>
-    <path d="M300 70v20M290 86l10 10 10-10M300 96v24" transform="translate(0 -4)"/>
-    <path d="M270 60L85 120M300 70L225 120M340 66L375 120M370 60L525 120" stroke-dasharray="5 5"/>
-    <path d="M52 146h56M52 158h36" stroke-dasharray="1 7"/>
-    <circle cx="600" cy="146" r="10" fill="#e8765a" transform="translate(-14 0)"/>
+    <rect x="240" y="14" width="160" height="52" rx="10"/>
+    <rect x="12" y="112" width="336" height="98" rx="12" stroke-dasharray="6 6"/>
+    <rect x="24" y="140" width="92" height="44" rx="8"/>
+    <rect x="126" y="140" width="92" height="44" rx="8"/>
+    <rect x="228" y="140" width="108" height="44" rx="8" stroke="#2a8f9c"/>
+    <rect x="368" y="140" width="82" height="44" rx="8"/>
+    <rect x="458" y="140" width="86" height="44" rx="8"/>
+    <rect x="552" y="140" width="82" height="44" rx="8"/>
+    <path d="M250 66L70 140M275 66L172 140M340 66L409 140M365 66L501 140M390 66L593 140" stroke-dasharray="5 5"/>
+    <path d="M305 66L282 140" stroke="#2a8f9c"/>
+    <path d="M336 162H366M360 156l6 6-6 6" stroke="#2a8f9c"/>
   </g>
   <g font-family="Inter, Arial, sans-serif" font-size="13" fill="#7a7873" text-anchor="middle">
-    <text x="320" y="40">React + Redux app</text><text x="320" y="56" fill="#e8765a">CRA, SCSS</text>
-    <text x="80" y="140">Firestore</text><text x="80" y="164">Auth + Storage</text>
-    <text x="225" y="140">Algolia</text><text x="225" y="156" fill="#e8765a">search sync</text>
-    <text x="370" y="140">Google Maps</text><text x="370" y="156">pick-up points</text>
-    <text x="525" y="140">Goodreads API</text><text x="525" y="156">book details</text>
-    <text x="320" y="206" font-size="12">Firebase services on the left, external APIs on the right - illustrative</text>
+    <text x="320" y="38">React + Redux app</text><text x="320" y="54" font-size="12">in each user's browser</text>
+    <text x="24" y="202" text-anchor="start" font-size="12" fill="#2a8f9c">Firebase, the whole backend</text>
+    <text x="70" y="159">Auth</text><text x="70" y="175" font-size="11">email, Facebook</text>
+    <text x="172" y="159">Storage</text><text x="172" y="175" font-size="11">cover photos</text>
+    <text x="282" y="159">Firestore</text><text x="282" y="175" font-size="11">books, requests</text>
+    <text x="409" y="159">Algolia</text><text x="409" y="175" font-size="11">search</text>
+    <text x="501" y="159">Google Maps</text><text x="501" y="175" font-size="11">pick-up points</text>
+    <text x="593" y="159">Goodreads</text><text x="593" y="175" font-size="11">book details</text>
+    <text x="300" y="104" text-anchor="start" font-size="11" fill="#2a8f9c">real-time</text>
+    <text x="352" y="180" font-size="11" fill="#2a8f9c">sync</text>
+    <text x="320" y="230" font-size="12">No servers of our own. Firestore pushes changes to every open app.</text>
   </g>
 </svg>
