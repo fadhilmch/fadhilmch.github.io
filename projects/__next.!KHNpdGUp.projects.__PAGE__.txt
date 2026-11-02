@@ -3,8 +3,8 @@
 3:I[30824,["$2"],"Providers"]
 4:I[39756,["$2"],"default"]
 5:I[37457,["$2"],"default"]
-6:"/_next/static/chunks/0bgigsb2ujwag.js"
-7:"/_next/static/chunks/1-wy-e43sc8fp.js"
+6:"/_next/static/chunks/1umguafe6ervy.js"
+7:"/_next/static/chunks/3edggh0ytbgr0.js"
 8:I[36852,["$2","$6","$7"],"SiteHeader"]
 9:I[22016,["$2","$6","$7"],""]
 a:I[8745,["$2","$6","$7"],"SiteFooter"]
@@ -18,10 +18,10 @@ b:I[68872,["$2"],"UmamiTracker"]
 2e:"MetadataBoundary"
 2f:I[97367,["$2"],"$2e"]
 30:"$Sreact.suspense"
-:HL["/_next/static/chunks/3_8ddb6i2t6s1.css","style"]
+:HL["/_next/static/chunks/1ye4d461f4cqe.css","style"]
 :HL["/_next/static/chunks/2-u9mhiv6azud.css","style"]
 :HL["/_next/static/chunks/2dnc-u4iux7gk.css","style"]
-:HL["/_next/static/chunks/0eykxqz7e_k3b.css","style"]
+:HL["/_next/static/chunks/02fp5cl87rfpg.css","style"]
 :HL["/_next/static/chunks/0jw0zpt0wwmkr.css","style"]
 :HL["/_next/static/chunks/03ntvs3khe75e.css","style"]
 d:X
@@ -39,7 +39,7 @@ Participants sign up, join the event and connect their Strava account. After tha
 <svg viewBox="0 0 680 104" role="img" aria-labelledby="icft icfd">
   <title id="icft">The life of an Icarus event</title>
   <desc id="icfd">Five steps: a community asks for an event, we set it up from a template that sets the format and scoring rules, we review and approve it, participants join and connect Strava, and their activities sync through a Strava webhook.</desc>
-  <defs><marker id="icfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="icfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="icfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="icfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <text class="h" x="2" y="14">LIFE OF AN EVENT</text>
   <rect class="box" x="2" y="28" width="122" height="70" rx="6"/>
   <text class="m" x="14" y="51">01</text>
@@ -51,9 +51,9 @@ Participants sign up, join the event and connect their Strava account. After tha
   <text class="m" x="153" y="83">sets the rules</text>
   <path class="ln" d="M125,63 L139,63" marker-end="url(#icfa)"/>
   <rect class="box" x="280" y="28" width="122" height="70" rx="6"/>
-  <rect class="fa" x="280" y="28" width="122" height="70" rx="6" opacity=".14"/>
-  <rect class="sa" x="280" y="28" width="122" height="70" rx="6"/>
-  <text class="ta" x="292" y="51">03</text>
+  <rect class="fb" x="280" y="28" width="122" height="70" rx="6" opacity=".14"/>
+  <rect class="sb" x="280" y="28" width="122" height="70" rx="6"/>
+  <text class="tb" x="292" y="51">03</text>
   <text class="t" x="292" y="67">Approval</text>
   <text class="m" x="292" y="83">we review it</text>
   <path class="ln" d="M264,63 L278,63" marker-end="url(#icfa)"/>
@@ -79,7 +79,7 @@ In a small team, I worked on the full stack and the cloud architecture. The web 
 <svg viewBox="0 0 680 262" role="img" aria-labelledby="icat icad">
   <title id="icat">Icarus architecture</title>
   <desc id="icad">Participants and organisers use the Next.js web app, which calls a separate Express API. Both run on AWS EC2. Firebase Authentication handles sign-in. Strava calls the API through a webhook when a participant saves an activity, and the API then fetches that activity.</desc>
-  <defs><marker id="icaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="icab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="icaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="icab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <rect class="box" x="260" y="2" width="136" height="46" rx="6"/>
   <text class="t" x="272" y="21">Firebase Auth</text>
   <text class="m" x="272" y="37">sign-in</text>
@@ -92,8 +92,8 @@ In a small team, I worked on the full stack and the cloud architecture. The web 
   <text class="t" x="272" y="126">Next.js web app</text>
   <text class="m" x="272" y="142">pages, sign-up</text>
   <rect class="box" x="422" y="104" width="148" height="52" rx="6"/>
-  <rect class="fa" x="422" y="104" width="148" height="52" rx="6" opacity=".14"/>
-  <rect class="sa" x="422" y="104" width="148" height="52" rx="6"/>
+  <rect class="fb" x="422" y="104" width="148" height="52" rx="6" opacity=".14"/>
+  <rect class="sb" x="422" y="104" width="148" height="52" rx="6"/>
   <text class="t" x="434" y="126">Express API</text>
   <text class="m" x="434" y="142">events, activities</text>
   <path class="ln" d="M220,130 L258,130" marker-end="url(#icaa)"/>
@@ -102,9 +102,9 @@ In a small team, I worked on the full stack and the cloud architecture. The web 
   <rect class="box" x="422" y="212" width="148" height="46" rx="6"/>
   <text class="t" x="434" y="231">Strava</text>
   <text class="m" x="434" y="247">runs and rides</text>
-  <path class="sa" d="M466,210 L466,158" marker-end="url(#icab)"/>
+  <path class="sb" d="M466,210 L466,158" marker-end="url(#icab)"/>
   <path class="ln" d="M526,158 L526,210" marker-end="url(#icaa)"/>
-  <text class="ta" x="458" y="192" text-anchor="end">webhook</text>
+  <text class="tb" x="458" y="192" text-anchor="end">webhook</text>
   <text class="m" x="534" y="192">fetch activity</text>
 </svg>
 <figcaption>The web app and the API deploy separately on EC2. Strava tells the API about each new activity, so event progress updates on its own.</figcaption>
@@ -122,7 +122,7 @@ Real communities ran their events on it, and we served several clients, includin
 <svg viewBox="0 0 680 104" role="img" aria-labelledby="icft icfd">
   <title id="icft">The life of an Icarus event</title>
   <desc id="icfd">Five steps: a community asks for an event, we set it up from a template that sets the format and scoring rules, we review and approve it, participants join and connect Strava, and their activities sync through a Strava webhook.</desc>
-  <defs><marker id="icfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="icfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="icfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="icfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <text class="h" x="2" y="14">LIFE OF AN EVENT</text>
   <rect class="box" x="2" y="28" width="122" height="70" rx="6"></rect>
   <text class="m" x="14" y="51">01</text>
@@ -134,9 +134,9 @@ Real communities ran their events on it, and we served several clients, includin
   <text class="m" x="153" y="83">sets the rules</text>
   <path class="ln" d="M125,63 L139,63" marker-end="url(#icfa)"></path>
   <rect class="box" x="280" y="28" width="122" height="70" rx="6"></rect>
-  <rect class="fa" x="280" y="28" width="122" height="70" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="280" y="28" width="122" height="70" rx="6"></rect>
-  <text class="ta" x="292" y="51">03</text>
+  <rect class="fb" x="280" y="28" width="122" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="280" y="28" width="122" height="70" rx="6"></rect>
+  <text class="tb" x="292" y="51">03</text>
   <text class="t" x="292" y="67">Approval</text>
   <text class="m" x="292" y="83">we review it</text>
   <path class="ln" d="M264,63 L278,63" marker-end="url(#icfa)"></path>
@@ -159,7 +159,7 @@ Real communities ran their events on it, and we served several clients, includin
 <svg viewBox="0 0 680 262" role="img" aria-labelledby="icat icad">
   <title id="icat">Icarus architecture</title>
   <desc id="icad">Participants and organisers use the Next.js web app, which calls a separate Express API. Both run on AWS EC2. Firebase Authentication handles sign-in. Strava calls the API through a webhook when a participant saves an activity, and the API then fetches that activity.</desc>
-  <defs><marker id="icaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="icab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="icaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="icab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <rect class="box" x="260" y="2" width="136" height="46" rx="6"></rect>
   <text class="t" x="272" y="21">Firebase Auth</text>
   <text class="m" x="272" y="37">sign-in</text>
@@ -172,8 +172,8 @@ Real communities ran their events on it, and we served several clients, includin
   <text class="t" x="272" y="126">Next.js web app</text>
   <text class="m" x="272" y="142">pages, sign-up</text>
   <rect class="box" x="422" y="104" width="148" height="52" rx="6"></rect>
-  <rect class="fa" x="422" y="104" width="148" height="52" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="422" y="104" width="148" height="52" rx="6"></rect>
+  <rect class="fb" x="422" y="104" width="148" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="422" y="104" width="148" height="52" rx="6"></rect>
   <text class="t" x="434" y="126">Express API</text>
   <text class="m" x="434" y="142">events, activities</text>
   <path class="ln" d="M220,130 L258,130" marker-end="url(#icaa)"></path>
@@ -182,9 +182,9 @@ Real communities ran their events on it, and we served several clients, includin
   <rect class="box" x="422" y="212" width="148" height="46" rx="6"></rect>
   <text class="t" x="434" y="231">Strava</text>
   <text class="m" x="434" y="247">runs and rides</text>
-  <path class="sa" d="M466,210 L466,158" marker-end="url(#icab)"></path>
+  <path class="sb" d="M466,210 L466,158" marker-end="url(#icab)"></path>
   <path class="ln" d="M526,158 L526,210" marker-end="url(#icaa)"></path>
-  <text class="ta" x="458" y="192" text-anchor="end">webhook</text>
+  <text class="tb" x="458" y="192" text-anchor="end">webhook</text>
   <text class="m" x="534" y="192">fetch activity</text>
 </svg>
 <figcaption>The web app and the API deploy separately on EC2. Strava tells the API about each new activity, so event progress updates on its own.</figcaption>
@@ -204,10 +204,10 @@ RankNet uses VGG19 and a contrastive loss. The Deep Ranking network uses VGG16 a
 <svg viewBox="0 0 680 244" role="img" aria-labelledby="cltt cltd">
   <title id="cltt">Triplet training for clothing similarity</title>
   <desc id="cltd">A query image, a matching item and a non-matching item go through the same embedding network. Inside it, a pretrained VGG path captures what the item is and two shallow convolutional paths capture simpler appearance; the three are merged into one embedding. In the embedding space, the loss pulls the match closer to the query and pushes the non-match away.</desc>
-  <defs><marker id="clta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cltb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="clta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cltb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <rect class="box" x="2" y="34" width="104" height="44" rx="6"/>
-  <rect class="fa" x="2" y="34" width="104" height="44" rx="6" opacity=".14"/>
-  <rect class="sa" x="2" y="34" width="104" height="44" rx="6"/>
+  <rect class="fb" x="2" y="34" width="104" height="44" rx="6" opacity=".14"/>
+  <rect class="sb" x="2" y="34" width="104" height="44" rx="6"/>
   <text class="t" x="14" y="60">Query</text>
   <rect class="box" x="2" y="104" width="104" height="44" rx="6"/>
   <text class="t" x="14" y="130">Match</text>
@@ -235,14 +235,14 @@ RankNet uses VGG19 and a contrastive loss. The Deep Ranking network uses VGG16 a
   <path class="ln" d="M356,125 L428,125" marker-end="url(#clta)"/>
   <rect class="ln dash" x="430" y="2" width="248" height="240" rx="10"/>
   <text class="h" x="442" y="20">EMBEDDING SPACE</text>
-  <circle class="fa" cx="492" cy="96" r="5"/>
-  <text class="ta" x="504" y="92">query</text>
+  <circle class="fb" cx="492" cy="96" r="5"/>
+  <text class="tb" x="504" y="92">query</text>
   <circle class="arrow" cx="520" cy="150" r="5"/>
   <text class="m" x="532" y="154">match</text>
   <circle class="arrow" cx="640" cy="206" r="5"/>
   <text class="m" x="628" y="226" text-anchor="end">non-match</text>
-  <path class="sa" d="M497,103 L515,141" marker-end="url(#cltb)"/>
-  <text class="ta" x="470" y="128" text-anchor="end">closer</text>
+  <path class="sb" d="M497,103 L515,141" marker-end="url(#cltb)"/>
+  <text class="tb" x="470" y="128" text-anchor="end">closer</text>
   <path class="ln dash" d="M500,100 L632,200" marker-end="url(#clta)"/>
   <text class="m" x="596" y="130">further</text>
 </svg>
@@ -265,10 +265,10 @@ After cropping, colour still mattered more than style. RankNet did better than t
 <svg viewBox="0 0 680 244" role="img" aria-labelledby="cltt cltd">
   <title id="cltt">Triplet training for clothing similarity</title>
   <desc id="cltd">A query image, a matching item and a non-matching item go through the same embedding network. Inside it, a pretrained VGG path captures what the item is and two shallow convolutional paths capture simpler appearance; the three are merged into one embedding. In the embedding space, the loss pulls the match closer to the query and pushes the non-match away.</desc>
-  <defs><marker id="clta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cltb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="clta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cltb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <rect class="box" x="2" y="34" width="104" height="44" rx="6"></rect>
-  <rect class="fa" x="2" y="34" width="104" height="44" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="2" y="34" width="104" height="44" rx="6"></rect>
+  <rect class="fb" x="2" y="34" width="104" height="44" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="2" y="34" width="104" height="44" rx="6"></rect>
   <text class="t" x="14" y="60">Query</text>
   <rect class="box" x="2" y="104" width="104" height="44" rx="6"></rect>
   <text class="t" x="14" y="130">Match</text>
@@ -296,14 +296,14 @@ After cropping, colour still mattered more than style. RankNet did better than t
   <path class="ln" d="M356,125 L428,125" marker-end="url(#clta)"></path>
   <rect class="ln dash" x="430" y="2" width="248" height="240" rx="10"></rect>
   <text class="h" x="442" y="20">EMBEDDING SPACE</text>
-  <circle class="fa" cx="492" cy="96" r="5"></circle>
-  <text class="ta" x="504" y="92">query</text>
+  <circle class="fb" cx="492" cy="96" r="5"></circle>
+  <text class="tb" x="504" y="92">query</text>
   <circle class="arrow" cx="520" cy="150" r="5"></circle>
   <text class="m" x="532" y="154">match</text>
   <circle class="arrow" cx="640" cy="206" r="5"></circle>
   <text class="m" x="628" y="226" text-anchor="end">non-match</text>
-  <path class="sa" d="M497,103 L515,141" marker-end="url(#cltb)"></path>
-  <text class="ta" x="470" y="128" text-anchor="end">closer</text>
+  <path class="sb" d="M497,103 L515,141" marker-end="url(#cltb)"></path>
+  <text class="tb" x="470" y="128" text-anchor="end">closer</text>
   <path class="ln dash" d="M500,100 L632,200" marker-end="url(#clta)"></path>
   <text class="m" x="596" y="130">further</text>
 </svg>
@@ -324,7 +324,7 @@ Each part has one job. A Tweepy listener keeps only tweets with a Spotify link a
 <svg viewBox="0 0 680 168" role="img" aria-labelledby="stpt stpd">
   <title id="stpt">The trending-artists pipeline</title>
   <desc id="stpd">A Tweepy listener keeps tweets with a Spotify link and sends them to a Kafka topic. A Spark Streaming job reads the topic, asks the Spotify Web API for each track's artist and counts shares. Cassandra stores the counts by time, and a Dash chart sums the last hour every five seconds.</desc>
-  <defs><marker id="stpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="stpb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="stpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="stpb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <text class="h" x="2" y="14">ONE LAPTOP, ONE COPY OF EACH STAGE</text>
   <rect class="box" x="2" y="28" width="116" height="52" rx="6"/>
   <text class="t" x="14" y="50">Twitter API</text>
@@ -334,8 +334,8 @@ Each part has one job. A Tweepy listener keeps only tweets with a Spotify link a
   <text class="m" x="154" y="66">buffer</text>
   <path class="ln" d="M121,54 L140,54" marker-end="url(#stpa)"/>
   <rect class="box" x="282" y="28" width="116" height="52" rx="6"/>
-  <rect class="fa" x="282" y="28" width="116" height="52" rx="6" opacity=".14"/>
-  <rect class="sa" x="282" y="28" width="116" height="52" rx="6"/>
+  <rect class="fb" x="282" y="28" width="116" height="52" rx="6" opacity=".14"/>
+  <rect class="sb" x="282" y="28" width="116" height="52" rx="6"/>
   <text class="t" x="294" y="50">Spark job</text>
   <text class="m" x="294" y="66">counts artists</text>
   <path class="ln" d="M261,54 L280,54" marker-end="url(#stpa)"/>
@@ -365,7 +365,7 @@ Years later I reread the code and found two failures that the demo never showed.
 <svg viewBox="0 0 680 168" role="img" aria-labelledby="stpt stpd">
   <title id="stpt">The trending-artists pipeline</title>
   <desc id="stpd">A Tweepy listener keeps tweets with a Spotify link and sends them to a Kafka topic. A Spark Streaming job reads the topic, asks the Spotify Web API for each track's artist and counts shares. Cassandra stores the counts by time, and a Dash chart sums the last hour every five seconds.</desc>
-  <defs><marker id="stpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="stpb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="stpa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="stpb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <text class="h" x="2" y="14">ONE LAPTOP, ONE COPY OF EACH STAGE</text>
   <rect class="box" x="2" y="28" width="116" height="52" rx="6"></rect>
   <text class="t" x="14" y="50">Twitter API</text>
@@ -375,8 +375,8 @@ Years later I reread the code and found two failures that the demo never showed.
   <text class="m" x="154" y="66">buffer</text>
   <path class="ln" d="M121,54 L140,54" marker-end="url(#stpa)"></path>
   <rect class="box" x="282" y="28" width="116" height="52" rx="6"></rect>
-  <rect class="fa" x="282" y="28" width="116" height="52" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="282" y="28" width="116" height="52" rx="6"></rect>
+  <rect class="fb" x="282" y="28" width="116" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="282" y="28" width="116" height="52" rx="6"></rect>
   <text class="t" x="294" y="50">Spark job</text>
   <text class="m" x="294" y="66">counts artists</text>
   <path class="ln" d="M261,54 L280,54" marker-end="url(#stpa)"></path>
@@ -412,7 +412,7 @@ We used two public datasets. The main one was Sentiment140, with 1.6 million twe
 <svg viewBox="0 0 680 214" role="img" aria-labelledby="sept sepd">
   <title id="sept">The sentiment comparison</title>
   <desc id="sepd">Tweets from Sentiment140 are cleaned once. Four approaches label them: a TextBlob lexicon baseline, Naive Bayes and a linear SVM on TF-IDF trigrams, and a small CNN in Keras. All are scored on the same test set, and the linear SVM scored best with 82% accuracy.</desc>
-  <defs><marker id="sepa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="sepb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="sepa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="sepb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <rect class="box" x="2" y="76" width="118" height="66" rx="6"/>
   <text class="t" x="14" y="97">Tweets</text>
   <text class="m" x="14" y="113">Sentiment140</text>
@@ -424,8 +424,8 @@ We used two public datasets. The main one was Sentiment140, with 1.6 million twe
   <text class="t" x="330" y="34">TextBlob</text>
   <text class="m" x="330" y="50">lexicon baseline</text>
   <rect class="box" x="318" y="83" width="150" height="52" rx="6"/>
-  <rect class="fa" x="318" y="83" width="150" height="52" rx="6" opacity=".14"/>
-  <rect class="sa" x="318" y="83" width="150" height="52" rx="6"/>
+  <rect class="fb" x="318" y="83" width="150" height="52" rx="6" opacity=".14"/>
+  <rect class="sb" x="318" y="83" width="150" height="52" rx="6"/>
   <text class="t" x="330" y="105">Naive Bayes, SVM</text>
   <text class="m" x="330" y="121">TF-IDF trigrams</text>
   <rect class="box" x="318" y="154" width="150" height="52" rx="6"/>
@@ -439,9 +439,9 @@ We used two public datasets. The main one was Sentiment140, with 1.6 million twe
   <path class="ln" d="M292,109 L316,109" marker-end="url(#sepa)"/>
   <path class="ln" d="M292,109 L292,180 L316,180" marker-end="url(#sepa)"/>
   <path class="ln" d="M468,38 L512,38 L512,180 L468,180"/>
-  <path class="sa" d="M468,109 L556,109" marker-end="url(#sepb)"/>
-  <text class="ta" x="558" y="160">linear SVM best:</text>
-  <text class="ta" x="558" y="176">82% accuracy</text>
+  <path class="sb" d="M468,109 L556,109" marker-end="url(#sepb)"/>
+  <text class="tb" x="558" y="160">linear SVM best:</text>
+  <text class="tb" x="558" y="176">82% accuracy</text>
 </svg>
 <figcaption>One cleaning step and one test set, so the four approaches see the same data.</figcaption>
 </figure>
@@ -456,7 +456,7 @@ The linear SVM did best, with 82% accuracy on the Twitter test set. The CNN reac
 <svg viewBox="0 0 680 214" role="img" aria-labelledby="sept sepd">
   <title id="sept">The sentiment comparison</title>
   <desc id="sepd">Tweets from Sentiment140 are cleaned once. Four approaches label them: a TextBlob lexicon baseline, Naive Bayes and a linear SVM on TF-IDF trigrams, and a small CNN in Keras. All are scored on the same test set, and the linear SVM scored best with 82% accuracy.</desc>
-  <defs><marker id="sepa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="sepb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="sepa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="sepb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <rect class="box" x="2" y="76" width="118" height="66" rx="6"></rect>
   <text class="t" x="14" y="97">Tweets</text>
   <text class="m" x="14" y="113">Sentiment140</text>
@@ -468,8 +468,8 @@ The linear SVM did best, with 82% accuracy on the Twitter test set. The CNN reac
   <text class="t" x="330" y="34">TextBlob</text>
   <text class="m" x="330" y="50">lexicon baseline</text>
   <rect class="box" x="318" y="83" width="150" height="52" rx="6"></rect>
-  <rect class="fa" x="318" y="83" width="150" height="52" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="318" y="83" width="150" height="52" rx="6"></rect>
+  <rect class="fb" x="318" y="83" width="150" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="318" y="83" width="150" height="52" rx="6"></rect>
   <text class="t" x="330" y="105">Naive Bayes, SVM</text>
   <text class="m" x="330" y="121">TF-IDF trigrams</text>
   <rect class="box" x="318" y="154" width="150" height="52" rx="6"></rect>
@@ -483,9 +483,9 @@ The linear SVM did best, with 82% accuracy on the Twitter test set. The CNN reac
   <path class="ln" d="M292,109 L316,109" marker-end="url(#sepa)"></path>
   <path class="ln" d="M292,109 L292,180 L316,180" marker-end="url(#sepa)"></path>
   <path class="ln" d="M468,38 L512,38 L512,180 L468,180"></path>
-  <path class="sa" d="M468,109 L556,109" marker-end="url(#sepb)"></path>
-  <text class="ta" x="558" y="160">linear SVM best:</text>
-  <text class="ta" x="558" y="176">82% accuracy</text>
+  <path class="sb" d="M468,109 L556,109" marker-end="url(#sepb)"></path>
+  <text class="tb" x="558" y="160">linear SVM best:</text>
+  <text class="tb" x="558" y="176">82% accuracy</text>
 </svg>
 <figcaption>One cleaning step and one test set, so the four approaches see the same data.</figcaption>
 </figure>
@@ -521,14 +521,14 @@ Since then the original hosts and many image URLs have gone offline. The exporte
 <svg viewBox="0 0 680 112" role="img" aria-labelledby="s2et s2ed">
   <title id="s2et">The Street2Shop export</title>
   <desc id="s2ed">The exporter reads the community copy of Street2Shop on Hugging Face, skips images already on disk and can crop street photos to their bounding boxes. It writes the original per-category folder layout, so training code written for the 2015 files runs unchanged.</desc>
-  <defs><marker id="s2ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="s2eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="s2ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="s2eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <text class="h" x="2" y="14">THE EXPORT WORKFLOW</text>
   <rect class="box" x="2" y="28" width="153" height="78" rx="6"/>
   <text class="t" x="14" y="63">Hugging Face</text>
   <text class="m" x="14" y="79">community copy</text>
   <rect class="box" x="177" y="28" width="153" height="78" rx="6"/>
-  <rect class="fa" x="177" y="28" width="153" height="78" rx="6" opacity=".14"/>
-  <rect class="sa" x="177" y="28" width="153" height="78" rx="6"/>
+  <rect class="fb" x="177" y="28" width="153" height="78" rx="6" opacity=".14"/>
+  <rect class="sb" x="177" y="28" width="153" height="78" rx="6"/>
   <text class="t" x="189" y="55">Exporter</text>
   <text class="m" x="189" y="71">skips files on disk</text>
   <text class="m" x="189" y="87">optional crop</text>
@@ -557,14 +557,14 @@ The Hugging Face copy is not an official release, and it lacks the original retr
 <svg viewBox="0 0 680 112" role="img" aria-labelledby="s2et s2ed">
   <title id="s2et">The Street2Shop export</title>
   <desc id="s2ed">The exporter reads the community copy of Street2Shop on Hugging Face, skips images already on disk and can crop street photos to their bounding boxes. It writes the original per-category folder layout, so training code written for the 2015 files runs unchanged.</desc>
-  <defs><marker id="s2ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="s2eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="s2ea" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="s2eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <text class="h" x="2" y="14">THE EXPORT WORKFLOW</text>
   <rect class="box" x="2" y="28" width="153" height="78" rx="6"></rect>
   <text class="t" x="14" y="63">Hugging Face</text>
   <text class="m" x="14" y="79">community copy</text>
   <rect class="box" x="177" y="28" width="153" height="78" rx="6"></rect>
-  <rect class="fa" x="177" y="28" width="153" height="78" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="177" y="28" width="153" height="78" rx="6"></rect>
+  <rect class="fb" x="177" y="28" width="153" height="78" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="177" y="28" width="153" height="78" rx="6"></rect>
   <text class="t" x="189" y="55">Exporter</text>
   <text class="m" x="189" y="71">skips files on disk</text>
   <text class="m" x="189" y="87">optional crop</text>
@@ -589,7 +589,7 @@ People post books they want to lend or give away, with a pick-up time and place.
 <svg viewBox="0 0 680 104" role="img" aria-labelledby="bkft bkfd">
   <title id="bkft">The Bookio flow</title>
   <desc id="bkfd">Four steps: an owner posts a book with a pick-up time and place, another user requests it from the shelf, they meet at the pick-up point, and the exchange stays in both accounts' history.</desc>
-  <defs><marker id="bkfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="bkfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="bkfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="bkfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <text class="h" x="2" y="14">LENDING A BOOK</text>
   <rect class="box" x="2" y="28" width="153" height="70" rx="6"/>
   <text class="m" x="14" y="51">01</text>
@@ -601,9 +601,9 @@ People post books they want to lend or give away, with a pick-up time and place.
   <text class="m" x="189" y="83">from the shelf</text>
   <path class="ln" d="M158,63 L175,63" marker-end="url(#bkfa)"/>
   <rect class="box" x="352" y="28" width="153" height="70" rx="6"/>
-  <rect class="fa" x="352" y="28" width="153" height="70" rx="6" opacity=".14"/>
-  <rect class="sa" x="352" y="28" width="153" height="70" rx="6"/>
-  <text class="ta" x="364" y="51">03</text>
+  <rect class="fb" x="352" y="28" width="153" height="70" rx="6" opacity=".14"/>
+  <rect class="sb" x="352" y="28" width="153" height="70" rx="6"/>
+  <text class="tb" x="364" y="51">03</text>
   <text class="t" x="364" y="67">Meet</text>
   <text class="m" x="364" y="83">at pick-up point</text>
   <path class="ln" d="M333,63 L350,63" marker-end="url(#bkfa)"/>
@@ -624,7 +624,7 @@ We wanted a serverless app, so Firebase is the whole backend. Authentication han
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="bkat bkad">
   <title id="bkat">Bookio architecture</title>
   <desc id="bkad">The React and Redux app in the browser talks to Firebase as its whole backend: Authentication, Storage and Cloud Firestore, which pushes changes in real time. Firestore syncs the books to an Algolia search index. Google Maps shows pick-up points and the Goodreads API fills in book details.</desc>
-  <defs><marker id="bkaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="bkab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="bkaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="bkab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <rect class="ln dash" x="2" y="2" width="206" height="246" rx="10"/>
   <text class="h" x="14" y="20">FIREBASE, THE BACKEND</text>
   <rect class="box" x="16" y="30" width="178" height="52" rx="6"/>
@@ -634,8 +634,8 @@ We wanted a serverless app, so Firebase is the whole backend. Authentication han
   <text class="t" x="28" y="126">Storage</text>
   <text class="m" x="28" y="142">cover photos</text>
   <rect class="box" x="16" y="178" width="178" height="52" rx="6"/>
-  <rect class="fa" x="16" y="178" width="178" height="52" rx="6" opacity=".14"/>
-  <rect class="sa" x="16" y="178" width="178" height="52" rx="6"/>
+  <rect class="fb" x="16" y="178" width="178" height="52" rx="6" opacity=".14"/>
+  <rect class="sb" x="16" y="178" width="178" height="52" rx="6"/>
   <text class="t" x="28" y="200">Firestore</text>
   <text class="m" x="28" y="216">books, requests</text>
   <rect class="box" x="250" y="104" width="180" height="52" rx="6"/>
@@ -652,13 +652,13 @@ We wanted a serverless app, so Firebase is the whole backend. Authentication han
   <text class="m" x="512" y="216">search index</text>
   <path class="ln" d="M250,118 L196,58"/>
   <path class="ln" d="M250,130 L196,130"/>
-  <path class="sa" d="M250,142 L196,202" marker-start="url(#bkab)" marker-end="url(#bkab)"/>
-  <text class="ta" x="232" y="186" text-anchor="end">real-time</text>
+  <path class="sb" d="M250,142 L196,202" marker-start="url(#bkab)" marker-end="url(#bkab)"/>
+  <text class="tb" x="232" y="186" text-anchor="end">real-time</text>
   <path class="ln" d="M430,118 L498,58"/>
   <path class="ln" d="M430,130 L498,130"/>
   <path class="ln" d="M430,142 L498,196"/>
-  <path class="sa" d="M194,216 L498,216" marker-end="url(#bkab)"/>
-  <text class="ta" x="346" y="210" text-anchor="middle">sync for full-text search</text>
+  <path class="sb" d="M194,216 L498,216" marker-end="url(#bkab)"/>
+  <text class="tb" x="346" y="210" text-anchor="middle">sync for full-text search</text>
 </svg>
 <figcaption>Firebase is the whole backend, so there are no servers of our own. Firestore has no full-text search, so Algolia keeps a synced index.</figcaption>
 </figure>
@@ -672,7 +672,7 @@ We built it as a team for the Interaction Programming and Dynamic Web course at 
 <svg viewBox="0 0 680 104" role="img" aria-labelledby="bkft bkfd">
   <title id="bkft">The Bookio flow</title>
   <desc id="bkfd">Four steps: an owner posts a book with a pick-up time and place, another user requests it from the shelf, they meet at the pick-up point, and the exchange stays in both accounts' history.</desc>
-  <defs><marker id="bkfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="bkfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="bkfa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="bkfb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <text class="h" x="2" y="14">LENDING A BOOK</text>
   <rect class="box" x="2" y="28" width="153" height="70" rx="6"></rect>
   <text class="m" x="14" y="51">01</text>
@@ -684,9 +684,9 @@ We built it as a team for the Interaction Programming and Dynamic Web course at 
   <text class="m" x="189" y="83">from the shelf</text>
   <path class="ln" d="M158,63 L175,63" marker-end="url(#bkfa)"></path>
   <rect class="box" x="352" y="28" width="153" height="70" rx="6"></rect>
-  <rect class="fa" x="352" y="28" width="153" height="70" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="352" y="28" width="153" height="70" rx="6"></rect>
-  <text class="ta" x="364" y="51">03</text>
+  <rect class="fb" x="352" y="28" width="153" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="352" y="28" width="153" height="70" rx="6"></rect>
+  <text class="tb" x="364" y="51">03</text>
   <text class="t" x="364" y="67">Meet</text>
   <text class="m" x="364" y="83">at pick-up point</text>
   <path class="ln" d="M333,63 L350,63" marker-end="url(#bkfa)"></path>
@@ -704,7 +704,7 @@ We built it as a team for the Interaction Programming and Dynamic Web course at 
 <svg viewBox="0 0 680 252" role="img" aria-labelledby="bkat bkad">
   <title id="bkat">Bookio architecture</title>
   <desc id="bkad">The React and Redux app in the browser talks to Firebase as its whole backend: Authentication, Storage and Cloud Firestore, which pushes changes in real time. Firestore syncs the books to an Algolia search index. Google Maps shows pick-up points and the Goodreads API fills in book details.</desc>
-  <defs><marker id="bkaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="bkab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="bkaa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="bkab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <rect class="ln dash" x="2" y="2" width="206" height="246" rx="10"></rect>
   <text class="h" x="14" y="20">FIREBASE, THE BACKEND</text>
   <rect class="box" x="16" y="30" width="178" height="52" rx="6"></rect>
@@ -714,8 +714,8 @@ We built it as a team for the Interaction Programming and Dynamic Web course at 
   <text class="t" x="28" y="126">Storage</text>
   <text class="m" x="28" y="142">cover photos</text>
   <rect class="box" x="16" y="178" width="178" height="52" rx="6"></rect>
-  <rect class="fa" x="16" y="178" width="178" height="52" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="16" y="178" width="178" height="52" rx="6"></rect>
+  <rect class="fb" x="16" y="178" width="178" height="52" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="16" y="178" width="178" height="52" rx="6"></rect>
   <text class="t" x="28" y="200">Firestore</text>
   <text class="m" x="28" y="216">books, requests</text>
   <rect class="box" x="250" y="104" width="180" height="52" rx="6"></rect>
@@ -732,13 +732,13 @@ We built it as a team for the Interaction Programming and Dynamic Web course at 
   <text class="m" x="512" y="216">search index</text>
   <path class="ln" d="M250,118 L196,58"></path>
   <path class="ln" d="M250,130 L196,130"></path>
-  <path class="sa" d="M250,142 L196,202" marker-start="url(#bkab)" marker-end="url(#bkab)"></path>
-  <text class="ta" x="232" y="186" text-anchor="end">real-time</text>
+  <path class="sb" d="M250,142 L196,202" marker-start="url(#bkab)" marker-end="url(#bkab)"></path>
+  <text class="tb" x="232" y="186" text-anchor="end">real-time</text>
   <path class="ln" d="M430,118 L498,58"></path>
   <path class="ln" d="M430,130 L498,130"></path>
   <path class="ln" d="M430,142 L498,196"></path>
-  <path class="sa" d="M194,216 L498,216" marker-end="url(#bkab)"></path>
-  <text class="ta" x="346" y="210" text-anchor="middle">sync for full-text search</text>
+  <path class="sb" d="M194,216 L498,216" marker-end="url(#bkab)"></path>
+  <text class="tb" x="346" y="210" text-anchor="middle">sync for full-text search</text>
 </svg>
 <figcaption>Firebase is the whole backend, so there are no servers of our own. Firestore has no full-text search, so Algolia keeps a synced index.</figcaption>
 </figure>
@@ -788,7 +788,7 @@ The system has three parts: the helmet device, the rider app and the dashboard. 
 <svg viewBox="0 0 680 128" role="img" aria-labelledby="cpst cpsd">
   <title id="cpst">Caprica system</title>
   <desc id="cpsd">The helmet device, an ESP32 with motion sensors and GPS, sends events over Bluetooth serial to the rider's React Native app. The app shows alerts and sends accident reports to the cloud. The monitoring dashboard shows recent accidents on Google Maps.</desc>
-  <defs><marker id="cpsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cpsb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="cpsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cpsb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <text class="h" x="2" y="14">ON THE HELMET</text>
   <rect class="box" x="2" y="28" width="150" height="52" rx="6"/>
   <text class="t" x="14" y="50">Helmet device</text>
@@ -806,12 +806,12 @@ The system has three parts: the helmet device, the rider app and the dashboard. 
   <text class="t" x="580" y="50">Dashboard</text>
   <text class="m" x="580" y="66">Google Maps</text>
   <path class="ln" d="M152,54 L200,54" marker-end="url(#cpsa)"/>
-  <path class="sa" d="M326,54 L380,54" marker-end="url(#cpsb)"/>
-  <path class="sa" d="M518,54 L566,54" marker-end="url(#cpsb)"/>
+  <path class="sb" d="M326,54 L380,54" marker-end="url(#cpsb)"/>
+  <path class="sb" d="M518,54 L566,54" marker-end="url(#cpsb)"/>
   <text class="m" x="176" y="100" text-anchor="middle">Bluetooth</text>
-  <text class="ta" x="353" y="100" text-anchor="middle">accident</text>
-  <text class="ta" x="353" y="114" text-anchor="middle">report</text>
-  <text class="ta" x="542" y="100" text-anchor="middle">map</text>
+  <text class="tb" x="353" y="100" text-anchor="middle">accident</text>
+  <text class="tb" x="353" y="114" text-anchor="middle">report</text>
+  <text class="tb" x="542" y="100" text-anchor="middle">map</text>
 </svg>
 <figcaption>Speeding alerts stay on the phone. Accident reports go on to the dashboard.</figcaption>
 </figure>
@@ -824,7 +824,7 @@ The device measures speed, acceleration and location. Speeding is the simple che
 <svg viewBox="0 0 680 196" role="img" aria-labelledby="cpdt cpdd">
   <title id="cpdt">Accident and speeding detection</title>
   <desc id="cpdd">On the helmet device, readings of speed, acceleration and GPS feed two checks. Speed above the set maximum gives a speeding alert on the rider's phone. Acceleration over a threshold, which means an impact, or an abrupt change in deceleration, which means a fall, is treated as an accident: the phone shows an alert and sends a report with the location to the dashboard.</desc>
-  <defs><marker id="cpda" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cpdb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <defs><marker id="cpda" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"/></marker><marker id="cpdb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"/></marker></defs>
   <rect class="box" x="2" y="70" width="136" height="52" rx="6"/>
   <text class="t" x="14" y="92">Readings</text>
   <text class="m" x="14" y="108">speed, accel, GPS</text>
@@ -832,8 +832,8 @@ The device measures speed, acceleration and location. Speeding is the simple che
   <text class="t" x="196" y="38">Speeding?</text>
   <text class="m" x="196" y="54">speed > set maximum</text>
   <rect class="box" x="184" y="112" width="216" height="70" rx="6"/>
-  <rect class="fa" x="184" y="112" width="216" height="70" rx="6" opacity=".14"/>
-  <rect class="sa" x="184" y="112" width="216" height="70" rx="6"/>
+  <rect class="fb" x="184" y="112" width="216" height="70" rx="6" opacity=".14"/>
+  <rect class="sb" x="184" y="112" width="216" height="70" rx="6"/>
   <text class="t" x="196" y="135">Impact or fall?</text>
   <text class="m" x="196" y="151">acceleration > threshold</text>
   <text class="m" x="196" y="167">or abrupt deceleration</text>
@@ -841,17 +841,17 @@ The device measures speed, acceleration and location. Speeding is the simple che
   <text class="t" x="512" y="38">Speeding alert</text>
   <text class="m" x="512" y="54">on the rider's phone</text>
   <rect class="box" x="500" y="112" width="178" height="70" rx="6"/>
-  <rect class="fa" x="500" y="112" width="178" height="70" rx="6" opacity=".14"/>
-  <rect class="sa" x="500" y="112" width="178" height="70" rx="6"/>
+  <rect class="fb" x="500" y="112" width="178" height="70" rx="6" opacity=".14"/>
+  <rect class="sb" x="500" y="112" width="178" height="70" rx="6"/>
   <text class="t" x="512" y="135">Accident</text>
   <text class="m" x="512" y="151">alert on the phone,</text>
   <text class="m" x="512" y="167">report to dashboard</text>
   <path class="ln" d="M138,96 L160,96 L160,42 L182,42" marker-end="url(#cpda)"/>
   <path class="ln" d="M160,96 L160,147 L182,147" marker-end="url(#cpda)"/>
   <path class="ln" d="M400,42 L498,42" marker-end="url(#cpda)"/>
-  <path class="sa" d="M400,147 L498,147" marker-end="url(#cpdb)"/>
+  <path class="sb" d="M400,147 L498,147" marker-end="url(#cpdb)"/>
   <text class="m" x="449" y="36" text-anchor="middle">yes</text>
-  <text class="ta" x="449" y="141" text-anchor="middle">yes</text>
+  <text class="tb" x="449" y="141" text-anchor="middle">yes</text>
 </svg>
 <figcaption>Both checks run on the helmet device. The phone only shows the result and forwards accident reports.</figcaption>
 </figure>
@@ -869,7 +869,7 @@ We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2
 <svg viewBox="0 0 680 128" role="img" aria-labelledby="cpst cpsd">
   <title id="cpst">Caprica system</title>
   <desc id="cpsd">The helmet device, an ESP32 with motion sensors and GPS, sends events over Bluetooth serial to the rider's React Native app. The app shows alerts and sends accident reports to the cloud. The monitoring dashboard shows recent accidents on Google Maps.</desc>
-  <defs><marker id="cpsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cpsb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="cpsa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cpsb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <text class="h" x="2" y="14">ON THE HELMET</text>
   <rect class="box" x="2" y="28" width="150" height="52" rx="6"></rect>
   <text class="t" x="14" y="50">Helmet device</text>
@@ -887,12 +887,12 @@ We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2
   <text class="t" x="580" y="50">Dashboard</text>
   <text class="m" x="580" y="66">Google Maps</text>
   <path class="ln" d="M152,54 L200,54" marker-end="url(#cpsa)"></path>
-  <path class="sa" d="M326,54 L380,54" marker-end="url(#cpsb)"></path>
-  <path class="sa" d="M518,54 L566,54" marker-end="url(#cpsb)"></path>
+  <path class="sb" d="M326,54 L380,54" marker-end="url(#cpsb)"></path>
+  <path class="sb" d="M518,54 L566,54" marker-end="url(#cpsb)"></path>
   <text class="m" x="176" y="100" text-anchor="middle">Bluetooth</text>
-  <text class="ta" x="353" y="100" text-anchor="middle">accident</text>
-  <text class="ta" x="353" y="114" text-anchor="middle">report</text>
-  <text class="ta" x="542" y="100" text-anchor="middle">map</text>
+  <text class="tb" x="353" y="100" text-anchor="middle">accident</text>
+  <text class="tb" x="353" y="114" text-anchor="middle">report</text>
+  <text class="tb" x="542" y="100" text-anchor="middle">map</text>
 </svg>
 <figcaption>Speeding alerts stay on the phone. Accident reports go on to the dashboard.</figcaption>
 </figure>
@@ -902,7 +902,7 @@ We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2
 <svg viewBox="0 0 680 196" role="img" aria-labelledby="cpdt cpdd">
   <title id="cpdt">Accident and speeding detection</title>
   <desc id="cpdd">On the helmet device, readings of speed, acceleration and GPS feed two checks. Speed above the set maximum gives a speeding alert on the rider's phone. Acceleration over a threshold, which means an impact, or an abrupt change in deceleration, which means a fall, is treated as an accident: the phone shows an alert and sends a report with the location to the dashboard.</desc>
-  <defs><marker id="cpda" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cpdb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
+  <defs><marker id="cpda" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="arrow" d="M0,0 L10,5 L0,10 z"></path></marker><marker id="cpdb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fb" d="M0,0 L10,5 L0,10 z"></path></marker></defs>
   <rect class="box" x="2" y="70" width="136" height="52" rx="6"></rect>
   <text class="t" x="14" y="92">Readings</text>
   <text class="m" x="14" y="108">speed, accel, GPS</text>
@@ -910,8 +910,8 @@ We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2
   <text class="t" x="196" y="38">Speeding?</text>
   <text class="m" x="196" y="54">speed > set maximum</text>
   <rect class="box" x="184" y="112" width="216" height="70" rx="6"></rect>
-  <rect class="fa" x="184" y="112" width="216" height="70" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="184" y="112" width="216" height="70" rx="6"></rect>
+  <rect class="fb" x="184" y="112" width="216" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="184" y="112" width="216" height="70" rx="6"></rect>
   <text class="t" x="196" y="135">Impact or fall?</text>
   <text class="m" x="196" y="151">acceleration > threshold</text>
   <text class="m" x="196" y="167">or abrupt deceleration</text>
@@ -919,17 +919,17 @@ We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2
   <text class="t" x="512" y="38">Speeding alert</text>
   <text class="m" x="512" y="54">on the rider's phone</text>
   <rect class="box" x="500" y="112" width="178" height="70" rx="6"></rect>
-  <rect class="fa" x="500" y="112" width="178" height="70" rx="6" opacity=".14"></rect>
-  <rect class="sa" x="500" y="112" width="178" height="70" rx="6"></rect>
+  <rect class="fb" x="500" y="112" width="178" height="70" rx="6" opacity=".14"></rect>
+  <rect class="sb" x="500" y="112" width="178" height="70" rx="6"></rect>
   <text class="t" x="512" y="135">Accident</text>
   <text class="m" x="512" y="151">alert on the phone,</text>
   <text class="m" x="512" y="167">report to dashboard</text>
   <path class="ln" d="M138,96 L160,96 L160,42 L182,42" marker-end="url(#cpda)"></path>
   <path class="ln" d="M160,96 L160,147 L182,147" marker-end="url(#cpda)"></path>
   <path class="ln" d="M400,42 L498,42" marker-end="url(#cpda)"></path>
-  <path class="sa" d="M400,147 L498,147" marker-end="url(#cpdb)"></path>
+  <path class="sb" d="M400,147 L498,147" marker-end="url(#cpdb)"></path>
   <text class="m" x="449" y="36" text-anchor="middle">yes</text>
-  <text class="ta" x="449" y="141" text-anchor="middle">yes</text>
+  <text class="tb" x="449" y="141" text-anchor="middle">yes</text>
 </svg>
 <figcaption>Both checks run on the helmet device. The phone only shows the result and forwards accident reports.</figcaption>
 </figure>
@@ -937,8 +937,8 @@ We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2
 <h2>The team and the result</h2>
 <p>We built it in two days as the SSX_Ceria team at a Gojek hackathon, and it won 2nd place. I built the IoT device, and my teammates built the React Native client and the dashboard.</p>14:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$1","c",{"children":[["$","$L16",null,{"projects":[{"id":"icarus","title":"Icarus: a virtual run platform","kind":"Full-stack project · 2021","stack":"Next.js · Express · Strava API · AWS","image":"/assets/images/projects/icarus-card.png","detail_image":"/assets/images/projects/icarus-events.png","detail_image_alt":"The Icarus events page, captured from the app running locally","video":"/assets/videos/projects/icarus-showreel.mp4","video_poster":"/assets/videos/projects/icarus-showreel-poster.jpg","topic":"Web","color":"l1","image_caption":"The Icarus homepage, captured from the app running locally.","teaser":"A virtual run platform for communities that are too small for the big race platforms. I worked on the full stack and the cloud architecture. It grew to more than 3,000 registered users across 10 events.","body":"$17","body_html":"$18"},{"id":"clothing-similarity","title":"Learning Image Similarities on Clothing Images","kind":"KTH DD2430 course project · 2019","stack":"Deep learning · Computer vision · Siamese networks · Metric learning","image":"/assets/images/projects/clothing-illustration.png","image_caption":"AI-generated concept illustration of the clothing-similarity workflow","detail_image":"/assets/images/projects/clothing-card.png","detail_image_alt":"Architecture diagram based on the project report","topic":"Data science","color":"l3","teaser":"Teaching a neural network what 'similar clothes' means, so a photo can be matched to visually similar items.","body":"$19","body_html":"$1a"},{"id":"streaming-artists","title":"A live chart of trending artists","kind":"Student team project · 2019","stack":"Kafka · Spark Streaming · Cassandra · Dash","repo":"https://github.com/fadhilmch/streaming-twitter-spotify-trending-artists","post":"/posts/building-a-streaming-pipeline/","post_title":"Learning data streaming by building one","image":"/assets/images/projects/streaming-illustration.png","topic":"Systems","color":"l0","image_caption":"AI-generated concept illustration · not a dashboard","detail_image":"/assets/images/projects/streaming-trending-artists.gif","detail_image_alt":"Screen recording of the live trending-artists dashboard","teaser":"Tweets that shared Spotify tracks, turned into a live top-20 chart of artists. Kafka takes the tweets in, Spark Streaming counts them, Cassandra stores the counts and Dash draws the chart.","body":"$1b","body_html":"$1c"},{"id":"sentiment-classifier","title":"Comparing tweet sentiment classifiers","kind":"KTH DM2583 course team project · 2019","stack":"Python · scikit-learn · Keras · NLP","repo":"https://github.com/fadhilmch/big-data-project","post":"/posts/rereading-a-2019-sentiment-model/","post_title":"My first text classifier for sentiment analysis","image":"/assets/images/projects/sentiment-illustration.png","image_caption":"AI-generated concept illustration of the comparison workflow","topic":"Data science","color":"l3","teaser":"Four ways to label tweet sentiment, trained and compared on the same cleaned Twitter data: a TextBlob lexicon baseline, Naive Bayes, a linear SVM and a small CNN.","body":"$1d","body_html":"$1e"},{"id":"image-colorization","title":"Adding colour to grayscale images","kind":"KTH DD2424 course team project · 2019","stack":"TensorFlow · Keras · Inception-ResNet-v2","repo":"https://github.com/fadhilmch/image_colorization","post":"/posts/colorizing-images-with-local-and-global-features/","post_title":"Image colorization: learning what grayscale leaves out","image":"/assets/images/projects/colorization-card.png","detail_image":"/assets/images/projects/colorization-example.svg","detail_image_alt":"Repo output: grayscale input, the network prediction and the original photo","topic":"Data science","color":"l3","image_caption":"Repo output · grayscale / prediction / original, two examples","teaser":"A small reproduction of a deep colorization paper. An encoder and decoder predict local colour, and pretrained Inception-ResNet features add context about the whole scene.","body":"$1f","body_html":"$20"},{"id":"street2shop-downloader","title":"Downloading the Street2Shop dataset","kind":"Personal project · 2019","stack":"Python · Hugging Face datasets · Pillow","repo":"https://github.com/fadhilmch/street2shop-download","image":"/assets/images/projects/street2shop-illustration.png","topic":"Data science","color":"l3","image_caption":"AI-generated concept illustration of the download and crop workflow, not dataset images","teaser":"The Street2Shop clothing dataset was published as lists of image URLs, and the original hosts are now offline. This tool exports the images from a community copy on Hugging Face, in the original folder layout.","body":"$21","body_html":"$22"},{"id":"bookio","title":"Bookio: a community bookshelf","kind":"KTH Interaction Programming course team project · 2019","stack":"React · Redux · Firebase · Algolia · Google Maps","repo":"https://github.com/fadhilmch/ipdw-project","links":[{"href":"https://github.com/bt-s/BOOKIO","label":"Original team repo ↗"},{"href":"https://bookio-5c798.firebaseapp.com/","label":"Live demo (older build) ↗"}],"image":"https://github.com/user-attachments/assets/a0954b53-b72c-49f6-b232-fcb5a73601be","image_auto_height":true,"video":"/assets/videos/projects/bookio-showreel.mp4","video_poster":"/assets/videos/projects/bookio-showreel-poster.jpg","topic":"Web","color":"l1","image_caption":"App demo","teaser":"A shared bookshelf for people nearby: post a book to lend or give away, search the shelf and meet the owner. I worked across the full stack, including accounts and the UI and UX design.","body":"$23","body_html":"$24"},{"id":"treki","title":"Treki, a Bluetooth tracker for belongings","kind":"Bootcamp final project · Hacktiv8 batch 16 · 2018","stack":"React Native · Node.js · Bluetooth Low Energy","repo":"https://github.com/fadhilmch/treki-client","links":[{"href":"https://www.youtube.com/watch?v=each00lmwpk","label":"Demo video ↗"}],"image":"/assets/images/projects/treki-title.jpg","topic":"Mobile","color":"l4","image_caption":"The Treki app with two finished tags (treki-client repository)","video":"/assets/videos/projects/treki-showreel.mp4","video_poster":"/assets/videos/projects/treki-showreel-poster.jpg","teaser":"A Bluetooth tracker for keys and wallets that finds lost items through other users' phones. I led a team of four and was the main developer. It won best presentation at the Hacktiv8 bootcamp.","body":"$25","body_html":"$26"},{"id":"caprica","title":"Caprica: a connected-helmet safety system","kind":"Hackathon project · 2017","stack":"React Native · Bluetooth serial · Google Maps","repo":"https://github.com/fadhilmch/caprica-client","links":[{"href":"https://github.com/fadhilmch/caprica-dashboard","label":"Dashboard on GitHub ↗"}],"image":"/assets/images/projects/caprica-illustration.png","topic":"Hardware","color":"l2","image_caption":"AI-generated concept illustration of the helmet-to-dashboard alert flow","detail_image":"/assets/images/projects/caprica-demo-frame.png","detail_image_alt":"Frame from the client demo recording (caprica-client repository)","teaser":"A helmet safety system that won 2nd place at a Gojek hackathon. A device on the helmet detects accidents and speeding, the rider's app shows the alert, and a dashboard maps recent accidents. I built the IoT device.","body":"$27","body_html":"$28"}]}],["$L29"],"$L2a"]}],"p":"$@2b","v":null,"s":"$d"}}]]
 10:[["children",{"s":"projects","h":96,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0jw0zpt0wwmkr.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/03ntvs3khe75e.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/1e28nzlggtwea.js","async":true}]],[["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}],["$","$L12",null,{}]]]}],"p":"$@13","v":null,"s":"$d"},"c":"$Q14"}]]
-e:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/0bgigsb2ujwag.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/1-wy-e43sc8fp.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eykxqz7e_k3b.css","precedence":"next"}]]]}]}],["$","$La",null,{}]]]}],"p":"$@f","v":null,"s":"$d"},"c":"$Q10"}]]
-0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/3_8ddb6i2t6s1.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3m_arazuqkl24.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$La",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0eykxqz7e_k3b.css","precedence":"next"}]]]}]}],["$","$Lb",null,{}]]}]}]]}],"p":"$@c","v":null,"s":"$d"},"c":"$Qe"},"h":{"r":["$","$1","h",{"children":[null,["$","$L2d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L2f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$30",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Projects · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/projects/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Projects"}],["$","meta","10",{"property":"og:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/projects/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","15",{"property":"og:image:width","content":"1200"}],["$","meta","16",{"property":"og:image:height","content":"630"}],["$","meta","17",{"property":"og:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","18",{"property":"og:type","content":"website"}],["$","meta","19",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","20",{"name":"twitter:title","content":"Projects"}],["$","meta","21",{"name":"twitter:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","22",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","23",{"name":"twitter:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],"$L31","$L32","$L33","$L34"]}]}],null]}],"$L35"]}],"p":"$@36","v":null,"s":"$d"}},"a":"$@37","u":"$@38","b":"PN_Mo5P9TtpqvVAuxxQh1"}
+e:[["children",{"s":"(site)","h":96,"d":{"r":["$","$1","c",{"children":[[["$","script","script-0",{"src":"/_next/static/chunks/1umguafe6ervy.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/3edggh0ytbgr0.js","async":true}]],[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/02fp5cl87rfpg.css","precedence":"next"}]]]}]}],["$","$La",null,{}]]]}],"p":"$@f","v":null,"s":"$d"},"c":"$Q10"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/1ye4d461f4cqe.css","precedence":"next"}],["$","link","1",{"rel":"stylesheet","href":"/_next/static/chunks/2-u9mhiv6azud.css","precedence":"next"}],["$","link","2",{"rel":"stylesheet","href":"/_next/static/chunks/2dnc-u4iux7gk.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/3m_arazuqkl24.js","async":true}]],["$","html",null,{"lang":"en","data-depth":"soft","suppressHydrationWarning":true,"className":"uDPIeW_variable u1UBNa_variable","children":["$","body",null,{"children":[["$","$L3",null,{"children":["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}],"notFound":[[["$","a",null,{"className":"skip-link absolute -top-[100px] left-2 z-[99] rounded-lg bg-fg px-3.5 py-2.5 text-bg focus:top-2","href":"#main","children":"Skip to content"}],["$","$L8",null,{}],["$","main",null,{"id":"main","children":["$","div",null,{"className":"article-shell","children":["$","header",null,{"className":"article-header","children":[["$","p",null,{"className":"article-meta","children":"Error 404"}],["$","h1",null,{"children":"404: page not found"}],["$","p",null,{"className":"standfirst","children":"There is nothing at this address. It may have moved, or the link may be mistyped."}],["$","div",null,{"className":"tag-list","children":[["$","$L9",null,{"className":"tag-chip","href":"/","children":"Home"}],["$","$L9",null,{"className":"tag-chip","href":"/posts/","children":"Posts"}],["$","$L9",null,{"className":"tag-chip","href":"/notes/","children":"Notes"}]]}]]}]}]}],["$","$La",null,{}]],[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/02fp5cl87rfpg.css","precedence":"next"}]]]}]}],["$","$Lb",null,{}]]}]}]]}],"p":"$@c","v":null,"s":"$d"},"c":"$Qe"},"h":{"r":["$","$1","h",{"children":[null,["$","$L2d",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#f5f4f0"}],["$","meta","3",{"name":"color-scheme","content":"light dark"}]]}],["$","$L2f",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$30",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Projects · Fadhil Mochammad"}],["$","meta","1",{"name":"description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","link","2",{"rel":"author","href":"https://fadhilmch.github.io/"}],["$","meta","3",{"name":"author","content":"Fadhil Mochammad"}],["$","meta","4",{"name":"keywords","content":"Fadhil Mochammad,fadhilmch,Machine Learning Engineer,ML Engineer,MLOps Engineer,Data Scientist,Machine Learning,Stockholm"}],["$","meta","5",{"name":"creator","content":"Fadhil Mochammad"}],["$","link","6",{"rel":"canonical","href":"https://fadhilmch.github.io/projects/"}],["$","link","7",{"rel":"alternate","type":"application/atom+xml","href":"https://fadhilmch.github.io/feed.xml","title":"Fadhil Mochammad"}],["$","meta","8",{"name":"google-site-verification","content":"isqDPfhl_ygE-BjKyXaufxOofzxuwccFMeswShdh6eU"}],["$","meta","9",{"property":"og:title","content":"Projects"}],["$","meta","10",{"property":"og:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","11",{"property":"og:url","content":"https://fadhilmch.github.io/projects/"}],["$","meta","12",{"property":"og:site_name","content":"Fadhil Mochammad"}],["$","meta","13",{"property":"og:locale","content":"en_US"}],["$","meta","14",{"property":"og:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","15",{"property":"og:image:width","content":"1200"}],["$","meta","16",{"property":"og:image:height","content":"630"}],["$","meta","17",{"property":"og:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],["$","meta","18",{"property":"og:type","content":"website"}],["$","meta","19",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","20",{"name":"twitter:title","content":"Projects"}],["$","meta","21",{"name":"twitter:description","content":"Selected public projects, what they demonstrate, and what I would change."}],["$","meta","22",{"name":"twitter:image","content":"https://fadhilmch.github.io/assets/og-default.png"}],["$","meta","23",{"name":"twitter:image:alt","content":"Fadhil Mochammad, Machine Learning & MLOps Engineer in Stockholm"}],"$L31","$L32","$L33","$L34"]}]}],null]}],"$L35"]}],"p":"$@36","v":null,"s":"$d"}},"a":"$@37","u":"$@38","b":"4ZzyvWyWScXUpBJrj1KB8"}
 39:I[97367,["$2"],"OutletBoundary"]
 3b:I[27201,["$2"],"IconMark"]
 29:["$","script","script-0",{"src":"/_next/static/chunks/0ctf2xo_74kqr.js","async":true}]
